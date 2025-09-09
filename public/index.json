@@ -7,42 +7,42 @@
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/proposal/",
+	"uri": "http://localhost:1313/2-proposal/",
 	"title": "Proposal",
 	"tags": [],
 	"description": "",
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/translated_blogs/",
-	"title": "Translated_Blogs",
+	"uri": "http://localhost:1313/3-translated-blogs/",
+	"title": "Translated Blogs",
 	"tags": [],
 	"description": "",
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/events_participated/",
+	"uri": "http://localhost:1313/4-events-participated/",
 	"title": "Events Participated",
 	"tags": [],
 	"description": "",
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/workshop/",
+	"uri": "http://localhost:1313/5-workshop/",
 	"title": "Workshop",
 	"tags": [],
 	"description": "",
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/self-assesment/",
+	"uri": "http://localhost:1313/6-self-assesment/",
 	"title": "Self Assesment",
 	"tags": [],
 	"description": "",
 	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
 },
 {
-	"uri": "http://localhost:1313/sharing_and_feedback/",
+	"uri": "http://localhost:1313/7-sharing-and-feedback/",
 	"title": "Sharing and Feedback",
 	"tags": [],
 	"description": "",
@@ -53,7 +53,7 @@
 	"title": "Worklog",
 	"tags": [],
 	"description": "",
-	"content": "INTERNSHIP REPORT Student Information: Full Name: Phan Canh Tuan Dat\nPhone Number: 0867829257\nEmail: pcanhtuandat@gmail.com\nUniversity: Sai Gon University\nMajor: Information Technology\nClass: DCT1226\nInternship Company: Amazon Web Services Vietnam Co., Ltd.\nInternship Position: FCJ Cloud Intern\nInternship Duration: From 12/08/2025 to 12/11/2025\nReport Content 1. Worklog "
+	"content": "INTERNSHIP REPORT Student Information: Full Name: Phan Canh Tuan Dat\nPhone Number: 0867829257\nEmail: pcanhtuandat@gmail.com\nUniversity: Sai Gon University\nMajor: Information Technology\nClass: DCT1226\nInternship Company: Amazon Web Services Vietnam Co., Ltd.\nInternship Position: FCJ Cloud Intern\nInternship Duration: From 12/08/2025 to 12/11/2025\nReport Content 1. Worklog\n2. Proposal\n3. Translated Blogs\n4. Events Participated\n5. Workshop\n6. Self-awareness\n7. Sharing and Feedback\n"
 },
 {
 	"uri": "http://localhost:1313/categories/",

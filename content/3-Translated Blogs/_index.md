@@ -1,5 +1,5 @@
 +++
-title = "Translated_Blogs"
+title = "Translated Blogs"
 date = 2025-09-09T10:57:21+07:00
 weight = 5
 chapter = true
