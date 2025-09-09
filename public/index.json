@@ -1,0 +1,71 @@
+[
+{
+	"uri": "http://localhost:1313/1-worklog/",
+	"title": "Worklog",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/proposal/",
+	"title": "Proposal",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/translated_blogs/",
+	"title": "Translated_Blogs",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/events_participated/",
+	"title": "Events Participated",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/workshop/",
+	"title": "Workshop",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/self-assesment/",
+	"title": "Self Assesment",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/sharing_and_feedback/",
+	"title": "Sharing and Feedback",
+	"tags": [],
+	"description": "",
+	"content": "Chapter X Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://localhost:1313/",
+	"title": "Worklog",
+	"tags": [],
+	"description": "",
+	"content": "INTERNSHIP REPORT Student Information: Full Name: Phan Canh Tuan Dat\nPhone Number: 0867829257\nEmail: pcanhtuandat@gmail.com\nUniversity: Sai Gon University\nMajor: Information Technology\nClass: DCT1226\nInternship Company: Amazon Web Services Vietnam Co., Ltd.\nInternship Position: FCJ Cloud Intern\nInternship Duration: From 12/08/2025 to 12/11/2025\nReport Content 1. Worklog "
+},
+{
+	"uri": "http://localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
