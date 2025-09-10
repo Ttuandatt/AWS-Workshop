@@ -1,7 +1,7 @@
 +++
-title = "Worklog"
+title = "Internship Report"
 date = 2025-09-09T10:04:42+07:00
-weight = 5
+weight = 1
 chapter = false
 +++
 
@@ -22,7 +22,7 @@ chapter = false
 **Internship Duration:** From 12/08/2025 to 12/11/2025
 
 
-![ConnectPrivate](/images/forest.jpg)
+![ConnectPrivate](/images/chad.jpg)
 
 
 ### Report Content

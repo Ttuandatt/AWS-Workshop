@@ -1,0 +1,33 @@
+/* Đảm bảo nội dung markdown căn trái */
+.markdown,
+.content,
+.article,
+.article-content {
+    text-align: left !important;
+}
+
+/* Nếu bạn chỉ muốn áp dụng cho trang Worklog */
+body.worklog .markdown,
+body.worklog .content,
+body.worklog .article,
+body.worklog .article-content {
+    text-align: left !important;
+}
+
+/* Áp dụng toàn bộ body */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Chỉnh tiêu đề */
+h1, h2, h3, .chapter-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+/* Nội dung đoạn văn */
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
