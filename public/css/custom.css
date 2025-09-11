@@ -1,33 +1,66 @@
-/* Đảm bảo nội dung markdown căn trái */
-.markdown,
-.content,
-.article,
-.article-content {
-    text-align: left !important;
-}
+/* ===== Custom CSS cho Hugo Relearn ===== */
 
-/* Nếu bạn chỉ muốn áp dụng cho trang Worklog */
-body.worklog .markdown,
-body.worklog .content,
-body.worklog .article,
-body.worklog .article-content {
-    text-align: left !important;
-}
-
-/* Áp dụng toàn bộ body */
+/* Đổi font tổng thể */
 body {
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Chỉnh tiêu đề */
-h1, h2, h3, .chapter-title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-}
-
-/* Nội dung đoạn văn */
-p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
 }
+
+/* Sidebar */
+#sidebar {
+  background-color: #2d3e50 !important; /* xanh navy dịu */
+  color: #f1f1f1 !important;
+}
+
+/* Tên blog (sidebar header) */
+#sidebar h1,
+#sidebar .title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+/* Menu link trong sidebar */
+#sidebar ul a {
+  color: #dcdcdc !important;
+  transition: all 0.2s ease;
+}
+
+/* Hover menu */
+#sidebar ul a:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding-left: 8px;
+}
+
+/* Link trong content */
+.article a {
+  color: #66b2ff;
+  text-decoration: none;
+}
+.article a:hover {
+  text-decoration: underline;
+}
+
+/* Code block */
+pre code {
+  background-color: #1e1e1e !important;
+  color: #e6e6e6 !important;
+  border-radius: 6px;
+  padding: 12px;
+  display: block;
+  overflow-x: auto;
+  font-size: 14px;
+}
+
+/* Image trong content */
+.article img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin: 10px 0;
+}
+
+

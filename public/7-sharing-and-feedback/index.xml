@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sharing and Feedback on My New Hugo Site</title>
-    <link>http://localhost:1313/7-sharing-and-feedback/</link>
-    <description>Recent content in Sharing and Feedback on My New Hugo Site</description>
+    <title>Sharing and Feedback :: Daniel Phan Canh</title>
+    <link>http://localhost:1313/7-sharing-and-feedback/index.html</link>
+    <description>Chapter X Some Chapter title Lorem Ipsum.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Self Assesment on My New Hugo Site</title>
-    <link>http://localhost:1313/6-self-assesment/</link>
-    <description>Recent content in Self Assesment on My New Hugo Site</description>
+    <title>Self Assesment :: Daniel Phan Canh</title>
+    <link>http://localhost:1313/6-self-assesment/index.html</link>
+    <description>Chapter X Some Chapter title Lorem Ipsum.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
