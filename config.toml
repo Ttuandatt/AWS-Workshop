@@ -1,50 +1,79 @@
-baseURL = "/"
-languageCode = "en-US"
-defaultContentLanguage = "en"
-title = "My Blog"
-themesdir = "themes"
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Daniel Phan Canh"
 theme = "relearn"
+
+defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 
-[params]
-  description = "Personal Blog"
-  author = "Tuandat"
-  titleSeparator = " :: "
-
-  # Dark/Light mode toggle
-  themeVariant = ["auto", "relearn-light", "relearn-dark"]
-
-  # CSS tự custom (file: assets/css/custom.css hoặc static/css/custom.css)
-  customCSS = ["css/custom.css"]
-
-  # Màu sidebar
-  primaryColor = "#2d3e50"   # xanh navy dịu
-
+# search
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+home = [ "HTML", "RSS", "JSON"]
 
-[Languages]
+# ------------------------------
+# Params
+# ------------------------------
+[params]
+  showLanguageSelector = true
+  themeVariant = ["relearn-light", "relearn-dark"]
+  alwaysShowThemeSwitcher = true
 
-[Languages.en]
-title = "My Personal Blog"
-weight = 1
-languageName = "English"
-landingPageURL = "/en"
-landingPageName = "<i class='fas fa-home'></i> Home"
+# ------------------------------
+# Ngôn ngữ
+# ------------------------------
+[languages]
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub"
-url = "https://github.com/yourusername"
-weight = 10
+  [languages.en]
+    title = "Internship Report"
+    weight = 1
+    languageName = "English"
 
-[Languages.vi]
-title = "Blog Cá Nhân Của Tôi"
-weight = 2
-languageName = "Tiếng Việt"
-landingPageURL = "/vi"
-landingPageName = "<i class='fas fa-home'></i> Trang chủ"
+  [languages.vi]
+    title = "Báo Cáo Thực Tập"
+    weight = 2
+    languageName = "Tiếng Việt"
 
-[[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub"
-url = "https://github.com/yourusername"
-weight = 10
+# ------------------------------
+# Menu
+# ------------------------------
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Worklog"
+    url = "/worklog/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Proposal"
+    url = "/proposal/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Translated Blogs"
+    url = "/translated-blogs/"
+    weight = 4
+
+  [[menu.main]]
+    name = "Events Participated"
+    url = "/events/"
+    weight = 5
+
+  [[menu.main]]
+    name = "Workshop"
+    url = "/workshop/"
+    weight = 6
+
+  [[menu.main]]
+    name = "Self Assessment"
+    url = "/self-assessment/"
+    weight = 7
+
+  [[menu.main]]
+    name = "Sharing and Feedback"
+    url = "/feedback/"
+    weight = 8

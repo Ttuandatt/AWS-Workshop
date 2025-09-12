@@ -1,7 +1,6 @@
 @media screen {
-:root:not([data-r-output-format='print']):not([data-r-theme-variant='my-custom-variant']):not([data-r-theme-variant='auto']),
-:root:not([data-r-output-format='print'])[data-r-theme-variant='auto'] {
-@media screen and (prefers-color-scheme: light) {
+:root:not([data-r-output-format='print']):not([data-r-theme-variant='my-custom-variant']):not([data-r-theme-variant='relearn-light']):not([data-r-theme-variant='relearn-dark']),
+:root:not([data-r-output-format='print'])[data-r-theme-variant='relearn-light'] {
 &:root {
   /* relearn-light */
   --PRIMARY-color: rgba(125, 201, 3, 1); /* brand primary color */
@@ -136,7 +135,7 @@
 /* TextWhitespace */ .chroma .w {  }
 
 }
-@media screen and (prefers-color-scheme: dark) {
+:root:not([data-r-output-format='print'])[data-r-theme-variant='relearn-dark'] {
 &:root {
   /* relearn-dark */
   --PRIMARY-color: rgba(125, 201, 3, 1); /* brand primary color */
@@ -272,7 +271,6 @@
 /* GenericUnderline */ .chroma .gl {  }
 /* TextWhitespace */ .chroma .w {  }
 
-}
 }
 }
 @media print {

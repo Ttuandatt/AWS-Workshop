@@ -528,12 +528,6 @@ need a way to calculate them ourself */
   --bpx1: 1;
   
 }
-/* Đổi màu nền sidebar */
-:root {
-  --MENU-PRIMARY-BG_COLOR: #2d3e50;   /* xanh navy dịu */
-  --MENU-PRIMARY-TEXT_COLOR: #ffffff; /* chữ trắng */
-  --MENU-PRIMARY-SECTION-BG_COLOR: #1f2a36; /* nền của section bên trong */
-}
 
 @media (min-resolution: 105dpi) {
   :root {
@@ -681,7 +675,7 @@ dd {
 
 a,
 .topbar-button button {
-  color: var(--INTERNAL-MAIN-LINK-color);
+  color: #FBAC23;
 }
 
 a:hover,
@@ -720,7 +714,7 @@ a:focus,
 }
 
 #R-header-wrapper {
-  background-color: var(--INTERNAL-MENU-HEADER-BG-color);
+  background-color: #FAA40F;
   color: var(--INTERNAL-MENU-SEARCH-color);
   text-align: center;
   padding: 1rem;
@@ -876,7 +870,7 @@ a:focus,
   margin-top: 0;
 }
 #R-homelinks .R-menu-divider:last-child hr {
-  border-color: var(--INTERNAL-MENU-HOME-BOTTOM-SEPARATOR-color);
+  border-color: #FAA40F;
   margin-bottom: 3px;
   margin-top: 0;
 }
@@ -2904,8 +2898,13 @@ article ul > li > span > input[type='checkbox']:checked::before {
 }
 
 #R-sidebar li.active > label,
+/* Đổi màu link đang active trong sidebar */
 #R-sidebar li.active > a {
-  color: var(--INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color);
+  color: #FAA40F !important;
+}
+/* Hover link */
+#R-sidebar li > a:hover {
+  color: #FAA40F !important;
 }
 
 #R-sidebar li.active > a {
@@ -3315,7 +3314,6 @@ body #R-logo svg :not([fill='#000000']) {
 /* basic menu header styles */
 
 #R-homelinks {
-  background-color: var(--INTERNAL-MENU-HEADER-BORDER-color);
   padding: 0;
 }
 
