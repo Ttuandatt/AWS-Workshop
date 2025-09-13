@@ -6,8 +6,28 @@ chapter = true
 pre = "<b>3. </b>"
 +++
 
-### Chapter X
+**Blog 1:** [Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}})
 
-# Some Chapter title
+**Blog 2:** [Tên bài dịch thứ hai]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}})
 
-Lorem Ipsum.
+
+
+**Week 3:** [Doing task B…](#)
+
+**Week 4:** [Doing task C…](#)
+
+**Week 5:** [Doing task D…](#)
+
+**Week 6:** [Doing task E…](#)
+
+**Week 7:** [Doing task F…](#)
+
+**Week 8:** [Doing task G…](#)
+
+**Week 9:** [Doing task H…](#)
+
+**Week 10:** [Doing task I…](#)
+
+**Week 11:** [Doing task J…](#)
+
+**Week 12:** [Doing task K…](#)
