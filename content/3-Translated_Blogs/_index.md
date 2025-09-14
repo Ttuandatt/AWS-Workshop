@@ -6,9 +6,9 @@ chapter = true
 pre = "<b>3. </b>"
 +++
 
-**Blog 1:** [Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}})
+**Blog 1:** [Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}}) (12/09/2025)
 
-**Blog 2:** [Tên bài dịch thứ hai]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}})
+**Blog 2:** [Định tuyến động sử dụng Máy chủ định tuyến AWS VPC]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}}) (14/09/2025)
 
 
 
