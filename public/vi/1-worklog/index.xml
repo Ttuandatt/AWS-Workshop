@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nhật ký công việc :: Báo Cáo Thực Tập</title>
+    <link>http://localhost:1313/vi/1-worklog/index.html</link>
+    <description>Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản&#xA;Week 2: Doing task A…&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/vi/1-worklog/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

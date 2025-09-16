@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Week 2 :: Internship Report</title>
+    <title>Week 2 Worklog :: Internship Report</title>
     <link>http://localhost:1313/en/1-worklog/1.2-week_2/index.html</link>
-    <description>Chapter X Some Chapter title Lorem Ipsum.</description>
+    <description>Week 2 Objectives Learn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week Day Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>

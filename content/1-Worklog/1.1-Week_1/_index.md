@@ -26,4 +26,5 @@ pre = " <b> 1.1.  </b> "
 |     | - Update worklog (UI, translated blog)                                                |            |                 |                                                          |
 | 5   | - Learn theory about VPC (Subnet, Route Table, Internet Gateway, NAT Gateway)         | 13/09/2025 |    13/09/2025   | [AWS Virtual Private Cloud](https://www.youtube.com/watch?v=O9Ac_vGHquM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=25) |
 |     | - Update worklog                                                                      |            |                 |                                                          |
-
+| 6   | - Translate the 2nd Blog                                                              | 14/09/2025 |    14/09/2025   | [Translated Blog 2]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}})
+|     | - Update worklog                                                                      |            |                 |                                                          |
