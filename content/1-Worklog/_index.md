@@ -9,7 +9,7 @@ pre = "<b>1. </b>"
 
 **Week 1:** [Getting familiar with Hugo and basic AWS services]({{< relref "1-Worklog/1.1-Week_1/_index.md" >}})
 
-**Week 2:** [Doing task A…](#)
+**Week 2:** [Learn and pratice using VPC and its features]({{< relref "1-Worklog/1.2-Week_2/_index.md" >}})
 
 **Week 3:** [Doing task B…](#)
 

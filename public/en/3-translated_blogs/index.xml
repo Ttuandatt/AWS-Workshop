@@ -3,7 +3,7 @@
   <channel>
     <title>Translated Blogs :: Internship Report</title>
     <link>http://localhost:1313/en/3-translated_blogs/index.html</link>
-    <description>Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025)&#xA;Blog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025)&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
+    <description>Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025)&#xA;Blog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025)&#xA;Week 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025)&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
@@ -21,6 +21,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/3-translated_blogs/blog_2/index.html</guid>
       <description>Định tuyến động sử dụng Máy chủ định tuyến AWS VPC Amazon VPC Route Server cho phép triển khai cơ chế định tuyến động trong Amazon VPC bằng cách sử dụng giao thức BGP (Border Gateway Protocol). Với dịch vụ này, bạn có thể kiểm soát lưu lượng giữa các ứng dụng trên cloud và hệ thống on-premises một cách thông minh và hiệu quả hơn. BGP giúp bạn quản lý đường đi của dữ liệu linh hoạt, đặc biệt trong các tình huống xảy ra sự cố, đồng thời giảm thiểu khối lượng công việc thủ công và hạn chế rủi ro do con người.</description>
+    </item>
+    <item>
+      <title>Blog 3</title>
+      <link>http://localhost:1313/en/3-translated_blogs/blog_3/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/3-translated_blogs/blog_3/index.html</guid>
+      <description>Cách CommBank xây dựng nền tảng giao dịch CommSec có độ sẵn sàng cao và vận hành bền vững Kris Severijns, Aaron Bull, Henry Zhao, và Terence Lum – 19/08/2025&#xA;CommSec, công ty môi giới chứng khoán trực tuyến hàng đầu tại Úc và là công ty con của Commonwealth Bank of Australia (CommBank), hỗ trợ hàng triệu khách hàng gia tăng tài sản thông qua việc đầu tư dễ dàng, tiện lợi và chi phí hợp lý vào cả thị trường trong nước lẫn quốc tế.</description>
+    </item>
+    <item>
+      <title>Blog 4</title>
+      <link>http://localhost:1313/en/3-translated_blogs/blog_4/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/3-translated_blogs/blog_4/index.html</guid>
+      <description>BLOG 4</description>
     </item>
   </channel>
 </rss>

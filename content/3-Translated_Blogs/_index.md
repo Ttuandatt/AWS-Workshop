@@ -10,9 +10,7 @@ pre = "<b>3. </b>"
 
 **Blog 2:** [Định tuyến động sử dụng Máy chủ định tuyến AWS VPC]({{% relref "3-Translated_Blogs/Blog_2/_index.md" %}}) (14/09/2025)
 
-
-
-**Week 3:** [Doing task B…](#)
+**Week 3:** [Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.]({{% relref "3-Translated_Blogs/Blog_3/_index.md" %}})(18/09/2025)
 
 **Week 4:** [Doing task C…](#)
 
