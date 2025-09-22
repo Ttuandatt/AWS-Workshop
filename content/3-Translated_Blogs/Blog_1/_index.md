@@ -76,4 +76,6 @@ Khi bắt đầu áp dụng, chúng ta nên:
 
 Áp dụng ADR theo những thực tiễn trên sẽ giúp quá trình ra quyết định trở nên gọn nhẹ, tăng tính hợp tác, và đảm bảo mọi quyết định đều được ghi nhận rõ ràng, minh bạch và phù hợp với mục tiêu chung.  
 
-👉 Tham khảo thêm tại **[AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/adr/adr.html)** để có phần giới thiệu và ví dụ ADR, hoặc truy cập **[ADR GitHub organization](https://adr.github.io/)**.
+Tham khảo thêm tại **[AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/adr/adr.html)** để có phần giới thiệu và ví dụ ADR, hoặc truy cập **[ADR GitHub organization](https://adr.github.io/)**.
+
+Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/master-architecture-decision-records-adrs-best-practices-for-effective-decision-making/)

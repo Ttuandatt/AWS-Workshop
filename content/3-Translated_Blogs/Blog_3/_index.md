@@ -38,3 +38,41 @@ Việc hợp nhất hệ thống lên AWS và tận dụng ARC zonal shift để
 - Giảm 25% dung lượng cơ bản khi vận hành nền tảng CommSec trên ba Availability Zone của AWS, so với mô hình cũ phải duy trì bốn stack trên hai cloud, từ đó cắt giảm đáng kể chi phí vận hành.
 
 Sơ đồ sau minh họa kiến trúc giải pháp.
+
+{{< figurecaption src="/images/Img1-Blog3.png" caption="" >}}
+
+Nhóm CommSec đã triển khai một số cải tiến nhằm tăng cường khả năng chịu lỗi:
+
+- Do việc scale-in và scale-out diễn ra nhiều lần mỗi ngày, quá trình mở rộng cần đảm bảo tính ổn định cao nhất. Nhóm CommSec đã loại bỏ các phụ thuộc vào tài nguyên bên ngoài trong toàn bộ quy trình bootstrap khi scale-out bằng cách lưu trữ và truy xuất các tệp nhị phân ứng dụng trực tiếp từ [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) trong cùng tài khoản AWS.
+
+- Vì lưu lượng truy cập biến động mạnh, đặc biệt vào thời điểm mở cửa thị trường (lượng truy cập của CommSec thường tăng gấp ba lần chỉ trong khoảng 9:59 đến 10:02 sáng), nhóm đã thiết lập [Load Balancer Capacity Unit (LCU) reservations](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/capacity-unit-reservation.html) cho các load balancer ở tầng web. Cách này giúp đảm bảo [Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/application-load-balancer/) có đủ dung lượng ngay từ đầu phiên giao dịch, thay vì phải phụ thuộc vào cơ chế scaling phản ứng đối với các đợt tăng đột biến đã biết trước.
+
+- Họ cũng triển khai cơ chế kiểm tra sức khỏe (health check) của ALB để phát hiện các lỗi nghiêm trọng, từ đó tự động loại bỏ các instance gặp sự cố khỏi target group. Lưu lượng truy cập sẽ được chuyển hướng khỏi các instance lỗi, đồng thời hệ thống sẽ gửi cảnh báo để đội vận hành kịp thời điều tra và xử lý.
+
+- Ngoài ra, các kết nối [AWS Direct Connect](https://aws.amazon.com/directconnect/) mới được thiết lập từ AWS đến Australian Liquidity Centre (trung tâm đặt hạ tầng chính của Sở giao dịch chứng khoán Úc – ASX, nơi vận hành các hệ thống giao dịch, thanh toán và bù trừ) nhằm nâng cao độ tin cậy trong kết nối tới các thị trường tài chính, bao gồm cả ASX và CBOE.
+
+### ARC zonal shift để giúp giảm thiểu sự cố
+
+Năm 2023, AWS đã ra mắt [zonal shift](https://aws.amazon.com/about-aws/whats-new/2023/01/general-availability-amazon-route-53-application-recovery-controller-zonal-shift/), một phần của [Amazon Application Recovery Controller](https://aws.amazon.com/application-recovery-controller/). Với zonal shift, bạn có thể chuyển hướng lưu lượng ứng dụng ra khỏi một Availability Zone theo cách thức highly available cho các tài nguyên được hỗ trợ. Hành động này giúp nhanh chóng khôi phục một ứng dụng khi một Availability Zone gặp sự cố, giảm thời gian và mức độ ảnh hưởng đến ứng dụng do các sự kiện như mất điện, hỏng phần cứng hoặc phần mềm. Zonal shift hỗ trợ [Application và Network Load Balancers](https://aws.amazon.com/elasticloadbalancing/), [Amazon EC2 Auto Scaling Groups](https://aws.amazon.com/ec2/autoscaling/), và [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/).
+
+Nhóm CommSec đã bật ARC zonal shift trên các ALB cho tầng web và ứng dụng của họ với [cross-zone load balancing](https://aws.amazon.com/blogs/networking-and-content-delivery/using-cross-zone-load-balancing-with-zonal-shift/) được bật. Khi bắt đầu, zonal shift thực hiện hai hành động. Thứ nhất, nó gỡ bỏ địa chỉ IP của node load balancer trong Availability Zone được chỉ định khỏi DNS, vì vậy các truy vấn mới sẽ không được phân giải đến endpoint đó. Điều này ngăn các yêu cầu mới từ client được gửi đến node đó. Thứ hai, nó chỉ thị cho các node load balancer trong các Availability Zone khác không định tuyến yêu cầu đến các target trong Availability Zone bị sự cố. Cross-zone load balancing vẫn được sử dụng trong các Availability Zone còn lại trong suốt quá trình zonal shift, như hình dưới đây.
+
+Sau khi sự cố được giải quyết và ứng dụng hoạt động trở lại trong tất cả các Availability Zone, nhóm CommSec hủy zonal shift, và lưu lượng được phân phối lại trên cả ba Availability Zone.
+
+{{< figurecaption src="/images/Img2-Blog3.png" caption="" >}}
+
+### Lợi ích của ARC zonal shift
+
+ARC zonal shift giúp các tổ chức duy trì SLA về tính khả dụng cao hơn, giảm chi phí vận hành liên quan đến các quy trình chuyển đổi dự phòng thủ công nhiều bước, và giảm thiểu thất thoát doanh thu do gián đoạn dịch vụ. Tính đơn giản của ARC zonal shift giúp các nhóm có thể thực hiện thường xuyên các bài kiểm thử quy trình di tản Availability Zone theo yêu cầu, với mức rủi ro thấp. Khả năng thực hiện xác thực định kỳ đảm bảo các quy trình failover vẫn đáng tin cậy và xây dựng sự tự tin của tổ chức trong khả năng khôi phục sau thảm họa.
+
+*“ARC zonal shift là cách hiệu quả nhất để CommSec sử dụng các dịch vụ AWS trong khi vẫn đáp ứng yêu cầu về khả năng chịu lỗi. Nó mang lại một giải pháp sẵn có, dễ dàng hơn so với việc tự chúng tôi triển khai một giải pháp khôi phục Availability Zone. Hy vọng rằng chúng tôi sẽ không bao giờ phải dùng đến nó, nhưng việc kiểm thử định kỳ khả năng chịu lỗi đảm bảo rằng nó luôn sẵn sàng và sẽ hoạt động nếu chúng tôi cần.”*
+
+– Henry Zhao, Kỹ sư phần mềm tại CommBank.
+
+### Kết luận
+
+Bằng việc sử dụng các dịch vụ AWS và triển khai kiến trúc Multi-AZ mạnh mẽ, nền tảng giao dịch của CommSec tiếp tục đáp ứng những nhu cầu khắt khe của nhà môi giới trực tuyến hàng đầu tại Úc. Sự kết hợp giữa các khả năng của ARC zonal shift, cấu hình load balancer được tối ưu hóa, cùng với các runbook và quy trình vận hành toàn diện đã giúp CommSec duy trì độ tin cậy vượt trội trong khi phục vụ hàng triệu khách hàng. Hành trình của CommSec cho thấy cách mà những quyết định kiến trúc thận trọng và các dịch vụ được quản lý bởi AWS có thể giúp các tổ chức đạt được cả vận hành xuất sắc lẫn trải nghiệm khách hàng vượt trội cho những ứng dụng tài chính quan trọng.
+
+Để tìm hiểu thêm, hãy tham khảo AWS Fault Isolation Boundaries và Amazon Application Recovery Controller.
+
+Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/how-commbank-made-their-commsec-trading-platform-highly-available-and-operationally-resilient/)

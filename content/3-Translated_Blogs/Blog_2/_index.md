@@ -6,6 +6,11 @@ pre = " <b> 3.2. </b>"
 +++
 
 # Định tuyến động sử dụng Máy chủ định tuyến AWS VPC
+
+*Ammar Latif và Akshay Choudhry - 02/09/2025*
+
+---
+
 [Amazon VPC Route Server](https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html) cho phép triển khai cơ chế định tuyến động trong [Amazon VPC](https://aws.amazon.com/vpc/) bằng cách sử dụng giao thức BGP (Border Gateway Protocol). Với dịch vụ này, bạn có thể kiểm soát lưu lượng giữa các ứng dụng trên cloud và hệ thống on-premises một cách thông minh và hiệu quả hơn. BGP giúp bạn quản lý đường đi của dữ liệu linh hoạt, đặc biệt trong các tình huống xảy ra sự cố, đồng thời giảm thiểu khối lượng công việc thủ công và hạn chế rủi ro do con người.
 
 Trong bài viết này, chúng ta sẽ xem xét nhiều tình huống ứng dụng trong đó việc định tuyến động ở mức ứng dụng có ảnh hưởng trực tiếp đến cách dữ liệu được truyền đến các instance, cũng như cách hệ thống xử lý khi có sự cố để giảm gián đoạn xuống mức thấp nhất.           
@@ -272,3 +277,5 @@ Quá trình này có thể được tự động hóa hoặc điều khiển the
 Trong bài viết này, chúng ta đã tìm hiểu cách sử dụng Amazon VPC Route Server để xây dựng các thiết kế mạng trong đám mây có khả năng mở rộng, chịu lỗi và an toàn, bằng cách bật tính năng chuyển đổi dự phòng cho các ứng dụng quan trọng và triển khai kiến trúc khả dụng cao. Chúng tôi đã giới thiệu hai mô hình kiến trúc khác nhau và cung cấp các chi tiết triển khai. VPC Route Server mở ra các khả năng định tuyến nâng cao trong AWS bằng cách tích hợp các giao thức BGP và BFD theo tiêu chuẩn ngành vào mạng VPC gốc. Để bắt đầu với VPC Route Server ngay hôm nay, bạn có thể tham khảo [tài liệu](https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html) và hướng dẫn  [Amazon VPC Route Server Get Started](https://docs.aws.amazon.com/vpc/latest/userguide/route-server-tutorial.html).
 
 Cập nhật: Vào ngày 15 tháng 9 năm 2025, phiên bản trước của bài viết có sử dụng các biểu tượng kiến trúc AWS đã lỗi thời. Bài viết đã được cập nhật để phản ánh bộ biểu tượng kiến trúc AWS hiện tại.
+
+Link bài viết gốc: (https://aws.amazon.com/blogs/networking-and-content-delivery/dynamic-routing-using-amazon-vpc-route-server/)

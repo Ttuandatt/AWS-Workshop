@@ -3,6 +3,9 @@
   <url>
     <loc>http://localhost:1313/en/1-worklog/1.1-week_1/index.html</loc>
     <lastmod>2025-09-10T13:33:08+07:00</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/en/1-worklog/1.1-week_1/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/en/1-worklog/1.1-week_1/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="http://localhost:1313/vi/1-worklog/1.1-week_1/index.html" />
   </url>
   <url>
     <loc>http://localhost:1313/en/index.html</loc>
@@ -38,6 +41,9 @@
   <url>
     <loc>http://localhost:1313/en/1-worklog/1.4-week_4/index.html</loc>
     <lastmod>2025-09-10T13:36:30+07:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/en/3-translated_blogs/blog_4/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/en/1-worklog/1.5-week_5/index.html</loc>
