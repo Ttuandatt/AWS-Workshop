@@ -49,10 +49,10 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
-    "content": "Chapter X Some Chapter title Lorem Ipsum.",
-    "description": "Chapter X Some Chapter title Lorem Ipsum.",
+    "content": "Week 2 Objectives Learn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week Day Task Start Date Completion Date Reference Material 1 - Learn about Route 53 and its feature 22/09/2025 22/09/2025 Route 53 2 - Practice creating Key pair, CloudFormation Template, Configure Security Group 23/09/2025 23/09/2025 Create Key pair, Initialize CloudFormation Template 3 - Practice creating Key pair, CloudFormation Template, Configure Security Group 24/09/2025 24/09/2025 Create Key pair, Initialize CloudFormation Template, Configure Security Group",
+    "description": "Week 2 Objectives Learn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week Day Task Start Date Completion Date Reference Material 1 - Learn about Route 53 and its feature 22/09/2025 22/09/2025 Route 53 2 - Practice creating Key pair, CloudFormation Template, Configure Security Group 23/09/2025 23/09/2025 Create Key pair, Initialize CloudFormation Template 3 - Practice creating Key pair, CloudFormation Template, Configure Security Group 24/09/2025 24/09/2025 Create Key pair, Initialize CloudFormation Template, Configure Security Group",
     "tags": [],
-    "title": "Week 3",
+    "title": "Week 3 Worklog",
     "uri": "/en/1-worklog/1.3-week_3/index.html"
   },
   {
