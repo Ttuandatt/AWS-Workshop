@@ -9,7 +9,7 @@ _showTitle = false
 
 # Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả
 
-*Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – Ngày 20/03/2025*  
+*Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025*  
 *Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý & Điều hành, Hướng dẫn kỹ thuật*
 
 ---

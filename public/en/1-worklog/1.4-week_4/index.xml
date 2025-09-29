@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Week 4 :: Internship Report</title>
+    <title>Week 4 Worklog :: Internship Report</title>
     <link>http://localhost:1313/en/1-worklog/1.4-week_4/index.html</link>
-    <description>Chapter X Some Chapter title Lorem Ipsum.</description>
+    <description>Week 4 Objectives Workshop Project: Planning &amp; Analysis (Define architecture, workload) Translate several blogs Update worklog structure Tasks to be carried out this week Day Task Start Date Completion Date Reference Material 1 - Learn about Route 53 and its feature 22/09/2025 22/09/2025 Route 53 - Translated a blog Translated Blog 5</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>

@@ -5,30 +5,30 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025
-Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật
-Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.">
+    <meta name="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blog 1 :: Internship Report">
-    <meta name="twitter:description" content="Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025
-Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật
-Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.">
-    <meta property="og:url" content="http://localhost:1313/en/3-translated_blogs/blog_1/index.html">
+    <meta name="twitter:title" content="Blog 6 :: Internship Report">
+    <meta name="twitter:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta property="og:url" content="http://localhost:1313/en/3-translated_blogs/blog_6/index.html">
     <meta property="og:site_name" content="Internship Report">
-    <meta property="og:title" content="Blog 1 :: Internship Report">
-    <meta property="og:description" content="Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025
-Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật
-Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.">
+    <meta property="og:title" content="Blog 6 :: Internship Report">
+    <meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Blog 1 :: Internship Report">
-    <meta itemprop="description" content="Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025
-Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật
-Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.">
-    <meta itemprop="wordCount" content="874">
-    <title>Blog 1 :: Internship Report</title>
-    <link href="/en/3-translated_blogs/blog_1/index.xml" rel="alternate" type="application/rss+xml" title="Blog 1 :: Internship Report">
+    <meta itemprop="name" content="Blog 6 :: Internship Report">
+    <meta itemprop="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta itemprop="wordCount" content="498">
+    <title>Blog 6 :: Internship Report</title>
+    <link href="/en/3-translated_blogs/blog_6/index.xml" rel="alternate" type="application/rss+xml" title="Blog 6 :: Internship Report">
     <link href="/css/auto-complete/auto-complete.min.css?1759157161" rel="stylesheet">
     <script src="/js/auto-complete/auto-complete.min.js?1759157161" defer></script>
     <script src="/js/search-lunr.js?1759157161" defer></script>
@@ -53,7 +53,7 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/3-translated_blogs\/blog_1\/index.html';
+      window.relearn.path='\/3-translated_blogs\/blog_6\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
@@ -104,7 +104,7 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
     </script>
     <link href="/css/custom.css?1759157161" rel="stylesheet">
   </head>
-  <body class="mobile-support html" data-url="/en/3-translated_blogs/blog_1/index.html">
+  <body class="mobile-support html" data-url="/en/3-translated_blogs/blog_6/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -120,10 +120,7 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
   <ul>
     <li>
       <ul>
-        <li><a href="#1-thách-thức-thường-gặp-trước-khi-áp-dụng-adr">1. Thách thức thường gặp trước khi áp dụng ADR</a></li>
-        <li><a href="#2-làm-thế-nào-để-tối-ưu-hóa-quy-trình-ra-quyết-định">2. Làm thế nào để tối ưu hóa quy trình ra quyết định</a></li>
-        <li><a href="#3-mẹo-triển-khai-và-tiêu-chí-thành-công">3. Mẹo triển khai và tiêu chí thành công</a></li>
-        <li><a href="#4-kết-luận">4. Kết luận</a></li>
+        <li><a href="#những-lưu-ý-khi-sao-chép-dữ-liệu">Những lưu ý khi sao chép dữ liệu</a></li>
       </ul>
     </li>
   </ul>
@@ -132,12 +129,12 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 1</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 6</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/en/3-translated_blogs/index.html" title="Translated Blogs (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/en/3-translated_blogs/blog_5/index.html" title="Blog 5 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/en/3-translated_blogs/blog_2/index.html" title="Blog 2 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/en/4-events-participated/index.html" title="Events Participated (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -157,68 +154,37 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
   <header class="headline">
   </header>
 
-<h1 id="blog-1">Blog 1</h1>
+<h1 id="blog-6">Blog 6</h1>
 
-<h1 id="hồ-sơ-quyết-định-kiến-trúc-adr-thực-tiễn-tốt-nhất-để-ra-quyết-định-hiệu-quả">Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả</h1>
-<p><em>Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025</em><br>
-<em>Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật</em></p>
+<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-2-dữ-liệu-và-sao-chép">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</h1>
+<p><em>Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022</em></p>
+<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-aurora/" rel="external" target="_blank">Amazon Aurora</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-document-db/" rel="external" target="_blank">Amazon DocumentDB</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-dynamodb/" rel="external" target="_blank">Amazon DynamoDB</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-elasticache/" rel="external" target="_blank">Amazon ElastiCache</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-rds/" rel="external" target="_blank">Amazon RDS</a>, <a href="https://aws.amazon.com/blogs/architecture/category/analytics/amazon-redshift-analytics/" rel="external" target="_blank">Amazon Redshift</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external" target="_blank">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external" target="_blank">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/aws-backup/" rel="external" target="_blank">AWS Backup</a>, <a href="https://aws.amazon.com/blogs/architecture/category/migration/aws-datasync/" rel="external" target="_blank">AWS DataSync</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external" target="_blank">AWS Global Accelerator</a></em></p>
 <hr>
-<p>Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.</p>
-<p>Trong bài viết này, ta sẽ bao quát về:</p>
+<p>Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</p>
+<p>Ở <strong>Phần 1</strong> của loạt blog này, chúng ta đã xem xét cách sử dụng các dịch vụ tính toán (compute), mạng (networking), và bảo mật (security) của AWS để xây dựng nền tảng cho một ứng dụng multi-Region. Ở <strong>Phần 3</strong>, chúng ta sẽ tìm hiểu các dịch vụ quản lý và giám sát ứng dụng của AWS, giúp bạn xây dựng, theo dõi và duy trì ứng dụng multi-Region.</p>
+<h3 id="những-lưu-ý-khi-sao-chép-dữ-liệu">Những lưu ý khi sao chép dữ liệu</h3>
+<p>Việc sao chép dữ liệu trên mạng AWS diễn ra rất nhanh, nhưng bạn cần nhớ rằng thời gian di chuyển của gói tin sẽ tăng lên theo khoảng cách vật lý mà gói tin cần đi qua. Vì lý do này, khi xây dựng ứng dụng multi-Region, bạn phải cân nhắc giữa tính nhất quán dữ liệu và hiệu năng.</p>
+<p>Khi xây dựng một hệ thống phân tán, cần xem xét định lý CAP (Consistency, Availability, Partition Tolerance). Định lý này chỉ ra rằng một ứng dụng chỉ có thể đạt được 2 trong 3 yếu tố, và bạn phải chấp nhận đánh đổi khi đưa ra lựa chọn:</p>
 <ul>
-<li>Cách áp dụng ADR trong tổ chức</li>
-<li>Các kinh nghiệm rút ra từ hơn 200 ADR thực tế</li>
-<li>Mẹo thực hành để rút gọn quá trình ra quyết định kiến trúc</li>
-<li>Ví dụ trong các dự án từ nhóm nhỏ 10 người đến nhóm lớn trên 100 người</li>
-<li>Những khó khăn thường gặp khi đưa ra quyết định kiến trúc</li>
-</ul>
-<hr>
-<h3 id="1-thách-thức-thường-gặp-trước-khi-áp-dụng-adr">1. Thách thức thường gặp trước khi áp dụng ADR</h3>
-<ul>
-<li><strong>Đồng bộ nhóm</strong> – Các nhóm phát triển thường mất 20–30% thời gian để phối hợp với nhau, làm chậm tiến độ ra mắt tính năng và gia tăng chi phí do phải chỉnh sửa kiến trúc nhiều lần.</li>
-<li><strong>Tính linh hoạt thiết kế</strong> – Khó tìm điểm cân bằng giữa thiết kế ban đầu và sự thay đổi liên tục trong môi trường Agile hoặc DevOps.</li>
-<li><strong>Yêu cầu phi chức năng</strong> – Luôn có những đánh đổi giữa bảo mật, khả năng bảo trì và khả năng mở rộng.</li>
-<li><strong>Thay đổi yêu cầu</strong> – Kiến trúc phải liên tục thích ứng với mục tiêu kinh doanh mới mà vẫn giữ được sự ổn định hệ thống.</li>
-<li><strong>Chuyển giao kiến thức</strong> – Cần đảm bảo thành viên mới nhanh chóng hòa nhập và tuân thủ cách làm việc hiện tại của nhóm.</li>
-</ul>
-<hr>
-<h3 id="2-làm-thế-nào-để-tối-ưu-hóa-quy-trình-ra-quyết-định">2. Làm thế nào để tối ưu hóa quy trình ra quyết định</h3>
-<p>Từ kinh nghiệm của tác giả và các đồng nghiệp trong nhiều dự án – từ nhóm dưới 10 người đến dự án phức tạp có hơn 100 người chia thành nhiều luồng công việc – ADR đã đóng vai trò như kim chỉ nam xuyên suốt vòng đời dự án.</p>
-<p>Sau hơn 3 năm áp dụng, tác giả đã đúc kết nhiều bài học thực tiễn. Việc ghi lại bối cảnh, các phương án đã cân nhắc, và lý do lựa chọn giúp nâng cao tính minh bạch, chia sẻ tri thức và trách nhiệm trong nhóm.</p>
-<p>Một số khuyến nghị quan trọng để xây dựng ADR hiệu quả:</p>
-<ol>
-<li><strong>Giữ cho cuộc họp ADR ngắn gọn</strong> – Mỗi buổi chỉ nên kéo dài 30–45 phút để tập trung và hiệu quả.</li>
-<li><strong>Áp dụng phong cách “readout”</strong> – Các thành viên dành 10–15 phút đọc tài liệu ADR, sau đó đóng góp ý kiến trực tiếp vào nội dung. Cách này tăng sự tham gia và tiết kiệm thời gian.</li>
-<li><strong>Chọn thành phần tham dự gọn nhẹ nhưng đa dạng</strong> – Mời đại diện từ các nhóm liên quan, tổng số dưới 10 người để đảm bảo thảo luận hiệu quả.</li>
-<li><strong>Chỉ tập trung vào một quyết định</strong> – Nếu có nhiều vấn đề, hãy tách thành các ADR riêng biệt.</li>
-<li><strong>Tách biệt thiết kế và quyết định</strong> – Sử dụng tài liệu thiết kế riêng để phân tích phương án, rồi liên kết chúng trong ADR.</li>
-<li><strong>Giải quyết triệt để phản hồi</strong> – Mọi ý kiến phải được phản hồi, chỉnh sửa hoặc trao đổi để đạt đồng thuận.</li>
-<li><strong>Đưa ra quyết định kịp thời</strong> – Tránh họp quá nhiều lần. Thông thường chỉ cần 1–3 buổi readout là đủ.</li>
-<li><strong>Khuyến khích sự hợp tác nhóm</strong> – Tác giả ADR phải chịu trách nhiệm, lấy ý kiến từ tất cả bên liên quan trước khi chốt.</li>
-<li><strong>Duy trì và cập nhật liên tục</strong> – ADR phải được theo dõi, cập nhật khi có thay đổi, và liên kết với phiên bản mới nếu bị thay thế.</li>
-<li><strong>Lưu trữ tập trung</strong> – Tất cả ADR nên được đặt ở nơi mọi người trong dự án đều truy cập được.</li>
-</ol>
-<hr>
-<h3 id="3-mẹo-triển-khai-và-tiêu-chí-thành-công">3. Mẹo triển khai và tiêu chí thành công</h3>
-<p>Khi bắt đầu áp dụng, chúng ta nên:</p>
-<ul>
-<li>Khởi động với một nhóm thử nghiệm nhỏ</li>
-<li>Chuẩn hóa bằng các mẫu ADR rõ ràng</li>
-<li>Thiết lập chu kỳ rà soát định kỳ</li>
-<li>Đặt ra thước đo hiệu quả như:
-<ul>
-<li>Thời gian đưa ra quyết định</li>
-<li>Mức độ hài lòng của nhóm</li>
-<li>Số lần phải sửa kiến trúc</li>
-<li>Hiệu quả phối hợp giữa các nhóm</li>
-</ul>
+<li>
+<p>Consistency (Nhất quán) – tất cả các client luôn thấy cùng một trạng thái dữ liệu</p>
+</li>
+<li>
+<p>Availability (Sẵn sàng) – tất cả các client luôn có thể đọc và ghi dữ liệu</p>
+</li>
+<li>
+<p>Partition Tolerance (Chịu lỗi phân mảnh mạng) – hệ thống vẫn hoạt động ngay cả khi có sự cố phân mảnh vật lý trong mạng</p>
 </li>
 </ul>
-<hr>
-<h3 id="4-kết-luận">4. Kết luận</h3>
-<p>Áp dụng ADR theo những thực tiễn trên sẽ giúp quá trình ra quyết định trở nên gọn nhẹ, tăng tính hợp tác, và đảm bảo mọi quyết định đều được ghi nhận rõ ràng, minh bạch và phù hợp với mục tiêu chung.</p>
-<p>Tham khảo thêm tại <strong><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/adr/adr.html" rel="external" target="_blank">AWS Prescriptive Guidance</a></strong> để có phần giới thiệu và ví dụ ADR, hoặc truy cập <strong><a href="https://adr.github.io/" rel="external" target="_blank">ADR GitHub organization</a></strong>.</p>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/master-architecture-decision-records-adrs-best-practices-for-effective-decision-making/" rel="external" target="_blank">https://aws.amazon.com/blogs/architecture/master-architecture-decision-records-adrs-best-practices-for-effective-decision-making/</a>)</p>
+<p>Trong các kiến trúc single-Region, việc đạt được Consistency và Availability (CA) là điều thường thấy. Ví dụ: khi một ứng dụng chỉ kết nối đến một cơ sở dữ liệu quan hệ trong cùng một Region.</p>
+<p>Tuy nhiên, với multi-Region applications, điều này trở nên khó khăn hơn vì độ trễ phát sinh do việc truyền dữ liệu qua khoảng cách địa lý xa. Vì thế, các hệ thống phân tán ở mức toàn cầu thường chấp nhận hy sinh tính nhất quán tuyệt đối, thay vào đó ưu tiên Availability và Partition Tolerance (AP). Mô hình này thường được gọi là eventual consistency (nhất quán cuối cùng).</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="/images/Img1-Blog6.png" alt="">
+    <figcaption><i></i></figcaption>
+  </figure>
+</div>
+
 
   <footer class="footline">
   </footer>
@@ -269,12 +235,12 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
             <li class="" data-nav-id="/en/1-worklog/index.html"><a class="padding" href="/en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/en/2-proposal/index.html"><a class="padding" href="/en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
             <li class="parent " data-nav-id="/en/3-translated_blogs/index.html"><a class="padding" href="/en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
-            <li class="active " data-nav-id="/en/3-translated_blogs/blog_1/index.html"><a class="padding" href="/en/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-id="/en/3-translated_blogs/blog_1/index.html"><a class="padding" href="/en/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
             <li class="" data-nav-id="/en/3-translated_blogs/blog_2/index.html"><a class="padding" href="/en/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
             <li class="" data-nav-id="/en/3-translated_blogs/blog_3/index.html"><a class="padding" href="/en/3-translated_blogs/blog_3/index.html"> <b> 3.3. </b>Blog 3</a></li>
             <li class="" data-nav-id="/en/3-translated_blogs/blog_4/index.html"><a class="padding" href="/en/3-translated_blogs/blog_4/index.html"> <b> 3.4. </b>Blog 4</a></li>
             <li class="" data-nav-id="/en/3-translated_blogs/blog_5/index.html"><a class="padding" href="/en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
-            <li class="" data-nav-id="/en/3-translated_blogs/blog_6/index.html"><a class="padding" href="/en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li></ul></li>
+            <li class="active " data-nav-id="/en/3-translated_blogs/blog_6/index.html"><a class="padding" href="/en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li></ul></li>
             <li class="" data-nav-id="/en/4-events-participated/index.html"><a class="padding" href="/en/4-events-participated/index.html"><b>4. </b>Events Participated</a></li>
             <li class="" data-nav-id="/en/5-workshop/index.html"><a class="padding" href="/en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
             <li class="" data-nav-id="/en/6-self-assesment/index.html"><a class="padding" href="/en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
@@ -298,7 +264,7 @@ Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và t
                 <div class="control-style">
                   <label class="a11y-only" for="R-select-language">Language</label>
                   <select id="R-select-language">
-                    <option id="R-select-language-en" value="en" data-url="/en/3-translated_blogs/blog_1/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-en" value="en" data-url="/en/3-translated_blogs/blog_6/index.html" lang="en" selected data-selected>English</option>
                   </select>
                 </div>
                 <div class="clear"></div>
