@@ -18,9 +18,9 @@
     <item>
       <title>Proposal</title>
       <link>http://localhost:1313/en/2-proposal/index.html</link>
-      <pubDate>Tue, 09 Sep 2025 10:59:05 +0700</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/2-proposal/index.html</guid>
-      <description>Chapter X Some Chapter title Lorem Ipsum.</description>
+      <description>Multi-Region SaaS Task Management Platform A Global AWS Solution for Low-Latency, Resilient Collaboration 1. Executive Summary The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency and high availability for users across the US, EU, and Asia. Built with Spring Boot microservices and Aurora MySQL as the core database, the platform supports real-time collaboration, board/task management, and notifications.&#xA;By leveraging AWS Multi-Region services, the system provides:</description>
     </item>
     <item>
       <title>Translated Blogs</title>

@@ -3,10 +3,9 @@
   <channel>
     <title>Proposal :: Internship Report</title>
     <link>http://localhost:1313/en/2-proposal/index.html</link>
-    <description>Multi-Region SaaS Task Management Platform A Global AWS Solution for Low-Latency, Resilient Collaboration&#xA;Executive Summary The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency and high availability for users across the US, EU, and Asia. Built with Spring Boot microservices and Aurora MySQL as the core database, the platform supports real-time collaboration, board/task management, and notifications.&#xA;By leveraging AWS Multi-Region services, the system provides:</description>
+    <description>Multi-Region SaaS Task Management Platform A Global AWS Solution for Low-Latency, Resilient Collaboration 1. Executive Summary The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency and high availability for users across the US, EU, and Asia. Built with Spring Boot microservices and Aurora MySQL as the core database, the platform supports real-time collaboration, board/task management, and notifications.&#xA;By leveraging AWS Multi-Region services, the system provides:</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate></lastBuildDate>
     <atom:link href="http://localhost:1313/en/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
