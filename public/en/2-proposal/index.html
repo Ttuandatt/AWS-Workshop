@@ -22,29 +22,29 @@ By leveraging AWS Multi-Region services, the system provides:">
     <meta itemprop="name" content="Proposal :: Internship Report">
     <meta itemprop="description" content="Multi-Region SaaS Task Management Platform A Global AWS Solution for Low-Latency, Resilient Collaboration 1. Executive Summary The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency and high availability for users across the US, EU, and Asia. Built with Spring Boot microservices and Aurora MySQL as the core database, the platform supports real-time collaboration, board/task management, and notifications.
 By leveraging AWS Multi-Region services, the system provides:">
-    <meta itemprop="wordCount" content="921">
+    <meta itemprop="wordCount" content="963">
     <title>Proposal :: Internship Report</title>
     <link href="/en/2-proposal/index.xml" rel="alternate" type="application/rss+xml" title="Proposal :: Internship Report">
-    <link href="/css/auto-complete/auto-complete.min.css?1759289450" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1759289450" defer></script>
-    <script src="/js/search-lunr.js?1759289450" defer></script>
-    <script src="/js/search.js?1759289450" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1759485018" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1759485018" defer></script>
+    <script src="/js/search-lunr.js?1759485018" defer></script>
+    <script src="/js/search.js?1759485018" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1759289450";
+      window.relearn.index_js_url="/searchindex.en.js?1759485018";
     </script>
-    <script src="/js/lunr/lunr.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1759289450" defer></script>
+    <script src="/js/lunr/lunr.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1759485018" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759289450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759289450" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759289450" rel="stylesheet">
-    <link href="/css/theme.css?1759289450" rel="stylesheet">
-    <link href="/css/format-html.css?1759289450" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759485018" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759485018" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759485018" rel="stylesheet">
+    <link href="/css/theme.css?1759485018" rel="stylesheet">
+    <link href="/css/format-html.css?1759485018" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -98,7 +98,7 @@ By leveraging AWS Multi-Region services, the system provides:">
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/css/custom.css?1759289450" rel="stylesheet">
+    <link href="/css/custom.css?1759485018" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/en/2-proposal/index.html">
     <div id="R-body" class="default-animation">
@@ -190,22 +190,25 @@ By leveraging AWS Multi-Region services, the system provides:">
 <p><strong>3.1. Architecture Overview</strong></p>
 <ul>
 <li>
-<p>Microservices: Auth, Board, Task, Notification – deployed on ECS Fargate in each region.</p>
+<p>Microservices: Auth, Board, Task, Notification – ECS Fargate per region.</p>
 </li>
 <li>
-<p>Database: Aurora Global Database – single writer (US), multiple read replicas (EU, Asia).</p>
+<p>Database: Aurora Global Database – single writer (US), multi-reader (EU, Asia).</p>
 </li>
 <li>
-<p>Storage: S3 buckets with Cross-Region Replication + CloudFront for global edge caching.</p>
+<p>Cache: ElastiCache Redis clusters per region for session and frequently accessed data.</p>
 </li>
 <li>
-<p>Routing: Route 53 latency-based DNS + health checks for regional failover.</p>
+<p>Storage: S3 buckets with CRR + CloudFront for global edge caching.</p>
 </li>
 <li>
-<p>Events: EventBridge/SNS/Lambda for propagating domain events across regions.</p>
+<p>Routing &amp; Security: Route 53 + ALB/API Gateway per region + CloudFront with AWS WAF.</p>
 </li>
 <li>
-<p>Optional: DynamoDB Global Tables for active-active metadata (notifications, activity feed).</p>
+<p>Events: EventBridge/SNS/Lambda for domain event propagation.</p>
+</li>
+<li>
+<p>Optional: DynamoDB Global Tables for active-active metadata.</p>
 </li>
 </ul>
 <p><strong>3.2. AWS Services Used</strong></p>
@@ -234,23 +237,32 @@ By leveraging AWS Multi-Region services, the system provides:">
 <li>
 <p>CloudWatch &amp; X-Ray – monitoring and tracing.</p>
 </li>
+<li>
+<p>AWS WAF – web application firewall, attached to CloudFront and ALB.</p>
+</li>
+<li>
+<p>ElastiCache (Redis) – caching layer for session, hot data, and notification feeds.</p>
+</li>
 </ul>
 <p><strong>3.3. Component Design</strong></p>
 <ul>
 <li>
-<p>Application Layer: Spring Boot microservices (REST APIs) deployed per region.</p>
+<p>Application Layer: Spring Boot microservices (REST APIs).</p>
 </li>
 <li>
-<p>Database Layer: Aurora Global Database (writer in US, read replicas in EU/Asia).</p>
+<p>Database Layer: Aurora Global Database.</p>
+</li>
+<li>
+<p>Caching Layer: ElastiCache Redis per region to reduce Aurora read load and speed up session/task retrieval.</p>
 </li>
 <li>
 <p>File Layer: S3 buckets with CRR + presigned uploads.</p>
 </li>
 <li>
-<p>Routing Layer: Route 53 + ALB/API Gateway per region.</p>
+<p>Routing Layer: Route 53 + CloudFront (with WAF) + ALB/API Gateway.</p>
 </li>
 <li>
-<p>User Layer: Clients connect to nearest region, reads are local, writes forwarded to primary.</p>
+<p>User Layer: Clients connect to nearest region, reads from cache or local Aurora replica, writes forwarded to primary Aurora writer.</p>
 </li>
 </ul>
 <h3 id="4-technical-implementation">4. Technical Implementation</h3>
@@ -498,8 +510,8 @@ Costs can be reduced by limiting regions or optimizing cluster sizes.</p>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1759289450" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759289450" defer></script>
-    <script src="/js/theme.js?1759289450" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1759485018" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759485018" defer></script>
+    <script src="/js/theme.js?1759485018" defer></script>
   </body>
 </html>

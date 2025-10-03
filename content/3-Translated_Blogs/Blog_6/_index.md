@@ -106,3 +106,12 @@ Mặc dù mục tiêu chính của chúng tôi là mở rộng ra đối tượn
 ### Tóm tắt
 
 Dữ liệu nằm ở trung tâm của hầu hết mọi ứng dụng. Trong bài viết này, chúng tôi đã xem xét các dịch vụ AWS cung cấp khả năng sao chép dữ liệu giữa các Region để đưa dữ liệu của bạn đến đúng nơi một cách nhanh chóng. Dù ứng dụng của bạn cần khả năng đọc cục bộ nhanh hơn, một cơ sở dữ liệu active-active, hay đơn giản chỉ là lưu trữ dữ liệu bền vững ở một Region thứ hai, chúng tôi đều có giải pháp cho bạn. Trong bài viết thứ 3 cũng là cuối cùng của loạt bài này, chúng tôi sẽ đề cập đến các tính năng quản lý và giám sát ứng dụng.
+
+Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/)
+
+
+Các bài viết khác trong chuỗi này:
+
+- [Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}})
+
+- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{< relref "3-Translated_Blogs/Blog_7/_index.md" >}})

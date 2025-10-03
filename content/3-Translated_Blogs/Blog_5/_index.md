@@ -124,3 +124,12 @@ Chúng tôi đã chọn một số [AWS Solutions](https://aws.amazon.com/soluti
 
 *** Bạn đang tìm thêm nội dung về kiến trúc? ***
  [AWS Architecture Center](https://aws.amazon.com/architecture/) cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!
+
+ Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/)
+
+
+ Các bài viết khác trong chuỗi này:
+
+- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép]({{< relref "3-Translated_Blogs/Blog_6/_index.md" >}})
+
+- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{< relref "3-Translated_Blogs/Blog_7/_index.md" >}})

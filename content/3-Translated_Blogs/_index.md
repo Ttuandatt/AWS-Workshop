@@ -18,7 +18,7 @@ pre = "<b>3. </b>"
 
 **Week 6:** [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép]({{% relref "3-Translated_Blogs/Blog_6/_index.md" %}})(30/09/2025 - W4)
 
-**Week 7:** [Doing task F…](#)
+**Week 7:** [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{% relref "3-Translated_Blogs/Blog_7/_index.md" %}})(30/09/2025 - W4)
 
 **Week 8:** [Doing task G…](#)
 

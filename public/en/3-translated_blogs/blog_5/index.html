@@ -26,29 +26,29 @@ Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản 
     <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021
 Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share
 Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.">
-    <meta itemprop="wordCount" content="3058">
+    <meta itemprop="wordCount" content="3110">
     <title>Blog 5 :: Internship Report</title>
     <link href="/en/3-translated_blogs/blog_5/index.xml" rel="alternate" type="application/rss+xml" title="Blog 5 :: Internship Report">
-    <link href="/css/auto-complete/auto-complete.min.css?1759289450" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1759289450" defer></script>
-    <script src="/js/search-lunr.js?1759289450" defer></script>
-    <script src="/js/search.js?1759289450" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1759485018" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1759485018" defer></script>
+    <script src="/js/search-lunr.js?1759485018" defer></script>
+    <script src="/js/search.js?1759485018" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1759289450";
+      window.relearn.index_js_url="/searchindex.en.js?1759485018";
     </script>
-    <script src="/js/lunr/lunr.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1759289450" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1759289450" defer></script>
+    <script src="/js/lunr/lunr.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1759485018" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1759485018" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759289450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759289450" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759289450" rel="stylesheet">
-    <link href="/css/theme.css?1759289450" rel="stylesheet">
-    <link href="/css/format-html.css?1759289450" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759485018" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759485018" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759485018" rel="stylesheet">
+    <link href="/css/theme.css?1759485018" rel="stylesheet">
+    <link href="/css/format-html.css?1759485018" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -102,7 +102,7 @@ Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản 
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/css/custom.css?1759289450" rel="stylesheet">
+    <link href="/css/custom.css?1759485018" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/en/3-translated_blogs/blog_5/index.html">
     <div id="R-body" class="default-animation">
@@ -273,6 +273,16 @@ Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản 
 Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" rel="external" target="_blank">AWS Solutions</a> và <a href="https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND" rel="external" target="_blank">AWS Blogs</a> để hỗ trợ bạn!</p>
 <p>*** Bạn đang tìm thêm nội dung về kiến trúc? ***
 <a href="https://aws.amazon.com/architecture/" rel="external" target="_blank">AWS Architecture Center</a> cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!</p>
+<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external" target="_blank">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/</a>)</p>
+<p>Các bài viết khác trong chuỗi này:</p>
+<ul>
+<li>
+<p><a href="/en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
+</li>
+<li>
+<p><a href="/en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
+</li>
+</ul>
 
   <footer class="footline">
   </footer>
@@ -328,7 +338,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
             <li class="" data-nav-id="/en/3-translated_blogs/blog_3/index.html"><a class="padding" href="/en/3-translated_blogs/blog_3/index.html"> <b> 3.3. </b>Blog 3</a></li>
             <li class="" data-nav-id="/en/3-translated_blogs/blog_4/index.html"><a class="padding" href="/en/3-translated_blogs/blog_4/index.html"> <b> 3.4. </b>Blog 4</a></li>
             <li class="active " data-nav-id="/en/3-translated_blogs/blog_5/index.html"><a class="padding" href="/en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
-            <li class="" data-nav-id="/en/3-translated_blogs/blog_6/index.html"><a class="padding" href="/en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li></ul></li>
+            <li class="" data-nav-id="/en/3-translated_blogs/blog_6/index.html"><a class="padding" href="/en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-id="/en/3-translated_blogs/blog_7/index.html"><a class="padding" href="/en/3-translated_blogs/blog_7/index.html"> <b> 3.7. </b>Blog 7</a></li></ul></li>
             <li class="" data-nav-id="/en/4-events-participated/index.html"><a class="padding" href="/en/4-events-participated/index.html"><b>4. </b>Events Participated</a></li>
             <li class="" data-nav-id="/en/5-workshop/index.html"><a class="padding" href="/en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
             <li class="" data-nav-id="/en/6-self-assesment/index.html"><a class="padding" href="/en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
@@ -378,8 +389,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1759289450" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759289450" defer></script>
-    <script src="/js/theme.js?1759289450" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1759485018" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759485018" defer></script>
+    <script src="/js/theme.js?1759485018" defer></script>
   </body>
 </html>

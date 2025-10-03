@@ -43,17 +43,19 @@ The architecture reduces latency for a distributed user base, ensuring faster re
 
 **3.1. Architecture Overview**
 
-- Microservices: Auth, Board, Task, Notification – deployed on ECS Fargate in each region.
+- Microservices: Auth, Board, Task, Notification – ECS Fargate per region.
 
-- Database: Aurora Global Database – single writer (US), multiple read replicas (EU, Asia).
+- Database: Aurora Global Database – single writer (US), multi-reader (EU, Asia).
 
-- Storage: S3 buckets with Cross-Region Replication + CloudFront for global edge caching.
+- Cache: ElastiCache Redis clusters per region for session and frequently accessed data.
 
-- Routing: Route 53 latency-based DNS + health checks for regional failover.
+- Storage: S3 buckets with CRR + CloudFront for global edge caching.
 
-- Events: EventBridge/SNS/Lambda for propagating domain events across regions.
+- Routing & Security: Route 53 + ALB/API Gateway per region + CloudFront with AWS WAF.
 
-- Optional: DynamoDB Global Tables for active-active metadata (notifications, activity feed).
+- Events: EventBridge/SNS/Lambda for domain event propagation.
+
+- Optional: DynamoDB Global Tables for active-active metadata.
 
 **3.2. AWS Services Used**
 
@@ -73,17 +75,23 @@ The architecture reduces latency for a distributed user base, ensuring faster re
 
 - CloudWatch & X-Ray – monitoring and tracing.
 
+- AWS WAF – web application firewall, attached to CloudFront and ALB.
+
+- ElastiCache (Redis) – caching layer for session, hot data, and notification feeds.
+
 **3.3. Component Design**
 
-- Application Layer: Spring Boot microservices (REST APIs) deployed per region.
+- Application Layer: Spring Boot microservices (REST APIs).
 
-- Database Layer: Aurora Global Database (writer in US, read replicas in EU/Asia).
+- Database Layer: Aurora Global Database.
+
+- Caching Layer: ElastiCache Redis per region to reduce Aurora read load and speed up session/task retrieval.
 
 - File Layer: S3 buckets with CRR + presigned uploads.
 
-- Routing Layer: Route 53 + ALB/API Gateway per region.
+- Routing Layer: Route 53 + CloudFront (with WAF) + ALB/API Gateway.
 
-- User Layer: Clients connect to nearest region, reads are local, writes forwarded to primary.
+- User Layer: Clients connect to nearest region, reads from cache or local Aurora replica, writes forwarded to primary Aurora writer.
 
 ### 4. Technical Implementation
 
