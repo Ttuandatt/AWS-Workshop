@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog 7 :: Internship Report</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link><description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description><generator>Hugo</generator><language>en</language><atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog 7 :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link>
+    <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng&#xD;Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022&#xA;Chủ đề: AWS CloudFormation, AWS Config&#xA;Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

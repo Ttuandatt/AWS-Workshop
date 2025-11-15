@@ -1,27 +1,484 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html><head><meta charset=utf-8><meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1"><meta name=generator content="Hugo 0.149.1"><meta name=generator content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8"><meta name=description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
 Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS."><meta name=author content><meta name=twitter:card content="summary"><meta name=twitter:title content="Blog 7 :: Internship Report"><meta name=twitter:description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
+Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 7 :: Internship Report">
+    <meta name="twitter:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
 Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS."><meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html"><meta property="og:site_name" content="Internship Report"><meta property="og:title" content="Blog 7 :: Internship Report"><meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
+Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html">
+    <meta property="og:site_name" content="Internship Report">
+    <meta property="og:title" content="Blog 7 :: Internship Report">
+    <meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
 Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS."><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta itemprop=name content="Blog 7 :: Internship Report"><meta itemprop=description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
+Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 7 :: Internship Report">
+    <meta itemprop="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
 Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS."><meta itemprop=wordCount content="2182"><title>Blog 7 :: Internship Report</title><link href=../../../en/3-translated_blogs/blog_7/index.xml rel=alternate type=application/rss+xml title="Blog 7 :: Internship Report"><link href=../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763194722 rel=stylesheet><script src=../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/search-lunr.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/search.min.js?1763194722 defer></script><script>window.relearn=window.relearn||{},window.relearn.index_js_url="../../../searchindex.en.js?1763194722"</script><script src=../../../AWS-Workshop/js/lunr/lunr.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763194722 defer></script><script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script><link href=../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763194722 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763194722 rel=stylesheet></noscript><link href=../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763194722 rel=stylesheet><link href=../../../css/theme.min.css?1763194722 rel=stylesheet><link href=../../../css/format-html.min.css?1763194722 rel=stylesheet id=R-format-style><script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/3-translated_blogs/blog_7/index.html",window.relearn.relBasePath="../../..",window.relearn.relBaseUri="../../..",window.relearn.absBaseUri="https://Ttuandatt.github.io/AWS-Workshop",window.relearn.disableInlineCopyToClipboard=!1,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["relearn-light","relearn-dark"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><link href=../../../AWS-Workshop/css/custom.css?1763194722 rel=stylesheet></head><body class="mobile-support html" data-url=../../../en/3-translated_blogs/blog_7/index.html><div id=R-body class=default-animation><div id=R-body-overlay></div><nav id=R-topbar><div class=topbar-wrapper><div class=topbar-sidebar-divider></div><div class="topbar-area topbar-area-start" data-area=start><div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></span></div><div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button></span><div class=topbar-content><div class=topbar-content-wrapper><nav class=TableOfContents><ul><li><ul><li><a href=#công-cụ-dành-cho-nhà-phát-triển>Công cụ dành cho nhà phát triển</a></li><li><a href=#kiến-trúc-hướng-sự-kiện>Kiến trúc hướng sự kiện</a></li><li><a href=#giám-sát-và-khả-năng-quan-sát-monitoring-and-observability>Giám sát và khả năng quan sát (Monitoring and observability)</a></li><li><a href=#quản-lý-quản-trị-governance>Quản lý: Quản trị (Governance)</a></li><li><a href=#quản-lý-vận-hành-operations>Quản lý: Vận hành (Operations)</a></li><li><a href=#kết-hợp-lại>Kết hợp lại</a></li><li><a href=#tóm-tắt>Tóm tắt</a></li></ul></li></ul></nav></div></div></div></div><ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=../../../en/index.html><span itemprop=name>Internship Report</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=../../../en/3-translated_blogs/index.html><span itemprop=name>Translated Blogs</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Blog 7</span><meta itemprop=position content="3"></li></ol><div class="topbar-area topbar-area-end" data-area=end><div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><a href=../../../en/3-translated_blogs/blog_6/index.html title="Blog 6 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span></div><div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><a href=../../../en/4-events-participated/index.html title="Events Participated (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span></div><div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button></span><div class=topbar-content><div class=topbar-content-wrapper><div class="topbar-area topbar-area-more" data-area=more></div></div></div></div></div></div></nav><div id=R-main-overlay></div><main id=R-body-inner class="highlightable 3-translated_blogs" tabindex=-1><div class=flex-block-wrapper><article class=default><header class=headline></header><h1 id=blog-7>Blog 7</h1><h1 id=xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-3-quản-lý-và-giám-sát-ứng-dụng>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022</em></p><p><em>Chủ đề: <a href=https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudformation/ rel=external>AWS CloudFormation</a>, <a href=https://aws.amazon.com/blogs/architecture/category/management-tools/aws-config/ rel=external>AWS Config</a></em></p><hr><p>Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ <a href=https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/ rel=external>tính toán, mạng và bảo mật</a> của AWS.
-Trong Phần 2, chúng ta đã tích hợp các <a href=https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/ rel=external>dịch vụ dữ liệu và sao chép của AWS</a> để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</p><p>Trong Phần 3, chúng ta sẽ tìm hiểu về các dịch vụ và tính năng của AWS được sử dụng cho nhắn tin, triển khai, giám sát và quản lý.</p><h3 id=công-cụ-dành-cho-nhà-phát-triển>Công cụ dành cho nhà phát triển
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Tự động hóa với cơ sở hạ tầng dưới dạng mã (Infrastructure as Code – IaC) giúp loại bỏ các bước thủ công khi tạo và cấu hình hạ tầng. Nó cung cấp một mẫu có thể tái sử dụng, cho phép triển khai các môi trường nhất quán ở nhiều Vùng khác nhau.</p><p>IaC với <a href=https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html rel=external>AWS CloudFormation StackSets</a> sử dụng một mẫu duy nhất để tạo, cập nhật và xóa <a href=https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html rel=external>các stack trên nhiều tài khoản và Vùng</a> chỉ trong một lần thực hiện. Khi viết một mẫu <a href=http://aws.amazon.com/cloudformation rel=external>AWS CloudFormation</a>, bạn có thể thay đổi hành vi triển khai bằng cách kết hợp các tham số với logic điều kiện. Ví dụ, bạn có thể đặt một tham số “standby” mà khi được gán giá trị “true” sẽ giới hạn số lượng <a href=https://aws.amazon.com/ec2/ rel=external>Amazon Elastic Compute Cloud (Amazon EC2)</a> instances trong một nhóm <a href=https://aws.amazon.com/ec2/autoscaling/ rel=external>Auto Scaling của Amazon EC2</a> được triển khai tại một Vùng dự phòng.</p><p>Các ứng dụng có triển khai trải rộng trên nhiều Vùng có thể sử dụng <a href=https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-cross-region.html rel=external>cross-Region actions</a> trong <a href=https://aws.amazon.com/codepipeline/ rel=external>AWS CodePipeline</a> để xây dựng một pipeline phát hành nhất quán. Cách này giúp bạn không cần phải thiết lập các hành động khác nhau cho từng Vùng. <a href=https://aws.amazon.com/image-builder rel=external>EC2 Image Builder</a> và <a href=http://aws.amazon.com/ecr/ rel=external>Amazon Elastic Container Registry (Amazon ECR)</a> có các tính năng sao chép liên vùng (cross-Region copy) để hỗ trợ triển khai AMI và image một cách đồng nhất, như đã đề cập ở Phần 1.</p><h3 id=kiến-trúc-hướng-sự-kiện>Kiến trúc hướng sự kiện
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Các ứng dụng hướng sự kiện và tách rời (decoupled, event-driven) tạo ra một kiến trúc có khả năng mở rộng và dễ bảo trì hơn, nhờ vào việc mỗi thành phần thực hiện nhiệm vụ cụ thể của nó một cách độc lập.</p><p><a href=https://aws.amazon.com/eventbridge/ rel=external>Amazon EventBridge</a>, một dịch vụ event bus không máy chủ (serverless), có thể gửi sự kiện giữa các tài nguyên AWS. Bằng cách tận dụng định tuyến sự kiện liên vùng <a href=https://aws.amazon.com/blogs/compute/introducing-cross-region-event-routing-with-amazon-eventbridge/ rel=external>(cross-Region event routing)</a>, bạn có thể chia sẻ sự kiện giữa các workloads <a href=https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-region.html rel=external>ở các Vùng</a> (Hình 1) và <a href=https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html rel=external>giữa các tài khoản</a>. Ví dụ, bạn có thể chia sẻ các sự kiện về tình trạng và mức sử dụng (health and utilization) giữa các Vùng để xác định workload nào ở Vùng nào là phù hợp nhất để xử lý yêu cầu.</p><div style=text-align:center><figure><img src=../../../images/Img1-Blog7.png alt="Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác"><figcaption><i>Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác</i></figcaption></figure></div><p>Nếu ứng dụng hướng sự kiện của bạn dựa trên mô hình pub/sub messaging, thì <a href=https://aws.amazon.com/sns/ rel=external>Amazon Simple Notification Service (Amazon SNS)</a> có thể phân phối (fan out) thông điệp đến nhiều đích khác nhau.
-Khi các đích đến là <a href=https://aws.amazon.com/sqs/ rel=external>Amazon Simple Queue Service (Amazon SQS)</a> queues hoặc <a href=https://aws.amazon.com/lambda/ rel=external>AWS Lambda</a> functions, Amazon SNS có thể <a href=https://docs.aws.amazon.com/sns/latest/dg/sns-cross-region-delivery.html rel=external>gửi thông báo đến các đối tượng nhận ở nhiều Vùng khác nhau</a>.
-Ví dụ, bạn có thể gửi thông điệp đến một SQS queue trung tâm để xử lý các đơn hàng cho một ứng dụng đa vùng.</p><h3 id=giám-sát-và-khả-năng-quan-sát-monitoring-and-observability>Giám sát và khả năng quan sát (Monitoring and observability)
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Khả năng quan sát (observability) càng trở nên quan trọng khi số lượng tài nguyên và vị trí triển khai tăng lên. Việc có thể nhanh chóng xác định được tác động và nguyên nhân gốc rễ của một sự cố sẽ ảnh hưởng đến các hoạt động khắc phục, và đảm bảo rằng hệ thống quan sát của bạn có khả năng chống chịu với sự cố sẽ giúp bạn đưa ra những quyết định này. Khi xây dựng trên AWS, bạn có thể kết hợp tình trạng sức khỏe của các dịch vụ AWS với các chỉ số ứng dụng của bạn để có được cái nhìn toàn diện hơn về sức khỏe của cơ sở hạ tầng.</p><p>AWS Health cung cấp bảng điều khiển (dashboards) và API hiển thị các sự kiện và hoạt động đã lên lịch có thể ảnh hưởng đến tài nguyên của bạn. Những sự kiện này bao phủ tất cả các Region, và có thể mở rộng để bao gồm toàn bộ tài khoản trong AWS Organization. EventBridge có thể giám sát các sự kiện từ AWS Health để thực hiện ngay hành động dựa trên sự kiện đó. Ví dụ, nếu nhiều dịch vụ được báo cáo là đang suy giảm, bạn có thể đặt EventBridge target tới một AWS Systems Manager automated runbook nhằm chuẩn bị ứng dụng disaster recovery (DR) cho việc chuyển đổi dự phòng (failover).</p><p>AWS Trusted Advisor cung cấp các cảnh báo mang tính hành động nhằm tối ưu chi phí, tăng hiệu năng, cũng như cải thiện bảo mật và khả năng chịu lỗi. Trusted Advisor hiển thị kết quả trên tất cả các Region và có thể tạo báo cáo tổng hợp kết quả kiểm tra trên toàn bộ tài khoản trong một tổ chức.</p><p>Để duy trì khả năng quan sát đối với một ứng dụng được triển khai trên nhiều Region và nhiều tài khoản, bạn có thể tạo Trusted Advisor dashboard và operations dashboard bằng AWS Systems Manager Explorer. Operations dashboard mang đến cái nhìn hợp nhất về các tài nguyên như Amazon EC2, Amazon CloudWatch, và dữ liệu AWS Config. Bạn có thể kết hợp metadata với Amazon Athena để tạo ra một bảng kiểm kê (inventory) đa-Region và đa-tài khoản về các tài nguyên.</p><p>Bạn có thể xem các metric từ ứng dụng và tài nguyên được triển khai trên nhiều Region ngay trong CloudWatch console. Điều này giúp dễ dàng tạo biểu đồ và dashboard cho ứng dụng đa-Region. CloudWatch cũng hỗ trợ cross-account, cho phép bạn tạo một cái nhìn tập trung về dashboards, alarms, và metrics trên toàn bộ tổ chức của mình.</p><p>Amazon OpenSearch Service tập hợp các log file không cấu trúc hoặc bán cấu trúc, message, metric, document, dữ liệu cấu hình, và nhiều loại dữ liệu khác. Cross-cluster replication (nhân bản chéo cụm) sẽ sao chép indices, mappings, và metadata trong mô hình active-passive từ một domain OpenSearch sang một domain khác. Điều này giúp giảm độ trễ giữa các Region và đảm bảo tính sẵn sàng cao cho dữ liệu.</p><p>AWS Resilience Hub đánh giá và theo dõi khả năng chịu lỗi (resiliency) của ứng dụng. Nó kiểm tra mức độ ứng dụng có thể duy trì tính khả dụng khi thực hiện failover ở cấp độ Region. Ví dụ, nó có thể kiểm tra xem ứng dụng đã cấu hình cross-Region replication trên các bucket Amazon S3 chưa, hoặc các instance Amazon RDS đã có read-replica cross-Region hay chưa. Hình 2 minh họa kết quả đánh giá từ Resilience Hub. Nó cũng gợi ý việc sử dụng Route 53 Application Recovery Controller (được đề cập trong Phần 1) để đảm bảo Auto Scaling group của Amazon EC2 trong một Region được scale sẵn và sẵn sàng nhận traffic trước khi chuyển failover sang đó.</p><div style=text-align:center><figure><img src=../../../images/Img2-Blog7.png alt="Hình 2. Các khuyến nghị của Resilience Hub"><figcaption><i>Hình 2. Các khuyến nghị của Resilience Hub</i></figcaption></figure></div><h3 id=quản-lý-quản-trị-governance>Quản lý: Quản trị (Governance)
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Việc mở rộng một ứng dụng sang một quốc gia mới đồng nghĩa với việc có thể sẽ có thêm những luật và quy định về quyền riêng tư dữ liệu cần tuân thủ. Những điều này sẽ khác nhau tùy theo từng quốc gia, và chúng tôi khuyến nghị bạn nên tham khảo với nhóm pháp lý của mình để hiểu đầy đủ cách chúng ảnh hưởng đến ứng dụng của bạn.</p><p>AWS Control Tower hỗ trợ tuân thủ dữ liệu bằng cách cung cấp các guardrails nhằm kiểm soát và đáp ứng các yêu cầu về lưu trú dữ liệu. Các guardrails này là tập hợp của Service Control Policies (SCPs) và các quy tắc AWS Config. Bạn có thể triển khai chúng độc lập với AWS Control Tower nếu cần. Các dịch vụ đa vùng (multi-Region) tập trung vào bảo mật bổ sung đã được đề cập trong Phần 1.</p><p>AWS Config cung cấp một cái nhìn chi tiết về cấu hình và lịch sử của các tài nguyên AWS. Một AWS Config aggregator thu thập dữ liệu cấu hình và tuân thủ từ nhiều tài khoản và nhiều Vùng (Region) về một tài khoản trung tâm. Cái nhìn tập trung này mang lại một cái nhìn toàn diện về sự tuân thủ và các hành động trên tài nguyên, bất kể chúng nằm ở tài khoản hay Vùng nào.</p><h3 id=quản-lý-vận-hành-operations>Quản lý: Vận hành (Operations)
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Một số khả năng của AWS Systems Manager cho phép quản trị tài nguyên AWS dễ dàng hơn, đặc biệt khi ứng dụng phát triển. Systems Manager Automation đơn giản hóa các tác vụ bảo trì và triển khai phổ biến cho tài nguyên AWS thông qua các runbook tự động. Những runbook này tự động hóa các hành động trên tài nguyên trải rộng nhiều Vùng và nhiều tài khoản.</p><p>Bạn có thể kết hợp Systems Manager Automation với Systems Manager Patch Manager để đảm bảo các phiên bản (instances) luôn duy trì bản vá mới nhất trên nhiều tài khoản và nhiều Vùng. Hình 3 cho thấy Systems Manager đang chạy nhiều tài liệu tự động (automation documents) trên một kiến trúc đa vùng.</p><div style=text-align:center><figure><img src=../../../images/Img3-Blog7.png alt="Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region)."><figcaption><i>Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region).</i></figcaption></figure></div><h3 id=kết-hợp-lại>Kết hợp lại
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Ở cuối mỗi phần của loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho bạn thấy cách kết hợp các dịch vụ để tạo ra một ứng dụng đa vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả các dịch vụ đã nhắc đến, mà chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p><p>Chúng tôi xây dựng ví dụ này để mở rộng đến một đối tượng toàn cầu. Ứng dụng này yêu cầu tính khả dụng cao trên nhiều vùng và ưu tiên hiệu năng hơn là tính nhất quán nghiêm ngặt. Chúng tôi đã chọn các dịch vụ sau (được đề cập trong bài viết này) để đạt được mục tiêu, đồng thời xây dựng dựa trên nền tảng từ phần 1 và phần 2:</p><ul><li><p>CloudFormation StackSets để triển khai toàn bộ bằng IaC. Điều này đảm bảo hạ tầng được triển khai nhất quán trên các vùng.</p></li><li><p>AWS Config rules cung cấp một nơi tập trung để giám sát, ghi nhận và đánh giá cấu hình tài nguyên của chúng tôi.</p></li><li><p>Để tăng khả năng quan sát (observability), chúng tôi đã tạo dashboard với CloudWatch dashboard, Personal Health dashboard, và Trusted Advisor dashboard.</p></li></ul><div style=text-align:center><figure><img src=../../../images/Img4-Blog7.png alt="Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region)."><figcaption><i>Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region).</i></figcaption></figure></div><p>Mặc dù mục tiêu chính của chúng tôi là mở rộng đến một đối tượng người dùng toàn cầu, chúng tôi lưu ý rằng một số dịch vụ như CloudFormation StackSets phụ thuộc vào Vùng 1. Mỗi triển khai theo vùng được thiết lập để có tính ổn định tĩnh, nhưng nếu xảy ra sự cố ngừng hoạt động kéo dài ở Vùng 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách thực hiện các thay đổi CloudFormation tại Vùng 2.</p><h3 id=tóm-tắt>Tóm tắt
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Nhiều dịch vụ AWS có các tính năng hỗ trợ bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể gây choáng ngợp.</p><p>Trong loạt blog 3 phần này, chúng tôi đã khám phá các dịch vụ AWS với những tính năng giúp bạn xây dựng ứng dụng đa vùng:</p><ul><li><p>Ở Phần 1, chúng tôi xây dựng nền tảng với các dịch vụ về bảo mật, mạng và điện toán của AWS.</p></li><li><p>Ở Phần 2, chúng tôi bổ sung chiến lược dữ liệu và sao chép.</p></li><li><p>Cuối cùng, ở Phần 3, chúng tôi xem xét các lớp ứng dụng và quản lý.</p></li></ul><p>Link bài viết gốc: (<a href=https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/ rel=external>https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/</a>)</p><p>Các bài viết khác trong chuỗi này:</p><ul><li><p><a href=../../../en/3-translated_blogs/blog_5/>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật</a></p></li><li><p><a href=../../../en/3-translated_blogs/blog_6/>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p></li></ul><footer class=footline></footer></article></div></main></div><aside id=R-sidebar class=default-animation><div id=R-header-topbar class=default-animation></div><div id=R-header-wrapper class=default-animation><div id=R-header class=default-animation><a id=R-logo class=R-default href=../../../en/index.html><div class=logo-title>Internship Report</div></a></div><search><form action=../../../en/search/index.html method=get><div class="searchbox default-animation"><button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
-<label class=a11y-only for=R-search-by>Search</label>
-<input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
-<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button></div></form></search></div><div id=R-homelinks class="default-animation homelinks"><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-homelinks"><ul class="space collapsible-menu"><li data-nav-url=../../../en/index.html><a class=padding href=../../../en/index.html><i class="fa-fw fas fa-home"></i> Home</a></li></ul></div><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-headercontrols"><ul></ul></div><div class="R-menu-divider default-animation"><hr class=padding></div></div><div id=R-content-wrapper class=highlightable><div class="R-sidebarmenu R-shortcutmenu-main"><ul class="enlarge morespace collapsible-menu"><li data-nav-url=../../../en/1-worklog/index.html><a class=padding href=../../../en/1-worklog/index.html><b>1. </b>Worklog</a><ul id=R-subsections-16447363d800ec5deaa3b0a76c63c922 class=collapsible-menu></ul></li><li data-nav-url=../../../en/2-proposal/index.html><a class=padding href=../../../en/2-proposal/index.html><b>2. </b>Proposal</a></li><li class=parent data-nav-url=../../../en/3-translated_blogs/index.html><a class=padding href=../../../en/3-translated_blogs/index.html><b>3. </b>Translated Blogs</a><ul id=R-subsections-0acade1cd81cfef73c977718aa56c877 class=collapsible-menu><li data-nav-url=../../../en/3-translated_blogs/blog_1/index.html><a class=padding href=../../../en/3-translated_blogs/blog_1/index.html><b>3.1. </b>Blog 1</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_2/index.html><a class=padding href=../../../en/3-translated_blogs/blog_2/index.html><b>3.2. </b>Blog 2</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_3/index.html><a class=padding href=../../../en/3-translated_blogs/blog_3/index.html><b>3.3. </b>Blog 3</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_4/index.html><a class=padding href=../../../en/3-translated_blogs/blog_4/index.html><b>3.4. </b>Blog 4</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_5/index.html><a class=padding href=../../../en/3-translated_blogs/blog_5/index.html><b>3.5. </b>Blog 5</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_6/index.html><a class=padding href=../../../en/3-translated_blogs/blog_6/index.html><b>3.6. </b>Blog 6</a></li><li class=active data-nav-url=../../../en/3-translated_blogs/blog_7/index.html><a class=padding href=../../../en/3-translated_blogs/blog_7/index.html><b>3.7. </b>Blog 7</a></li></ul></li><li data-nav-url=../../../en/4-events-participated/index.html><a class=padding href=../../../en/4-events-participated/index.html><b>4. </b>Events Participated</a></li><li data-nav-url=../../../en/5-workshop/index.html><a class=padding href=../../../en/5-workshop/index.html><b>5. </b>Workshop</a></li><li data-nav-url=../../../en/6-self-assesment/index.html><a class=padding href=../../../en/6-self-assesment/index.html><b>6. </b>Self Assesment</a></li><li data-nav-url=../../../en/7-sharing-and-feedback/index.html><a class=padding href=../../../en/7-sharing-and-feedback/index.html><b>7. </b>Sharing and Feedback</a></li></ul></div><div class="R-sidebarmenu R-shortcutmenu-shortcuts"><ul class="space collapsible-menu"></ul></div><div id=R-footer-margin></div><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-footercontrols"><ul><li class=R-languageswitcher><div class="padding menu-control"><i class="fa-fw fas fa-language"></i>
-<span>&nbsp;</span><div class=control-style><label class=a11y-only for=R-select-language>Language</label>
-<select id=R-select-language><option id=R-select-language-en value=en data-url=../../../en/3-translated_blogs/blog_7/index.html lang=en selected data-selected>English</option></select></div><div class=clear></div></div></li><li class=R-variantswitcher><div class="padding menu-control"><i class="fa-fw fas fa-paint-brush"></i>
-<span>&nbsp;</span><div class=control-style><label class=a11y-only for=R-select-variant>Theme</label>
-<select id=R-select-variant><option id=R-select-variant-relearn-light value=relearn-light selected>Relearn Light</option><option id=R-select-variant-relearn-dark value=relearn-dark>Relearn Dark</option></select></div><div class=clear></div></div><script>window.relearn.markVariant()</script></li></ul></div><div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div></div></aside><script src=../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/theme.min.js?1763194722 defer></script><div id=toast-container role=status aria-live=polite aria-atomic=false></div></body></html>
+Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta itemprop="wordCount" content="2182">
+    <title>Blog 7 :: Internship Report</title>
+    <link href="../../../en/3-translated_blogs/blog_7/index.xml" rel="alternate" type="application/rss+xml" title="Blog 7 :: Internship Report">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763195113" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763195113" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.en.js?1763195113";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763195113" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763195113" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763195113" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763195113" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763195113" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763195113" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_7\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../AWS-Workshop/css/custom.css?1763195113" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_7/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#công-cụ-dành-cho-nhà-phát-triển">Công cụ dành cho nhà phát triển</a></li>
+        <li><a href="#kiến-trúc-hướng-sự-kiện">Kiến trúc hướng sự kiện</a></li>
+        <li><a href="#giám-sát-và-khả-năng-quan-sát-monitoring-and-observability">Giám sát và khả năng quan sát (Monitoring and observability)</a></li>
+        <li><a href="#quản-lý-quản-trị-governance">Quản lý: Quản trị (Governance)</a></li>
+        <li><a href="#quản-lý-vận-hành-operations">Quản lý: Vận hành (Operations)</a></li>
+        <li><a href="#kết-hợp-lại">Kết hợp lại</a></li>
+        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 7</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_6/index.html" title="Blog 6 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/4-events-participated/index.html" title="Events Participated (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-7">Blog 7</h1>
+
+<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-3-quản-lý-và-giám-sát-ứng-dụng">
+  Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022</em></p>
+<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudformation/" rel="external">AWS CloudFormation</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-config/" rel="external">AWS Config</a></em></p>
+<hr>
+<p>Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">tính toán, mạng và bảo mật</a> của AWS.
+Trong Phần 2, chúng ta đã tích hợp các <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">dịch vụ dữ liệu và sao chép của AWS</a> để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</p>
+<p>Trong Phần 3, chúng ta sẽ tìm hiểu về các dịch vụ và tính năng của AWS được sử dụng cho nhắn tin, triển khai, giám sát và quản lý.</p>
+<h3 id="công-cụ-dành-cho-nhà-phát-triển">
+  Công cụ dành cho nhà phát triển
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Tự động hóa với cơ sở hạ tầng dưới dạng mã (Infrastructure as Code – IaC) giúp loại bỏ các bước thủ công khi tạo và cấu hình hạ tầng. Nó cung cấp một mẫu có thể tái sử dụng, cho phép triển khai các môi trường nhất quán ở nhiều Vùng khác nhau.</p>
+<p>IaC với <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html" rel="external">AWS CloudFormation StackSets</a> sử dụng một mẫu duy nhất để tạo, cập nhật và xóa <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html" rel="external">các stack trên nhiều tài khoản và Vùng</a> chỉ trong một lần thực hiện. Khi viết một mẫu <a href="http://aws.amazon.com/cloudformation" rel="external">AWS CloudFormation</a>, bạn có thể thay đổi hành vi triển khai bằng cách kết hợp các tham số với logic điều kiện. Ví dụ, bạn có thể đặt một tham số “standby” mà khi được gán giá trị “true” sẽ giới hạn số lượng <a href="https://aws.amazon.com/ec2/" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> instances trong một nhóm <a href="https://aws.amazon.com/ec2/autoscaling/" rel="external">Auto Scaling của Amazon EC2</a> được triển khai tại một Vùng dự phòng.</p>
+<p>Các ứng dụng có triển khai trải rộng trên nhiều Vùng có thể sử dụng <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-cross-region.html" rel="external">cross-Region actions</a> trong <a href="https://aws.amazon.com/codepipeline/" rel="external">AWS CodePipeline</a> để xây dựng một pipeline phát hành nhất quán. Cách này giúp bạn không cần phải thiết lập các hành động khác nhau cho từng Vùng. <a href="https://aws.amazon.com/image-builder" rel="external">EC2 Image Builder</a> và <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có các tính năng sao chép liên vùng (cross-Region copy) để hỗ trợ triển khai AMI và image một cách đồng nhất, như đã đề cập ở Phần 1.</p>
+<h3 id="kiến-trúc-hướng-sự-kiện">
+  Kiến trúc hướng sự kiện
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Các ứng dụng hướng sự kiện và tách rời (decoupled, event-driven) tạo ra một kiến trúc có khả năng mở rộng và dễ bảo trì hơn, nhờ vào việc mỗi thành phần thực hiện nhiệm vụ cụ thể của nó một cách độc lập.</p>
+<p><a href="https://aws.amazon.com/eventbridge/" rel="external">Amazon EventBridge</a>, một dịch vụ event bus không máy chủ (serverless), có thể gửi sự kiện giữa các tài nguyên AWS. Bằng cách tận dụng định tuyến sự kiện liên vùng <a href="https://aws.amazon.com/blogs/compute/introducing-cross-region-event-routing-with-amazon-eventbridge/" rel="external">(cross-Region event routing)</a>, bạn có thể chia sẻ sự kiện giữa các workloads <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-region.html" rel="external">ở các Vùng</a> (Hình 1) và <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html" rel="external">giữa các tài khoản</a>. Ví dụ, bạn có thể chia sẻ các sự kiện về tình trạng và mức sử dụng (health and utilization) giữa các Vùng để xác định workload nào ở Vùng nào là phù hợp nhất để xử lý yêu cầu.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img1-Blog7.png" alt="Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác">
+    <figcaption><i>Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác</i></figcaption>
+  </figure>
+</div>
+
+<p>Nếu ứng dụng hướng sự kiện của bạn dựa trên mô hình pub/sub messaging, thì <a href="https://aws.amazon.com/sns/" rel="external">Amazon Simple Notification Service (Amazon SNS)</a> có thể phân phối (fan out) thông điệp đến nhiều đích khác nhau.
+Khi các đích đến là <a href="https://aws.amazon.com/sqs/" rel="external">Amazon Simple Queue Service (Amazon SQS)</a> queues hoặc <a href="https://aws.amazon.com/lambda/" rel="external">AWS Lambda</a> functions, Amazon SNS có thể <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-cross-region-delivery.html" rel="external">gửi thông báo đến các đối tượng nhận ở nhiều Vùng khác nhau</a>.
+Ví dụ, bạn có thể gửi thông điệp đến một SQS queue trung tâm để xử lý các đơn hàng cho một ứng dụng đa vùng.</p>
+<h3 id="giám-sát-và-khả-năng-quan-sát-monitoring-and-observability">
+  Giám sát và khả năng quan sát (Monitoring and observability)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khả năng quan sát (observability) càng trở nên quan trọng khi số lượng tài nguyên và vị trí triển khai tăng lên. Việc có thể nhanh chóng xác định được tác động và nguyên nhân gốc rễ của một sự cố sẽ ảnh hưởng đến các hoạt động khắc phục, và đảm bảo rằng hệ thống quan sát của bạn có khả năng chống chịu với sự cố sẽ giúp bạn đưa ra những quyết định này. Khi xây dựng trên AWS, bạn có thể kết hợp tình trạng sức khỏe của các dịch vụ AWS với các chỉ số ứng dụng của bạn để có được cái nhìn toàn diện hơn về sức khỏe của cơ sở hạ tầng.</p>
+<p>AWS Health cung cấp bảng điều khiển (dashboards) và API hiển thị các sự kiện và hoạt động đã lên lịch có thể ảnh hưởng đến tài nguyên của bạn. Những sự kiện này bao phủ tất cả các Region, và có thể mở rộng để bao gồm toàn bộ tài khoản trong AWS Organization. EventBridge có thể giám sát các sự kiện từ AWS Health để thực hiện ngay hành động dựa trên sự kiện đó. Ví dụ, nếu nhiều dịch vụ được báo cáo là đang suy giảm, bạn có thể đặt EventBridge target tới một AWS Systems Manager automated runbook nhằm chuẩn bị ứng dụng disaster recovery (DR) cho việc chuyển đổi dự phòng (failover).</p>
+<p>AWS Trusted Advisor cung cấp các cảnh báo mang tính hành động nhằm tối ưu chi phí, tăng hiệu năng, cũng như cải thiện bảo mật và khả năng chịu lỗi. Trusted Advisor hiển thị kết quả trên tất cả các Region và có thể tạo báo cáo tổng hợp kết quả kiểm tra trên toàn bộ tài khoản trong một tổ chức.</p>
+<p>Để duy trì khả năng quan sát đối với một ứng dụng được triển khai trên nhiều Region và nhiều tài khoản, bạn có thể tạo Trusted Advisor dashboard và operations dashboard bằng AWS Systems Manager Explorer. Operations dashboard mang đến cái nhìn hợp nhất về các tài nguyên như Amazon EC2, Amazon CloudWatch, và dữ liệu AWS Config. Bạn có thể kết hợp metadata với Amazon Athena để tạo ra một bảng kiểm kê (inventory) đa-Region và đa-tài khoản về các tài nguyên.</p>
+<p>Bạn có thể xem các metric từ ứng dụng và tài nguyên được triển khai trên nhiều Region ngay trong CloudWatch console. Điều này giúp dễ dàng tạo biểu đồ và dashboard cho ứng dụng đa-Region. CloudWatch cũng hỗ trợ cross-account, cho phép bạn tạo một cái nhìn tập trung về dashboards, alarms, và metrics trên toàn bộ tổ chức của mình.</p>
+<p>Amazon OpenSearch Service tập hợp các log file không cấu trúc hoặc bán cấu trúc, message, metric, document, dữ liệu cấu hình, và nhiều loại dữ liệu khác. Cross-cluster replication (nhân bản chéo cụm) sẽ sao chép indices, mappings, và metadata trong mô hình active-passive từ một domain OpenSearch sang một domain khác. Điều này giúp giảm độ trễ giữa các Region và đảm bảo tính sẵn sàng cao cho dữ liệu.</p>
+<p>AWS Resilience Hub đánh giá và theo dõi khả năng chịu lỗi (resiliency) của ứng dụng. Nó kiểm tra mức độ ứng dụng có thể duy trì tính khả dụng khi thực hiện failover ở cấp độ Region. Ví dụ, nó có thể kiểm tra xem ứng dụng đã cấu hình cross-Region replication trên các bucket Amazon S3 chưa, hoặc các instance Amazon RDS đã có read-replica cross-Region hay chưa. Hình 2 minh họa kết quả đánh giá từ Resilience Hub. Nó cũng gợi ý việc sử dụng Route 53 Application Recovery Controller (được đề cập trong Phần 1) để đảm bảo Auto Scaling group của Amazon EC2 trong một Region được scale sẵn và sẵn sàng nhận traffic trước khi chuyển failover sang đó.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img2-Blog7.png" alt="Hình 2. Các khuyến nghị của Resilience Hub">
+    <figcaption><i>Hình 2. Các khuyến nghị của Resilience Hub</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="quản-lý-quản-trị-governance">
+  Quản lý: Quản trị (Governance)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Việc mở rộng một ứng dụng sang một quốc gia mới đồng nghĩa với việc có thể sẽ có thêm những luật và quy định về quyền riêng tư dữ liệu cần tuân thủ. Những điều này sẽ khác nhau tùy theo từng quốc gia, và chúng tôi khuyến nghị bạn nên tham khảo với nhóm pháp lý của mình để hiểu đầy đủ cách chúng ảnh hưởng đến ứng dụng của bạn.</p>
+<p>AWS Control Tower hỗ trợ tuân thủ dữ liệu bằng cách cung cấp các guardrails nhằm kiểm soát và đáp ứng các yêu cầu về lưu trú dữ liệu. Các guardrails này là tập hợp của Service Control Policies (SCPs) và các quy tắc AWS Config. Bạn có thể triển khai chúng độc lập với AWS Control Tower nếu cần. Các dịch vụ đa vùng (multi-Region) tập trung vào bảo mật bổ sung đã được đề cập trong Phần 1.</p>
+<p>AWS Config cung cấp một cái nhìn chi tiết về cấu hình và lịch sử của các tài nguyên AWS. Một AWS Config aggregator thu thập dữ liệu cấu hình và tuân thủ từ nhiều tài khoản và nhiều Vùng (Region) về một tài khoản trung tâm. Cái nhìn tập trung này mang lại một cái nhìn toàn diện về sự tuân thủ và các hành động trên tài nguyên, bất kể chúng nằm ở tài khoản hay Vùng nào.</p>
+<h3 id="quản-lý-vận-hành-operations">
+  Quản lý: Vận hành (Operations)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Một số khả năng của AWS Systems Manager cho phép quản trị tài nguyên AWS dễ dàng hơn, đặc biệt khi ứng dụng phát triển. Systems Manager Automation đơn giản hóa các tác vụ bảo trì và triển khai phổ biến cho tài nguyên AWS thông qua các runbook tự động. Những runbook này tự động hóa các hành động trên tài nguyên trải rộng nhiều Vùng và nhiều tài khoản.</p>
+<p>Bạn có thể kết hợp Systems Manager Automation với Systems Manager Patch Manager để đảm bảo các phiên bản (instances) luôn duy trì bản vá mới nhất trên nhiều tài khoản và nhiều Vùng. Hình 3 cho thấy Systems Manager đang chạy nhiều tài liệu tự động (automation documents) trên một kiến trúc đa vùng.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img3-Blog7.png" alt="Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region).">
+    <figcaption><i>Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region).</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="kết-hợp-lại">
+  Kết hợp lại
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Ở cuối mỗi phần của loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho bạn thấy cách kết hợp các dịch vụ để tạo ra một ứng dụng đa vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả các dịch vụ đã nhắc đến, mà chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
+<p>Chúng tôi xây dựng ví dụ này để mở rộng đến một đối tượng toàn cầu. Ứng dụng này yêu cầu tính khả dụng cao trên nhiều vùng và ưu tiên hiệu năng hơn là tính nhất quán nghiêm ngặt. Chúng tôi đã chọn các dịch vụ sau (được đề cập trong bài viết này) để đạt được mục tiêu, đồng thời xây dựng dựa trên nền tảng từ phần 1 và phần 2:</p>
+<ul>
+<li>
+<p>CloudFormation StackSets để triển khai toàn bộ bằng IaC. Điều này đảm bảo hạ tầng được triển khai nhất quán trên các vùng.</p>
+</li>
+<li>
+<p>AWS Config rules cung cấp một nơi tập trung để giám sát, ghi nhận và đánh giá cấu hình tài nguyên của chúng tôi.</p>
+</li>
+<li>
+<p>Để tăng khả năng quan sát (observability), chúng tôi đã tạo dashboard với CloudWatch dashboard, Personal Health dashboard, và Trusted Advisor dashboard.</p>
+</li>
+</ul>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img4-Blog7.png" alt="Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region).">
+    <figcaption><i>Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region).</i></figcaption>
+  </figure>
+</div>
+
+<p>Mặc dù mục tiêu chính của chúng tôi là mở rộng đến một đối tượng người dùng toàn cầu, chúng tôi lưu ý rằng một số dịch vụ như CloudFormation StackSets phụ thuộc vào Vùng 1. Mỗi triển khai theo vùng được thiết lập để có tính ổn định tĩnh, nhưng nếu xảy ra sự cố ngừng hoạt động kéo dài ở Vùng 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách thực hiện các thay đổi CloudFormation tại Vùng 2.</p>
+<h3 id="tóm-tắt">
+  Tóm tắt
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Nhiều dịch vụ AWS có các tính năng hỗ trợ bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể gây choáng ngợp.</p>
+<p>Trong loạt blog 3 phần này, chúng tôi đã khám phá các dịch vụ AWS với những tính năng giúp bạn xây dựng ứng dụng đa vùng:</p>
+<ul>
+<li>
+<p>Ở Phần 1, chúng tôi xây dựng nền tảng với các dịch vụ về bảo mật, mạng và điện toán của AWS.</p>
+</li>
+<li>
+<p>Ở Phần 2, chúng tôi bổ sung chiến lược dữ liệu và sao chép.</p>
+</li>
+<li>
+<p>Cuối cùng, ở Phần 3, chúng tôi xem xét các lớp ứng dụng và quản lý.</p>
+</li>
+</ul>
+<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/</a>)</p>
+<p>Các bài viết khác trong chuỗi này:</p>
+<ul>
+<li>
+<p><a href="../../../en/3-translated_blogs/blog_5/">Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật</a></p>
+</li>
+<li>
+<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
+</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../en/index.html">
+            <div class="logo-title">Internship Report</div>
+          </a>
+        </div>
+        <search><form action="../../../en/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../en/index.html"><a class="padding" href="../../../en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../en/1-worklog/index.html"><a class="padding" href="../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../en/2-proposal/index.html"><a class="padding" href="../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_3/index.html"> <b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_4/index.html"> <b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="active " data-nav-url="../../../en/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_7/index.html"> <b> 3.7. </b>Blog 7</a></li></ul></li>
+            <li class="" data-nav-url="../../../en/4-events-participated/index.html"><a class="padding" href="../../../en/4-events-participated/index.html"><b>4. </b>Events Participated</a></li>
+            <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
+            <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="../../../en/7-sharing-and-feedback/index.html"><a class="padding" href="../../../en/7-sharing-and-feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Language</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_7/index.html" lang="en" selected data-selected>English</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763195113" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

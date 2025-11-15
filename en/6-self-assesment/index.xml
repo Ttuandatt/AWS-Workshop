@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Self Assesment :: Internship Report</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link><description>Chapter XSome Chapter titleLorem Ipsum.</description><generator>Hugo</generator><language>en</language><lastBuildDate/><atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Self Assesment :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link>
+    <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

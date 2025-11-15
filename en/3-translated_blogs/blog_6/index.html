@@ -1,29 +1,487 @@
-<!doctype html><html lang=en dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html><head><meta charset=utf-8><meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1"><meta name=generator content="Hugo 0.149.1"><meta name=generator content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8"><meta name=description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
 Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn."><meta name=author content><meta name=twitter:card content="summary"><meta name=twitter:title content="Blog 6 :: Internship Report"><meta name=twitter:description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 6 :: Internship Report">
+    <meta name="twitter:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
 Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn."><meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html"><meta property="og:site_name" content="Internship Report"><meta property="og:title" content="Blog 6 :: Internship Report"><meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html">
+    <meta property="og:site_name" content="Internship Report">
+    <meta property="og:title" content="Blog 6 :: Internship Report">
+    <meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
 Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn."><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta itemprop=name content="Blog 6 :: Internship Report"><meta itemprop=description content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 6 :: Internship Report">
+    <meta itemprop="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
 Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn."><meta itemprop=wordCount content="3063"><title>Blog 6 :: Internship Report</title><link href=../../../en/3-translated_blogs/blog_6/index.xml rel=alternate type=application/rss+xml title="Blog 6 :: Internship Report"><link href=../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763194722 rel=stylesheet><script src=../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/search-lunr.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/search.min.js?1763194722 defer></script><script>window.relearn=window.relearn||{},window.relearn.index_js_url="../../../searchindex.en.js?1763194722"</script><script src=../../../AWS-Workshop/js/lunr/lunr.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763194722 defer></script><script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script><link href=../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763194722 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763194722 rel=stylesheet></noscript><link href=../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763194722 rel=stylesheet><link href=../../../css/theme.min.css?1763194722 rel=stylesheet><link href=../../../css/format-html.min.css?1763194722 rel=stylesheet id=R-format-style><script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/3-translated_blogs/blog_6/index.html",window.relearn.relBasePath="../../..",window.relearn.relBaseUri="../../..",window.relearn.absBaseUri="https://Ttuandatt.github.io/AWS-Workshop",window.relearn.disableInlineCopyToClipboard=!1,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["relearn-light","relearn-dark"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><link href=../../../AWS-Workshop/css/custom.css?1763194722 rel=stylesheet></head><body class="mobile-support html" data-url=../../../en/3-translated_blogs/blog_6/index.html><div id=R-body class=default-animation><div id=R-body-overlay></div><nav id=R-topbar><div class=topbar-wrapper><div class=topbar-sidebar-divider></div><div class="topbar-area topbar-area-start" data-area=start><div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></span></div><div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button></span><div class=topbar-content><div class=topbar-content-wrapper><nav class=TableOfContents><ul><li><ul><li><a href=#những-lưu-ý-khi-sao-chép-dữ-liệu>Những lưu ý khi sao chép dữ liệu</a></li><li><a href=#sao-chép-đối-tượng-và-tệp-tin>Sao chép đối tượng và tệp tin</a></li><li><a href=#sao-chép-bản-sao-lưu>Sao chép bản sao lưu</a></li><li><a href=#mở-rộng-cơ-sở-dữ-liệu-phi-quan-hệ-trên-nhiều-region>Mở rộng cơ sở dữ liệu phi quan hệ trên nhiều Region</a></li><li><a href=#mở-rộng-cơ-sở-dữ-liệu-quan-hệ-trên-nhiều-region>Mở rộng cơ sở dữ liệu quan hệ trên nhiều Region</a></li><li><a href=#kết-hợp-lại>Kết hợp lại</a></li><li><a href=#tóm-tắt>Tóm tắt</a></li></ul></li></ul></nav></div></div></div></div><ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=../../../en/index.html><span itemprop=name>Internship Report</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=../../../en/3-translated_blogs/index.html><span itemprop=name>Translated Blogs</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Blog 6</span><meta itemprop=position content="3"></li></ol><div class="topbar-area topbar-area-end" data-area=end><div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><a href=../../../en/3-translated_blogs/blog_5/index.html title="Blog 5 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span></div><div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><a href=../../../en/3-translated_blogs/blog_7/index.html title="Blog 7 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span></div><div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button></span><div class=topbar-content><div class=topbar-content-wrapper><div class="topbar-area topbar-area-more" data-area=more></div></div></div></div></div></div></nav><div id=R-main-overlay></div><main id=R-body-inner class="highlightable 3-translated_blogs" tabindex=-1><div class=flex-block-wrapper><article class=default><header class=headline></header><h1 id=blog-6>Blog 6</h1><h1 id=xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-2-dữ-liệu-và-sao-chép>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022</em></p><p><em>Chủ đề: <a href=https://aws.amazon.com/blogs/architecture/category/database/amazon-aurora/ rel=external>Amazon Aurora</a>, <a href=https://aws.amazon.com/blogs/architecture/category/database/amazon-document-db/ rel=external>Amazon DocumentDB</a>, <a href=https://aws.amazon.com/blogs/architecture/category/database/amazon-dynamodb/ rel=external>Amazon DynamoDB</a>, <a href=https://aws.amazon.com/blogs/architecture/category/database/amazon-elasticache/ rel=external>Amazon ElastiCache</a>, <a href=https://aws.amazon.com/blogs/architecture/category/database/amazon-rds/ rel=external>Amazon RDS</a>, <a href=https://aws.amazon.com/blogs/architecture/category/analytics/amazon-redshift-analytics/ rel=external>Amazon Redshift</a>, <a href=https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/ rel=external>Amazon Simple Storage Service (S3)</a>, <a href=https://aws.amazon.com/blogs/architecture/category/architecture/ rel=external>Architecture</a>, <a href=https://aws.amazon.com/blogs/architecture/category/storage/aws-backup/ rel=external>AWS Backup</a>, <a href=https://aws.amazon.com/blogs/architecture/category/migration/aws-datasync/ rel=external>AWS DataSync</a>, <a href=https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/ rel=external>AWS Global Accelerator</a></em></p><hr><p>Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</p><p>Ở <strong>Phần 1</strong> của loạt blog này, chúng ta đã xem xét cách sử dụng các dịch vụ tính toán (compute), mạng (networking), và bảo mật (security) của AWS để xây dựng nền tảng cho một ứng dụng multi-Region. Ở <strong>Phần 3</strong>, chúng ta sẽ tìm hiểu các dịch vụ quản lý và giám sát ứng dụng của AWS, giúp bạn xây dựng, theo dõi và duy trì ứng dụng multi-Region.</p><h3 id=những-lưu-ý-khi-sao-chép-dữ-liệu>Những lưu ý khi sao chép dữ liệu
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Việc sao chép dữ liệu trên mạng AWS diễn ra rất nhanh, nhưng bạn cần nhớ rằng thời gian di chuyển của gói tin sẽ tăng lên theo khoảng cách vật lý mà gói tin cần đi qua. Vì lý do này, khi xây dựng ứng dụng multi-Region, bạn phải cân nhắc giữa tính nhất quán dữ liệu và hiệu năng.
-Khi xây dựng một hệ thống phân tán, cần xem xét định lý CAP (Consistency, Availability, Partition Tolerance). Định lý này chỉ ra rằng một ứng dụng chỉ có thể đạt được 2 trong 3 yếu tố, và bạn phải chấp nhận đánh đổi khi đưa ra lựa chọn:</p><ul><li><p>Consistency (Nhất quán) – tất cả các client luôn thấy cùng một trạng thái dữ liệu</p></li><li><p>Availability (Sẵn sàng) – tất cả các client luôn có thể đọc và ghi dữ liệu</p></li><li><p>Partition Tolerance (Chịu lỗi phân mảnh mạng) – hệ thống vẫn hoạt động ngay cả khi có sự cố phân mảnh vật lý trong mạng</p></li></ul><div style=text-align:center><figure><img src=../../../images/Img1-Blog6.png alt><figcaption><i></i></figcaption></figure></div><p>Trong các kiến trúc single-Region, việc đạt được Consistency và Availability (CA) là điều thường thấy. Ví dụ: khi một ứng dụng chỉ kết nối đến một cơ sở dữ liệu quan hệ trong cùng một Region.</p><p>Tuy nhiên, với multi-Region applications, điều này trở nên khó khăn hơn vì độ trễ phát sinh do việc truyền dữ liệu qua khoảng cách địa lý xa. Vì thế, các hệ thống phân tán ở mức toàn cầu thường chấp nhận hy sinh tính nhất quán tuyệt đối, thay vào đó ưu tiên Availability và Partition Tolerance (AP). Mô hình này thường được gọi là eventual consistency (nhất quán cuối cùng).</p><h3 id=sao-chép-đối-tượng-và-tệp-tin>Sao chép đối tượng và tệp tin
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Quy mô, độ bền và tính sẵn sàng của <a href=http://aws.amazon.com/s3 rel=external>Amazon Simple Storage Service (Amazon S3)</a> khiến nó trở thành một điểm đến tuyệt vời để lưu trữ nhiều loại tài nguyên cho ứng dụng của bạn. Để cho phép ứng dụng truy cập nhanh dữ liệu này bất kể được triển khai ở Region nào, bạn có thể thiết lập Amazon S3 để <a href=https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html rel=external>sao chép dữ liệu giữa các Region AWS</a> với cơ chế sao chép một chiều hoặc <a href=https://wellarchitectedlabs.com/reliability/200_labs/200_bidirectional_replication_for_s3/ rel=external>hai chiều</a> liên tục. Nếu ứng dụng của bạn không cần tất cả các đối tượng trong một bucket để hoạt động tối ưu, một tập con đối tượng có thể được sao chép bằng các <a href=https://docs.aws.amazon.com/AmazonS3/latest/userguide/disable-replication.html rel=external>quy tắc replication</a> của Amazon S3. Amazon S3 trong một Region cung cấp tính nhất quán mạnh khi đọc ngay sau khi ghi; tuy nhiên, các đối tượng đã được sao chép sẽ chỉ nhất quán sau một khoảng thời gian ở các Region đích. Nếu việc duy trì độ trễ sao chép thấp là quan trọng, <a href=https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-walkthrough-5.html rel=external>S3 Replication Time Control</a> sẽ sao chép 99,99% đối tượng trong vòng 15 phút, và hầu hết chỉ mất vài giây. Quan sát là yếu tố then chốt ở mọi lớp của một ứng dụng, và bạn có thể giám sát trạng thái sao chép của các đối tượng bằng Amazon <a href=https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-metrics.html rel=external>S3 events và metrics</a>.</p><p>Mỗi bucket S3 được cấp endpoint riêng theo Region, điều này có nghĩa là endpoint bao gồm Region của bucket trong URL, ví dụ:</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>https://&lt;MY-BUCKET&gt;.s3.&lt;AWS-REGION&gt;.amazonaws.com/</code></pre></div><p>Để đơn giản hóa việc kết nối đến và quản lý nhiều endpoint bucket, Amazon <a href=https://aws.amazon.com/blogs/aws/s3-multi-region-access-points-accelerate-performance-availability/ rel=external>S3 Multi-Region Access Points</a> tạo ra một endpoint toàn cầu duy nhất bao phủ nhiều bucket S3 ở các Region khác nhau. Khi ứng dụng kết nối đến endpoint này, các yêu cầu sẽ được định tuyến qua mạng AWS bằng <a href=https://aws.amazon.com/global-accelerator/ rel=external>AWS Global Accelerator</a> đến bucket có độ trễ thấp nhất. Việc định tuyến dự phòng cũng được xử lý tự động nếu khả năng sẵn sàng của một bucket thay đổi. Bạn sẽ thấy rằng các endpoint này không phụ thuộc Region trong URL:</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>https://&lt;RANDOM-STRING&gt;.mrap.s3-global.amazonaws.com/</code></pre></div><p>Nếu một số phần của ứng dụng bạn chưa hỗ trợ đọc và ghi vào object store trên nền web như Amazon S3, bạn có thể có cùng độ bền và tính sẵn sàng trên một hệ thống tệp chia sẻ với các lớp lưu trữ theo Region của <a href=http://aws.amazon.com/efs rel=external>Amazon Elastic File System (Amazon EFS)</a>. Để đảm bảo các triển khai ứng dụng đa Region có thể truy cập dữ liệu này tại chỗ, bạn có thể thiết lập <a href=https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html rel=external>replication dựa trên block của Amazon EFS</a> đến một volume EFS chỉ đọc ở Region khác.</p><p>Đối với các tệp được lưu bên ngoài Amazon S3 và Amazon EFS, <a href=https://aws.amazon.com/datasync/ rel=external>AWS DataSync</a> đơn giản hóa, tự động hóa và tăng tốc việc <a href=https://aws.amazon.com/blogs/storage/transferring-file-data-across-aws-regions-and-accounts-using-aws-datasync/ rel=external>di chuyển dữ liệu giữa các Region và account</a>. Nó hỗ trợ cả di chuyển đồng nhất và khác loại giữa <a href=https://aws.amazon.com/fsx/ rel=external>Amazon FSx</a>, <a href=https://aws.amazon.com/snowcone/ rel=external>AWS Snowcone</a>, Amazon EFS, và Amazon S3. Nó thậm chí có thể được dùng để đồng bộ các tệp on-premises được lưu trữ trên NFS, SMB, HDFS và object storage tự quản lý lên AWS cho các kiến trúc hybrid.</p><p>Việc sao chép tệp và đối tượng được kỳ vọng là sẽ nhất quán sau một khoảng thời gian. Tốc độ mà một tập dữ liệu có thể truyền tải phụ thuộc vào dung lượng dữ liệu, băng thông I/O, băng thông mạng, điều kiện mạng và khoảng cách vật lý.</p><h3 id=sao-chép-bản-sao-lưu>Sao chép bản sao lưu
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Bên cạnh việc sao chép dữ liệu (replication), bạn cũng nên sao lưu dữ liệu của mình. Trong trường hợp dữ liệu bị hỏng hoặc vô tình bị xóa, một bản sao lưu sẽ cho phép bạn khôi phục về trạng thái tốt cuối cùng đã biết. Ngoài ra, không phải tất cả dữ liệu đều cần được sao chép theo thời gian thực. Ví dụ, nếu bạn đang thiết kế cho kịch bản khôi phục thảm họa và ứng dụng của bạn có <a href=https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html rel=external>RTO (Recovery Time Objective – Mục tiêu thời gian khôi phục) và RPO (Recovery Point Objective – Mục tiêu điểm khôi phục)</a> dài hơn, thì việc sao chép bản sao lưu theo lịch trình có thể đáp ứng yêu cầu của bạn trong khi lại tiết kiệm chi phí hơn.
-Đối với những trường hợp này, <a href=https://aws.amazon.com/backup/ rel=external>AWS Backup</a> có thể tự động hóa việc sao lưu dữ liệu của bạn để đáp ứng yêu cầu kinh doanh, và các bản sao lưu này có thể được cấu hình để tự động <a href=https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html rel=external>sao chép đến một hoặc nhiều Region hoặc account AWS</a>. Thời gian sao chép phụ thuộc vào kích thước bản sao lưu của bạn và khoảng cách cần truyền tải. Bạn nên chạy thử nghiệm trước để xác định xem thời gian sao chép xuyên Region này có ảnh hưởng đến RTO và RPO đã định nghĩa của bạn hay không. Ngày càng có nhiều dịch vụ được hỗ trợ, và điều này đặc biệt hữu ích cho các dịch vụ không cung cấp tính năng sao chép theo thời gian thực sang Region khác như <a href=http://aws.amazon.com/ec2 rel=external>Amazon Elastic Compute Cloud (Amazon EC2)</a> hoặc <a href=https://aws.amazon.com/neptune/ rel=external>Amazon Neptune</a>.</p><p>Hình 1 cho thấy cách các dịch vụ dữ liệu được đề cập có thể được kết hợp cho từng tài nguyên trong một kiến trúc. Chúng tôi sử dụng Amazon S3 bi-directional replication để giữ cho các đối tượng trong bucket được đồng bộ trong khi vẫn cho phép ghi từ bất kỳ Region nào. Các máy chủ ứng dụng dựa trên Amazon EC2 của chúng tôi có một mount Amazon EFS bao gồm các bản nhị phân ứng dụng mới nhất và các tệp hỗ trợ, và chúng tôi dựa vào replication của Amazon EFS để giữ dữ liệu này được đồng bộ trên các triển khai ở nhiều Region. Cuối cùng, chúng tôi sử dụng AWS Backup để tạo snapshot cho các instance EC2 của mình và lưu chúng dưới dạng AMI images trong Region thứ cấp.</p><div style=text-align:center><figure><img src=../../../images/Img2-Blog6.png alt="Hình 1. Các dịch vụ sao lưu lưu trữ"><figcaption><i>Hình 1. Các dịch vụ sao lưu lưu trữ</i></figcaption></figure></div><h3 id=mở-rộng-cơ-sở-dữ-liệu-phi-quan-hệ-trên-nhiều-region>Mở rộng cơ sở dữ liệu phi quan hệ trên nhiều Region
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p><a href=https://aws.amazon.com/dynamodb/ rel=external>Amazon DynamoDB</a> <a href=https://aws.amazon.com/dynamodb/global-tables/ rel=external>global tables</a> cung cấp khả năng đa Region và đa điểm ghi, giúp bạn xây dựng các ứng dụng toàn cầu ở quy mô lớn. DynamoDB global table là dịch vụ cơ sở dữ liệu do AWS quản lý duy nhất cho phép nhiều điểm ghi chủ động với khả năng phát hiện xung đột trong kiến trúc đa Region (active-active và multi-Region). Điều này cho phép ứng dụng đọc và ghi dữ liệu tại Region gần nhất, đồng thời các thay đổi sẽ tự động được sao chép sang các Region khác.
-Việc đọc toàn cầu và khôi phục nhanh cho <a href=https://aws.amazon.com/documentdb/ rel=external>Amazon DocumentDB (tương thích với MongoDB)</a> có thể đạt được thông qua các <a href=https://docs.aws.amazon.com/documentdb/latest/developerguide/global-clusters.html rel=external>global cluster</a>. Các cluster này có một Region chính xử lý thao tác ghi. Hạ tầng sao chép dựa trên lưu trữ chuyên biệt giúp thực hiện đọc toàn cầu với độ trễ thường dưới một giây.</p><p>Giữ bộ nhớ đệm trong RAM (in-memory cache) được đồng bộ dữ liệu trên nhiều Region là yếu tố quan trọng để duy trì hiệu năng ứng dụng. <a href=https://aws.amazon.com/elasticache/redis/ rel=external>Amazon ElastiCache</a> (Redis OSS) cung cấp <a href=https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html rel=external>global datastore</a> để tạo một bản sao chéo Region được quản lý toàn diện, nhanh chóng, đáng tin cậy và an toàn cho Redis OSS caches và databases. Với global datastore, các thao tác ghi ở một Region có thể được đọc từ tối đa hai cluster bản sao ở Region khác – loại bỏ nhu cầu phải ghi vào nhiều cache để giữ chúng luôn “ấm”.</p><h3 id=mở-rộng-cơ-sở-dữ-liệu-quan-hệ-trên-nhiều-region>Mở rộng cơ sở dữ liệu quan hệ trên nhiều Region
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Đối với các ứng dụng cần mô hình dữ liệu quan hệ, <a href=https://aws.amazon.com/rds/aurora/ rel=external>Amazon Aurora</a> <a href=https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html rel=external>global database</a> hỗ trợ mở rộng khả năng đọc dữ liệu trên nhiều Region trong cả hai phiên bản tương thích Aurora PostgreSQL và MySQL. Hạ tầng sao chép chuyên biệt sử dụng cơ chế sao chép dựa trên lưu trữ vật lý, giúp duy trì độ trễ sao chép ổn định và thấp, vượt trội hơn so với các cơ chế sao chép logic tích hợp sẵn của các hệ quản trị cơ sở dữ liệu, như minh họa ở Hình 2.</p><div style=text-align:center><figure><img src=../../../images/Img3-Blog6.png alt="Hình 2. SysBench OLTP (chỉ ghi) tăng dần mỗi 600 giây trên R4.16xlarge"><figcaption><i>Hình 2. SysBench OLTP (chỉ ghi) tăng dần mỗi 600 giây trên R4.16xlarge</i></figcaption></figure></div><p>Với Aurora global database, một cluster ở một Region được chỉ định là writer, trong khi các Region phụ được dành cho việc đọc. Mặc dù chỉ có một instance duy nhất xử lý các thao tác ghi, Aurora MySQL hỗ trợ <a href=https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html rel=external>write forwarding</a>, một tính năng sẽ chuyển các truy vấn ghi từ endpoint của Region phụ sang Region chính, giúp đơn giản hóa logic trong mã ứng dụng.
-Bạn có thể kiểm tra Regional failover bằng cách sử dụng <a href=https://aws.amazon.com/blogs/database/managed-planned-failovers-with-amazon-aurora-global-database/ rel=external>managed planned failover</a> của Aurora global database. Hành động này sẽ chuyển cluster ghi chủ động sang một Region phụ trong khi vẫn giữ nguyên kiến trúc sao chép. Cần lưu ý rằng hành động này phụ thuộc vào việc Aurora ở Region chính còn hoạt động, vì vậy hãy cân nhắc điều này trong kế hoạch khôi phục thảm họa. Nếu Aurora ở Region chính không khả dụng, bạn vẫn có thể <strong>promote</strong> bất kỳ cluster phụ nào của Aurora trong Aurora global database. Quá trình promotion được thực hiện từ Region phụ. Trong khoảng một phút, quá trình này sẽ loại cluster khỏi Aurora global database, kích hoạt endpoint ghi theo Region, và nâng một instance của cluster lên thành writer chủ động. Khi quá trình này hoàn tất, bạn sẽ cần cập nhật chuỗi kết nối cơ sở dữ liệu trong ứng dụng để kết nối với endpoint writer mới.</p><p>Tất cả các cơ sở dữ liệu được thảo luận trong bài viết này đều tuân theo mô hình eventual consistency khi sử dụng đa Region, nhưng các Aurora PostgreSQL–based global database có thêm tùy chọn để chỉ định maximum replica lag cho phép với <a href=https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuid%E2%80%A6isaster-recovery.html#aurora-global-database-manage-recovery rel=external>managed recovery point objective (managed RPO</a>.</p><p>Về khả năng backup-and-restore, Aurora có thời gian lưu trữ bản sao tự động tối thiểu 1 ngày và tối đa 35 ngày cho tất cả các cluster, bao gồm cả cluster phụ toàn cầu. Điều này cho phép bạn khôi phục các cluster phụ về một điểm thời gian xác định trong Region đích nếu cần.
-Logical replication, sử dụng công nghệ sao chép tích hợp sẵn của engine cơ sở dữ liệu, có thể được thiết lập cho <a href=https://aws.amazon.com/rds/ rel=external>Amazon RDS</a> cho MariaDB, MySQL, Oracle, PostgreSQL và Aurora. Một <a href=https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.XRgn.html rel=external>cross-Region read replica</a> sẽ nhận và xử lý các thay đổi từ writer ở Region chính. Các replica này cho phép đọc cục bộ nhanh hơn và có thể giảm mất mát dữ liệu cũng như rút ngắn thời gian khôi phục trong trường hợp thảm họa bằng cách được nâng thành instance độc lập. Công nghệ logical replication cũng có thể được dùng để sao chép dữ liệu ra các tài nguyên bên ngoài Amazon RDS, như instance EC2, server on-premises hoặc thậm chí data lake.</p><p>Trong những trường hợp RPO và RTO dài hơn vẫn chấp nhận được, các bản sao lưu có thể được sao chép giữa các Region. Điều này áp dụng cho tất cả cơ sở dữ liệu quan hệ và phi quan hệ được nhắc đến trong bài, ngoại trừ ElastiCache. Mặc dù <a href=https://aws.amazon.com/redshift/ rel=external>Amazon Redshift</a> không có tính năng sao chép cross-Region, bạn có thể thiết lập Amazon Redshift để <a href=https://docs.aws.amazon.com/redshift/latest/mgmt/managing-snapshots-console.html#xregioncopy-kms-encrypted-snapshot rel=external>tự động</a> sao chép snapshot của kho dữ liệu sang Region khác. Thời gian sao chép bản sao lưu sẽ khác nhau tùy thuộc vào kích thước và tần suất thay đổi dữ liệu.</p><h3 id=kết-hợp-lại>Kết hợp lại
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Ở cuối mỗi phần trong loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách kết hợp các dịch vụ lại với nhau để xây dựng một ứng dụng multi-Region bằng các dịch vụ AWS. Chúng tôi không sử dụng tất cả các dịch vụ được nhắc đến, chỉ những dịch vụ phù hợp với tình huống sử dụng.</p><p>Chúng tôi đã tạo ví dụ này để mở rộng ra đối tượng người dùng toàn cầu. Ứng dụng yêu cầu khả năng sẵn sàng cao trên nhiều Region và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn những dịch vụ sau (trong số các dịch vụ đã đề cập ở phần này) để đạt được mục tiêu, dựa trên nền tảng từ phần 1:</p><ul><li><p>DynamoDB global tables để ứng dụng triển khai ở mỗi Region có thể vừa đọc vừa ghi vào cơ sở dữ liệu trong cùng Region.</p></li><li><p>ElastiCache Global Datastore làm tầng cache. Việc ghi vào global datastore chỉ diễn ra ở Region 1, nhưng điều này phù hợp với tình huống sử dụng vì ứng dụng dựa vào các mục cache tương tự bất kể Region nào.</p></li><li><p>S3 bucket để lưu trữ dữ liệu ứng dụng, tệp cấu hình, nội dung tĩnh và dữ liệu do người dùng tải lên. Amazon S3 sao chép chéo 2 chiều giữa các Region để giữ cho các bucket đồng bộ. Cuối cùng, ứng dụng của chúng tôi sử dụng Amazon S3 multi-Region access point để đảm bảo các yêu cầu đến Amazon S3 được định tuyến đến Region có độ trễ thấp nhất và tự động xử lý failover.</p></li></ul><div style=text-align:center><figure><img src=../../../images/Img4-Blog6.png alt="Hình 3. Xây dựng ứng dụng với các dịch vụ AWS multi-Region, sử dụng những dịch vụ đã đề cập trong Phần 1"><figcaption><i>Hình 3. Xây dựng ứng dụng với các dịch vụ AWS multi-Region, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption></figure></div><p>Mặc dù mục tiêu chính của chúng tôi là mở rộng ra đối tượng toàn cầu, chúng tôi lưu ý rằng một số cơ chế sao chép được thiết lập là một chiều, chẳng hạn như với ElastiCache Global Datastore. Mỗi triển khai theo Region được cấu hình để duy trì tính ổn định tĩnh, nhưng nếu xảy ra sự cố kéo dài ở Region 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách làm cho từng dịch vụ có thể ghi tại Region 2.</p><h3 id=tóm-tắt>Tóm tắt
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Dữ liệu nằm ở trung tâm của hầu hết mọi ứng dụng. Trong bài viết này, chúng tôi đã xem xét các dịch vụ AWS cung cấp khả năng sao chép dữ liệu giữa các Region để đưa dữ liệu của bạn đến đúng nơi một cách nhanh chóng. Dù ứng dụng của bạn cần khả năng đọc cục bộ nhanh hơn, một cơ sở dữ liệu active-active, hay đơn giản chỉ là lưu trữ dữ liệu bền vững ở một Region thứ hai, chúng tôi đều có giải pháp cho bạn. Trong bài viết thứ 3 cũng là cuối cùng của loạt bài này, chúng tôi sẽ đề cập đến các tính năng quản lý và giám sát ứng dụng.</p><p>Link bài viết gốc: (<a href=https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/ rel=external>https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/</a>)</p><p>Các bài viết khác trong chuỗi này:</p><ul><li><p><a href=../../../en/3-translated_blogs/blog_5/>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật</a></p></li><li><p><a href=../../../en/3-translated_blogs/blog_7/>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p></li></ul><footer class=footline></footer></article></div></main></div><aside id=R-sidebar class=default-animation><div id=R-header-topbar class=default-animation></div><div id=R-header-wrapper class=default-animation><div id=R-header class=default-animation><a id=R-logo class=R-default href=../../../en/index.html><div class=logo-title>Internship Report</div></a></div><search><form action=../../../en/search/index.html method=get><div class="searchbox default-animation"><button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
-<label class=a11y-only for=R-search-by>Search</label>
-<input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
-<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button></div></form></search></div><div id=R-homelinks class="default-animation homelinks"><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-homelinks"><ul class="space collapsible-menu"><li data-nav-url=../../../en/index.html><a class=padding href=../../../en/index.html><i class="fa-fw fas fa-home"></i> Home</a></li></ul></div><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-headercontrols"><ul></ul></div><div class="R-menu-divider default-animation"><hr class=padding></div></div><div id=R-content-wrapper class=highlightable><div class="R-sidebarmenu R-shortcutmenu-main"><ul class="enlarge morespace collapsible-menu"><li data-nav-url=../../../en/1-worklog/index.html><a class=padding href=../../../en/1-worklog/index.html><b>1. </b>Worklog</a><ul id=R-subsections-16447363d800ec5deaa3b0a76c63c922 class=collapsible-menu></ul></li><li data-nav-url=../../../en/2-proposal/index.html><a class=padding href=../../../en/2-proposal/index.html><b>2. </b>Proposal</a></li><li class=parent data-nav-url=../../../en/3-translated_blogs/index.html><a class=padding href=../../../en/3-translated_blogs/index.html><b>3. </b>Translated Blogs</a><ul id=R-subsections-0acade1cd81cfef73c977718aa56c877 class=collapsible-menu><li data-nav-url=../../../en/3-translated_blogs/blog_1/index.html><a class=padding href=../../../en/3-translated_blogs/blog_1/index.html><b>3.1. </b>Blog 1</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_2/index.html><a class=padding href=../../../en/3-translated_blogs/blog_2/index.html><b>3.2. </b>Blog 2</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_3/index.html><a class=padding href=../../../en/3-translated_blogs/blog_3/index.html><b>3.3. </b>Blog 3</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_4/index.html><a class=padding href=../../../en/3-translated_blogs/blog_4/index.html><b>3.4. </b>Blog 4</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_5/index.html><a class=padding href=../../../en/3-translated_blogs/blog_5/index.html><b>3.5. </b>Blog 5</a></li><li class=active data-nav-url=../../../en/3-translated_blogs/blog_6/index.html><a class=padding href=../../../en/3-translated_blogs/blog_6/index.html><b>3.6. </b>Blog 6</a></li><li data-nav-url=../../../en/3-translated_blogs/blog_7/index.html><a class=padding href=../../../en/3-translated_blogs/blog_7/index.html><b>3.7. </b>Blog 7</a></li></ul></li><li data-nav-url=../../../en/4-events-participated/index.html><a class=padding href=../../../en/4-events-participated/index.html><b>4. </b>Events Participated</a></li><li data-nav-url=../../../en/5-workshop/index.html><a class=padding href=../../../en/5-workshop/index.html><b>5. </b>Workshop</a></li><li data-nav-url=../../../en/6-self-assesment/index.html><a class=padding href=../../../en/6-self-assesment/index.html><b>6. </b>Self Assesment</a></li><li data-nav-url=../../../en/7-sharing-and-feedback/index.html><a class=padding href=../../../en/7-sharing-and-feedback/index.html><b>7. </b>Sharing and Feedback</a></li></ul></div><div class="R-sidebarmenu R-shortcutmenu-shortcuts"><ul class="space collapsible-menu"></ul></div><div id=R-footer-margin></div><div class="R-menu-divider default-animation"><hr class=padding></div><div class="R-sidebarmenu R-shortcutmenu-footercontrols"><ul><li class=R-languageswitcher><div class="padding menu-control"><i class="fa-fw fas fa-language"></i>
-<span>&nbsp;</span><div class=control-style><label class=a11y-only for=R-select-language>Language</label>
-<select id=R-select-language><option id=R-select-language-en value=en data-url=../../../en/3-translated_blogs/blog_6/index.html lang=en selected data-selected>English</option></select></div><div class=clear></div></div></li><li class=R-variantswitcher><div class="padding menu-control"><i class="fa-fw fas fa-paint-brush"></i>
-<span>&nbsp;</span><div class=control-style><label class=a11y-only for=R-select-variant>Theme</label>
-<select id=R-select-variant><option id=R-select-variant-relearn-light value=relearn-light selected>Relearn Light</option><option id=R-select-variant-relearn-dark value=relearn-dark>Relearn Dark</option></select></div><div class=clear></div></div><script>window.relearn.markVariant()</script></li></ul></div><div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div></div></aside><script src=../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763194722 defer></script><script src=../../../AWS-Workshop/js/theme.min.js?1763194722 defer></script><div id=toast-container role=status aria-live=polite aria-atomic=false></div></body></html>
+Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.">
+    <meta itemprop="wordCount" content="3063">
+    <title>Blog 6 :: Internship Report</title>
+    <link href="../../../en/3-translated_blogs/blog_6/index.xml" rel="alternate" type="application/rss+xml" title="Blog 6 :: Internship Report">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763195113" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763195113" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.en.js?1763195113";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763195113" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763195113" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763195113" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763195113" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763195113" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763195113" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_6\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../AWS-Workshop/css/custom.css?1763195113" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_6/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#những-lưu-ý-khi-sao-chép-dữ-liệu">Những lưu ý khi sao chép dữ liệu</a></li>
+        <li><a href="#sao-chép-đối-tượng-và-tệp-tin">Sao chép đối tượng và tệp tin</a></li>
+        <li><a href="#sao-chép-bản-sao-lưu">Sao chép bản sao lưu</a></li>
+        <li><a href="#mở-rộng-cơ-sở-dữ-liệu-phi-quan-hệ-trên-nhiều-region">Mở rộng cơ sở dữ liệu phi quan hệ trên nhiều Region</a></li>
+        <li><a href="#mở-rộng-cơ-sở-dữ-liệu-quan-hệ-trên-nhiều-region">Mở rộng cơ sở dữ liệu quan hệ trên nhiều Region</a></li>
+        <li><a href="#kết-hợp-lại">Kết hợp lại</a></li>
+        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 6</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_5/index.html" title="Blog 5 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_7/index.html" title="Blog 7 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-6">Blog 6</h1>
+
+<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-2-dữ-liệu-và-sao-chép">
+  Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022</em></p>
+<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-aurora/" rel="external">Amazon Aurora</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-document-db/" rel="external">Amazon DocumentDB</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-dynamodb/" rel="external">Amazon DynamoDB</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-elasticache/" rel="external">Amazon ElastiCache</a>, <a href="https://aws.amazon.com/blogs/architecture/category/database/amazon-rds/" rel="external">Amazon RDS</a>, <a href="https://aws.amazon.com/blogs/architecture/category/analytics/amazon-redshift-analytics/" rel="external">Amazon Redshift</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/aws-backup/" rel="external">AWS Backup</a>, <a href="https://aws.amazon.com/blogs/architecture/category/migration/aws-datasync/" rel="external">AWS DataSync</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external">AWS Global Accelerator</a></em></p>
+<hr>
+<p>Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</p>
+<p>Ở <strong>Phần 1</strong> của loạt blog này, chúng ta đã xem xét cách sử dụng các dịch vụ tính toán (compute), mạng (networking), và bảo mật (security) của AWS để xây dựng nền tảng cho một ứng dụng multi-Region. Ở <strong>Phần 3</strong>, chúng ta sẽ tìm hiểu các dịch vụ quản lý và giám sát ứng dụng của AWS, giúp bạn xây dựng, theo dõi và duy trì ứng dụng multi-Region.</p>
+<h3 id="những-lưu-ý-khi-sao-chép-dữ-liệu">
+  Những lưu ý khi sao chép dữ liệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Việc sao chép dữ liệu trên mạng AWS diễn ra rất nhanh, nhưng bạn cần nhớ rằng thời gian di chuyển của gói tin sẽ tăng lên theo khoảng cách vật lý mà gói tin cần đi qua. Vì lý do này, khi xây dựng ứng dụng multi-Region, bạn phải cân nhắc giữa tính nhất quán dữ liệu và hiệu năng.
+Khi xây dựng một hệ thống phân tán, cần xem xét định lý CAP (Consistency, Availability, Partition Tolerance). Định lý này chỉ ra rằng một ứng dụng chỉ có thể đạt được 2 trong 3 yếu tố, và bạn phải chấp nhận đánh đổi khi đưa ra lựa chọn:</p>
+<ul>
+<li>
+<p>Consistency (Nhất quán) – tất cả các client luôn thấy cùng một trạng thái dữ liệu</p>
+</li>
+<li>
+<p>Availability (Sẵn sàng) – tất cả các client luôn có thể đọc và ghi dữ liệu</p>
+</li>
+<li>
+<p>Partition Tolerance (Chịu lỗi phân mảnh mạng) – hệ thống vẫn hoạt động ngay cả khi có sự cố phân mảnh vật lý trong mạng</p>
+</li>
+</ul>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img1-Blog6.png" alt="">
+    <figcaption><i></i></figcaption>
+  </figure>
+</div>
+
+<p>Trong các kiến trúc single-Region, việc đạt được Consistency và Availability (CA) là điều thường thấy. Ví dụ: khi một ứng dụng chỉ kết nối đến một cơ sở dữ liệu quan hệ trong cùng một Region.</p>
+<p>Tuy nhiên, với multi-Region applications, điều này trở nên khó khăn hơn vì độ trễ phát sinh do việc truyền dữ liệu qua khoảng cách địa lý xa. Vì thế, các hệ thống phân tán ở mức toàn cầu thường chấp nhận hy sinh tính nhất quán tuyệt đối, thay vào đó ưu tiên Availability và Partition Tolerance (AP). Mô hình này thường được gọi là eventual consistency (nhất quán cuối cùng).</p>
+<h3 id="sao-chép-đối-tượng-và-tệp-tin">
+  Sao chép đối tượng và tệp tin
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Quy mô, độ bền và tính sẵn sàng của <a href="http://aws.amazon.com/s3" rel="external">Amazon Simple Storage Service (Amazon S3)</a> khiến nó trở thành một điểm đến tuyệt vời để lưu trữ nhiều loại tài nguyên cho ứng dụng của bạn. Để cho phép ứng dụng truy cập nhanh dữ liệu này bất kể được triển khai ở Region nào, bạn có thể thiết lập Amazon S3 để <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html" rel="external">sao chép dữ liệu giữa các Region AWS</a> với cơ chế sao chép một chiều hoặc <a href="https://wellarchitectedlabs.com/reliability/200_labs/200_bidirectional_replication_for_s3/" rel="external">hai chiều</a> liên tục. Nếu ứng dụng của bạn không cần tất cả các đối tượng trong một bucket để hoạt động tối ưu, một tập con đối tượng có thể được sao chép bằng các <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/disable-replication.html" rel="external">quy tắc replication</a> của Amazon S3. Amazon S3 trong một Region cung cấp tính nhất quán mạnh khi đọc ngay sau khi ghi; tuy nhiên, các đối tượng đã được sao chép sẽ chỉ nhất quán sau một khoảng thời gian ở các Region đích. Nếu việc duy trì độ trễ sao chép thấp là quan trọng, <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-walkthrough-5.html" rel="external">S3 Replication Time Control</a> sẽ sao chép 99,99% đối tượng trong vòng 15 phút, và hầu hết chỉ mất vài giây. Quan sát là yếu tố then chốt ở mọi lớp của một ứng dụng, và bạn có thể giám sát trạng thái sao chép của các đối tượng bằng Amazon <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-metrics.html" rel="external">S3 events và metrics</a>.</p>
+<p>Mỗi bucket S3 được cấp endpoint riêng theo Region, điều này có nghĩa là endpoint bao gồm Region của bucket trong URL, ví dụ:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>https://&lt;MY-BUCKET&gt;.s3.&lt;AWS-REGION&gt;.amazonaws.com/</code></pre></div>
+<p>Để đơn giản hóa việc kết nối đến và quản lý nhiều endpoint bucket, Amazon <a href="https://aws.amazon.com/blogs/aws/s3-multi-region-access-points-accelerate-performance-availability/" rel="external">S3 Multi-Region Access Points</a> tạo ra một endpoint toàn cầu duy nhất bao phủ nhiều bucket S3 ở các Region khác nhau. Khi ứng dụng kết nối đến endpoint này, các yêu cầu sẽ được định tuyến qua mạng AWS bằng <a href="https://aws.amazon.com/global-accelerator/" rel="external">AWS Global Accelerator</a> đến bucket có độ trễ thấp nhất. Việc định tuyến dự phòng cũng được xử lý tự động nếu khả năng sẵn sàng của một bucket thay đổi. Bạn sẽ thấy rằng các endpoint này không phụ thuộc Region trong URL:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>https://&lt;RANDOM-STRING&gt;.mrap.s3-global.amazonaws.com/</code></pre></div>
+<p>Nếu một số phần của ứng dụng bạn chưa hỗ trợ đọc và ghi vào object store trên nền web như Amazon S3, bạn có thể có cùng độ bền và tính sẵn sàng trên một hệ thống tệp chia sẻ với các lớp lưu trữ theo Region của <a href="http://aws.amazon.com/efs" rel="external">Amazon Elastic File System (Amazon EFS)</a>. Để đảm bảo các triển khai ứng dụng đa Region có thể truy cập dữ liệu này tại chỗ, bạn có thể thiết lập <a href="https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html" rel="external">replication dựa trên block của Amazon EFS</a> đến một volume EFS chỉ đọc ở Region khác.</p>
+<p>Đối với các tệp được lưu bên ngoài Amazon S3 và Amazon EFS, <a href="https://aws.amazon.com/datasync/" rel="external">AWS DataSync</a> đơn giản hóa, tự động hóa và tăng tốc việc <a href="https://aws.amazon.com/blogs/storage/transferring-file-data-across-aws-regions-and-accounts-using-aws-datasync/" rel="external">di chuyển dữ liệu giữa các Region và account</a>. Nó hỗ trợ cả di chuyển đồng nhất và khác loại giữa <a href="https://aws.amazon.com/fsx/" rel="external">Amazon FSx</a>, <a href="https://aws.amazon.com/snowcone/" rel="external">AWS Snowcone</a>, Amazon EFS, và Amazon S3. Nó thậm chí có thể được dùng để đồng bộ các tệp on-premises được lưu trữ trên NFS, SMB, HDFS và object storage tự quản lý lên AWS cho các kiến trúc hybrid.</p>
+<p>Việc sao chép tệp và đối tượng được kỳ vọng là sẽ nhất quán sau một khoảng thời gian. Tốc độ mà một tập dữ liệu có thể truyền tải phụ thuộc vào dung lượng dữ liệu, băng thông I/O, băng thông mạng, điều kiện mạng và khoảng cách vật lý.</p>
+<h3 id="sao-chép-bản-sao-lưu">
+  Sao chép bản sao lưu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bên cạnh việc sao chép dữ liệu (replication), bạn cũng nên sao lưu dữ liệu của mình. Trong trường hợp dữ liệu bị hỏng hoặc vô tình bị xóa, một bản sao lưu sẽ cho phép bạn khôi phục về trạng thái tốt cuối cùng đã biết. Ngoài ra, không phải tất cả dữ liệu đều cần được sao chép theo thời gian thực. Ví dụ, nếu bạn đang thiết kế cho kịch bản khôi phục thảm họa và ứng dụng của bạn có <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html" rel="external">RTO (Recovery Time Objective – Mục tiêu thời gian khôi phục) và RPO (Recovery Point Objective – Mục tiêu điểm khôi phục)</a> dài hơn, thì việc sao chép bản sao lưu theo lịch trình có thể đáp ứng yêu cầu của bạn trong khi lại tiết kiệm chi phí hơn.
+Đối với những trường hợp này, <a href="https://aws.amazon.com/backup/" rel="external">AWS Backup</a> có thể tự động hóa việc sao lưu dữ liệu của bạn để đáp ứng yêu cầu kinh doanh, và các bản sao lưu này có thể được cấu hình để tự động <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html" rel="external">sao chép đến một hoặc nhiều Region hoặc account AWS</a>. Thời gian sao chép phụ thuộc vào kích thước bản sao lưu của bạn và khoảng cách cần truyền tải. Bạn nên chạy thử nghiệm trước để xác định xem thời gian sao chép xuyên Region này có ảnh hưởng đến RTO và RPO đã định nghĩa của bạn hay không. Ngày càng có nhiều dịch vụ được hỗ trợ, và điều này đặc biệt hữu ích cho các dịch vụ không cung cấp tính năng sao chép theo thời gian thực sang Region khác như <a href="http://aws.amazon.com/ec2" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> hoặc <a href="https://aws.amazon.com/neptune/" rel="external">Amazon Neptune</a>.</p>
+<p>Hình 1 cho thấy cách các dịch vụ dữ liệu được đề cập có thể được kết hợp cho từng tài nguyên trong một kiến trúc. Chúng tôi sử dụng Amazon S3 bi-directional replication để giữ cho các đối tượng trong bucket được đồng bộ trong khi vẫn cho phép ghi từ bất kỳ Region nào. Các máy chủ ứng dụng dựa trên Amazon EC2 của chúng tôi có một mount Amazon EFS bao gồm các bản nhị phân ứng dụng mới nhất và các tệp hỗ trợ, và chúng tôi dựa vào replication của Amazon EFS để giữ dữ liệu này được đồng bộ trên các triển khai ở nhiều Region. Cuối cùng, chúng tôi sử dụng AWS Backup để tạo snapshot cho các instance EC2 của mình và lưu chúng dưới dạng AMI images trong Region thứ cấp.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img2-Blog6.png" alt="Hình 1. Các dịch vụ sao lưu lưu trữ">
+    <figcaption><i>Hình 1. Các dịch vụ sao lưu lưu trữ</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="mở-rộng-cơ-sở-dữ-liệu-phi-quan-hệ-trên-nhiều-region">
+  Mở rộng cơ sở dữ liệu phi quan hệ trên nhiều Region
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><a href="https://aws.amazon.com/dynamodb/" rel="external">Amazon DynamoDB</a> <a href="https://aws.amazon.com/dynamodb/global-tables/" rel="external">global tables</a> cung cấp khả năng đa Region và đa điểm ghi, giúp bạn xây dựng các ứng dụng toàn cầu ở quy mô lớn. DynamoDB global table là dịch vụ cơ sở dữ liệu do AWS quản lý duy nhất cho phép nhiều điểm ghi chủ động với khả năng phát hiện xung đột trong kiến trúc đa Region (active-active và multi-Region). Điều này cho phép ứng dụng đọc và ghi dữ liệu tại Region gần nhất, đồng thời các thay đổi sẽ tự động được sao chép sang các Region khác.
+Việc đọc toàn cầu và khôi phục nhanh cho <a href="https://aws.amazon.com/documentdb/" rel="external">Amazon DocumentDB (tương thích với MongoDB)</a> có thể đạt được thông qua các <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/global-clusters.html" rel="external">global cluster</a>. Các cluster này có một Region chính xử lý thao tác ghi. Hạ tầng sao chép dựa trên lưu trữ chuyên biệt giúp thực hiện đọc toàn cầu với độ trễ thường dưới một giây.</p>
+<p>Giữ bộ nhớ đệm trong RAM (in-memory cache) được đồng bộ dữ liệu trên nhiều Region là yếu tố quan trọng để duy trì hiệu năng ứng dụng. <a href="https://aws.amazon.com/elasticache/redis/" rel="external">Amazon ElastiCache</a> (Redis OSS) cung cấp <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html" rel="external">global datastore</a> để tạo một bản sao chéo Region được quản lý toàn diện, nhanh chóng, đáng tin cậy và an toàn cho Redis OSS caches và databases. Với global datastore, các thao tác ghi ở một Region có thể được đọc từ tối đa hai cluster bản sao ở Region khác – loại bỏ nhu cầu phải ghi vào nhiều cache để giữ chúng luôn “ấm”.</p>
+<h3 id="mở-rộng-cơ-sở-dữ-liệu-quan-hệ-trên-nhiều-region">
+  Mở rộng cơ sở dữ liệu quan hệ trên nhiều Region
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Đối với các ứng dụng cần mô hình dữ liệu quan hệ, <a href="https://aws.amazon.com/rds/aurora/" rel="external">Amazon Aurora</a> <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html" rel="external">global database</a> hỗ trợ mở rộng khả năng đọc dữ liệu trên nhiều Region trong cả hai phiên bản tương thích Aurora PostgreSQL và MySQL. Hạ tầng sao chép chuyên biệt sử dụng cơ chế sao chép dựa trên lưu trữ vật lý, giúp duy trì độ trễ sao chép ổn định và thấp, vượt trội hơn so với các cơ chế sao chép logic tích hợp sẵn của các hệ quản trị cơ sở dữ liệu, như minh họa ở Hình 2.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img3-Blog6.png" alt="Hình 2. SysBench OLTP (chỉ ghi) tăng dần mỗi 600 giây trên R4.16xlarge">
+    <figcaption><i>Hình 2. SysBench OLTP (chỉ ghi) tăng dần mỗi 600 giây trên R4.16xlarge</i></figcaption>
+  </figure>
+</div>
+
+<p>Với Aurora global database, một cluster ở một Region được chỉ định là writer, trong khi các Region phụ được dành cho việc đọc. Mặc dù chỉ có một instance duy nhất xử lý các thao tác ghi, Aurora MySQL hỗ trợ <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html" rel="external">write forwarding</a>, một tính năng sẽ chuyển các truy vấn ghi từ endpoint của Region phụ sang Region chính, giúp đơn giản hóa logic trong mã ứng dụng.
+Bạn có thể kiểm tra Regional failover bằng cách sử dụng <a href="https://aws.amazon.com/blogs/database/managed-planned-failovers-with-amazon-aurora-global-database/" rel="external">managed planned failover</a> của Aurora global database. Hành động này sẽ chuyển cluster ghi chủ động sang một Region phụ trong khi vẫn giữ nguyên kiến trúc sao chép. Cần lưu ý rằng hành động này phụ thuộc vào việc Aurora ở Region chính còn hoạt động, vì vậy hãy cân nhắc điều này trong kế hoạch khôi phục thảm họa. Nếu Aurora ở Region chính không khả dụng, bạn vẫn có thể <strong>promote</strong> bất kỳ cluster phụ nào của Aurora trong Aurora global database. Quá trình promotion được thực hiện từ Region phụ. Trong khoảng một phút, quá trình này sẽ loại cluster khỏi Aurora global database, kích hoạt endpoint ghi theo Region, và nâng một instance của cluster lên thành writer chủ động. Khi quá trình này hoàn tất, bạn sẽ cần cập nhật chuỗi kết nối cơ sở dữ liệu trong ứng dụng để kết nối với endpoint writer mới.</p>
+<p>Tất cả các cơ sở dữ liệu được thảo luận trong bài viết này đều tuân theo mô hình eventual consistency khi sử dụng đa Region, nhưng các Aurora PostgreSQL–based global database có thêm tùy chọn để chỉ định maximum replica lag cho phép với <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuid%E2%80%A6isaster-recovery.html#aurora-global-database-manage-recovery" rel="external">managed recovery point objective (managed RPO</a>.</p>
+<p>Về khả năng backup-and-restore, Aurora có thời gian lưu trữ bản sao tự động tối thiểu 1 ngày và tối đa 35 ngày cho tất cả các cluster, bao gồm cả cluster phụ toàn cầu. Điều này cho phép bạn khôi phục các cluster phụ về một điểm thời gian xác định trong Region đích nếu cần.
+Logical replication, sử dụng công nghệ sao chép tích hợp sẵn của engine cơ sở dữ liệu, có thể được thiết lập cho <a href="https://aws.amazon.com/rds/" rel="external">Amazon RDS</a> cho MariaDB, MySQL, Oracle, PostgreSQL và Aurora. Một <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.XRgn.html" rel="external">cross-Region read replica</a> sẽ nhận và xử lý các thay đổi từ writer ở Region chính. Các replica này cho phép đọc cục bộ nhanh hơn và có thể giảm mất mát dữ liệu cũng như rút ngắn thời gian khôi phục trong trường hợp thảm họa bằng cách được nâng thành instance độc lập. Công nghệ logical replication cũng có thể được dùng để sao chép dữ liệu ra các tài nguyên bên ngoài Amazon RDS, như instance EC2, server on-premises hoặc thậm chí data lake.</p>
+<p>Trong những trường hợp RPO và RTO dài hơn vẫn chấp nhận được, các bản sao lưu có thể được sao chép giữa các Region. Điều này áp dụng cho tất cả cơ sở dữ liệu quan hệ và phi quan hệ được nhắc đến trong bài, ngoại trừ ElastiCache. Mặc dù <a href="https://aws.amazon.com/redshift/" rel="external">Amazon Redshift</a> không có tính năng sao chép cross-Region, bạn có thể thiết lập Amazon Redshift để <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-snapshots-console.html#xregioncopy-kms-encrypted-snapshot" rel="external">tự động</a> sao chép snapshot của kho dữ liệu sang Region khác. Thời gian sao chép bản sao lưu sẽ khác nhau tùy thuộc vào kích thước và tần suất thay đổi dữ liệu.</p>
+<h3 id="kết-hợp-lại">
+  Kết hợp lại
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Ở cuối mỗi phần trong loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách kết hợp các dịch vụ lại với nhau để xây dựng một ứng dụng multi-Region bằng các dịch vụ AWS. Chúng tôi không sử dụng tất cả các dịch vụ được nhắc đến, chỉ những dịch vụ phù hợp với tình huống sử dụng.</p>
+<p>Chúng tôi đã tạo ví dụ này để mở rộng ra đối tượng người dùng toàn cầu. Ứng dụng yêu cầu khả năng sẵn sàng cao trên nhiều Region và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn những dịch vụ sau (trong số các dịch vụ đã đề cập ở phần này) để đạt được mục tiêu, dựa trên nền tảng từ phần 1:</p>
+<ul>
+<li>
+<p>DynamoDB global tables để ứng dụng triển khai ở mỗi Region có thể vừa đọc vừa ghi vào cơ sở dữ liệu trong cùng Region.</p>
+</li>
+<li>
+<p>ElastiCache Global Datastore làm tầng cache. Việc ghi vào global datastore chỉ diễn ra ở Region 1, nhưng điều này phù hợp với tình huống sử dụng vì ứng dụng dựa vào các mục cache tương tự bất kể Region nào.</p>
+</li>
+<li>
+<p>S3 bucket để lưu trữ dữ liệu ứng dụng, tệp cấu hình, nội dung tĩnh và dữ liệu do người dùng tải lên. Amazon S3 sao chép chéo 2 chiều giữa các Region để giữ cho các bucket đồng bộ. Cuối cùng, ứng dụng của chúng tôi sử dụng Amazon S3 multi-Region access point để đảm bảo các yêu cầu đến Amazon S3 được định tuyến đến Region có độ trễ thấp nhất và tự động xử lý failover.</p>
+</li>
+</ul>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img4-Blog6.png" alt="Hình 3. Xây dựng ứng dụng với các dịch vụ AWS multi-Region, sử dụng những dịch vụ đã đề cập trong Phần 1">
+    <figcaption><i>Hình 3. Xây dựng ứng dụng với các dịch vụ AWS multi-Region, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption>
+  </figure>
+</div>
+
+<p>Mặc dù mục tiêu chính của chúng tôi là mở rộng ra đối tượng toàn cầu, chúng tôi lưu ý rằng một số cơ chế sao chép được thiết lập là một chiều, chẳng hạn như với ElastiCache Global Datastore. Mỗi triển khai theo Region được cấu hình để duy trì tính ổn định tĩnh, nhưng nếu xảy ra sự cố kéo dài ở Region 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách làm cho từng dịch vụ có thể ghi tại Region 2.</p>
+<h3 id="tóm-tắt">
+  Tóm tắt
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Dữ liệu nằm ở trung tâm của hầu hết mọi ứng dụng. Trong bài viết này, chúng tôi đã xem xét các dịch vụ AWS cung cấp khả năng sao chép dữ liệu giữa các Region để đưa dữ liệu của bạn đến đúng nơi một cách nhanh chóng. Dù ứng dụng của bạn cần khả năng đọc cục bộ nhanh hơn, một cơ sở dữ liệu active-active, hay đơn giản chỉ là lưu trữ dữ liệu bền vững ở một Region thứ hai, chúng tôi đều có giải pháp cho bạn. Trong bài viết thứ 3 cũng là cuối cùng của loạt bài này, chúng tôi sẽ đề cập đến các tính năng quản lý và giám sát ứng dụng.</p>
+<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/</a>)</p>
+<p>Các bài viết khác trong chuỗi này:</p>
+<ul>
+<li>
+<p><a href="../../../en/3-translated_blogs/blog_5/">Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật</a></p>
+</li>
+<li>
+<p><a href="../../../en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
+</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../en/index.html">
+            <div class="logo-title">Internship Report</div>
+          </a>
+        </div>
+        <search><form action="../../../en/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../en/index.html"><a class="padding" href="../../../en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../en/1-worklog/index.html"><a class="padding" href="../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../en/2-proposal/index.html"><a class="padding" href="../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_3/index.html"> <b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_4/index.html"> <b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
+            <li class="active " data-nav-url="../../../en/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_7/index.html"> <b> 3.7. </b>Blog 7</a></li></ul></li>
+            <li class="" data-nav-url="../../../en/4-events-participated/index.html"><a class="padding" href="../../../en/4-events-participated/index.html"><b>4. </b>Events Participated</a></li>
+            <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
+            <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="../../../en/7-sharing-and-feedback/index.html"><a class="padding" href="../../../en/7-sharing-and-feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Language</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_6/index.html" lang="en" selected data-selected>English</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763195113" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763195113" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

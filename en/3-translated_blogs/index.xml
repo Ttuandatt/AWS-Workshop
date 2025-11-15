@@ -1,14 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Translated Blogs :: Internship Report</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</link><description>Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)
-Blog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)
-Blog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)
-Blog 4: Doing task C…
-Blog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate><atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog 1</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html</guid><description>Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quảTác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025
-Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật
-Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.</description></item><item><title>Blog 2</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_2/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_2/index.html</guid><description>Định tuyến động sử dụng Máy chủ định tuyến AWS VPCAmmar Latif và Akshay Choudhry - 02/09/2025
-Amazon VPC Route Server cho phép triển khai cơ chế định tuyến động trong Amazon VPC bằng cách sử dụng giao thức BGP (Border Gateway Protocol). Với dịch vụ này, bạn có thể kiểm soát lưu lượng giữa các ứng dụng trên cloud và hệ thống on-premises một cách thông minh và hiệu quả hơn. BGP giúp bạn quản lý đường đi của dữ liệu linh hoạt, đặc biệt trong các tình huống xảy ra sự cố, đồng thời giảm thiểu khối lượng công việc thủ công và hạn chế rủi ro do con người.</description></item><item><title>Blog 3</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html</guid><description>Cách CommBank xây dựng nền tảng giao dịch CommSec có độ sẵn sàng cao và vận hành bền vữngKris Severijns, Aaron Bull, Henry Zhao, và Terence Lum – 19/08/2025
-CommSec, công ty môi giới chứng khoán trực tuyến hàng đầu tại Úc và là công ty con của Commonwealth Bank of Australia (CommBank), hỗ trợ hàng triệu khách hàng gia tăng tài sản thông qua việc đầu tư dễ dàng, tiện lợi và chi phí hợp lý vào cả thị trường trong nước lẫn quốc tế.</description></item><item><title>Blog 4</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</guid><description>BLOG 4</description></item><item><title>Blog 5</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html</guid><description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description></item><item><title>Blog 6</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</guid><description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao ChépTác giả: Joe Chapman và Sebastian Leks - 12/01/2022
-Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</description></item><item><title>Blog 7</title><link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</guid><description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Translated Blogs :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</link>
+    <description>Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)&#xA;Blog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)&#xA;Blog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)&#xA;Blog 4: Doing task C…&#xA;Blog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog 1</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html</guid>
+      <description>Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả&#xD;Tác giả: Christoph Kappey, Dominik Goby, và Darius Kunce – 20/03/2025&#xA;Chủ đề: Kiến trúc, Thực tiễn tốt nhất, Trình độ trung cấp (200), Quản lý &amp; Điều hành, Hướng dẫn kỹ thuật&#xA;Hồ sơ quyết định kiến trúc (ADR) là công cụ giúp ghi lại và truyền đạt các quyết định quan trọng về quy trình và kiến trúc trong dự án kỹ thuật. Từ kinh nghiệm triển khai hơn 200 ADR ở nhiều dự án khác nhau, tác giả đã tổng hợp những cách làm hiệu quả giúp đơn giản hóa quy trình ra quyết định và nâng cao khả năng hợp tác trong nhóm.</description>
+    </item>
+    <item>
+      <title>Blog 2</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_2/index.html</guid>
+      <description>Định tuyến động sử dụng Máy chủ định tuyến AWS VPC&#xD;Ammar Latif và Akshay Choudhry - 02/09/2025&#xA;Amazon VPC Route Server cho phép triển khai cơ chế định tuyến động trong Amazon VPC bằng cách sử dụng giao thức BGP (Border Gateway Protocol). Với dịch vụ này, bạn có thể kiểm soát lưu lượng giữa các ứng dụng trên cloud và hệ thống on-premises một cách thông minh và hiệu quả hơn. BGP giúp bạn quản lý đường đi của dữ liệu linh hoạt, đặc biệt trong các tình huống xảy ra sự cố, đồng thời giảm thiểu khối lượng công việc thủ công và hạn chế rủi ro do con người.</description>
+    </item>
+    <item>
+      <title>Blog 3</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html</guid>
+      <description>Cách CommBank xây dựng nền tảng giao dịch CommSec có độ sẵn sàng cao và vận hành bền vững&#xD;Kris Severijns, Aaron Bull, Henry Zhao, và Terence Lum – 19/08/2025&#xA;CommSec, công ty môi giới chứng khoán trực tuyến hàng đầu tại Úc và là công ty con của Commonwealth Bank of Australia (CommBank), hỗ trợ hàng triệu khách hàng gia tăng tài sản thông qua việc đầu tư dễ dàng, tiện lợi và chi phí hợp lý vào cả thị trường trong nước lẫn quốc tế.</description>
+    </item>
+    <item>
+      <title>Blog 4</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</guid>
+      <description>BLOG 4</description>
+    </item>
+    <item>
+      <title>Blog 5</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+    </item>
+    <item>
+      <title>Blog 6</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</guid>
+      <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép&#xD;Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022&#xA;Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator&#xA;Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</description>
+    </item>
+    <item>
+      <title>Blog 7</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</guid>
+      <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng&#xD;Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022&#xA;Chủ đề: AWS CloudFormation, AWS Config&#xA;Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description>
+    </item>
+  </channel>
+</rss>
