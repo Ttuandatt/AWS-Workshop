@@ -1,5 +1,6 @@
 baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
 canonifyURLs = true
+relativeURLs = true
 publishDir = "public"
 languageCode = "en-us"
 title = "AWS Internship"
