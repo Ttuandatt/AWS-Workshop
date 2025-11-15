@@ -3,7 +3,7 @@
   <channel>
     <title>Blog 3 :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html</link>
-    <description>Cách CommBank xây dựng nền tảng giao dịch CommSec có độ sẵn sàng cao và vận hành bền vững&#xD;Kris Severijns, Aaron Bull, Henry Zhao, và Terence Lum – 19/08/2025&#xA;CommSec, công ty môi giới chứng khoán trực tuyến hàng đầu tại Úc và là công ty con của Commonwealth Bank of Australia (CommBank), hỗ trợ hàng triệu khách hàng gia tăng tài sản thông qua việc đầu tư dễ dàng, tiện lợi và chi phí hợp lý vào cả thị trường trong nước lẫn quốc tế.</description>
+    <description>Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xD;Tác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025&#xA;Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to&#xA;Giới thiệu&#xD;Các nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.xml" rel="self" type="application/rss+xml" />
