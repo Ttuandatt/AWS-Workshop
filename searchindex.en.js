@@ -24,14 +24,6 @@ var relearn_searchindex = [
     "uri": "/en/3-translated_blogs/blog_1/index.html"
   },
   {
-    "breadcrumb": "Internship Report \u003e Worklog",
-    "content": "Week 2 Objectives\rLearn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway - Translate a blog Translated Blog 3 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project 6 - Translate a blog 20/09/2025 20/09/2025 Translated Blog 4 - Update worklog",
-    "description": "Week 2 Objectives\rLearn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway - Translate a blog Translated Blog 3 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project 6 - Translate a blog 20/09/2025 20/09/2025 Translated Blog 4 - Update worklog",
-    "tags": [],
-    "title": "Week 2 Worklog",
-    "uri": "/en/1-worklog/1.2-week_2/index.html"
-  },
-  {
     "breadcrumb": "Internship Report",
     "content": "Week 1: Getting familiar with Hugo and basic AWS services\nWeek 2: Learn and pratice using VPC and its features\nWeek 3: Doing task B…\nWeek 4: Doing task C…\nWeek 5: Doing task D…\nWeek 6: Doing task E…\nWeek 7: Doing task F…\nWeek 8: Doing task G…\nWeek 9: Doing task H…\nWeek 10: Doing task I…\nWeek 11: Doing task J…\nWeek 12: Doing task K…",
     "description": "Week 1: Getting familiar with Hugo and basic AWS services\nWeek 2: Learn and pratice using VPC and its features\nWeek 3: Doing task B…\nWeek 4: Doing task C…\nWeek 5: Doing task D…\nWeek 6: Doing task E…\nWeek 7: Doing task F…\nWeek 8: Doing task G…\nWeek 9: Doing task H…\nWeek 10: Doing task I…\nWeek 11: Doing task J…\nWeek 12: Doing task K…",
@@ -54,6 +46,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Proposal",
     "uri": "/en/2-proposal/index.html"
+  },
+  {
+    "breadcrumb": "Internship Report \u003e Worklog",
+    "content": "Week 2 Objectives\rLearn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway - Translate a blog Translated Blog 3 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project 6 - Translate a blog 20/09/2025 20/09/2025 Translated Blog 4 - Update worklog",
+    "description": "Week 2 Objectives\rLearn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway - Translate a blog Translated Blog 3 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project 6 - Translate a blog 20/09/2025 20/09/2025 Translated Blog 4 - Update worklog",
+    "tags": [],
+    "title": "Week 2 Worklog",
+    "uri": "/en/1-worklog/1.2-week_2/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -92,7 +92,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 5",
+    "title": "Week 5 Worklog",
     "uri": "/en/1-worklog/1.5-week_5/index.html"
   },
   {
@@ -148,7 +148,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 6",
+    "title": "Week 6 Worklog",
     "uri": "/en/1-worklog/1.6-week_6/index.html"
   },
   {
@@ -164,7 +164,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 7",
+    "title": "Week 7 Worklog",
     "uri": "/en/1-worklog/1.7-week_7/index.html"
   },
   {
@@ -180,7 +180,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 8",
+    "title": "Week 8 Worklog",
     "uri": "/en/1-worklog/1.8-week_8/index.html"
   },
   {
@@ -188,7 +188,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 9",
+    "title": "Week 9 Worklog",
     "uri": "/en/1-worklog/1.9-week_9/index.html"
   },
   {
@@ -196,7 +196,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 10",
+    "title": "Week 10 Worklog",
     "uri": "/en/1-worklog/1.10-week_10/index.html"
   },
   {
@@ -204,7 +204,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 11",
+    "title": "Week 11 Worklog",
     "uri": "/en/1-worklog/1.11-week_11/index.html"
   },
   {
@@ -212,7 +212,7 @@ var relearn_searchindex = [
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
-    "title": "Week 12",
+    "title": "Week 12 Worklog",
     "uri": "/en/1-worklog/1.12-week_12/index.html"
   },
   {

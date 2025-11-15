@@ -6,7 +6,7 @@
     <description>Week 1: Getting familiar with Hugo and basic AWS services&#xA;Week 2: Learn and pratice using VPC and its features&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Sep 2025 13:37:01 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 10 Sep 2025 13:36:58 +0700</lastBuildDate>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week 1 Worklog</title>
@@ -18,7 +18,7 @@
     <item>
       <title>Week 2 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html</link>
-      <pubDate>Wed, 10 Sep 2025 13:36:23 +0700</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html</guid>
       <description>Week 2 Objectives&#xD;Learn and practice configure VPC and its related features Translate several blogs Update worklog structure Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway - Translate a blog Translated Blog 3 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project 6 - Translate a blog 20/09/2025 20/09/2025 Translated Blog 4 - Update worklog</description>
     </item>
@@ -37,58 +37,58 @@
       <description>Week 4 Objectives&#xD;Workshop Project: Planning &amp; Analysis (Define architecture, workload) Search and start creating architecture diagram Set up environment, workspace Define tasks of team members Translate several blogs Update worklog Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the architecture, necessary services of the workshop project 29/09/2025 29/09/2025 - Do reasearch about solutions for the architecture of the application Creating a Multi-Region Application with AWS Services – Part 1, Compute, Networking, and Security - Translate blog 5 Translated Blog 5 2 - Start creating the architecture diagram from the beginning 30/09/2025 30/09/2025 - Translate blog 6 Translated Blog 5 3 - Continue searching for sample solutions and apply to the architecture of the project 01/09/2025 01/09/2025 Deploy Stable Diffusion ComfyUI on AWS elastically and efficiently, Converting stateful application to stateless using AWS services 4 - Learn and practice using Route 53 02/09/2025 02/09/2025 Amazon Route 53 Basics Tutorial - Domain Registration, A Records, CNAME Records, Aliases, Subdomains - Continue searching for sample solutions and apply to the architecture of the project How UNiDAYS achieved AWS Region expansion in 3 weeks 5 - Translate blog 5 03/09/2025 03/09/2025 Translated Blog 5 - Update workshop proposal Proposal</description>
     </item>
     <item>
-      <title>Week 5</title>
+      <title>Week 5 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.5-week_5/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:34 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.5-week_5/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 6</title>
+      <title>Week 6 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:39 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 7</title>
+      <title>Week 7 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:43 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 8</title>
+      <title>Week 8 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.8-week_8/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:47 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.8-week_8/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 9</title>
+      <title>Week 9 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:50 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 10</title>
+      <title>Week 10 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.10-week_10/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:54 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.10-week_10/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 11</title>
+      <title>Week 11 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.11-week_11/index.html</link>
       <pubDate>Wed, 10 Sep 2025 13:36:58 +0700</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.11-week_11/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
-      <title>Week 12</title>
+      <title>Week 12 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.12-week_12/index.html</link>
-      <pubDate>Wed, 10 Sep 2025 13:37:01 +0700</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.12-week_12/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
