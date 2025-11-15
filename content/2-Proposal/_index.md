@@ -47,7 +47,7 @@ This hybrid design achieves **resilience, performance, and scalability** while m
 
 ### 3. Solution Architecture  
 
-{{< figurecaption src="/images/architecture-solution.png" caption="Figure 1. Architecture solution" >}}
+{{< figurecaption src="/images/todolist-architecture-2.jpg" caption="Figure 1. Architecture solution" >}}
 
 #### 3.1. Architecture Overview  
 - **Microservices:** Auth, Board, Task, Notification – deployed via ECS Fargate per region.  
