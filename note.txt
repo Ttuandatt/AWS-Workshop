@@ -1,8 +1,0 @@
-Khi chạy local, bạn có thể dùng:
-
-hugo server --baseURL http://localhost:1313/
-
-
-Khi build production để deploy:
-
-hugo --minify
