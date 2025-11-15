@@ -1,7 +1,7 @@
 baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
 publishDir = "public"
 languageCode = "en-us"
-title = "Daniel Phan Canh"
+title = "AWS Internship"
 theme = "relearn"
 
 defaultContentLanguage = "en"
@@ -18,6 +18,7 @@ home = [ "HTML", "RSS", "JSON"]
   showLanguageSelector = true
   themeVariant = ["relearn-light", "relearn-dark"]
   alwaysShowThemeSwitcher = true
+  devBaseURL = "http://localhost:1313"
 
 # ------------------------------
 # Ngôn ngữ
@@ -78,8 +79,3 @@ home = [ "HTML", "RSS", "JSON"]
     name = "Sharing and Feedback"
     url = "/feedback/"
     weight = 8
-
-# config.toml
-# baseURL cho local
-[params]
-  devBaseURL = "http://localhost:1313"
