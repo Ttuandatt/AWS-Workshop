@@ -1,4 +1,4 @@
-baseURL = "https://gnuh24.github.io/fcj-my-workshop/"
+baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
 publishDir = "public"
 languageCode = "en-us"
 title = "Daniel Phan Canh"
@@ -78,3 +78,8 @@ home = [ "HTML", "RSS", "JSON"]
     name = "Sharing and Feedback"
     url = "/feedback/"
     weight = 8
+
+# config.toml
+# baseURL cho local
+[params]
+  devBaseURL = "http://localhost:1313"
