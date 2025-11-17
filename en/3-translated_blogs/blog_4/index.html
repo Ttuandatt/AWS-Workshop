@@ -5,50 +5,46 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLITác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025
-Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to
-Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.">
+    <meta name="description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
+Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 4 :: Internship Report">
-    <meta name="twitter:description" content="Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLITác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025
-Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to
-Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.">
+    <meta name="twitter:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
+Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 4 :: Internship Report">
-    <meta property="og:description" content="Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLITác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025
-Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to
-Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.">
+    <meta property="og:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
+Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 4 :: Internship Report">
-    <meta itemprop="description" content="Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLITác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025
-Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to
-Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.">
-    <meta itemprop="wordCount" content="1174">
+    <meta itemprop="description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
+Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
+    <meta itemprop="wordCount" content="1996">
     <title>Blog 4 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_4/index.xml" rel="alternate" type="application/rss+xml" title="Blog 4 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763392483" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763392483" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763393097" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763393097" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763392483";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763393097";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763392483" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763393097" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763392483" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763392483" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763392483" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763392483" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763392483" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393097" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393097" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763393097" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763393097" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763393097" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -100,7 +96,7 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763392483" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763393097" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_4/index.html">
     <div id="R-body" class="default-animation">
@@ -132,12 +128,20 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#điểm-khó-khăn-khi-sử-dụng-argocd-theo-phương-pháp-truyền-thống">Điểm khó khăn khi sử dụng ArgoCD theo phương pháp truyền thống</a></li>
+    <li><a href="#cách-argocd-mcp-server-cùng-với-amazon-q-cli-giải-quyết-các-vấn-đề-trên">Cách ArgoCD MCP Server cùng với Amazon Q CLI giải quyết các vấn đề trên:</a></li>
+    <li><a href="#so-sánh-argocd-truyền-thống-với-argocd-mcp-server-và-amazon-q-cli">So sánh ArgoCD truyền thống với ArgoCD MCP Server và Amazon Q CLI</a></li>
+    <li><a href="#thiết-lập-môi-trường-của-bạn">Thiết lập môi trường của bạn</a>
       <ul>
-        <li><a href="#giới-thiệu">Giới thiệu</a></li>
-        <li><a href="#hướng-dẫn-giải-pháp">Hướng dẫn Giải pháp</a></li>
+        <li><a href="#các-điều-kiện-tiên-quyết">Các điều kiện tiên quyết</a></li>
+        <li><a href="#kết-nối-với-cụm-eks-của-bạn">Kết nối với cụm EKS của bạn</a></li>
+        <li><a href="#tạo-argocd-api-token">Tạo ArgoCD API token</a></li>
+        <li><a href="#tích-hợp-với-amazon-q-cli">Tích hợp với Amazon Q CLI</a></li>
+        <li><a href="#quản-lý-các-ứng-dụng-bằng-cách-sử-dụng-ngôn-ngữ-tự-nhiên">Quản lý các ứng dụng bằng cách sử dụng ngôn ngữ tự nhiên</a></li>
       </ul>
     </li>
+    <li><a href="#tổng-kết">Tổng kết</a></li>
   </ul>
 </nav>
                 </div>
@@ -195,8 +199,8 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
 
 <h1 id="blog-4">Blog 4</h1>
 
-<h1 id="khắc-phục-sự-cố-môi-trường-elastic-beanstalk-bằng-amazon-q-developer-cli">
-  Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI
+<h1 id="triển-khai-liên-tục-dựa-trên-phương-pháp-gitops-với-argocd-và-eks-bằng-cách-sử-dụng-ngôn-ngữ-tự-nhiên">
+  <strong>Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên</strong>
 
 
 
@@ -205,10 +209,8 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025</em><br>
-<em>Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to</em></p>
-<hr>
-<h3 id="giới-thiệu">
+</h1><p><em>Jagdish Komakula, Aditya Ambati và Anand Krishna Varanasi</em> | 17/07/2025 | <a href="https://aws.amazon.com/blogs/devops/category/compute/amazon-kubernetes-service/" rel="external"> Amazon Elastic Kubernetes Service</a>, <a href="https://aws.amazon.com/blogs/devops/category/amazon-q/" rel="external">Amazon Q</a>, <a href="https://aws.amazon.com/blogs/devops/category/amazon-q/amazon-q-developer/" rel="external">Amazon Q Developer</a>, <a href="https://aws.amazon.com/blogs/devops/category/developer-tools/" rel="external">Developer Tools</a>, <a href="https://aws.amazon.com/blogs/devops/category/post-types/technical-how-to/" rel="external">Technical How-to </a> | <a href="https://aws.amazon.com/blogs/devops/gitops-continuous-delivery-with-argocd-and-eks-using-natural-language/" rel="external">Permalink</a></p>
+<h2 id="giới-thiệu">
   Giới thiệu
 
 
@@ -218,17 +220,9 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các nhà phát triển làm việc với AWS nhận thấy <a href="https://aws.amazon.com/elasticbeanstalk/" rel="external">AWS Elastic Beanstalk</a> là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.</p>
-<p>Với việc <a href="https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-q-developer-cli-agent-command-line/" rel="external">phát hành</a> <a href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html" rel="external">CLI agent</a> mới được tăng cường của Amazon Q Developer, chúng ta đã thấy cách Q CLI có thể được sử dụng để chuyển đổi <a href="https://aws.amazon.com/blogs/devops/introducing-the-enhanced-command-line-interface-in-amazon-q-developer/" rel="external">phương pháp tiếp cận quy trình phát triển phần mềm</a>.</p>
-<p>Ngoài phát triển phần mềm, các nhà phát triển và đội ngũ DevOps có thể dành phần lớn thời gian của họ cho các tác vụ vận hành (operational tasks) như triển khai và kiểm thử mã của họ trên nhiều môi trường, bao gồm cả việc khắc phục sự cố các lỗi liên quan đến triển khai (deployment related failures) hoặc các vấn đề về tình trạng ứng dụng (application health issues). Các tính năng dựa trên tác nhân (agentic features) mới của Q CLI có thể được sử dụng để đơn giản hóa đáng kể quy trình này bằng cách giúp bạn xác định và giải quyết các vấn đề vận hành theo cách hiệu quả hơn.</p>
-<p>Khi khắc phục sự cố môi trường Elastic Beanstalk, Q CLI trở thành người bạn đồng hành không thể thiếu. Khi các môi trường hiển thị tình trạng sức khỏe bị suy giảm (degraded health) hoặc lỗi triển khai (deployment failures), các nhà phát triển có thể sử dụng Q CLI để nhanh chóng điều tra mà không cần phải điều hướng qua nhiều trang AWS console hoặc phân tích nhiều logs thủ công.</p>
-<p>Ví dụ, khi đối mặt với lỗi triển khai, bạn có thể chạy q chat để bắt đầu một cuộc trò chuyện mới và mô tả vấn đề. Q CLI có thể giúp phân tích instance logs, kiểm tra cấu hình môi trường (environment configurations), và xác định các cấu hình sai (misconfigurations) trong ứng dụng. Nó có thể lấy các thông báo lỗi liên quan từ Elastic Beanstalk logs và đề xuất các biện pháp khắc phục cụ thể dựa trên các mẫu lỗi mà nó nhận ra.</p>
-<p>Khi giải quyết các vấn đề về tình trạng sức khỏe (health issues), các nhà phát triển có thể yêu cầu Q CLI kiểm tra trạng thái môi trường, mức sử dụng tài nguyên (resource utilization) và các sự kiện gần đây. Nó có thể xác định xem một ứng dụng có đang gặp vấn đề thiếu bộ nhớ (out of memory problems), vấn đề kết nối (connectivity issues), hay lỗi liên quan đến dependency hay không. Q CLI cũng có thể kiểm tra application logs để tìm các lỗi lặp lại có thể gây ra suy giảm tình trạng sức khỏe (health degradation).</p>
-<p>Điều mà các nhà phát triển đánh giá cao nhất là cách Q CLI kết nối các điểm giữa các dịch vụ AWS khác nhau. Nếu một môi trường Elastic Beanstalk gặp sự cố do vấn đề cấu hình Amazon VPC cơ bản hoặc vấn đề quyền Amazon S3, Q CLI có thể xác định các kết nối này và cung cấp các giải pháp toàn diện (holistic solutions).</p>
-<p>Việc tiết kiệm thời gian là rất đáng kể – những gì trước đây mất hàng giờ điều tra trên nhiều trang AWS console giờ đây chỉ mất vài phút với các truy vấn Q CLI có mục tiêu. Điều này đã cải thiện đáng kể khả năng của các nhà phát triển trong việc duy trì các môi trường khỏe mạnh và nhanh chóng giải quyết các vấn đề khi chúng phát sinh.</p>
-<p>Dưới đây, chúng tôi sẽ hướng dẫn bạn một số ví dụ về cách bạn có thể sử dụng Q CLI để khắc phục một số sự cố mà bạn có thể gặp phải khi quản lý môi trường Elastic Beanstalk.</p>
-<h3 id="hướng-dẫn-giải-pháp">
-  Hướng dẫn Giải pháp
+</h2><p>ArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.</p>
+<h2 id="điểm-khó-khăn-khi-sử-dụng-argocd-theo-phương-pháp-truyền-thống">
+  Điểm khó khăn khi sử dụng ArgoCD theo phương pháp truyền thống
 
 
 
@@ -237,37 +231,320 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Điều kiện Tiên quyết</strong></p>
-<p>Nếu bạn muốn làm theo trên máy tính của riêng mình, vui lòng đảm bảo bạn hoàn thành các điều kiện tiên quyết sau:</p>
-<ol>
-<li>Một tài khoản AWS có quyền truy cập Elastic Beanstalk</li>
-<li>Sự quen thuộc cơ bản với các <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.html" rel="external">khái niệm</a> Elastic Beanstalk (environments, applications, deployments)</li>
-<li>AWS CLI <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" rel="external">được cài đặt</a> và cấu hình với các <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html" rel="external">quyền</a> thích hợp để truy cập tài nguyên Elastic Beanstalk, và thu thập logs</li>
-<li>AWS Q Developer CLI <a href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html" rel="external">được cài đặt</a> và thiết lập</li>
-<li>EB CLI <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html" rel="external">được cài đặt</a> và thiết lập (tùy chọn)</li>
-<li>Các môi trường web server Elastic Beanstalk đã <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.environments.html" rel="external">được tạo</a> để khắc phục sự cố
-Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elastic Beanstalk cụ thể với Q CLI. Tất cả các kịch bản dưới đây đều được kiểm tra với Amazon Q Developer CLI bằng gói đăng ký <a href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-pro-tier.html" rel="external">Pro tier</a> vì nó cung cấp giới hạn yêu cầu cao hơn (higher request limits), nhưng điều này không bắt buộc cho mục đích của bản demo này.</li>
+</h2><ul>
+<li>
+<p>Giao diện của ArgoCD và CLI được thiết kế cho người dùng có nền tảng công nghệ kỹ thuật chuyên sâu. Việc tích hợp tương tác với manifests YAML, hiểu mối quan hệ giữa các tài nguyên Kubernets, và việc khắc phục lỗi đồng bộ đòi hỏi kiến thức chuyên môn cao. Điều này hạn chế khả năng tiếp cập vào quy trình GitOps đối với các bên liên quan ít am hiểu công nghệ và làm tăng sự phụ thuộc vào các kỹ sư DevOps.</p>
+</li>
+<li>
+<p>Việc quản lý ArgoCD trên nhiều cụm (clusters) hoặc nhiều môi trường (environments) (sử dụng mô hình hub-spoke, per-cluster, hoặc grouped) tạo ra sự phức tạp đáng kể trong việc vận hành. Các nhóm phải xử lý nhiều instance ArgoCD, duy trì cấu hình nhất quán, và điều phối các triển khai, điều này có thể trở thành một nút thắt khi các quy mô dịch vụ ngày càng mở rộng.</p>
+</li>
+<li>
+<p>ArgoCD vượt trội trong việc đồng bộ và giám sát các tài nguyên Kubernetes nhưng thiếu cơ chế tích hợp sẵn cho các tác vụ tiền triển khai (ví dụ: quét hình ảnh) và hậu triển khai (ví dụ: việc kiểm tra tải). Điều này khiến các nhóm phải dựa vào các bộ công cụ bên ngoài hoặc các script tùy chỉnh, khiến quy trình triển khai bị phân mảnh và tăng thêm gánh nặng bảo trì.</p>
+</li>
+<li>
+<p>Việc chuyển ứng dụng giữa các môi trường (Dev -&gt; Test -&gt; Prod) không được tinh gọn một cách tự nhiên. Các nhóm phải tự mình điều phối thủ công hoặc viết script cho các quy trình chuyển đổi này, việc này làm chậm việc triển khai các bản vá lỗi khẩn cấp và làm phức tạp hóa quá trình phát hành.</p>
+</li>
+<li>
+<p>Khi các tổ chức áp dụng các chiến lược đa cụm (multi-cluster), việc quản lý quyền truy cập, RBAC và khả năng hiển thị tài nguyên của ArgoCD trên nhiều môi trường trở nên công kềnh, thường dẫn tới việc làm phân mảnh quy trình làm việc và tạo ra các lỗ hổng bảo mật tiềm ẩn.</p>
+</li>
+</ul>
+<h2 id="cách-argocd-mcp-server-cùng-với-amazon-q-cli-giải-quyết-các-vấn-đề-trên">
+  Cách ArgoCD MCP Server cùng với Amazon Q CLI giải quyết các vấn đề trên:
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>
+<p>Việc tích hợp máy chủ ArgoCD MCP với <a href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html" rel="external">Amazon Q CLI</a> về cơ bản đã thay đổi trải nghiệm người dùng bằng cách giới thiệu tương tác bằng ngôn ngữ tự nhiên cho các thao tác GitOps.</p>
+</li>
+<li>
+<p>Với MCP, người dùng có thể quản lý việc triển khai, giám sát trạng thái ứng dụng, và thực hiện thao tác đồng bộ hóa và khôi phục việc vận hành bằng cách sử dụng sử dụng ngôn ngữ giao tiếp thông thường thay vì các câu lệnh kỹ thuật (commands) hoặc YAML. Ví dụ, một người dùng có thể hỏi đơn giản là: &ldquo;Những ứng dụng nào đang không đồng bộ ở môi trường production?&rdquo; hay &ldquo;Đồng bộ ứng dụng api-service,&rdquo; và hệ thống sẽ thực hiện ngầm các lệnh gọi API ArgoCD phù hợp.</p>
+</li>
+<li>
+<p>Điều này giúp dân chủ hóa quyền truy cập vào GitOps, cho phép các thành viên trong nhóm ít chuyên kỹ thuật (như QA, các người quản lý sản phẩm hoặc kỹ sư hỗ trợ) có thể tương tác an toàn với các quy trình triển khai.</p>
+</li>
+<li>
+<p>Giao diện ngôn ngữ tự nhiên giúp loại bỏ độ phức tạp của việc quản lý đa cụm (multi-cluster) và đa môi trường (multi-environment). Người dùng có thể truy vấn hoặc thực hiện hành động trên các tài nguyên giữa các cụm mà không cần ghi nhớ tên tài nguyên, namespace hoặc endpoint API.</p>
+</li>
+<li>
+<p>MCP Server xử lý việc xác thực, quản lý session và xử lý lỗi mạnh mẽ, giảm nhu cầu khắc phục sự cố thủ công và viết script tùy chỉnh.</p>
+</li>
+<li>
+<p>Việc tích hợp cung cấp các phản hồi chi tiết, xử lý các endpoint thông minh, và các thông báo lỗi toàn diện, giúp cho việc chẩn đoán và giải quyết vấn đề trở nên dễ dàng hơn. Việc kiểm tra kiểu tĩnh hoàn toàn và cấu hình theo môi trường còn nâng cao thêm độ tin cậy và khả năng bảo trì.</p>
+</li>
+<li>
+<p>Bằng cách tận dụng khả năng mở rộng của Amazon Q CLI, người dùng được tiếp cận với các tích hợp sẵn và gợi ý theo ngữ cảnh, từ đó đẩy nhanh quy trình phát triển và triển khai.</p>
+</li>
+<li>
+<p>MCP Server cho phép các trợ lý AI và mô hình ngôn ngữ tự động hóa các tác vụ định kỳ, đề xuất hành động và thậm chí gỡ lỗi (debug) các vấn đề, hoạt động như một kỹ sư DevOps ảo. Điều này có thể giảm đáng kể công sức thủ công và tăng tốc độ phản hồi sự cố.</p>
+</li>
+</ul>
+<h2 id="so-sánh-argocd-truyền-thống-với-argocd-mcp-server-và-amazon-q-cli">
+  So sánh ArgoCD truyền thống với ArgoCD MCP Server và Amazon Q CLI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><table>
+  <thead>
+      <tr>
+          <th>Tính năng/Thách thức</th>
+          <th>ArgoCD truyền thống</th>
+          <th>MPC Server + Amazon Q CLI</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Giao diện người dùng</td>
+          <td>Giao diện kỹ thuật (UI/CLI), yêu cầu thao tác với YAML</td>
+          <td>Ngôn ngữ tự nhiên, tương tác hội thoại</td>
+      </tr>
+      <tr>
+          <td>Khả năng truy cập cho người không phải kỹ sư</td>
+          <td>Hạn chế</td>
+          <td>Mở rộng, dân chủ hóa</td>
+      </tr>
+      <tr>
+          <td>Quản lý đa cụm</td>
+          <td>Phức tạp, thủ công</td>
+          <td>Đơn giản hóa, được trừu tượng hóa</td>
+      </tr>
+      <tr>
+          <td>Tác vụ Tiền/Hậu Triển khai</td>
+          <td>Cần công cụ bên ngoài/script</td>
+          <td>Vẫn dùng công cụ bên ngoài, nhưng dễ gọi hơn</td>
+      </tr>
+      <tr>
+          <td>Chuyển đổi ứng dụng</td>
+          <td>Thủ công hoặc dùng script</td>
+          <td>Ngôn ngữ tự nhiên, điều phối dễ dàng hơn</td>
+      </tr>
+      <tr>
+          <td>Khắc phục sự cố</td>
+          <td>Mang tính kỹ thuật, dễ xảy ra lỗi</td>
+          <td>Được hướng dẫn, có hỗ trợ AI, phản hồi chi tiết</td>
+      </tr>
+      <tr>
+          <td>Tự động hóa</td>
+          <td>Yêu cầu viết script</td>
+          <td>Do AI/agent điều khiển, chủ động</td>
+      </tr>
+  </tbody>
+</table>
+<p>Bạn có thể thực hiện các <a href="https://github.com/akuity/argocd-mcp?tab=readme-ov-file#available-tools" rel="external">thao tác</a> sau bằng ngôn ngữ tự nhiên nhờ tích hợp Amazon Q CLI với ArgoCD MCP server:</p>
+<ul>
+<li>
+<p><strong>Quản lý ứng dụng</strong>: Liệt kê, khởi tạo, cập nhật và xóa các ứng dụng ArgoCD.</p>
+</li>
+<li>
+<p><strong>Thao tác đồng bộ</strong>: Kích hoạt đồng bộ và theo dõi trạng thái</p>
+</li>
+<li>
+<p><strong>Trực quan hóa cây tài nguyên</strong>: Xem cấu trúc phân cấp của các tài nguyên do ứng dụng quản lý</p>
+</li>
+<li>
+<p><strong>Giám sát trạng thái sức khỏe</strong>: Kiểm tra trạng thái sức khỏe của các ứng dụng và các tài nguyên của chúng.</p>
+</li>
+<li>
+<p><strong>Theo dõi sự kiện</strong>: Xem các sự kiện liên quan đến ứng dụng và tài nguyên.</p>
+</li>
+<li>
+<p><strong>Truy cập log</strong>: Truy xuất log từ các workload của ứng dụng.</p>
+</li>
+<li>
+<p><strong>Thực hiện hành động trên tài nguyên</strong>: Gọi các thao tác trên tài nguyên được quản lý bởi ứng dụng</p>
+</li>
+</ul>
+<h2 id="thiết-lập-môi-trường-của-bạn">
+  Thiết lập môi trường của bạn
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="các-điều-kiện-tiên-quyết">
+  Các điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Sau đây là các điều kiện tiên quyết cho việc thiết lập môi trường EKS của bạn, sau đó sẽ được quản lý bởi ArgoCD thông qua Amazon CLI.</p>
+<ul>
+<li>
+<p>Một tài khoản AWS với quyền thích hợp</p>
+</li>
+<li>
+<p>AWS CLI phiên bản 2.13.0 hoặc mới hơn</p>
+</li>
+<li>
+<p>Node.js phiên bản 18.0.0 hoặc mới hơn</p>
+</li>
+<li>
+<p>npm phiên bản 9.0.0 hoặc mới hơn</p>
+</li>
+<li>
+<p>Amazon Q CLI phiên bản 1.0.0 hoặc mới hơn (<code>npm install -g @aws/amazon-q-cli</code>)</p>
+</li>
+<li>
+<p>Một cụm EKS (phiên bản 1.27 hoặc mới hơn) đã được cài ArgoCD phiên bản 2.8 hoặc mới hơn</p>
+</li>
+</ul>
+<h3 id="kết-nối-với-cụm-eks-của-bạn">
+  Kết nối với cụm EKS của bạn
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>Sử dụng AWS CLI để cập nhật kubeconfig của bạn</li>
 </ol>
-<p><strong>Khắc phục sự cố tình trạng môi trường</strong></p>
-<p>Hãy xem xét một môi trường Elastic Beanstalk đang chạy Node.js 22 trên Amazon Linux 2023, nơi chúng ta sẽ triển khai một phiên bản ứng dụng mới. Sau khi triển khai một phiên bản ứng dụng mới vào môi trường Elastic Beanstalk dựa trên Node.js của chúng ta, chúng tôi nhận thấy rằng tình trạng sức khỏe (health status) của nó đã chuyển sang trạng thái “Warning” (Cảnh báo) với thông báo sau hiển thị trong các sự kiện môi trường (environment events):</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>100% of requests failing with HTTP 5xx errors</code></pre></div>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/img1-blog3.png" alt="Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe">
-    <figcaption><i>Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe</i></figcaption>
-  </figure>
-</div>
+<p><code>aws eks update-kubeconfig --name &lt;cluster_name&gt; --region &lt;region&gt; --role-arn &lt;iam_role_arn&gt;</code></p>
+<ol start="2">
+<li>Xác minh các pod ArgoCD đang chạy đúng cách trong namespace argocd</li>
+</ol>
+<p><code>kubectl get pods -n argocd</code></p>
+<ol start="3">
+<li>Truy cập giao diện người dùng ArgoCD server trên máy cục bộ bằng lệnh chuyển tiếp port</li>
+</ol>
+<p><code>kubectl port-forward svc/blueprints-addon-argocd-server -n argocd 8080:443</code></p>
+<h3 id="tạo-argocd-api-token">
+  Tạo ArgoCD API token
 
-<p>Thông báo sự kiện này có thể là kết quả của một số vấn đề, bao gồm nhưng không giới hạn ở lỗi ứng dụng Node.js, sự cố cấu hình reverse proxy, vấn đề sử dụng tài nguyên (resource utilization issues) v.v..</p>
-<p>Hãy sử dụng Q CLI để giúp chúng ta điều tra thêm. Chúng ta sẽ bắt đầu một cuộc trò chuyện mới với agent bằng cách chạy <code>q chat</code>, và hỏi câu hỏi sau:</p>
-<p><code>Why is my beanstalk environment nodejs-app in us-east-1 unhealthy? Check the logs if required, and recommend steps to resolve the issue</code> (Tại sao môi trường beanstalk nodejs-app của tôi ở us-east-1 không khỏe mạnh? Kiểm tra các logs nếu cần, và đề xuất các bước để giải quyết vấn đề)</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/gif1-blog3" alt="">
-    <figcaption><i></i></figcaption>
-  </figure>
-</div>
 
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>Truy cập vào <strong>ArgoCD UI</strong> tại <a href="https://localhost:8080" rel="external">https://localhost:8080</a></li>
+<li>Đăng nhập bằng thông tin đăng nhập của tài khoản admin</li>
+<li>Điều hướng đến User <strong>Settings &gt; API Tokens</strong></li>
+<li>Nhấp vào <strong>“Generate New”</strong> để tạo một token mới</li>
+<li>Tạo một tệp cấu hình Amazon Q CLI MCP tại đường dẫn <code>.amazonq/mcp.json</code> và cập nhật các giá trị <strong>ARGOCD_BASE_URL</strong> và <strong>ARGOCD_API_TOKEN</strong> sao cho phù hợp với thiết lập môi trường của bạn.</li>
+</ol>
+<h3 id="tích-hợp-với-amazon-q-cli">
+  Tích hợp với Amazon Q CLI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mcpServers&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;argocd-mcp-stdio&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;argocd-mcp@latest&#34;</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;stdio&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;env&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ARGOCD_BASE_URL&#34;</span>: <span style="color:#e6db74">&#34;&lt;ARGOCD_BASE_URL&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ARGOCD_API_TOKEN&#34;</span>: <span style="color:#e6db74">&#34;&lt;ARGOCD_API_TOKEN&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;NODE_TLS_REJECT_UNAUTHORIZED&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>Khi cấu hình xong, bạn có thể bắt đầu sử dụng câu lệnh bằng ngôn ngữ tự nhiên với Amazon Q CLI để tương tác với các ứng dụng ArgoCD của mình.</p>
+<h3 id="quản-lý-các-ứng-dụng-bằng-cách-sử-dụng-ngôn-ngữ-tự-nhiên">
+  Quản lý các ứng dụng bằng cách sử dụng ngôn ngữ tự nhiên
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Dưới đây là một số câu lệnh (prompts) để tương tác với các ứng dụng ArgoCD trong cụm EKS của bạn</p>
+<p><strong>Liệt kê ứng dụng Argo</strong></p>
+<p><strong>Câu lệnh</strong>: <code>List all ArgoCD applications in my cluster</code></p>
+<p><a href="#R-image-35c42ea3e7d6614036b13c892811da46" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-35c42ea3e7d6614036b13c892811da46"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-1.png"></a></p>
+<!-- raw HTML omitted -->
+<p><strong>Tạo ứng dụng ArgoCD mới</strong></p>
+<p><strong>Câu lệnh</strong>: <code>Create new argocd application using App name: game-2048   Repo: https://github.com/aws-ia/terraform-aws-eks-blueprints  Path: patterns/gitops/getting-started-argocd/k8s. Branch: main  Namespace: argocd</code></p>
+<p><a href="#R-image-e7a794a63119149d6c5342363eab09cb" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e7a794a63119149d6c5342363eab09cb"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png"></a></p>
+<!-- raw HTML omitted -->
+<p><strong>Xem trạng thái triển khai</strong></p>
+<p><strong>Câu lệnh</strong>: <code>Show me the resource tree for team-carmen app</code></p>
+<p><a href="#R-image-cb9b5a281e38a2aa9a4d461ab636d1b1" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-8.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-cb9b5a281e38a2aa9a4d461ab636d1b1"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-8.png"></a></p>
+<!-- raw HTML omitted -->
+<p><strong>Đồng bộ hóa ứng dụng</strong></p>
+<p><strong>Câu lệnh</strong>: <code>Show me the applications that’s out of sync</code></p>
+<p><a href="#R-image-22b9c85cebd7cd81d2f34a9a49d80a6d" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-22b9c85cebd7cd81d2f34a9a49d80a6d"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png"></a></p>
+<!-- raw HTML omitted -->
+<p><strong>Câu lệnh</strong>: <code>Sync the application</code></p>
+<p><a href="#R-image-02bcddc2a5313a348eb8b093cb5f650d" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-02bcddc2a5313a348eb8b093cb5f650d"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png"></a></p>
+<!-- raw HTML omitted -->
+<p>Amazon Q sẽ:</p>
+<ul>
+<li>Khởi tạo hoạt động đồng bộ cho ứng dụng đã chỉ định</li>
+<li>Giám sát quá trình động bộ hóa</li>
+<li>Báo trạng thái cuối cùng của hoạt động đồng bộ hóa</li>
+</ul>
+<p><strong>Kiểm tra sức khỏe và giám sát</strong></p>
+<p><strong>Câu lệnh</strong>: <code>Check the health of all resources in the team-geordie application</code></p>
+<p><a href="#R-image-bdb49354f8f8c6089c26bc617d093507" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-bdb49354f8f8c6089c26bc617d093507"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png"></a></p>
+<!-- raw HTML omitted -->
+<p>Amazon Q sẽ:</p>
+<ul>
+<li>Truy vấn trạng thái sức khỏe của tất cả tài nguyên</li>
+<li>Xác định bất cứ thành phần nào không lành mạnh</li>
+<li>Cung cấp các khuyến nghị để giải quyết các vấn đề</li>
+</ul>
+<p><strong>Câu lệnh</strong>: <code>Show me the logs for the failing pod in the team-platform application</code></p>
+<p><a href="#R-image-5a50df3afc561a8c4bc9ec85cd46c8c0" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5a50df3afc561a8c4bc9ec85cd46c8c0"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png"></a></p>
+<!-- raw HTML omitted -->
+<p>Amazon Q sẽ:</p>
+<ul>
+<li>Xác định các pod gặp sự cố</li>
+<li>Truy vấn và hiển thị các log có liên quan</li>
+<li>Làm nổi bật các thông báo lỗi tiềm ẩn</li>
+</ul>
+<h2 id="tổng-kết">
+  Tổng kết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Việc tích hợp Amazon Q CLI với ArgoCD thông qua MCP server đánh dấu một bước tiến mang tính chuyển đổi trong việc quản lý Kubernets, kết hợp khả năng GitOps của ArgoCD với công nghệ xử lý ngôn ngữ tự nhiên của Amazon Q. Bằng cách chuyển đổi các thao tác phức tạp trên Kubernets thành các tương tác hội thoại đơn giản, giải pháp này cho phép các nhóm có thể tập trung vào điều thực sự quan trọng - tạo ra giá trị cho doanh nghiệp. Hơn là dành thời gian ghi nhớ các lệnh hoặc vật lộn với những kỹ thuật phức tạp, giờ đây các nhóm có thể quản lý hạ tầng cloud của họ thông qua đối thoại tự nhiên, giúp hành trình cloud-native trở nên dễ tiếp cận và hiệu quả hơn cho mọi người. Sẵn sàng cho việc chuyển đổi trải nghiệm EKS và ArgoCD của bạn chưa? Hãy thử tích hợp Amazon Q CLI với ArgoCD MCP ngay và khám phá lý do vì sao các đội DevOps đang đưa nó vào bộ công cụ thiết yếu của họ.</p>
 
   <footer class="footline">
   </footer>
@@ -379,8 +656,8 @@ Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elas
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763392483" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763392483" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763393097" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763393097" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

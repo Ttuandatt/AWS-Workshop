@@ -3,7 +3,7 @@
   <channel>
     <title>Week 8 Worklog :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.8-week_8/index.html</link>
-    <description>Week 8 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Check the services code</description>
+    <description>Week 8 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.8-week_8/index.xml" rel="self" type="application/rss+xml" />
