@@ -56,6 +56,14 @@ var relearn_searchindex = [
     "uri": "/en/1-worklog/1.2-week_2/index.html"
   },
   {
+    "breadcrumb": "Internship Report",
+    "content": "Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)\nBlog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)\nBlog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)\nBlog 4: Doing task C…\nBlog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)\nWeek 6: Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép(30/09/2025 - W4)\nWeek 7: Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng(30/09/2025 - W4)\nWeek 8: Doing task G…\nWeek 9: Doing task H…\nWeek 10: Doing task I…\nWeek 11: Doing task J…\nWeek 12: Doing task K…",
+    "description": "Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)\nBlog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)\nBlog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)\nBlog 4: Doing task C…\nBlog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)",
+    "tags": [],
+    "title": "Translated Blogs",
+    "uri": "/en/3-translated_blogs/index.html"
+  },
+  {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
     "content": "Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI\rTác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025\nChủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to\nGiới thiệu\rCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.\nVới việc phát hành CLI agent mới được tăng cường của Amazon Q Developer, chúng ta đã thấy cách Q CLI có thể được sử dụng để chuyển đổi phương pháp tiếp cận quy trình phát triển phần mềm.\nNgoài phát triển phần mềm, các nhà phát triển và đội ngũ DevOps có thể dành phần lớn thời gian của họ cho các tác vụ vận hành (operational tasks) như triển khai và kiểm thử mã của họ trên nhiều môi trường, bao gồm cả việc khắc phục sự cố các lỗi liên quan đến triển khai (deployment related failures) hoặc các vấn đề về tình trạng ứng dụng (application health issues). Các tính năng dựa trên tác nhân (agentic features) mới của Q CLI có thể được sử dụng để đơn giản hóa đáng kể quy trình này bằng cách giúp bạn xác định và giải quyết các vấn đề vận hành theo cách hiệu quả hơn.\nKhi khắc phục sự cố môi trường Elastic Beanstalk, Q CLI trở thành người bạn đồng hành không thể thiếu. Khi các môi trường hiển thị tình trạng sức khỏe bị suy giảm (degraded health) hoặc lỗi triển khai (deployment failures), các nhà phát triển có thể sử dụng Q CLI để nhanh chóng điều tra mà không cần phải điều hướng qua nhiều trang AWS console hoặc phân tích nhiều logs thủ công.\nVí dụ, khi đối mặt với lỗi triển khai, bạn có thể chạy q chat để bắt đầu một cuộc trò chuyện mới và mô tả vấn đề. Q CLI có thể giúp phân tích instance logs, kiểm tra cấu hình môi trường (environment configurations), và xác định các cấu hình sai (misconfigurations) trong ứng dụng. Nó có thể lấy các thông báo lỗi liên quan từ Elastic Beanstalk logs và đề xuất các biện pháp khắc phục cụ thể dựa trên các mẫu lỗi mà nó nhận ra.\nKhi giải quyết các vấn đề về tình trạng sức khỏe (health issues), các nhà phát triển có thể yêu cầu Q CLI kiểm tra trạng thái môi trường, mức sử dụng tài nguyên (resource utilization) và các sự kiện gần đây. Nó có thể xác định xem một ứng dụng có đang gặp vấn đề thiếu bộ nhớ (out of memory problems), vấn đề kết nối (connectivity issues), hay lỗi liên quan đến dependency hay không. Q CLI cũng có thể kiểm tra application logs để tìm các lỗi lặp lại có thể gây ra suy giảm tình trạng sức khỏe (health degradation).\nĐiều mà các nhà phát triển đánh giá cao nhất là cách Q CLI kết nối các điểm giữa các dịch vụ AWS khác nhau. Nếu một môi trường Elastic Beanstalk gặp sự cố do vấn đề cấu hình Amazon VPC cơ bản hoặc vấn đề quyền Amazon S3, Q CLI có thể xác định các kết nối này và cung cấp các giải pháp toàn diện (holistic solutions).\nViệc tiết kiệm thời gian là rất đáng kể – những gì trước đây mất hàng giờ điều tra trên nhiều trang AWS console giờ đây chỉ mất vài phút với các truy vấn Q CLI có mục tiêu. Điều này đã cải thiện đáng kể khả năng của các nhà phát triển trong việc duy trì các môi trường khỏe mạnh và nhanh chóng giải quyết các vấn đề khi chúng phát sinh.\nDưới đây, chúng tôi sẽ hướng dẫn bạn một số ví dụ về cách bạn có thể sử dụng Q CLI để khắc phục một số sự cố mà bạn có thể gặp phải khi quản lý môi trường Elastic Beanstalk.\nHướng dẫn Giải pháp\rĐiều kiện Tiên quyết\nNếu bạn muốn làm theo trên máy tính của riêng mình, vui lòng đảm bảo bạn hoàn thành các điều kiện tiên quyết sau:\nMột tài khoản AWS có quyền truy cập Elastic Beanstalk Sự quen thuộc cơ bản với các khái niệm Elastic Beanstalk (environments, applications, deployments) AWS CLI được cài đặt và cấu hình với các quyền thích hợp để truy cập tài nguyên Elastic Beanstalk, và thu thập logs AWS Q Developer CLI được cài đặt và thiết lập EB CLI được cài đặt và thiết lập (tùy chọn) Các môi trường web server Elastic Beanstalk đã được tạo để khắc phục sự cố Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elastic Beanstalk cụ thể với Q CLI. Tất cả các kịch bản dưới đây đều được kiểm tra với Amazon Q Developer CLI bằng gói đăng ký Pro tier vì nó cung cấp giới hạn yêu cầu cao hơn (higher request limits), nhưng điều này không bắt buộc cho mục đích của bản demo này. Khắc phục sự cố tình trạng môi trường\nHãy xem xét một môi trường Elastic Beanstalk đang chạy Node.js 22 trên Amazon Linux 2023, nơi chúng ta sẽ triển khai một phiên bản ứng dụng mới. Sau khi triển khai một phiên bản ứng dụng mới vào môi trường Elastic Beanstalk dựa trên Node.js của chúng ta, chúng tôi nhận thấy rằng tình trạng sức khỏe (health status) của nó đã chuyển sang trạng thái “Warning” (Cảnh báo) với thông báo sau hiển thị trong các sự kiện môi trường (environment events):\n100% of requests failing with HTTP 5xx errors\rHình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe\rThông báo sự kiện này có thể là kết quả của một số vấn đề, bao gồm nhưng không giới hạn ở lỗi ứng dụng Node.js, sự cố cấu hình reverse proxy, vấn đề sử dụng tài nguyên (resource utilization issues) v.v..\nHãy sử dụng Q CLI để giúp chúng ta điều tra thêm. Chúng ta sẽ bắt đầu một cuộc trò chuyện mới với agent bằng cách chạy q chat, và hỏi câu hỏi sau:\nWhy is my beanstalk environment nodejs-app in us-east-1 unhealthy? Check the logs if required, and recommend steps to resolve the issue (Tại sao môi trường beanstalk nodejs-app của tôi ở us-east-1 không khỏe mạnh? Kiểm tra các logs nếu cần, và đề xuất các bước để giải quyết vấn đề)",
     "description": "Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI\rTác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025\nChủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to\nGiới thiệu\rCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.",
@@ -80,6 +88,14 @@ var relearn_searchindex = [
     "uri": "/en/3-translated_blogs/blog_4/index.html"
   },
   {
+    "breadcrumb": "Internship Report",
+    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "tags": [],
+    "title": "Events Participated",
+    "uri": "/en/4-events_participated/index.html"
+  },
+  {
     "breadcrumb": "Internship Report \u003e Worklog",
     "content": "Week 4 Objectives\rBegin coding the backend authentication service and frontend Learn and practice S3 Explore API Gateway Translate technical blogs. Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the architecture, backend and front end configuration 20/10/2025 20/10/2025 - Translate blog Translated Blog 1 2 - Learn and practice S3 service 21/10/2025 21/10/2025 S3 lesson - Code backend Authentication Service 3 - Code backend Authentication Service 22/10/2025 22/10/2025 - Code frontend 4 - Learn and practice API Gateway service 23/10/2025 23/10/2025 AWS API Gateway Introduction, Tạo API sử dụng Amazon API Gateway AWS Serverless Development Journey - Code backend Authentication Service - Code frontend - Translate blog Translated Blog 2, Translated Blog 3 5 - Code backend Authentication Service 24/10/2025 24/10/2025 - Code frontend - Translate blog Translated Blog 4, Translated Blog 5",
     "description": "Week 4 Objectives\rBegin coding the backend authentication service and frontend Learn and practice S3 Explore API Gateway Translate technical blogs. Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the architecture, backend and front end configuration 20/10/2025 20/10/2025 - Translate blog Translated Blog 1 2 - Learn and practice S3 service 21/10/2025 21/10/2025 S3 lesson - Code backend Authentication Service 3 - Code backend Authentication Service 22/10/2025 22/10/2025 - Code frontend 4 - Learn and practice API Gateway service 23/10/2025 23/10/2025 AWS API Gateway Introduction, Tạo API sử dụng Amazon API Gateway AWS Serverless Development Journey - Code backend Authentication Service - Code frontend - Translate blog Translated Blog 2, Translated Blog 3 5 - Code backend Authentication Service 24/10/2025 24/10/2025 - Code frontend - Translate blog Translated Blog 4, Translated Blog 5",
@@ -89,43 +105,11 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Internship Report",
-    "content": "Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)\nBlog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)\nBlog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)\nBlog 4: Doing task C…\nBlog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)\nWeek 6: Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép(30/09/2025 - W4)\nWeek 7: Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng(30/09/2025 - W4)\nWeek 8: Doing task G…\nWeek 9: Doing task H…\nWeek 10: Doing task I…\nWeek 11: Doing task J…\nWeek 12: Doing task K…",
-    "description": "Blog 1: Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả (12/09/2025 - W1)\nBlog 2: Định tuyến động sử dụng Máy chủ định tuyến AWS VPC (14/09/2025 - W1)\nBlog 3: Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.(18/09/2025 - W2)\nBlog 4: Doing task C…\nBlog 5: Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật (29/09/2025 - W4)",
-    "tags": [],
-    "title": "Translated Blogs",
-    "uri": "/en/3-translated_blogs/index.html"
-  },
-  {
-    "breadcrumb": "Internship Report",
-    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "tags": [],
-    "title": "Events Participated",
-    "uri": "/en/4-events-participated/index.html"
-  },
-  {
-    "breadcrumb": "Internship Report",
     "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
     "tags": [],
     "title": "Workshop",
     "uri": "/en/5-workshop/index.html"
-  },
-  {
-    "breadcrumb": "Internship Report",
-    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "tags": [],
-    "title": "Self Assesment",
-    "uri": "/en/6-self-assesment/index.html"
-  },
-  {
-    "breadcrumb": "Internship Report",
-    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
-    "tags": [],
-    "title": "Sharing and Feedback",
-    "uri": "/en/7-sharing-and-feedback/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -152,6 +136,14 @@ var relearn_searchindex = [
     "uri": "/en/3-translated_blogs/blog_6/index.html"
   },
   {
+    "breadcrumb": "Internship Report",
+    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "tags": [],
+    "title": "Self Assesment",
+    "uri": "/en/6-self-assesment/index.html"
+  },
+  {
     "breadcrumb": "Internship Report \u003e Worklog",
     "content": "Week 6 Objectives\rContinue frontend and backend development Explore Elasticache for Redis and Amazon RDS services Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 03/11/2025 03/11/2025 - Code backend Authentication Service, User Service - Code frontend 2 - Learn about Elasticache for Redis 04/10/2025 04/10/2025 Amazon AWS ElastiCache Deployment, AWS Elasticache Redis Creation and redis-cli Configuration step by step process - Code backend Authentication Service, User Service - Code frontend 3 - Update worklog 05/11/2025 05/11/2025 - Code backend Authentication Service, User Service - Code frontend 4 - Learn and practice Amazon RDS 06/11/2025 06/11/2025 Module 06-02 - Amazon RDS \u0026 Amazon Aurora, Module 06-Lab05-2.3 - Create RDS Security group, Module 06-Lab05-4 - Create RDS database instance - Code backend Authentication Service, User Service - Code frontend 5 - Code backend Authentication Service, User Service 07/11 07/11/2025 - Code frontend - Update worklog",
     "description": "Week 6 Objectives\rContinue frontend and backend development Explore Elasticache for Redis and Amazon RDS services Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 03/11/2025 03/11/2025 - Code backend Authentication Service, User Service - Code frontend 2 - Learn about Elasticache for Redis 04/10/2025 04/10/2025 Amazon AWS ElastiCache Deployment, AWS Elasticache Redis Creation and redis-cli Configuration step by step process - Code backend Authentication Service, User Service - Code frontend 3 - Update worklog 05/11/2025 05/11/2025 - Code backend Authentication Service, User Service - Code frontend 4 - Learn and practice Amazon RDS 06/11/2025 06/11/2025 Module 06-02 - Amazon RDS \u0026 Amazon Aurora, Module 06-Lab05-2.3 - Create RDS Security group, Module 06-Lab05-4 - Create RDS database instance - Code backend Authentication Service, User Service - Code frontend 5 - Code backend Authentication Service, User Service 07/11 07/11/2025 - Code frontend - Update worklog",
@@ -166,6 +158,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Blog 7",
     "uri": "/en/3-translated_blogs/blog_7/index.html"
+  },
+  {
+    "breadcrumb": "Internship Report",
+    "content": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "description": "Chapter X\rSome Chapter title\rLorem Ipsum.",
+    "tags": [],
+    "title": "Sharing and Feedback",
+    "uri": "/en/7-sharing_and_feedback/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",

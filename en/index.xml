@@ -6,12 +6,12 @@
     <description>Team Information&#xD;Full Name Phone Number Email Class Unversity Phan Canh Tuan Dat 0867829257 pcanhtuandat@gmail.com DCT1226 Sai Gon University Ngo Tuan Hung 0776136425 hungnt.020404@gmail.com DKP1221 Sai Gon University Le Trung Kien 0931261009 trungkien1862@gmail.com DCT1213 Sai Gon University Duong Binh Minh 055578938 duongbinhminh10032004@gmail.com DCT1226 Sai Gon University Internship Company: Amazon Web Services Vietnam Co., Ltd.&#xA;Internship Position: FCJ Cloud Intern&#xA;Internship Duration: From 12/08/2025 to …</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Sep 2025 10:59:48 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 09 Sep 2025 10:57:21 +0700</lastBuildDate>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</link>
-      <pubDate>Tue, 09 Sep 2025 10:59:48 +0700</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</guid>
       <description>Week 1: Orientation &amp; Project Setup&#xA;Week 2: Core AWS Basics &amp; Project Planning&#xA;Week 3: System Design &amp; Intermediate AWS Services&#xA;Week 4: Authentication Development &amp; API Foundations&#xA;Week 5: User Service Development &amp; Scaling Concepts&#xA;Week 6: Database &amp; Caching Integration&#xA;Week 7: Advanced Services &amp; Deployment Preparation&#xA;Week 8: Experimental Implementation &amp; Deployment&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
     </item>
@@ -31,9 +31,9 @@
     </item>
     <item>
       <title>Events Participated</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events-participated/index.html</link>
-      <pubDate>Tue, 09 Sep 2025 10:56:36 +0700</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events-participated/index.html</guid>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
@@ -46,15 +46,15 @@
     <item>
       <title>Self Assesment</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link>
-      <pubDate>Tue, 09 Sep 2025 10:55:07 +0700</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
       <title>Sharing and Feedback</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing-and-feedback/index.html</link>
-      <pubDate>Tue, 09 Sep 2025 10:53:07 +0700</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing-and-feedback/index.html</guid>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
   </channel>
