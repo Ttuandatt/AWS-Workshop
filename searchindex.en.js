@@ -185,8 +185,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
-    "content": "Week 7 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Check the services code",
-    "description": "Week 7 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Check the services code",
+    "content": "Week 8 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Check the services code",
+    "description": "Week 8 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Check the services code",
     "tags": [],
     "title": "Week 8 Worklog",
     "uri": "/en/1-worklog/1.8-week_8/index.html"
