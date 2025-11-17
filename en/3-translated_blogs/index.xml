@@ -48,7 +48,7 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</guid>
-      <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép&#xD;Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022&#xA;Chủ đề: Amazon Aurora, Amazon DocumentDB, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift, Amazon Simple Storage Service (S3), Architecture, AWS Backup, AWS DataSync, AWS Global Accelerator&#xA;Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.</description>
+      <description>Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xD;Tác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025&#xA;Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to&#xA;Giới thiệu&#xD;Các nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.</description>
     </item>
     <item>
       <title>Blog 7</title>
@@ -56,6 +56,41 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</guid>
       <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng&#xD;Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022&#xA;Chủ đề: AWS CloudFormation, AWS Config&#xA;Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description>
+    </item>
+    <item>
+      <title>Blog 8</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+    </item>
+    <item>
+      <title>Blog 9</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+    </item>
+    <item>
+      <title>Blog 10</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_10/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_10/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+    </item>
+    <item>
+      <title>Blog 11</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+    </item>
+    <item>
+      <title>Blog 12</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_12/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_12/index.html</guid>
+      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
     </item>
   </channel>
 </rss>

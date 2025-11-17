@@ -9,22 +9,22 @@
 Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blog 5 :: Internship Report">
+    <meta name="twitter:title" content="Blog 11 :: Internship Report">
     <meta name="twitter:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
 Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html">
     <meta property="og:site_name" content="Internship Report">
-    <meta property="og:title" content="Blog 5 :: Internship Report">
+    <meta property="og:title" content="Blog 11 :: Internship Report">
     <meta property="og:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
 Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Blog 5 :: Internship Report">
+    <meta itemprop="name" content="Blog 11 :: Internship Report">
     <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
 Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
     <meta itemprop="wordCount" content="3110">
-    <title>Blog 5 :: Internship Report</title>
-    <link href="../../../en/3-translated_blogs/blog_5/index.xml" rel="alternate" type="application/rss+xml" title="Blog 5 :: Internship Report">
+    <title>Blog 11 :: Internship Report</title>
+    <link href="../../../en/3-translated_blogs/blog_11/index.xml" rel="alternate" type="application/rss+xml" title="Blog 11 :: Internship Report">
     <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763370728" rel="stylesheet">
     <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763370728" defer></script>
     <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763370728" defer></script>
@@ -49,7 +49,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = `.min`;
-      window.relearn.path='\/3-translated_blogs\/blog_5\/index.html';
+      window.relearn.path='\/3-translated_blogs\/blog_11\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
@@ -98,7 +98,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
     </script>
     <link href="../../../AWS-Workshop/css/custom.css?1763370728" rel="stylesheet">
   </head>
-  <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_5/index.html">
+  <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_11/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -146,7 +146,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 5</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 11</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -157,7 +157,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_4/index.html" title="Blog 4 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_10/index.html" title="Blog 10 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -167,7 +167,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_6/index.html" title="Blog 6 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/3-translated_blogs/blog_12/index.html" title="Blog 12 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -195,7 +195,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
   <header class="headline">
   </header>
 
-<h1 id="blog-5">Blog 5</h1>
+<h1 id="blog-11">Blog 11</h1>
 
 <h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-1-tính-toán-mạng-và-bảo-mật">
   Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
@@ -452,13 +452,13 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_3/index.html"> <b> 3.3. </b>Blog 3</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_4/index.html"> <b> 3.4. </b>Blog 4</a></li>
-            <li class="active " data-nav-url="../../../en/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_5/index.html"> <b> 3.5. </b>Blog 5</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_7/index.html"> <b> 3.7. </b>Blog 7</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_8/index.html"> <b> 3.8. </b>Blog 8</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_9/index.html"> <b> 3.9. </b>Blog 9</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_10/index.html"> <b> 3.10. </b>Blog 10</a></li>
-            <li class="" data-nav-url="../../../en/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_11/index.html"> <b> 3.11. </b>Blog 11</a></li>
+            <li class="active " data-nav-url="../../../en/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_11/index.html"> <b> 3.11. </b>Blog 11</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_12/index.html"> <b> 3.12. </b>Blog 12</a></li></ul></li>
             <li class="" data-nav-url="../../../en/4-events-participated/index.html"><a class="padding" href="../../../en/4-events-participated/index.html"><b>4. </b>Events Participated</a></li>
             <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
@@ -483,7 +483,7 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
                 <div class="control-style">
                   <label class="a11y-only" for="R-select-language">Language</label>
                   <select id="R-select-language">
-                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_5/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_11/index.html" lang="en" selected data-selected>English</option>
                   </select>
                 </div>
                 <div class="clear"></div>
