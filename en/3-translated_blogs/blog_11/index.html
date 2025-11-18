@@ -5,46 +5,54 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="description" content="Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, và David MacDonald
+Ngày: 01 tháng 8 năm 2025
+Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 11 :: Internship Report">
-    <meta name="twitter:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="twitter:description" content="Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, và David MacDonald
+Ngày: 01 tháng 8 năm 2025
+Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 11 :: Internship Report">
-    <meta property="og:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta property="og:description" content="Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, và David MacDonald
+Ngày: 01 tháng 8 năm 2025
+Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 11 :: Internship Report">
-    <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
-    <meta itemprop="wordCount" content="3110">
+    <meta itemprop="description" content="Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, và David MacDonald
+Ngày: 01 tháng 8 năm 2025
+Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.">
+    <meta itemprop="wordCount" content="3463">
     <title>Blog 11 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_11/index.xml" rel="alternate" type="application/rss+xml" title="Blog 11 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763448698" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763448698" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763449266" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763449266" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763448698";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763449266";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763449266" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763448698" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763448698" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763448698" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763449266" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763449266" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763449266" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763449266" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763449266" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -96,7 +104,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763448698" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763449266" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_11/index.html">
     <div id="R-body" class="default-animation">
@@ -130,14 +138,14 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
   <ul>
     <li>
       <ul>
-        <li><a href="#những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">Những điều cần cân nhắc trước khi bắt đầu</a></li>
-        <li><a href="#quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">Quản lý danh tính và truy cập trên nhiều Region</a></li>
-        <li><a href="#mã-hóa-trên-nhiều-region">Mã hóa trên nhiều Region</a></li>
-        <li><a href="#kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">Kiểm toán và khả năng quan sát trên nhiều Region</a></li>
-        <li><a href="#xây-dựng-mạng-toàn-cầu">Xây dựng mạng toàn cầu</a></li>
-        <li><a href="#xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">Xây dựng và quản lý lớp tính toán (compute layer)</a></li>
-        <li><a href="#đưa-tất-cả-lại-với-nhau">Đưa tất cả lại với nhau</a></li>
-        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+        <li><a href="#giới-thiệu">Giới thiệu</a></li>
+        <li><a href="#điều-kiện-tiên-quyết">Điều kiện tiên quyết</a></li>
+        <li><a href="#các-vấn-đề-do-bot-ai-gây-ra">Các vấn đề do bot AI gây ra</a></li>
+        <li><a href="#xác-định-quy-mô-của-hoạt-động-bot-ai">Xác định quy mô của hoạt động bot AI</a></li>
+        <li><a href="#quản-lý-các-vấn-đề-do-bot-ai-gây-ra">Quản lý các vấn đề do bot AI gây ra</a></li>
+        <li><a href="#chặn-bot-ai-sớm-bằng-robotstxt">Chặn bot AI sớm bằng robots.txt</a></li>
+        <li><a href="#sử-dụng-aws-waf">Sử dụng AWS WAF</a></li>
+        <li><a href="#kết-luận">Kết luận:</a></li>
       </ul>
     </li>
   </ul>
@@ -197,8 +205,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 <h1 id="blog-11">Blog 11</h1>
 
-<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-1-tính-toán-mạng-và-bảo-mật">
-  Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
+<h1 id="làm-thế-nào-để-quản-lý-bot-ai-bằng-aws-waf-và-tăng-cường-bảo-mật">
+  Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật
 
 
 
@@ -207,13 +215,12 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021</em></p>
-<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-cloudfront/" rel="external">Amazon CloudFront</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-ec2/" rel="external">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-elastic-block-storage-ebs/" rel="external">Amazon Elastic Block Store (Amazon EBS)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-route-53/" rel="external">Amazon Route 53</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-vpc/" rel="external">Amazon VPC</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudtrail/" rel="external">AWS CloudTrail</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external">AWS Global Accelerator</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-identity-and-access-management-iam/" rel="external">AWS Identity and Access Management (IAM)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Secrets Manager</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Security Hub</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Transit Gateway</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Well-Architected Permalink Share</a></em></p>
+</h1><p><strong>Tác giả:</strong> <a href="https://aws.amazon.com/" rel="external">Kartik Bheemisetty</a>, và <a href="https://aws.amazon.com/" rel="external">David MacDonald</a></p>
+<p><strong>Ngày:</strong> 01 tháng 8 năm 2025</p>
+<p><strong>Thể loại:</strong> AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng</p>
 <hr>
-<p>Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.</p>
-<p>Trong loạt blog gồm 3 phần này, chúng tôi sẽ chọn lọc từ hơn 200 dịch vụ đó và tập trung vào những dịch vụ có tính năng cụ thể hỗ trợ bạn xây dựng ứng dụng đa vùng. Trong Phần 1, chúng ta sẽ xây dựng nền tảng với các dịch vụ bảo mật, mạng, và tính toán của AWS. Ở Phần 2, chúng ta sẽ bổ sung các chiến lược dữ liệu và sao chép. Cuối cùng, trong Phần 3, chúng ta sẽ tìm hiểu về lớp ứng dụng và quản lý. Khi đi qua từng phần, chúng ta sẽ dần xây dựng một ứng dụng mẫu để minh họa cách kết hợp các dịch vụ này nhằm tạo ra một ứng dụng đa vùng.</p>
-<h3 id="những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">
-  Những điều cần cân nhắc trước khi bắt đầu
+<h3 id="giới-thiệu">
+  Giới thiệu
 
 
 
@@ -222,21 +229,76 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" rel="external">AWS Region</a> được xây dựng với nhiều <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#Availability_Zones" rel="external">Availability Zone (AZ)</a> tách biệt và cách ly về mặt vật lý. Cách tiếp cận này cho phép bạn tạo ra các workload có độ sẵn sàng cao, tuân thủ nguyên tắc <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" rel="external">Well-Architected</a>, trải rộng trên nhiều AZ để đạt được khả năng chịu lỗi tốt hơn. Điều này đáp ứng được mục tiêu khả dụng cho hầu hết các ứng dụng, nhưng vẫn có một số lý do chung khiến bạn có thể muốn mở rộng ra ngoài một Region duy nhất:</p>
+</h3><p>Trình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.</p>
+<p>Chúng tôi phân loại bot AI thành ba loại:</p>
+<ul>
+<li><strong>Bot AI cào dữ liệu (AI scrapers)</strong>, loại bot này thu thập dữ liệu một cách có hệ thống từ ứng dụng của bạn để huấn luyện các mô hình AI.</li>
+<li><strong>Công cụ AI (AI tools)</strong>, loại này hiển thị dữ liệu từ ứng dụng của bạn trong các ứng dụng AI bằng cách sử dụng <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html" rel="external">tính năng gọi hàm (Function calling)</a>.</li>
+<li><strong>Tác tử AI (AI agents)</strong>, loại này có thể tự chủ điều hướng và tương tác động với ứng dụng của bạn để thực hiện các tác vụ phức tạp.</li>
+</ul>
+<p>Mặc dù một số bot AI cung cấp các dịch vụ có giá trị như tự động hóa các tác vụ tẻ nhạt, nhưng một số bot độc hại có thể gây ra những thách thức đáng kể cho chủ sở hữu và người vận hành ứng dụng web. Các bot độc hại có thể làm quá tải máy chủ với lưu lượng truy cập quá mức, dẫn đến suy giảm hiệu suất hoặc thậm chí ngừng hoạt động. Nếu không được kiểm soát, các bot này không chỉ làm tổn hại đến bảo mật mà còn có thể làm xói mòn lòng tin của người dùng và làm tổn hại danh tiếng thương hiệu.</p>
+<p>Trong bài viết này, chúng tôi khám phá các vấn đề khác nhau do bot AI gây ra và tìm hiểu các cơ chế khác nhau để phát hiện và quản lý bot AI bằng cách sử dụng <a href="https://aws.amazon.com/waf/" rel="external">Amazon Web Services (AWS) WAF</a>.</p>
+<hr>
+<h3 id="điều-kiện-tiên-quyết">
+  Điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bài viết này tập trung vào <a href="https://aws.amazon.com/waf/" rel="external">AWS WAF</a> như là tuyến phòng thủ đầu tiên để quan sát và quản lý hoạt động của bot AI nhắm vào ứng dụng của bạn.<br>
+Nếu bạn chưa kích hoạt bảo vệ bằng AWS WAF, thì bạn có thể bắt đầu bằng cách trực quan hóa bối cảnh mối đe dọa bằng <a href="https://docs.aws.amazon.com/waf/latest/developerguide/nsd-chapter.html" rel="external">AWS Shield network security director</a>. Nó giúp bạn xác định các tài nguyên không được bảo vệ bằng AWS WAF.</p>
+<p>Sau đó, bạn có thể bắt đầu bằng cách tạo một tư thế bảo mật ban đầu bằng cách sử dụng các tích hợp bảo mật chỉ bằng một cú nhấp chuột. Nó tự động tạo ra một <a href="https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html" rel="external">gói bảo vệ hoặc web ACL</a> với các quy tắc để bảo vệ ứng dụng của bạn khỏi các mối đe dọa phổ biến nhất. Xem các tài liệu tham khảo sau:</p>
+<ul>
+<li>Nếu bạn đang sử dụng <a href="https://aws.amazon.com/cloudfront/" rel="external">Amazon CloudFront</a> để lưu trữ ứng dụng của mình, thì hãy kích hoạt bảo vệ bằng <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WAF-one-click.html" rel="external">tích hợp AWS WAF một cú nhấp chuột của CloudFront</a>.</li>
+<li>Nếu bạn đang sử dụng <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html" rel="external">Application Load Balancer (ALB)</a> để lưu trữ ứng dụng của mình, thì hãy kích hoạt bảo vệ bằng <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-waf" rel="external">tích hợp AWS WAF một cú nhấp chuột của ALB</a>.</li>
+</ul>
+<h3 id="các-vấn-đề-do-bot-ai-gây-ra">
+  Các vấn đề do bot AI gây ra
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bot không phải là một mối đe dọa mới trên web. Tuy nhiên, các yêu cầu về dữ liệu của <strong>Mô hình Ngôn ngữ Lớn (LLMs)</strong> và các mẫu tương tác mới được kích hoạt bởi <strong>tác tử AI</strong> đã khiến hành vi của bot trở nên rắc rối hơn trên nhiều ứng dụng.<br>
+Các ứng dụng web có thể phải đối mặt với các vấn đề sau đây do bot AI gây ra:</p>
+<ol>
+<li>
+<p><strong>Sử dụng dữ liệu độc quyền để huấn luyện mô hình:</strong> Việc sử dụng trái phép dữ liệu của tổ chức bạn có thể tạo ra các lo ngại về sở hữu trí tuệ khi chúng được sử dụng để huấn luyện các mô hình AI.<br>
+Ví dụ, nội dung của bạn có thể được sử dụng để tạo ra các dịch vụ có khả năng cạnh tranh mà không có sự đền bù và làm loãng giá trị thị trường độc nhất của nội dung.</p>
+</li>
+<li>
+<p><strong>Hiệu suất kém và chi phí cao:</strong> Các bot AI đang thu thập nội dung ứng dụng của bạn một cách ráo riết có thể tạo ra lưu lượng truy cập quá tải, dẫn đến suy giảm hiệu suất đối với người dùng hợp lệ.<br>
+Điều này cũng có thể phát sinh chi phí <strong>truyền dữ liệu ra ngoài (DTO)</strong>, gây lãng phí tài nguyên tính toán và có khả năng gây ngừng dịch vụ trong các thời kỳ cào dữ liệu cao điểm.</p>
+</li>
+<li>
+<p><strong>Hành vi tự động/tự hành không mong muốn:</strong> Các bot AI có thể tự động tương tác với ứng dụng của bạn mà không cần sự tham gia của con người.<br>
+Điều này có thể lấy đi lưu lượng truy cập giá trị của con người khỏi ứng dụng của bạn vì AI có thể tóm tắt các phát hiện của nó.<br>
+Các bot AI cũng có thể cạnh tranh với người dùng hợp lệ để hoàn thành các <strong>quy trình công việc có giá trị cao, nhạy cảm về thời gian</strong> như mua hàng tồn kho có hạn.</p>
+<p>Các bot này thường sử dụng các kỹ thuật sau để tương tác với ứng dụng của bạn:</p>
 <ul>
 <li>
-<p>Mở rộng ra khán giả toàn cầu: khi ứng dụng phát triển và lượng người dùng trở nên phân tán về mặt địa lý, có thể sẽ cần giảm độ trễ cho các khu vực khác nhau trên thế giới.</p>
+<p><strong>Gọi hàm (Function calling) và tìm kiếm AI:</strong> Các ứng dụng AI sử dụng các công cụ để tìm kiếm và đưa ra các yêu cầu dữ liệu một lần trực tiếp từ ứng dụng của bạn.</p>
 </li>
 <li>
-<p>Giảm <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html" rel="external">RPO (Recovery Point Objective)</a> và <a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html" rel="external">RTO (Recovery Time Objective)</a>: như một phần của kế hoạch khắc phục thảm họa (Disaster Recovery – DR) đa vùng.</p>
+<p><strong>Tương tác qua Khuôn khổ Tự động hóa Trình duyệt:</strong> Các tác tử AI như Amazon Nova Act sử dụng Playwright để điều khiển các trình duyệt thực.<br>
+Chúng có thể hoàn thành các tác vụ nhiều bước và tương tác với các ứng dụng theo cách giống như con người. Các tác tử này có thể thực thi JavaScript và xử lý các yếu tố UI phức tạp một cách hiệu quả.</p>
 </li>
 <li>
-<p>Luật pháp và quy định địa phương: có thể có những yêu cầu nghiêm ngặt về lưu trú dữ liệu (data residency) và quyền riêng tư mà bạn buộc phải tuân thủ.</p>
+<p><strong>Tương tác dựa trên VM:</strong> Các hệ thống như Computer Use của Anthropic hoạt động trong môi trường máy ảo (VM). Chúng tương tác với các ứng dụng theo cách giống con người hơn. Không giống như các trình duyệt tự động của Playwright, các hệ thống này sử dụng các cài đặt trình duyệt tiêu chuẩn, khiến cho hành vi của chúng gần như không thể phân biệt được với người dùng thực.</p>
 </li>
 </ul>
-<p>Nếu bạn đang xây dựng một ứng dụng đa vùng mới, bạn nên cân nhắc tập trung vào các dịch vụ AWS có sẵn chức năng hỗ trợ. Với những ứng dụng hiện có, cần phải xem xét kỹ hơn để xác định kiến trúc nào có khả năng mở rộng nhất nhằm đáp ứng sự phát triển. Các phần tiếp theo sẽ xem xét những dịch vụ này, đồng thời nêu bật các trường hợp sử dụng và thực tiễn tốt nhất.</p>
-<h3 id="quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">
-  Quản lý danh tính và truy cập trên nhiều Region
+</li>
+</ol>
+<hr>
+<h3 id="xác-định-quy-mô-của-hoạt-động-bot-ai">
+  Xác định quy mô của hoạt động bot AI
 
 
 
@@ -245,11 +307,18 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Xây dựng nền tảng bảo mật bắt đầu từ việc thiết lập các quy tắc xác thực (authentication) và phân quyền (authorization) phù hợp. Hệ thống xử lý các yêu cầu này phải có khả năng chịu lỗi cao để xác minh và cấp quyền nhanh chóng, đáng tin cậy. <a href="http://aws.amazon.com/iam" rel="external">AWS Identity and Access Management (IAM)</a> đáp ứng điều này bằng cách cung cấp một cơ chế đáng tin cậy để bạn quản lý quyền truy cập vào các dịch vụ và tài nguyên AWS. IAM có khả năng sẵn sàng trên nhiều Region một cách tự động, mà bạn không cần phải cấu hình gì thêm.</p>
-<p>Để hỗ trợ quản lý người dùng Windows, thiết bị và ứng dụng trong một mạng đa vùng, bạn có thể thiết lập <a href="https://aws.amazon.com/directoryservice/active-directory/" rel="external">AWS Directory Service for Microsoft Active Directory</a> Enterprise Edition, dịch vụ này sẽ <a href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_configure_multi_region_replication.html" rel="external">tự động sao chép dữ liệu thư mục giữa các Region</a>. Điều này giúp giảm độ trễ khi tra cứu thư mục bằng cách sử dụng thư mục gần nhất, đồng thời tăng tính bền vững bằng cách trải rộng trên nhiều Region. Lưu ý rằng điều này cũng kéo theo &ldquo;số phận chung&rdquo; giữa các domain controller trong kiến trúc đa vùng, vì các thay đổi group policy sẽ được lan truyền đến tất cả các máy chủ thành viên.</p>
-<p>Các ứng dụng cần lưu trữ, luân chuyển và kiểm toán bí mật một cách an toàn, chẳng hạn như mật khẩu cơ sở dữ liệu, nên sử dụng <a href="https://aws.amazon.com/secrets-manager" rel="external">AWS Secrets Manager</a>. Dịch vụ này mã hóa các bí mật bằng khóa của <a href="http://aws.amazon.com/kms" rel="external">AWS Key Management Service (AWS KMS)</a> và có thể <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html" rel="external">sao chép các bí mật sang Region thứ cấp</a> để đảm bảo ứng dụng có thể nhanh chóng lấy được bí mật từ Region gần nhất.</p>
-<h3 id="mã-hóa-trên-nhiều-region">
-  Mã hóa trên nhiều Region
+</h3><p>Đầu tiên, bạn cần hiểu bot AI ảnh hưởng đến ứng dụng của bạn như thế nào và ở quy mô nào.<br>
+Bắt đầu bằng cách thêm nhóm quy tắc AWS WAF Bot Control vào gói bảo vệ tài nguyên của bạn với Cấp độ <strong>Kiểm tra Chung (Common Inspection)</strong>.<br>
+Sử dụng <strong>Chế độ Đếm (Count mode)</strong> ban đầu để giám sát các mẫu lưu lượng truy cập. Phương pháp tiếp cận này cho phép bạn phân tích hoạt động của bot trước khi thực hiện các thay đổi có thể ảnh hưởng đến lưu lượng truy cập sản xuất.</p>
+<p>Nhóm quy tắc chung của Bot Control xác minh các bot tự nhận dạng thông qua xác thực chữ ký.<br>
+Nó bao gồm một quy tắc <strong>CategoryAI</strong> để phát hiện các bot AI đã được xác minh.<br>
+Hãy chắc chắn rằng bạn cấu hình nhóm quy tắc với <strong>phiên bản mới nhất</strong>, như được hiển thị trong <em>Hình 1</em> sau đây.</p>
+<!-- raw HTML omitted -->
+<p>Sau khi chạy nhóm quy tắc được quản lý trong vài ngày, bạn có thể phân tích dữ liệu đã thu thập. Để xem các thông tin chi tiết, hãy mở <a href="https://console.aws.amazon.com/wafv2/home" rel="external">bảng điều khiển AWS WAF và AWS Shield</a> và chọn Khu vực AWS của bạn. Chọn gói bảo vệ của bạn và chọn xem bảng điều khiển. Điều hướng đến phần Tổng quan và chọn tùy chọn Bots để xem hoạt động, phát hiện, danh mục và tín hiệu của bot. Bảng điều khiển này cung cấp thông tin chi tiết về hoạt động của bot trên ứng dụng của bạn.</p>
+<p>Hình 2 sau đây cho thấy một ví dụ về phần Các danh mục Bot. Nó hiển thị một khối lượng lớn các yêu cầu được đánh dấu là <strong>ai - AllowedRequests</strong>. Đây là các bot AI được quy tắc <strong>CategoryAI</strong> xác định, nhưng không bị chặn. Bạn cũng có thể nhận thấy các bot khác đang gửi khối lượng lớn yêu cầu.</p>
+<!-- raw HTML omitted -->
+<h3 id="quản-lý-các-vấn-đề-do-bot-ai-gây-ra">
+  Quản lý các vấn đề do bot AI gây ra
 
 
 
@@ -258,10 +327,10 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>AWS KMS có thể được sử dụng để mã hóa dữ liệu khi lưu trữ (data at rest) và được dùng rộng rãi cho việc mã hóa trên các dịch vụ AWS. Theo mặc định, các khóa chỉ giới hạn trong một Region. Những dịch vụ AWS như <a href="http://aws.amazon.com/s3" rel="external">Amazon Simple Storage Service (Amazon S3) cross-Region replication và Amazon Aurora Global Database</a> (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>) giúp đơn giản hóa quá trình mã hóa và giải mã bằng các khóa khác nhau ở từng Region.</p>
-<p>Đối với các phần khác trong ứng dụng đa vùng của bạn phụ thuộc vào khóa KMS, bạn có thể thiết lập <a href="https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html" rel="external">AWS KMS multi-Region keys</a> để sao chép cả key material và key ID sang Region thứ hai. Điều này loại bỏ nhu cầu giải mã rồi mã hóa lại dữ liệu với một khóa khác ở từng Region. Ví dụ, multi-Region keys có thể được dùng để giảm độ phức tạp trong các hoạt động mã hóa của ứng dụng đa vùng cho dữ liệu được lưu trữ trên nhiều Region.</p>
-<h3 id="kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">
-  Kiểm toán và khả năng quan sát trên nhiều Region
+</h3><p>Trong các phần sau, chúng ta sẽ xem xét các phương pháp khác nhau để quản lý các vấn đề do bot AI gây ra.</p>
+<hr>
+<h3 id="chặn-bot-ai-sớm-bằng-robotstxt">
+  Chặn bot AI sớm bằng robots.txt
 
 
 
@@ -270,18 +339,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Một thực tiễn tốt nhất là cấu hình <a href="http://aws.amazon.com/cloudtrail" rel="external">AWS CloudTrail</a> để lưu lại toàn bộ hoạt động AWS API liên quan trong tài khoản của bạn nhằm phục vụ mục đích kiểm toán. Khi bạn sử dụng nhiều Region hoặc nhiều tài khoản, các log CloudTrail này nên được <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html" rel="external">tập hợp</a> về một bucket Amazon S3 duy nhất để thuận tiện cho việc phân tích. Để ngăn chặn việc sử dụng sai mục đích, các log tập trung này cần được coi là dữ liệu nhạy cảm hơn, chỉ cấp quyền truy cập cho các hệ thống và nhân sự chủ chốt.</p>
-<p>Để theo dõi các phát hiện từ <a href="https://aws.amazon.com/security-hub" rel="external">AWS Security Hub</a>, bạn có thể <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation-enable.html" rel="external">tổng hợp và liên kết các phát hiện từ nhiều vị trí về một Region duy nhất</a>. Đây là cách đơn giản để tạo một cái nhìn tập trung về các phát hiện của Security Hub trên nhiều tài khoản và nhiều Region. Sau khi thiết lập, các phát hiện sẽ liên tục được đồng bộ giữa các Region để giúp bạn luôn nắm được kết quả toàn cầu trên một bảng điều khiển duy nhất.</p>
-<p>Chúng tôi đã kết hợp những tính năng này trong Hình 1. Chúng tôi sử dụng IAM để cấp quyền truy cập chi tiết đến các dịch vụ và tài nguyên AWS, Directory Service for Microsoft AD để xác thực người dùng trong các ứng dụng Microsoft, và Secrets Manager để lưu trữ thông tin đăng nhập cơ sở dữ liệu nhạy cảm. Dữ liệu của chúng tôi, di chuyển tự do giữa các Region, được mã hóa bằng KMS multi-Region keys, và toàn bộ hoạt động truy cập AWS API được ghi lại bởi CloudTrail, sau đó tập trung vào một bucket S3 trung tâm mà chỉ nhóm bảo mật của chúng tôi mới có quyền truy cập.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img1-Blog5.png" alt="Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng">
-    <figcaption><i>Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-mạng-toàn-cầu">
-  Xây dựng mạng toàn cầu
+</h3><h4 id="kịch-bản-1-chặn-sớm-các-bot-ai-tuân-thủ-quy-tắc">
+  Kịch bản 1: Chặn sớm các bot AI tuân thủ quy tắc
 
 
 
@@ -290,22 +349,16 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Đối với các tài nguyên được triển khai trong các mạng ảo ở những Region khác nhau, <a href="http://aws.amazon.com/vpc" rel="external">Amazon Virtual Private Cloud (Amazon VPC)</a> cho phép <a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" rel="external">định tuyến riêng tư giữa các Region và tài khoản bằng VPC peering</a>. Các tài nguyên này có thể giao tiếp với nhau bằng địa chỉ IP riêng mà không cần internet gateway, VPN, hoặc thiết bị mạng riêng biệt. Tính năng này hoạt động tốt cho các mạng nhỏ chỉ cần một vài kết nối peering. Tuy nhiên, định tuyến bắc cầu (transitive routing) không được hỗ trợ, và khi số lượng VPC peering tăng lên, cấu trúc mạng dạng mesh có thể trở nên khó quản lý và khắc phục sự cố.</p>
-<p><a href="https://aws.amazon.com/transit-gateway/" rel="external">AWS Transit Gateway</a> giúp giảm bớt những khó khăn này bằng cách tạo một hub trung chuyển mạng, kết nối các VPC và mạng tại chỗ (on-premises). Khả năng định tuyến của Transit Gateway có thể mở rộng sang các Region khác thông qua <a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-peering.html" rel="external">Transit Gateway inter-Region peering</a>, để tạo ra một mạng riêng tư phân tán toàn cầu cho tài nguyên của bạn.</p>
-<p>Xây dựng một cách định tuyến đáng tin cậy và tiết kiệm chi phí để đưa người dùng đến các ứng dụng internet phân tán đòi hỏi những bản ghi Domain Name System (DNS) có độ sẵn sàng cao và khả năng mở rộng tốt. <a href="http://aws.amazon.com/route53" rel="external">Amazon Route 53</a> chính là dịch vụ làm được điều đó.</p>
-<p>Route 53 có nhiều <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" rel="external">chính sách định tuyến</a> khác nhau. Ví dụ, bạn có thể định tuyến một yêu cầu đến bản ghi có độ trễ mạng thấp nhất, hoặc đưa người dùng ở một vị trí địa lý cụ thể đến endpoint ứng dụng cục bộ. Đối với kịch bản khắc phục thảm họa (DR), <a href="https://aws.amazon.com/route53/application-recovery-controller/" rel="external">Route 53 Application Recovery Controller (Route 53 ARC)</a> cung cấp một giải pháp failover toàn diện với mức phụ thuộc tối thiểu. Các routing policy, safety check, và readiness check của Route 53 ARC giúp bạn thực hiện failover qua nhiều Region, AZ, và môi trường on-premises một cách đáng tin cậy.</p>
-<p><a href="http://aws.amazon.com/cloudfront" rel="external">Amazon CloudFront</a> – mạng phân phối nội dung (CDN) – là một dịch vụ toàn cầu, được xây dựng trên hơn 300 điểm hiện diện (PoP) khắp thế giới. Các ứng dụng có nhiều origin khả dụng (ví dụ như nhiều Region) có thể dùng <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html" rel="external">CloudFront origin failover</a> để tự động chuyển hướng sang origin dự phòng khi origin chính gặp sự cố. Khả năng của CloudFront không chỉ dừng lại ở việc phân phát nội dung, mà còn có thể chạy tính toán ở edge. <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html" rel="external">CloudFront Functions</a> giúp dễ dàng chạy các đoạn mã JavaScript nhẹ, trong khi <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html" rel="external">AWS Lambda@Edge</a> cho phép bạn chạy các hàm Node.js và Python gần hơn với người dùng ứng dụng, từ đó cải thiện hiệu năng và giảm độ trễ. Việc đưa compute ra edge giúp giảm tải cho origin và mang lại phản hồi nhanh hơn cho người dùng toàn cầu.</p>
-<p>Được xây dựng trên mạng lưới toàn cầu của AWS, <a href="http://aws.amazon.com/global-accelerator" rel="external">AWS Global Accelerator</a> cung cấp hai địa chỉ IP anycast tĩnh để làm điểm truy cập duy nhất cho các ứng dụng hướng internet. Bạn có thể linh hoạt thêm hoặc xóa origin trong khi hệ thống vẫn tự động định tuyến lưu lượng đến endpoint khu vực khỏe mạnh gần nhất. Nếu phát hiện lỗi, Global Accelerator sẽ <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html" rel="external">tự động chuyển hướng lưu lượng đến một endpoint khả dụng</a> chỉ trong vài giây, mà không cần thay đổi địa chỉ IP tĩnh.</p>
-<p>Hình 2 minh họa việc sử dụng Route 53 latency-based routing policy để định tuyến người dùng đến endpoint nhanh nhất, CloudFront để phân phát nội dung tĩnh như video và hình ảnh, và Transit Gateway để tạo một mạng riêng toàn cầu, giúp các thiết bị của chúng tôi có thể giao tiếp an toàn trên nhiều Region.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img2-Blog5.png" alt="Hình 2. Kết nối AWS VPC và phân phối nội dung">
-    <figcaption><i>Hình 2. Kết nối AWS VPC và phân phối nội dung</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">
-  Xây dựng và quản lý lớp tính toán (compute layer)
+</h4><p>Một tệp <code>robots.txt</code> giúp kiểm soát quyền truy cập của bot vào ứng dụng của bạn. Tệp văn bản đơn giản này được đặt tại thư mục gốc của ứng dụng (<code>/robots.txt</code>). Nó sử dụng một định dạng tiêu chuẩn để hướng dẫn các bot tuân thủ về những phần nào của ứng dụng mà chúng có thể và không thể truy cập. Mặc dù không phải tất cả các bot đều tuân theo các quy tắc này, nhưng các nhà điều hành bot có uy tín đều tôn trọng các tệp <code>robots.txt</code> được cấu hình đúng cách.</p>
+<p>Các dự án nguồn mở như <strong><a href="https://github.com/ai-robots-txt/ai.robots.txt" rel="external">ai.robots.txt</a></strong> cung cấp một tệp <code>robots.txt</code> với các trình thu thập dữ liệu (crawlers) liên quan đến AI mới nhất mà bạn có thể sử dụng để chặn các bot này trước khi chúng bắt đầu thu thập dữ liệu ứng dụng của bạn.</p>
+<p>Nếu <strong><a href="https://aws.amazon.com/waf/" rel="external">AWS WAF</a></strong> hiển thị khối lượng yêu cầu cao từ các bot cụ thể, thì bạn có thể sử dụng <code>robots.txt</code> để chặn các bot cào dữ liệu (scraping bots) quá mức nhưng tuân thủ quy tắc. Điều này giúp ngăn chúng ảnh hưởng đến DTO và hiệu suất ứng dụng của bạn.</p>
+<p>Sau đây là một ví dụ cho phép <strong>Amazonbot</strong> thu thập dữ liệu các URL <code>/public</code> nhưng không thu thập dữ liệu các URL <code>/private</code>:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>User-agent: Amazonbot 
+</span></span><span style="display:flex;"><span>Disallow: /private/ 
+</span></span><span style="display:flex;"><span>Allow: /public/</span></span></code></pre></div>
+<hr>
+<h4 id="kịch-bản-2-quản-lý-cách-bot-ai-sử-dụng-dữ-liệu-của-bạn">
+  Kịch bản 2: Quản lý cách bot AI sử dụng dữ liệu của bạn
 
 
 
@@ -314,65 +367,27 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Mặc dù <a href="http://aws.amazon.com/ec2" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> và các <a href="http://aws.amazon.com/ebs" rel="external">Amazon Elastic Block Store (Amazon EBS)</a> volume liên kết chỉ tồn tại trong một AZ, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html" rel="external">Amazon Data Lifecycle Manager</a> có thể tự động hóa quá trình tạo và sao chép snapshot EBS giữa các Region. Điều này giúp nâng cao chiến lược khắc phục thảm họa (DR) bằng cách cung cấp một lựa chọn sao lưu và khôi phục lạnh (cold backup-and-restore) đơn giản cho các volume EBS. Nếu bạn cần sao lưu nhiều hơn chỉ các EBS volume, <a href="https://aws.amazon.com/backup/" rel="external">AWS Backup</a> cung cấp một nơi tập trung để thực hiện việc này trên nhiều dịch vụ (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>).</p>
-<p>Một EC2 instance được xây dựng dựa trên một <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" rel="external">Amazon Machine Image (AMI)</a>. AMI xác định cấu hình của instance như lưu trữ, quyền khởi chạy, và ánh xạ thiết bị. Khi cần tạo và phát hành một image chuẩn mới, <a href="https://aws.amazon.com/image-builder/" rel="external">EC2 Image Builder</a> giúp đơn giản hóa quá trình xây dựng, kiểm thử, và triển khai AMI mới. Nó cũng hỗ trợ sao chép AMI sang các Region bổ sung, loại bỏ việc phải sao chép thủ công AMI nguồn sang các Region đích.</p>
-<p>Các ứng dụng dựa trên microservice sử dụng container sẽ hưởng lợi từ thời gian khởi động nhanh hơn. <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có thể đảm bảo điều này diễn ra nhất quán trên nhiều Region bằng cách sao chép image riêng tư ở cấp độ registry. Một ECR private registry có thể được cấu hình cho cả cross-Region hoặc cross-account replication, để đảm bảo image của bạn luôn sẵn sàng ở các Region thứ cấp khi cần.</p>
-<p>Khi kiến trúc mở rộng ra nhiều Region, việc theo dõi tài nguyên được cấp phát ở đâu có thể trở nên khó khăn. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#global-view" rel="external">Amazon EC2 Global View</a> giúp giảm bớt vấn đề này bằng cách cung cấp một bảng điều khiển tập trung, hiển thị các tài nguyên EC2 như instance, VPC, subnet, security group, và volume trong tất cả các Region đang hoạt động.</p>
-<p>Chúng tôi kết hợp các tính năng compute layer này trong Hình 3 bằng cách sử dụng EC2 Image Builder để sao chép AMI chuẩn mới nhất của chúng tôi sang nhiều Region để triển khai. Chúng tôi cũng sao lưu mỗi EBS volume trong 3 ngày và sao chép nó sang nhiều Region bằng Data Lifecycle Manager.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img3-Blog5.png" alt="Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)">
-    <figcaption><i>Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="đưa-tất-cả-lại-với-nhau">
-  Đưa tất cả lại với nhau
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ở cuối mỗi phần của loạt bài blog này, chúng tôi sẽ xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách bạn có thể kết hợp các dịch vụ để xây dựng một ứng dụng đa Vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả dịch vụ được nhắc đến, chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
-<p>Chúng tôi xây dựng ví dụ này để mở rộng đến phạm vi toàn cầu. Ứng dụng yêu cầu tính sẵn sàng cao giữa các Vùng, và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn các dịch vụ sau (trong bài viết này) để đạt được mục tiêu:</p>
-<ul>
-<li>
-<p>Route 53 với chính sách định tuyến theo độ trễ (latency routing) để đưa người dùng đến vùng triển khai có độ trễ thấp nhất.</p>
-</li>
-<li>
-<p>CloudFront được thiết lập để phân phối nội dung tĩnh. Region 1 là nguồn gốc chính, nhưng chúng tôi đã cấu hình dự phòng nguồn gốc (origin failover) sang Region 2 trong trường hợp có sự cố.</p>
-</li>
-<li>
-<p>Ứng dụng phụ thuộc vào một số API của bên thứ ba, vì vậy Secrets Manager với khả năng sao chép đa Vùng đã được thiết lập để lưu trữ thông tin khóa API nhạy cảm.</p>
-</li>
-<li>
-<p>CloudTrail logs được tập trung tại Region 1 để dễ dàng phân tích và kiểm toán.</p>
-</li>
-<li>
-<p>Security Hub tại Region 1 được chọn làm nơi tập hợp các phát hiện từ tất cả các Vùng.</p>
-</li>
-<li>
-<p>Đây là ứng dụng dựa trên container, chúng tôi dựa vào Amazon ECR replication tại mỗi vị trí để nhanh chóng tải về các image mới nhất tại chỗ.</p>
-</li>
-<li>
-<p>Để liên lạc qua IP riêng giữa các Vùng, một Transit Gateway được thiết lập tại mỗi Vùng với kết nối liên Vùng. VPC peering cũng có thể hoạt động, nhưng vì dự kiến mở rộng ra nhiều Vùng hơn trong tương lai nên chúng tôi chọn Transit Gateway như giải pháp lâu dài.</p>
-</li>
-<li>
-<p>IAM được dùng để cấp quyền quản lý tài nguyên AWS.</p>
-</li>
-</ul>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img4-Blog5.png" alt="Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1">
-    <figcaption><i>Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="tóm-tắt">
-  Tóm tắt
+</h4><p>Các bot từ các công ty công nghệ lớn phục vụ mục đích kép: chúng cào dữ liệu ứng dụng của bạn một lần và sử dụng dữ liệu đó để lập chỉ mục tìm kiếm và huấn luyện các mô hình AI. Bạn có thể cho phép các bot này thu thập dữ liệu ứng dụng của bạn để lập chỉ mục tìm kiếm, trong khi vẫn yêu cầu chúng không sử dụng dữ liệu này để huấn luyện các LLM.</p>
+<p>Sau đây là ba ví dụ chỉ ra cách ngăn chặn các nhà điều hành bot lớn sử dụng dữ liệu của bạn để huấn luyện các LLM:</p>
+<hr>
+<p><strong>1. Amazonbot:</strong> Nó sử dụng tiêu đề phản hồi HTTP <code>X-Robots-Tag: noarchive</code> để báo hiệu rằng bạn không muốn phản hồi này được sử dụng để huấn luyện các LLM.<br>
+Bạn có thể triển khai điều này bằng cách sử dụng <strong><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/response-headers-policies.html" rel="external">chính sách tiêu đề phản hồi của CloudFront</a></strong> để thêm tiêu đề này vào mọi phản hồi từ ứng dụng của bạn.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK 
+</span></span><span style="display:flex;"><span>Date: Tue, <span style="color:#ae81ff">15</span> Oct <span style="color:#ae81ff">2024</span> 08:09:00 GMT 
+</span></span><span style="display:flex;"><span>X-Robots-Tag: noarchive</span></span></code></pre></div>
+<hr>
+<p><strong>2. Applebot:</strong> Bạn có thể yêu cầu Apple không sử dụng dữ liệu từ ứng dụng của bạn để huấn luyện các mô hình học máy (ML) của họ bằng cách thêm một mục <code>User-agent Applebot-Extended</code> vào tệp <code>robots.txt</code> của bạn.<br>
+Điều này vẫn cho phép Apple lập chỉ mục nội dung của bạn để tìm kiếm. Sau đây là một mục ví dụ để không cho phép Applebot-Extended (truy cập) trên toàn bộ ứng dụng của bạn:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>User-agent: Applebot-Extended 
+</span></span><span style="display:flex;"><span>Disallow: /</span></span></code></pre></div>
+<p>Chỉ thị <code>User-agent</code> trong <code>robots.txt</code> phục vụ một mục đích cụ thể. Nó so khớp các mẫu với danh tính được khai báo của bot, vốn khác với tiêu đề <code>HTTP User-Agent</code>.</p>
+<hr>
+<p><strong>3. Googlebot:</strong> Tương tự, Google cho phép bạn không cho phép huấn luyện các mô hình ML của Google bằng cách thêm User Agent <code>Google-Extended</code> vào tệp <code>robots.txt</code> của bạn:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>User-agent: Google-Extended 
+</span></span><span style="display:flex;"><span>Disallow: /</span></span></code></pre></div>
+<p>Một số nhà điều hành bot có thể không tôn trọng tệp <code>robots.txt</code>, vì vậy bạn phải cần quản lý chúng bằng <strong><a href="https://aws.amazon.com/waf/" rel="external">AWS WAF</a></strong>.</p>
+<h3 id="sử-dụng-aws-waf">
+  Sử dụng AWS WAF
 
 
 
@@ -381,23 +396,60 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Khi thiết kế một ứng dụng đa Vùng (multi-Region), việc xây dựng một nền tảng vững chắc là vô cùng quan trọng. Nền tảng này sẽ giúp bạn phát triển ứng dụng nhanh chóng theo cách an toàn, đáng tin cậy và linh hoạt. Nhiều dịch vụ AWS đã tích hợp sẵn các tính năng hỗ trợ bạn xây dựng kiến trúc đa Vùng.</p>
-<p>Tùy vào lý do mở rộng ra ngoài một Vùng duy nhất mà kiến trúc của bạn sẽ khác nhau. Trong bài viết này, chúng tôi đã đề cập đến các tính năng cụ thể của những dịch vụ AWS về bảo mật, mạng và tính toán (compute) — với khả năng tích hợp sẵn để giảm bớt khối lượng công việc nặng nề và lặp lại.</p>
-<p>Trong các bài viết tiếp theo, chúng tôi sẽ tiếp tục đề cập đến các dịch vụ về dữ liệu, ứng dụng và quản lý.</p>
-<p>*** Sẵn sàng để bắt đầu? ***
-Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" rel="external">AWS Solutions</a> và <a href="https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND" rel="external">AWS Blogs</a> để hỗ trợ bạn!</p>
-<p>*** Bạn đang tìm thêm nội dung về kiến trúc? ***
-<a href="https://aws.amazon.com/architecture/" rel="external">AWS Architecture Center</a> cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!</p>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/</a>)</p>
-<p>Các bài viết khác trong chuỗi này:</p>
-<ul>
+</h3><h4 id="kịch-bản-3-quản-lý-các-bot-ai-đang-gây-ra-hiệu-suất-kém-và-chi-phí-cao">
+  Kịch bản 3: Quản lý các bot AI đang gây ra hiệu suất kém và chi phí cao
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Các bot AI cào dữ liệu ráo riết từ ứng dụng của bạn có thể làm suy giảm hiệu suất ứng dụng và phát sinh chi phí DTO cũng như tính toán cao. Bạn có thể sử dụng các kỹ thuật sau đây bằng <strong><a href="https://aws.amazon.com/waf/" rel="external">AWS WAF</a></strong> để bảo vệ ứng dụng của mình khỏi các bot không tôn trọng <code>robots.txt</code>:</p>
+<hr>
+<ol>
+<li><strong>Quản lý các bot AI tự nhận dạng bằng nhóm quy tắc AWS WAF Bot Control với Cấp độ Kiểm tra Chung:</strong> Bạn có thể chặn các yêu cầu bot AI có khối lượng lớn bằng cách xóa hành động <strong>Ghi đè tất cả quy tắc</strong> mà trước đó bạn đã đặt thành <em>Đếm</em> trong <strong>nhóm quy tắc AWS WAF Bot Control</strong> với <em>Cấp độ Kiểm tra Chung</em>.<br>
+Quy tắc <code>CategoryAI</code> giờ đây sẽ chặn các yêu cầu bot AI này theo mặc định.</li>
+</ol>
+<p>Ngoài các bot AI thuộc quy tắc <code>CategoryAI</code>, <strong>AWS WAF</strong> không chặn các bot phổ biến và có thể xác minh được.<br>
+Nếu bạn xác định một bot đã được xác minh, hoặc một danh mục bot, vẫn đang tạo ra khối lượng truy cập cao, thì bạn phải thêm một quy tắc một cách rõ ràng <strong>sau</strong> <strong>nhóm quy tắc AWS WAF Bot Control</strong>.</p>
+<p>Quy tắc này sẽ chặn bot cụ thể (hoặc nhóm bot được đại diện bởi một không gian tên nhãn), như được hiển thị trong <em>hình 3</em> sau đây.</p>
+<!-- raw HTML omitted -->
+<ol start="2">
 <li>
-<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
+<p><strong>Làm chậm các bot cào dữ liệu lẩn tránh:</strong> Các bot giả mạo tiêu đề HTTP user agent của chúng để giả vờ là các bot nổi tiếng, hoặc các máy khách hợp lệ của người dùng. Bạn có thể ngăn chặn các bot này làm quá tải ứng dụng của mình bằng cách sử dụng <strong>tính năng bảo vệ DDoS lớp ứng dụng (L7) nâng cao của AWS WAF</strong> và cả <strong>quy tắc dựa trên tỷ lệ của AWS WAF</strong>. Các quy tắc DDoS và quy tắc giới hạn tỷ lệ bảo vệ ứng dụng của bạn khỏi bất kỳ nguồn nào tạo ra khối lượng yêu cầu cao, bao gồm cả bot. Để tìm hiểu cách xác định ngưỡng quy tắc dựa trên tỷ lệ và các thông lệ tốt nhất về việc tạo quy tắc dựa trên tỷ lệ, hãy tham khảo bài viết <strong>&quot;<a href="https://aws.amazon.com/blogs/security/three-most-important-aws-waf-rate-based-rules/" rel="external">Ba quy tắc dựa trên tỷ lệ quan trọng nhất của AWS WAF</a>&quot;</strong>.</p>
 </li>
 <li>
-<p><a href="../../../en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
+<p><strong>Bắt các bot cào dữ liệu lẩn tránh phải làm việc:</strong> Hành động <strong>Thử thách (Challenge) của AWS WAF</strong> chạy một thử thách ngầm trong môi trường máy khách mà không yêu cầu người dùng tương tác và được thiết kế để không có tác động rõ rệt đến trải nghiệm của người dùng. Thử thách yêu cầu máy khách hoàn thành một tác vụ tốn kém về mặt tính toán (bằng chứng công việc). Phương pháp tiếp cận này nhằm cung cấp cho người dùng hợp lệ một cơ chế liền mạch để xác thực môi trường của họ, đồng thời tăng chi phí cho các nhà điều hành bot đang cố gắng tương tác với ứng dụng của bạn.</p>
 </li>
-</ul>
+</ol>
+<p>Hình 4 sau đây chỉ ra cách thêm một quy tắc tùy chỉnh sau <strong>nhóm quy tắc AWS WAF Bot Control</strong>. Quy tắc này yêu cầu người dùng phải hoàn thành một thử thách trước khi tiếp tục, trừ khi họ là các bot được phép/đã xác minh. Các bot đã xác minh được xác định bằng cách có một nhãn trong không gian tên <code>awswaf:managed:aws:bot-control:bot</code>.</p>
+<!-- raw HTML omitted -->
+<p><strong>4. Sử dụng honeypot để bẫy các bot lẩn tránh</strong></p>
+<p><strong><a href="https://aws.amazon.com/solutions/implementations/aws-waf-security-automations/" rel="external">Giải pháp Tự động hóa Bảo mật cho AWS WAF</a></strong> bao gồm một <strong>điểm cuối honeypot</strong> dụ các bot đang cào dữ liệu ứng dụng của bạn đến một điểm cuối mà không người dùng hợp lệ hoặc bot tuân thủ quy tắc nào truy cập.<br>
+Điểm cuối này giúp <strong>phát hiện và chặn</strong> các IP độc hại, hạn chế hiệu quả tác động của các bot cào dữ liệu ứng dụng của bạn.</p>
+<p>-&gt; Xem video sau để hiểu rõ hơn</p>
+<!-- raw HTML omitted -->
+<p><strong>Kịch bản 4: Quản lý các bot AI tự hành/tự động không mong muốn</strong></p>
+<p>Bạn có thể sử dụng các kỹ thuật sau để quản lý các bot AI tự hành:</p>
+<p><strong>Nhóm quy tắc AWS WAF Bot Control với Cấp độ Kiểm tra Chung:</strong> Quy tắc <strong>CategoryAI</strong> bao gồm các quy tắc cho các tác tử AI được xác định rõ ràng như <strong>Amazon Nova Act</strong>. Hơn nữa, các quy tắc <strong>SignalNonBrowserUserAgent</strong> và <strong>SignalAutomatedBrowser</strong> sẽ chặn <strong>các tác tử tự động hóa trình duyệt kiểu Playwright</strong>.</p>
+<p><strong>Nhóm quy tắc AWS WAF Bot Control với Cấp độ Kiểm tra Mục tiêu:</strong> Cấp độ kiểm tra này tạo ra một đường cơ sở thông minh về các mẫu lưu lượng truy cập. Cấp độ này sử dụng các kỹ thuật lấy dấu vân tay để giúp bảo vệ ứng dụng của bạn khỏi các bot tự hành bắt chước con người. Tham khảo bài viết <a href="https://aws.amazon.com/blogs/security/detect-and-block-advanced-bot-traffic-with-aws-waf-bot-control/" rel="external">phát hiện và chặn lưu lượng truy cập bot nâng cao</a> để được hướng dẫn thiết lập tính năng này.</p>
+<p><strong>Hành động CAPTCHA của AWS WAF:</strong> Các LLM từ các nhà cung cấp lớn được huấn luyện để không giải CAPTCHA. Điều này sẽ ngăn chặn nhiều tác tử hoàn thành tương tác được yêu cầu. Tương tự như kỹ thuật Thử thách trước đó, bạn có thể cấu hình một quy tắc với hành động CAPTCHA để yêu cầu (hoàn thành) đối với một số yêu cầu nhất định. Tham khảo bài viết <a href="https://aws.amazon.com/blogs/security/use-aws-waf-captcha-to-protect-your-application-against-common-bot-traffic/" rel="external">Sử dụng AWS WAF CAPTCHA để bảo vệ ứng dụng của bạn khỏi lưu lượng truy cập bot phổ biến</a> để được hướng dẫn thiết lập tính năng này.</p>
+<p><strong>Xác thực (bao gồm cả sinh trắc học):</strong> Cuối cùng, các bot sẽ tiếp tục cải thiện và lẩn tránh các biện pháp giảm thiểu. Nếu bạn có yêu cầu cao về tương tác của con người, thì hãy cân nhắc sửdụng xác thực, bao gồm cả sinh trắc học, trước khi tiếp tục tương tác. Tham khảo bài viết <a href="https://aws.amazon.com/blogs/security/how-to-use-aws-waf-bot-control-for-targeted-bots-signals-and-mitigate-evasive-bots-with-adaptive-user-experience/" rel="external">Cách sử dụng AWS WAF Bot Control cho các tín hiệu bot được nhắm mục tiêu và giảm thiểu các bot lẩn tránh bằng trải nghiệm người dùng thích ứng</a> để được hướng dẫn về cách thúc đẩy xác thực người dùng thích ứng khi các tương tác cho thấy có khả năng là lưu lượng truy cập bot.</p>
+<h3 id="kết-luận">
+  Kết luận:
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Các bot AI tạo ra những thách thức đáng kể thông qua việc cào dữ liệu quá mức làm suy giảm hiệu suất và tăng chi phí, việc sử dụng nội dung trái phép để huấn luyện AI, và các tương tác tự động có thể từ gây phiền toái đến độc hại. Bằng cách triển khai các chiến lược đã được thảo luận trong bài viết này, bắt đầu từ các cấu hình <strong>robots.txt</strong> cơ bản đến các quy tắc AWS WAF Bot Control nâng cao, giới hạn tỷ lệ, và các thử thách CAPTCHA, bạn có thể bảo vệ khỏi việc cào dữ liệu trái phép, ngăn chặn suy giảm hiệu suất, và duy trì quyền kiểm soát đối với cách nội dung của bạn được các bot AI sử dụng.</p>
+<p>Hơn nữa, để luôn được cập nhật về AWS WAF, hãy tham khảo <a href="https://aws.amazon.com/blogs/security/tag/aws-waf/" rel="external">Blog Bảo mật AWS WAF</a> và <a href="https://aws.amazon.com/about-aws/" rel="external">Có gì mới với Bảo mật, Danh tính và Tuân thủ của AWS</a>.</p>
+<p>Cảm ơn bạn đã đọc bài viết này. Nếu bạn có phản hồi về bài viết này, hãy gửi bình luận trong phần bình luận. Nếu bạn có câu hỏi về bài viết này, hãy bắt đầu một chủ đề mới trên <a href="https://repost.aws/tags/TAKdJ093DSSdGOQ1VVKX4EvQ/aws-waf" rel="external">AWS WAF re:Post</a> hoặc liên hệ <a href="https://aws.amazon.com/support/" rel="external">Hỗ trợ của AWS</a>.</p>
 
   <footer class="footline">
   </footer>
@@ -509,8 +561,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763449266" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

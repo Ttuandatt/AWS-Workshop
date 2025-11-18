@@ -5,46 +5,50 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="description" content="Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)Bởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan
+Ngày: 01 tháng 8 năm 2025
+Thể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 12 :: Internship Report">
-    <meta name="twitter:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="twitter:description" content="Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)Bởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan
+Ngày: 01 tháng 8 năm 2025
+Thể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_12/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 12 :: Internship Report">
-    <meta property="og:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta property="og:description" content="Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)Bởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan
+Ngày: 01 tháng 8 năm 2025
+Thể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 12 :: Internship Report">
-    <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
-    <meta itemprop="wordCount" content="3110">
+    <meta itemprop="description" content="Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)Bởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan
+Ngày: 01 tháng 8 năm 2025
+Thể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật">
+    <meta itemprop="wordCount" content="3466">
     <title>Blog 12 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_12/index.xml" rel="alternate" type="application/rss+xml" title="Blog 12 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763448698" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763448698" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763449266" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763449266" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763448698";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763449266";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763449266" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763448698" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763448698" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763448698" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763449266" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763449266" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763449266" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763449266" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763449266" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -96,7 +100,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763448698" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763449266" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_12/index.html">
     <div id="R-body" class="default-animation">
@@ -128,16 +132,35 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#thách-thức-kinh-doanh--giải-pháp">Thách thức kinh doanh &amp; Giải pháp</a></li>
+    <li><a href="#những-gì-bạn-sẽ-học-được-trong-blog-này">Những gì bạn sẽ học được trong blog này</a></li>
+    <li><a href="#đo-lường-thành-công">Đo lường thành công</a></li>
+    <li><a href="#tổng-quan-giải-pháp">Tổng quan giải pháp</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-tích-hợp-salesforce-với-aws-appflow">A: Tích hợp Salesforce với AWS AppFlow</a></li>
+    <li><a href="#b-phân-tách-dữ-liệu-trong-amazon-s3">B: Phân tách dữ liệu trong Amazon S3</a></li>
+    <li><a href="#c-thông-báo-sự-kiện-s3-đến-amazon-sqs">C: Thông báo sự kiện S3 đến Amazon SQS</a></li>
+    <li><a href="#d-xử-lý-bằng-aws-lambda">D: Xử lý bằng AWS Lambda</a></li>
+    <li><a href="#e-các-cơ-sở-kiến-thức-đã-cập-nhật-trong-s3">E: Các Cơ sở kiến thức đã cập nhật trong S3</a></li>
+    <li><a href="#f-tích-hợp-amazon-connect">F: Tích hợp Amazon Connect</a></li>
+    <li><a href="#g-liên-kết-trợ-lý-assistant-association">G: Liên kết Trợ lý (Assistant Association)</a></li>
+    <li><a href="#h-hỗ-trợ-nhân-viên">H: Hỗ trợ Nhân viên</a></li>
+    <li><a href="#các-điều-kiện-tiên-quyết">Các điều kiện tiên quyết</a>
       <ul>
-        <li><a href="#những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">Những điều cần cân nhắc trước khi bắt đầu</a></li>
-        <li><a href="#quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">Quản lý danh tính và truy cập trên nhiều Region</a></li>
-        <li><a href="#mã-hóa-trên-nhiều-region">Mã hóa trên nhiều Region</a></li>
-        <li><a href="#kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">Kiểm toán và khả năng quan sát trên nhiều Region</a></li>
-        <li><a href="#xây-dựng-mạng-toàn-cầu">Xây dựng mạng toàn cầu</a></li>
-        <li><a href="#xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">Xây dựng và quản lý lớp tính toán (compute layer)</a></li>
-        <li><a href="#đưa-tất-cả-lại-với-nhau">Đưa tất cả lại với nhau</a></li>
-        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+        <li><a href="#môi-trường-aws">Môi trường AWS</a></li>
+        <li><a href="#amazon-connect">Amazon Connect</a></li>
+        <li><a href="#salesforce">Salesforce</a></li>
+        <li><a href="#appflow">AppFlow</a></li>
+        <li><a href="#môi-trường-phát-triển">Môi trường phát triển</a></li>
+        <li><a href="#quyền-truy-cập-bảo-mật">Quyền truy cập bảo mật</a></li>
+        <li><a href="#cấu-hình--triển-khai">Cấu hình &amp; triển khai</a></li>
+        <li><a href="#xác-minh-việc-triển-khai">Xác minh việc triển khai</a></li>
+        <li><a href="#các-bước-sau-triển-khai">Các bước sau triển khai</a></li>
+        <li><a href="#mẹo-khắc-phục-sự-cố">Mẹo khắc phục sự cố</a></li>
+        <li><a href="#dọn-dẹp">Dọn dẹp</a></li>
+        <li><a href="#kết-luận">Kết luận</a></li>
       </ul>
     </li>
   </ul>
@@ -197,8 +220,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 <h1 id="blog-12">Blog 12</h1>
 
-<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-1-tính-toán-mạng-và-bảo-mật">
-  Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
+<h1 id="hỗ-trợ-tùy-chỉnh-trên-quy-mô-lớn-biến-một-kb-cơ-sở-kiến-thức-salesforce-hợp-nhất-thành-các-tác-tử-ai-tập-trung-vào-lob-ngành-kinh-doanh">
+  Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)
 
 
 
@@ -207,13 +230,14 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021</em></p>
-<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-cloudfront/" rel="external">Amazon CloudFront</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-ec2/" rel="external">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-elastic-block-storage-ebs/" rel="external">Amazon Elastic Block Store (Amazon EBS)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-route-53/" rel="external">Amazon Route 53</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-vpc/" rel="external">Amazon VPC</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudtrail/" rel="external">AWS CloudTrail</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external">AWS Global Accelerator</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-identity-and-access-management-iam/" rel="external">AWS Identity and Access Management (IAM)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Secrets Manager</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Security Hub</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Transit Gateway</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Well-Architected Permalink Share</a></em></p>
+</h1><p><strong>Bởi:</strong> <a href="https://aws.amazon.com/" rel="external">Bhaskar Rao</a>, <a href="https://aws.amazon.com/" rel="external">Saqib M</a>, <a href="https://aws.amazon.com/" rel="external">Dipkumar Mehta</a>, và <a href="https://aws.amazon.com/" rel="external">Murtuza Kainan</a></p>
+<p><strong>Ngày:</strong> 01 tháng 8 năm 2025</p>
+<p><strong>Thể loại:</strong> Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật</p>
 <hr>
-<p>Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.</p>
-<p>Trong loạt blog gồm 3 phần này, chúng tôi sẽ chọn lọc từ hơn 200 dịch vụ đó và tập trung vào những dịch vụ có tính năng cụ thể hỗ trợ bạn xây dựng ứng dụng đa vùng. Trong Phần 1, chúng ta sẽ xây dựng nền tảng với các dịch vụ bảo mật, mạng, và tính toán của AWS. Ở Phần 2, chúng ta sẽ bổ sung các chiến lược dữ liệu và sao chép. Cuối cùng, trong Phần 3, chúng ta sẽ tìm hiểu về lớp ứng dụng và quản lý. Khi đi qua từng phần, chúng ta sẽ dần xây dựng một ứng dụng mẫu để minh họa cách kết hợp các dịch vụ này nhằm tạo ra một ứng dụng đa vùng.</p>
-<h3 id="những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">
-  Những điều cần cân nhắc trước khi bắt đầu
+<p>Trong thế giới siêu kết nối ngày nay, các nhóm hỗ trợ khách hàng phải xoay xở với một danh mục sản phẩm và dịch vụ ngày càng tăng, tất cả trong một CRM duy nhất như <strong>Salesforce</strong>. Các nhân viên cần truy cập ngay lập tức vào thông tin đúng, nhưng họ quá thường xuyên thấy mình phải lội qua một cơ sở kiến thức nguyên khối, hợp nhất mà bao trùm mọi ngành kinh doanh (LOB) – từ thanh toán viễn thông đến bồi thường bảo hiểm đến trả hàng bán lẻ. Những giây quý giá biến thành phút khi nhân viên nhấp chuột, cuộn và lọc, và những sự chậm trễ đó chuyển trực tiếp thành các cuộc gọi dài hơn, tỷ lệ giải quyết cuộc gọi đầu tiên thấp hơn, và khách hàng bực bội.</p>
+<hr>
+<h2 id="thách-thức-kinh-doanh--giải-pháp">
+  Thách thức kinh doanh &amp; Giải pháp
 
 
 
@@ -222,157 +246,157 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" rel="external">AWS Region</a> được xây dựng với nhiều <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#Availability_Zones" rel="external">Availability Zone (AZ)</a> tách biệt và cách ly về mặt vật lý. Cách tiếp cận này cho phép bạn tạo ra các workload có độ sẵn sàng cao, tuân thủ nguyên tắc <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" rel="external">Well-Architected</a>, trải rộng trên nhiều AZ để đạt được khả năng chịu lỗi tốt hơn. Điều này đáp ứng được mục tiêu khả dụng cho hầu hết các ứng dụng, nhưng vẫn có một số lý do chung khiến bạn có thể muốn mở rộng ra ngoài một Region duy nhất:</p>
+</h2><p>Khi <strong>Salesforce Knowledge</strong> đồng bộ vào <strong>Amazon Q in Connect</strong>, theo truyền thống, nó nhập tất cả các bài viết vào một kho lưu trữ hợp nhất. Mặc dù phương pháp tiếp cận hợp nhất này hoạt động tốt cho các nhóm nhỏ hơn hoặc các doanh nghiệp một ngành, các tổ chức quản lý nhiều ngành kinh doanh (LOB) phải đối mặt với những thách thức riêng biệt ở quy mô lớn.</p>
+<p>Trong những môi trường phức tạp này, bạn có thể tận dụng <strong>các tác tử AI trong Amazon Q in Connect</strong> để tự động phân đoạn Salesforce Knowledge của bạn thành nhiều <strong>cơ sở kiến thức cụ thể theo ngành kinh doanh (LOB)</strong>. Mỗi LOB KB (Cơ sở kiến thức LOB) duy trì sự tích hợp Salesforce liền mạch trong khi tồn tại như một kho lưu trữ logic riêng của nó với <strong>các câu lệnh (prompts) AI cụ thể theo lĩnh vực</strong>.</p>
+<p>Phương pháp tiếp cận này mang lại các lợi ích chính bao gồm:</p>
+<ul>
+<li>Kết quả tìm kiếm siêu liên quan</li>
+<li>Hiệu suất AI được tối ưu hóa</li>
+<li>Thời gian giải quyết nhanh hơn</li>
+</ul>
+<p>Điều này cho phép nhân viên tập trung chính xác vào điều quan trọng cho mỗi tương tác của khách hàng thay vì lội qua nội dung không liên quan.</p>
+<hr>
+<h2 id="những-gì-bạn-sẽ-học-được-trong-blog-này">
+  Những gì bạn sẽ học được trong blog này
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Bài viết này sẽ hướng dẫn bạn qua quy trình nâng cao cơ sở hạ tầng hỗ trợ khách hàng của bạn bằng cách sử dụng <strong>Amazon Q in Connect</strong> và <strong>Salesforce Knowledge</strong>.</p>
+<p>Chúng ta sẽ bắt đầu bằng cách khám phá <strong>kiến trúc giải pháp</strong>, chỉ cho bạn cách tích hợp liền mạch Salesforce Knowledge với Amazon Q in Connect. Bạn sẽ học cách định nghĩa nhiều <strong>cơ sở kiến thức cụ thể theo LOB</strong> và liên kết chúng với <strong>các Tác tử AI tùy chỉnh và các câu lệnh AI</strong>, điều chỉnh việc quản lý kiến thức của bạn cho từng lĩnh vực riêng biệt của doanh nghiệp.</p>
+<p>Sau đó, chúng ta sẽ đi sâu vào <strong>hướng dẫn triển khai từng bước</strong> để cấu hình trình kết nối (connector) Salesforce để đảm bảo luồng dữ liệu mượt mà. Chúng ta sẽ hướng dẫn bạn qua quy trình <strong>tự động hóa việc nhập dữ liệu và phân loại LOB</strong>, đảm bảo rằng kiến thức của bạn được tổ chức hiệu quả và chính xác.</p>
+<p>Cuối cùng, chúng ta sẽ chỉ cho bạn cách <strong>tạo và triển khai các câu lệnh tác tử AI</strong> cho mỗi cơ sở kiến thức, tối ưu hóa khả năng truy xuất và trình bày thông tin liên quan cho các nhân viên hỗ trợ của bạn.</p>
+<p>Đến cuối bài blog này, bạn sẽ có một sự hiểu biết toàn diện về cách biến đổi hệ thống quản lý kiến thức của bạn thành một công cụ mạnh mẽ, <strong>được điều khiển bởi AI</strong>, giúp nâng cao hiệu suất của nhân viên và sự hài lòng của khách hàng trên tất cả các ngành kinh doanh của bạn.</p>
+<hr>
+<h2 id="đo-lường-thành-công">
+  Đo lường thành công
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><strong>Các chỉ số chính:</strong></p>
+<ul>
+<li>Giảm thời gian tìm kiếm của nhân viên</li>
+<li>Cải thiện tỷ lệ giải quyết cuộc gọi đầu tiên</li>
+<li>Sự hài lòng của khách hàng cao hơn</li>
+<li>Các bảng điều khiển và thông lệ tốt nhất về báo cáo</li>
+</ul>
+<p>Đến cuối bài viết này, bạn sẽ có một kế hoạch chi tiết rõ ràng để biến đổi việc nhập Salesforce Knowledge nguyên khối của bạn thành một <strong>khuôn khổ được phân đoạn, điều khiển bởi AI</strong> trong <strong>Amazon Q in Connect</strong>, giúp trao quyền cho các nhân viên của bạn giải quyết vấn đề nhanh hơn, duy trì luồng hội thoại, và nâng cao trải nghiệm khách hàng trên mọi ngành kinh doanh.</p>
+<hr>
+<h2 id="tổng-quan-giải-pháp">
+  Tổng quan giải pháp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><!-- raw HTML omitted -->
+<h1 id="hướng-dẫn-từng-bước">
+  Hướng dẫn từng bước
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><h2 id="a-tích-hợp-salesforce-với-aws-appflow">
+  A: Tích hợp Salesforce với AWS AppFlow
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><strong>Dữ liệu Salesforce Knowledge</strong> được chuyển bằng <strong><a href="https://docs.aws.amazon.com/appflow/latest/userguide/what-is-appflow.html" rel="external">AWS AppFlow</a></strong>.<br>
+Các luồng riêng biệt xử lý các đơn vị kinh doanh (BU) khác nhau:</p>
+<ul>
+<li>BU Ô tô (<code>auto_kb</code>)</li>
+<li>BU Tín dụng (<code>credit_kb</code>)</li>
+<li>BU Thanh toán (<code>payments_kb</code>)</li>
+</ul>
+<p>AppFlow xử lý cả luồng <strong>theo yêu cầu (on-demand)</strong> và <strong>luồng gia tăng (incremental)</strong> với các bộ lọc thích hợp để chỉ lấy Kiến thức (Knowledge) liên quan đến BU cụ thể từ Salesforce, và dữ liệu được lưu trữ trong <strong>Amazon S3</strong> với các tiền tố tương ứng.</p>
+<ul>
+<li><strong>Luồng Theo yêu cầu (On Demand Flow)</strong>: lấy tất cả KB liên quan cho một BU cụ thể</li>
+<li><strong>Luồng Gia tăng (Incremental Flow)</strong>: định kỳ thăm dò (poll) Salesforce xem có bất kỳ cập nhật nào đối với Kiến thức trong Salesforce cho BU đó hay không</li>
+</ul>
+<hr>
+<h2 id="b-phân-tách-dữ-liệu-trong-amazon-s3">
+  B: Phân tách dữ liệu trong Amazon S3
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Dữ liệu từ Salesforce được lưu trữ trong một <strong>S3 bucket</strong> với các tiền tố cụ thể theo BU:</p>
+<ul>
+<li><code>auto_kb</code></li>
+<li><code>credit_kb</code></li>
+<li><code>payments_kb</code></li>
+</ul>
+<p><strong>Thông báo sự kiện S3 (S3 Event Notifications)</strong> được cấu hình cho mỗi tiền tố, điều này sẽ kích hoạt giai đoạn tiếp theo.</p>
+<hr>
+<h2 id="c-thông-báo-sự-kiện-s3-đến-amazon-sqs">
+  C: Thông báo sự kiện S3 đến Amazon SQS
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Bất cứ khi nào dữ liệu mới được thêm vào S3 bucket, một <strong>Thông báo sự kiện S3</strong> sẽ gửi một tin nhắn đến hàng đợi <strong><a href="https://aws.amazon.com/sqs/" rel="external">Amazon SQS</a></strong>.<br>
+Hàng đợi SQS đảm bảo việc <strong>tách rời (decoupling)</strong> và phân phối tin nhắn đáng tin cậy cho các bước xử lý sau (downstream).</p>
+<hr>
+<h2 id="d-xử-lý-bằng-aws-lambda">
+  D: Xử lý bằng AWS Lambda
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Tin nhắn SQS kích hoạt một hàm <strong><a href="https://aws.amazon.com/lambda/" rel="external">AWS Lambda</a></strong>, hàm này sẽ xử lý dữ liệu đến.</p>
 <ul>
 <li>
-<p>Mở rộng ra khán giả toàn cầu: khi ứng dụng phát triển và lượng người dùng trở nên phân tán về mặt địa lý, có thể sẽ cần giảm độ trễ cho các khu vực khác nhau trên thế giới.</p>
-</li>
-<li>
-<p>Giảm <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html" rel="external">RPO (Recovery Point Objective)</a> và <a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html" rel="external">RTO (Recovery Time Objective)</a>: như một phần của kế hoạch khắc phục thảm họa (Disaster Recovery – DR) đa vùng.</p>
-</li>
-<li>
-<p>Luật pháp và quy định địa phương: có thể có những yêu cầu nghiêm ngặt về lưu trú dữ liệu (data residency) và quyền riêng tư mà bạn buộc phải tuân thủ.</p>
-</li>
-</ul>
-<p>Nếu bạn đang xây dựng một ứng dụng đa vùng mới, bạn nên cân nhắc tập trung vào các dịch vụ AWS có sẵn chức năng hỗ trợ. Với những ứng dụng hiện có, cần phải xem xét kỹ hơn để xác định kiến trúc nào có khả năng mở rộng nhất nhằm đáp ứng sự phát triển. Các phần tiếp theo sẽ xem xét những dịch vụ này, đồng thời nêu bật các trường hợp sử dụng và thực tiễn tốt nhất.</p>
-<h3 id="quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">
-  Quản lý danh tính và truy cập trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Xây dựng nền tảng bảo mật bắt đầu từ việc thiết lập các quy tắc xác thực (authentication) và phân quyền (authorization) phù hợp. Hệ thống xử lý các yêu cầu này phải có khả năng chịu lỗi cao để xác minh và cấp quyền nhanh chóng, đáng tin cậy. <a href="http://aws.amazon.com/iam" rel="external">AWS Identity and Access Management (IAM)</a> đáp ứng điều này bằng cách cung cấp một cơ chế đáng tin cậy để bạn quản lý quyền truy cập vào các dịch vụ và tài nguyên AWS. IAM có khả năng sẵn sàng trên nhiều Region một cách tự động, mà bạn không cần phải cấu hình gì thêm.</p>
-<p>Để hỗ trợ quản lý người dùng Windows, thiết bị và ứng dụng trong một mạng đa vùng, bạn có thể thiết lập <a href="https://aws.amazon.com/directoryservice/active-directory/" rel="external">AWS Directory Service for Microsoft Active Directory</a> Enterprise Edition, dịch vụ này sẽ <a href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_configure_multi_region_replication.html" rel="external">tự động sao chép dữ liệu thư mục giữa các Region</a>. Điều này giúp giảm độ trễ khi tra cứu thư mục bằng cách sử dụng thư mục gần nhất, đồng thời tăng tính bền vững bằng cách trải rộng trên nhiều Region. Lưu ý rằng điều này cũng kéo theo &ldquo;số phận chung&rdquo; giữa các domain controller trong kiến trúc đa vùng, vì các thay đổi group policy sẽ được lan truyền đến tất cả các máy chủ thành viên.</p>
-<p>Các ứng dụng cần lưu trữ, luân chuyển và kiểm toán bí mật một cách an toàn, chẳng hạn như mật khẩu cơ sở dữ liệu, nên sử dụng <a href="https://aws.amazon.com/secrets-manager" rel="external">AWS Secrets Manager</a>. Dịch vụ này mã hóa các bí mật bằng khóa của <a href="http://aws.amazon.com/kms" rel="external">AWS Key Management Service (AWS KMS)</a> và có thể <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html" rel="external">sao chép các bí mật sang Region thứ cấp</a> để đảm bảo ứng dụng có thể nhanh chóng lấy được bí mật từ Region gần nhất.</p>
-<h3 id="mã-hóa-trên-nhiều-region">
-  Mã hóa trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>AWS KMS có thể được sử dụng để mã hóa dữ liệu khi lưu trữ (data at rest) và được dùng rộng rãi cho việc mã hóa trên các dịch vụ AWS. Theo mặc định, các khóa chỉ giới hạn trong một Region. Những dịch vụ AWS như <a href="http://aws.amazon.com/s3" rel="external">Amazon Simple Storage Service (Amazon S3) cross-Region replication và Amazon Aurora Global Database</a> (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>) giúp đơn giản hóa quá trình mã hóa và giải mã bằng các khóa khác nhau ở từng Region.</p>
-<p>Đối với các phần khác trong ứng dụng đa vùng của bạn phụ thuộc vào khóa KMS, bạn có thể thiết lập <a href="https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html" rel="external">AWS KMS multi-Region keys</a> để sao chép cả key material và key ID sang Region thứ hai. Điều này loại bỏ nhu cầu giải mã rồi mã hóa lại dữ liệu với một khóa khác ở từng Region. Ví dụ, multi-Region keys có thể được dùng để giảm độ phức tạp trong các hoạt động mã hóa của ứng dụng đa vùng cho dữ liệu được lưu trữ trên nhiều Region.</p>
-<h3 id="kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">
-  Kiểm toán và khả năng quan sát trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Một thực tiễn tốt nhất là cấu hình <a href="http://aws.amazon.com/cloudtrail" rel="external">AWS CloudTrail</a> để lưu lại toàn bộ hoạt động AWS API liên quan trong tài khoản của bạn nhằm phục vụ mục đích kiểm toán. Khi bạn sử dụng nhiều Region hoặc nhiều tài khoản, các log CloudTrail này nên được <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html" rel="external">tập hợp</a> về một bucket Amazon S3 duy nhất để thuận tiện cho việc phân tích. Để ngăn chặn việc sử dụng sai mục đích, các log tập trung này cần được coi là dữ liệu nhạy cảm hơn, chỉ cấp quyền truy cập cho các hệ thống và nhân sự chủ chốt.</p>
-<p>Để theo dõi các phát hiện từ <a href="https://aws.amazon.com/security-hub" rel="external">AWS Security Hub</a>, bạn có thể <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation-enable.html" rel="external">tổng hợp và liên kết các phát hiện từ nhiều vị trí về một Region duy nhất</a>. Đây là cách đơn giản để tạo một cái nhìn tập trung về các phát hiện của Security Hub trên nhiều tài khoản và nhiều Region. Sau khi thiết lập, các phát hiện sẽ liên tục được đồng bộ giữa các Region để giúp bạn luôn nắm được kết quả toàn cầu trên một bảng điều khiển duy nhất.</p>
-<p>Chúng tôi đã kết hợp những tính năng này trong Hình 1. Chúng tôi sử dụng IAM để cấp quyền truy cập chi tiết đến các dịch vụ và tài nguyên AWS, Directory Service for Microsoft AD để xác thực người dùng trong các ứng dụng Microsoft, và Secrets Manager để lưu trữ thông tin đăng nhập cơ sở dữ liệu nhạy cảm. Dữ liệu của chúng tôi, di chuyển tự do giữa các Region, được mã hóa bằng KMS multi-Region keys, và toàn bộ hoạt động truy cập AWS API được ghi lại bởi CloudTrail, sau đó tập trung vào một bucket S3 trung tâm mà chỉ nhóm bảo mật của chúng tôi mới có quyền truy cập.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img1-Blog5.png" alt="Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng">
-    <figcaption><i>Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-mạng-toàn-cầu">
-  Xây dựng mạng toàn cầu
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Đối với các tài nguyên được triển khai trong các mạng ảo ở những Region khác nhau, <a href="http://aws.amazon.com/vpc" rel="external">Amazon Virtual Private Cloud (Amazon VPC)</a> cho phép <a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" rel="external">định tuyến riêng tư giữa các Region và tài khoản bằng VPC peering</a>. Các tài nguyên này có thể giao tiếp với nhau bằng địa chỉ IP riêng mà không cần internet gateway, VPN, hoặc thiết bị mạng riêng biệt. Tính năng này hoạt động tốt cho các mạng nhỏ chỉ cần một vài kết nối peering. Tuy nhiên, định tuyến bắc cầu (transitive routing) không được hỗ trợ, và khi số lượng VPC peering tăng lên, cấu trúc mạng dạng mesh có thể trở nên khó quản lý và khắc phục sự cố.</p>
-<p><a href="https://aws.amazon.com/transit-gateway/" rel="external">AWS Transit Gateway</a> giúp giảm bớt những khó khăn này bằng cách tạo một hub trung chuyển mạng, kết nối các VPC và mạng tại chỗ (on-premises). Khả năng định tuyến của Transit Gateway có thể mở rộng sang các Region khác thông qua <a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-peering.html" rel="external">Transit Gateway inter-Region peering</a>, để tạo ra một mạng riêng tư phân tán toàn cầu cho tài nguyên của bạn.</p>
-<p>Xây dựng một cách định tuyến đáng tin cậy và tiết kiệm chi phí để đưa người dùng đến các ứng dụng internet phân tán đòi hỏi những bản ghi Domain Name System (DNS) có độ sẵn sàng cao và khả năng mở rộng tốt. <a href="http://aws.amazon.com/route53" rel="external">Amazon Route 53</a> chính là dịch vụ làm được điều đó.</p>
-<p>Route 53 có nhiều <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" rel="external">chính sách định tuyến</a> khác nhau. Ví dụ, bạn có thể định tuyến một yêu cầu đến bản ghi có độ trễ mạng thấp nhất, hoặc đưa người dùng ở một vị trí địa lý cụ thể đến endpoint ứng dụng cục bộ. Đối với kịch bản khắc phục thảm họa (DR), <a href="https://aws.amazon.com/route53/application-recovery-controller/" rel="external">Route 53 Application Recovery Controller (Route 53 ARC)</a> cung cấp một giải pháp failover toàn diện với mức phụ thuộc tối thiểu. Các routing policy, safety check, và readiness check của Route 53 ARC giúp bạn thực hiện failover qua nhiều Region, AZ, và môi trường on-premises một cách đáng tin cậy.</p>
-<p><a href="http://aws.amazon.com/cloudfront" rel="external">Amazon CloudFront</a> – mạng phân phối nội dung (CDN) – là một dịch vụ toàn cầu, được xây dựng trên hơn 300 điểm hiện diện (PoP) khắp thế giới. Các ứng dụng có nhiều origin khả dụng (ví dụ như nhiều Region) có thể dùng <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html" rel="external">CloudFront origin failover</a> để tự động chuyển hướng sang origin dự phòng khi origin chính gặp sự cố. Khả năng của CloudFront không chỉ dừng lại ở việc phân phát nội dung, mà còn có thể chạy tính toán ở edge. <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html" rel="external">CloudFront Functions</a> giúp dễ dàng chạy các đoạn mã JavaScript nhẹ, trong khi <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html" rel="external">AWS Lambda@Edge</a> cho phép bạn chạy các hàm Node.js và Python gần hơn với người dùng ứng dụng, từ đó cải thiện hiệu năng và giảm độ trễ. Việc đưa compute ra edge giúp giảm tải cho origin và mang lại phản hồi nhanh hơn cho người dùng toàn cầu.</p>
-<p>Được xây dựng trên mạng lưới toàn cầu của AWS, <a href="http://aws.amazon.com/global-accelerator" rel="external">AWS Global Accelerator</a> cung cấp hai địa chỉ IP anycast tĩnh để làm điểm truy cập duy nhất cho các ứng dụng hướng internet. Bạn có thể linh hoạt thêm hoặc xóa origin trong khi hệ thống vẫn tự động định tuyến lưu lượng đến endpoint khu vực khỏe mạnh gần nhất. Nếu phát hiện lỗi, Global Accelerator sẽ <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html" rel="external">tự động chuyển hướng lưu lượng đến một endpoint khả dụng</a> chỉ trong vài giây, mà không cần thay đổi địa chỉ IP tĩnh.</p>
-<p>Hình 2 minh họa việc sử dụng Route 53 latency-based routing policy để định tuyến người dùng đến endpoint nhanh nhất, CloudFront để phân phát nội dung tĩnh như video và hình ảnh, và Transit Gateway để tạo một mạng riêng toàn cầu, giúp các thiết bị của chúng tôi có thể giao tiếp an toàn trên nhiều Region.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img2-Blog5.png" alt="Hình 2. Kết nối AWS VPC và phân phối nội dung">
-    <figcaption><i>Hình 2. Kết nối AWS VPC và phân phối nội dung</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">
-  Xây dựng và quản lý lớp tính toán (compute layer)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Mặc dù <a href="http://aws.amazon.com/ec2" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> và các <a href="http://aws.amazon.com/ebs" rel="external">Amazon Elastic Block Store (Amazon EBS)</a> volume liên kết chỉ tồn tại trong một AZ, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html" rel="external">Amazon Data Lifecycle Manager</a> có thể tự động hóa quá trình tạo và sao chép snapshot EBS giữa các Region. Điều này giúp nâng cao chiến lược khắc phục thảm họa (DR) bằng cách cung cấp một lựa chọn sao lưu và khôi phục lạnh (cold backup-and-restore) đơn giản cho các volume EBS. Nếu bạn cần sao lưu nhiều hơn chỉ các EBS volume, <a href="https://aws.amazon.com/backup/" rel="external">AWS Backup</a> cung cấp một nơi tập trung để thực hiện việc này trên nhiều dịch vụ (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>).</p>
-<p>Một EC2 instance được xây dựng dựa trên một <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" rel="external">Amazon Machine Image (AMI)</a>. AMI xác định cấu hình của instance như lưu trữ, quyền khởi chạy, và ánh xạ thiết bị. Khi cần tạo và phát hành một image chuẩn mới, <a href="https://aws.amazon.com/image-builder/" rel="external">EC2 Image Builder</a> giúp đơn giản hóa quá trình xây dựng, kiểm thử, và triển khai AMI mới. Nó cũng hỗ trợ sao chép AMI sang các Region bổ sung, loại bỏ việc phải sao chép thủ công AMI nguồn sang các Region đích.</p>
-<p>Các ứng dụng dựa trên microservice sử dụng container sẽ hưởng lợi từ thời gian khởi động nhanh hơn. <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có thể đảm bảo điều này diễn ra nhất quán trên nhiều Region bằng cách sao chép image riêng tư ở cấp độ registry. Một ECR private registry có thể được cấu hình cho cả cross-Region hoặc cross-account replication, để đảm bảo image của bạn luôn sẵn sàng ở các Region thứ cấp khi cần.</p>
-<p>Khi kiến trúc mở rộng ra nhiều Region, việc theo dõi tài nguyên được cấp phát ở đâu có thể trở nên khó khăn. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#global-view" rel="external">Amazon EC2 Global View</a> giúp giảm bớt vấn đề này bằng cách cung cấp một bảng điều khiển tập trung, hiển thị các tài nguyên EC2 như instance, VPC, subnet, security group, và volume trong tất cả các Region đang hoạt động.</p>
-<p>Chúng tôi kết hợp các tính năng compute layer này trong Hình 3 bằng cách sử dụng EC2 Image Builder để sao chép AMI chuẩn mới nhất của chúng tôi sang nhiều Region để triển khai. Chúng tôi cũng sao lưu mỗi EBS volume trong 3 ngày và sao chép nó sang nhiều Region bằng Data Lifecycle Manager.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img3-Blog5.png" alt="Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)">
-    <figcaption><i>Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="đưa-tất-cả-lại-với-nhau">
-  Đưa tất cả lại với nhau
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ở cuối mỗi phần của loạt bài blog này, chúng tôi sẽ xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách bạn có thể kết hợp các dịch vụ để xây dựng một ứng dụng đa Vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả dịch vụ được nhắc đến, chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
-<p>Chúng tôi xây dựng ví dụ này để mở rộng đến phạm vi toàn cầu. Ứng dụng yêu cầu tính sẵn sàng cao giữa các Vùng, và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn các dịch vụ sau (trong bài viết này) để đạt được mục tiêu:</p>
+<p>Lambda thực hiện <strong>làm sạch (sanitization)</strong> nội dung HTML trong mỗi bài viết kiến thức và ghi chúng dưới dạng các tệp HTML riêng biệt vào các S3 bucket cụ thể:</p>
 <ul>
-<li>
-<p>Route 53 với chính sách định tuyến theo độ trễ (latency routing) để đưa người dùng đến vùng triển khai có độ trễ thấp nhất.</p>
+<li>Kiến thức Ô tô (<code>qic-auto</code>)</li>
+<li>Kiến thức Tín dụng (<code>qic-credit</code>)</li>
+<li>Kiến thức Thanh toán (<code>qic-payments</code>)</li>
+</ul>
 </li>
 <li>
-<p>CloudFront được thiết lập để phân phối nội dung tĩnh. Region 1 là nguồn gốc chính, nhưng chúng tôi đã cấu hình dự phòng nguồn gốc (origin failover) sang Region 2 trong trường hợp có sự cố.</p>
-</li>
-<li>
-<p>Ứng dụng phụ thuộc vào một số API của bên thứ ba, vì vậy Secrets Manager với khả năng sao chép đa Vùng đã được thiết lập để lưu trữ thông tin khóa API nhạy cảm.</p>
-</li>
-<li>
-<p>CloudTrail logs được tập trung tại Region 1 để dễ dàng phân tích và kiểm toán.</p>
-</li>
-<li>
-<p>Security Hub tại Region 1 được chọn làm nơi tập hợp các phát hiện từ tất cả các Vùng.</p>
-</li>
-<li>
-<p>Đây là ứng dụng dựa trên container, chúng tôi dựa vào Amazon ECR replication tại mỗi vị trí để nhanh chóng tải về các image mới nhất tại chỗ.</p>
-</li>
-<li>
-<p>Để liên lạc qua IP riêng giữa các Vùng, một Transit Gateway được thiết lập tại mỗi Vùng với kết nối liên Vùng. VPC peering cũng có thể hoạt động, nhưng vì dự kiến mở rộng ra nhiều Vùng hơn trong tương lai nên chúng tôi chọn Transit Gateway như giải pháp lâu dài.</p>
-</li>
-<li>
-<p>IAM được dùng để cấp quyền quản lý tài nguyên AWS.</p>
+<p>Lambda cũng được kích hoạt khi <strong>tìm nạp định kỳ</strong> từ Salesforce khi các bài viết kiến thức:</p>
+<ul>
+<li><strong>Được cập nhật và xuất bản</strong> – Lambda làm sạch nội dung HTML và ghi đè tệp trong S3 bucket cụ thể</li>
+<li><strong>Được lưu trữ (Archived)</strong> – Lambda xóa tệp HTML khỏi S3 bucket tương ứng</li>
+</ul>
 </li>
 </ul>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img4-Blog5.png" alt="Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1">
-    <figcaption><i>Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="tóm-tắt">
-  Tóm tắt
+<hr>
+<h2 id="e-các-cơ-sở-kiến-thức-đã-cập-nhật-trong-s3">
+  E: Các Cơ sở kiến thức đã cập nhật trong S3
 
 
 
@@ -381,23 +405,601 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Khi thiết kế một ứng dụng đa Vùng (multi-Region), việc xây dựng một nền tảng vững chắc là vô cùng quan trọng. Nền tảng này sẽ giúp bạn phát triển ứng dụng nhanh chóng theo cách an toàn, đáng tin cậy và linh hoạt. Nhiều dịch vụ AWS đã tích hợp sẵn các tính năng hỗ trợ bạn xây dựng kiến trúc đa Vùng.</p>
-<p>Tùy vào lý do mở rộng ra ngoài một Vùng duy nhất mà kiến trúc của bạn sẽ khác nhau. Trong bài viết này, chúng tôi đã đề cập đến các tính năng cụ thể của những dịch vụ AWS về bảo mật, mạng và tính toán (compute) — với khả năng tích hợp sẵn để giảm bớt khối lượng công việc nặng nề và lặp lại.</p>
-<p>Trong các bài viết tiếp theo, chúng tôi sẽ tiếp tục đề cập đến các dịch vụ về dữ liệu, ứng dụng và quản lý.</p>
-<p>*** Sẵn sàng để bắt đầu? ***
-Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" rel="external">AWS Solutions</a> và <a href="https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND" rel="external">AWS Blogs</a> để hỗ trợ bạn!</p>
-<p>*** Bạn đang tìm thêm nội dung về kiến trúc? ***
-<a href="https://aws.amazon.com/architecture/" rel="external">AWS Architecture Center</a> cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!</p>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/</a>)</p>
-<p>Các bài viết khác trong chuỗi này:</p>
+</h2><p>Hàm Lambda xuất <strong>dữ liệu đã được làm sạch và phân loại</strong> vào các S3 bucket thích hợp:</p>
 <ul>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
-</li>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
-</li>
+<li><code>qic-auto</code></li>
+<li><code>qic-credit</code></li>
+<li><code>qic-payments</code></li>
 </ul>
+<hr>
+<h2 id="f-tích-hợp-amazon-connect">
+  F: Tích hợp Amazon Connect
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Mỗi S3 bucket được liên kết với <strong>Cơ sở kiến thức Q in Connect (QiC KB)</strong>:</p>
+<ul>
+<li><code>qic-auto-kb</code></li>
+<li><code>qic-credit-kb</code></li>
+<li><code>qic-payments-kb</code></li>
+</ul>
+<p>Các KB trong QiC có loại <strong>EXTERNAL</strong>, điều này có nghĩa là QiC tự động đồng bộ hóa với S3 bucket. Khi nội dung được thêm vào hoặc xóa khỏi S3 bucket, QiC sẽ tự động cập nhật KB của mình.</p>
+<ul>
+<li>Các cơ sở kiến thức hỗ trợ nhân viên trong <strong>các tương tác với khách hàng</strong> - <strong>Các Tác tử AI (AI Agents)</strong> cho cả Tìm kiếm thủ công và Đề xuất câu trả lời được tạo bằng <strong>các Câu lệnh AI (AI Prompts) tùy chỉnh</strong> và được liên kết với trợ lý cũng như các KB – sẽ được gọi (invoked) trong quá trình tương tác với khách hàng</li>
+</ul>
+<p><strong>Quy trình Tương tác Khách hàng</strong>:</p>
+<ol>
+<li>Khách hàng liên hệ với doanh nghiệp thông qua <strong>Amazon Connect</strong> 2. <strong>Quyết định của Luồng IVR</strong>: Xác định loại cuộc gọi/truy vấn thông qua đầu vào IVR hoặc tra cứu của bên thứ 3:
+<ul>
+<li>Ô tô</li>
+<li>Tín dụng</li>
+<li>Thanh toán</li>
+</ul>
+</li>
+<li>Loại liên hệ được chuyển đến <strong>AWS Lambda</strong> để xử lý</li>
+<li>Lambda cập nhật <strong>Phiên làm việc của Nhân viên (Agent Session)</strong> bằng cách gọi API QiC <code>updateSession()</code> với cấu hình nhân viên dựa trên loại liên hệ:
+<ul>
+<li>Kiến thức Ô tô</li>
+<li>Kiến thức Tín dụng</li>
+<li>Kiến thức Thanh toán</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="g-liên-kết-trợ-lý-assistant-association">
+  G: Liên kết Trợ lý (Assistant Association)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><strong>Cơ sở kiến thức (KB) QIC</strong> thích hợp được liên kết với phiên làm việc bằng cách sử dụng <strong>liên kết trợ lý</strong>.</p>
+<hr>
+<h2 id="h-hỗ-trợ-nhân-viên">
+  H: Hỗ trợ Nhân viên
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><strong>Các Nhân viên Amazon Connect (Tác tử AI QIC)</strong> truy cập cơ sở kiến thức liên quan thông qua Trợ lý QIC:</p>
+<ul>
+<li>Nhân viên bán hàng → Cơ sở kiến thức Ô tô</li>
+<li>Nhân viên hỗ trợ kỹ thuật → Cơ sở kiến thức Tín dụng</li>
+<li>Nhân viên nhân sự (HR) → Cơ sở kiến thức Thanh toán</li>
+</ul>
+<hr>
+<h2 id="các-điều-kiện-tiên-quyết">
+  Các điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="môi-trường-aws">
+  Môi trường AWS
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Tài khoản AWS đang hoạt động với quyền truy cập thích hợp</li>
+<li><strong><a href="https://aws.amazon.com/cli/" rel="external">AWS CLI</a></strong> đã được cài đặt và cấu hình</li>
+<li><strong><a href="https://aws.amazon.com/cdk/" rel="external">AWS CDK CLI</a></strong> đã được cài đặt</li>
+<li>Quyền truy cập và các quyền hạn tại khu vực (region) mục tiêu</li>
+</ul>
+<h3 id="amazon-connect">
+  Amazon Connect
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Một instance Amazon Connect đang hoạt động</li>
+<li>Hàng đợi (queue) Connect đã được cấu hình</li>
+<li>Quyền truy cập quản trị viên Connect</li>
+</ul>
+<h3 id="salesforce">
+  Salesforce
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Một tổ chức (org) Salesforce có quyền truy cập API</li>
+<li>(Đã) triển khai cơ sở kiến thức</li>
+<li>Quyền truy cập Salesforce thích hợp</li>
+<li>Quyền thiết lập Ứng dụng được Kết nối (Connected App) – <a href="https://help.salesforce.com/articleView?id=connected_app_overview.htm" rel="external">Salesforce Connected App</a></li>
+</ul>
+<h3 id="appflow">
+  AppFlow
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Trình kết nối (Connector) Salesforce cho AppFlow – <a href="https://docs.aws.amazon.com/appflow/latest/userguide/salesforce.html#salesforce-setup" rel="external">AppFlow Salesforce Connector</a></li>
+</ul>
+<h3 id="môi-trường-phát-triển">
+  Môi trường phát triển
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Python 3.x</li>
+<li>Git</li>
+<li>Trình soạn thảo mã (Code editor)</li>
+<li>Kinh nghiệm phát triển AWS CDK</li>
+</ul>
+<h3 id="quyền-truy-cập-bảo-mật">
+  Quyền truy cập bảo mật
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Quyền IAM thích hợp</li>
+<li>Quyền truy cập Salesforce thích hợp</li>
+<li>Quyền truy cập Dịch vụ Amazon AppFlow</li>
+</ul>
+<h3 id="cấu-hình--triển-khai">
+  Cấu hình &amp; triển khai
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="1-clone-sao-chép-dự-án">
+  1. Clone (Sao chép) dự án
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Repository URL: <a href="https://github.com/aws-samples/sample-sf-qic-multi-lob-intgr" rel="external">https://github.com/aws-samples/sample-sf-qic-multi-lob-intgr</a></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#75715e"># Clone (Sao chép) kho lưu trữ</span>
+</span></span><span style="display:flex;"><span>    git clone &lt;repository-url&gt;
+</span></span><span style="display:flex;"><span>    cd &lt;project folder&gt;</span></span></code></pre></div>
+<h4 id="2-cài-đặt-các-gói-phụ-thuộc-dependencies">
+  2. Cài đặt các gói phụ thuộc (Dependencies)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -r requirements.txt 
+</span></span><span style="display:flex;"><span>pip install -r requirements-dev.txt</span></span></code></pre></div>
+<h4 id="3-cấu-hình-salesforce-appflow">
+  3. Cấu hình Salesforce AppFlow
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><h5 id="31-tạo-kết-nối-appflow">
+  3.1 Tạo kết nối AppFlow
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h5><p>Để tạo kết nối AppFlow với Salesforce, hãy tham khảo các bước sau: <a href="https://docs.aws.amazon.com/appflow/latest/userguide/flow-tutorial-connection.html" rel="external">Hướng dẫn kết nối AppFlow</a><br>
+Để biết thêm chi tiết về các tùy chọn cấu hình khi tạo kết nối, hãy tham khảo phần: <a href="https://docs.aws.amazon.com/appflow/latest/userguide/salesforce.html" rel="external">Kết nối Amazon AppFlow với Salesforce</a> trong tài liệu tham khảo bổ sung này: <a href="https://docs.aws.amazon.com/appflow/latest/userguide/salesforce.html" rel="external">Trình kết nối Salesforce cho Amazon AppFlow
+</a></p>
+<h5 id="32-các-quyền-bắt-buộc-cho-salesforce-với-tư-cách-là-quản-trị-viên-salesforce-hãy-xem-lại-tài-liệu-salesforce-thích-hợp-cho-các-mục-sau">
+  3.2 Các quyền bắt buộc cho Salesforce:** Với tư cách là quản trị viên Salesforce, hãy xem lại tài liệu Salesforce thích hợp cho các mục sau:
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h5><ul>
+<li>Quyền đọc đối tượng Knowledge</li>
+<li>Quyền truy cập API đã được bật</li>
+<li>Phạm vi (scopes) OAuth đã được cấu hình</li>
+</ul>
+<h4 id="4-cấu-hình-aws">
+  4. Cấu hình AWS
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Cung cấp ID tài khoản AWS, khu vực (region) và tên cho môi trường. Với mục đích của blog này, chúng ta sẽ giả định “dev” là môi trường của mình. Do đó, trong tệp <code>config.dev.json</code> trong thư mục <code>config/</code>, hãy đảm bảo rằng các giá trị sau được cập nhật cho mỗi thuộc tính:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;ID-Tài-khoản-AWS-của-bạn&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;Khu-vực-Mục-tiêu-của-bạn&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;env_name&#34;</span>: <span style="color:#e6db74">&#34;Tên-Môi-trường&#34;</span> <span style="color:#75715e">//dev 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}</span></span></code></pre></div>
+<h4 id="5-thiết-lập-amazon-connect">
+  5. Thiết lập Amazon Connect
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Cung cấp ID instance Connect và ID hàng đợi (queue) của bạn. CDK sẽ triển khai một Luồng liên hệ (Contact Flow), và cần biết triển khai luồng này đến instance nào và bao gồm hàng đợi nào trong Luồng liên hệ.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ <span style="color:#f92672">&#34;connect&#34;</span>: { <span style="color:#f92672">&#34;instance_id&#34;</span>: <span style="color:#e6db74">&#34;ID-Instance-Connect-của-bạn&#34;</span>, <span style="color:#f92672">&#34;queue_id&#34;</span>: <span style="color:#e6db74">&#34;ID-Hàng-đợi-Connect-của-bạn&#34;</span> } }</span></span></code></pre></div>
+<h4 id="6-ánh-xạ-cơ-sở-kiến-thức-knowledge-base">
+  6. Ánh xạ Cơ sở Kiến thức (Knowledge Base)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Định nghĩa các <strong>Ngành kinh doanh (LOBs) của bạn</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;LOBs&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;LOB1&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;LOB2&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;LOB3&#34;</span>
+</span></span><span style="display:flex;"><span>    ]</span></span></code></pre></div>
+<p>Cần có thông tin sau đây để chỉ định trường định danh duy nhất (unique identifier field) của Nội dung trong Salesforce cho mỗi LOB. Ví dụ: Trong Salesforce, bạn có thể có một trường như “ProgramId__c” hoặc “LOB__c” để phân biệt các cơ sở kiến thức.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;businessUnitFilters&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;YourLOB1&#34;</span>: { <span style="color:#75715e">//e.g. Credit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;Your-Classification-Field&#34;</span>, <span style="color:#75715e">//e.g ProgramId__c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;LOB1-Value&#34;</span> <span style="color:#75715e">//e.g. Credit Dept
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Add more LOBs as defined in the &#34;LOBs&#34; section above
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}</span></span></code></pre></div>
+<h4 id="7-cấu-hình-appflow-salesforce">
+  7. Cấu hình AppFlow-Salesforce
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Từ Bước 1 ở trên, sao chép tên kết nối đã được tạo và cập nhật cấu hình sau:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;connection_name&#34;</span>: <span style="color:#e6db74">&#34;dev-sf-connection&#34;</span>,  <span style="color:#75715e">// Replace with your AppFlow connection name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;object_name&#34;</span>: <span style="color:#e6db74">&#34;Knowledge__kav&#34;</span>,         
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<h4 id="8-các-trường-của-bài-viết-kiến-thức-knowledge-article">
+  8. Các trường của Bài viết Kiến thức (Knowledge Article)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Phần Trường Tùy chỉnh (Custom Field) trong đoạn mã dưới đây cần được cập nhật ở đây. Đây là các trường bổ sung mà bạn sẽ nhập từ Salesforce và cần được liệt kê trong cấu hình. <strong>KHÔNG THAY ĐỔI Các trường Bắt buộc của Hệ thống (System Required Fields)</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;projections&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// System Required Fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;Id&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;id&#34;</span>},
+</span></span><span style="display:flex;"><span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;LastModifiedDate&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;datetime&#34;</span>},
+</span></span><span style="display:flex;"><span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;ArticleNumber&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>},
+</span></span><span style="display:flex;"><span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;PublishStatus&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;picklist&#34;</span>},  
+</span></span><span style="display:flex;"><span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;UrlName&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>}
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Custom Fields - Replace with your actual fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;Your-Title-Field&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>},
+</span></span><span style="display:flex;"><span>  {<span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;Your-Content-Field&#34;</span>, <span style="color:#f92672">&#34;data_type&#34;</span>: <span style="color:#e6db74">&#34;textarea&#34;</span>},
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Add additional fields as needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>]</span></span></code></pre></div>
+<h4 id="9-bộ-lọc-salesforce-knowledge">
+  9. Bộ lọc Salesforce Knowledge
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Để nguyên như sau. Nếu có các bộ lọc bổ sung bạn muốn chỉ định, hãy thêm chúng vào đây. Tài liệu tham khảo bổ sung:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/appflow/latest/userguide/flow-tutorial-salesforce-s3.html#change-data-capture-salesforce" rel="external">Change Data Capture Salesforce</a></li>
+<li><a href="https://docs.aws.amazon.com/appflow/latest/userguide/salesforce.html" rel="external">Cấu hình Salesforce AppFlow</a></li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;filters&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;PublishStatus&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;EQUAL_TO&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;values&#34;</span>: [<span style="color:#e6db74">&#34;Online&#34;</span>, <span style="color:#e6db74">&#34;Archived&#34;</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Add additional filters as needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>]</span></span></code></pre></div>
+<h4 id="10-quy-tắc-xác-thực-validation-rules-salesforce-knowledge">
+  10. Quy tắc Xác thực (Validation Rules) Salesforce Knowledge
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Cập nhật thuộc tính <code>field</code> với trường Salesforce chứa nội dung của kiến thức. Trường này phải có trong danh sách Projections ở Bước 6. Cấu hình này là cần thiết để đảm bảo chúng ta không nhập nội dung trống vào QiC.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;validations&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;field&#34;</span>: <span style="color:#e6db74">&#34;Your-Content-Field&#34;</span>, <span style="color:#75715e">// Replace with your content field. Must be in the list of Projections above
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;VALIDATE_NON_NULL&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;DropRecord&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Add additional validations as needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>]</span></span></code></pre></div>
+<p><strong>Lưu ý quan trọng:</strong></p>
+<ul>
+<li><code>connection_name</code> phải khớp chính xác với tên kết nối Amazon AppFlow-Salesforce của bạn</li>
+<li><code>object_name</code> phải là <code>Knowledge__kav</code></li>
+<li>Đảm bảo kết nối AppFlow có các quyền thích hợp để truy cập đối tượng được chỉ định</li>
+<li>Kiểm tra kết nối và quyền truy cập đối tượng trước khi triển khai</li>
+<li>Ghi lại bất kỳ tên đối tượng tùy chỉnh hoặc tên kết nối nào đã sử dụng</li>
+<li>Giữ cấu hình nhất quán giữa các môi trường</li>
+<li>Xác thực quyền đối tượng và khả năng truy cập trường</li>
+</ul>
+<h4 id="11-bootstrap-môi-trường-cdk">
+  11. Bootstrap Môi trường CDK
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Nếu đây là lần đầu tiên bạn sử dụng CDK trong tài khoản/khu vực này:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cdk bootstrap aws://ACCOUNT-NUMBER/REGION</span></span></code></pre></div>
+<h4 id="12-xem-lại-review-cdk-diff">
+  12. Xem lại (Review) CDK Diff
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cdk diff</span></span></code></pre></div>
+<h4 id="13-triển-khai-stack">
+  13. Triển khai Stack
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cdk deploy</span></span></code></pre></div>
+<p><strong>Các tài nguyên được tạo khi triển khai:</strong></p>
+<ul>
+<li>Luồng (flow) Amazon AppFlow để tích hợp Salesforce</li>
+<li>Các hàm Lambda để xử lý dữ liệu</li>
+<li>Các vai trò (roles) và chính sách (policies) IAM</li>
+<li>Các cơ sở kiến thức (knowledge bases) Amazon Q</li>
+<li>Các thành phần tích hợp Amazon Connect</li>
+</ul>
+<h3 id="xác-minh-việc-triển-khai">
+  Xác minh việc triển khai
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Sau khi việc triển khai hoàn tất:</p>
+<ul>
+<li>Kiểm tra bảng điều khiển (console) AWS CloudFormation để xem trạng thái của stack</li>
+<li>Xác minh việc tạo luồng (flow) AppFlow</li>
+<li>Xác nhận việc triển khai các hàm Lambda</li>
+<li>Kiểm tra việc thiết lập các cơ sở kiến thức Amazon Q</li>
+<li>Xác thực (Validate) việc tích hợp Amazon Connect</li>
+</ul>
+<h3 id="các-bước-sau-triển-khai">
+  Các bước sau triển khai
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>Liên kết các Cơ sở Kiến thức Q in Connect với Instance Connect của bạn bằng các lệnh CLI sau</li>
+</ol>
+<ul>
+<li>Đầu tiên, liệt kê các Cơ sở Kiến thức của bạn</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws qconnect list-knowledge-bases --region &lt;KHU_VỰC_AWS_CỦA_BẠN&gt;</span></span></code></pre></div>
+<ul>
+<li>Tiếp theo, đối với mỗi Cơ sở Kiến thức, hãy tạo một Liên kết Tích hợp Connect (Connect Integration Association). Lưu ý rằng Cơ sở Kiến thức đầu tiên do CloudFormation tạo ra có thể đã được liên kết và AWS CLI có thể báo lỗi do điều này. Bạn có thể đơn giản bỏ qua các bước này cho bất kỳ Cơ sở Kiến Kến thức nào như vậy</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws connect create-integration-association --region &lt;KHU_VỰC_AWS_CỦA_BẠN&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--instance-id &lt;ID_INSTANCE_CONNECT_CỦA_BẠN&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--integration-arn &lt;ARN_CƠ_SỞ_KIẾN_THỨC_CỦA_BẠN&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--integration-type WISDOM_KNOWLEDGE_BASE</span></span></code></pre></div>
+<ul>
+<li>Cuối cùng, gắn thẻ (tag) cho mỗi Cơ sở Kiến thức là <code>AmazonConnectEnabled=True</code></li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws qconnect tag-resource --region &lt;KHU_VỰC_AWS_CỦA_BẠN&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--resource-arn &lt;ARN_CƠ_SỞ_KIẾN_THỨC_CỦA_BẠN&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--tags AmazonConnectEnabled<span style="color:#f92672">=</span>True</span></span></code></pre></div>
+<ol start="2">
+<li>Trong Bảng điều khiển (Console) Amazon Connect, điều hướng đến Amazon Q, và nhấp vào <strong>Thêm Miền (Add Domain):</strong></li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="3">
+<li>Trên trang Thêm Miền (Add Domain), Chọn <strong>Sử dụng một miền hiện có</strong> (Use an existing domain), và chọn miền đã được tạo bởi quá trình triển khai từ danh sách thả xuống và nhấp vào <strong>Thêm Miền</strong> (Add Domain):</li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="4">
+<li>Sau khi Miền (Domain) được thêm vào, bạn sẽ thấy một trang hiển thị Miền và các Cơ sở Kiến thức (Knowledge bases) được Liên kết như hình bên dưới:</li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="5">
+<li>Chạy các Luồng AppFlow (Run the AppFlows)</li>
+</ol>
+<ul>
+<li>Đăng nhập vào Bảng điều khiển Quản lý AWS (AWS Management Console) và mở bảng điều khiển Amazon AppFlow tại <a href="https://console.aws.amazon.com/appflow/" rel="external">https://console.aws.amazon.com/appflow/</a></li>
+<li>Trong khung điều hướng (navigation pane) bên trái, chọn <strong>Luồng</strong> (Flows). Bảng điều khiển sẽ hiển thị trang <strong>Luồng</strong> (Flows). Trang này chứa một bảng tóm tắt các luồng đã được tạo.</li>
+<li>Để khởi tạo một luồng, bạn <strong>kích hoạt</strong> (activate) hoặc <strong>chạy</strong> (run) nó. Chúng ta có 2 loại luồng được tạo: <strong>Theo yêu cầu</strong> (OnDemand) và <strong>Theo lịch</strong> (Scheduled)</li>
+<li>Đối với mỗi LOB, Chọn luồng <strong>Theo yêu cầu</strong> (OnDemand) và chọn <strong>Xem Chi tiết</strong> (View Details).</li>
+<li>Chọn <strong>Chạy luồng</strong> (Run flow) để chạy luồng.</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>Đối với mỗi LOB, Chọn <strong>luồng Theo lịch</strong> (Scheduled) và chọn <strong>Xem Chi tiết</strong> (View Details)</li>
+<li>Chọn <strong>Kích hoạt</strong> (Activate) để kích hoạt luồng.</li>
+</ul>
+<!-- raw HTML omitted -->
+<ol start="6">
+<li>Xem xét và cập nhật luồng liên hệ (contact flow) Amazon Connect</li>
+</ol>
+<ul>
+<li>Đăng nhập vào instance Amazon Connect của bạn.</li>
+<li>Dưới mục <strong>Định tuyến</strong> (Routing), chọn <strong>Luồng liên hệ</strong> (Contact Flows).</li>
+<li>Chọn luồng có tên: <code>qic-sf-contact-flow</code></li>
+<li>Điều hướng đến Khối (Block) <strong>Lấy thông tin đầu vào của khách hàng</strong> (Get customer input).</li>
+<li>Cập nhật <strong>Lời nhắc</strong> (Prompts) để bao gồm các BU hoặc LOB của bạn.</li>
+<li>Cập nhật khối <strong>Đặt thuộc tính liên hệ</strong> (Set contact attributes) cho mỗi tùy chọn. Thuộc tính <code>LOB</code> là bắt buộc, và giá trị phải giống hệt như các giá trị đã cung cấp trong cấu hình CDK tại thời điểm triển khai.</li>
+</ul>
+<!-- raw HTML omitted -->
+<ol start="7">
+<li>Xác minh trạng thái luồng AppFlow</li>
+</ol>
+<ul>
+<li>Kích hoạt Luồng Theo yêu cầu (OnDemand Flow) trước tiên – để truy xuất nội dung kiến thức hiện có từ Salesforce</li>
+<li>Bắt đầu Luồng Theo lịch (Scheduled Flow) – để định kỳ thăm dò (poll) Salesforce Knowledge nhằm nhập bất kỳ nội dung bổ sung/cập nhật nào cho Salesforce Knowledge.</li>
+</ul>
+<ol start="8">
+<li>Xác minh các S3 bucket mục tiêu để kiểm tra việc đồng bộ hóa dữ liệu Salesforce</li>
+<li>Giám sát (Monitor) CloudWatch logs</li>
+</ol>
+<h3 id="mẹo-khắc-phục-sự-cố">
+  Mẹo khắc phục sự cố
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="các-sự-cố-thường-gặp-và-giải-pháp">
+  Các sự cố thường gặp và giải pháp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Sự cố kết nối AppFlow</strong> - Xác minh <code>connection_name</code> trong tệp cấu hình (config).</p>
+<ul>
+<li>Kiểm tra thông tin đăng nhập (credentials) Salesforce.</li>
+<li>Xác thực (Validate) token OAuth.</li>
+</ul>
+<p><strong>Lỗi quyền (Permission Errors)</strong> - Xem lại các vai trò (roles) IAM.</p>
+<ul>
+<li>Xác minh quyền truy cập API Salesforce.</li>
+</ul>
+<p><strong>Sự cố đồng bộ hóa cơ sở kiến thức (Knowledge Base Sync Issues)</strong> - Xác thực cấu hình <code>object_name</code>.</p>
+<ul>
+<li>Kiểm tra các ánh xạ trường (field mappings).</li>
+</ul>
+<h3 id="dọn-dẹp">
+  Dọn dẹp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Để tránh phát sinh chi phí trong tương lai, hãy xóa các tài nguyên bằng các bước sau:</p>
+<ul>
+<li>Đảm bảo hủy ánh xạ (unmap) Luồng liên hệ (Contact Flow) do quá trình triển khai tạo ra khỏi số điện thoại.</li>
+<li>Trong terminal của bạn, đảm bảo bạn đang ở trong thư mục dự án.</li>
+<li>Chạy lệnh: <code>cdk destroy</code></li>
+</ul>
+<h3 id="kết-luận">
+  Kết luận
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Tóm lại, việc tích hợp Salesforce Knowledge với Amazon Q in Connect giúp tăng cường hỗ trợ nhân viên và giải quyết một số thách thức cốt lõi mà các trung tâm liên hệ phải đối mặt. Sự tích hợp này trao quyền cho các tổ chức nâng cao hoạt động của họ thông qua việc triển khai các tác tử AI cụ thể theo LOB (ngành kinh doanh), đảm bảo sự hỗ trợ theo thời gian thực, theo ngữ cảnh được thiết kế riêng cho các nhu cầu riêng biệt của các đơn vị kinh doanh khác nhau.</p>
 
   <footer class="footline">
   </footer>
@@ -509,8 +1111,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763448698" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763449266" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763449266" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
