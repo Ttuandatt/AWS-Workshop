@@ -3,7 +3,7 @@
   <channel>
     <title>Week 10 Worklog :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.10-week_10/index.html</link>
-    <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
+    <description>Week 10 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 10/11/2025 10/11/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 11/11/2025 11/11/2025 3 12/11/2025 12/11/2025 4 13/11/2025 13/11/2025 5 14/11/2025 14/11/2025</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.10-week_10/index.xml" rel="self" type="application/rss+xml" />
