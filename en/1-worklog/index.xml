@@ -3,7 +3,7 @@
   <channel>
     <title>Worklog :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</link>
-    <description>Week 1: Orientation &amp; Project Setup&#xA;Week 2: Core AWS Basics &amp; Project Planning&#xA;Week 3: System Design &amp; Intermediate AWS Services&#xA;Week 4: Authentication Development &amp; API Foundations&#xA;Week 5: User Service Development &amp; Scaling Concepts&#xA;Week 6: Database &amp; Caching Integration&#xA;Week 7: Advanced Services &amp; Deployment Preparation&#xA;Week 8: Experimental Implementation &amp; Deployment&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
+    <description>Week 1: Orientation &amp; Project Setup&#xA;Week 2: Core AWS Basics &amp; Project Planning&#xA;Week 3: System Design &amp; Intermediate AWS Services&#xA;Week 4: Authentication Development &amp; API Foundations&#xA;Week 5: User Service Development &amp; Scaling Concepts&#xA;Week 6: Database &amp; Caching Integration&#xA;Week 7: Advanced Services &amp; Deployment Preparation&#xA;Week 8: Experimental Implementation &amp; Deployment&#xA;Week 9: Focused on writing unit tests for key components and functions, performing integration tests for core business flows, and ensuring overall system stability through continuous testing and bug fixing</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.xml" rel="self" type="application/rss+xml" />
