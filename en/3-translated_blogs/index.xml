@@ -55,21 +55,21 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</guid>
-      <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng&#xD;Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022&#xA;Chủ đề: AWS CloudFormation, AWS Config&#xA;Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description>
+      <description>Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect&#xD;Tác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025&#xA;Giới thiệu&#xD;Các nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.</description>
     </item>
     <item>
       <title>Blog 8</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html</guid>
-      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+      <description>Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQS&#xD;Tác giả: Maximilian Schellhorn &amp; Dirk Fröhner&#xA;Ngày: 21/07/2025&#xA;Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to&#xA;Giới thiệu&#xD;Hôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.</description>
     </item>
     <item>
       <title>Blog 9</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</guid>
-      <description>Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật&#xD;Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021&#xA;Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share</description>
+      <description>Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald&#xD;Tác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer&#xA;Ngày: 21/07/2025&#xA;Chuyên mục: Amazon Braket – Quantum Technologies&#xA;Giới thiệu&#xD;Amazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).</description>
     </item>
     <item>
       <title>Blog 10</title>

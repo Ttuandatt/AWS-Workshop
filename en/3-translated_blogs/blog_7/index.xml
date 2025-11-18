@@ -3,7 +3,7 @@
   <channel>
     <title>Blog 7 :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</link>
-    <description>Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng&#xD;Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022&#xA;Chủ đề: AWS CloudFormation, AWS Config&#xA;Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</description>
+    <description>Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect&#xD;Tác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025&#xA;Giới thiệu&#xD;Các nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.xml" rel="self" type="application/rss+xml" />

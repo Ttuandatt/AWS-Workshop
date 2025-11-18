@@ -5,50 +5,46 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta name="description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 7 :: Internship Report">
-    <meta name="twitter:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta name="twitter:description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 7 :: Internship Report">
-    <meta property="og:description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
+    <meta property="og:description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 7 :: Internship Report">
-    <meta itemprop="description" content="Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụngTác giả: Joe Chapman và Sebastian Leks - 28/03/2022
-Chủ đề: AWS CloudFormation, AWS Config
-Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ tính toán, mạng và bảo mật của AWS. Trong Phần 2, chúng ta đã tích hợp các dịch vụ dữ liệu và sao chép của AWS để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.">
-    <meta itemprop="wordCount" content="2182">
+    <meta itemprop="description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.">
+    <meta itemprop="wordCount" content="2873">
     <title>Blog 7 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_7/index.xml" rel="alternate" type="application/rss+xml" title="Blog 7 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763393926" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763393926" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763448698" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763393926";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763448698";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763393926" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763448698" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -100,7 +96,7 @@ Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng c
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763393926" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763448698" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_7/index.html">
     <div id="R-body" class="default-animation">
@@ -132,15 +128,35 @@ Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng c
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+  </ul>
+
+  <ul>
     <li>
       <ul>
-        <li><a href="#công-cụ-dành-cho-nhà-phát-triển">Công cụ dành cho nhà phát triển</a></li>
-        <li><a href="#kiến-trúc-hướng-sự-kiện">Kiến trúc hướng sự kiện</a></li>
-        <li><a href="#giám-sát-và-khả-năng-quan-sát-monitoring-and-observability">Giám sát và khả năng quan sát (Monitoring and observability)</a></li>
-        <li><a href="#quản-lý-quản-trị-governance">Quản lý: Quản trị (Governance)</a></li>
-        <li><a href="#quản-lý-vận-hành-operations">Quản lý: Vận hành (Operations)</a></li>
-        <li><a href="#kết-hợp-lại">Kết hợp lại</a></li>
-        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+        <li><a href="#chiến-lược-quản-lý-tri-thức">Chiến lược quản lý tri thức</a></li>
+        <li><a href="#phân-tích-người-dùng-cuối">Phân tích người dùng cuối</a></li>
+        <li><a href="#khả-năng-truy-cập-nội-dung">Khả năng truy cập nội dung</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#giới-hạn-dịch-vụ-service-limit">Giới hạn dịch vụ (Service Limit)</a></li>
+        <li><a href="#tốc-độ-crawl-crawl-rate">Tốc độ crawl (Crawl Rate)</a></li>
+        <li><a href="#định-nghĩa-phạm-vi-crawl-crawl-scope">Định nghĩa phạm vi crawl (Crawl Scope)</a></li>
+        <li><a href="#đánh-giá-chiến-lược-cơ-sở-tri-thức--đơn-hay-đa">Đánh giá chiến lược cơ sở tri thức – đơn hay đa</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#giới-hạn-thời-gian-execution-timeout">Giới hạn thời gian (Execution Timeout)</a></li>
+        <li><a href="#giới-hạn-url-và-cấu-hình-url-configuration">Giới hạn URL và cấu hình (URL Configuration)</a></li>
       </ul>
     </li>
   </ul>
@@ -200,8 +216,8 @@ Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng c
 
 <h1 id="blog-7">Blog 7</h1>
 
-<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-3-quản-lý-và-giám-sát-ứng-dụng">
-  Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng
+<h1 id="những-hiểu-biết-sâu-sắc-và-bài-học-kinh-nghiệm-từ-amazon-q-trong-tích-hợp-trình-thu-thập-thông-tin-web-connect">
+  Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect
 
 
 
@@ -210,14 +226,10 @@ Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng c
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 28/03/2022</em></p>
-<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudformation/" rel="external">AWS CloudFormation</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-config/" rel="external">AWS Config</a></em></p>
-<hr>
-<p>Trong Phần 1 của loạt bài này, chúng ta đã xây dựng nền tảng cho ứng dụng đa vùng bằng cách sử dụng các dịch vụ <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">tính toán, mạng và bảo mật</a> của AWS.
-Trong Phần 2, chúng ta đã tích hợp các <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">dịch vụ dữ liệu và sao chép của AWS</a> để di chuyển và đồng bộ dữ liệu giữa các vùng AWS.</p>
-<p>Trong Phần 3, chúng ta sẽ tìm hiểu về các dịch vụ và tính năng của AWS được sử dụng cho nhắn tin, triển khai, giám sát và quản lý.</p>
-<h3 id="công-cụ-dành-cho-nhà-phát-triển">
-  Công cụ dành cho nhà phát triển
+</h1><p>Tác giả: Vikas Prasad &amp; Ayush Mehta
+Ngày: 22/07/2025</p>
+<h2 id="giới-thiệu">
+  Giới thiệu
 
 
 
@@ -226,11 +238,14 @@ Trong Phần 2, chúng ta đã tích hợp các <a href="https://aws.amazon.com/
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Tự động hóa với cơ sở hạ tầng dưới dạng mã (Infrastructure as Code – IaC) giúp loại bỏ các bước thủ công khi tạo và cấu hình hạ tầng. Nó cung cấp một mẫu có thể tái sử dụng, cho phép triển khai các môi trường nhất quán ở nhiều Vùng khác nhau.</p>
-<p>IaC với <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html" rel="external">AWS CloudFormation StackSets</a> sử dụng một mẫu duy nhất để tạo, cập nhật và xóa <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html" rel="external">các stack trên nhiều tài khoản và Vùng</a> chỉ trong một lần thực hiện. Khi viết một mẫu <a href="http://aws.amazon.com/cloudformation" rel="external">AWS CloudFormation</a>, bạn có thể thay đổi hành vi triển khai bằng cách kết hợp các tham số với logic điều kiện. Ví dụ, bạn có thể đặt một tham số “standby” mà khi được gán giá trị “true” sẽ giới hạn số lượng <a href="https://aws.amazon.com/ec2/" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> instances trong một nhóm <a href="https://aws.amazon.com/ec2/autoscaling/" rel="external">Auto Scaling của Amazon EC2</a> được triển khai tại một Vùng dự phòng.</p>
-<p>Các ứng dụng có triển khai trải rộng trên nhiều Vùng có thể sử dụng <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-cross-region.html" rel="external">cross-Region actions</a> trong <a href="https://aws.amazon.com/codepipeline/" rel="external">AWS CodePipeline</a> để xây dựng một pipeline phát hành nhất quán. Cách này giúp bạn không cần phải thiết lập các hành động khác nhau cho từng Vùng. <a href="https://aws.amazon.com/image-builder" rel="external">EC2 Image Builder</a> và <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có các tính năng sao chép liên vùng (cross-Region copy) để hỗ trợ triển khai AMI và image một cách đồng nhất, như đã đề cập ở Phần 1.</p>
-<h3 id="kiến-trúc-hướng-sự-kiện">
-  Kiến trúc hướng sự kiện
+</h2><p>Các nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức.
+Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.</p>
+<p>Để đáp ứng nhu cầu này, Amazon Connect giới thiệu <a href="https://aws.amazon.com/connect/q/" rel="external">Amazon Q in Connect</a> — một trợ lý AI sinh nội dung (Generative AI assistant), cung cấp các phản hồi và hành động gợi ý theo thời gian thực, được cá nhân hóa giúp nhân viên tổng đài thực hiện công việc hiệu quả và nhanh chóng hơn.</p>
+<p>Amazon Q in Connect có thể tích hợp với nhiều cơ sở tri thức (knowledge base) khác nhau thông qua các phương thức tích hợp đa dạng.
+Bài viết này tập trung vào phương pháp tích hợp bằng Web crawler, bao gồm những lưu ý quan trọng khi triển khai và các thực hành tốt nhất.
+Chúng ta sẽ cùng tìm hiểu cách khách hàng có thể truy cập và sử dụng hiệu quả các URL trang web của mình làm nguồn dữ liệu cho Amazon Q in Connect.</p>
+<h1 id="vì-sao-cần-tích-hợp-web-crawler">
+  Vì sao cần tích hợp Web Crawler?
 
 
 
@@ -239,107 +254,30 @@ Trong Phần 2, chúng ta đã tích hợp các <a href="https://aws.amazon.com/
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các ứng dụng hướng sự kiện và tách rời (decoupled, event-driven) tạo ra một kiến trúc có khả năng mở rộng và dễ bảo trì hơn, nhờ vào việc mỗi thành phần thực hiện nhiệm vụ cụ thể của nó một cách độc lập.</p>
-<p><a href="https://aws.amazon.com/eventbridge/" rel="external">Amazon EventBridge</a>, một dịch vụ event bus không máy chủ (serverless), có thể gửi sự kiện giữa các tài nguyên AWS. Bằng cách tận dụng định tuyến sự kiện liên vùng <a href="https://aws.amazon.com/blogs/compute/introducing-cross-region-event-routing-with-amazon-eventbridge/" rel="external">(cross-Region event routing)</a>, bạn có thể chia sẻ sự kiện giữa các workloads <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-region.html" rel="external">ở các Vùng</a> (Hình 1) và <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html" rel="external">giữa các tài khoản</a>. Ví dụ, bạn có thể chia sẻ các sự kiện về tình trạng và mức sử dụng (health and utilization) giữa các Vùng để xác định workload nào ở Vùng nào là phù hợp nhất để xử lý yêu cầu.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img1-Blog7.png" alt="Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác">
-    <figcaption><i>Hình 1. EventBridge định tuyến sự kiện từ một Vùng sang các event bus ở các Vùng khác</i></figcaption>
-  </figure>
-</div>
-
-<p>Nếu ứng dụng hướng sự kiện của bạn dựa trên mô hình pub/sub messaging, thì <a href="https://aws.amazon.com/sns/" rel="external">Amazon Simple Notification Service (Amazon SNS)</a> có thể phân phối (fan out) thông điệp đến nhiều đích khác nhau.
-Khi các đích đến là <a href="https://aws.amazon.com/sqs/" rel="external">Amazon Simple Queue Service (Amazon SQS)</a> queues hoặc <a href="https://aws.amazon.com/lambda/" rel="external">AWS Lambda</a> functions, Amazon SNS có thể <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-cross-region-delivery.html" rel="external">gửi thông báo đến các đối tượng nhận ở nhiều Vùng khác nhau</a>.
-Ví dụ, bạn có thể gửi thông điệp đến một SQS queue trung tâm để xử lý các đơn hàng cho một ứng dụng đa vùng.</p>
-<h3 id="giám-sát-và-khả-năng-quan-sát-monitoring-and-observability">
-  Giám sát và khả năng quan sát (Monitoring and observability)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Khả năng quan sát (observability) càng trở nên quan trọng khi số lượng tài nguyên và vị trí triển khai tăng lên. Việc có thể nhanh chóng xác định được tác động và nguyên nhân gốc rễ của một sự cố sẽ ảnh hưởng đến các hoạt động khắc phục, và đảm bảo rằng hệ thống quan sát của bạn có khả năng chống chịu với sự cố sẽ giúp bạn đưa ra những quyết định này. Khi xây dựng trên AWS, bạn có thể kết hợp tình trạng sức khỏe của các dịch vụ AWS với các chỉ số ứng dụng của bạn để có được cái nhìn toàn diện hơn về sức khỏe của cơ sở hạ tầng.</p>
-<p>AWS Health cung cấp bảng điều khiển (dashboards) và API hiển thị các sự kiện và hoạt động đã lên lịch có thể ảnh hưởng đến tài nguyên của bạn. Những sự kiện này bao phủ tất cả các Region, và có thể mở rộng để bao gồm toàn bộ tài khoản trong AWS Organization. EventBridge có thể giám sát các sự kiện từ AWS Health để thực hiện ngay hành động dựa trên sự kiện đó. Ví dụ, nếu nhiều dịch vụ được báo cáo là đang suy giảm, bạn có thể đặt EventBridge target tới một AWS Systems Manager automated runbook nhằm chuẩn bị ứng dụng disaster recovery (DR) cho việc chuyển đổi dự phòng (failover).</p>
-<p>AWS Trusted Advisor cung cấp các cảnh báo mang tính hành động nhằm tối ưu chi phí, tăng hiệu năng, cũng như cải thiện bảo mật và khả năng chịu lỗi. Trusted Advisor hiển thị kết quả trên tất cả các Region và có thể tạo báo cáo tổng hợp kết quả kiểm tra trên toàn bộ tài khoản trong một tổ chức.</p>
-<p>Để duy trì khả năng quan sát đối với một ứng dụng được triển khai trên nhiều Region và nhiều tài khoản, bạn có thể tạo Trusted Advisor dashboard và operations dashboard bằng AWS Systems Manager Explorer. Operations dashboard mang đến cái nhìn hợp nhất về các tài nguyên như Amazon EC2, Amazon CloudWatch, và dữ liệu AWS Config. Bạn có thể kết hợp metadata với Amazon Athena để tạo ra một bảng kiểm kê (inventory) đa-Region và đa-tài khoản về các tài nguyên.</p>
-<p>Bạn có thể xem các metric từ ứng dụng và tài nguyên được triển khai trên nhiều Region ngay trong CloudWatch console. Điều này giúp dễ dàng tạo biểu đồ và dashboard cho ứng dụng đa-Region. CloudWatch cũng hỗ trợ cross-account, cho phép bạn tạo một cái nhìn tập trung về dashboards, alarms, và metrics trên toàn bộ tổ chức của mình.</p>
-<p>Amazon OpenSearch Service tập hợp các log file không cấu trúc hoặc bán cấu trúc, message, metric, document, dữ liệu cấu hình, và nhiều loại dữ liệu khác. Cross-cluster replication (nhân bản chéo cụm) sẽ sao chép indices, mappings, và metadata trong mô hình active-passive từ một domain OpenSearch sang một domain khác. Điều này giúp giảm độ trễ giữa các Region và đảm bảo tính sẵn sàng cao cho dữ liệu.</p>
-<p>AWS Resilience Hub đánh giá và theo dõi khả năng chịu lỗi (resiliency) của ứng dụng. Nó kiểm tra mức độ ứng dụng có thể duy trì tính khả dụng khi thực hiện failover ở cấp độ Region. Ví dụ, nó có thể kiểm tra xem ứng dụng đã cấu hình cross-Region replication trên các bucket Amazon S3 chưa, hoặc các instance Amazon RDS đã có read-replica cross-Region hay chưa. Hình 2 minh họa kết quả đánh giá từ Resilience Hub. Nó cũng gợi ý việc sử dụng Route 53 Application Recovery Controller (được đề cập trong Phần 1) để đảm bảo Auto Scaling group của Amazon EC2 trong một Region được scale sẵn và sẵn sàng nhận traffic trước khi chuyển failover sang đó.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img2-Blog7.png" alt="Hình 2. Các khuyến nghị của Resilience Hub">
-    <figcaption><i>Hình 2. Các khuyến nghị của Resilience Hub</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="quản-lý-quản-trị-governance">
-  Quản lý: Quản trị (Governance)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Việc mở rộng một ứng dụng sang một quốc gia mới đồng nghĩa với việc có thể sẽ có thêm những luật và quy định về quyền riêng tư dữ liệu cần tuân thủ. Những điều này sẽ khác nhau tùy theo từng quốc gia, và chúng tôi khuyến nghị bạn nên tham khảo với nhóm pháp lý của mình để hiểu đầy đủ cách chúng ảnh hưởng đến ứng dụng của bạn.</p>
-<p>AWS Control Tower hỗ trợ tuân thủ dữ liệu bằng cách cung cấp các guardrails nhằm kiểm soát và đáp ứng các yêu cầu về lưu trú dữ liệu. Các guardrails này là tập hợp của Service Control Policies (SCPs) và các quy tắc AWS Config. Bạn có thể triển khai chúng độc lập với AWS Control Tower nếu cần. Các dịch vụ đa vùng (multi-Region) tập trung vào bảo mật bổ sung đã được đề cập trong Phần 1.</p>
-<p>AWS Config cung cấp một cái nhìn chi tiết về cấu hình và lịch sử của các tài nguyên AWS. Một AWS Config aggregator thu thập dữ liệu cấu hình và tuân thủ từ nhiều tài khoản và nhiều Vùng (Region) về một tài khoản trung tâm. Cái nhìn tập trung này mang lại một cái nhìn toàn diện về sự tuân thủ và các hành động trên tài nguyên, bất kể chúng nằm ở tài khoản hay Vùng nào.</p>
-<h3 id="quản-lý-vận-hành-operations">
-  Quản lý: Vận hành (Operations)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Một số khả năng của AWS Systems Manager cho phép quản trị tài nguyên AWS dễ dàng hơn, đặc biệt khi ứng dụng phát triển. Systems Manager Automation đơn giản hóa các tác vụ bảo trì và triển khai phổ biến cho tài nguyên AWS thông qua các runbook tự động. Những runbook này tự động hóa các hành động trên tài nguyên trải rộng nhiều Vùng và nhiều tài khoản.</p>
-<p>Bạn có thể kết hợp Systems Manager Automation với Systems Manager Patch Manager để đảm bảo các phiên bản (instances) luôn duy trì bản vá mới nhất trên nhiều tài khoản và nhiều Vùng. Hình 3 cho thấy Systems Manager đang chạy nhiều tài liệu tự động (automation documents) trên một kiến trúc đa vùng.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img3-Blog7.png" alt="Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region).">
-    <figcaption><i>Hình 3. Sử dụng Systems Manager Automation từ một tài khoản vận hành trung tâm của AWS để tự động hóa các hành động trên nhiều Vùng (Region).</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="kết-hợp-lại">
-  Kết hợp lại
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ở cuối mỗi phần của loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho bạn thấy cách kết hợp các dịch vụ để tạo ra một ứng dụng đa vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả các dịch vụ đã nhắc đến, mà chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
-<p>Chúng tôi xây dựng ví dụ này để mở rộng đến một đối tượng toàn cầu. Ứng dụng này yêu cầu tính khả dụng cao trên nhiều vùng và ưu tiên hiệu năng hơn là tính nhất quán nghiêm ngặt. Chúng tôi đã chọn các dịch vụ sau (được đề cập trong bài viết này) để đạt được mục tiêu, đồng thời xây dựng dựa trên nền tảng từ phần 1 và phần 2:</p>
+</h1><p>Nội dung thường bị phân tán trên nhiều website, buộc agent phải tra cứu nhiều nguồn khác nhau khi hỗ trợ khách hàng. Điều này làm chậm quá trình xử lý và ảnh hưởng đến chất lượng tương tác.</p>
+<ul>
+<li>Khi được cấu hình với Web Crawler, Amazon Q in Connect có thể:</li>
+</ul>
+<ul>
+<li>Tự động thu thập và lập chỉ mục nội dung từ nhiều website, trang hỗ trợ.</li>
+</ul>
 <ul>
 <li>
-<p>CloudFormation StackSets để triển khai toàn bộ bằng IaC. Điều này đảm bảo hạ tầng được triển khai nhất quán trên các vùng.</p>
+<p>Cung cấp cho agent thông tin sản phẩm nhanh chóng và chính xác.</p>
 </li>
 <li>
-<p>AWS Config rules cung cấp một nơi tập trung để giám sát, ghi nhận và đánh giá cấu hình tài nguyên của chúng tôi.</p>
+<p>Cung cấp liên kết nguồn gốc để agent và khách có thể đối chiếu.</p>
 </li>
 <li>
-<p>Để tăng khả năng quan sát (observability), chúng tôi đã tạo dashboard với CloudWatch dashboard, Personal Health dashboard, và Trusted Advisor dashboard.</p>
+<p>Loại bỏ việc cập nhật thủ công khi nội dung website thay đổi.</p>
 </li>
 </ul>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img4-Blog7.png" alt="Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region).">
-    <figcaption><i>Hình 4. Xây dựng một ứng dụng với các dịch vụ đa vùng (multi-Region).</i></figcaption>
-  </figure>
-</div>
-
-<p>Mặc dù mục tiêu chính của chúng tôi là mở rộng đến một đối tượng người dùng toàn cầu, chúng tôi lưu ý rằng một số dịch vụ như CloudFormation StackSets phụ thuộc vào Vùng 1. Mỗi triển khai theo vùng được thiết lập để có tính ổn định tĩnh, nhưng nếu xảy ra sự cố ngừng hoạt động kéo dài ở Vùng 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách thực hiện các thay đổi CloudFormation tại Vùng 2.</p>
-<h3 id="tóm-tắt">
-  Tóm tắt
+<p>Bài viết này sẽ trình bày các giai đoạn và cách tối ưu triển khai Web Crawler trong Amazon Q in Connect.
+<a href="#R-image-deb7db76e6c8139418300047f1c22b14" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-deb7db76e6c8139418300047f1c22b14"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh1.jpg"></a></p>
+<p><strong>Biểu đồ 1: Các giai đoạn khác nhau để tối ưu hóa việc triển khai trình thu thập thông tin web</strong></p>
+<h1 id="1-giai-đoạn-planning-lập-kế-hoạch">
+  1. Giai đoạn Planning (Lập kế hoạch)
 
 
 
@@ -348,29 +286,249 @@ Ví dụ, bạn có thể gửi thông điệp đến một SQS queue trung tâm
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Nhiều dịch vụ AWS có các tính năng hỗ trợ bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể gây choáng ngợp.</p>
-<p>Trong loạt blog 3 phần này, chúng tôi đã khám phá các dịch vụ AWS với những tính năng giúp bạn xây dựng ứng dụng đa vùng:</p>
+</h1><p>Trước khi bắt đầu triển khai tích hợp Web crawler cho Amazon Q in Connect, bạn nên tham khảo tài liệu hướng dẫn chính thức của <a href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html" rel="external">Amazon Connect</a> để biết chi tiết về cách kích hoạt <a href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html" rel="external">Amazon Q in Connect</a> cũng như các yêu cầu tiên quyết cần đáp ứng. Việc hiểu rõ nền tảng kỹ thuật và điều kiện cần thiết sẽ giúp quá trình triển khai diễn ra thuận lợi và tránh phát sinh lỗi khi cấu hình hoặc thu thập dữ liệu.</p>
+<p>Trước khi triển khai tích hợp Web crawler, hãy xem xét kỹ ba nhóm câu hỏi nền tảng sau:</p>
+<h3 id="chiến-lược-quản-lý-tri-thức">
+  Chiến lược quản lý tri thức
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Trước hết, tổ chức cần xác định rõ bộ phận chịu trách nhiệm chính trong việc quản lý và duy trì nội dung — có thể là phòng Marketing, bộ phận IT, hoặc đội ngũ Trải nghiệm khách hàng (Customer Experience Team). Việc chỉ định rõ trá ch nhiệm giúp đảm bảo tính nhất quán trong quản trị dữ liệu. Đồng thời, cần thiết lập một quy trình cập nhật nội dung minh bạch, trong đó các thay đổi phải được đồng bộ hóa với hệ thống tổng đài Amazon Connect để các nhân viên luôn truy cập được phiên bản mới nhất của tri thức nội bộ.</p>
+<h3 id="phân-tích-người-dùng-cuối">
+  Phân tích người dùng cuối
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bước tiếp theo là xác định đối tượng sẽ trực tiếp sử dụng cơ sở tri thức. Họ có thể là các agent tuyến 1 — những người chủ yếu xử lý các câu hỏi tổng quát, hoặc các nhân viên hỗ trợ kỹ thuật chuyên sâu phụ trách những vấn đề phức tạp hơn. Trong nhiều trường hợp, hệ thống có thể được sử dụng bởi cả hai nhóm người dùng. Việc phân tích chính xác đặc điểm của người dùng cuối giúp doanh nghiệp xác định phạm vi nội dung cần crawl, cũng như độ sâu chi tiết của thông tin cần được lập chỉ mục để phù hợp với nhu cầu thực tế của từng nhóm.</p>
+<h3 id="khả-năng-truy-cập-nội-dung">
+  Khả năng truy cập nội dung
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Cuối cùng, tổ chức cần kiểm tra khả năng truy cập của các nguồn dữ liệu được chọn để tích hợp vào Amazon Q in Connect. Một số nguồn thông tin có thể công khai, trong khi những nguồn khác yêu cầu xác thực hoặc quyền truy cập đặc biệt. Do đó, việc đảm bảo có sự cho phép hợp pháp trước khi tiến hành crawl là cực kỳ quan trọng. Điều này không chỉ tuân thủ các chính sách bảo mật và quyền riêng tư, mà còn giúp quá trình tích hợp diễn ra ổn định, bền vững và không bị gián đoạn bởi các vấn đề liên quan đến quyền truy cập.</p>
+<h1 id="2-giai-đoạn-staged-implementation-triển-khai-theo-giai-đoạn">
+  2. Giai đoạn Staged Implementation (Triển khai theo giai đoạn)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p>Trong quá trình triển khai tích hợp Web crawler cho Amazon Q in Connect, doanh nghiệp nên bắt đầu với cách tiếp cận có trọng tâm và từng bước thay vì thực hiện đồng loạt trên toàn bộ hệ thống. Cụ thể, hãy tạo các cơ sở tri thức (knowledge base) riêng biệt cho từng nhóm nội dung quan trọng hoặc lĩnh vực trọng điểm. Việc này giúp dễ dàng quản lý, thử nghiệm và kiểm soát chất lượng dữ liệu của từng phần trước khi hợp nhất.</p>
+<p>Tiếp theo, cần kiểm thử độc lập nhiều cấu hình URL khác nhau nhằm xác định đâu là phương án crawl hiệu quả nhất cho từng loại nội dung. Chỉ sau khi đã tối ưu từng phần, bạn mới nên kết hợp các cấu hình này thành một giải pháp tổng thể. Phương pháp này giúp bạn phân tích và xử lý lỗi (troubleshoot) đối với các nguồn nội dung cụ thể mà không ảnh hưởng đến toàn bộ hệ thống. Đồng thời, nó cho phép bạn tinh chỉnh mô hình quét (crawl pattern) để đạt được hiệu suất thu thập dữ liệu tối ưu.</p>
+<p>Khi hệ thống bắt đầu hoạt động, các nhân viên tổng đài (agent) sẽ cung cấp phản hồi thực tế về chất lượng và mức độ phù hợp của các phản hồi do AI đề xuất. Dựa trên phản hồi này, bạn có thể mở rộng dần phạm vi crawl, bổ sung thêm các nhóm nội dung mới để hoàn thiện cơ sở tri thức.</p>
+<p>Phương pháp triển khai theo giai đoạn không chỉ giúp rút ngắn thời gian triển khai ban đầu, mà còn đảm bảo mỗi phần nội dung được tối ưu kỹ lưỡng trước khi tích hợp vào cơ sở tri thức chính (primary knowledge base). Nhờ đó, hệ thống Amazon Q in Connect có thể đạt hiệu suất cao, dữ liệu nhất quán và độ tin cậy tối đa trong quá trình hỗ trợ nhân viên và khách hàng.</p>
+<h1 id="3-giai-đoạn-optimization-tối-ưu-hóa">
+  3. Giai đoạn Optimization (Tối ưu hóa)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p>Trong giai đoạn này, mục tiêu chính là tinh chỉnh cấu hình và chiến lược tích hợp web crawler để đạt hiệu suất cao nhất, đồng thời đảm bảo tính ổn định của hệ thống và chất lượng dữ liệu được thu thập. Dưới đây là các yếu tố thực tiễn quan trọng cần xem xét khi tối ưu hóa chiến lược tích hợp web crawler cho Amazon Q in Connect.</p>
+<h3 id="giới-hạn-dịch-vụ-service-limit">
+  Giới hạn dịch vụ (Service Limit)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi thiết kế hệ thống tích hợp web crawler cho Amazon Q, điều quan trọng là phải nhận thức rõ rằng mỗi crawler chỉ có thể xử lý tối đa <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/webcrawl-data-source-connector.html#:~:text=Enter%20Maximum%20pages%20for%20data%20source%20sync%20between%201%20and%2025000.%20Limit" rel="external">25.000 tệp (files)</a> trong một phiên thu thập dữ liệu (ingestion).
+Giới hạn này đòi hỏi doanh nghiệp phải có chiến lược chọn lọc URL và ưu tiên nội dung thật hiệu quả.</p>
+<p>Cụ thể, nên xây dựng cơ chế lọc nội dung (content filtering mechanism) với thứ tự ưu tiên rõ ràng — tập trung vào:</p>
 <ul>
 <li>
-<p>Ở Phần 1, chúng tôi xây dựng nền tảng với các dịch vụ về bảo mật, mạng và điện toán của AWS.</p>
+<p>Các tài liệu quan trọng đối với hoạt động kinh doanh,</p>
 </li>
 <li>
-<p>Ở Phần 2, chúng tôi bổ sung chiến lược dữ liệu và sao chép.</p>
+<p>Các bài viết thường xuyên được truy cập,</p>
 </li>
 <li>
-<p>Cuối cùng, ở Phần 3, chúng tôi xem xét các lớp ứng dụng và quản lý.</p>
+<p>Và tài nguyên hỗ trợ khách hàng có giá trị cao.</p>
 </li>
 </ul>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-3-application-management-and-monitoring/</a>)</p>
-<p>Các bài viết khác trong chuỗi này:</p>
+<p>Bên cạnh đó, có thể áp dụng các kỹ thuật như nhận dạng mẫu URL (URL pattern matching), chấm điểm mức độ liên quan nội dung (content relevancy scoring) và lọc theo siêu dữ liệu (metadata filtering) để tận dụng tối đa giới hạn tệp cho phép.
+Do hạn chế này, việc thiết kế kiến trúc nội dung hợp lý và phân tách cơ sở tri thức thành nhiều cấu hình crawler riêng biệt (multiple crawler configurations) là điều cần thiết trong một số trường hợp phức tạp.</p>
+<h3 id="tốc-độ-crawl-crawl-rate">
+  Tốc độ crawl (Crawl Rate)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi triển khai web crawler cho Amazon Q, doanh nghiệp cần phối hợp chặt chẽ với đội hạ tầng hoặc IT — những người trực tiếp quản lý website — để xác định ngưỡng tốc độ crawl (crawl rate threshold) phù hợp với khả năng tải và cấu hình cân bằng tải (load balancing) của hệ thống web.
+Các yếu tố như số lượng yêu cầu đồng thời (concurrent requests) và tần suất crawl cần được hiệu chỉnh cẩn thận, vì việc quét quá nhanh có thể gây ra lỗi 504 Gateway Timeout và dẫn đến dữ liệu thu thập không đầy đủ.</p>
+<p>Do đó, nên bắt đầu với tốc độ crawl thấp, sau đó tăng dần (progressive rate limit) trong khi theo dõi thời gian phản hồi của máy chủ web thông qua các công cụ giám sát lưu lượng truy cập (web traffic monitoring tools).
+Bằng cách này, bạn có thể tinh chỉnh tham số crawl để vừa đảm bảo chỉ mục hóa dữ liệu chính xác và ổn định, vừa duy trì độ ổn định cho website.</p>
+<h3 id="định-nghĩa-phạm-vi-crawl-crawl-scope">
+  Định nghĩa phạm vi crawl (Crawl Scope)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Thay vì cố gắng crawl toàn bộ trang web, bạn nên xác định chính xác các điểm bắt đầu crawl (seed URLs) cho từng danh mục nội dung quan trọng.
+Cách làm này giúp hệ thống khám phá nội dung liên quan một cách hiệu quả trong khi giảm số lượng seed URL cần thiết.
+Ví dụ:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://example.com/products/&#34;</span> <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://example.com/documentation/&#34;</span> <span style="color:#f92672">}</span></span></span></code></pre></div>
+<p>Trong ví dụ trên, mỗi seed URL trỏ đến trang danh mục chính (category index page) thay vì từng trang sản phẩm riêng lẻ, cho phép web crawler tự động tìm thấy toàn bộ nội dung liên quan mà không cần khai báo thủ công hàng trăm URL.</p>
+<h3 id="đánh-giá-chiến-lược-cơ-sở-tri-thức--đơn-hay-đa">
+  Đánh giá chiến lược cơ sở tri thức – đơn hay đa
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Tùy thuộc vào mô hình kinh doanh và đặc thù hỗ trợ khách hàng, bạn có thể chọn giữa:</p>
 <ul>
 <li>
-<p><a href="../../../en/3-translated_blogs/blog_5/">Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật</a></p>
+<p>Một cơ sở tri thức thống nhất (unified knowledge base) — phù hợp khi khách hàng thường xuyên đặt câu hỏi liên quan đến nhiều sản phẩm khác nhau.</p>
 </li>
 <li>
-<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
+<p>Nhiều cơ sở tri thức tách biệt (separate knowledge bases) — phù hợp khi mỗi nhóm khách hàng chỉ quan tâm đến một dòng sản phẩm cụ thể.</p>
 </li>
 </ul>
+<p>Tuy nhiên, cần lưu ý đến giới hạn số lượng knowledge base mà dịch vụ Amazon Q cho phép.
+Trong một số trường hợp nâng cao, bạn có thể thay đổi động (dynamic switching) giữa các knowledge base ngay trong quá trình chạy (runtime) bằng cách:</p>
+<ol>
+<li>
+<p><a href="https://docs.aws.amazon.com/connect/latest/adminguide/create-ai-agents.html#cli-ai-agents-sample4" rel="external">Ghi đè cấu hình cơ sở tri</a> thức bằng AI Agent phù hợp.</p>
+</li>
+<li>
+<p>Sau đó sử dụng API <a href="https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateSession.html" rel="external">Update session</a> để chuyển đổi giữa các AI Agent tương ứng.</p>
+</li>
+</ol>
+<p>Cách tiếp cận linh hoạt này giúp Amazon Q in Connect có thể phục vụ nhiều loại khách hàng và tình huống hỗ trợ khác nhau mà không cần tái cấu hình toàn bộ hệ thống.
+<a href="#R-image-b32dbfa355ade581d0bf7d95c3859ea5" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b32dbfa355ade581d0bf7d95c3859ea5"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh2.jpg"></a></p>
+<p><strong>Sơ đồ 2: Các thành phần của Q trong Connect Assistant</strong></p>
+<h1 id="4-giai-đoạn-implementation-triển-khai-thực-tế">
+  4. Giai đoạn Implementation (Triển khai thực tế)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><h3 id="giới-hạn-thời-gian-execution-timeout">
+  Giới hạn thời gian (Execution Timeout)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi triển khai web crawler của Amazon Q, các kiến trúc sư hệ thống cần tính đến giới hạn thời gian thực thi (timeout) cho mỗi phiên crawl.
+Giới hạn này yêu cầu phải áp dụng chiến lược crawl hiệu quả, bao gồm:</p>
+<ul>
+<li>
+<p>Ưu tiên URL (URL prioritization) để tập trung vào các trang quan trọng nhất.</p>
+</li>
+<li>
+<p>Tối ưu hóa mô hình crawl (optimized crawl patterns) nhằm giảm tải và tăng tốc độ thu thập dữ liệu.</p>
+</li>
+<li>
+<p>Và phân tách nội dung thành nhiều phiên crawl nhỏ (segmenting content into multiple crawl jobs) để đảm bảo hoàn thành quá trình thu thập dữ liệu trong khoảng thời gian cho phép.</p>
+</li>
+</ul>
+<h3 id="giới-hạn-url-và-cấu-hình-url-configuration">
+  Giới hạn URL và cấu hình (URL Configuration)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Giao diện người dùng (UI) của Amazon Connect cho phép thêm tối đa 10 URL, trong khi API <a href="https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UrlConfiguration.html" rel="external">UrlConfiguration</a> hỗ trợ lên tới 100 URL khởi tạo (seed URLs).
+Đối với các tổ chức có nhiều website hoặc lượng nội dung lớn, việc lập kế hoạch thông minh là rất cần thiết.
+Thay vì liệt kê từng trang một, hãy xây dựng sơ đồ cấu trúc nội dung (content structure mapping) để xác định các danh mục chính (key categories).
+Sau đó, tạo các biểu thức chính quy (regex patterns) để xác định:</p>
+<ul>
+<li>
+<p>Nội dung cần thu thập (inclusion patterns),</p>
+</li>
+<li>
+<p>Và nội dung cần loại trừ (exclusion patterns).</p>
+</li>
+</ul>
+<p>Ví dụ:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>._domain<span style="color:#ae81ff">\.</span>com/support/._<span style="color:#ae81ff">\.</span>pdf</span></span></code></pre></div>
+<h1 id="kết-luận">
+  Kết luận
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p>Tóm lại, thực tiễn tốt nhất (best practice) cho việc tích hợp trình thu thập dữ liệu web (web crawler integration) trong Amazon Q in Connect tuân theo một quy trình hệ thống gồm bốn giai đoạn chính:
+Planning (Lập kế hoạch), Staged Implementation (Triển khai theo giai đoạn), Optimization (Tối ưu hóa) và Implementation (Triển khai thực tế).</p>
+<p><strong>Giai đoạn Lập kế hoạch (Planning phase)</strong></p>
+<p>Tập trung vào việc xây dựng chiến lược cơ sở tri thức (knowledge base strategy), phân tích nhu cầu người dùng cuối, và đảm bảo khả năng truy cập nội dung.
+Việc chuẩn bị kỹ lưỡng ở giai đoạn này giúp định hướng chính xác cho các bước triển khai sau.</p>
+<p><strong>Giai đoạn Triển khai theo giai đoạn (Staged Implementation phase)</strong>
+Ở bước này, tổ chức sẽ tạo và kiểm thử các cơ sở tri thức riêng biệt cho từng nhóm nội dung quan trọng, trước khi tích hợp chúng lại thành một hệ thống hoàn chỉnh.
+Cách tiếp cận theo từng phần giúp kiểm soát chất lượng dữ liệu, xử lý lỗi hiệu quả, và đảm bảo độ chính xác của thông tin mà các agent sử dụng.</p>
+<p><strong>Giai đoạn Tối ưu hóa (Optimization phase)</strong>
+Giai đoạn này tập trung giải quyết các yếu tố kỹ thuật then chốt như:
+Giới hạn dịch vụ (service limits) — chẳng hạn giới hạn 25.000 tệp cho mỗi lần crawl.</p>
+<p>Tốc độ thu thập dữ liệu (crawl rate) — để tránh gây tải cho máy chủ.</p>
+<p>Và chiến lược cơ sở tri thức (knowledge base strategy) — xác định xem nên hợp nhất hay tách riêng cơ sở tri thức theo từng dòng sản phẩm.</p>
+<p><strong>Giai đoạn Triển khai thực tế (Implementation phase)</strong>
+Xử lý các vấn đề thực thi như:
+Giới hạn thời gian thu thập (execution timeout),</p>
+<p>Và giới hạn cấu hình URL (URL configuration limits).
+Tại đây, việc giám sát, tinh chỉnh và xác minh quá trình crawl là rất quan trọng để đảm bảo toàn bộ nội dung được thu thập chính xác và đầy đủ.</p>
+<p><strong>Quy trình lặp lại (Iterative Process)</strong>
+Toàn bộ quy trình được thiết kế theo mô hình lặp (iterative), trong đó phản hồi giữa các giai đoạn được sử dụng để liên tục cải thiện và tối ưu hiệu suất tích hợp.
+Cách tiếp cận có hệ thống này giúp các tổ chức triển khai Amazon Q’s web crawler một cách hiệu quả, đồng thời duy trì sự ổn định của hệ thống và đảm bảo bao quát toàn diện nguồn tri thức cho hoạt động của trung tâm liên hệ (contact center).</p>
+<p><strong>Để đạt hiệu quả cao nhất khi sử dụng web crawler integration, cần lưu ý:</strong></p>
+<p>1.Xác định nội dung ưu tiên cao (Identify high-priority content) và phân tích kỹ các URL.</p>
+<p>2.Đặt các điểm bắt đầu crawl cụ thể (Set specific starting points for crawls) để giới hạn phạm vi hợp lý.</p>
+<p>3.Sử dụng bộ lọc regex (Use regex filters) nhằm nhắm chính xác đến các URL có liên quan.</p>
+<p>Theo dõi hiệu suất của Amazon Q in Connect qua Amazon <a href="https://docs.aws.amazon.com/connect/latest/adminguide/monitor-q-assistants-cloudwatch.html" rel="external">CloudWatch Logs</a>, đảm bảo hệ thống hoạt động ổn định và hiệu quả.
+Bằng cách áp dụng các chiến lược này, các tổ chức có thể tích hợp thành công dữ liệu tri thức từ nhiều website vào Amazon Q in Connect, giúp nhân viên hỗ trợ (agents) có quyền truy cập toàn diện vào thông tin sản phẩm và tài liệu hướng dẫn, đồng thời duy trì hoạt động thu thập dữ liệu hiệu quả trong giới hạn dịch vụ.</p>
 
   <footer class="footline">
   </footer>
@@ -482,8 +640,8 @@ Ví dụ, bạn có thể gửi thông điệp đến một SQS queue trung tâm
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763448698" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

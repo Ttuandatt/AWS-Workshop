@@ -5,46 +5,54 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer
+Ngày: 21/07/2025
+Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 9 :: Internship Report">
-    <meta name="twitter:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="twitter:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer
+Ngày: 21/07/2025
+Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 9 :: Internship Report">
-    <meta property="og:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta property="og:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer
+Ngày: 21/07/2025
+Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 9 :: Internship Report">
-    <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
-    <meta itemprop="wordCount" content="3110">
+    <meta itemprop="description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer
+Ngày: 21/07/2025
+Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).">
+    <meta itemprop="wordCount" content="1375">
     <title>Blog 9 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_9/index.xml" rel="alternate" type="application/rss+xml" title="Blog 9 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763393926" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763393926" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763448698" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763393926";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763448698";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763393926" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763448698" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -96,7 +104,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763393926" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763448698" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_9/index.html">
     <div id="R-body" class="default-animation">
@@ -128,18 +136,13 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">Những điều cần cân nhắc trước khi bắt đầu</a></li>
-        <li><a href="#quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">Quản lý danh tính và truy cập trên nhiều Region</a></li>
-        <li><a href="#mã-hóa-trên-nhiều-region">Mã hóa trên nhiều Region</a></li>
-        <li><a href="#kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">Kiểm toán và khả năng quan sát trên nhiều Region</a></li>
-        <li><a href="#xây-dựng-mạng-toàn-cầu">Xây dựng mạng toàn cầu</a></li>
-        <li><a href="#xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">Xây dựng và quản lý lớp tính toán (compute layer)</a></li>
-        <li><a href="#đưa-tất-cả-lại-với-nhau">Đưa tất cả lại với nhau</a></li>
-        <li><a href="#tóm-tắt">Tóm tắt</a></li>
-      </ul>
-    </li>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#kiến-trúc-nâng-cao-cho-nghiên-cứu-lượng-tử">Kiến trúc nâng cao cho nghiên cứu lượng tử</a></li>
+    <li><a href="#tính-khả-dụng-và-truy-cập-được-cải-thiện">Tính khả dụng và truy cập được cải thiện</a></li>
+    <li><a href="#bắt-đầu-với-emerald-trên-braket">Bắt đầu với Emerald trên Braket</a></li>
+    <li><a href="#khám-phá-vướng-mắc-lượng-tử-quy-mô-lớn-hơn-trên-emerald">Khám phá vướng mắc lượng tử quy mô lớn hơn trên Emerald</a></li>
+    <li><a href="#lập-trình-lượng-tử-nâng-cao-với-dynamic-circuits">Lập trình lượng tử nâng cao với dynamic circuits</a></li>
+    <li><a href="#bắt-đầu-ngay-hôm-nay">Bắt đầu ngay hôm nay</a></li>
   </ul>
 </nav>
                 </div>
@@ -197,8 +200,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 <h1 id="blog-9">Blog 9</h1>
 
-<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-1-tính-toán-mạng-và-bảo-mật">
-  Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
+<h1 id="amazon-braket-ra-mắt-bộ-xử-lý-lượng-tử-siêu-dẫn-54-qubit-iqm-emerald">
+  Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald
 
 
 
@@ -207,13 +210,11 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021</em></p>
-<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-cloudfront/" rel="external">Amazon CloudFront</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-ec2/" rel="external">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-elastic-block-storage-ebs/" rel="external">Amazon Elastic Block Store (Amazon EBS)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-route-53/" rel="external">Amazon Route 53</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-vpc/" rel="external">Amazon VPC</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudtrail/" rel="external">AWS CloudTrail</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external">AWS Global Accelerator</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-identity-and-access-management-iam/" rel="external">AWS Identity and Access Management (IAM)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Secrets Manager</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Security Hub</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Transit Gateway</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Well-Architected Permalink Share</a></em></p>
-<hr>
-<p>Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.</p>
-<p>Trong loạt blog gồm 3 phần này, chúng tôi sẽ chọn lọc từ hơn 200 dịch vụ đó và tập trung vào những dịch vụ có tính năng cụ thể hỗ trợ bạn xây dựng ứng dụng đa vùng. Trong Phần 1, chúng ta sẽ xây dựng nền tảng với các dịch vụ bảo mật, mạng, và tính toán của AWS. Ở Phần 2, chúng ta sẽ bổ sung các chiến lược dữ liệu và sao chép. Cuối cùng, trong Phần 3, chúng ta sẽ tìm hiểu về lớp ứng dụng và quản lý. Khi đi qua từng phần, chúng ta sẽ dần xây dựng một ứng dụng mẫu để minh họa cách kết hợp các dịch vụ này nhằm tạo ra một ứng dụng đa vùng.</p>
-<h3 id="những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">
-  Những điều cần cân nhắc trước khi bắt đầu
+</h1><p><strong>Tác giả:</strong> Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer</p>
+<p><strong>Ngày:</strong> 21/07/2025</p>
+<p><strong>Chuyên mục:</strong> Amazon Braket – Quantum Technologies</p>
+<h2 id="giới-thiệu">
+  Giới thiệu
 
 
 
@@ -222,157 +223,112 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" rel="external">AWS Region</a> được xây dựng với nhiều <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#Availability_Zones" rel="external">Availability Zone (AZ)</a> tách biệt và cách ly về mặt vật lý. Cách tiếp cận này cho phép bạn tạo ra các workload có độ sẵn sàng cao, tuân thủ nguyên tắc <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" rel="external">Well-Architected</a>, trải rộng trên nhiều AZ để đạt được khả năng chịu lỗi tốt hơn. Điều này đáp ứng được mục tiêu khả dụng cho hầu hết các ứng dụng, nhưng vẫn có một số lý do chung khiến bạn có thể muốn mở rộng ra ngoài một Region duy nhất:</p>
+</h2><p><a href="https://aws.amazon.com/braket/" rel="external">Amazon Braket</a> cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).</p>
+<p>Với việc bổ sung IQM Emerald vào Braket, khách hàng hiện có thể truy cập hai bộ xử lý IQM: Garnet 20-qubit và Emerald 54-qubit mới. Cả hai thiết bị đều có sẵn qua Vùng Châu Âu (Stockholm), giúp khách hàng có nhiều lựa chọn phần cứng lượng tử phù hợp với nhu cầu nghiên cứu và yêu cầu thuật toán.</p>
+<p><a href="#R-image-ed614ec820cd83a31527be419b106be8" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ed614ec820cd83a31527be419b106be8"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg"></a></p>
+<p><strong>Hình 1: Bộ xử lý IQM Emerald</strong></p>
+<p>Trong giai đoạn đầu của tính toán lượng tử, thử nghiệm trên nhiều thiết bị sẵn có là rất quan trọng để phát triển thuật toán lượng tử, nhằm mục tiêu xử lý các vấn đề phức tạp trong những lĩnh vực như tài chính, năng lượng, dược phẩm, và logistics. Khách hàng trên toàn cầu giờ có thể chạy thử nghiệm trên phần cứng lượng tử tiên tiến nhất của IQM, sử dụng truy cập theo yêu cầu (on-demand) để thiết kế và thực thi chương trình, và truy cập ưu tiên qua Hybrid Jobs để chạy các thuật toán lượng tử biến phân (variational quantum algorithms), tất cả với giá cả thanh toán theo mức sử dụng (pay-as-you-go). Với những workload yêu cầu độ trễ thấp hoặc có tính thời gian nhạy cảm, khách hàng có thể đặt trước (reserve) năng lực dành riêng trên QPU Emerald theo giờ thông qua Braket Direct.</p>
+<h2 id="kiến-trúc-nâng-cao-cho-nghiên-cứu-lượng-tử">
+  Kiến trúc nâng cao cho nghiên cứu lượng tử
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Emerald sử dụng kiến trúc Crystal 54 của IQM, được xây dựng bằng các qubit transmon siêu dẫn sắp xếp theo lưới vuông (square lattice) và kết nối với nhau thông qua các coupler có thể điều chỉnh (tunable couplers). Cấu hình có tính kết nối cao này cho phép ánh xạ (mapping) các thuật toán lượng tử hiệu quả lên topology của thiết bị. Thiết kế lưới vuông hỗ trợ trực tiếp mã sửa lỗi bề mặt (surface-code error correction), đặt thiết bị vào vị trí phù hợp cho các ứng dụng tính toán lượng tử chịu lỗi trong tương lai.</p>
+<p>Thiết bị hỗ trợ các phép quay X và Y bất kỳ (arbitrary X and Y rotations) như các cổng một qubit nguyên thủy (native single-qubit gates) và sử dụng cổng CZ như cổng hai-qubit nguyên thủy (native two-qubit operation). Tập cổng này cung cấp sự linh hoạt để triển khai thuật toán lượng tử trong khi vẫn duy trì hoạt động với độ trung thực cao. Dữ liệu đặc tính ban đầu cho thấy độ trung thực trung vị (median) của cổng một-qubit là 99.93% và độ trung thực trung vị của cổng hai-qubit là 99.5%. Các chỉ số hiệu năng cập nhật có thể được tìm thấy trên trang chi tiết thiết bị Emerald trong Braket Console.</p>
+<p><a href="#R-image-8ed56da63713a7de2c059812bef1809a" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8ed56da63713a7de2c059812bef1809a"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg"></a></p>
+<p><strong>Hình 2: Topology của QPU Emerald hiển thị lưới vuông 54-qubit với các coupler có thể điều chỉnh</strong></p>
+<h2 id="tính-khả-dụng-và-truy-cập-được-cải-thiện">
+  Tính khả dụng và truy cập được cải thiện
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Cả IQM Emerald và Garnet đều có mặt 19 giờ mỗi ngày, cho phép khách hàng chạy workload lượng tử theo thời gian thuận tiện bất kể múi giờ. Việc mở rộng cửa sổ khả dụng từ IQM cho phép vòng lặp phát triển và thử nghiệm liên tục cho khách hàng toàn cầu.</p>
+<p>Khách hàng có thể truy cập các QPU đặt tại EU này trong Vùng Châu Âu (Stockholm), nghĩa là họ có thể đáp ứng các yêu cầu về cư trú dữ liệu ở châu Âu và làm việc với các khả năng hybrid quantum-classical tiên tiến trong cùng một môi trường.</p>
+<h2 id="bắt-đầu-với-emerald-trên-braket">
+  Bắt đầu với Emerald trên Braket
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Braket cung cấp cho khách hàng một giao diện lập trình thống nhất, dễ sử dụng để truy cập phần cứng lượng tử. Khách hàng có thể xây dựng, kiểm thử và chạy chương trình lượng tử trên Emerald với Braket SDK, hoặc các framework phổ biến khác như Qiskit, Pennylane, và NVIDIA CUDA-Q. Để thực thi chương trình trên Emerald, chỉ cần chỉ định ARN của thiết bị trong định nghĩa device trước khi chạy mạch:
+device = AwsDevice(&ldquo;arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald&rdquo;)</p>
+<p>Ví dụ Bell State (Python)
+Bạn có thể chạy một mạch chỉ với vài dòng code — ví dụ tạo trạng thái Bell:
+from braket.aws import AwsDevice
+from braket.circuits import Circuit</p>
+<p>device = AwsDevice(&ldquo;arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald&rdquo;)</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># run circuit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bell <span style="color:#f92672">=</span> Circuit<span style="color:#f92672">()</span>.h<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>.cnot<span style="color:#f92672">(</span>control<span style="color:#f92672">=</span>0, target<span style="color:#f92672">=</span>1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> device.run<span style="color:#f92672">(</span>bell, shots<span style="color:#f92672">=</span>1000<span style="color:#f92672">)</span>.result<span style="color:#f92672">()</span></span></span></code></pre></div>
+<p>(Ghi chú: đoạn code trên khởi tạo một mạch, áp cổng Hadamard (h) lên qubit 0 rồi CNOT giữa qubit 0 và 1, chạy 1000 lần (shots) và thu kết quả.)</p>
+<h2 id="khám-phá-vướng-mắc-lượng-tử-quy-mô-lớn-hơn-trên-emerald">
+  Khám phá vướng mắc lượng tử quy mô lớn hơn trên Emerald
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Dung lượng 54-qubit của Emerald cho phép khám phá các thuật toán lượng tử cần nhiều qubit. Xây trên các <a href="https://aws.amazon.com/braket" rel="external">thí nghiệm trạng thái GHZ</a> đã demo trên Garnet, số qubit mở rộng và độ kết nối cao của Emerald cho phép tạo ra các trạng thái vướng mắc (entangled states) lớn hơn và các mạch lượng tử phức tạp hơn.</p>
+<p>Dưới đây là ví dụ chuẩn bị trạng thái GHZ 49-qubit sử dụng kết nối lưới vuông của Emerald:</p>
+<p><a href="#R-image-144e4129d94e6e52c97513910872c387" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh12.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-144e4129d94e6e52c97513910872c387"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh12.jpg"></a></p>
+<p>(Ghi chú: ví dụ trên đặt một đường đi (path) qua topology của Emerald, áp cổng Hadamard lên qubit đầu tiên rồi nối các cặp qubit liền kề bằng CNOT để tạo GHZ, chạy 5000 shots. disable_qubit_rewiring=True ngăn Braket tự map lại qubit — tức đảm bảo mạch tuân theo topology đã chỉ định.)</p>
+<h2 id="lập-trình-lượng-tử-nâng-cao-với-dynamic-circuits">
+  Lập trình lượng tử nâng cao với dynamic circuits
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Emerald hỗ trợ khả năng <a href="https://aws.amazon.com/blogs/quantum-computing/experiment-with-dynamic-circuits-on-iqm-garnet-with-amazon-braket/" rel="external">dynamic circuits</a> (tính năng thử nghiệm của Amazon Braket), cho phép chương trình lượng tử đo qubit giữa chừng (mid-circuit measurement) và áp dụng phép toán lượng tử có điều kiện dựa trên kết quả đo. Khả năng này mở ra các khả năng mới cho giao thức sửa lỗi lượng tử, thuật toán thích ứng (adaptive algorithms), và tận dụng qubit hiệu quả thông qua active reset. Ví dụ sau minh họa tái sử dụng qubit bằng active reset sử dụng dynamic circuits trên Emerald:</p>
+<p><a href="#R-image-e37df119b161c644c2b3c5370e2d36b6" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh13.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e37df119b161c644c2b3c5370e2d36b6"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh13.jpg"></a></p>
+<p>(Ghi chú chi tiết các lệnh trên)</p>
 <ul>
 <li>
-<p>Mở rộng ra khán giả toàn cầu: khi ứng dụng phát triển và lượng người dùng trở nên phân tán về mặt địa lý, có thể sẽ cần giảm độ trễ cho các khu vực khác nhau trên thế giới.</p>
+<p>EnableExperimentalCapability() bật các khả năng thử nghiệm như dynamic circuits.</p>
 </li>
 <li>
-<p>Giảm <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html" rel="external">RPO (Recovery Point Objective)</a> và <a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html" rel="external">RTO (Recovery Time Objective)</a>: như một phần của kế hoạch khắc phục thảm họa (Disaster Recovery – DR) đa vùng.</p>
+<p>prx(1, pi, 0) lật qubit 1 về trạng thái |1⟩ (ở đây prx là cổng xoay/đảo tương ứng).</p>
 </li>
 <li>
-<p>Luật pháp và quy định địa phương: có thể có những yêu cầu nghiêm ngặt về lưu trú dữ liệu (data residency) và quyền riêng tư mà bạn buộc phải tuân thủ.</p>
+<p>measure_ff(1, feedback_key=0) đo qubit 1 giữa mạch và lưu giá trị đo dưới feedback_key=0.</p>
+</li>
+<li>
+<p>cc_prx(1, pi, 0, feedback_key=0) thực hiện thao tác có điều kiện dựa trên giá trị feedback (ví dụ: nếu đo ra 1 thì làm flip lại để active reset).</p>
+</li>
+<li>
+<p>add_verbatim_box đóng gói đoạn mạch động để truyền vào device.</p>
 </li>
 </ul>
-<p>Nếu bạn đang xây dựng một ứng dụng đa vùng mới, bạn nên cân nhắc tập trung vào các dịch vụ AWS có sẵn chức năng hỗ trợ. Với những ứng dụng hiện có, cần phải xem xét kỹ hơn để xác định kiến trúc nào có khả năng mở rộng nhất nhằm đáp ứng sự phát triển. Các phần tiếp theo sẽ xem xét những dịch vụ này, đồng thời nêu bật các trường hợp sử dụng và thực tiễn tốt nhất.</p>
-<h3 id="quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">
-  Quản lý danh tính và truy cập trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Xây dựng nền tảng bảo mật bắt đầu từ việc thiết lập các quy tắc xác thực (authentication) và phân quyền (authorization) phù hợp. Hệ thống xử lý các yêu cầu này phải có khả năng chịu lỗi cao để xác minh và cấp quyền nhanh chóng, đáng tin cậy. <a href="http://aws.amazon.com/iam" rel="external">AWS Identity and Access Management (IAM)</a> đáp ứng điều này bằng cách cung cấp một cơ chế đáng tin cậy để bạn quản lý quyền truy cập vào các dịch vụ và tài nguyên AWS. IAM có khả năng sẵn sàng trên nhiều Region một cách tự động, mà bạn không cần phải cấu hình gì thêm.</p>
-<p>Để hỗ trợ quản lý người dùng Windows, thiết bị và ứng dụng trong một mạng đa vùng, bạn có thể thiết lập <a href="https://aws.amazon.com/directoryservice/active-directory/" rel="external">AWS Directory Service for Microsoft Active Directory</a> Enterprise Edition, dịch vụ này sẽ <a href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_configure_multi_region_replication.html" rel="external">tự động sao chép dữ liệu thư mục giữa các Region</a>. Điều này giúp giảm độ trễ khi tra cứu thư mục bằng cách sử dụng thư mục gần nhất, đồng thời tăng tính bền vững bằng cách trải rộng trên nhiều Region. Lưu ý rằng điều này cũng kéo theo &ldquo;số phận chung&rdquo; giữa các domain controller trong kiến trúc đa vùng, vì các thay đổi group policy sẽ được lan truyền đến tất cả các máy chủ thành viên.</p>
-<p>Các ứng dụng cần lưu trữ, luân chuyển và kiểm toán bí mật một cách an toàn, chẳng hạn như mật khẩu cơ sở dữ liệu, nên sử dụng <a href="https://aws.amazon.com/secrets-manager" rel="external">AWS Secrets Manager</a>. Dịch vụ này mã hóa các bí mật bằng khóa của <a href="http://aws.amazon.com/kms" rel="external">AWS Key Management Service (AWS KMS)</a> và có thể <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html" rel="external">sao chép các bí mật sang Region thứ cấp</a> để đảm bảo ứng dụng có thể nhanh chóng lấy được bí mật từ Region gần nhất.</p>
-<h3 id="mã-hóa-trên-nhiều-region">
-  Mã hóa trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>AWS KMS có thể được sử dụng để mã hóa dữ liệu khi lưu trữ (data at rest) và được dùng rộng rãi cho việc mã hóa trên các dịch vụ AWS. Theo mặc định, các khóa chỉ giới hạn trong một Region. Những dịch vụ AWS như <a href="http://aws.amazon.com/s3" rel="external">Amazon Simple Storage Service (Amazon S3) cross-Region replication và Amazon Aurora Global Database</a> (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>) giúp đơn giản hóa quá trình mã hóa và giải mã bằng các khóa khác nhau ở từng Region.</p>
-<p>Đối với các phần khác trong ứng dụng đa vùng của bạn phụ thuộc vào khóa KMS, bạn có thể thiết lập <a href="https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html" rel="external">AWS KMS multi-Region keys</a> để sao chép cả key material và key ID sang Region thứ hai. Điều này loại bỏ nhu cầu giải mã rồi mã hóa lại dữ liệu với một khóa khác ở từng Region. Ví dụ, multi-Region keys có thể được dùng để giảm độ phức tạp trong các hoạt động mã hóa của ứng dụng đa vùng cho dữ liệu được lưu trữ trên nhiều Region.</p>
-<h3 id="kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">
-  Kiểm toán và khả năng quan sát trên nhiều Region
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Một thực tiễn tốt nhất là cấu hình <a href="http://aws.amazon.com/cloudtrail" rel="external">AWS CloudTrail</a> để lưu lại toàn bộ hoạt động AWS API liên quan trong tài khoản của bạn nhằm phục vụ mục đích kiểm toán. Khi bạn sử dụng nhiều Region hoặc nhiều tài khoản, các log CloudTrail này nên được <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html" rel="external">tập hợp</a> về một bucket Amazon S3 duy nhất để thuận tiện cho việc phân tích. Để ngăn chặn việc sử dụng sai mục đích, các log tập trung này cần được coi là dữ liệu nhạy cảm hơn, chỉ cấp quyền truy cập cho các hệ thống và nhân sự chủ chốt.</p>
-<p>Để theo dõi các phát hiện từ <a href="https://aws.amazon.com/security-hub" rel="external">AWS Security Hub</a>, bạn có thể <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation-enable.html" rel="external">tổng hợp và liên kết các phát hiện từ nhiều vị trí về một Region duy nhất</a>. Đây là cách đơn giản để tạo một cái nhìn tập trung về các phát hiện của Security Hub trên nhiều tài khoản và nhiều Region. Sau khi thiết lập, các phát hiện sẽ liên tục được đồng bộ giữa các Region để giúp bạn luôn nắm được kết quả toàn cầu trên một bảng điều khiển duy nhất.</p>
-<p>Chúng tôi đã kết hợp những tính năng này trong Hình 1. Chúng tôi sử dụng IAM để cấp quyền truy cập chi tiết đến các dịch vụ và tài nguyên AWS, Directory Service for Microsoft AD để xác thực người dùng trong các ứng dụng Microsoft, và Secrets Manager để lưu trữ thông tin đăng nhập cơ sở dữ liệu nhạy cảm. Dữ liệu của chúng tôi, di chuyển tự do giữa các Region, được mã hóa bằng KMS multi-Region keys, và toàn bộ hoạt động truy cập AWS API được ghi lại bởi CloudTrail, sau đó tập trung vào một bucket S3 trung tâm mà chỉ nhóm bảo mật của chúng tôi mới có quyền truy cập.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img1-Blog5.png" alt="Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng">
-    <figcaption><i>Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-mạng-toàn-cầu">
-  Xây dựng mạng toàn cầu
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Đối với các tài nguyên được triển khai trong các mạng ảo ở những Region khác nhau, <a href="http://aws.amazon.com/vpc" rel="external">Amazon Virtual Private Cloud (Amazon VPC)</a> cho phép <a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" rel="external">định tuyến riêng tư giữa các Region và tài khoản bằng VPC peering</a>. Các tài nguyên này có thể giao tiếp với nhau bằng địa chỉ IP riêng mà không cần internet gateway, VPN, hoặc thiết bị mạng riêng biệt. Tính năng này hoạt động tốt cho các mạng nhỏ chỉ cần một vài kết nối peering. Tuy nhiên, định tuyến bắc cầu (transitive routing) không được hỗ trợ, và khi số lượng VPC peering tăng lên, cấu trúc mạng dạng mesh có thể trở nên khó quản lý và khắc phục sự cố.</p>
-<p><a href="https://aws.amazon.com/transit-gateway/" rel="external">AWS Transit Gateway</a> giúp giảm bớt những khó khăn này bằng cách tạo một hub trung chuyển mạng, kết nối các VPC và mạng tại chỗ (on-premises). Khả năng định tuyến của Transit Gateway có thể mở rộng sang các Region khác thông qua <a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-peering.html" rel="external">Transit Gateway inter-Region peering</a>, để tạo ra một mạng riêng tư phân tán toàn cầu cho tài nguyên của bạn.</p>
-<p>Xây dựng một cách định tuyến đáng tin cậy và tiết kiệm chi phí để đưa người dùng đến các ứng dụng internet phân tán đòi hỏi những bản ghi Domain Name System (DNS) có độ sẵn sàng cao và khả năng mở rộng tốt. <a href="http://aws.amazon.com/route53" rel="external">Amazon Route 53</a> chính là dịch vụ làm được điều đó.</p>
-<p>Route 53 có nhiều <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" rel="external">chính sách định tuyến</a> khác nhau. Ví dụ, bạn có thể định tuyến một yêu cầu đến bản ghi có độ trễ mạng thấp nhất, hoặc đưa người dùng ở một vị trí địa lý cụ thể đến endpoint ứng dụng cục bộ. Đối với kịch bản khắc phục thảm họa (DR), <a href="https://aws.amazon.com/route53/application-recovery-controller/" rel="external">Route 53 Application Recovery Controller (Route 53 ARC)</a> cung cấp một giải pháp failover toàn diện với mức phụ thuộc tối thiểu. Các routing policy, safety check, và readiness check của Route 53 ARC giúp bạn thực hiện failover qua nhiều Region, AZ, và môi trường on-premises một cách đáng tin cậy.</p>
-<p><a href="http://aws.amazon.com/cloudfront" rel="external">Amazon CloudFront</a> – mạng phân phối nội dung (CDN) – là một dịch vụ toàn cầu, được xây dựng trên hơn 300 điểm hiện diện (PoP) khắp thế giới. Các ứng dụng có nhiều origin khả dụng (ví dụ như nhiều Region) có thể dùng <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html" rel="external">CloudFront origin failover</a> để tự động chuyển hướng sang origin dự phòng khi origin chính gặp sự cố. Khả năng của CloudFront không chỉ dừng lại ở việc phân phát nội dung, mà còn có thể chạy tính toán ở edge. <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html" rel="external">CloudFront Functions</a> giúp dễ dàng chạy các đoạn mã JavaScript nhẹ, trong khi <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html" rel="external">AWS Lambda@Edge</a> cho phép bạn chạy các hàm Node.js và Python gần hơn với người dùng ứng dụng, từ đó cải thiện hiệu năng và giảm độ trễ. Việc đưa compute ra edge giúp giảm tải cho origin và mang lại phản hồi nhanh hơn cho người dùng toàn cầu.</p>
-<p>Được xây dựng trên mạng lưới toàn cầu của AWS, <a href="http://aws.amazon.com/global-accelerator" rel="external">AWS Global Accelerator</a> cung cấp hai địa chỉ IP anycast tĩnh để làm điểm truy cập duy nhất cho các ứng dụng hướng internet. Bạn có thể linh hoạt thêm hoặc xóa origin trong khi hệ thống vẫn tự động định tuyến lưu lượng đến endpoint khu vực khỏe mạnh gần nhất. Nếu phát hiện lỗi, Global Accelerator sẽ <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html" rel="external">tự động chuyển hướng lưu lượng đến một endpoint khả dụng</a> chỉ trong vài giây, mà không cần thay đổi địa chỉ IP tĩnh.</p>
-<p>Hình 2 minh họa việc sử dụng Route 53 latency-based routing policy để định tuyến người dùng đến endpoint nhanh nhất, CloudFront để phân phát nội dung tĩnh như video và hình ảnh, và Transit Gateway để tạo một mạng riêng toàn cầu, giúp các thiết bị của chúng tôi có thể giao tiếp an toàn trên nhiều Region.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img2-Blog5.png" alt="Hình 2. Kết nối AWS VPC và phân phối nội dung">
-    <figcaption><i>Hình 2. Kết nối AWS VPC và phân phối nội dung</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">
-  Xây dựng và quản lý lớp tính toán (compute layer)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Mặc dù <a href="http://aws.amazon.com/ec2" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> và các <a href="http://aws.amazon.com/ebs" rel="external">Amazon Elastic Block Store (Amazon EBS)</a> volume liên kết chỉ tồn tại trong một AZ, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html" rel="external">Amazon Data Lifecycle Manager</a> có thể tự động hóa quá trình tạo và sao chép snapshot EBS giữa các Region. Điều này giúp nâng cao chiến lược khắc phục thảm họa (DR) bằng cách cung cấp một lựa chọn sao lưu và khôi phục lạnh (cold backup-and-restore) đơn giản cho các volume EBS. Nếu bạn cần sao lưu nhiều hơn chỉ các EBS volume, <a href="https://aws.amazon.com/backup/" rel="external">AWS Backup</a> cung cấp một nơi tập trung để thực hiện việc này trên nhiều dịch vụ (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>).</p>
-<p>Một EC2 instance được xây dựng dựa trên một <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" rel="external">Amazon Machine Image (AMI)</a>. AMI xác định cấu hình của instance như lưu trữ, quyền khởi chạy, và ánh xạ thiết bị. Khi cần tạo và phát hành một image chuẩn mới, <a href="https://aws.amazon.com/image-builder/" rel="external">EC2 Image Builder</a> giúp đơn giản hóa quá trình xây dựng, kiểm thử, và triển khai AMI mới. Nó cũng hỗ trợ sao chép AMI sang các Region bổ sung, loại bỏ việc phải sao chép thủ công AMI nguồn sang các Region đích.</p>
-<p>Các ứng dụng dựa trên microservice sử dụng container sẽ hưởng lợi từ thời gian khởi động nhanh hơn. <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có thể đảm bảo điều này diễn ra nhất quán trên nhiều Region bằng cách sao chép image riêng tư ở cấp độ registry. Một ECR private registry có thể được cấu hình cho cả cross-Region hoặc cross-account replication, để đảm bảo image của bạn luôn sẵn sàng ở các Region thứ cấp khi cần.</p>
-<p>Khi kiến trúc mở rộng ra nhiều Region, việc theo dõi tài nguyên được cấp phát ở đâu có thể trở nên khó khăn. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#global-view" rel="external">Amazon EC2 Global View</a> giúp giảm bớt vấn đề này bằng cách cung cấp một bảng điều khiển tập trung, hiển thị các tài nguyên EC2 như instance, VPC, subnet, security group, và volume trong tất cả các Region đang hoạt động.</p>
-<p>Chúng tôi kết hợp các tính năng compute layer này trong Hình 3 bằng cách sử dụng EC2 Image Builder để sao chép AMI chuẩn mới nhất của chúng tôi sang nhiều Region để triển khai. Chúng tôi cũng sao lưu mỗi EBS volume trong 3 ngày và sao chép nó sang nhiều Region bằng Data Lifecycle Manager.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img3-Blog5.png" alt="Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)">
-    <figcaption><i>Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="đưa-tất-cả-lại-với-nhau">
-  Đưa tất cả lại với nhau
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ở cuối mỗi phần của loạt bài blog này, chúng tôi sẽ xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách bạn có thể kết hợp các dịch vụ để xây dựng một ứng dụng đa Vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả dịch vụ được nhắc đến, chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
-<p>Chúng tôi xây dựng ví dụ này để mở rộng đến phạm vi toàn cầu. Ứng dụng yêu cầu tính sẵn sàng cao giữa các Vùng, và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn các dịch vụ sau (trong bài viết này) để đạt được mục tiêu:</p>
 <ul>
-<li>
-<p>Route 53 với chính sách định tuyến theo độ trễ (latency routing) để đưa người dùng đến vùng triển khai có độ trễ thấp nhất.</p>
-</li>
-<li>
-<p>CloudFront được thiết lập để phân phối nội dung tĩnh. Region 1 là nguồn gốc chính, nhưng chúng tôi đã cấu hình dự phòng nguồn gốc (origin failover) sang Region 2 trong trường hợp có sự cố.</p>
-</li>
-<li>
-<p>Ứng dụng phụ thuộc vào một số API của bên thứ ba, vì vậy Secrets Manager với khả năng sao chép đa Vùng đã được thiết lập để lưu trữ thông tin khóa API nhạy cảm.</p>
-</li>
-<li>
-<p>CloudTrail logs được tập trung tại Region 1 để dễ dàng phân tích và kiểm toán.</p>
-</li>
-<li>
-<p>Security Hub tại Region 1 được chọn làm nơi tập hợp các phát hiện từ tất cả các Vùng.</p>
-</li>
-<li>
-<p>Đây là ứng dụng dựa trên container, chúng tôi dựa vào Amazon ECR replication tại mỗi vị trí để nhanh chóng tải về các image mới nhất tại chỗ.</p>
-</li>
-<li>
-<p>Để liên lạc qua IP riêng giữa các Vùng, một Transit Gateway được thiết lập tại mỗi Vùng với kết nối liên Vùng. VPC peering cũng có thể hoạt động, nhưng vì dự kiến mở rộng ra nhiều Vùng hơn trong tương lai nên chúng tôi chọn Transit Gateway như giải pháp lâu dài.</p>
-</li>
-<li>
-<p>IAM được dùng để cấp quyền quản lý tài nguyên AWS.</p>
-</li>
+<li>Kết quả mong đợi là đếm measurement chủ yếu ra &ldquo;0&rdquo; do active reset hiệu quả.</li>
 </ul>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img4-Blog5.png" alt="Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1">
-    <figcaption><i>Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="tóm-tắt">
-  Tóm tắt
+<h2 id="bắt-đầu-ngay-hôm-nay">
+  Bắt đầu ngay hôm nay
 
 
 
@@ -381,23 +337,9 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Khi thiết kế một ứng dụng đa Vùng (multi-Region), việc xây dựng một nền tảng vững chắc là vô cùng quan trọng. Nền tảng này sẽ giúp bạn phát triển ứng dụng nhanh chóng theo cách an toàn, đáng tin cậy và linh hoạt. Nhiều dịch vụ AWS đã tích hợp sẵn các tính năng hỗ trợ bạn xây dựng kiến trúc đa Vùng.</p>
-<p>Tùy vào lý do mở rộng ra ngoài một Vùng duy nhất mà kiến trúc của bạn sẽ khác nhau. Trong bài viết này, chúng tôi đã đề cập đến các tính năng cụ thể của những dịch vụ AWS về bảo mật, mạng và tính toán (compute) — với khả năng tích hợp sẵn để giảm bớt khối lượng công việc nặng nề và lặp lại.</p>
-<p>Trong các bài viết tiếp theo, chúng tôi sẽ tiếp tục đề cập đến các dịch vụ về dữ liệu, ứng dụng và quản lý.</p>
-<p>*** Sẵn sàng để bắt đầu? ***
-Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" rel="external">AWS Solutions</a> và <a href="https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND" rel="external">AWS Blogs</a> để hỗ trợ bạn!</p>
-<p>*** Bạn đang tìm thêm nội dung về kiến trúc? ***
-<a href="https://aws.amazon.com/architecture/" rel="external">AWS Architecture Center</a> cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!</p>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/</a>)</p>
-<p>Các bài viết khác trong chuỗi này:</p>
-<ul>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
-</li>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
-</li>
-</ul>
+</h2><p>Truy cập <a href="https://us-west-2.console.aws.amazon.com/braket/home?region=us-west-2#/dashboard" rel="external">Amazon Braket Management Console</a> để xem cấu trúc kết nối (device topology), thời gian khả dụng của thiết bị, và cập nhật mới nhất về độ chính xác (fidelity) của cổng một qubit, hai qubit và độ chính xác phép đo (readout fidelity).</p>
+<p>Các nhà nghiên cứu thuộc các tổ chức được công nhận có thể đăng ký nhận tín dụng AWS để hỗ trợ cho các thí nghiệm trên Amazon Braket thông qua chương trình <a href="https://aws.amazon.com/government-education/research-and-technical-computing/cloud-credit-for-research/" rel="external">AWS Cloud Credits for Research</a>.</p>
+<p>Để bắt đầu chạy các chương trình lượng tử của bạn trên bộ xử lý Emerald, hãy tham khảo <a href="https://github.com/amazon-braket/amazon-braket-examples" rel="external">repository GitHub của chúng tôi để xem các notebook ví dụ và hướng dẫn</a>. Bạn có thể chạy các chương trình này bằng môi trường Jupyter notebook được quản lý (managed) của AWS hoặc từ môi trường phát triển cục bộ trên máy bạn.</p>
 
   <footer class="footline">
   </footer>
@@ -509,8 +451,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763448698" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

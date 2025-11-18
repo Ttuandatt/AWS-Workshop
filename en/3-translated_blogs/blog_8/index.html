@@ -5,46 +5,54 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="description" content="Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQSTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog 8 :: Internship Report">
-    <meta name="twitter:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta name="twitter:description" content="Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQSTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 8 :: Internship Report">
-    <meta property="og:description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
+    <meta property="og:description" content="Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQSTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Blog 8 :: Internship Report">
-    <meta itemprop="description" content="Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mậtTác giả: Joe Chapman và Sebastian Leks - 08/12/2021
-Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon EBS), Amazon Route 53, Amazon Simple Storage Service (S3), Amazon VPC, Architecture, AWS CloudTrail, AWS Global Accelerator, AWS Identity and Access Management (IAM), AWS Secrets Manager, AWS Security Hub, AWS Transit Gateway, AWS Well-Architected Permalink Share">
-    <meta itemprop="wordCount" content="3110">
+    <meta itemprop="description" content="Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQSTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.">
+    <meta itemprop="wordCount" content="1652">
     <title>Blog 8 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_8/index.xml" rel="alternate" type="application/rss+xml" title="Blog 8 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763393926" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763393926" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763448698" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763393926";
+      window.relearn.index_js_url="../../../searchindex.en.js?1763448698";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763448698" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763393926" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763393926" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763393926" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763448698" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1763448698" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1763448698" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -96,7 +104,7 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763393926" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1763448698" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_8/index.html">
     <div id="R-body" class="default-animation">
@@ -128,18 +136,20 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#tổng-quan">Tổng quan</a></li>
+    <li><a href="#cách-hoạt-động">Cách hoạt động</a></li>
+    <li><a href="#cách-sử-dụng">Cách sử dụng</a>
       <ul>
-        <li><a href="#những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">Những điều cần cân nhắc trước khi bắt đầu</a></li>
-        <li><a href="#quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">Quản lý danh tính và truy cập trên nhiều Region</a></li>
-        <li><a href="#mã-hóa-trên-nhiều-region">Mã hóa trên nhiều Region</a></li>
-        <li><a href="#kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">Kiểm toán và khả năng quan sát trên nhiều Region</a></li>
-        <li><a href="#xây-dựng-mạng-toàn-cầu">Xây dựng mạng toàn cầu</a></li>
-        <li><a href="#xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">Xây dựng và quản lý lớp tính toán (compute layer)</a></li>
-        <li><a href="#đưa-tất-cả-lại-với-nhau">Đưa tất cả lại với nhau</a></li>
-        <li><a href="#tóm-tắt">Tóm tắt</a></li>
+        <li><a href="#1-kích-hoạt-fair-queues-với-messagegroupid">1. Kích hoạt fair queues với MessageGroupId</a></li>
+        <li><a href="#cấu-hình-amazon-cloudwatch-metrics-để-theo-dõi-sqs-fair-queues">Cấu hình Amazon CloudWatch Metrics để theo dõi SQS Fair Queues</a></li>
       </ul>
     </li>
+    <li><a href="#theo-dõi-hiệu-ứng-công-bằng">Theo dõi hiệu ứng công bằng</a></li>
+    <li><a href="#xác-định-tenant-gây-tải-cao">Xác định tenant gây tải cao</a></li>
+    <li><a href="#ứng-dụng-ví-dụ">Ứng dụng ví dụ</a></li>
+    <li><a href="#kết-luận">Kết luận</a></li>
+    <li><a href="#tham-khảo">Tham khảo</a></li>
   </ul>
 </nav>
                 </div>
@@ -197,8 +207,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 <h1 id="blog-8">Blog 8</h1>
 
-<h1 id="xây-dựng-ứng-dụng-đa-vùng-với-các-dịch-vụ-aws--phần-1-tính-toán-mạng-và-bảo-mật">
-  Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
+<h1 id="xây-dựng-hệ-thống-đa-tenant-resilient-với-hàng-đợi-công-bằng-amazon-sqs">
+  Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQS
 
 
 
@@ -207,13 +217,12 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><p><em>Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021</em></p>
-<p><em>Chủ đề: <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-cloudfront/" rel="external">Amazon CloudFront</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-ec2/" rel="external">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-elastic-block-storage-ebs/" rel="external">Amazon Elastic Block Store (Amazon EBS)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-route-53/" rel="external">Amazon Route 53</a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" rel="external">Amazon Simple Storage Service (S3)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/compute/amazon-vpc/" rel="external">Amazon VPC</a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" rel="external">Architecture</a>, <a href="https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudtrail/" rel="external">AWS CloudTrail</a>, <a href="https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/" rel="external">AWS Global Accelerator</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-identity-and-access-management-iam/" rel="external">AWS Identity and Access Management (IAM)</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Secrets Manager</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Security Hub</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Transit Gateway</a>, <a href="https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/" rel="external">AWS Well-Architected Permalink Share</a></em></p>
+</h1><p><strong>Tác giả:</strong> Maximilian Schellhorn &amp; Dirk Fröhner<br>
+<strong>Ngày:</strong> 21/07/2025<br>
+<strong>Chuyên mục:</strong> <a href="https://aws.amazon.com/blogs/compute/category/messaging/amazon-simple-queue-service-sqs/" rel="external">Amazon Simple Queue Service (SQS)</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/announcements/" rel="external">Announcements</a>, <a href="https://aws.amazon.com/blogs/compute/category/learning-levels/intermediate-200/" rel="external">Intermediate (200)</a>, <a href="https://aws.amazon.com/blogs/compute/category/serverless/" rel="external">Serverless</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/" rel="external">Technical How-to</a></p>
 <hr>
-<p>Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.</p>
-<p>Trong loạt blog gồm 3 phần này, chúng tôi sẽ chọn lọc từ hơn 200 dịch vụ đó và tập trung vào những dịch vụ có tính năng cụ thể hỗ trợ bạn xây dựng ứng dụng đa vùng. Trong Phần 1, chúng ta sẽ xây dựng nền tảng với các dịch vụ bảo mật, mạng, và tính toán của AWS. Ở Phần 2, chúng ta sẽ bổ sung các chiến lược dữ liệu và sao chép. Cuối cùng, trong Phần 3, chúng ta sẽ tìm hiểu về lớp ứng dụng và quản lý. Khi đi qua từng phần, chúng ta sẽ dần xây dựng một ứng dụng mẫu để minh họa cách kết hợp các dịch vụ này nhằm tạo ra một ứng dụng đa vùng.</p>
-<h3 id="những-điều-cần-cân-nhắc-trước-khi-bắt-đầu">
-  Những điều cần cân nhắc trước khi bắt đầu
+<h2 id="giới-thiệu">
+  Giới thiệu
 
 
 
@@ -222,21 +231,63 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Các <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" rel="external">AWS Region</a> được xây dựng với nhiều <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#Availability_Zones" rel="external">Availability Zone (AZ)</a> tách biệt và cách ly về mặt vật lý. Cách tiếp cận này cho phép bạn tạo ra các workload có độ sẵn sàng cao, tuân thủ nguyên tắc <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" rel="external">Well-Architected</a>, trải rộng trên nhiều AZ để đạt được khả năng chịu lỗi tốt hơn. Điều này đáp ứng được mục tiêu khả dụng cho hầu hết các ứng dụng, nhưng vẫn có một số lý do chung khiến bạn có thể muốn mở rộng ra ngoài một Region duy nhất:</p>
+</h2><p>Hôm nay, AWS giới thiệu <a href="https://aws.amazon.com/sqs/" rel="external">Amazon Simple Queue Service (Amazon SQS)</a> fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “<a href="https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/noisy-neighbor.html" rel="external">noisy neighbor</a>” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.</p>
+<p>Trong kiến trúc phân tán, hàng đợi thông điệp (message queue) đã trở thành xương sống của thiết kế hệ thống resilient. Chúng hoạt động như bộ đệm giữa các thành phần, cho phép dịch vụ xử lý công việc bất đồng bộ và theo tốc độ riêng của chúng. Khi ứng dụng của bạn bất ngờ gặp lượng truy cập tăng đột biến, hàng đợi sẽ ngăn việc lỗi lan truyền bằng cách buffer công việc và đảm bảo các service phía sau không bị quá tải.</p>
+<p>Amazon SQS từ lâu đã là lựa chọn hàng đầu cho các nhà phát triển xây dựng ứng dụng có khả năng mở rộng bởi vì đây là dịch vụ serverless được quản lý hoàn toàn, có thể mở rộng liền mạch để tiếp nhận hàng triệu message mỗi giây.
+Trong bài viết này, bạn sẽ học cách sử dụng Amazon SQS fair queues và hiểu cơ chế hoạt động của chúng thông qua một ví dụ thực tế.</p>
+<hr>
+<h2 id="tổng-quan">
+  Tổng quan
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Nhiều ứng dụng hiện đại sử dụng kiến trúc multi-tenant, nơi một phiên bản ứng dụng duy nhất phục vụ nhiều tenant. Tenant là bất kỳ thực thể nào chia sẻ tài nguyên với thực thể khác. Đó có thể là khách hàng, ứng dụng khách, hoặc loại yêu cầu. Cách tiếp cận này giúp giảm chi phí vận hành và đơn giản hóa việc bảo trì thông qua việc sử dụng tài nguyên hiệu quả. Một ví dụ về tài nguyên được chia sẻ như vậy là các hàng đợi và năng lực xử lý (consumer capacity) tương ứng của chúng.</p>
+<p>Tuy nhiên, hệ thống multi-tenant gặp thách thức khi một tenant trở thành “noisy neighbor” — nghĩa là tenant này làm ảnh hưởng đến những tenant khác bằng cách sử dụng quá mức tài nguyên của hệ thống. Với hàng đợi, tenant này có thể tạo backlog bằng việc gửi lượng lớn message hoặc yêu cầu thời gian xử lý lâu hơn. Hàng đợi thông thường sẽ xử lý các message cũ hơn trước, điều này làm tăng thời gian lưu message (dwell time) cho tất cả tenant trong tình huống như vậy. Điều này khiến việc duy trì chất lượng dịch vụ trở nên khó khăn và buộc đội ngũ phải mở rộng tài nguyên quá mức hoặc xây dựng các giải pháp tùy chỉnh phức tạp.</p>
+<p>Amazon SQS fair queues giúp duy trì thời gian lưu message thấp cho các tenant khác khi có một “noisy neighbor”. Việc này diễn ra một cách minh bạch mà không yêu cầu thay đổi logic xử lý message hiện tại của bạn. Bạn chỉ cần định nghĩa tenant trong hệ thống của mình là gì, và Amazon SQS sẽ xử lý điều phối phức tạp để giảm thiểu ảnh hưởng của noisy neighbor.</p>
+<hr>
+<h2 id="cách-hoạt-động">
+  Cách hoạt động
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Amazon SQS liên tục theo dõi sự phân bố các message đã được nhận nhưng chưa bị xóa (in-flight) bởi các consumer trên tất cả tenant. Khi hệ thống phát hiện sự mất cân bằng:</p>
 <ul>
 <li>
-<p>Mở rộng ra khán giả toàn cầu: khi ứng dụng phát triển và lượng người dùng trở nên phân tán về mặt địa lý, có thể sẽ cần giảm độ trễ cho các khu vực khác nhau trên thế giới.</p>
+<p>Nó xác định tenant gây ồn — tenant khiến hàng đợi bị backlog.</p>
 </li>
 <li>
-<p>Giảm <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html" rel="external">RPO (Recovery Point Objective)</a> và <a href="https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html" rel="external">RTO (Recovery Time Objective)</a>: như một phần của kế hoạch khắc phục thảm họa (Disaster Recovery – DR) đa vùng.</p>
+<p>Nó tự động điều chỉnh thứ tự phân phối message để ưu tiên message của các tenant “yên lặng” (không gây ồn).</p>
 </li>
 <li>
-<p>Luật pháp và quy định địa phương: có thể có những yêu cầu nghiêm ngặt về lưu trú dữ liệu (data residency) và quyền riêng tư mà bạn buộc phải tuân thủ.</p>
+<p>Nó duy trì tổng throughput của hàng đợi.</p>
 </li>
 </ul>
-<p>Nếu bạn đang xây dựng một ứng dụng đa vùng mới, bạn nên cân nhắc tập trung vào các dịch vụ AWS có sẵn chức năng hỗ trợ. Với những ứng dụng hiện có, cần phải xem xét kỹ hơn để xác định kiến trúc nào có khả năng mở rộng nhất nhằm đáp ứng sự phát triển. Các phần tiếp theo sẽ xem xét những dịch vụ này, đồng thời nêu bật các trường hợp sử dụng và thực tiễn tốt nhất.</p>
-<h3 id="quản-lý-danh-tính-và-truy-cập-trên-nhiều-region">
-  Quản lý danh tính và truy cập trên nhiều Region
+<p>Hãy xem ví dụ sau với một hàng đợi multi-tenant và bốn tenant khác nhau (A, B, C và D).
+Trong trạng thái ổn định (steady state), hàng đợi không có backlog, và message in-flight được phân phối đều giữa các tenant. Tất cả message được xử lý ngay khi xuất hiện. Thời gian lưu message (dwell time) thấp cho tất cả tenant. Lưu ý rằng năng lực xử lý của consumer không phải lúc nào cũng được dùng hết trong trạng thái này.</p>
+<p><a href="#R-image-99cbd6e2b371c26c70c20a5103334c8f" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-99cbd6e2b371c26c70c20a5103334c8f"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg"></a></p>
+<p><strong>Hình 1: Một hàng đợi multi-tenant ở trạng thái steady state</strong></p>
+<p>Bây giờ xét kịch bản có tenant gây ồn: số lượng message của tenant A tăng mạnh và tạo backlog trong hàng đợi. Consumer bận xử lý chủ yếu message từ tenant A, còn các message từ các tenant khác phải chờ trong hàng đợi, dẫn tới tăng dwell time cho tất cả.</p>
+<p><a href="#R-image-0a8cdaaa413c17506f2360b033ebdc01" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0a8cdaaa413c17506f2360b033ebdc01"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg"></a></p>
+<p><strong>Hình 2: Hàng đợi multi-tenant với một noisy tenant</strong></p>
+<p>Khi một tenant bắt đầu chiếm phần lớn tài nguyên consumer, Amazon SQS fair queues xem tenant đó là noisy neighbor và ưu tiên trả message của các tenant còn lại. Cách ưu tiên này giúp duy trì dwell time thấp cho các tenant yên lặng (B, C, D), trong khi dwell time của tenant A sẽ cao hơn cho tới khi backlog của nó được xử lý — nhưng không ảnh hưởng đến các tenant khác.</p>
+<p><a href="#R-image-c89c328e1bce4f5b341319491beb332f" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c89c328e1bce4f5b341319491beb332f"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg"></a></p>
+<p><strong>Hình 3: Hàng đợi multi-tenant với fair queues</strong></p>
+<p>Amazon SQS không giới hạn tốc độ tiêu thụ theo tenant. Consumer vẫn có thể nhận message từ tenant gây ồn khi còn tài nguyên xử lý và hàng đợi không còn message nào khác để trả về. Giống như SQS Standard queue, fair queues cho phép throughput gần như không giới hạn, và không có giới hạn số lượng tenant trong hàng đợi.</p>
+<h2 id="cách-sử-dụng">
+  Cách sử dụng
 
 
 
@@ -245,11 +296,8 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Xây dựng nền tảng bảo mật bắt đầu từ việc thiết lập các quy tắc xác thực (authentication) và phân quyền (authorization) phù hợp. Hệ thống xử lý các yêu cầu này phải có khả năng chịu lỗi cao để xác minh và cấp quyền nhanh chóng, đáng tin cậy. <a href="http://aws.amazon.com/iam" rel="external">AWS Identity and Access Management (IAM)</a> đáp ứng điều này bằng cách cung cấp một cơ chế đáng tin cậy để bạn quản lý quyền truy cập vào các dịch vụ và tài nguyên AWS. IAM có khả năng sẵn sàng trên nhiều Region một cách tự động, mà bạn không cần phải cấu hình gì thêm.</p>
-<p>Để hỗ trợ quản lý người dùng Windows, thiết bị và ứng dụng trong một mạng đa vùng, bạn có thể thiết lập <a href="https://aws.amazon.com/directoryservice/active-directory/" rel="external">AWS Directory Service for Microsoft Active Directory</a> Enterprise Edition, dịch vụ này sẽ <a href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_configure_multi_region_replication.html" rel="external">tự động sao chép dữ liệu thư mục giữa các Region</a>. Điều này giúp giảm độ trễ khi tra cứu thư mục bằng cách sử dụng thư mục gần nhất, đồng thời tăng tính bền vững bằng cách trải rộng trên nhiều Region. Lưu ý rằng điều này cũng kéo theo &ldquo;số phận chung&rdquo; giữa các domain controller trong kiến trúc đa vùng, vì các thay đổi group policy sẽ được lan truyền đến tất cả các máy chủ thành viên.</p>
-<p>Các ứng dụng cần lưu trữ, luân chuyển và kiểm toán bí mật một cách an toàn, chẳng hạn như mật khẩu cơ sở dữ liệu, nên sử dụng <a href="https://aws.amazon.com/secrets-manager" rel="external">AWS Secrets Manager</a>. Dịch vụ này mã hóa các bí mật bằng khóa của <a href="http://aws.amazon.com/kms" rel="external">AWS Key Management Service (AWS KMS)</a> và có thể <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html" rel="external">sao chép các bí mật sang Region thứ cấp</a> để đảm bảo ứng dụng có thể nhanh chóng lấy được bí mật từ Region gần nhất.</p>
-<h3 id="mã-hóa-trên-nhiều-region">
-  Mã hóa trên nhiều Region
+</h2><h3 id="1-kích-hoạt-fair-queues-với-messagegroupid">
+  1. Kích hoạt fair queues với MessageGroupId
 
 
 
@@ -258,10 +306,27 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>AWS KMS có thể được sử dụng để mã hóa dữ liệu khi lưu trữ (data at rest) và được dùng rộng rãi cho việc mã hóa trên các dịch vụ AWS. Theo mặc định, các khóa chỉ giới hạn trong một Region. Những dịch vụ AWS như <a href="http://aws.amazon.com/s3" rel="external">Amazon Simple Storage Service (Amazon S3) cross-Region replication và Amazon Aurora Global Database</a> (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>) giúp đơn giản hóa quá trình mã hóa và giải mã bằng các khóa khác nhau ở từng Region.</p>
-<p>Đối với các phần khác trong ứng dụng đa vùng của bạn phụ thuộc vào khóa KMS, bạn có thể thiết lập <a href="https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html" rel="external">AWS KMS multi-Region keys</a> để sao chép cả key material và key ID sang Region thứ hai. Điều này loại bỏ nhu cầu giải mã rồi mã hóa lại dữ liệu với một khóa khác ở từng Region. Ví dụ, multi-Region keys có thể được dùng để giảm độ phức tạp trong các hoạt động mã hóa của ứng dụng đa vùng cho dữ liệu được lưu trữ trên nhiều Region.</p>
-<h3 id="kiểm-toán-và-khả-năng-quan-sát-trên-nhiều-region">
-  Kiểm toán và khả năng quan sát trên nhiều Region
+</h3><p>Dưới đây là phần giới thiệu nhanh về cách bắt đầu sử dụng Amazon SQS fair queues trong ứng dụng của bạn. <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html" rel="external">Xem tài liệu tính năng</a> để có hướng dẫn chi tiết. Đây là các bước chính:</p>
+<ol>
+<li>
+<p>Kích hoạt Amazon SQS fair queues bằng cách thêm định danh tenant (MessageGroupId) vào message</p>
+</li>
+<li>
+<p>Cấu hình <a href="https://aws.amazon.com/cloudwatch/" rel="external">Amazon CloudWatch</a> metrics để theo dõi hoạt động của SQS fair queues</p>
+</li>
+<li>
+<p>Bạn có thể dùng ứng dụng mẫu để quan sát hành vi của fair queues với khối lượng message thay đổi</p>
+</li>
+</ol>
+<p>Kích hoạt Amazon SQS fair queues bằng cách thêm MessageGroupId (tenant identifier)
+Producer có thể thêm định danh tenant bằng cách đặt MessageGroupId cho message gửi đi:
+<a href="#R-image-dc3dcab291b10490678304252303bdf0" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-dc3dcab291b10490678304252303bdf0"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg"></a></p>
+<p>Tính năng fairness mới sẽ được áp dụng tự động cho tất cả SQS standard queues đối với các message có thuộc tính MessageGroupId.
+Không cần thay đổi code phía consumer.
+Không ảnh hưởng đến độ trễ API và không có giới hạn throughput.</p>
+<h3 id="cấu-hình-amazon-cloudwatch-metrics-để-theo-dõi-sqs-fair-queues">
+  Cấu hình Amazon CloudWatch Metrics để theo dõi SQS Fair Queues
 
 
 
@@ -270,109 +335,39 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Một thực tiễn tốt nhất là cấu hình <a href="http://aws.amazon.com/cloudtrail" rel="external">AWS CloudTrail</a> để lưu lại toàn bộ hoạt động AWS API liên quan trong tài khoản của bạn nhằm phục vụ mục đích kiểm toán. Khi bạn sử dụng nhiều Region hoặc nhiều tài khoản, các log CloudTrail này nên được <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html" rel="external">tập hợp</a> về một bucket Amazon S3 duy nhất để thuận tiện cho việc phân tích. Để ngăn chặn việc sử dụng sai mục đích, các log tập trung này cần được coi là dữ liệu nhạy cảm hơn, chỉ cấp quyền truy cập cho các hệ thống và nhân sự chủ chốt.</p>
-<p>Để theo dõi các phát hiện từ <a href="https://aws.amazon.com/security-hub" rel="external">AWS Security Hub</a>, bạn có thể <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation-enable.html" rel="external">tổng hợp và liên kết các phát hiện từ nhiều vị trí về một Region duy nhất</a>. Đây là cách đơn giản để tạo một cái nhìn tập trung về các phát hiện của Security Hub trên nhiều tài khoản và nhiều Region. Sau khi thiết lập, các phát hiện sẽ liên tục được đồng bộ giữa các Region để giúp bạn luôn nắm được kết quả toàn cầu trên một bảng điều khiển duy nhất.</p>
-<p>Chúng tôi đã kết hợp những tính năng này trong Hình 1. Chúng tôi sử dụng IAM để cấp quyền truy cập chi tiết đến các dịch vụ và tài nguyên AWS, Directory Service for Microsoft AD để xác thực người dùng trong các ứng dụng Microsoft, và Secrets Manager để lưu trữ thông tin đăng nhập cơ sở dữ liệu nhạy cảm. Dữ liệu của chúng tôi, di chuyển tự do giữa các Region, được mã hóa bằng KMS multi-Region keys, và toàn bộ hoạt động truy cập AWS API được ghi lại bởi CloudTrail, sau đó tập trung vào một bucket S3 trung tâm mà chỉ nhóm bảo mật của chúng tôi mới có quyền truy cập.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img1-Blog5.png" alt="Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng">
-    <figcaption><i>Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-mạng-toàn-cầu">
-  Xây dựng mạng toàn cầu
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Đối với các tài nguyên được triển khai trong các mạng ảo ở những Region khác nhau, <a href="http://aws.amazon.com/vpc" rel="external">Amazon Virtual Private Cloud (Amazon VPC)</a> cho phép <a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" rel="external">định tuyến riêng tư giữa các Region và tài khoản bằng VPC peering</a>. Các tài nguyên này có thể giao tiếp với nhau bằng địa chỉ IP riêng mà không cần internet gateway, VPN, hoặc thiết bị mạng riêng biệt. Tính năng này hoạt động tốt cho các mạng nhỏ chỉ cần một vài kết nối peering. Tuy nhiên, định tuyến bắc cầu (transitive routing) không được hỗ trợ, và khi số lượng VPC peering tăng lên, cấu trúc mạng dạng mesh có thể trở nên khó quản lý và khắc phục sự cố.</p>
-<p><a href="https://aws.amazon.com/transit-gateway/" rel="external">AWS Transit Gateway</a> giúp giảm bớt những khó khăn này bằng cách tạo một hub trung chuyển mạng, kết nối các VPC và mạng tại chỗ (on-premises). Khả năng định tuyến của Transit Gateway có thể mở rộng sang các Region khác thông qua <a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-peering.html" rel="external">Transit Gateway inter-Region peering</a>, để tạo ra một mạng riêng tư phân tán toàn cầu cho tài nguyên của bạn.</p>
-<p>Xây dựng một cách định tuyến đáng tin cậy và tiết kiệm chi phí để đưa người dùng đến các ứng dụng internet phân tán đòi hỏi những bản ghi Domain Name System (DNS) có độ sẵn sàng cao và khả năng mở rộng tốt. <a href="http://aws.amazon.com/route53" rel="external">Amazon Route 53</a> chính là dịch vụ làm được điều đó.</p>
-<p>Route 53 có nhiều <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" rel="external">chính sách định tuyến</a> khác nhau. Ví dụ, bạn có thể định tuyến một yêu cầu đến bản ghi có độ trễ mạng thấp nhất, hoặc đưa người dùng ở một vị trí địa lý cụ thể đến endpoint ứng dụng cục bộ. Đối với kịch bản khắc phục thảm họa (DR), <a href="https://aws.amazon.com/route53/application-recovery-controller/" rel="external">Route 53 Application Recovery Controller (Route 53 ARC)</a> cung cấp một giải pháp failover toàn diện với mức phụ thuộc tối thiểu. Các routing policy, safety check, và readiness check của Route 53 ARC giúp bạn thực hiện failover qua nhiều Region, AZ, và môi trường on-premises một cách đáng tin cậy.</p>
-<p><a href="http://aws.amazon.com/cloudfront" rel="external">Amazon CloudFront</a> – mạng phân phối nội dung (CDN) – là một dịch vụ toàn cầu, được xây dựng trên hơn 300 điểm hiện diện (PoP) khắp thế giới. Các ứng dụng có nhiều origin khả dụng (ví dụ như nhiều Region) có thể dùng <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html" rel="external">CloudFront origin failover</a> để tự động chuyển hướng sang origin dự phòng khi origin chính gặp sự cố. Khả năng của CloudFront không chỉ dừng lại ở việc phân phát nội dung, mà còn có thể chạy tính toán ở edge. <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html" rel="external">CloudFront Functions</a> giúp dễ dàng chạy các đoạn mã JavaScript nhẹ, trong khi <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html" rel="external">AWS Lambda@Edge</a> cho phép bạn chạy các hàm Node.js và Python gần hơn với người dùng ứng dụng, từ đó cải thiện hiệu năng và giảm độ trễ. Việc đưa compute ra edge giúp giảm tải cho origin và mang lại phản hồi nhanh hơn cho người dùng toàn cầu.</p>
-<p>Được xây dựng trên mạng lưới toàn cầu của AWS, <a href="http://aws.amazon.com/global-accelerator" rel="external">AWS Global Accelerator</a> cung cấp hai địa chỉ IP anycast tĩnh để làm điểm truy cập duy nhất cho các ứng dụng hướng internet. Bạn có thể linh hoạt thêm hoặc xóa origin trong khi hệ thống vẫn tự động định tuyến lưu lượng đến endpoint khu vực khỏe mạnh gần nhất. Nếu phát hiện lỗi, Global Accelerator sẽ <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html" rel="external">tự động chuyển hướng lưu lượng đến một endpoint khả dụng</a> chỉ trong vài giây, mà không cần thay đổi địa chỉ IP tĩnh.</p>
-<p>Hình 2 minh họa việc sử dụng Route 53 latency-based routing policy để định tuyến người dùng đến endpoint nhanh nhất, CloudFront để phân phát nội dung tĩnh như video và hình ảnh, và Transit Gateway để tạo một mạng riêng toàn cầu, giúp các thiết bị của chúng tôi có thể giao tiếp an toàn trên nhiều Region.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img2-Blog5.png" alt="Hình 2. Kết nối AWS VPC và phân phối nội dung">
-    <figcaption><i>Hình 2. Kết nối AWS VPC và phân phối nội dung</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="xây-dựng-và-quản-lý-lớp-tính-toán-compute-layer">
-  Xây dựng và quản lý lớp tính toán (compute layer)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Mặc dù <a href="http://aws.amazon.com/ec2" rel="external">Amazon Elastic Compute Cloud (Amazon EC2)</a> và các <a href="http://aws.amazon.com/ebs" rel="external">Amazon Elastic Block Store (Amazon EBS)</a> volume liên kết chỉ tồn tại trong một AZ, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html" rel="external">Amazon Data Lifecycle Manager</a> có thể tự động hóa quá trình tạo và sao chép snapshot EBS giữa các Region. Điều này giúp nâng cao chiến lược khắc phục thảm họa (DR) bằng cách cung cấp một lựa chọn sao lưu và khôi phục lạnh (cold backup-and-restore) đơn giản cho các volume EBS. Nếu bạn cần sao lưu nhiều hơn chỉ các EBS volume, <a href="https://aws.amazon.com/backup/" rel="external">AWS Backup</a> cung cấp một nơi tập trung để thực hiện việc này trên nhiều dịch vụ (sẽ được đề cập trong <a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/" rel="external">phần 2</a>).</p>
-<p>Một EC2 instance được xây dựng dựa trên một <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" rel="external">Amazon Machine Image (AMI)</a>. AMI xác định cấu hình của instance như lưu trữ, quyền khởi chạy, và ánh xạ thiết bị. Khi cần tạo và phát hành một image chuẩn mới, <a href="https://aws.amazon.com/image-builder/" rel="external">EC2 Image Builder</a> giúp đơn giản hóa quá trình xây dựng, kiểm thử, và triển khai AMI mới. Nó cũng hỗ trợ sao chép AMI sang các Region bổ sung, loại bỏ việc phải sao chép thủ công AMI nguồn sang các Region đích.</p>
-<p>Các ứng dụng dựa trên microservice sử dụng container sẽ hưởng lợi từ thời gian khởi động nhanh hơn. <a href="http://aws.amazon.com/ecr/" rel="external">Amazon Elastic Container Registry (Amazon ECR)</a> có thể đảm bảo điều này diễn ra nhất quán trên nhiều Region bằng cách sao chép image riêng tư ở cấp độ registry. Một ECR private registry có thể được cấu hình cho cả cross-Region hoặc cross-account replication, để đảm bảo image của bạn luôn sẵn sàng ở các Region thứ cấp khi cần.</p>
-<p>Khi kiến trúc mở rộng ra nhiều Region, việc theo dõi tài nguyên được cấp phát ở đâu có thể trở nên khó khăn. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#global-view" rel="external">Amazon EC2 Global View</a> giúp giảm bớt vấn đề này bằng cách cung cấp một bảng điều khiển tập trung, hiển thị các tài nguyên EC2 như instance, VPC, subnet, security group, và volume trong tất cả các Region đang hoạt động.</p>
-<p>Chúng tôi kết hợp các tính năng compute layer này trong Hình 3 bằng cách sử dụng EC2 Image Builder để sao chép AMI chuẩn mới nhất của chúng tôi sang nhiều Region để triển khai. Chúng tôi cũng sao lưu mỗi EBS volume trong 3 ngày và sao chép nó sang nhiều Region bằng Data Lifecycle Manager.</p>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img3-Blog5.png" alt="Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)">
-    <figcaption><i>Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="đưa-tất-cả-lại-với-nhau">
-  Đưa tất cả lại với nhau
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ở cuối mỗi phần của loạt bài blog này, chúng tôi sẽ xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách bạn có thể kết hợp các dịch vụ để xây dựng một ứng dụng đa Vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả dịch vụ được nhắc đến, chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.</p>
-<p>Chúng tôi xây dựng ví dụ này để mở rộng đến phạm vi toàn cầu. Ứng dụng yêu cầu tính sẵn sàng cao giữa các Vùng, và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn các dịch vụ sau (trong bài viết này) để đạt được mục tiêu:</p>
+</h3><p>Bạn có thể giám sát SQS fair queues bằng <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html" rel="external">CloudWatch metrics</a>. Các thuật ngữ quan trọng:</p>
 <ul>
 <li>
-<p>Route 53 với chính sách định tuyến theo độ trễ (latency routing) để đưa người dùng đến vùng triển khai có độ trễ thấp nhất.</p>
+<p>Noisy groups – nhóm message thuộc tenant gây ồn</p>
 </li>
 <li>
-<p>CloudFront được thiết lập để phân phối nội dung tĩnh. Region 1 là nguồn gốc chính, nhưng chúng tôi đã cấu hình dự phòng nguồn gốc (origin failover) sang Region 2 trong trường hợp có sự cố.</p>
-</li>
-<li>
-<p>Ứng dụng phụ thuộc vào một số API của bên thứ ba, vì vậy Secrets Manager với khả năng sao chép đa Vùng đã được thiết lập để lưu trữ thông tin khóa API nhạy cảm.</p>
-</li>
-<li>
-<p>CloudTrail logs được tập trung tại Region 1 để dễ dàng phân tích và kiểm toán.</p>
-</li>
-<li>
-<p>Security Hub tại Region 1 được chọn làm nơi tập hợp các phát hiện từ tất cả các Vùng.</p>
-</li>
-<li>
-<p>Đây là ứng dụng dựa trên container, chúng tôi dựa vào Amazon ECR replication tại mỗi vị trí để nhanh chóng tải về các image mới nhất tại chỗ.</p>
-</li>
-<li>
-<p>Để liên lạc qua IP riêng giữa các Vùng, một Transit Gateway được thiết lập tại mỗi Vùng với kết nối liên Vùng. VPC peering cũng có thể hoạt động, nhưng vì dự kiến mở rộng ra nhiều Vùng hơn trong tương lai nên chúng tôi chọn Transit Gateway như giải pháp lâu dài.</p>
-</li>
-<li>
-<p>IAM được dùng để cấp quyền quản lý tài nguyên AWS.</p>
+<p>Quiet groups – các nhóm message còn lại (tenant không gây ồn)</p>
 </li>
 </ul>
-<div style="text-align:center;">
-  <figure>
-    <img src="../../../images/Img4-Blog5.png" alt="Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1">
-    <figcaption><i>Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1</i></figcaption>
-  </figure>
-</div>
-
-<h3 id="tóm-tắt">
-  Tóm tắt
+<p>SQS giờ cung cấp một số metric mới:</p>
+<ul>
+<li>
+<p>ApproximateNumberOfNoisyGroups</p>
+</li>
+<li>
+<p>ApproximateNumberOfMessagesVisibleInQuietGroups</p>
+</li>
+<li>
+<p>ApproximateNumberOfMessagesNotVisibleInQuietGroups</p>
+</li>
+<li>
+<p>ApproximateNumberOfMessagesDelayedInQuietGroups</p>
+</li>
+<li>
+<p>ApproximateAgeOfOldestMessageInQuietGroups</p>
+</li>
+</ul>
+<p>Metric mới quan trọng nhất là:
+ApproximateNumberOfNoisyGroups — số group (tenant) được coi là noisy.
+Dùng nó để phát hiện tenant tiêu thụ tài nguyên quá mức và thiết lập cảnh báo.
+Fair queues cung cấp thêm các metric với hậu tố InQuietGroups, cho phép theo dõi riêng các tenant không gây ồn — thay vì toàn hàng đợi.</p>
+<h2 id="theo-dõi-hiệu-ứng-công-bằng">
+  Theo dõi hiệu ứng công bằng
 
 
 
@@ -381,22 +376,85 @@ Chủ đề: Amazon CloudFront, Amazon EC2, Amazon Elastic Block Store (Amazon E
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Khi thiết kế một ứng dụng đa Vùng (multi-Region), việc xây dựng một nền tảng vững chắc là vô cùng quan trọng. Nền tảng này sẽ giúp bạn phát triển ứng dụng nhanh chóng theo cách an toàn, đáng tin cậy và linh hoạt. Nhiều dịch vụ AWS đã tích hợp sẵn các tính năng hỗ trợ bạn xây dựng kiến trúc đa Vùng.</p>
-<p>Tùy vào lý do mở rộng ra ngoài một Vùng duy nhất mà kiến trúc của bạn sẽ khác nhau. Trong bài viết này, chúng tôi đã đề cập đến các tính năng cụ thể của những dịch vụ AWS về bảo mật, mạng và tính toán (compute) — với khả năng tích hợp sẵn để giảm bớt khối lượng công việc nặng nề và lặp lại.</p>
-<p>Trong các bài viết tiếp theo, chúng tôi sẽ tiếp tục đề cập đến các dịch vụ về dữ liệu, ứng dụng và quản lý.</p>
-<p>*** Sẵn sàng để bắt đầu? ***
-Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" rel="external">AWS Solutions</a> và <a href="https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND" rel="external">AWS Blogs</a> để hỗ trợ bạn!</p>
-<p>*** Bạn đang tìm thêm nội dung về kiến trúc? ***
-<a href="https://aws.amazon.com/architecture/" rel="external">AWS Architecture Center</a> cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!</p>
-<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/" rel="external">https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/</a>)</p>
-<p>Các bài viết khác trong chuỗi này:</p>
+</h2><p>Bạn có thể <strong>so sánh metric <code>InQuietGroups</code> với metric queue thông thường</strong>:</p>
 <ul>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_6/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép</a></p>
-</li>
-<li>
-<p><a href="../../../en/3-translated_blogs/blog_7/">Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng</a></p>
-</li>
+<li>Khi một tenant tạo traffic đột biến, metric toàn queue tăng backlog</li>
+<li>Nhưng metric quiet groups vẫn thấp → chứng tỏ tenant khác không bị ảnh hưởng</li>
+</ul>
+<p><a href="#R-image-655fb99539d26721d61450d57cc12cff" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-655fb99539d26721d61450d57cc12cff"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg"></a></p>
+<p><strong>Hình 4:</strong> Biểu đồ backlog tenant noisy vs quiet</p>
+<hr>
+<h2 id="xác-định-tenant-gây-tải-cao">
+  Xác định tenant gây tải cao
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Dùng <strong><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html" rel="external">Amazon CloudWatch Contributor Insights</a></strong> để:</p>
+<ul>
+<li>Xem top-N tenant</li>
+<li>Tổng số tenant</li>
+<li>Mức độ sử dụng của từng tenant</li>
+</ul>
+<blockquote>
+<p>Điều này hữu ích khi có hàng nghìn tenant, giúp tránh chi phí metric lớn (<strong>high-cardinality</strong>).</p></blockquote>
+<p><a href="#R-image-384365d1c98e56155bdb9f90d0dfc0e8" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-384365d1c98e56155bdb9f90d0dfc0e8"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg"></a></p>
+<p><strong>Hình 5:</strong> Dashboard Contributor Insights dựa trên MessageGroupId</p>
+<p>Contributor Insights tạo metric từ log ứng dụng của bạn.
+Ứng dụng cần log số lượng message xử lý và MessageGroupId.
+Ví dụ đầy đủ có trong sample app phần tiếp theo.</p>
+<hr>
+<h2 id="ứng-dụng-ví-dụ">
+  Ứng dụng ví dụ
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Để giúp bạn bắt đầu dễ dàng hơn, chúng tôi đã chuẩn bị một ứng dụng mẫu để bạn có thể quan sát hành vi của Amazon SQS fair queues với các mức tải message khác nhau. Bạn có thể tìm mã nguồn, hạ tầng dưới dạng code (IaC) và <a href="https://github.com/aws-samples/sample-amazon-sqs-fair-queues" rel="external">hướng dẫn chạy mẫu</a> trong kho GitHub sqs-fair-queues.</p>
+<p>Ứng dụng ví dụ này bao gồm một trình tạo tải (load generator) để mô phỏng traffic multi-tenant và cung cấp một <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html" rel="external">CloudWatch dashboard</a> hiển thị các metric quan trọng nhất để trực quan hóa cách fair queues hoạt động. Hình dưới đây minh hoạ dashboard đó:</p>
+<p><a href="#R-image-74140ddafb18d7a4c8a52a8c9f700908" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-74140ddafb18d7a4c8a52a8c9f700908"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg"></a></p>
+<p><strong>Hình 6:</strong> CloudWatch FairQueuesDashboard</p>
+<ul>
+<li>Mã nguồn và hướng dẫn chạy trong GitHub: <a href="https://github.com/aws-samples/sqs-fair-queues" rel="external">sqs-fair-queues</a></li>
+</ul>
+<hr>
+<h2 id="kết-luận">
+  Kết luận
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Amazon SQS fair queues tự động giảm thiểu ảnh hưởng của noisy neighbor trong các hàng đợi multi-tenant. Ngay cả khi một tenant tạo ra lượng message lớn hoặc cần thời gian xử lý lâu hơn (tức trở thành noisy neighbor), tính năng này vẫn duy trì thời gian lưu message ổn định cho các tenant khác. Khi bạn thêm định danh tenant vào message, Amazon SQS fair queues sẽ tự động phát hiện và giảm thiểu tác động của tenant gây ồn, đảm bảo quyền truy cập công bằng vào hàng đợi cho các tenant còn lại.</p>
+<p>Chúng tôi khuyến nghị bạn xem <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" rel="external">Amazon SQS Developer Guide</a> để bắt đầu và thử nghiệm với ứng dụng mẫu nhằm quan sát hành vi của hệ thống với các mức tải khác nhau.</p>
+<hr>
+<h2 id="tham-khảo">
+  Tham khảo
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" rel="external">Amazon SQS Developer Guide</a></li>
+<li><a href="https://aws.amazon.com/blogs/" rel="external">AWS Blog – Fair Queues</a></li>
 </ul>
 
   <footer class="footline">
@@ -509,8 +567,8 @@ Chúng tôi đã chọn một số <a href="https://aws.amazon.com/solutions/" r
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763393926" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763393926" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763448698" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1763448698" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
