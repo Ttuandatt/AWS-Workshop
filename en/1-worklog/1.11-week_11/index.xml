@@ -3,7 +3,7 @@
   <channel>
     <title>Week 11 Worklog :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.11-week_11/index.html</link>
-    <description>Week 11 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 18/11/2025 18/11/2025 3 19/11/2025 19/11/2025 4 20/11/2025 20/11/2025 5 21/11/2025 21/11/2025</description>
+    <description>Week 11 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Adjust the solution architecture - Code front end: Fix flaws in home page, login site - Code back end: Fix bugs in User Service 2 - Code front end: Fix flaws in home page, login site 18/11/2025 18/11/2025 - Code back end: Fix bugs in User Service 3 19/11/2025 19/11/2025 4 20/11/2025 20/11/2025 5 21/11/2025 21/11/2025</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.11-week_11/index.xml" rel="self" type="application/rss+xml" />
