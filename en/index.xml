@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/index.html</link>
     <description>Team Information&#xD;Full Name Phone Number Email Class Unversity Phan Canh Tuan Dat 0867829257 pcanhtuandat@gmail.com DCT1226 Sai Gon University Ngo Tuan Hung 0776136425 hungnt.020404@gmail.com DKP1221 Sai Gon University Le Trung Kien 0931261009 trungkien1862@gmail.com DCT1213 Sai Gon University Duong Binh Minh 0355578938 duongbinhminh10032004@gmail.com DCT1226 Sai Gon University Internship Company: Amazon Web Services Vietnam Co., Ltd.&#xA;Internship Position: FCJ Cloud Intern&#xA;Internship Duration: From 29/09/2025 to 22/11/2025</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Worklog</title>
-      <link>http://localhost:1313/AWS-Workshop/en/1-worklog/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/1-worklog/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</guid>
       <description>Week 1: Orientation &amp; Project Setup&#xA;Week 2: Core AWS Basics &amp; Project Planning&#xA;Week 3: System Design &amp; Intermediate AWS Services&#xA;Week 4: Authentication Development &amp; API Foundations&#xA;Week 5: User Service Development &amp; Scaling Concepts&#xA;Week 6: Database &amp; Caching Integration&#xA;Week 7: Advanced Services &amp; Deployment Preparation&#xA;Week 8: Experimental Implementation &amp; Deployment&#xA;Week 9: Focused on writing unit tests for key components and functions, performing integration tests for core business flows, and ensuring overall system stability through continuous testing and bug fixing</description>
     </item>
     <item>
       <title>Proposal</title>
-      <link>http://localhost:1313/AWS-Workshop/en/2-proposal/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/2-proposal/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</guid>
       <description>Multi-Region SaaS Task Management Platform&#xD;A Global AWS Solution for Low-Latency, Resilient Collaboration&#xD;1. Executive Summary&#xD;The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency, high availability, and regional scalability across Asia-Pacific.</description>
     </item>
     <item>
       <title>Translated Blogs</title>
-      <link>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</guid>
       <description>Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.&#xA;Blog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)&#xA;Blog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xA;Blog 4: Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên</description>
     </item>
     <item>
       <title>Events Participated</title>
-      <link>http://localhost:1313/AWS-Workshop/en/4-events_participated/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/4-events_participated/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
       <title>Workshop</title>
-      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/index.html</guid>
-      <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;This project is …..&#xA;Content&#xD;1. Workshop Overview&#xA;2. Prerequisite&#xA;3. Deploy Flow&#xA;4. Clean Up&#xA;5. Related Mystic Skills</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</guid>
+      <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;This project is …..&#xA;Content&#xD;1. Workshop Overview&#xA;2. Prerequisite&#xA;3. Deploy Flow&#xA;4. Clean Up&#xA;5. Mystic Skills</description>
     </item>
     <item>
       <title>Self Assesment</title>
-      <link>http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
     <item>
       <title>Sharing and Feedback</title>
-      <link>http://localhost:1313/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/en/7-sharing_and_feedback/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</guid>
       <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
     </item>
   </channel>

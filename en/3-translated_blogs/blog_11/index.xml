@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 11 :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_11/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html</link>
     <description>Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật&#xD;Tác giả: Kartik Bheemisetty, và David MacDonald&#xA;Ngày: 01 tháng 8 năm 2025&#xA;Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng&#xA;Giới thiệu&#xD;Trình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_11/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

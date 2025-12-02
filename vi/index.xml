@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/index.html</link>
     <description>BÁO CÁO THỰC TẬP&#xD;Thông tin sinh viên:&#xD;Họ và tên: Phan Cảnh Tuấn Đạt Số điện thoại: 0867829257&#xA;Email: pcanhtuandat@gmail.com&#xA;Trường: Đại học Sài Gòn&#xA;Ngành: Công nghệ Thông tin&#xA;Lớp: DCT1226&#xA;Công ty thực tập: Amazon Web Services Vietnam Co., Ltd.&#xA;Vị trí thực tập: Thực tập sinh FCJ Cloud&#xA;Thời gian thực tập: Từ 12/08/2025 đến 12/11/2025</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Tue, 09 Sep 2025 10:59:48 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nhật ký công việc</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</link>
       <pubDate>Tue, 09 Sep 2025 10:59:48 +0700</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</guid>
       <description>Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản&#xA;Week 2: Doing task A…&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
     </item>
   </channel>

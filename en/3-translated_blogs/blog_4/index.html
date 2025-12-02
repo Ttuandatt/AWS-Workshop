@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
@@ -12,7 +12,7 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
     <meta name="twitter:title" content="Blog 4 :: Internship Report">
     <meta name="twitter:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
 Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
-    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 4 :: Internship Report">
     <meta property="og:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
@@ -25,34 +25,34 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
     <meta itemprop="wordCount" content="1996">
     <title>Blog 4 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_4/index.xml" rel="alternate" type="application/rss+xml" title="Blog 4 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764560889" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/search.js?1764560889" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764681588" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1764681588" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1764560889";
+      window.relearn.index_js_url="../../../searchindex.en.js?1764681588";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764681588" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764560889" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764560889" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764560889" rel="stylesheet">
-    <link href="../../../css/theme.css?1764560889" rel="stylesheet">
-    <link href="../../../css/format-html.css?1764560889" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764681588" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764681588" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764681588" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1764681588" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1764681588" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = ``;
+      window.relearn.min = `.min`;
       window.relearn.path='\/3-translated_blogs\/blog_4\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -96,7 +96,7 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1764560889" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1764681588" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_4/index.html">
     <div id="R-body" class="default-animation">
@@ -485,27 +485,27 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 </h3><p>Dưới đây là một số câu lệnh (prompts) để tương tác với các ứng dụng ArgoCD trong cụm EKS của bạn</p>
 <p><strong>Liệt kê ứng dụng Argo</strong></p>
 <p><strong>Câu lệnh</strong>: <code>List all ArgoCD applications in my cluster</code></p>
-<p><a href="#R-image-7018018c937ec0738598aa609859f0ca" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7018018c937ec0738598aa609859f0ca"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
+<p><a href="#R-image-6fad75725117ae44aaea4bbf3443082d" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6fad75725117ae44aaea4bbf3443082d"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
 <!-- raw HTML omitted -->
 <p><strong>Tạo ứng dụng ArgoCD mới</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Create new argocd application using App name: game-2048   Repo: https://github.com/aws-ia/terraform-aws-eks-blueprints  Path: patterns/gitops/getting-started-argocd/k8s. Branch: main  Namespace: argocd</code></p>
-<p><a href="#R-image-5d236566f729235a7371c18c05f8e2df" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-5d236566f729235a7371c18c05f8e2df"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png"></a></p>
+<p><a href="#R-image-4336833825514cb3035b2b9cfe7151bf" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4336833825514cb3035b2b9cfe7151bf"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png"></a></p>
 <!-- raw HTML omitted -->
 <p><strong>Xem trạng thái triển khai</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Show me the resource tree for team-carmen app</code></p>
-<p><a href="#R-image-2fdb9a4915c6c5d71bf4ef8dde633376" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2fdb9a4915c6c5d71bf4ef8dde633376"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
+<p><a href="#R-image-662fc38047e2233b709a822a536da7e5" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-662fc38047e2233b709a822a536da7e5"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
 <!-- raw HTML omitted -->
 <p><strong>Đồng bộ hóa ứng dụng</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Show me the applications that’s out of sync</code></p>
-<p><a href="#R-image-41e3c2fbca731297908842f00e6bd702" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-41e3c2fbca731297908842f00e6bd702"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png"></a></p>
+<p><a href="#R-image-5ceaccf8524b6a02fe8ebd8b234e315f" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5ceaccf8524b6a02fe8ebd8b234e315f"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png"></a></p>
 <!-- raw HTML omitted -->
 <p><strong>Câu lệnh</strong>: <code>Sync the application</code></p>
-<p><a href="#R-image-12352115df492c7523851613230a0221" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-12352115df492c7523851613230a0221"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png"></a></p>
+<p><a href="#R-image-f71671751918cfff9a9d4055a720c53d" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f71671751918cfff9a9d4055a720c53d"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png"></a></p>
 <!-- raw HTML omitted -->
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -515,8 +515,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 </ul>
 <p><strong>Kiểm tra sức khỏe và giám sát</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Check the health of all resources in the team-geordie application</code></p>
-<p><a href="#R-image-c237e7688d7674f21f9e25e9470a2db8" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c237e7688d7674f21f9e25e9470a2db8"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png"></a></p>
+<p><a href="#R-image-87cde90b65afa887e24433b3d8de6daa" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-87cde90b65afa887e24433b3d8de6daa"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png"></a></p>
 <!-- raw HTML omitted -->
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -525,8 +525,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 <li>Cung cấp các khuyến nghị để giải quyết các vấn đề</li>
 </ul>
 <p><strong>Câu lệnh</strong>: <code>Show me the logs for the failing pod in the team-platform application</code></p>
-<p><a href="#R-image-df0d4f3ee010b2021f55b98e795038b3" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-df0d4f3ee010b2021f55b98e795038b3"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png"></a></p>
+<p><a href="#R-image-74e0bc14daf8844cdf8fcc3c8caf88e2" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-74e0bc14daf8844cdf8fcc3c8caf88e2"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png"></a></p>
 <!-- raw HTML omitted -->
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -656,8 +656,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764560889" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764681588" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1764681588" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
