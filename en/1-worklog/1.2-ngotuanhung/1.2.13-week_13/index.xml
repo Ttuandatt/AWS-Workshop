@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 13 Worklog :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.2.13-week_13/index.html</link>
+    <description>Week 13 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 01/11/2025 01/11/2025 - Successful S3 multi-region deployment - Code front end: - Code back end: - Update worklog: create worklog categories base on team members 2 - Experimental VPC, Subnets, Internet Gateway deployment 02/11/2025 02/11/2025 - Code front end: - Code back end: 3 03/11/2025 03/11/2025 4 04/11/2025 04/11/2025 5 05/11/2025 05/11/2025</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.2.13-week_13/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

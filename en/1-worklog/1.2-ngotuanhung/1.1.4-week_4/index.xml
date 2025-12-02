@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 4 Worklog :: Internship Report</title>
+    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.1.4-week_4/index.html</link>
+    <description>Week 4 Objectives&#xD;Begin coding the backend authentication service and frontend Discuss and list the APIs required for the taskflow service. Learn and practice S3 Explore API Gateway Translate technical blogs. Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the architecture, backend and front end configuration 29/09/2025 29/09/2025 - Translate blog Translated Blog 1 - Research and make a list of APIs needed for the TaskFlow Service. 2 - Learn and practice S3 service 30/09/2025 30/09/2025 S3 lesson - Code backend Authentication Service 3 - Code backend Authentication Service 01/10/2025 01/10/2025 - Initialize the project (React, environment configuration, basic routing setup, folder structure, Git integration). 4 - Learn and practice API Gateway service 02/10/2025 02/10/2025 AWS API Gateway Introduction, Tạo API sử dụng Amazon API Gateway AWS Serverless Development Journey - Code backend Authentication Service - Set up UI/CSS libraries (e.g., Tailwind, Material UI), define global CSS variables, build basic Components (Button, Input, Card). - Translate blog Translated Blog 2, Translated Blog 3 5 - Code backend Authentication Service 03/10/2025 03/10/2025 - Set up UI/CSS libraries (e.g., Tailwind, Material UI), define global CSS variables, build basic Components (Button, Input, Card). - Code frontend: Build Header, Footer, Sidebar, and the Landing Page. Ensure basic responsive design. - Translate blog Translated Blog 4, Translated Blog 5</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.1.4-week_4/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

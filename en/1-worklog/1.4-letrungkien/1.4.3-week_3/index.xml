@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 3 Worklog :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.4-letrungkien/1.4.3-week_3/index.html</link>
+    <description>Week 3 Objectives&#xD;Study Module 2 in the First Cloud Journey Bootcamp – 2025 playlist Learn and get familiar with Route 53, CloudFormation and their related features Design the database and set up Backend &amp; Frontend Update worklog structure Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Learn about Route 53 and its feature 22/09/2025 22/09/2025 Route 53 2 - Practice creating Key pair, CloudFormation Template, Configure Security Group 23/09/2025 23/09/2025 Create Key pair, Initialize CloudFormation Template 3 - Practice creating Key pair, CloudFormation Template, Configure Security Group 24/09/2025 24/09/2025 Create Key pair, Initialize CloudFormation Template, Configure Security Group - Team meeting and discuss about Database design, Backend, Frontend 4 - Practice connecting to Remote Desktop Gateway (RDGW) by Remote Desktop Protocol (RDP) 25/09/2025 25/09/2025 Connecting to RDGW, Youtube tutorial - Design solution architecture - Team meeting to discuss about workshop project 5 - Practice deploy Microsoft Active Directory 26/09/2025 26/09/2025 Deploy Microsoft Active Directory - Practice deploy Microsoft Active Directory Deploy Microsoft Active Directory - Pratice configure DNS Configure DNS - Update worklog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.4-letrungkien/1.4.3-week_3/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

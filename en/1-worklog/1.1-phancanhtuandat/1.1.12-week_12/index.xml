@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 12 Worklog :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.12-week_12/index.html</link>
+    <description>Week 12 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 24/11/2025 24/11/2025 - Experimental S3 single region deployment - Code front end: - Code back end: 2 25/11/2025 25/11/2025 - Experimental S3 single region deployment - Code front end: - Code back end: 3 26/11/2025 26/11/2025 - Experimental S3 multi-region deployment - Code front end: - Code back end: 4 27/11/2025 27/11/2025 - Experimental S3 multi-region deployment - Code front end: - Code back end: 5 28/11/2025 28/11/2025 - Experimental S3 multi-region deployment - Code front end: - Code back end: - Update worklog, workshop</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.12-week_12/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

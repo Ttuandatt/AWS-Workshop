@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 11 Worklog :: Internship Report</title>
+    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.4-letrungkien/1.1.11-week_11/index.html</link>
+    <description>Week 11 Objectives&#xD;Find bugs and fix bugs Complete the solution architecture Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Adjust the solution architecture - Code front end: Fix flaws in home page, login site - Code back end: Fix bugs in User Service 2 - Code front end: Fix flaws in home page, login site 18/11/2025 18/11/2025 - Code back end: Fix bugs in User Service 3 - Adjust solution architecture 19/11/2025 19/11/2025 - Team meeting to review existing flaws in Frontend and Backend 4 - Adjust solution architecture 20/11/2025 20/11/2025 - Code front end: - Code back end: 5 - Team meeting 21/11/2025 21/11/2025 - Code front end: - Code back end:</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.4-letrungkien/1.1.11-week_11/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

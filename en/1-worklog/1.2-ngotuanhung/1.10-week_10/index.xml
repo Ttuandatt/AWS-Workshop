@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 10 Worklog :: Internship Report</title>
+    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.10-week_10/index.html</link>
+    <description>Week 10 Objectives&#xD;Conduct internal UAT for frontend, collect feedback, fix UI issues, and refine user interface throughout the week Fix backend bugs mainly in Task Service, with additional fixes in User Service Participate in team meetings to discuss development workflow, architecture adjustments, and backend issues Update worklogs and maintain progress tracking Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 10/11/2025 10/11/2025 - Update worklog 2 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. 11/11/2025 11/11/2025 - Code back end: Fix bugs in Task Service 3 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. 12/11/2025 12/11/2025 - Code back end: Fix bugs in Task Service 4 - Teem meeting to discuss about the architecture, backend bugs 13/11/2025 13/11/2025 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. - Code back end: Fix bugs in Task Service, User Service 5 - Update worklog 14/11/2025 14/11/2025 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-ngotuanhung/1.10-week_10/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
