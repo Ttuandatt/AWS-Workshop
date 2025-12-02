@@ -6,3 +6,14 @@ hugo server --baseURL http://localhost:1313/
 Khi build production để deploy:
 
 hugo --minify
+
+
+Khi update nội dung:
+- Mặc định đang ở nhánh main
+- Chạy lệnh:
+    + hugo
+    + cd public (để vào nhánh gh-pages)
+    + git add .
+    + git commit -m ""
+    + git push origin gh-pages
+    + cd .. (để về nhánh main)

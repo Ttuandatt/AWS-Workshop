@@ -1,117 +1,173 @@
 +++
 title = "Blog 6"
-weight =  6
+weight = 6
 chapter = false
 pre = " <b> 3.6. </b>"
 +++
 
-# Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép
+# **Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2**
 
-*Tác giả: Joe Chapman và Sebastian Leks - 12/01/2022*
+_Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia_ | 15/07/2025 | [High Performance Computing](https://aws.amazon.com/blogs/hpc/category/high-performance-computing/), [Life Sciences](https://aws.amazon.com/blogs/hpc/category/industries/life-sciences/), [Partner solutions](https://aws.amazon.com/blogs/hpc/category/post-types/partner-solutions/)
 
-*Chủ đề: [Amazon Aurora](https://aws.amazon.com/blogs/architecture/category/database/amazon-aurora/), [Amazon DocumentDB](https://aws.amazon.com/blogs/architecture/category/database/amazon-document-db/), [Amazon DynamoDB](https://aws.amazon.com/blogs/architecture/category/database/amazon-dynamodb/), [Amazon ElastiCache](https://aws.amazon.com/blogs/architecture/category/database/amazon-elasticache/), [Amazon RDS](https://aws.amazon.com/blogs/architecture/category/database/amazon-rds/), [Amazon Redshift](https://aws.amazon.com/blogs/architecture/category/analytics/amazon-redshift-analytics/), [Amazon Simple Storage Service (S3)](https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/), [Architecture](https://aws.amazon.com/blogs/architecture/category/architecture/), [AWS Backup](https://aws.amazon.com/blogs/architecture/category/storage/aws-backup/), [AWS DataSync](https://aws.amazon.com/blogs/architecture/category/migration/aws-datasync/), [AWS Global Accelerator](https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/)*
+Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)
 
----
+![image1](../../../images/Blog8/HPCBlog-366-p1-1024x286.png)
 
-Dữ liệu là trung tâm của các ứng dụng có trạng thái (stateful applications). Mô hình nhất quán dữ liệu sẽ khác nhau khi lựa chọn triển khai trong một Region hay nhiều Region. Trong bài viết này, phần 2/3, chúng ta sẽ tiếp tục chọn lọc các dịch vụ AWS, tập trung vào những dịch vụ hướng dữ liệu với các tính năng gốc (native features) giúp đưa dữ liệu đến đúng nơi cần thiết để hỗ trợ chiến lược đa vùng cho ứng dụng của bạn.
+Việc phân tích lượng dữ liệu genomic và multiomic ngày càng gia tăng đòi hỏi các giải pháp tính toán hiệu quả, có khả năng mở rộng và tiết kiệm chi phí. Amazon Web Services (AWS) tiếp tục hỗ trợ các workload này thông qua các dịch vụ tính toán tăng tốc FPGA như các [instance Amazon EC2 F2](https://aws.amazon.com/ec2/instance-types/f2/).
 
-Ở **Phần 1** của loạt blog này, chúng ta đã xem xét cách sử dụng các dịch vụ tính toán (compute), mạng (networking), và bảo mật (security) của AWS để xây dựng nền tảng cho một ứng dụng multi-Region. Ở **Phần 3**, chúng ta sẽ tìm hiểu các dịch vụ quản lý và giám sát ứng dụng của AWS, giúp bạn xây dựng, theo dõi và duy trì ứng dụng multi-Region.
+Giải pháp phân tích thứ cấp [DRAGEN (Dynamic Read Analysis for GENomics)](https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis.html) của Illumina đã khẳng định vị thế là một trong những giải pháp phân tích thứ cấp hàng đầu cho dữ liệu sequencing thế hệ mới, cung cấp các thuật toán được tối ưu hóa cao cho phân tích genomic và triển khai tăng tốc phần cứng cho các pipeline phân tích toàn diện về genomics và multiomics, bao gồm DNA germline, DNA somatic, cũng như phân tích RNA ở mức bulk và single-cell, proteomics, spatial, và nhiều hơn nữa.
 
-### Những lưu ý khi sao chép dữ liệu
+DRAGEN chạy nguyên bản trên các instance EC2 F2 và cung cấp cho khách hàng một phương pháp nhanh chóng để phân tích tập dữ liệu sinh học của họ. Việc di chuyển sang F2 được đơn giản hóa vì cùng một DRAGEN AMI được sử dụng cho cả F1 và F2, và kết quả phân tích sẽ tương đương nhau. Trong bài viết này, chúng tôi sẽ thảo luận về các đặc tính hiệu năng của DRAGEN trên các môi trường tính toán AWS khác nhau, cũng như cách triển khai [phiên bản DRAGEN v4.4 mới ra mắt gần đây](https://investor.illumina.com/news/press-release-details/2025/Illumina-DRAGEN-v4-4-powers-clinical-oncology-research-and-multiomic-applications/default.aspx) trên các instance Amazon EC2 F2.
 
-Việc sao chép dữ liệu trên mạng AWS diễn ra rất nhanh, nhưng bạn cần nhớ rằng thời gian di chuyển của gói tin sẽ tăng lên theo khoảng cách vật lý mà gói tin cần đi qua. Vì lý do này, khi xây dựng ứng dụng multi-Region, bạn phải cân nhắc giữa tính nhất quán dữ liệu và hiệu năng.
-Khi xây dựng một hệ thống phân tán, cần xem xét định lý CAP (Consistency, Availability, Partition Tolerance). Định lý này chỉ ra rằng một ứng dụng chỉ có thể đạt được 2 trong 3 yếu tố, và bạn phải chấp nhận đánh đổi khi đưa ra lựa chọn:
+## Tổng quan về các instance Amazon EC2 F2
 
--  Consistency (Nhất quán) – tất cả các client luôn thấy cùng một trạng thái dữ liệu
+Các instance F2 là thế hệ thứ 2 của các instance EC2 được trang bị FPGA để tăng tốc phân tích dữ liệu genomic và multimedia trong môi trường cloud. Những instance này mang lại cải tiến đáng kể so với thế hệ trước — các instance F1 — với hiệu suất giá thành được cải thiện tốt hơn tới 60%. Dưới đây là các tính năng và thông số kỹ thuật chính của instance F2:
 
--  Availability (Sẵn sàng) – tất cả các client luôn có thể đọc và ghi dữ liệu
+- Cấu hình FPGA: Instance F2 được trang bị tối đa tám AMD Virtex UltraScale+ HBM VU47P FPGAs, mỗi FPGA tích hợp 16GB bộ nhớ băng thông cao (HBM – High-Bandwidth Memory).
 
--  Partition Tolerance (Chịu lỗi phân mảnh mạng) – hệ thống vẫn hoạt động ngay cả khi có sự cố phân mảnh vật lý trong mạng
+- Bộ xử lý: Được vận hành bởi bộ vi xử lý AMD EPYC thế hệ thứ 3 (Milan), instance F2 cung cấp tới 192 vCPU — gấp ba lần số lõi xử lý so với instance F1.
 
-{{< figurecaption src="/images/Img1-Blog6.png" caption="" >}}
+- Bộ nhớ: Instance này hỗ trợ tới 2 TiB bộ nhớ hệ thống, gấp đôi dung lượng bộ nhớ của instance F1.
 
-Trong các kiến trúc single-Region, việc đạt được Consistency và Availability (CA) là điều thường thấy. Ví dụ: khi một ứng dụng chỉ kết nối đến một cơ sở dữ liệu quan hệ trong cùng một Region.
+- Lưu trữ: F2 đi kèm với tối đa 7.6 TiB bộ nhớ SSD NVMe, gấp đôi dung lượng lưu trữ của F1.
 
-Tuy nhiên, với multi-Region applications, điều này trở nên khó khăn hơn vì độ trễ phát sinh do việc truyền dữ liệu qua khoảng cách địa lý xa. Vì thế, các hệ thống phân tán ở mức toàn cầu thường chấp nhận hy sinh tính nhất quán tuyệt đối, thay vào đó ưu tiên Availability và Partition Tolerance (AP). Mô hình này thường được gọi là eventual consistency (nhất quán cuối cùng).
+- Networking: Tốc độ băng thông mạng lên tới 100 Gbps, cao gấp bốn lần so với băng thông mạng có sẵn trên instance F1.
 
+<table>
+  <tr>
+    <th>Instance Name</th>
+    <th>FPGAs</th>
+    <th>vCPUs</th>
+    <th>Instance Memory</th>
+    <th>NVMe Storage</th>
+    <th>Network Bandwidth</th>
+  </tr>
+  <tr>
+    <td>f1.2xlarge</td>
+    <td>1</td>
+    <td>8</td>
+    <td>122</td>
+    <td>470</td>
+    <td>Up to 10 Gbps</td>
+  </tr>
+  <tr style="background-color:#A5CEF0;color: black;"> <!-- tô màu xanh lá -->
+    <td>f1.4xlarge</td>
+    <td>2</td>
+    <td>16</td>
+    <td>244</td>
+    <td>940</td>
+    <td>10 Gbps</td>
+  </tr>
+  <tr style="background-color:#A9D979;color: black;"> <!-- tô màu xanh lá -->
+    <td>f2.6xlarge</td>
+    <td>1</td>
+    <td>24</td>
+    <td>256</td>
+    <td>950</td>
+    <td>10 Gbps</td>
+  </tr>
+   <tr>
+    <td>F2.12xlarge</td>
+    <td>2</td>
+    <td>48</td>
+    <td>512</td>
+    <td>1900</td>
+    <td>25 Gbps</td>
+  </tr>
+   <tr>
+    <td>f1.16xlarge</td>
+    <td>8</td>
+    <td>64</td>
+    <td>976</td>
+    <td>44x940</td>
+    <td>25 Gbps</td>
+  </tr>
+   <tr>
+    <td>F2.48xlarge</td>
+    <td>8</td>
+    <td>192</td>
+    <td>2048</td>
+    <td>7600</td>
+    <td>100 Gbps</td>
+  </tr>
+</table>
 
-### Sao chép đối tượng và tệp tin
-Quy mô, độ bền và tính sẵn sàng của [Amazon Simple Storage Service (Amazon S3)](http://aws.amazon.com/s3) khiến nó trở thành một điểm đến tuyệt vời để lưu trữ nhiều loại tài nguyên cho ứng dụng của bạn. Để cho phép ứng dụng truy cập nhanh dữ liệu này bất kể được triển khai ở Region nào, bạn có thể thiết lập Amazon S3 để [sao chép dữ liệu giữa các Region AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) với cơ chế sao chép một chiều hoặc [hai chiều](https://wellarchitectedlabs.com/reliability/200_labs/200_bidirectional_replication_for_s3/) liên tục. Nếu ứng dụng của bạn không cần tất cả các đối tượng trong một bucket để hoạt động tối ưu, một tập con đối tượng có thể được sao chép bằng các [quy tắc replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/disable-replication.html) của Amazon S3. Amazon S3 trong một Region cung cấp tính nhất quán mạnh khi đọc ngay sau khi ghi; tuy nhiên, các đối tượng đã được sao chép sẽ chỉ nhất quán sau một khoảng thời gian ở các Region đích. Nếu việc duy trì độ trễ sao chép thấp là quan trọng, [S3 Replication Time Control](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-walkthrough-5.html) sẽ sao chép 99,99% đối tượng trong vòng 15 phút, và hầu hết chỉ mất vài giây. Quan sát là yếu tố then chốt ở mọi lớp của một ứng dụng, và bạn có thể giám sát trạng thái sao chép của các đối tượng bằng Amazon [S3 events và metrics](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-metrics.html).
+*Bảng 1: Bảng so sánh thông số kỹ thuật về compute, memory, storage, và networking giữa các instance F1 và F2.*
 
-Mỗi bucket S3 được cấp endpoint riêng theo Region, điều này có nghĩa là endpoint bao gồm Region của bucket trong URL, ví dụ:
+## Phương pháp đánh giá hiệu năng
 
-```
-https://<MY-BUCKET>.s3.<AWS-REGION>.amazonaws.com/
-```
+Illumina khuyến nghị sử dụng f1.4xlarge khi dùng instance F1 và f2.6xlarge khi dùng instance F2. Để đánh giá hiệu năng trên các instance này, DRAGEN đã được cấu hình và chạy trên AWS theo [hướng dẫn người dùng Illumina DRAGEN](https://help.dragen.illumina.com/product-guides/dragen-v4.4), và các liên kết tới genome reference file có thể tìm thấy trên [trang web Illumina DRAGEN Product Files](https://support.illumina.com/sequencing/sequencing_software/dragen-bio-it-platform/product_files.html).
 
-Để đơn giản hóa việc kết nối đến và quản lý nhiều endpoint bucket, Amazon [S3 Multi-Region Access Points](https://aws.amazon.com/blogs/aws/s3-multi-region-access-points-accelerate-performance-availability/) tạo ra một endpoint toàn cầu duy nhất bao phủ nhiều bucket S3 ở các Region khác nhau. Khi ứng dụng kết nối đến endpoint này, các yêu cầu sẽ được định tuyến qua mạng AWS bằng [AWS Global Accelerator](https://aws.amazon.com/global-accelerator/) đến bucket có độ trễ thấp nhất. Việc định tuyến dự phòng cũng được xử lý tự động nếu khả năng sẵn sàng của một bucket thay đổi. Bạn sẽ thấy rằng các endpoint này không phụ thuộc Region trong URL:
+1. Phân tích Whole Genome Sequencing (WGS) với độ phủ khoảng 35x sử dụng một mẫu có sẵn công khai. Mẫu HG002 từ [dự án NIST Genome in a Bottle](https://www.nist.gov/programs-projects/genome-bottle) đã được sử dụng. Mẫu này được phân tích bằng DRAGEN v4.4 Germline pipeline theo hai cách khác nhau. Phân tích “cơ bản” chỉ bao gồm alignment cơ bản và small variant calling, nhằm tạo điều kiện so sánh với các pipeline tin sinh học phổ biến cho mẫu germline như BWA/GATK. Phân tích “đầy đủ” sử dụng tất cả các variant caller, bao gồm cả copy number và structural variants, cùng các tùy chọn bổ sung như gọi pharmacogenetic star allele và gọi HLA (Human Leukocyte Antigen), để tạo ra một bộ genome được phân tích đầy đủ. Trong cả hai trường hợp, tham chiếu đồ thị multigenome hg38 của DRAGEN được sử dụng cho phân tích WGS. Các file dữ liệu fastq của mẫu có thể truy cập trên Amazon S3 qua các liên kết: [fastq R1](https://s3/ilmn-dragen-giab-samples/WGS/precisionFDA_v2_HG002/HG002.novaseq.pcr-free.35x.R1.fastq.gz), [fastq R2](https://s3/ilmn-dragen-giab-samples/WGS/precisionFDA_v2_HG002/HG002.novaseq.pcr-free.35x.R2.fastq.gz).
 
-```
-https://<RANDOM-STRING>.mrap.s3-global.amazonaws.com/
-```
-Nếu một số phần của ứng dụng bạn chưa hỗ trợ đọc và ghi vào object store trên nền web như Amazon S3, bạn có thể có cùng độ bền và tính sẵn sàng trên một hệ thống tệp chia sẻ với các lớp lưu trữ theo Region của [Amazon Elastic File System (Amazon EFS)](http://aws.amazon.com/efs). Để đảm bảo các triển khai ứng dụng đa Region có thể truy cập dữ liệu này tại chỗ, bạn có thể thiết lập [replication dựa trên block của Amazon EFS](https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html) đến một volume EFS chỉ đọc ở Region khác.
+2. Phân tích Tumor-Normal sử dụng một cặp mẫu đã được khảo sát trong một [ấn phẩm về phân tích ung thư của DRAGEN](https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2) trước đây. Hai mẫu này có độ phủ khoảng 110x (tumor) và 40x (normal). Các mẫu được phân tích bằng DRAGEN v4.4 Somatic pipeline, bao gồm alignment, small variant calling, cũng như phân tích CNV và SV. Phân tích Tumor-Normal sử dụng hg38 linear genome reference của DRAGEN. Các file dữ liệu fastq của mẫu có thể truy cập trên Amazon S3 qua các liên kết: [Tumor fastq R1](https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/tumor/T_SRR7890895_75pc_1.fastq.gz), [Tumor fastq R2](https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/tumor/T_SRR7890895_75pc_2.fastq.gz), [Normal fastq R1](https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/normal/N_SRR7890889_1.fastq.gz), [Normal fastq R2](https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/normal/N_SRR7890889_2.fastq.gz).
 
-Đối với các tệp được lưu bên ngoài Amazon S3 và Amazon EFS, [AWS DataSync](https://aws.amazon.com/datasync/) đơn giản hóa, tự động hóa và tăng tốc việc [di chuyển dữ liệu giữa các Region và account](https://aws.amazon.com/blogs/storage/transferring-file-data-across-aws-regions-and-accounts-using-aws-datasync/). Nó hỗ trợ cả di chuyển đồng nhất và khác loại giữa [Amazon FSx](https://aws.amazon.com/fsx/), [AWS Snowcone](https://aws.amazon.com/snowcone/), Amazon EFS, và Amazon S3. Nó thậm chí có thể được dùng để đồng bộ các tệp on-premises được lưu trữ trên NFS, SMB, HDFS và object storage tự quản lý lên AWS cho các kiến trúc hybrid.
+## So sánh hiệu năng về tốc độ và chi phí: Phân tích WGS
 
-Việc sao chép tệp và đối tượng được kỳ vọng là sẽ nhất quán sau một khoảng thời gian. Tốc độ mà một tập dữ liệu có thể truyền tải phụ thuộc vào dung lượng dữ liệu, băng thông I/O, băng thông mạng, điều kiện mạng và khoảng cách vật lý.
+Phân tích WGS sử dụng DRAGEN v4.4 cho thấy lợi thế đáng kể về hiệu suất chi phí trên các instance Amazon EC2 F2 so với F1, đồng thời vẫn cho ra kết quả phân tích tương đương giữa hai thế hệ instance¹:
 
-### Sao chép bản sao lưu
+- Phân tích WGS cơ bản, bao gồm alignment và small variant calling. DRAGEN v4.4 chạy trên f2.6xlarge đạt tốc độ **nhanh hơn 1,5 lần** và **chỉ tốn 40% chi phí compute EC2** so với f1.4xlarge.
 
-Bên cạnh việc sao chép dữ liệu (replication), bạn cũng nên sao lưu dữ liệu của mình. Trong trường hợp dữ liệu bị hỏng hoặc vô tình bị xóa, một bản sao lưu sẽ cho phép bạn khôi phục về trạng thái tốt cuối cùng đã biết. Ngoài ra, không phải tất cả dữ liệu đều cần được sao chép theo thời gian thực. Ví dụ, nếu bạn đang thiết kế cho kịch bản khôi phục thảm họa và ứng dụng của bạn có [RTO (Recovery Time Objective – Mục tiêu thời gian khôi phục) và RPO (Recovery Point Objective – Mục tiêu điểm khôi phục)](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html) dài hơn, thì việc sao chép bản sao lưu theo lịch trình có thể đáp ứng yêu cầu của bạn trong khi lại tiết kiệm chi phí hơn.
-Đối với những trường hợp này, [AWS Backup](https://aws.amazon.com/backup/) có thể tự động hóa việc sao lưu dữ liệu của bạn để đáp ứng yêu cầu kinh doanh, và các bản sao lưu này có thể được cấu hình để tự động [sao chép đến một hoặc nhiều Region hoặc account AWS](https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html). Thời gian sao chép phụ thuộc vào kích thước bản sao lưu của bạn và khoảng cách cần truyền tải. Bạn nên chạy thử nghiệm trước để xác định xem thời gian sao chép xuyên Region này có ảnh hưởng đến RTO và RPO đã định nghĩa của bạn hay không. Ngày càng có nhiều dịch vụ được hỗ trợ, và điều này đặc biệt hữu ích cho các dịch vụ không cung cấp tính năng sao chép theo thời gian thực sang Region khác như [Amazon Elastic Compute Cloud (Amazon EC2)](http://aws.amazon.com/ec2) hoặc [Amazon Neptune](https://aws.amazon.com/neptune/).
+- Phân tích WGS đầy đủ, bao gồm alignment, small variant calling, calling of CNVs, SVs, repeat expansions, và variant annotation. Phân tích DRAGEN trên f2.6xlarge đạt tốc độ **nhanh gấp 2 lần** và **chỉ tốn 30% chi phí compute EC2** so với f1.4xlarge.
 
-Hình 1 cho thấy cách các dịch vụ dữ liệu được đề cập có thể được kết hợp cho từng tài nguyên trong một kiến trúc. Chúng tôi sử dụng Amazon S3 bi-directional replication để giữ cho các đối tượng trong bucket được đồng bộ trong khi vẫn cho phép ghi từ bất kỳ Region nào. Các máy chủ ứng dụng dựa trên Amazon EC2 của chúng tôi có một mount Amazon EFS bao gồm các bản nhị phân ứng dụng mới nhất và các tệp hỗ trợ, và chúng tôi dựa vào replication của Amazon EFS để giữ dữ liệu này được đồng bộ trên các triển khai ở nhiều Region. Cuối cùng, chúng tôi sử dụng AWS Backup để tạo snapshot cho các instance EC2 của mình và lưu chúng dưới dạng AMI images trong Region thứ cấp.
+![image2](../../../images/Blog8/HPCBlog-366-f1.png)
 
-{{< figurecaption src="/images/Img2-Blog6.png" caption="Hình 1. Các dịch vụ sao lưu lưu trữ" >}}
+*Hình 1: Instance f2.6xlarge nhanh hơn 1.5 lần trong Phân tích WGS cơ bản và nhanh hơn 2.1 lần trong Phân tích WGS đầy đủ so với f1.4xlarge.*
 
+![image3](../../../images/Blog8/HPCBlog-366-f2.png)
 
-### Mở rộng cơ sở dữ liệu phi quan hệ trên nhiều Region
+*Hình 2: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 40% chi phí trên f1.4xlarge cho Phân tích WGS cơ bản và bằng 30% chi phí trên f1.4xlarge cho Phân tích WGS đầy đủ.*
 
-[Amazon DynamoDB](https://aws.amazon.com/dynamodb/) [global tables](https://aws.amazon.com/dynamodb/global-tables/) cung cấp khả năng đa Region và đa điểm ghi, giúp bạn xây dựng các ứng dụng toàn cầu ở quy mô lớn. DynamoDB global table là dịch vụ cơ sở dữ liệu do AWS quản lý duy nhất cho phép nhiều điểm ghi chủ động với khả năng phát hiện xung đột trong kiến trúc đa Region (active-active và multi-Region). Điều này cho phép ứng dụng đọc và ghi dữ liệu tại Region gần nhất, đồng thời các thay đổi sẽ tự động được sao chép sang các Region khác.
-Việc đọc toàn cầu và khôi phục nhanh cho [Amazon DocumentDB (tương thích với MongoDB)](https://aws.amazon.com/documentdb/) có thể đạt được thông qua các [global cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/global-clusters.html). Các cluster này có một Region chính xử lý thao tác ghi. Hạ tầng sao chép dựa trên lưu trữ chuyên biệt giúp thực hiện đọc toàn cầu với độ trễ thường dưới một giây.
+## So sánh hiệu năng về tốc độ và chi phí: Phân tích Tumor-Normal
 
-Giữ bộ nhớ đệm trong RAM (in-memory cache) được đồng bộ dữ liệu trên nhiều Region là yếu tố quan trọng để duy trì hiệu năng ứng dụng. [Amazon ElastiCache](https://aws.amazon.com/elasticache/redis/) (Redis OSS) cung cấp [global datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html) để tạo một bản sao chéo Region được quản lý toàn diện, nhanh chóng, đáng tin cậy và an toàn cho Redis OSS caches và databases. Với global datastore, các thao tác ghi ở một Region có thể được đọc từ tối đa hai cluster bản sao ở Region khác – loại bỏ nhu cầu phải ghi vào nhiều cache để giữ chúng luôn “ấm”.
+Giống như kết quả WGS, trong phân tích Tumor-Normal, DRAGEN v4.4 cũng cho thấy lợi thế đáng kể về hiệu suất chi phí trên các instance Amazon EC2 F2 so với F1, đồng thời vẫn tạo ra kết quả phân tích tương đương giữa hai thế hệ instance¹:
 
-### Mở rộng cơ sở dữ liệu quan hệ trên nhiều Region
+- Phân tích Tumor-Normal, bao gồm alignment, small variant calling và calling CNVs/SVs. Phân tích bằng DRAGEN trên f2.6xlarge đạt tốc độ **nhanh hơn 1.7 lần** và **chỉ tốn 35% chi phí compute EC2** so với f1.4xlarge.
 
-Đối với các ứng dụng cần mô hình dữ liệu quan hệ, [Amazon Aurora](https://aws.amazon.com/rds/aurora/) [global database](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html) hỗ trợ mở rộng khả năng đọc dữ liệu trên nhiều Region trong cả hai phiên bản tương thích Aurora PostgreSQL và MySQL. Hạ tầng sao chép chuyên biệt sử dụng cơ chế sao chép dựa trên lưu trữ vật lý, giúp duy trì độ trễ sao chép ổn định và thấp, vượt trội hơn so với các cơ chế sao chép logic tích hợp sẵn của các hệ quản trị cơ sở dữ liệu, như minh họa ở Hình 2.
+![image4](../../../images/Blog8/HPCBlog-366-f3.png)
 
-{{< figurecaption src="/images/Img3-Blog6.png" caption="Hình 2. SysBench OLTP (chỉ ghi) tăng dần mỗi 600 giây trên R4.16xlarge">}}
+*Hình 3: Instance f2.6xlarge nhanh hơn 1.7 lần so với f1.4xlarge trong Phân tích Tumor-Normal.*
 
-Với Aurora global database, một cluster ở một Region được chỉ định là writer, trong khi các Region phụ được dành cho việc đọc. Mặc dù chỉ có một instance duy nhất xử lý các thao tác ghi, Aurora MySQL hỗ trợ [write forwarding](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html), một tính năng sẽ chuyển các truy vấn ghi từ endpoint của Region phụ sang Region chính, giúp đơn giản hóa logic trong mã ứng dụng.
-Bạn có thể kiểm tra Regional failover bằng cách sử dụng [managed planned failover](https://aws.amazon.com/blogs/database/managed-planned-failovers-with-amazon-aurora-global-database/) của Aurora global database. Hành động này sẽ chuyển cluster ghi chủ động sang một Region phụ trong khi vẫn giữ nguyên kiến trúc sao chép. Cần lưu ý rằng hành động này phụ thuộc vào việc Aurora ở Region chính còn hoạt động, vì vậy hãy cân nhắc điều này trong kế hoạch khôi phục thảm họa. Nếu Aurora ở Region chính không khả dụng, bạn vẫn có thể **promote** bất kỳ cluster phụ nào của Aurora trong Aurora global database. Quá trình promotion được thực hiện từ Region phụ. Trong khoảng một phút, quá trình này sẽ loại cluster khỏi Aurora global database, kích hoạt endpoint ghi theo Region, và nâng một instance của cluster lên thành writer chủ động. Khi quá trình này hoàn tất, bạn sẽ cần cập nhật chuỗi kết nối cơ sở dữ liệu trong ứng dụng để kết nối với endpoint writer mới.
+![image5](../../../images/Blog8/HPCBlog-366-f4.png)
 
-Tất cả các cơ sở dữ liệu được thảo luận trong bài viết này đều tuân theo mô hình eventual consistency khi sử dụng đa Region, nhưng các Aurora PostgreSQL–based global database có thêm tùy chọn để chỉ định maximum replica lag cho phép với [managed recovery point objective (managed RPO](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuid…isaster-recovery.html#aurora-global-database-manage-recovery).
+*Hình 4: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 35% chi phí trên f1.4xlarge cho Phân tích Tumor-Normal WGS.*
 
-Về khả năng backup-and-restore, Aurora có thời gian lưu trữ bản sao tự động tối thiểu 1 ngày và tối đa 35 ngày cho tất cả các cluster, bao gồm cả cluster phụ toàn cầu. Điều này cho phép bạn khôi phục các cluster phụ về một điểm thời gian xác định trong Region đích nếu cần.
-Logical replication, sử dụng công nghệ sao chép tích hợp sẵn của engine cơ sở dữ liệu, có thể được thiết lập cho [Amazon RDS](https://aws.amazon.com/rds/) cho MariaDB, MySQL, Oracle, PostgreSQL và Aurora. Một [cross-Region read replica](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.XRgn.html) sẽ nhận và xử lý các thay đổi từ writer ở Region chính. Các replica này cho phép đọc cục bộ nhanh hơn và có thể giảm mất mát dữ liệu cũng như rút ngắn thời gian khôi phục trong trường hợp thảm họa bằng cách được nâng thành instance độc lập. Công nghệ logical replication cũng có thể được dùng để sao chép dữ liệu ra các tài nguyên bên ngoài Amazon RDS, như instance EC2, server on-premises hoặc thậm chí data lake.
+## Các lợi ích khác
 
-Trong những trường hợp RPO và RTO dài hơn vẫn chấp nhận được, các bản sao lưu có thể được sao chép giữa các Region. Điều này áp dụng cho tất cả cơ sở dữ liệu quan hệ và phi quan hệ được nhắc đến trong bài, ngoại trừ ElastiCache. Mặc dù [Amazon Redshift](https://aws.amazon.com/redshift/) không có tính năng sao chép cross-Region, bạn có thể thiết lập Amazon Redshift để [tự động](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-snapshots-console.html#xregioncopy-kms-encrypted-snapshot) sao chép snapshot của kho dữ liệu sang Region khác. Thời gian sao chép bản sao lưu sẽ khác nhau tùy thuộc vào kích thước và tần suất thay đổi dữ liệu.
+Các pipeline phân tích genomic truyền thống sử dụng BWA-MEM và GATK chạy trên CPU từng là tiêu chuẩn công nghiệp trong quá khứ, nhưng DRAGEN đã ngày càng được ưa chuộng nhờ những ưu thế vượt trội về tốc độ và độ chính xác. Nhiều công bố đã được bình duyệt đã so sánh tốc độ và độ chính xác của DRAGEN với các pipeline dựa trên BWA/GATK chạy trên CPU. Ví dụ, [Ziegler et al. (2022)](https://pubmed.ncbi.nlm.nih.gov/36513709/) đã phát hiện ra rằng phân tích DRAGEN trên phần cứng FPGA nhanh hơn gấp hơn 8 lần và chính xác hơn so với các pipeline dựa trên BWA/GATK chạy trên CPU, trong khi [Sedlazek et al. (2024)](https://www.nature.com/articles/s41587-024-02382-1) cũng ghi nhận DRAGEN cho hiệu suất và độ chính xác cao hơn so với các pipeline dựa trên BWA/GATK.
 
-### Kết hợp lại
+Việc sử dụng DRAGEN trên các instance F, được tăng tốc bởi FPGA, còn mang lại lợi thế về tiêu thụ điện năng so với các giải pháp truyền thống dựa trên CPU và GPU. FPGA vốn dĩ tiết kiệm năng lượng hơn, tiêu thụ ít điện năng hơn nhưng vẫn đạt hiệu năng tính toán tương đương cho các workload này. Điều này đặc biệt quan trọng trong các tác vụ phân tích dữ liệu genomic, nơi khối lượng dữ liệu và thời gian xử lý có thể rất lớn.
 
-Ở cuối mỗi phần trong loạt blog này, chúng tôi xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách kết hợp các dịch vụ lại với nhau để xây dựng một ứng dụng multi-Region bằng các dịch vụ AWS. Chúng tôi không sử dụng tất cả các dịch vụ được nhắc đến, chỉ những dịch vụ phù hợp với tình huống sử dụng.
+Chẳng hạn, FPGA đạt được hiệu suất trên mỗi watt cao hơn so với CPU và GPU trong các tác vụ WGS của DRAGEN. Các bộ tăng tốc dựa trên FPGA có thể cung cấp thông lượng vượt trội với mức tiêu thụ điện năng thấp hơn. Điều này là nhờ khả năng tùy chỉnh linh hoạt của FPGA, cho phép cấu hình tối ưu hóa nhằm nâng cao hiệu quả năng lượng. Ngược lại, CPU và GPU, dù mạnh mẽ, thường tiêu tốn nhiều năng lượng hơn để thực hiện cùng một tác vụ, dẫn đến chi phí vận hành cao hơn và tác động môi trường lớn hơn.
 
-Chúng tôi đã tạo ví dụ này để mở rộng ra đối tượng người dùng toàn cầu. Ứng dụng yêu cầu khả năng sẵn sàng cao trên nhiều Region và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn những dịch vụ sau (trong số các dịch vụ đã đề cập ở phần này) để đạt được mục tiêu, dựa trên nền tảng từ phần 1:
+Việc tiêu thụ điện năng thấp hơn của các FPGA dẫn đến giảm các yêu cầu về làm mát, đây có thể là một yếu tố chi phí đáng kể trong các môi trường điện toán quy mô lớn. Ngoài ra, hiệu quả năng lượng của FPGA khiến chúng trở thành lựa chọn hấp dẫn cho các ứng dụng điện toán hiệu năng cao, nơi khả năng mở rộng và hiệu quả chi phí đóng vai trò then chốt.
 
-- DynamoDB global tables để ứng dụng triển khai ở mỗi Region có thể vừa đọc vừa ghi vào cơ sở dữ liệu trong cùng Region.
-- ElastiCache Global Datastore làm tầng cache. Việc ghi vào global datastore chỉ diễn ra ở Region 1, nhưng điều này phù hợp với tình huống sử dụng vì ứng dụng dựa vào các mục cache tương tự bất kể Region nào.
+Tóm lại, việc triển khai DRAGEN trên các instance thuộc họ ‘F’ của Amazon EC2 mang lại một giải pháp tiết kiệm năng lượng hơn cho phân tích dữ liệu genomic so với các phương pháp truyền thống dựa trên CPU hoặc GPU, đồng thời mang lại cả lợi ích về chi phí lẫn lợi ích môi trường.
 
-- S3 bucket để lưu trữ dữ liệu ứng dụng, tệp cấu hình, nội dung tĩnh và dữ liệu do người dùng tải lên. Amazon S3 sao chép chéo 2 chiều giữa các Region để giữ cho các bucket đồng bộ. Cuối cùng, ứng dụng của chúng tôi sử dụng Amazon S3 multi-Region access point để đảm bảo các yêu cầu đến Amazon S3 được định tuyến đến Region có độ trễ thấp nhất và tự động xử lý failover.
+## Khả năng triển khai và các tùy chọn triển khai trên cloud của instance F2
 
-{{< figurecaption src="/images/Img4-Blog6.png" caption="Hình 3. Xây dựng ứng dụng với các dịch vụ AWS multi-Region, sử dụng những dịch vụ đã đề cập trong Phần 1">}}
+Các instance Amazon EC2 F2 hiện đã có sẵn tại nhiều Region của AWS, bao gồm US East (N. Virginia), US West (Oregon), Europe (London) và Asia Pacific (Sydney), với kế hoạch mở rộng thêm sang nhiều Region khác trong tương lai. F2 cung cấp nhiều kích cỡ khác nhau như f2.6xlarge, f2.12xlarge và f2.48xlarge, nhằm đáp ứng đa dạng nhu cầu workload. 
 
-Mặc dù mục tiêu chính của chúng tôi là mở rộng ra đối tượng toàn cầu, chúng tôi lưu ý rằng một số cơ chế sao chép được thiết lập là một chiều, chẳng hạn như với ElastiCache Global Datastore. Mỗi triển khai theo Region được cấu hình để duy trì tính ổn định tĩnh, nhưng nếu xảy ra sự cố kéo dài ở Region 1, kế hoạch khắc phục thảm họa (DR playbook) của chúng tôi sẽ nêu rõ cách làm cho từng dịch vụ có thể ghi tại Region 2.
+Khi cấu hình lưu trữ và compute để chạy các workload DRAGEN trên các instance F của AWS, bạn cần lựa chọn các tùy chọn phù hợp để cân bằng giữa hiệu năng và chi phí. Hãy cân nhắc các tùy chọn lưu trữ như là [Amazon EBS gp3 volumes](https://aws.amazon.com/ebs/general-purpose/) được cấu hình theo RAID, [Amazon FSx for Lustre](https://aws.amazon.com/fsx/lustre/) cho thông lượng cao hơn và [Amazon Elastic File System (EFS)](https://aws.amazon.com/efs/) cho lưu trữ liên tục. Ngoài ra, việc truyền trực tuyến các tệp BAM và dữ liệu tham chiếu từ [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) hoặc sử dụng [Mountpoint for Amazon S3](https://aws.amazon.com/s3/features/mountpoint/) để mount bucket S3 vào hệ thống file cục bộ giúp truy cập dữ liệu một cách tiết kiệm chi phí và dễ dàng. Bằng cách lựa chọn và cấu hình cẩn thận các giải pháp lưu trữ này, bạn có thể đảm bảo hiệu năng tối ưu và hiệu quả chi phí cho các workload HPC của mình. Bên cạnh đó, bạn cũng nên cân nhắc sử dụng [Illumina Connected Analytics (ICA)](https://www.illumina.com/products/by-type/informatics-products/connected-analytics.html) hoặc [AWS Batch](https://aws.amazon.com/batch/) để quản lý workflow. Illumina cung cấp hướng dẫn chi tiết về cách triển khai [DRAGEN trên AWS](https://help.dragen.illumina.com/reference/dragen-multi-cloud/dragen-on-aws) trong [tài liệu hướng dẫn người dùng DRAGEN trực tuyến](https://help.dragen.illumina.com/) của họ.
 
-### Tóm tắt
+## Kết luận
 
-Dữ liệu nằm ở trung tâm của hầu hết mọi ứng dụng. Trong bài viết này, chúng tôi đã xem xét các dịch vụ AWS cung cấp khả năng sao chép dữ liệu giữa các Region để đưa dữ liệu của bạn đến đúng nơi một cách nhanh chóng. Dù ứng dụng của bạn cần khả năng đọc cục bộ nhanh hơn, một cơ sở dữ liệu active-active, hay đơn giản chỉ là lưu trữ dữ liệu bền vững ở một Region thứ hai, chúng tôi đều có giải pháp cho bạn. Trong bài viết thứ 3 cũng là cuối cùng của loạt bài này, chúng tôi sẽ đề cập đến các tính năng quản lý và giám sát ứng dụng.
+Tóm lại, các instance Amazon EC2 F2 đánh dấu một bước tiến đáng kể trong lĩnh vực điện toán đám mây được cung cấp bởi FPGA, mang lại hiệu năng, bộ nhớ, dung lượng lưu trữ và khả năng kết nối mạng vượt trội so với thế hệ trước. Sự kết hợp giữa các pipeline toàn diện của DRAGEN và sức mạnh tính toán được nâng cấp của Amazon EC2 F2 cho phép xử lý nhanh hơn, hiệu quả hơn đối với các bộ dữ liệu phức tạp – từ whole genome sequencing đến phân tích single-cell RNA.
 
-Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/)
+Hãy bắt đầu chuyển đổi sang F2 ngay hôm nay. Vui lòng liên hệ với đội ngũ tài khoản AWS của bạn hoặc Illumina để được hỗ trợ trong quá trình chuyển đổi sang Amazon EC2 F2 instances.
 
+Để biết thêm thông tin về DRAGEN trên AWS, hãy tìm kiếm [DRAGEN Complete Suite trên AWS Marketplace](https://aws.amazon.com/marketplace/search/results?searchTerms=DRAGEN+Complete+Suite), xem [blog DRAGEN v4.4](https://developer.illumina.com/news-updates/dragen-v4-4), hoặc truy cập [trang chủ Illumina Informatics Solutions](https://www.illumina.com/products/by-type/informatics-products.html).
 
-Các bài viết khác trong chuỗi này:
+## Tài liệu tham khảo
 
-- [Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}})
+Scheffler, K. et al. “Somatic small-variant calling methods in Illumina DRAGEN™ Secondary Analysis.” BioRxiv (2023). [https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2](https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2)
 
-- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{< relref "3-Translated_Blogs/Blog_7/_index.md" >}})
+Sedlazeck, F. J. et al. “Comprehensive genome analysis and variant detection at scale using DRAGEN.” Nature Biotechnology (2024). [https://www.nature.com/articles/s41587-024-02382-1](https://www.nature.com/articles/s41587-024-02382-1)
+
+Ziegler, A. et al. “Comparison of calling pipelines for whole genome sequencing: an empirical study demonstrating the importance of mapping and alignment.” Scientific Reports (2022). 
+[https://pubmed.ncbi.nlm.nih.gov/36513709/](https://pubmed.ncbi.nlm.nih.gov/36513709/)
+
+## Chú thích
+
+Sự tương đương giữa F1 và F2 hard-filtered.vcf cùng các tệp kết quả khác dựa trên kết quả phân tích sử dụng DRAGEN 4.4.4 theo hướng dẫn sử dụng DRAGEN của Illumina. Lệnh vim diff cho thấy sự khác biệt duy nhất giữa hai tệp VCF là một mục hiển thị thời gian thực hiện phân tích. Khách hàng có thể tự thực hiện các phân tích tương tự để xác minh hoặc liên hệ với Illumina để biết thêm thông tin.
+

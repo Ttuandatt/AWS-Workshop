@@ -5,131 +5,398 @@ chapter = false
 pre = " <b> 3.5. </b>"
 +++
 
-# Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật
+# **Ra Mắt Strands Agents 1.0: Việc điều phối Multi-Agent cho môi trường production đã được đơn giản hóa**
 
-*Tác giả: Joe Chapman và Sebastian Leks - 08/12/2021*
+_Ryan Coleman và Belle Guttman_ | 15/07/2025 | [Amazon Machine Learning](https://aws.amazon.com/blogs/opensource/category/artificial-intelligence/amazon-machine-learning/), [Announcements](https://aws.amazon.com/blogs/opensource/category/post-types/announcements/), [Artificial Intelligence](https://aws.amazon.com/blogs/opensource/category/artificial-intelligence/), [Open Source](https://aws.amazon.com/blogs/opensource/category/open-source/)| [Permalink](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-1-0-production-ready-multi-agent-orchestration-made-simple/) | [Comments](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-1-0-production-ready-multi-agent-orchestration-made-simple/#Comments)
 
-*Chủ đề: [Amazon CloudFront](https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-cloudfront/), [Amazon EC2](https://aws.amazon.com/blogs/architecture/category/compute/amazon-ec2/), [Amazon Elastic Block Store (Amazon EBS)](https://aws.amazon.com/blogs/architecture/category/storage/amazon-elastic-block-storage-ebs/), [Amazon Route 53](https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/amazon-route-53/), [Amazon Simple Storage Service (S3)](https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/), [Amazon VPC](https://aws.amazon.com/blogs/architecture/category/compute/amazon-vpc/), [Architecture](https://aws.amazon.com/blogs/architecture/category/architecture/), [AWS CloudTrail](https://aws.amazon.com/blogs/architecture/category/management-tools/aws-cloudtrail/), [AWS Global Accelerator](https://aws.amazon.com/blogs/architecture/category/networking-content-delivery/aws-global-accelerator/), [AWS Identity and Access Management (IAM)](https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-identity-and-access-management-iam/), [AWS Secrets Manager](https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/), [AWS Security Hub](https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/), [AWS Transit Gateway](https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/), [AWS Well-Architected Permalink Share](https://aws.amazon.com/blogs/architecture/category/security-identity-compliance/aws-secrets-manager/)*
+Hôm nay, chúng tôi vui mừng thông báo về phiên bản 1.0 của [Strands Agents SDK](https://github.com/strands-agents/sdk-python), đánh dấu một cột mốc quan trọng trong hành trình giúp việc xây dựng các agent AI trở nên đơn giản, đáng tin cậy và sẵn sàng cho môi trường production. Strands Agents là một SDK mã nguồn mở, áp dụng phương pháp model-driven, giúp bạn xây dựng và vận hành các agent AI chỉ trong vài dòng code. Strands có khả năng mở rộng từ các trường hợp sử dụng agent đơn giản đến phức tạp, cũng như từ phát triển cục bộ đến triển khai trong môi trường production.
 
----
+Kể từ khi ra mắt bản xem trước vào tháng 5 năm 2025, chúng tôi đã nhận được hơn 2.000 lượt sao trên GitHub và hơn 150 ngàn lượt tải xuống trên PyPI. Strands 1.0 mang đến mức độ đơn giản tương tự cho các ứng dụng multi-agent như những gì Strands đã làm được với các agent đơn lẻ, với việc bổ sung bốn primitive mới và hỗ trợ cho giao thức Agent to Agent (A2A). Để đưa kiến trúc multi-agent vào môi trường production, phiên bản 1.0 cũng bao gồm một trình quản lý session mới để truy xuất trạng thái agent từ một kho dữ liệu từ xa, cùng với việc cải thiện hỗ trợ bất đồng bộ xuyên suốt toàn bộ SDK. Nhằm tăng tính linh hoạt để xây dựng agent của bạn với bất kỳ mô hình nào, cStrands 1.0 đã mở rộng hỗ trợ thêm API của năm nhà cung cấp mô hình mới, được đóng góp bởi các đối tác như [Anthropic](https://www.anthropic.com/), [Meta](https://www.llama.com/), [OpenAI](https://openai.com/), [Cohere](https://cohere.com/), [Mistral](https://mistral.ai/), [Stability](https://stability.ai/), [Writer](https://writer.com/) và [Baseten](https://www.baseten.co/) (xem [pull request](https://github.com/strands-agents/sdk-python/pull/389)). Bây giờ, hãy cùng đi sâu vào chi tiết các cập nhật này. Các mẫu code đầy đủ có sẵn tại trang [strandsagents.com.](https://strandsagents.com/)
 
-Nhiều dịch vụ AWS có các tính năng giúp bạn xây dựng và quản lý kiến trúc đa vùng (multi-Region), nhưng việc xác định những khả năng này trong hơn 200 dịch vụ có thể là một thách thức lớn.
+## Đơn giản hóa các mô hình multi-agent
 
-Trong loạt blog gồm 3 phần này, chúng tôi sẽ chọn lọc từ hơn 200 dịch vụ đó và tập trung vào những dịch vụ có tính năng cụ thể hỗ trợ bạn xây dựng ứng dụng đa vùng. Trong Phần 1, chúng ta sẽ xây dựng nền tảng với các dịch vụ bảo mật, mạng, và tính toán của AWS. Ở Phần 2, chúng ta sẽ bổ sung các chiến lược dữ liệu và sao chép. Cuối cùng, trong Phần 3, chúng ta sẽ tìm hiểu về lớp ứng dụng và quản lý. Khi đi qua từng phần, chúng ta sẽ dần xây dựng một ứng dụng mẫu để minh họa cách kết hợp các dịch vụ này nhằm tạo ra một ứng dụng đa vùng.
+Các mô hình multi-agent cho phép các agent AI chuyên biệt cùng nhau làm việc—phân công nhiệm vụ, chia sẻ kiến thức và phối hợp hành động—nhằm giải quyết những vấn đề phức tạp mà một agent đơn lẻ không thể xử lý được. Strands 1.0 giới thiệu bốn primitive trực quan, giúp việc điều phối nhiều agent trở thành một phần mở rộng đơn giản của tổ hợp mô hình/công cụ/prompt mà bạn vốn đã sử dụng để tạo ra các agent đơn lẻ.
 
-### Những điều cần cân nhắc trước khi bắt đầu
+**1. Agents-as-Tools: Đơn giản hóa việc ủy quyền theo cấp bậc**
 
-Các [AWS Region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) được xây dựng với nhiều [Availability Zone (AZ)](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#Availability_Zones) tách biệt và cách ly về mặt vật lý. Cách tiếp cận này cho phép bạn tạo ra các workload có độ sẵn sàng cao, tuân thủ nguyên tắc [Well-Architected](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html), trải rộng trên nhiều AZ để đạt được khả năng chịu lỗi tốt hơn. Điều này đáp ứng được mục tiêu khả dụng cho hầu hết các ứng dụng, nhưng vẫn có một số lý do chung khiến bạn có thể muốn mở rộng ra ngoài một Region duy nhất:
+Mô hình agents-as-tools biến các agent chuyên biệt thành những công cụ thông minh mà các agent khác có thể gọi đến. Điều này tạo điều kiện cho việc ủy quyền theo cấp bậc, nơi các agent hoạt động như người điều phối có thể chủ động tham vấn các chuyên gia theo từng lĩnh vực cụ thể mà không từ bỏ quyền kiểm soát yêu cầu. Điều này phản ánh cách thức làm việc của các đội nhóm con người — một quản lý dự án không cần phải biết mọi thứ, họ chỉ cần biết nên tham khảo ý kiến của chuyên gia nào cho từng nhiệm vụ cụ thể.
 
-- Mở rộng ra khán giả toàn cầu: khi ứng dụng phát triển và lượng người dùng trở nên phân tán về mặt địa lý, có thể sẽ cần giảm độ trễ cho các khu vực khác nhau trên thế giới.
+``` Python
 
-- Giảm [RPO (Recovery Point Objective)](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/disaster-recovery-dr-objectives.html) và [RTO (Recovery Time Objective)](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html): như một phần của kế hoạch khắc phục thảm họa (Disaster Recovery – DR) đa vùng.
+from strands import Agent, tool 
+from strands_tools import calculator, file_write, python_repl, journal 
 
-- Luật pháp và quy định địa phương: có thể có những yêu cầu nghiêm ngặt về lưu trú dữ liệu (data residency) và quyền riêng tư mà bạn buộc phải tuân thủ.
+@tool 
+def web_search(query: str) -> str: 
+    return "Dummy web search results here!" 
 
-Nếu bạn đang xây dựng một ứng dụng đa vùng mới, bạn nên cân nhắc tập trung vào các dịch vụ AWS có sẵn chức năng hỗ trợ. Với những ứng dụng hiện có, cần phải xem xét kỹ hơn để xác định kiến trúc nào có khả năng mở rộng nhất nhằm đáp ứng sự phát triển. Các phần tiếp theo sẽ xem xét những dịch vụ này, đồng thời nêu bật các trường hợp sử dụng và thực tiễn tốt nhất.
+# Create specialized agents 
+research_analyst_agent = Agent( 
+    system_prompt="You are a research specialist who gathers and analyzes information about local startup markets", 
+    tools=[web_search, calculator, file_write, python_repl] 
+) 
 
-### Quản lý danh tính và truy cập trên nhiều Region
+travel_advisor_agent = Agent( 
+    system_prompt="You are a travel expert who helps with trip planning and destination advice", 
+    tools=[web_search, journal] 
+) 
 
-Xây dựng nền tảng bảo mật bắt đầu từ việc thiết lập các quy tắc xác thực (authentication) và phân quyền (authorization) phù hợp. Hệ thống xử lý các yêu cầu này phải có khả năng chịu lỗi cao để xác minh và cấp quyền nhanh chóng, đáng tin cậy. [AWS Identity and Access Management (IAM)](http://aws.amazon.com/iam) đáp ứng điều này bằng cách cung cấp một cơ chế đáng tin cậy để bạn quản lý quyền truy cập vào các dịch vụ và tài nguyên AWS. IAM có khả năng sẵn sàng trên nhiều Region một cách tự động, mà bạn không cần phải cấu hình gì thêm.
+# Convert the agents into tools 
+@tool 
+def research_analyst(query: str) -> str: 
+    response = research_analyst_agent(query) 
+    return str(response) 
 
-Để hỗ trợ quản lý người dùng Windows, thiết bị và ứng dụng trong một mạng đa vùng, bạn có thể thiết lập [AWS Directory Service for Microsoft Active Directory](https://aws.amazon.com/directoryservice/active-directory/) Enterprise Edition, dịch vụ này sẽ [tự động sao chép dữ liệu thư mục giữa các Region](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_configure_multi_region_replication.html). Điều này giúp giảm độ trễ khi tra cứu thư mục bằng cách sử dụng thư mục gần nhất, đồng thời tăng tính bền vững bằng cách trải rộng trên nhiều Region. Lưu ý rằng điều này cũng kéo theo "số phận chung" giữa các domain controller trong kiến trúc đa vùng, vì các thay đổi group policy sẽ được lan truyền đến tất cả các máy chủ thành viên.
+@tool 
+def travel_advisor(query: str) -> str: 
+    response = travel_advisor_agent(query) 
+    return str(response) 
 
-Các ứng dụng cần lưu trữ, luân chuyển và kiểm toán bí mật một cách an toàn, chẳng hạn như mật khẩu cơ sở dữ liệu, nên sử dụng [AWS Secrets Manager](https://aws.amazon.com/secrets-manager). Dịch vụ này mã hóa các bí mật bằng khóa của [AWS Key Management Service (AWS KMS)](http://aws.amazon.com/kms) và có thể [sao chép các bí mật sang Region thứ cấp](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html) để đảm bảo ứng dụng có thể nhanh chóng lấy được bí mật từ Region gần nhất.
+# Orchestrator naturally delegates to specialists 
+executive_assistant = Agent(  
+    tools=[research_analyst, travel_advisor]  
+) 
 
-### Mã hóa trên nhiều Region
+result = executive_assistant("I have a business meeting in Portland next week. Suggest a nice place to stay near the local startup scene, and suggest a few startups to visit") 
 
-AWS KMS có thể được sử dụng để mã hóa dữ liệu khi lưu trữ (data at rest) và được dùng rộng rãi cho việc mã hóa trên các dịch vụ AWS. Theo mặc định, các khóa chỉ giới hạn trong một Region. Những dịch vụ AWS như [Amazon Simple Storage Service (Amazon S3) cross-Region replication và Amazon Aurora Global Database](http://aws.amazon.com/s3) (sẽ được đề cập trong [phần 2](https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/)) giúp đơn giản hóa quá trình mã hóa và giải mã bằng các khóa khác nhau ở từng Region.
+```
+Trong ví dụ rút gọn này, chúng ta định nghĩa hai agent du lịch và nghiên cứu, mỗi agent có prompt và công cụ chuyên biệt cho lĩnh vực của mình, mà agent trợ lý điều hành có thể gọi đến để lấy thông tin phục vụ yêu cầu của người dùng. agent trợ lý điều hành chịu trách nhiệm tổng hợp đầu vào từ các agent khác và tạo ra phản hồi gửi lại cho người dùng. Tìm hiểu thêm về mô hình [Agents-as-Tools](https://strandsagents.com/latest/user-guide/concepts/multi-agent/agents-as-tools/) trong tài liệu chính thức của Strands.
 
-Đối với các phần khác trong ứng dụng đa vùng của bạn phụ thuộc vào khóa KMS, bạn có thể thiết lập [AWS KMS multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) để sao chép cả key material và key ID sang Region thứ hai. Điều này loại bỏ nhu cầu giải mã rồi mã hóa lại dữ liệu với một khóa khác ở từng Region. Ví dụ, multi-Region keys có thể được dùng để giảm độ phức tạp trong các hoạt động mã hóa của ứng dụng đa vùng cho dữ liệu được lưu trữ trên nhiều Region.
+**2. Handoffs: chuyển giao quyền kiểm soát rõ ràng**
 
-### Kiểm toán và khả năng quan sát trên nhiều Region
+Tính năng Handoffs cho phép các agent chủ động chuyển trách nhiệm sang con người khi gặp phải nhiệm vụ vượt quá phạm vi chuyên môn của mình, đồng thời giữ nguyên toàn bộ ngữ cảnh cuộc trò chuyện trong quá trình chuyển giao. Strands cung cấp sẵn công cụ được tích hợp sẵn `handoff_to_user` giúp cho các agent có thể dùng để chuyển giao quyền kiểm soát một cách liền mạch trong khi vẫn duy trì lịch sử và ngữ cảnh cuộc trò chuyện - giống như một nhân viên dịch vụ khách hàng cung cấp chủ động yêu cầu khách cung cấp thêm thông tin về trường hợp của họ.
 
-Một thực tiễn tốt nhất là cấu hình [AWS CloudTrail](http://aws.amazon.com/cloudtrail) để lưu lại toàn bộ hoạt động AWS API liên quan trong tài khoản của bạn nhằm phục vụ mục đích kiểm toán. Khi bạn sử dụng nhiều Region hoặc nhiều tài khoản, các log CloudTrail này nên được [tập hợp](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) về một bucket Amazon S3 duy nhất để thuận tiện cho việc phân tích. Để ngăn chặn việc sử dụng sai mục đích, các log tập trung này cần được coi là dữ liệu nhạy cảm hơn, chỉ cấp quyền truy cập cho các hệ thống và nhân sự chủ chốt.
+``` Python
 
-Để theo dõi các phát hiện từ [AWS Security Hub](https://aws.amazon.com/security-hub), bạn có thể [tổng hợp và liên kết các phát hiện từ nhiều vị trí về một Region duy nhất](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation-enable.html). Đây là cách đơn giản để tạo một cái nhìn tập trung về các phát hiện của Security Hub trên nhiều tài khoản và nhiều Region. Sau khi thiết lập, các phát hiện sẽ liên tục được đồng bộ giữa các Region để giúp bạn luôn nắm được kết quả toàn cầu trên một bảng điều khiển duy nhất.
+from strands import Agent
+from strands_tools import handoff_to_user
 
-Chúng tôi đã kết hợp những tính năng này trong Hình 1. Chúng tôi sử dụng IAM để cấp quyền truy cập chi tiết đến các dịch vụ và tài nguyên AWS, Directory Service for Microsoft AD để xác thực người dùng trong các ứng dụng Microsoft, và Secrets Manager để lưu trữ thông tin đăng nhập cơ sở dữ liệu nhạy cảm. Dữ liệu của chúng tôi, di chuyển tự do giữa các Region, được mã hóa bằng KMS multi-Region keys, và toàn bộ hoạt động truy cập AWS API được ghi lại bởi CloudTrail, sau đó tập trung vào một bucket S3 trung tâm mà chỉ nhóm bảo mật của chúng tôi mới có quyền truy cập.
+SYSTEM_PROMPT="""
+Answer the user's support query. Ask them questions with the handoff_to_user tool when you need more information
+"""
 
-{{< figurecaption src="/images/Img1-Blog5.png" caption="Hình 1. Các dịch vụ bảo mật, danh tính và tuân thủ đa vùng" >}}
+# Include the handoff_to_user tool in our agent's tool list
+agent = Agent(
+    system_prompt=SYSTEM_PROMPT,
+    tools=[handoff_to_user]
+)
 
-### Xây dựng mạng toàn cầu
+# The agent calls the handoff_to_user tool which includes the question for the customer
+agent("I have a question about my order.")
 
-Đối với các tài nguyên được triển khai trong các mạng ảo ở những Region khác nhau, [Amazon Virtual Private Cloud (Amazon VPC)](http://aws.amazon.com/vpc) cho phép [định tuyến riêng tư giữa các Region và tài khoản bằng VPC peering](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html). Các tài nguyên này có thể giao tiếp với nhau bằng địa chỉ IP riêng mà không cần internet gateway, VPN, hoặc thiết bị mạng riêng biệt. Tính năng này hoạt động tốt cho các mạng nhỏ chỉ cần một vài kết nối peering. Tuy nhiên, định tuyến bắc cầu (transitive routing) không được hỗ trợ, và khi số lượng VPC peering tăng lên, cấu trúc mạng dạng mesh có thể trở nên khó quản lý và khắc phục sự cố.
+```
 
-[AWS Transit Gateway](https://aws.amazon.com/transit-gateway/) giúp giảm bớt những khó khăn này bằng cách tạo một hub trung chuyển mạng, kết nối các VPC và mạng tại chỗ (on-premises). Khả năng định tuyến của Transit Gateway có thể mở rộng sang các Region khác thông qua [Transit Gateway inter-Region peering](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-peering.html), để tạo ra một mạng riêng tư phân tán toàn cầu cho tài nguyên của bạn.
+Các agent cũng có thể đặt câu hỏi cho con người khi được yêu cầu làm như vậy
 
-Xây dựng một cách định tuyến đáng tin cậy và tiết kiệm chi phí để đưa người dùng đến các ứng dụng internet phân tán đòi hỏi những bản ghi Domain Name System (DNS) có độ sẵn sàng cao và khả năng mở rộng tốt. [Amazon Route 53](http://aws.amazon.com/route53) chính là dịch vụ làm được điều đó.
+``` Python
 
-Route 53 có nhiều [chính sách định tuyến](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html) khác nhau. Ví dụ, bạn có thể định tuyến một yêu cầu đến bản ghi có độ trễ mạng thấp nhất, hoặc đưa người dùng ở một vị trí địa lý cụ thể đến endpoint ứng dụng cục bộ. Đối với kịch bản khắc phục thảm họa (DR), [Route 53 Application Recovery Controller (Route 53 ARC)](https://aws.amazon.com/route53/application-recovery-controller/) cung cấp một giải pháp failover toàn diện với mức phụ thuộc tối thiểu. Các routing policy, safety check, và readiness check của Route 53 ARC giúp bạn thực hiện failover qua nhiều Region, AZ, và môi trường on-premises một cách đáng tin cậy.
+from strands import Agent
 
-[Amazon CloudFront](http://aws.amazon.com/cloudfront) – mạng phân phối nội dung (CDN) – là một dịch vụ toàn cầu, được xây dựng trên hơn 300 điểm hiện diện (PoP) khắp thế giới. Các ứng dụng có nhiều origin khả dụng (ví dụ như nhiều Region) có thể dùng [CloudFront origin failover](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html) để tự động chuyển hướng sang origin dự phòng khi origin chính gặp sự cố. Khả năng của CloudFront không chỉ dừng lại ở việc phân phát nội dung, mà còn có thể chạy tính toán ở edge. [CloudFront Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html) giúp dễ dàng chạy các đoạn mã JavaScript nhẹ, trong khi [AWS Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) cho phép bạn chạy các hàm Node.js và Python gần hơn với người dùng ứng dụng, từ đó cải thiện hiệu năng và giảm độ trễ. Việc đưa compute ra edge giúp giảm tải cho origin và mang lại phản hồi nhanh hơn cho người dùng toàn cầu.
+SYSTEM_PROMPT="""
+Answer the user's support query. Ask them questions when you need more information
+"""
 
-Được xây dựng trên mạng lưới toàn cầu của AWS, [AWS Global Accelerator](http://aws.amazon.com/global-accelerator) cung cấp hai địa chỉ IP anycast tĩnh để làm điểm truy cập duy nhất cho các ứng dụng hướng internet. Bạn có thể linh hoạt thêm hoặc xóa origin trong khi hệ thống vẫn tự động định tuyến lưu lượng đến endpoint khu vực khỏe mạnh gần nhất. Nếu phát hiện lỗi, Global Accelerator sẽ [tự động chuyển hướng lưu lượng đến một endpoint khả dụng](https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html) chỉ trong vài giây, mà không cần thay đổi địa chỉ IP tĩnh.
+agent = Agent(
+    system_prompt=SYSTEM_PROMPT,
+)
 
-Hình 2 minh họa việc sử dụng Route 53 latency-based routing policy để định tuyến người dùng đến endpoint nhanh nhất, CloudFront để phân phát nội dung tĩnh như video và hình ảnh, và Transit Gateway để tạo một mạng riêng toàn cầu, giúp các thiết bị của chúng tôi có thể giao tiếp an toàn trên nhiều Region.
+# The agent asks questions by streaming them back as text
+agent("I have a question about my order.")
 
-{{< figurecaption src="/images/Img2-Blog5.png" caption="Hình 2. Kết nối AWS VPC và phân phối nội dung" >}}
 
-### Xây dựng và quản lý lớp tính toán (compute layer)
+```
 
-Mặc dù [Amazon Elastic Compute Cloud (Amazon EC2)](http://aws.amazon.com/ec2) và các [Amazon Elastic Block Store (Amazon EBS)](http://aws.amazon.com/ebs) volume liên kết chỉ tồn tại trong một AZ, [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) có thể tự động hóa quá trình tạo và sao chép snapshot EBS giữa các Region. Điều này giúp nâng cao chiến lược khắc phục thảm họa (DR) bằng cách cung cấp một lựa chọn sao lưu và khôi phục lạnh (cold backup-and-restore) đơn giản cho các volume EBS. Nếu bạn cần sao lưu nhiều hơn chỉ các EBS volume, [AWS Backup](https://aws.amazon.com/backup/) cung cấp một nơi tập trung để thực hiện việc này trên nhiều dịch vụ (sẽ được đề cập trong [phần 2](https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-2-data-and-replication/)).
+**3. Swarms: Các nhóm cộng tác tự tổ chức**
 
-Một EC2 instance được xây dựng dựa trên một [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html). AMI xác định cấu hình của instance như lưu trữ, quyền khởi chạy, và ánh xạ thiết bị. Khi cần tạo và phát hành một image chuẩn mới, [EC2 Image Builder](https://aws.amazon.com/image-builder/) giúp đơn giản hóa quá trình xây dựng, kiểm thử, và triển khai AMI mới. Nó cũng hỗ trợ sao chép AMI sang các Region bổ sung, loại bỏ việc phải sao chép thủ công AMI nguồn sang các Region đích.
+Một Swarm tạo ra các agent tự chủ phối hợp động thông qua việc chia sẻ bộ nhớ,cho phép nhiều chuyên gia có thể cộng tác cho các tác vụ phức tạp. Hãy hình dung nó giống như một buổi thảo luận nhóm, nơi các chuyên gia xây dựng ý tưởng dựa trên ý tưởng của nhau, với đội ngũ tự tổ chức để mang lại kết quả tập thể tốt nhất.
 
-Các ứng dụng dựa trên microservice sử dụng container sẽ hưởng lợi từ thời gian khởi động nhanh hơn. [Amazon Elastic Container Registry (Amazon ECR)](http://aws.amazon.com/ecr/) có thể đảm bảo điều này diễn ra nhất quán trên nhiều Region bằng cách sao chép image riêng tư ở cấp độ registry. Một ECR private registry có thể được cấu hình cho cả cross-Region hoặc cross-account replication, để đảm bảo image của bạn luôn sẵn sàng ở các Region thứ cấp khi cần.
+``` Python
 
-Khi kiến trúc mở rộng ra nhiều Region, việc theo dõi tài nguyên được cấp phát ở đâu có thể trở nên khó khăn. [Amazon EC2 Global View](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#global-view) giúp giảm bớt vấn đề này bằng cách cung cấp một bảng điều khiển tập trung, hiển thị các tài nguyên EC2 như instance, VPC, subnet, security group, và volume trong tất cả các Region đang hoạt động.
+import logging  
+from strands import Agent 
+from strands.multiagent import Swarm 
+from strands_tools import memory, calculator, file_write 
 
-Chúng tôi kết hợp các tính năng compute layer này trong Hình 3 bằng cách sử dụng EC2 Image Builder để sao chép AMI chuẩn mới nhất của chúng tôi sang nhiều Region để triển khai. Chúng tôi cũng sao lưu mỗi EBS volume trong 3 ngày và sao chép nó sang nhiều Region bằng Data Lifecycle Manager.
+# Enables Strands debug logs level, and prints to stderr 
+logging.getLogger("strands.multiagent").setLevel(logging.DEBUG) 
+logging.basicConfig( 
+    format="%(levelname)s | %(name)s | %(message)s", 
+    handlers=[logging.StreamHandler()] 
+) 
 
-{{< figurecaption src="/images/Img3-Blog5.png" caption="Hình 3. Sao chép AMI và ảnh chụp nhanh EBS giữa các Vùng (Regions)" >}}
+researcher = Agent( 
+    name="researcher", 
+    system_prompt="You research topics thoroughly using your memory and built-in knowledge", 
+    tools=[memory] 
+) 
 
+analyst = Agent( 
+    name="analyst", 
+    system_prompt="You analyze data and create insights", 
+    tools=[calculator, memory] 
+) 
 
-### Đưa tất cả lại với nhau
+writer = Agent( 
+    name="writer", 
+    system_prompt="You write comprehensive reports based on research and analysis", 
+    tools=[file_write, memory] 
+) 
 
-Ở cuối mỗi phần của loạt bài blog này, chúng tôi sẽ xây dựng một ứng dụng mẫu dựa trên các dịch vụ đã đề cập. Điều này cho thấy cách bạn có thể kết hợp các dịch vụ để xây dựng một ứng dụng đa Vùng (multi-Region) với AWS. Chúng tôi không sử dụng tất cả dịch vụ được nhắc đến, chỉ chọn những dịch vụ phù hợp với trường hợp sử dụng.
+# Swarm automatically coordinates agents 
+market_research_team = Swarm([researcher, analyst, writer]) 
 
-Chúng tôi xây dựng ví dụ này để mở rộng đến phạm vi toàn cầu. Ứng dụng yêu cầu tính sẵn sàng cao giữa các Vùng, và ưu tiên hiệu năng hơn là tính nhất quán tuyệt đối. Chúng tôi đã chọn các dịch vụ sau (trong bài viết này) để đạt được mục tiêu:
+result = market_research_team( 
+    "What is the history of AI since 1950? Create a comprehensive report" 
+) 
 
-- Route 53 với chính sách định tuyến theo độ trễ (latency routing) để đưa người dùng đến vùng triển khai có độ trễ thấp nhất.
+```
+
+Nghiên cứu thêm về [Swarms](https://strandsagents.com/latest/user-guide/concepts/multi-agent/swarm/) trong tài liệu về Strands
 
-- CloudFront được thiết lập để phân phối nội dung tĩnh. Region 1 là nguồn gốc chính, nhưng chúng tôi đã cấu hình dự phòng nguồn gốc (origin failover) sang Region 2 trong trường hợp có sự cố.
+**4. Graphs: Kiểm soát quy trình làm việc mang tính xác định**
+
+Graphs cho phép bạn xác định quy trình làm việc của các agent một cách rõ ràng với những định tuyến có điều kiện và những điểm ra quyết định, rất hữu ích cho những quy trình yêu cầu các bước cụ thể, cơ chế phê duyệt hoặc các ngưỡng kiểm soát chất lượng. Giống như một dây chuyền lắp ráp hoặc chuỗi phê duyệt được thiết kế tốt, graphs đảm bảo các agent luôn tuân thủ các quy tắc nghiệp vụ đã định sẵn theo đúng trình tự mỗi lần thực thi.
 
-- Ứng dụng phụ thuộc vào một số API của bên thứ ba, vì vậy Secrets Manager với khả năng sao chép đa Vùng đã được thiết lập để lưu trữ thông tin khóa API nhạy cảm.
+``` Python
+from strands import Agent  
+from strands.multiagent import GraphBuilder  
 
-- CloudTrail logs được tập trung tại Region 1 để dễ dàng phân tích và kiểm toán.
+analyzer_agent = Agent(  
+    name="analyzer",  
+    system_prompt="Analyze customer requests and categorize them",  
+    tools=[text_classifier, sentiment_analyzer]  
+) 
 
-- Security Hub tại Region 1 được chọn làm nơi tập hợp các phát hiện từ tất cả các Vùng.
+normal_processor = Agent(  
+    name="normal_processor",  
+    system_prompt="Handle routine requests automatically",  
+    tools=[knowledge_base, auto_responder]  
+)  
 
-- Đây là ứng dụng dựa trên container, chúng tôi dựa vào Amazon ECR replication tại mỗi vị trí để nhanh chóng tải về các image mới nhất tại chỗ.
+critical_processor = Agent(  
+    name="critical_processor",  
+    system_prompt="Handle critical requests quickly",  
+    tools=[knowledge_base, escalate_to_support_agent]  
+)  
 
-- Để liên lạc qua IP riêng giữa các Vùng, một Transit Gateway được thiết lập tại mỗi Vùng với kết nối liên Vùng. VPC peering cũng có thể hoạt động, nhưng vì dự kiến mở rộng ra nhiều Vùng hơn trong tương lai nên chúng tôi chọn Transit Gateway như giải pháp lâu dài.
+# Build deterministic workflow  
+builder = GraphBuilder()  
+builder.add_node(analyzer_agent, "analyze")  
+builder.add_node(normal_processor, "normal_processor")  
+builder.add_node(critical_processor, "critical_processor") 
 
-- IAM được dùng để cấp quyền quản lý tài nguyên AWS.
+# Define conditional routing 
+def is_approved(state): 
+    return True 
 
-{{< figurecaption src="/images/Img4-Blog5.png" caption="Hình 4. Xây dựng ứng dụng với các dịch vụ AWS đa Vùng, sử dụng những dịch vụ đã đề cập trong Phần 1" >}}
+def is_critical(state): 
+    return False 
 
+builder.add_edge("analyze", "normal_processor", condition=is_approved)  
+builder.add_edge("analyze", "critical_processor", condition=is_critical)  
+builder.set_entry_point("analyze")  
+customer_support_graph = builder.build() 
 
-### Tóm tắt
+# Execute the graph with user input 
+results = customer_support_graph("I need help with my order!") 
 
-Khi thiết kế một ứng dụng đa Vùng (multi-Region), việc xây dựng một nền tảng vững chắc là vô cùng quan trọng. Nền tảng này sẽ giúp bạn phát triển ứng dụng nhanh chóng theo cách an toàn, đáng tin cậy và linh hoạt. Nhiều dịch vụ AWS đã tích hợp sẵn các tính năng hỗ trợ bạn xây dựng kiến trúc đa Vùng.
+```
 
-Tùy vào lý do mở rộng ra ngoài một Vùng duy nhất mà kiến trúc của bạn sẽ khác nhau. Trong bài viết này, chúng tôi đã đề cập đến các tính năng cụ thể của những dịch vụ AWS về bảo mật, mạng và tính toán (compute) — với khả năng tích hợp sẵn để giảm bớt khối lượng công việc nặng nề và lặp lại.
+Nghiên cứu thêm về [Graphs](https://strandsagents.com/latest/user-guide/concepts/multi-agent/graph/) trong tài liệu về Strands
 
-Trong các bài viết tiếp theo, chúng tôi sẽ tiếp tục đề cập đến các dịch vụ về dữ liệu, ứng dụng và quản lý.
+Các mô hình multi-agent (multi-agent patterns) này được thiết kế để được áp dụng dần dần và kết hợp một cách tự do — hãy bắt đầu với các agent đơn lẻ, thêm các chuyên gia như là công cụ, phát triển thành các Swarms, và điều phối bằng các Graphs khi nhu cầu của bạn tăng lên. Hãy kết hợp và tùy chỉnh các mô hình để tạo ra các hệ thống tinh vi: swarms có thể chứa các graphs, graphs có thể điều phối các swarms, và bất kỳ mô hình nào cũng có thể sử dụng các agent được trang bị thêm các agent khác làm công cụ.
 
-*** Sẵn sàng để bắt đầu? ***
-Chúng tôi đã chọn một số [AWS Solutions](https://aws.amazon.com/solutions/) và [AWS Blogs](https://aws.amazon.com/blogs/?awsf.blog-master-category=*all&awsf.blog-master-learning-levels=*all&awsf.blog-master-industry=*all&awsf.blog-master-analytics-products=*all&awsf.blog-master-artificial-intelligence=*all&awsf.blog-master-aws-cloud-financial-management=*all&awsf.blog-master-business-applications=*all&awsf.blog-master-compute=*all&awsf.blog-master-customer-enablement=*all&awsf.blog-master-customer-engagement=*all&awsf.blog-master-database=*all&awsf.blog-master-developer-tools=*all&awsf.blog-master-devops=*all&awsf.blog-master-end-user-computing=*all&awsf.blog-master-mobile=*all&awsf.blog-master-iot=*all&awsf.blog-master-management-governance=*all&awsf.blog-master-media-services=*all&awsf.blog-master-migration-transfer=*all&awsf.blog-master-migration-solutions=*all&awsf.blog-master-networking-content-delivery=*all&awsf.blog-master-programming-language=*all&awsf.blog-master-sector=*all&awsf.blog-master-security=*all&awsf.blog-master-storage=*all&filtered-posts.q=multi-region&filtered-posts.q_operator=AND) để hỗ trợ bạn!
+``` Python
+from strands import Agent, tool 
+from strands.multiagent import GraphBuilder, Swarm 
+from strands_tools import memory, calculator, python_repl, file_write  
 
-*** Bạn đang tìm thêm nội dung về kiến trúc? ***
- [AWS Architecture Center](https://aws.amazon.com/architecture/) cung cấp sơ đồ kiến trúc tham chiếu, các giải pháp kiến trúc đã được kiểm chứng, những thực tiễn tốt nhất theo Well-Architected, các mẫu (patterns), biểu tượng và nhiều hơn nữa!
+# Start simple with a single agent 
+agent = Agent(tools=[memory]) 
 
- Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/creating-a-multi-region-application-with-aws-services-part-1-compute-and-security/)
+# Create specialist agents that a lead orchestrator agent can consult 
+data_analyst = Agent(name="analyst", tools=[calculator, python_repl]) 
 
+@tool 
+def data_analyst_tool(query: str) -> str: 
+    return str(data_analyst(query)) 
 
- Các bài viết khác trong chuỗi này:
+analyst_orchestrator = Agent(tools=[memory, data_analyst_tool]) # Agents-as-tools 
+
+# Compose patterns together - a graph that uses a swarm 
+researcher = Agent(name="researcher", tools=[memory]) 
+writer = Agent(name="writer", tools=[file_write]) 
+research_swarm = Swarm([researcher, analyst_orchestrator, writer]) 
+review_agent = Agent(system_prompt="Review the research quality and suggest improvements") 
+builder = GraphBuilder() 
+builder.add_node(research_swarm, "research") # Swarm as graph node 
+builder.add_node(review_agent, "review") 
+builder.add_edge("research", "review") 
+graph = builder.build() 
+
+# The patterns nest naturally - swarms in graphs, agents as tools everywhere  
+result = graph("How has green energy evolved over the last few years?") 
+```
+## Hệ thống Multi-Agent với A2A
+
+Strand 1.0 đã bao gồm việc hỗ trợ cho [giao thức Agent-to-Agent (A2A)](https://a2aproject.github.io/A2A/latest/), một tiêu chuẩn mở cho phép các agent từ các nền tảng khác nhau có thể giao tiếp một cách liền mạch. Bất kỳ agent Strands cũng có thể được tích hợp các khả năng A2A để trở nên có thể truy cập qua mạng và tuân thủ giao thức A2A. Các agent A2A từ các tổ chức bên ngoài cũng có thể được sử dụng trực tiếp trong tất cả các mô hình multi-agent của Strands.
 
-- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép]({{< relref "3-Translated_Blogs/Blog_6/_index.md" >}})
+``` Python
+from strands import Agent 
+from strands.multiagent.a2a import A2AServer 
+from strands_tools.a2a_client import A2AClientToolProvider 
 
-- [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{< relref "3-Translated_Blogs/Blog_7/_index.md" >}})
+# Serve your agent via A2A protocol 
+local_agent = Agent(name="analyzer", tools=[web_search, data_analysis]) 
+a2a_agent = A2AServer(agent=local_agent, port=9000) 
+a2a_agent.serve() # AgentCard available at http://localhost:9000/.well-known/agent.json 
+
+# Use remote A2A agents 
+partner_agent_url = "https://partner.com" 
+cloud_agent_url = "https://cloud.ai" 
+
+# Connect to remote A2A enabled agents 
+a2a_tool_provider = A2AClientToolProvider(known_agent_urls=[partner_agent_url, cloud_agent_url]) 
+
+# Orchestrate remote agents 
+orchestrator = Agent(tools=[a2a_tool_provider.tools]) 
+```
+
+Bởi vì A2A cung cấp các tính năng như agent card, một mô tả được chuẩn hóa về khả năng của agent, các hệ thống multi-agent được bật A2A có thể dễ dàng khám phá và kết nối với các agent được tạo ra bởi các nhóm hoặc các tổ chức khác. Strands tự động tạo ra thẻ agent dựa trên các công cụ bạn đã cung cấp cho agent. Để xem các ví dụ hoạt động hoàn chỉnh và bắt đầu với tính năng tích hợp A2A, hãy tham khảo [repository mẫu](https://github.com/strands-agents/samples/tree/main/03-integrations/Native-A2A-Support) của chúng tôi và [tài liệu A2A của Strands](https://strandsagents.com/latest/user-guide/concepts/multi-agent/agent-to-agent/).
+
+## Sẵn sàng cho môi trường production
+
+Mặc dù Strands đã được các đội nội bộ của Amazon như Amazon Q Developer và AWS Glue sử dụng trong môi trường production từ lâu trước khi ra mắt công chúng, chúng tôi đã và đang làm việc ngược lại với hàng trăm khách hàng trên toàn thế giới để mở rộng Strands nhằm đáp ứng các nhu cầu production của bạn. Các cập nhật này bao gồm một tầng trừu tượng quản lý session để hỗ trợ việc lưu trữ liên tục dữ liệu vào và phục hồi từ các kho dữ liệu bên ngoài, đầu ra có cấu trúc, cải thiện hỗ trợ bất đồng bộ, và nhiều thứ khác nữa (xem chi tiết trong [changelog các phiên bản phát hành](https://github.com/strands-agents/sdk-python/releases))
+
+**Quản lý session bền vững:** Chúng tôi đã thêm vào `SessionManager`, một công cụ trừu tượng hóa quản lý session cho phép tự động lưu trữ liên tục và khôi phục lịch sử hội thoại cũng như trạng thái của agent. Nhờ đó, các agent có thể lưu toàn bộ lịch sử cuộc trò chuyện vào một hệ thống lưu trữ như Amazon Simple Storage Service (Amazon S3) và tiếp tục cuộc hội thoại một cách liền mạch ngay cả sau khi hệ thống khởi động lại. Dưới đây là một ví dụ sử dụng cơ chế lưu trữ liên tục dựa trên file cơ bản.
+
+``` Python
+from strands import Agent 
+from strands.session.file_session_manager import FileSessionManager 
+
+# Create a session manager with file-based storage 
+Session_manager = FileSessionManager(session_id=”customer_support”, base_dir="./agent_sessions") 
+
+# Agent automatically persists all conversations 
+agent = Agent( 
+    id="support_bot_1", 
+    session_manager=session_manager, 
+    tools=[knowledge_base, ticket_system] 
+) 
+
+# Messages are automatically saved as the conversation progresses 
+agent("Help me reset my password") 
+agent("I can't access my email") 
+
+# Later, even after a restart, restore the full conversation 
+```
+
+Bạn có thể mở rộng lớp trừu tượng này bằng cách tự triển khai backend lưu trữ của riêng mình thông qua mẫu thiết kế Data Access Object (DAO), và Strands đã tích hợp sẵn hai backend mặc định: hệ thống file cục bộ và Amazon S3. Mỗi agent nhận một ID duy nhất để theo dõi, và hệ thống xử lý các agent đồng thời  trong cùng một session cho các kịch bản multi-agent, đảm bảo rằng các agent luôn duy trì ngữ cảnh qua các lần triển khai, mở rộng quy mô hệ thống hoặc khởi động lại. Tìm hiểu thêm về [Session Management](https://strandsagents.com/latest/user-guide/concepts/agents/session-management/) trong tài liệu của Strands.
+
+**Hỗ trợ bất đồng bộ nguyên bản và cải thiện hiệu năng:** Các workload trong môi trường production đòi hỏi độ tin cậy cao và hiệu năng phản hồi nhanh. Trong phiên bản 1.0, chúng tôi đã cải tiến kiến trúc vòng lặp sự kiện của Strands để hỗ trợ thao tác bất đồng bộ trên toàn bộ stack. Các công cụ và nhà cung cấp mô hình giờ đây có thể chạy bất đồng bộ mà không bị chặn, cho phép thực thi đồng thời thực sự. Phương thức `stream_async` mới truyền phát tất cả các sự kiện của agent — văn bản, việc sử dụng công cụ, các bước suy luận — theo thời gian thực, vđồng thời tích hợp cơ chế hủy khi người dùng rời khỏi trang.
+
+``` Python
+import asyncio 
+from fastapi import FastAPI 
+from fastapi.responses import StreamingResponse 
+from strands import Agent 
+from strands_tools import calculator 
+
+app = FastAPI() 
+@app.post("/chat") 
+
+async def chat_endpoint(message: str): 
+    async def stream_response(): 
+        agent = Agent(tools=[web_search, calculator]) 
+        # Stream agent responses in real-time 
+        async for event in agent.stream_async(message): 
+            if "data" in event: 
+                yield f"data: {event['data']}\n\n" 
+            elif "current_tool_use" in event: 
+                yield f"event: tool\ndata: Using {event['current_tool_use']['name']}\n\n" 
+    return StreamingResponse(stream_response(), media_type="text/event-stream") 
+
+# Concurrent agent evaluation 
+async def evaluate_models_concurrently(prompt: str): 
+    async def stream(agent: Agent): 
+        print(f"STARTING: {agent.name}") 
+        async for event in agent.stream_async(prompt): 
+            # handle events 
+        print(f"ENDING: {agent.name}") 
+        return event[“result”]  # last event is the agent result 
+
+    agents = [ 
+        Agent(name="claude", model="us.anthropic.claude-3-7-sonnet-20250219-v1:0”), 
+        Agent(name="deepseek”, model="us.deepseek.r1-v1:0”), 
+        Agent(name="nova", model="us.amazon.nova-pro-v1:0") 
+    ] 
+
+    # Execute all agents concurrently 
+    responses = await asyncio.gather(*[stream(agent) for agent in agents]) 
+
+    return responses 
+```
+
+Tìm hiểu thêm về [Hỗ trợ bất động bộ nguyên bản](https://strandsagents.com/latest/user-guide/concepts/streaming/async-iterators/) trong tài liệu chính thức của Strands.
+
+**Mở rộng hỗ trợ đa dạng nhà cung cấp mô hình:** Khách hàng đã chia sẻ rằng họ cần linh hoạt trong việc sử dụng các mô hình khác nhau cho các tác vụ khác nhau. Để đáp ứng nhu cầu này, Strands Agents đã nhận được sự hỗ trợ mạnh mẽ từ cộng đồng các nhà cung cấp mô hình. Các nhà cung cấp như [Anthropic](https://www.anthropic.com/), [Meta](https://www.llama.com/), [OpenAI](https://openai.com/), [Cohere](https://cohere.com/), [Mistral](https://mistral.ai/), [Stability](https://stability.ai/) và [Writer](https://writer.com/) đã đóng góp cho phép API mô hình của họ được sử dụng bởi một Strands Agent thông qua code. Việc truy cập Strands Agents thông qua hạ tầng API do chính các nhà cung cấp này cung cấp giúp các nhà phát triển tập trung vào việc xây dựng các giải pháp AI-powered, mà không cần lo lắng về quản lý cơ sở hạ tầng. Những bổ sung này bổ trợ hoàn hảo cho khả năng hỗ trợ từ giai đoạn xem trước đối với mọi mô hình trên Amazon Bedrock, OpenAI, và bất kỳ endpoint tương thích OpenAI nào thông qua LiteLLM. Strands cho phép bạn sử dụng các mô hình khác nhau cho mỗi agent, hoặc chuyển đổi mô hình và nhà cung cấp mô hình mà không cần sửa đổi công cụ hoặc logic của bạn.
+
+``` Python
+from strands import Agent
+from strands.models import BedrockModel
+from strands.models.openai import OpenAIModel
+from strands.models.anthropic import AnthropicModel
+
+# Configure different model providers
+bedrock_model = BedrockModel(
+    model_id="us.amazon.nova-pro-v1:0",
+    temperature=0.3,
+    top_p=0.8,
+    region_name="us-west-2"
+)
+
+openai_model = OpenAIModel(
+    client_args={
+        "api_key": "your-api-key",
+    },
+    model_id="gpt-4o",
+    params={
+        "max_tokens": 1000,
+        "temperature": 0.7,
+    }
+)
+
+anthropic_model = AnthropicModel(
+    client_args={
+        "api_key": "your-api-key",
+    },
+    max_tokens=1028,
+    model_id="claude-3-7-sonnet-20250219",
+    params={
+        "temperature": 0.5,
+    }
+)
+
+# Swap models or use different models for different agents in the same system
+researcher = Agent(
+    name="researcher",
+    model=anthropic_model,
+    tools=[web_search]
+)
+
+writer = Agent(
+    name="writer", 
+    model=openai_model,
+    tools=[document_formatter]
+)
+
+analyzer = Agent(
+    name="analyzer",
+    model=bedrock_model,
+    tools=[data_processor]
+)
+```
+
+Cộng đồng Strands đã đóng vai trò then chốt trong việc định hình tất cả những cải tiến này thông qua việc sử dụng thực tế, phản hồi và những đóng góp mã nguồn trực tiếp. Trong số hơn 150 pull request (PR) đã được merge vào Strands từ phiên bản 0.1.0 đến 1.0, 22% được đóng góp bởi các thành viên cộng đồng, những người đã sửa lỗi, thêm nhà cung cấp mô hình, viết tài liệu, thêm tính năng và tái cấu trúc các lớp để cải thiện hiệu suất. Chúng tôi vô cùng biết ơn [mỗi người trong số các bạn](https://github.com/strands-agents/sdk-python/graphs/contributors) vì đã giúp Strands trở thành cách đơn giản nhất để đưa một agent từ nguyên mẫu đến triển khai thực tế.
+
+Tương lai của AI là multi-agent (multi-agent), và với Strands 1.0, tương lai đó đã sẵn sàng để triển khai trong môi trường production. Hãy bắt đầu xây dựng ngay hôm nay tại [strandsagents.com.](https://strandsagents.com/)

@@ -5,277 +5,86 @@ chapter = false
 pre = " <b> 3.2. </b>"
 +++
 
-# Định tuyến động sử dụng Máy chủ định tuyến AWS VPC
+# **Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)**
 
-*Ammar Latif và Akshay Choudhry - 02/09/2025*
+*Tác giả: Gabe Kafity – 29/7/2025*  
+*Chủ đề: Best Practices, High Performance Computing*
 
 ---
 
-[Amazon VPC Route Server](https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html) cho phép triển khai cơ chế định tuyến động trong [Amazon VPC](https://aws.amazon.com/vpc/) bằng cách sử dụng giao thức BGP (Border Gateway Protocol). Với dịch vụ này, bạn có thể kiểm soát lưu lượng giữa các ứng dụng trên cloud và hệ thống on-premises một cách thông minh và hiệu quả hơn. BGP giúp bạn quản lý đường đi của dữ liệu linh hoạt, đặc biệt trong các tình huống xảy ra sự cố, đồng thời giảm thiểu khối lượng công việc thủ công và hạn chế rủi ro do con người.
+Trong ngành hàng không vũ trụ đang phát triển nhanh chóng ngày nay, khả năng đổi mới nhanh chóng và hiệu quả không chỉ là một lợi thế – mà đó là một điều cần thiết. Khi các công nghệ như UAVs (Unmanned Aerial Vehicle) tự hành, các chùm vệ tinh (satellite constellations), tên lửa tái sử dụng và thực tế tăng cường/ảo (augmented/virtual reality) tiến bộ, khả năng đổi mới nhanh chóng mang lại cho các tổ chức hàng không vũ trụ lợi thế cạnh tranh. High Performance Computing (HPC) rất quan trọng đối với đổi mới hàng không vũ trụ và đã trở thành nền tảng của sự tiến bộ trong ngành hàng không vũ trụ. Bất kể quy mô, tuổi đời hay tốc độ lặp lại (iteration speed) của một tổ chức, Amazon Web Services (AWS) luôn sẵn sàng giúp thúc đẩy các sứ mệnh hàng không vũ trụ của họ tiến lên.
 
-Trong bài viết này, chúng ta sẽ xem xét nhiều tình huống ứng dụng trong đó việc định tuyến động ở mức ứng dụng có ảnh hưởng trực tiếp đến cách dữ liệu được truyền đến các instance, cũng như cách hệ thống xử lý khi có sự cố để giảm gián đoạn xuống mức thấp nhất.           
+Trong bài đăng này, chúng ta sẽ khám phá lý do tại sao, cách thức và những gì khách hàng hàng không vũ trụ thường làm với HPC trong AWS.
 
 
-### Yêu cầu kiến thức nền tảng
-Người đọc được giả định là đã nắm các khái niệm mạng cơ bản trong AWS liên quan đến tính sẵn sàng cao và cơ chế failover, chẳng hạn như [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/), [Elastic Network Interfaces (ENI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html), Amazon VPC, bảng định tuyến VPC, và [Availability Zone (AZ)](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/). Ngoài ra, bạn cũng nên hiểu về các nguyên lý mạng phổ biến như địa chỉ IP, CIDR, định tuyến mạng, BGP và Bidirectional Forwarding Detection (BFD). Bài viết này sẽ không đi sâu vào việc giải thích các khái niệm nền tảng đó, mà tập trung mô tả cách sử dụng chúng để triển khai giải pháp floating IP cho việc chuyển đổi dự phòng ứng dụng. Nếu bạn cần tìm hiểu thêm về nền tảng mạng AWS, hãy tham khảo tài liệu chính thức của AWS về VPC networking và các bài viết trong mục AWS Networking and Content Delivery [Ở đây](https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html).
+### Hiện Trạng của HPC
 
-### Các tình huống kết nối ứng dụng
-Trong VPC, route table là thành phần quyết định luồng dữ liệu đi như thế nào. Chúng được gán cho subnet, Internet Gateway (IGW), hoặc Virtual Private Gateway để định nghĩa đường đi của lưu lượng trước khi đến đích. Ví dụ, bạn có thể thêm route để tất cả traffic đi qua một firewall trước khi đến ứng dụng, hoặc buộc subnet phải đi qua NAT Gateway, IGW, Peering Connection, hoặc VPN Gateway tùy nhu cầu.
+Cơ sở hạ tầng HPC on-premises truyền thống thường đòi hỏi đầu tư vốn đáng kể và có thể mất hàng tháng, hoặc thậm chí hàng năm, để mua sắm và triển khai. Sau khi được triển khai, các cluster thường chạy ở mức hoặc gần 100% tỷ lệ sử dụng (utilization). Tỷ lệ sử dụng cơ sở hạ tầng cao này dẫn đến thời gian chờ đợi lâu cho các HPC job mới đi vào hàng đợi (queue). Các nhà khoa học nghiên cứu và kỹ sư phải chờ đợi (thường là hàng tuần) để job của họ đi qua hàng đợi và chạy, trước khi họ có thể phân tích kết quả và lặp lại sự đổi mới của họ. Ngoài ra, chu kỳ khấu hao (depreciation cycle) của cơ sở hạ tầng HPC on-premises thường là 5-8 năm. Điều này có nghĩa là trong khi cơ sở hạ tầng HPC ngày càng tốt hơn mỗi năm, các cluster on-premises bị mắc kẹt với việc sử dụng cơ sở hạ tầng kém hiệu quả hơn cho đến khi đến lúc làm mới phần cứng (hardware refresh), lúc đó chu kỳ cơ sở hạ tầng cũ (legacy infrastructure) lại bắt đầu lại.
 
-Một số ứng dụng đặc biệt (như thiết bị an ninh mạng hoặc xử lý traffic) yêu cầu khả năng kiểm soát chi tiết đường đi của dữ liệu để đảm bảo tất cả lưu lượng phải được gửi đến ứng dụng trung gian này trước khi đến điểm đích cuối cùng. Một ví dụ quen thuộc là việc điều hướng traffic đến thiết bị bảo mật để kiểm tra trước khi gửi sang dịch vụ chính.
+Ngược lại, AWS cung cấp cho các tổ chức quyền truy cập tức thì vào các tài nguyên tính toán gần như không giới hạn, cho phép họ tăng tốc đổi mới trong khi kiểm soát chi phí. Việc triển khai diễn ra chỉ trong vài phút và khách hàng chỉ trả tiền cho những gì họ sử dụng. Tận dụng các khả năng của cloud, các HPC cluster trong AWS mở rộng quy mô (scale out) để đáp ứng nhu cầu, xử lý job thành công và thu hẹp quy mô (scale back in) khi hàng đợi trống. Tính đàn hồi (elasticity) này làm giảm đáng kể thời gian chờ đợi cho các kỹ sư và nhà khoa học, trong khi chỉ phải trả tiền cho các tài nguyên khi chúng đang chạy. Ngoài ra, AWS cải thiện cơ sở hạ tầng HPC của chúng tôi với tốc độ của phần mềm. Điều này có nghĩa là thay vì chờ đợi nhiều năm để làm mới phần cứng nhằm hiện đại hóa cơ sở hạ tầng HPC, khách hàng của AWS liên tục có quyền truy cập vào cơ sở hạ tầng HPC mới nhất, hiệu suất/giá cả tốt nhất từ Amazon và các đối tác của chúng tôi (NVIDIA, Intel, AMD, v.v.).
 
-Nếu chỉ dùng static route thì bạn có thể làm được điều đó, nhưng nó tồn tại nhiều hạn chế:
-- Không tự động thích ứng khi có sự cố.
-- Cần thao tác thủ công để thay đổi.
-- Quản lý trở nên phức tạp khi hệ thống mở rộng.
-  Hệ quả là tăng nguy cơ lỗi con người và kéo dài thời gian phục hồi. Trong khi đó, dynamic routing có thể giải quyết: tự động cập nhật route table, đảm bảo khả năng mở rộng, và hỗ trợ failover mà không cần thao tác thủ công.
+{{< figurecaption src="/images/img1-blog2.png" caption="Hình 1: Đối lập giữa việc chạy các HPC workload on-premises (trái) so với trong AWS (phải). Bên trái bị giới hạn bởi dung lượng trung tâm dữ liệu cố định, nơi thời gian chờ đợi trong hàng đợi dài và cơ sở hạ tầng nhanh chóng trở nên lỗi thời. Bên phải có dung lượng đàn hồi (elastic capacity) có thể mở rộng theo nhu cầu, rút ngắn thời gian chờ đợi trong hàng đợi trong khi chạy trên cơ sở hạ tầng hiện đại hơn." >}}
 
-Lưu ý: AWS khuyến nghị sử dụng Gateway Load Balancer (GWLB) cho nhu cầu HA và redundancy. Chỉ khi nào ứng dụng không hỗ trợ GWLB (hoặc môi trường không có GWLB, ví dụ AWS Local Zone), bạn mới nên cân nhắc giải pháp với Route Server.
+### Các HPC Workload Chủ chốt trong Hàng không Vũ trụ
 
-### Tính năng của VPC Route Server
-VPC Route Server cung cấp định tuyến động bên trong VPC thông qua BGP. Các ứng dụng mạng có thể dùng BGP để cập nhật bảng định tuyến của VPC, từ đó kiểm soát lưu lượng chi tiết và hỗ trợ failover tự động giữa các instance trong cùng hoặc khác AZ. Route Server cũng có thể cập nhật bảng định tuyến của VPC và IGW với các đường đi IPv4/IPv6 ưu tiên, giúp workload có khả năng chịu lỗi cao. Khi một AZ gặp sự cố, Route Server sẽ tự động cập nhật route table để chuyển hướng traffic sang AZ khác, cải thiện khả năng quản lý và tính tương thích với ứng dụng của bên thứ ba.
-Chúng ta sẽ xem xét các tình huống dưới đây để thấy được các khả năng định tuyến của VPC Route Server.
+**Computational Fluid Dynamics (CFD)**
 
-**Tình huống #1: Dùng Floating IP cho application failover (chuyển đổi dự phòng ứng dụng)**
-Giả sử bạn có ứng dụng quan trọng chạy trên một EC2 ở AZ1. Để đảm bảo tính sẵn sàng, bạn triển khai thêm một instance standby ở AZ2. Ứng dụng này không tích hợp với GWLB hoặc môi trường không hỗ trợ GWLB. Mục tiêu của bạn là duy trì ứng dụng hoạt động liên tục khi instance chính hoặc cả AZ1 bị lỗi.
+Các tổ chức hàng không vũ trụ đang tận dụng các tài nguyên tính toán mạnh mẽ của AWS để thực hiện các mô phỏng CFD phức tạp nhằm tối ưu hóa thiết kế máy bay và phân tích hệ thống đẩy (propulsion systems). Sử dụng các dịch vụ HPC của AWS, các tổ chức có thể chạy các workload như Siemens STAR-CCM+, Ansys Fluent hoặc mô phỏng OpenFOAM với hàng nghìn core, giảm thời gian mô phỏng từ hàng tuần xuống hàng giờ.
 
-Trong kịch bản này, chúng ta minh họa cách sử dụng floating IP để thực hiện quá trình failover liền mạch giữa hai EC2 instance được triển khai ở hai AZ khác nhau trong một kiến trúc high availability. Bạn có một ứng dụng quan trọng chạy trên EC2 ở AZ1, đồng thời một EC2 khác được triển khai ở AZ2 để làm máy dự phòng. Ứng dụng này không được tích hợp với Gateway Load Balancer (GWLB), hoặc môi trường AWS của bạn (ví dụ Local Zone) không hỗ trợ GWLB. Mục tiêu đặt ra là đảm bảo cơ chế dự phòng cho ứng dụng trong trường hợp instance chính hoặc cả AZ1 gặp sự cố.
+**Phân tích Cấu trúc (Structural Analysis)**
 
-Bạn có thể dùng AWS CloudFormation từ repo aws-samples để triển khai kịch bản #1 vào tài khoản AWS của mình. Template CloudFormation sẽ tự động tạo ra môi trường sau:
+Nhu cầu của thiết kế hàng không vũ trụ hiện đại đòi hỏi phân tích cấu trúc chuyên sâu đối với những thứ như độ bền sản phẩm, độ rung và âm học (acoustics). Cho dù đó là thử nghiệm vật liệu composite mới hay thực hiện phân tích độ mỏi (fatigue analysis) trên các thành phần quan trọng, khả năng HPC của AWS cho phép khách hàng chạy nhiều mô phỏng đồng thời bằng cách sử dụng phần mềm như Dassault Systèmes Abaqus hoặc Simcenter Nastran, đẩy nhanh quá trình lặp lại thiết kế (design iteration process).
 
-- Một VPC với 3 subnet nằm trên 2 AZ.
-- Bảng định tuyến (route table) cho cả 3 subnet.
-- Tạo và gắn Internet Gateway (IGW) vào VPC, đồng thời thêm route mặc định ra IGW trong route table.
-- Tạo và gắn Route Server cho VPC (Route Server sử dụng ASN 65000).
-- Tạo hai Route Server Endpoint (RSE) trong mỗi subnet để đảm bảo tính sẵn sàng cao.
-- Thiết lập các route server peer.
-- Tạo hai EC2 instance để mô phỏng ứng dụng HA cần kiểm thử, sử dụng phần mềm Gobgp.
-- Mỗi instance sẽ chạy BGP với ASN 65001 và kết nối BGP tới RSE trong subnet tương ứng.
-- File cấu hình Gobgp (gobgpd.conf) được nạp sẵn thông qua user-data khi tạo EC2, và được lưu tại thư mục /home/ec2-user.
-- Tạo thêm một instance test để ping tới loopback IP của ứng dụng HA.
-- Có thể sử dụng AWS Systems Manager để truy cập và quản lý các instance vừa tạo.
 
-**Tổng quan giải pháp**
-Chúng ta sử dụng một địa chỉ floating IP được cấp từ dải CIDR nằm ngoài VPC để ứng dụng sử dụng. Client sẽ kết nối đến ứng dụng thông qua địa chỉ IP này. Trong trường hợp instance chính gặp sự cố, toàn bộ lưu lượng gửi đến floating IP sẽ được tự động chuyển hướng sang ENI của instance dự phòng ở AZ thứ hai. Cách làm này giúp giảm thiểu gián đoạn dịch vụ, nhờ áp dụng cơ chế floating IP kết hợp với định tuyến động trong VPC, mà không cần cập nhật cấu hình phía client hay thực hiện thao tác thủ công.
+**Lập kế hoạch Sứ mệnh và Hoạt động Không gian (Mission Planning and Space Operations)**
 
-{{< figurecaption src="/images/Img1-Blog2.png" caption="Hình 1. Instance#1 đang hoạt động" >}} <!-- cái này được config trong layouts/shortcodes/figurecaption.html để cho các dòng caption chú thích ảnh nằm ở giữa ảnh. Ta tạo thủ công layouts/shortcodes/figurecaption.html để config -->
+Khi ngành hàng không vũ trụ phát triển và đổi mới, các tổ chức đang sử dụng các dịch vụ HPC của AWS để mô phỏng cơ học quỹ đạo phức tạp (orbital mechanics), tối ưu hóa việc triển khai các chùm vệ tinh (satellite constellation deployments) và quản lý các cửa sổ phóng (launch windows) một cách hiệu quả. Các mô phỏng này đòi hỏi số lượng lớn các compute cluster, cơ sở hạ tầng mạng và lưu trữ thế hệ tiếp theo, có thể dễ dàng triển khai và tự động mở rộng quy mô dựa trên nhu cầu.
 
+{{< figurecaption src="/images/img2-blog2.png" caption="Hình 2: Ví dụ về các hình ảnh trực quan (visualizations) của các HPC workload dành cho khách hàng hàng không vũ trụ." >}}
 
-Như minh họa ở Hình 1, ứng dụng hoạt động theo mô hình active/standby giữa hai AZ. Cả hai EC2 instance cùng quảng bá một địa chỉ loopback (ví dụ 172.16.1.1/32) ra mạng thông qua phiên BGP với hai VPC RSE nằm trong cùng một subnet. Việc sử dụng hai RSE nhằm đảm bảo tính dự phòng và nâng cao khả năng sẵn sàng của dịch vụ định tuyến.
+Mỗi loại workload mô phỏng đều có các yêu cầu riêng về loại cơ sở hạ tầng mà nó chạy trên. AWS cho phép khách hàng tối ưu hóa cấu hình cơ sở hạ tầng, cluster và hàng đợi của họ để chạy hiệu quả workload mô hình hóa hoặc mô phỏng đang thực hiện.
 
-{{< figurecaption src="/images/Img2-Blog2.png" caption="Hình 2. Các điểm cuối (endpoint) của máy chủ định tuyến trong VPC" >}}
+### Bộ Công Cụ HPC của AWS
+High performance computing đòi hỏi cơ sở hạ tầng hiệu quả ở mọi lớp của stack. Điều này bao gồm các công cụ tính toán (compute), lưu trữ (storage), mạng (networking) và điều phối (orchestration) cho phép các tổ chức hàng không vũ trụ đổi mới nhanh chóng. Trong phần này, chúng ta sẽ xem xét một số công cụ mà khách hàng hàng không vũ trụ sử dụng trên AWS cho các HPC workload.
 
-{{< figurecaption src="/images/Img3-Blog2.png" caption="Hình 3. Các thiết bị ngang hàng của máy chủ định tuyến trong VPC" >}}
+**Amazon Elastic Compute Cloud (Amazon EC2)** cung cấp nền tảng tính toán rộng nhất và sâu nhất, với hơn 850 instance. Amazon EC2 có nhiều loại instance type hiệu suất cao được tối ưu hóa cho Accelerated Computing và HPC. **AWS Nitro System** được giới thiệu vào năm 2017 và được xây dựng dựa trên sự kết hợp giữa phần cứng, phần mềm và firmware được xây dựng có mục đích. Nó cung cấp cơ sở hạ tầng ảo hóa cơ bản cho các EC2 instance. Theo truyền thống, các hypervisor bảo vệ phần cứng vật lý và BIOS, ảo hóa CPU, lưu trữ, mạng và cung cấp một bộ khả năng quản lý phong phú. Với Nitro System, chúng tôi tách rời các chức năng đó, chuyển chúng sang phần cứng và phần mềm chuyên dụng, đồng thời giảm chi phí bằng cách cung cấp thực tế tất cả các tài nguyên của một server cho các instance của bạn. Điều này làm giảm thiểu chi phí ảo hóa (virtualization overhead).
 
-{{< figurecaption src="/images/Img4-Blog2.png" caption="Hình 4. Bảng RIB (Routing Information Base) của máy chủ định tuyến" >}}
+{{< figurecaption src="/images/img3-blog2.png" caption="Hình 3: Nitro System làm giảm thiểu chi phí hypervisor overhead để các instance của khách hàng có thể chạy ở mức ~100% dung lượng bare metal. Vùng màu nhạt hơn cho thấy các hoạt động kỹ thuật mà Nitro đảm nhiệm, trong khi vùng màu đậm hơn cho thấy các instance của khách hàng chạy trên Nitro.">}}
 
+Dịch vụ được quản lý (managed service) mới nhất của AWS giúp đơn giản hóa HPC trên AWS là AWS Parallel Computing Service (AWS PCS). AWS PCS giúp khách hàng dễ dàng chạy và mở rộng quy mô các HPC workload cũng như xây dựng các mô hình khoa học và kỹ thuật trên AWS bằng cách sử dụng Slurm làm trình quản lý workload. Dịch vụ được quản lý này cho phép bạn xây dựng các HPC cluster hoàn chỉnh tích hợp các tài nguyên tính toán (compute), lưu trữ (storage), mạng (networking) và hình ảnh trực quan (visualization), và mở rộng quy mô liền mạch từ 0 đến hàng nghìn instance. Thay vào đó, khách hàng có thể sử dụng AWS ParallelCluster, đây là một công cụ quản lý cluster mã nguồn mở (open-source), giàu tính năng, giúp dễ dàng cấu hình, triển khai và quản lý các HPC cluster trên AWS. Công cụ này được sử dụng thông qua các mẫu cơ sở hạ tầng dưới dạng mã (infrastructure as code templates), và có giao diện đồ họa dựa trên web tùy chọn. AWS ParallelCluster không phải là một dịch vụ được quản lý (managed service) và do đó yêu cầu khách hàng phải tự triển khai.
 
-Để đảm bảo lưu lượng mạng luôn được chuyển đến instance đang hoạt động, ứng dụng sử dụng thuộc tính BGP AS Path. Instance hoạt động sẽ quảng bá tuyến với AS Path ngắn hơn, trong khi instance dự phòng thêm nhiều số AS khác vào đường đi, khiến tuyến đó bị ưu tiên thấp hơn. Do BGP luôn chọn tuyến có AS Path ngắn nhất, nên tuyến từ instance hoạt động sẽ được chọn làm tuyến chính. Ngoài ra, các thuộc tính khác của BGP như Multi-Exit Discriminator (MED) cũng có thể được dùng để thiết lập ưu tiên định tuyến tương tự.
-1. Cả instance hoạt động và dự phòng đều quảng bá địa chỉ 172.16.1.1/32 qua BGP đến cả hai Route Server Endpoint (RSE) trong subnet của chúng.
+AWS Batch giúp bạn chạy các batch computing workload trên AWS Cloud. Batch computing là một cách phổ biến để các nhà phát triển, nhà khoa học và kỹ sư truy cập vào một lượng lớn tài nguyên tính toán. AWS Batch loại bỏ công việc nặng nhọc không tạo ra sự khác biệt trong việc cấu hình và quản lý cơ sở hạ tầng cần thiết, giống như phần mềm batch computing truyền thống. Dịch vụ này có thể cấp phát tài nguyên hiệu quả để phản hồi các job đã gửi nhằm loại bỏ các hạn chế về dung lượng (capacity constraints), giảm chi phí tính toán và cung cấp kết quả nhanh chóng.
 
-2. Máy chủ định tuyến VPC nhận được 4 quảng bá cho cùng một tiền tố. Điều này được minh họa ở Hình 4, nơi loopback 172.16.1.1/32 được gửi đến từ cả bốn RSE.
+Cho đến nay, chúng ta đã thảo luận về các tài nguyên tính toán và công cụ điều phối (orchestration tooling) cho phép các HPC workload chạy trên AWS. Có những thành phần khác quan trọng đối với cơ sở hạ tầng HPC, chẳng hạn như mạng kết nối các compute node và lưu trữ hiệu suất cao (high-performance storage). Trước tiên, hãy xem xét về mạng. 
 
-3. Dựa vào quy tắc chọn đường đi của BGP, máy chủ ưu tiên tuyến từ instance hoạt động vì có AS Path ngắn hơn. Trong Hình 4 thể hiện rõ rằng chỉ một trong bốn tuyến được chọn và cài đặt.
+Elastic Fabric Adapter (EFA) là một giao diện mạng cho các Amazon EC2 instance cho phép khách hàng chạy các ứng dụng đòi hỏi mức độ giao tiếp giữa các node (inter-node communications) cao trên quy mô lớn trên AWS. Giao diện phần cứng bỏ qua hệ điều hành (OS bypass hardware interface) được xây dựng tùy chỉnh của nó giúp tăng cường hiệu suất giao tiếp giữa các instance (inter-instance communications), điều này rất quan trọng để mở rộng quy mô các HPC workload có độ trễ thấp (low latency).
 
-4. Máy chủ định tuyến VPC sau đó xác định ENI gắn với instance hoạt động và cập nhật bảng định tuyến của VPC để chuyển tiếp lưu lượng tới ENI-A cho địa chỉ 172.16.1.1/32.
+{{< figurecaption src="/images/img4-blog2.png" caption="Hình 4: Cho thấy network infrastructure stack của EFA, trực quan hóa cách kernel được bỏ qua để tăng tốc hiệu suất.">}}
 
-{{< figurecaption src="/images/Img5-Blog2.png" caption="Hình 5. Bảng định tuyến VPC được cập nhật, trong đó tuyến 172.16.1.1/32 trỏ đến ENI của instance đang hoạt động." >}}
 
-Bạn có thể kiểm tra cấu hình Gobgp bằng cách kết nối vào một trong các instance (instance-rs-az1 hoặc instance-rs-az2) thông qua [EC2 Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html).
+AWS cung cấp nhiều dịch vụ lưu trữ, chẳng hạn như Amazon Simple Storage Service (Amazon S3), Amazon Elastic Block Storage (Amazon EBS), cùng nhiều dịch vụ khác. Tất cả các dịch vụ lưu trữ này có thể được sử dụng khi xây dựng các HPC cluster trong AWS. Tuy nhiên, nhiều HPC workload được hưởng lợi rất nhiều từ bộ lưu trữ chuyên biệt, chẳng hạn như Lustre – một hệ thống tệp phân tán, song song, mã nguồn mở được thiết kế cho HPC và lưu trữ dữ liệu quy mô lớn. Amazon đã giải quyết nhu cầu này cho các HPC và AI/ML workload bằng cách cung cấp Amazon FSx for Lustre.
 
-Tệp cấu hình Gobgp nằm tại /home/ec2-user/gobgpd.conf.
+Amazon FSx for Lustre là dịch vụ lưu trữ chia sẻ được quản lý hoàn toàn (fully managed shared storage service), được xây dựng trên hệ thống tệp song song, hiệu suất cao phổ biến nhất thế giới. Nó cho phép khách hàng tăng tốc các compute workload với bộ lưu trữ chia sẻ cung cấp độ trễ dưới mili giây (sub-millisecond latencies), thông lượng (throughput) lên đến hàng trăm GB/s, và hàng triệu IOPS, tất cả đều được quản lý hoàn toàn và có thể triển khai trong vài phút, mà không gặp khó khăn trong việc thiết lập và quản trị.
 
-```bash
-sh-5.2$ sudo more /home/ec2-user/gobgpd.conf
+### Một Ngày của một HPC Job trên AWS
 
-[global.config]
-as = 65001
-router-id = "10.0.1.203"
-[[neighbors]]
-[neighbors.config]
-neighbor-address = "10.0.1.230"
-peer-as = 65000
-[[neighbors.afi-safis]]
-[neighbors.afi-safis.config]
-afi-safi-name = "ipv4-unicast"
-[[neighbors]]
-[neighbors.config]
-neighbor-address = "10.0.1.136"
-peer-as = 65000
-[[neighbors.afi-safis]]
-[neighbors.afi-safis.config]
-afi-safi-name = "ipv4-unicast"
-```
+Giờ đây chúng ta đã hiểu rõ hơn về các trường hợp sử dụng HPC và các dịch vụ mà khách hàng hàng không vũ trụ đang tận dụng trên AWS, hãy tổng hợp tất cả lại thành một quy trình làm việc (workflow) chức năng. Sơ đồ dưới đây minh họa một khách hàng đang chạy các HPC workload trong môi trường hybrid cloud của họ, giữa trung tâm dữ liệu on-premises và AWS. Người dùng cuối từ bên trong ranh giới mạng của khách hàng kết nối với Login Nodes thông qua SSH. Từ Login Nodes, các HPC job được gửi đi và thêm vào hàng đợi job. Điều này kích hoạt việc phân bổ các compute node, nơi các EC2 instance được mở rộng quy mô để đáp ứng nhu cầu hàng đợi và chạy các job. Các EC2 này có khả năng kết nối với các AWS services, chạy cho đến khi HPC job hoàn thành, và sau đó tự động thu hẹp quy mô trở lại (scale back down).
 
-Sử dụng lệnh sau để kiểm tra trạng thái BGP neighbor. Kết quả sẽ hiển thị hai neighbor, tương ứng với hai VPC RSE trong subnet của instance.
+{{< figurecaption src="/images/img5-blog2.png" caption="Hình 5: Ví dụ về quy trình làm việc triển khai các HPC job tận dụng AWS Parallel Computing Service.">}}
 
-```bash
-sh-5.2$ sudo /home/ec2-user/gobgp neighbor
-Peer            AS     Up/Down   State   |#Received Accepted
-10.0.1.136      65000  22:43:07  Establ  | 0        0
-10.0.1.230      65000  22:43:08  Establ  | 0        0
-```
 
+Chúng ta đã đề cập đến một số trường hợp sử dụng, dịch vụ và quy trình làm việc mà khách hàng hàng không vũ trụ tận dụng trên AWS. Bước hợp lý tiếp theo là nghe từ chính khách hàng
 
-Kiểm tra rằng tuyến loopback đã được quảng bá qua BGP:
+### Các Câu Chuyện Thành Công trong Hàng không Vũ trụ từ Thực tế
 
-```bash
-sh-5.2$ sudo /home/ec2-user/gobgp global rib
-   Network      Next Hop  AS_PATH  Age       Attrs
-*> 172.16.1.1/32 0.0.0.0           22:42:21  [{Origin: ?}]
-```
+[Hypersonix Launch Systems](https://aws.amazon.com/solutions/case-studies/hypersonix-graviton-case-study/) đã giảm 92% thời gian CFD simulation pipeline của họ, từ 3 tháng xuống còn 1 tuần, bằng cách di chuyển sang AWS. Họ đã chạy các STAR-CCM+ workload on-premises, trong một HPC cluster bị sử dụng quá mức và lỗi thời. Thời gian chờ đợi trong hàng đợi kéo dài khiến các nhà nghiên cứu và kỹ sư của họ thường xuyên phải ngồi không. AWS đã trả lại thời gian cho các đội ngũ kỹ thuật này, để họ có thể đổi mới và đưa sản phẩm ra thị trường nhanh hơn. “Tôi tin rằng chúng tôi có thể nổi bật so với các công ty lớn hơn vì chúng tôi có khả năng và tài nguyên cloud mà chúng tôi cần trên AWS.”, Tiến sĩ Stephen Hall, Trưởng phòng Mô phỏng Cấu trúc Nhiệt CFD Tiên tiến tại Hypersonix Launch Systems, cho biết.
 
-Để kiểm tra thiết lập định tuyến, bạn có thể truy cập vào instance kiểm thử (test-instance) bằng phương pháp Systems Manager. Sau khi đăng nhập thành công, hãy ping đến địa chỉ 172.16.1.1. Bạn sẽ nhận được phản hồi xuất phát từ instance đang hoạt động “instance-rs-az1”.
+[Boom Supersonic](https://d1.awsstatic.com/events/reinvent/2021/The_future_of_HPC_is_looking_a_lot_like_ML_CMP312.pdf) sử dụng AWS để tăng tốc thiết kế và xây dựng máy bay siêu thanh của họ. Họ có thể chạy hàng nghìn mô phỏng tiên tiến đồng thời trên AWS, dẫn đến năng suất tăng ước tính gấp 6 lần so với môi trường on-prem của họ. Boom đã sử dụng hơn 53 triệu compute hours trên AWS để hoàn thành máy bay chở khách Overture của họ. “AWS, nhà cung cấp cloud hàng đầu thế giới, sẽ giúp chúng tôi liên tục tinh chỉnh các thiết kế của mình.”, Blake Scholl, Người sáng lập và CEO của Boom Supersonic, cho biết. 
 
-```bash
-sh-5.2$ ping 172.16.1.1
-PING 172.16.1.1 (172.16.1.1) 56(84) bytes of data.
-64 bytes from 172.16.1.1: icmp_seq=1 ttl=127 time=0.712 ms
-64 bytes from 172.16.1.1: icmp_seq=2 ttl=127 time=0.338 ms
-64 bytes from 172.16.1.1: icmp_seq=3 ttl=127 time=0.378 ms
-```
+Để biết thêm thông tin về các câu chuyện thành công của khách hàng, vui lòng truy cập: (https://aws.amazon.com/solutions/case-studies/)
 
-### Phát hiện và khôi phục khi xảy ra Failover
+### Kết Luận
+HPC dựa trên Cloud đang cách mạng hóa cách các tổ chức hàng không vũ trụ đổi mới. AWS cung cấp khả năng mở rộng (scalability), hiệu suất và bảo mật cần thiết cho các HPC workload hàng không vũ trụ khắt khe nhất. Khi ngành công nghiệp tiếp tục phát triển, cam kết của chúng tôi trong việc hỗ trợ đổi mới hàng không vũ trụ vẫn mạnh mẽ hơn bao giờ hết.
 
-Để mô phỏng một tình huống failover, bạn có thể tắt instance đang hoạt động (instance-rs-az1).
 
-1. Nếu instance đang hoạt động gặp sự cố hoặc không thể truy cập, BGP sẽ phát hiện lỗi trong khoảng thời gian timeout đã cấu hình.
-
-2. VPC Route Server đánh dấu phiên BGP với instance đang hoạt động là down và rút tuyến đường ra khỏi bảng RIB.
-
-3. Một quá trình BGP re-convergence được kích hoạt, và tuyến đường do instance dự phòng quảng bá sẽ được chọn làm đường đi tốt nhất.
-
-4. Bảng định tuyến VPC được cập nhật để chuyển tiếp lưu lượng đến 172.16.1.1/32 qua ENI của instance dự phòng (ENI-B).
-
-5. Lưu lượng được chuyển tiếp liền mạch sang instance dự phòng, duy trì tính sẵn sàng của ứng dụng mà không gây gián đoạn cho client.
-
-Để kiểm tra thiết lập định tuyến, bạn có thể truy cập vào instance kiểm thử (test-instance) bằng phương pháp Systems Manager. Sau khi đăng nhập, hãy ping đến 172.16.1.1. Bạn sẽ nhận được phản hồi từ instance hiện tại đang hoạt động (instance-rs-az2).
-
-```bash
-sh-5.2$ ping 172.16.1.1
-PING 172.16.1.1 (172.16.1.1) 56(84) bytes of data.
-64 bytes from 172.16.1.1: icmp_seq=1 ttl=127 time=0.712 ms
-64 bytes from 172.16.1.1: icmp_seq=2 ttl=127 time=0.338 ms
-64 bytes from 172.16.1.1: icmp_seq=3 ttl=127 time=0.378 ms
-```
-
-{{< figurecaption src="/images/Img6-Blog2.png" caption="Hình 6. Instance2 đảm nhận vai trò hoạt động" >}}
-
-{{< figurecaption src="/images/Img7-Blog2.png" caption="Hình 7. Bảng định tuyến đã được cập nhật để trỏ đến ENI của Inst2" >}}
-
-
-**Tình huống #2: Kiểm tra lưu lượng ingress VPC** 
-
-Hãy xem xét kịch bản khi bạn có một mô hình bảo mật tập trung, trong đó các thiết bị tường lửa (được triển khai dưới dạng EC2 instance) sẽ kiểm tra toàn bộ lưu lượng north-south hoặc east-west trong VPC của bạn. Các tường lửa này đóng vai trò then chốt trong tư thế bảo mật và phải luôn khả dụng để kiểm tra cũng như chuyển tiếp lưu lượng. Để duy trì tính sẵn sàng cao, bạn triển khai hai EC2 firewall ở hai AZ khác nhau. Mục tiêu là đảm bảo rằng nếu firewall đang hoạt động gặp sự cố, thì lưu lượng sẽ được chuyển hướng liền mạch sang firewall dự phòng.
-
-Trong kịch bản này, chúng ta minh họa cách triển khai tính khả dụng cao (HA) và cơ chế failover cho các firewall stateful được triển khai trên nhiều AZ trong AWS, bằng cách sử dụng VPC Route Server và cập nhật định tuyến động.
-
-Tổng quan giải pháp
-Tất cả lưu lượng đi vào VPC thông qua IGW sẽ được định tuyến đến firewall để kiểm tra trước khi đi vào application subnet. Tương tự, toàn bộ lưu lượng đi ra từ application subnet cũng sẽ được định tuyến đến firewall để kiểm tra trước khi được gửi ra internet.
-
-Hình dưới đây minh họa một thiết bị firewall được cài đặt trên một EC2 instance trong subnet A. Thiết bị này sẽ kiểm tra toàn bộ lưu lượng đi từ IGW đến subnet B (application subnet) và từ subnet B ra IGW.
-
-{{< figurecaption src="/images/Img8-Blog2.png" caption="Hình 8. Tình huống #2 khi firewall 1 đang hoạt động" >}}
-
-Mỗi firewall thiết lập bốn phiên BGP: hai cho subnet A và hai cho subnet B, bao gồm cả subnet ứng dụng và bảng định tuyến IGW.
-
-Để đảm bảo chỉ có một firewall được sử dụng tại một thời điểm, độ ưu tiên đường đi trong BGP được điều chỉnh bằng cách sử dụng các metric của BGP. Chúng ta tập trung vào các metric sau:
-
-- AS_Path: Thuộc tính BGP cho thấy chuỗi các số hiệu Hệ thống Tự trị (AS) mà một tuyến đường đã đi qua. Nó vừa đóng vai trò là cơ chế ngăn vòng lặp, vừa là tiêu chí lựa chọn đường đi, trong đó đường đi ngắn hơn sẽ được ưu tiên.
-
-- MED (Multi-Exit Discriminator): Thuộc tính BGP được sử dụng để ảnh hưởng đến lưu lượng vào bằng cách đề xuất điểm vào ưa thích khi tồn tại nhiều kết nối giữa hai hệ thống tự trị. Giá trị MED thấp hơn sẽ được ưu tiên.
-
-Firewall đang hoạt động sẽ quảng bá các prefix với thuộc tính BGP ưu tiên cao nhất, trong khi firewall dự phòng quảng bá cùng prefix nhưng với các thuộc tính ít ưu tiên hơn. Trong kịch bản này, chúng ta sử dụng AS path prepending, trong đó firewall dự phòng sẽ tăng độ dài AS path khi quảng bá prefix đến RSE.
-
-**Bảng định tuyến Internet Gateway**
-
-Các bảng định tuyến gắn với IGW (Internet Gateway) kiểm soát đường đi mà lưu lượng internet đi vào VPC sẽ sử dụng. Người dùng thường dùng nó để chèn firewall và các chức năng mạng ảo khác vào đường đi của lưu lượng internet inbound.
-
-Cả firewall hoạt động và firewall dự phòng đều được kết nối với VPC Route Server và quảng bá CIDR của subnet ứng dụng đến các RSE. Tuy nhiên, firewall dự phòng quảng bá tuyến với AS path dài hơn. VPC Route Server sẽ chạy thuật toán chọn đường tốt nhất của BGP và cài đặt tuyến được quảng bá bởi firewall hoạt động.
-
-Bảng định tuyến cho subnet IGW có tuyến như sau:
-
-```bash
-Application subnet CIDR ---> Active Firewall ENI
-```
-
-VPC sẽ định tuyến lưu lượng có đích đến subnet ứng dụng đến ENI của firewall hoạt động.
-
-**Bảng định tuyến của subnet ứng dụng**
-Cả tường lửa đang hoạt động lẫn dự phòng đều được kết nối với VPC Route Server và đều quảng bá địa chỉ 0.0.0.0/0 đến các RSE. Tuy nhiên, tường lửa dự phòng quảng bá 0.0.0.0/0 với một đường dẫn AS dài hơn. VPC Route Server sẽ chạy thuật toán BGP để chọn tuyến đường tốt nhất và chỉ sử dụng tuyến được quảng bá bởi tường lửa đang hoạt động.
-
-Bảng định tuyến của subnet ứng dụng có tuyến như sau:
-```bash
-0.0.0.0/0 ---> ENI của tường lửa đang hoạt động
-```
-Điều này có nghĩa là mọi lưu lượng từ server ứng dụng sẽ đi qua tường lửa đang hoạt động trước khi ra Internet.
-
-
-**Bảng định tuyến của subnet tường lửa**
-
-Bảng định tuyến của subnet dành cho tường lửa có tuyến tĩnh sau:
-```bash
-0.0.0.0/0 ---> igw-id
-```
-Tức là tất cả lưu lượng từ đây sẽ được gửi thẳng ra Internet Gateway (IGW).
-
-**Phát hiện chuyển đổi dự phòng với BFD**
-
-BFD được bật trên mỗi phiên BGP giữa các tường lửa và các RSE của VPC. BFD cho phép phát hiện sự cố rất nhanh — thường dưới một giây — bằng cách liên tục trao đổi các gói điều khiển.
-
-Trong trường hợp tường lửa gặp sự cố:
-
-1. BFD phát hiện phiên BGP giữa tường lửa đang hoạt động và các RSE bị lỗi.
-
-2. Các RSE đánh dấu phiên BGP này là DOWN.
-
-3. Các RSE rút lại các tuyến ưu tiên (bao gồm cả tiền tố nội bộ và bên ngoài) mà tường lửa bị lỗi đang quảng bá.
-
-4. Quá trình hội tụ lại BGP diễn ra — các RSE chọn tuyến thay thế (dự phòng) được quảng bá bởi tường lửa còn hoạt động.
-
-5. Tuyến này trở thành tuyến active trong bảng điều khiển định tuyến của VPC.
-
-6. Lưu lượng tự động được chuyển hướng sang tường lửa dự phòng.
-
-{{< figurecaption src="/images/Img9-Blog2.png" caption="Hình 9. Tường lửa FW1 gặp sự cố dẫn đến lưu lượng được chuyển hướng sang FW2." >}}
-
-
-Phục hồi/Quay lại (Failback/Recovery)
-Khi tường lửa bị lỗi phục hồi và thiết lập lại các phiên BGP và BFD:
-
-1. Nó bắt đầu quảng bá lại các thuộc tính BGP ưu tiên.
-
-2. Các RSE phát hiện tuyến đường hấp dẫn hơn và chuyển lưu lượng trở lại tường lửa đã được phục hồi.
-
-Quá trình này có thể được tự động hóa hoặc điều khiển theo chính sách quản trị (ví dụ: chuyển đổi dự phòng ưu tiên hoặc không ưu tiên).
-
-Ưu điểm của việc sử dụng VPC Route Server với Failover dựa trên BGP + BFD:
-
-1. Hội tụ nhanh: Phát hiện sự cố dưới một giây nhờ BFD.
-
-2. Hoàn toàn tự động: Không cần script hay can thiệp thủ công.
-
-3. Mở rộng dễ dàng: Hoạt động trên nhiều tiền tố và instance.
-
-4. Điều khiển gốc đám mây: Tích hợp trực tiếp với lớp định tuyến của VPC.
-
-5. Chuẩn hóa giao thức: Sử dụng hành vi BGP theo tiêu chuẩn ngành.
-
-**Những điểm cần lưu ý**
-
-1. Quá trình hội tụ lại định tuyến có thể gây ra một khoảng thời gian gián đoạn. Nếu ứng dụng đã tích hợp với GWLB, hãy cân nhắc sử dụng GWLB làm lựa chọn đầu tiên cho việc chuyển đổi dự phòng ứng dụng.
-
-2. Đảm bảo tắt tính năng route propagation nếu bạn đang quản lý tuyến đường thủ công.
-
-3. Sử dụng BFD hoặc các công cụ phát hiện sự cố nhanh khác để hội tụ nhanh hơn.
-
-4. Đảm bảo các tuyến đường đối xứng nếu bạn thực hiện kiểm tra đường trả về (return-path inspection).
-
-5. Bật giám sát và cảnh báo để theo dõi tình trạng hệ thống, các thay đổi về tuyến đường và các sự kiện chuyển đổi dự phòng.
-
-**Kết luận**
-Trong bài viết này, chúng ta đã tìm hiểu cách sử dụng Amazon VPC Route Server để xây dựng các thiết kế mạng trong đám mây có khả năng mở rộng, chịu lỗi và an toàn, bằng cách bật tính năng chuyển đổi dự phòng cho các ứng dụng quan trọng và triển khai kiến trúc khả dụng cao. Chúng tôi đã giới thiệu hai mô hình kiến trúc khác nhau và cung cấp các chi tiết triển khai. VPC Route Server mở ra các khả năng định tuyến nâng cao trong AWS bằng cách tích hợp các giao thức BGP và BFD theo tiêu chuẩn ngành vào mạng VPC gốc. Để bắt đầu với VPC Route Server ngay hôm nay, bạn có thể tham khảo [tài liệu](https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html) và hướng dẫn  [Amazon VPC Route Server Get Started](https://docs.aws.amazon.com/vpc/latest/userguide/route-server-tutorial.html).
-
-Cập nhật: Vào ngày 15 tháng 9 năm 2025, phiên bản trước của bài viết có sử dụng các biểu tượng kiến trúc AWS đã lỗi thời. Bài viết đã được cập nhật để phản ánh bộ biểu tượng kiến trúc AWS hiện tại.
-
-Link bài viết gốc: (https://aws.amazon.com/blogs/networking-and-content-delivery/dynamic-routing-using-amazon-vpc-route-server/)
+Link bài viết gốc: (https://aws.amazon.com/blogs/hpc/accelerating-aerospace-innovation-high-performance-computing-hpc-on-amazon-web-services-aws/)

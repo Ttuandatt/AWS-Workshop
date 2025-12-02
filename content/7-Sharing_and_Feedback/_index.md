@@ -1,8 +1,7 @@
 +++
 title = "Sharing and Feedback"
-date = 2025-09-09T10:53:07+07:00
-weight = 5
-chapter = true
+weight = 7
+chapter = false
 pre = "<b>7. </b>"
 +++
 

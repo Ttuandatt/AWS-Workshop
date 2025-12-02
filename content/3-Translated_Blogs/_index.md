@@ -1,31 +1,30 @@
 +++
 title = "Translated Blogs"
-date = 2025-09-09T10:57:21+07:00
-weight = 5
+weight = 3
 chapter = true
 pre = "<b>3. </b>"
 +++
 
-**Blog 1:** [Hồ sơ quyết định kiến trúc (ADR): Thực tiễn tốt nhất để ra quyết định hiệu quả]({{% relref "3-Translated_Blogs/Blog_1/_index.md" %}}) (12/09/2025 - W1)
+**Blog 1:** [Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.]({{% relref "3-Translated_Blogs/Blog_1/_index.md" %}})
 
-**Blog 2:** [Định tuyến động sử dụng Máy chủ định tuyến AWS VPC]({{% relref "3-Translated_Blogs/Blog_2/_index.md" %}}) (14/09/2025 - W1)
+**Blog 2:** [Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)]({{% relref "3-Translated_Blogs/Blog_2/_index.md" %}})
 
-**Blog 3:** [Cách CommBank xây dựng nền tảng giao dịch CommSec luôn sẵn sàng và có khả năng vận hành bền vững.]({{% relref "3-Translated_Blogs/Blog_3/_index.md" %}})(18/09/2025 - W2)
+**Blog 3:** [Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI]({{% relref "3-Translated_Blogs/Blog_3/_index.md" %}})
 
-**Blog 4:** [Doing task C…](#)
+**Blog 4:** [Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên]({{% relref "3-Translated_Blogs/Blog_4/_index.md" %}})
 
-**Blog 5:** [Xây dựng Ứng dụng Đa Vùng với Các Dịch vụ AWS – Phần 1: Tính toán, Mạng và Bảo mật]({{% relref "3-Translated_Blogs/Blog_5/_index.md" %}}) (29/09/2025 - W4)
+**Blog 5:** [Ra Mắt Strands Agents 1.0: Việc điều phối Multi-Agent cho môi trường production đã được đơn giản hóa]({{% relref "3-Translated_Blogs/Blog_5/_index.md" %}})
 
-**Week 6:** [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 2: Dữ Liệu và Sao Chép]({{% relref "3-Translated_Blogs/Blog_6/_index.md" %}})(30/09/2025 - W4)
+**Blog 6:** [Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2]({{% relref "3-Translated_Blogs/Blog_6/_index.md" %}})
 
-**Week 7:** [Xây dựng Ứng Dụng Đa Vùng với Các Dịch vụ AWS – Phần 3: Quản lý và Giám sát Ứng dụng]({{% relref "3-Translated_Blogs/Blog_7/_index.md" %}})(30/09/2025 - W4)
+**Blog 7:** [Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect]({{% relref "3-Translated_Blogs/Blog_7/_index.md" %}})
 
-**Week 8:** [Doing task G…](#)
+**Blog 8:** [Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQS]({{% relref "3-Translated_Blogs/Blog_8/_index.md" %}})
 
-**Week 9:** [Doing task H…](#)
+**Blog 9:** [Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald]({{% relref "3-Translated_Blogs/Blog_9/_index.md" %}})
 
-**Week 10:** [Doing task I…](#)
+**Week 10:** [Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock]({{% relref "3-Translated_Blogs/Blog_10/_index.md" %}})
 
-**Week 11:** [Doing task J…](#)
+**Week 11:** [Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật]({{% relref "3-Translated_Blogs/Blog_11/_index.md" %}})
 
-**Week 12:** [Doing task K…](#)
+**Week 12:** [Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)]({{% relref "3-Translated_Blogs/Blog_12/_index.md" %}})

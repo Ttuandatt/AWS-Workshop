@@ -1,8 +1,7 @@
 +++
 title = "Self Assesment"
-date = 2025-09-09T10:55:07+07:00
-weight = 5
-chapter = true
+weight = 6
+chapter = false
 pre = "<b>6. </b>"
 +++
 

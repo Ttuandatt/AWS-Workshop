@@ -5,74 +5,64 @@ chapter = false
 pre = " <b> 3.3. </b>"
 +++
 
-# Cách CommBank xây dựng nền tảng giao dịch CommSec có độ sẵn sàng cao và vận hành bền vững
+# **Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI**
 
-*Kris Severijns, Aaron Bull, Henry Zhao, và Terence Lum – 19/08/2025*
+*Tác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025*  
+*Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to*
 
 ---
 
-CommSec, công ty môi giới chứng khoán trực tuyến hàng đầu tại Úc và là công ty con của Commonwealth Bank of Australia (CommBank), hỗ trợ hàng triệu khách hàng gia tăng tài sản thông qua việc đầu tư dễ dàng, tiện lợi và chi phí hợp lý vào cả thị trường trong nước lẫn quốc tế.
+### Giới thiệu
 
-CommSec đóng vai trò quan trọng trong hành trình tài chính của khách hàng, cung cấp các dịch vụ thiết yếu như nghiên cứu thị trường, quản lý danh mục và thực hiện giao dịch. Với kỳ vọng từ phía khách hàng về khả năng hoạt động 24/7, nền tảng này phải duy trì độ tin cậy ở mức cao nhất. Đồng thời, là tổ chức được quản lý bởi Ủy ban Chứng khoán và Đầu tư Úc (ASIC), CommSec phải bảo đảm khả năng vận hành bền vững và tuân thủ yêu cầu về lưu trữ dữ liệu tại Úc để giữ vững sự minh bạch và an toàn cho thị trường tài chính. Trong bài viết này, chúng ta sẽ cùng tìm hiểu cách CommSec tận dụng dịch vụ AWS để xây dựng một nền tảng giao dịch vừa ổn định, vừa hiệu năng cao, vừa đáp ứng quy định khắt khe và mang đến trải nghiệm vượt trội cho khách hàng.
+Các nhà phát triển làm việc với AWS nhận thấy [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.
 
-### Thách thức khi vận hành đa đám mây
+Với việc [phát hành](https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-q-developer-cli-agent-command-line/) [CLI agent](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html) mới được tăng cường của Amazon Q Developer, chúng ta đã thấy cách Q CLI có thể được sử dụng để chuyển đổi [phương pháp tiếp cận quy trình phát triển phần mềm](https://aws.amazon.com/blogs/devops/introducing-the-enhanced-command-line-interface-in-amazon-q-developer/). 
 
-CommSec là một trong những hệ thống trọng yếu đầu tiên của CommBank chuyển từ trung tâm dữ liệu on-premises sang môi trường public cloud. Năm 2015, CommBank bắt đầu dịch chuyển tầng web và mobile của CommSec, đến 2019 thì hoàn tất việc chuyển cả tầng ứng dụng. Là một trong những đơn vị tiên phong, CommSec ban đầu lựa chọn kiến trúc đa đám mây (active-active) để chứng minh tính bền vững của cloud, sử dụng AWS Asia Pacific (Sydney) Region như một miền lỗi (fault domain).
+Ngoài phát triển phần mềm, các nhà phát triển và đội ngũ DevOps có thể dành phần lớn thời gian của họ cho các tác vụ vận hành (operational tasks) như triển khai và kiểm thử mã của họ trên nhiều môi trường, bao gồm cả việc khắc phục sự cố các lỗi liên quan đến triển khai (deployment related failures) hoặc các vấn đề về tình trạng ứng dụng (application health issues). Các tính năng dựa trên tác nhân (agentic features) mới của Q CLI có thể được sử dụng để đơn giản hóa đáng kể quy trình này bằng cách giúp bạn xác định và giải quyết các vấn đề vận hành theo cách hiệu quả hơn.
 
-Tuy nhiên, việc vận hành đa đám mây mang đến nhiều khó khăn: duy trì song song hai pipeline triển khai, một mô hình vận hành trải rộng trên hai nền tảng cloud khác nhau, cùng quy trình failover phức tạp dựa vào cơ chế “witness” bên ngoài. Điều này không chỉ làm tăng chi phí vận hành mà còn kéo chậm tốc độ phát triển, hạn chế khả năng tận dụng dịch vụ native của cloud, khiến đổi mới sáng tạo bị bó hẹp.
+Khi khắc phục sự cố môi trường Elastic Beanstalk, Q CLI trở thành người bạn đồng hành không thể thiếu. Khi các môi trường hiển thị tình trạng sức khỏe bị suy giảm (degraded health) hoặc lỗi triển khai (deployment failures), các nhà phát triển có thể sử dụng Q CLI để nhanh chóng điều tra mà không cần phải điều hướng qua nhiều trang AWS console hoặc phân tích nhiều logs thủ công. 
 
-### Hướng giải pháp
+Ví dụ, khi đối mặt với lỗi triển khai, bạn có thể chạy q chat để bắt đầu một cuộc trò chuyện mới và mô tả vấn đề. Q CLI có thể giúp phân tích instance logs, kiểm tra cấu hình môi trường (environment configurations), và xác định các cấu hình sai (misconfigurations) trong ứng dụng. Nó có thể lấy các thông báo lỗi liên quan từ Elastic Beanstalk logs và đề xuất các biện pháp khắc phục cụ thể dựa trên các mẫu lỗi mà nó nhận ra.
 
-Khi AWS trở thành [nhà cung cấp cloud chiến lược của CommBank](https://www.commbank.com.au/articles/newsroom/2025/02/amazon-web-services-collaboration.html), đội ngũ CommSec đã tái kiến trúc toàn bộ tầng ứng dụng, web và mobile vào đầu năm 2025 để vận hành hoàn toàn trên AWS. Với bước chuyển đổi này, họ đã thiết lập một “ranh giới cô lập sự cố” [(fault isolation boundary)](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/abstract-and-introduction.html) mới, đơn giản hóa kiến trúc nhưng vẫn giữ được mức độ bền vững tương đương giải pháp đa đám mây trước đây.
+Khi giải quyết các vấn đề về tình trạng sức khỏe (health issues), các nhà phát triển có thể yêu cầu Q CLI kiểm tra trạng thái môi trường, mức sử dụng tài nguyên (resource utilization) và các sự kiện gần đây. Nó có thể xác định xem một ứng dụng có đang gặp vấn đề thiếu bộ nhớ (out of memory problems), vấn đề kết nối (connectivity issues), hay lỗi liên quan đến dependency hay không. Q CLI cũng có thể kiểm tra application logs để tìm các lỗi lặp lại có thể gây ra suy giảm tình trạng sức khỏe (health degradation). 
 
-Trong thiết kế cũ, nếu một cloud provider hoặc trung tâm dữ liệu gặp sự cố, lưu lượng sẽ được chuyển sang nền tảng còn lại. Với kiến trúc mới chỉ trên AWS, CommSec chọn [Availability Zone (AZ)](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/availability-zones.html) làm ranh giới cô lập sự cố. Nhờ Amazon [Application Recovery Controller (ARC)](https://aws.amazon.com/application-recovery-controller/) [zonal shift](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html), họ có thể chuyển lưu lượng ra khỏi AZ gặp sự cố để giảm thiểu tác động đến khách hàng, đồng thời vẫn đáp ứng yêu cầu về sự tách biệt cả vật lý và logic giữa các AZ trong một Region. [ARC zonal shift](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html) được tích hợp sẵn với load balancer, cho phép điều hướng lưu lượng mà không cần phụ thuộc vào [control plane](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/control-planes-and-data-planes.html). Ngoài ra, nó còn giúp quản lý tình huống “gray failure” (hệ thống bị lỗi một phần) để giảm thiểu ảnh hưởng tới khách hàng.
+Điều mà các nhà phát triển đánh giá cao nhất là cách Q CLI kết nối các điểm giữa các dịch vụ AWS khác nhau. Nếu một môi trường Elastic Beanstalk gặp sự cố do vấn đề cấu hình Amazon VPC cơ bản hoặc vấn đề quyền Amazon S3, Q CLI có thể xác định các kết nối này và cung cấp các giải pháp toàn diện (holistic solutions).
 
-Việc hợp nhất hệ thống lên AWS và tận dụng ARC zonal shift để xử lý sự cố đã giúp đội ngũ CommSec đạt được nhiều lợi ích quan trọng:
+Việc tiết kiệm thời gian là rất đáng kể – những gì trước đây mất hàng giờ điều tra trên nhiều trang AWS console giờ đây chỉ mất vài phút với các truy vấn Q CLI có mục tiêu. Điều này đã cải thiện đáng kể khả năng của các nhà phát triển trong việc duy trì các môi trường khỏe mạnh và nhanh chóng giải quyết các vấn đề khi chúng phát sinh. 
 
-- Khả năng failover tích hợp sẵn từ ARC zonal shift cho phép họ xây dựng quy trình tự động và toàn diện để nhanh chóng chuyển hướng lưu lượng ra khỏi một Availability Zone gặp sự cố.
+Dưới đây, chúng tôi sẽ hướng dẫn bạn một số ví dụ về cách bạn có thể sử dụng Q CLI để khắc phục một số sự cố mà bạn có thể gặp phải khi quản lý môi trường Elastic Beanstalk.
 
-- Playbook chi tiết được xây dựng và kiểm thử định kỳ nhằm đảm bảo các quy trình failover luôn hiệu quả và đội ngũ vận hành luôn sẵn sàng.
 
-- Pipeline triển khai tiêu chuẩn hóa cùng cấu hình đơn giản hơn giúp việc cập nhật hệ điều hành và triển khai code nhanh gấp đôi so với trước.
+### Hướng dẫn Giải pháp
 
-- Giảm 25% dung lượng cơ bản khi vận hành nền tảng CommSec trên ba Availability Zone của AWS, so với mô hình cũ phải duy trì bốn stack trên hai cloud, từ đó cắt giảm đáng kể chi phí vận hành.
+**Điều kiện Tiên quyết**
 
-Sơ đồ sau minh họa kiến trúc giải pháp.
+Nếu bạn muốn làm theo trên máy tính của riêng mình, vui lòng đảm bảo bạn hoàn thành các điều kiện tiên quyết sau:
 
-{{< figurecaption src="/images/Img1-Blog3.png" caption="" >}}
+1. Một tài khoản AWS có quyền truy cập Elastic Beanstalk
+2. Sự quen thuộc cơ bản với các [khái niệm](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.html) Elastic Beanstalk (environments, applications, deployments)
+3. AWS CLI [được cài đặt](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) và cấu hình với các [quyền](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html) thích hợp để truy cập tài nguyên Elastic Beanstalk, và thu thập logs
+4. AWS Q Developer CLI [được cài đặt](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html) và thiết lập
+5. EB CLI [được cài đặt](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) và thiết lập (tùy chọn)
+6. Các môi trường web server Elastic Beanstalk đã [được tạo](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.environments.html) để khắc phục sự cố
+Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elastic Beanstalk cụ thể với Q CLI. Tất cả các kịch bản dưới đây đều được kiểm tra với Amazon Q Developer CLI bằng gói đăng ký [Pro tier](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-pro-tier.html) vì nó cung cấp giới hạn yêu cầu cao hơn (higher request limits), nhưng điều này không bắt buộc cho mục đích của bản demo này.
 
-Nhóm CommSec đã triển khai một số cải tiến nhằm tăng cường khả năng chịu lỗi:
+**Khắc phục sự cố tình trạng môi trường**
 
-- Do việc scale-in và scale-out diễn ra nhiều lần mỗi ngày, quá trình mở rộng cần đảm bảo tính ổn định cao nhất. Nhóm CommSec đã loại bỏ các phụ thuộc vào tài nguyên bên ngoài trong toàn bộ quy trình bootstrap khi scale-out bằng cách lưu trữ và truy xuất các tệp nhị phân ứng dụng trực tiếp từ [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) trong cùng tài khoản AWS.
+Hãy xem xét một môi trường Elastic Beanstalk đang chạy Node.js 22 trên Amazon Linux 2023, nơi chúng ta sẽ triển khai một phiên bản ứng dụng mới. Sau khi triển khai một phiên bản ứng dụng mới vào môi trường Elastic Beanstalk dựa trên Node.js của chúng ta, chúng tôi nhận thấy rằng tình trạng sức khỏe (health status) của nó đã chuyển sang trạng thái “Warning” (Cảnh báo) với thông báo sau hiển thị trong các sự kiện môi trường (environment events):
 
-- Vì lưu lượng truy cập biến động mạnh, đặc biệt vào thời điểm mở cửa thị trường (lượng truy cập của CommSec thường tăng gấp ba lần chỉ trong khoảng 9:59 đến 10:02 sáng), nhóm đã thiết lập [Load Balancer Capacity Unit (LCU) reservations](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/capacity-unit-reservation.html) cho các load balancer ở tầng web. Cách này giúp đảm bảo [Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/application-load-balancer/) có đủ dung lượng ngay từ đầu phiên giao dịch, thay vì phải phụ thuộc vào cơ chế scaling phản ứng đối với các đợt tăng đột biến đã biết trước.
+```
+100% of requests failing with HTTP 5xx errors
+```
 
-- Họ cũng triển khai cơ chế kiểm tra sức khỏe (health check) của ALB để phát hiện các lỗi nghiêm trọng, từ đó tự động loại bỏ các instance gặp sự cố khỏi target group. Lưu lượng truy cập sẽ được chuyển hướng khỏi các instance lỗi, đồng thời hệ thống sẽ gửi cảnh báo để đội vận hành kịp thời điều tra và xử lý.
+{{< figurecaption src="/images/img1-blog3.png" caption="Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe" >}}
 
-- Ngoài ra, các kết nối [AWS Direct Connect](https://aws.amazon.com/directconnect/) mới được thiết lập từ AWS đến Australian Liquidity Centre (trung tâm đặt hạ tầng chính của Sở giao dịch chứng khoán Úc – ASX, nơi vận hành các hệ thống giao dịch, thanh toán và bù trừ) nhằm nâng cao độ tin cậy trong kết nối tới các thị trường tài chính, bao gồm cả ASX và CBOE.
 
-### ARC zonal shift để giúp giảm thiểu sự cố
 
-Năm 2023, AWS đã ra mắt [zonal shift](https://aws.amazon.com/about-aws/whats-new/2023/01/general-availability-amazon-route-53-application-recovery-controller-zonal-shift/), một phần của [Amazon Application Recovery Controller](https://aws.amazon.com/application-recovery-controller/). Với zonal shift, bạn có thể chuyển hướng lưu lượng ứng dụng ra khỏi một Availability Zone theo cách thức highly available cho các tài nguyên được hỗ trợ. Hành động này giúp nhanh chóng khôi phục một ứng dụng khi một Availability Zone gặp sự cố, giảm thời gian và mức độ ảnh hưởng đến ứng dụng do các sự kiện như mất điện, hỏng phần cứng hoặc phần mềm. Zonal shift hỗ trợ [Application và Network Load Balancers](https://aws.amazon.com/elasticloadbalancing/), [Amazon EC2 Auto Scaling Groups](https://aws.amazon.com/ec2/autoscaling/), và [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/).
+Thông báo sự kiện này có thể là kết quả của một số vấn đề, bao gồm nhưng không giới hạn ở lỗi ứng dụng Node.js, sự cố cấu hình reverse proxy, vấn đề sử dụng tài nguyên (resource utilization issues) v.v.. 
 
-Nhóm CommSec đã bật ARC zonal shift trên các ALB cho tầng web và ứng dụng của họ với [cross-zone load balancing](https://aws.amazon.com/blogs/networking-and-content-delivery/using-cross-zone-load-balancing-with-zonal-shift/) được bật. Khi bắt đầu, zonal shift thực hiện hai hành động. Thứ nhất, nó gỡ bỏ địa chỉ IP của node load balancer trong Availability Zone được chỉ định khỏi DNS, vì vậy các truy vấn mới sẽ không được phân giải đến endpoint đó. Điều này ngăn các yêu cầu mới từ client được gửi đến node đó. Thứ hai, nó chỉ thị cho các node load balancer trong các Availability Zone khác không định tuyến yêu cầu đến các target trong Availability Zone bị sự cố. Cross-zone load balancing vẫn được sử dụng trong các Availability Zone còn lại trong suốt quá trình zonal shift, như hình dưới đây.
+Hãy sử dụng Q CLI để giúp chúng ta điều tra thêm. Chúng ta sẽ bắt đầu một cuộc trò chuyện mới với agent bằng cách chạy ```q chat```, và hỏi câu hỏi sau:
 
-Sau khi sự cố được giải quyết và ứng dụng hoạt động trở lại trong tất cả các Availability Zone, nhóm CommSec hủy zonal shift, và lưu lượng được phân phối lại trên cả ba Availability Zone.
+```Why is my beanstalk environment nodejs-app in us-east-1 unhealthy? Check the logs if required, and recommend steps to resolve the issue``` (Tại sao môi trường beanstalk nodejs-app của tôi ở us-east-1 không khỏe mạnh? Kiểm tra các logs nếu cần, và đề xuất các bước để giải quyết vấn đề)
 
-{{< figurecaption src="/images/Img2-Blog3.png" caption="" >}}
-
-### Lợi ích của ARC zonal shift
-
-ARC zonal shift giúp các tổ chức duy trì SLA về tính khả dụng cao hơn, giảm chi phí vận hành liên quan đến các quy trình chuyển đổi dự phòng thủ công nhiều bước, và giảm thiểu thất thoát doanh thu do gián đoạn dịch vụ. Tính đơn giản của ARC zonal shift giúp các nhóm có thể thực hiện thường xuyên các bài kiểm thử quy trình di tản Availability Zone theo yêu cầu, với mức rủi ro thấp. Khả năng thực hiện xác thực định kỳ đảm bảo các quy trình failover vẫn đáng tin cậy và xây dựng sự tự tin của tổ chức trong khả năng khôi phục sau thảm họa.
-
-*“ARC zonal shift là cách hiệu quả nhất để CommSec sử dụng các dịch vụ AWS trong khi vẫn đáp ứng yêu cầu về khả năng chịu lỗi. Nó mang lại một giải pháp sẵn có, dễ dàng hơn so với việc tự chúng tôi triển khai một giải pháp khôi phục Availability Zone. Hy vọng rằng chúng tôi sẽ không bao giờ phải dùng đến nó, nhưng việc kiểm thử định kỳ khả năng chịu lỗi đảm bảo rằng nó luôn sẵn sàng và sẽ hoạt động nếu chúng tôi cần.”*
-
-– Henry Zhao, Kỹ sư phần mềm tại CommBank.
-
-### Kết luận
-
-Bằng việc sử dụng các dịch vụ AWS và triển khai kiến trúc Multi-AZ mạnh mẽ, nền tảng giao dịch của CommSec tiếp tục đáp ứng những nhu cầu khắt khe của nhà môi giới trực tuyến hàng đầu tại Úc. Sự kết hợp giữa các khả năng của ARC zonal shift, cấu hình load balancer được tối ưu hóa, cùng với các runbook và quy trình vận hành toàn diện đã giúp CommSec duy trì độ tin cậy vượt trội trong khi phục vụ hàng triệu khách hàng. Hành trình của CommSec cho thấy cách mà những quyết định kiến trúc thận trọng và các dịch vụ được quản lý bởi AWS có thể giúp các tổ chức đạt được cả vận hành xuất sắc lẫn trải nghiệm khách hàng vượt trội cho những ứng dụng tài chính quan trọng.
-
-Để tìm hiểu thêm, hãy tham khảo AWS Fault Isolation Boundaries và Amazon Application Recovery Controller.
-
-Link bài viết gốc: (https://aws.amazon.com/blogs/architecture/how-commbank-made-their-commsec-trading-platform-highly-available-and-operationally-resilient/)
+{{< figurecaption src="/images/gif1-blog3" caption="" >}}
