@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Proposal :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/2-proposal/index.html</link>
     <description>Multi-Region SaaS Task Management Platform&#xD;A Global AWS Solution for Low-Latency, Resilient Collaboration&#xD;1. Executive Summary&#xD;The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency, high availability, and regional scalability across Asia-Pacific.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

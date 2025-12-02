@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Week 2 Worklog :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-week_2/index.html</link>
     <description>Week 2 Objectives&#xD;Study Module 1 practicing VPC and EC2 Learn and practice configure VPC, EC2 and their related features Assign tasks for team project Update worklog structure Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups - Decide project scopes, assgign tasks 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project - Update worklog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

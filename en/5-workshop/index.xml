@@ -2,11 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
-    <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/index.html</link>
+    <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;This project is …..&#xA;Content&#xD;1. Workshop Overview&#xA;2. Prerequisite&#xA;3. Deploy Flow&#xA;4. Clean Up&#xA;5. Mystic Skills</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Workshop Overview</title>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prerequisite</title>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deploy Flow</title>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Clean Up</title>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mystic Skills</title>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</guid>
+      <description>1. Hugo Commands&#xD;Command to create multiple folders at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folders = @( &#34;5.1-Workshop_Overview&#34;, &#34;5.2-Prerequisite&#34;, &#34;5.3-Deploy_Flow&#34;, &#34;5.4-Clean_Up&#34; ) foreach ($f in $folders) { $fullPath = Join-Path $basePath $f New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null }&#xD;Command to create one folder at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folderName = &#34;5.1-Workshop_Overview&#34; # &lt;-- Change name here $fullPath = Join-Path $basePath $folderName New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null&#xD;Command to 2. Git Commands&#xD;2.1 Check repository status</description>
+    </item>
   </channel>
 </rss>

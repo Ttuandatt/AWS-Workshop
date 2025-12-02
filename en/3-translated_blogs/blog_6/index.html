@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
@@ -12,7 +12,7 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
     <meta name="twitter:title" content="Blog 6 :: Internship Report">
     <meta name="twitter:description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
 Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html">
+    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_6/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 6 :: Internship Report">
     <meta property="og:description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
@@ -25,34 +25,34 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
     <meta itemprop="wordCount" content="2311">
     <title>Blog 6 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_6/index.xml" rel="alternate" type="application/rss+xml" title="Blog 6 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1763479394" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1763479394" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764560889" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/search.js?1764560889" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1763479394";
+      window.relearn.index_js_url="../../../searchindex.en.js?1764560889";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1763479394" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764560889" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763479394" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1763479394" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1763479394" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1763479394" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1763479394" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764560889" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764560889" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764560889" rel="stylesheet">
+    <link href="../../../css/theme.css?1764560889" rel="stylesheet">
+    <link href="../../../css/format-html.css?1764560889" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/3-translated_blogs\/blog_6\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -96,7 +96,7 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1763479394" rel="stylesheet">
+    <link href="../../../AWS-Workshop/css/custom.css?1764560889" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_6/index.html">
     <div id="R-body" class="default-animation">
@@ -206,8 +206,8 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h1><p><em>Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia</em> | 15/07/2025 | <a href="https://aws.amazon.com/blogs/hpc/category/high-performance-computing/" rel="external">High Performance Computing</a>, <a href="https://aws.amazon.com/blogs/hpc/category/industries/life-sciences/" rel="external">Life Sciences</a>, <a href="https://aws.amazon.com/blogs/hpc/category/post-types/partner-solutions/" rel="external">Partner solutions</a></p>
 <p>Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)</p>
-<p><a href="#R-image-6fce1bb819756a6aef1585591e9a3b11" class="lightbox-link"><img alt="image1" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6fce1bb819756a6aef1585591e9a3b11"><img alt="image1" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png"></a></p>
+<p><a href="#R-image-09167f370ddedf8f8449df978790607a" class="lightbox-link"><img alt="image1" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-09167f370ddedf8f8449df978790607a"><img alt="image1" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png"></a></p>
 <p>Việc phân tích lượng dữ liệu genomic và multiomic ngày càng gia tăng đòi hỏi các giải pháp tính toán hiệu quả, có khả năng mở rộng và tiết kiệm chi phí. Amazon Web Services (AWS) tiếp tục hỗ trợ các workload này thông qua các dịch vụ tính toán tăng tốc FPGA như các <a href="https://aws.amazon.com/ec2/instance-types/f2/" rel="external">instance Amazon EC2 F2</a>.</p>
 <p>Giải pháp phân tích thứ cấp <a href="https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis.html" rel="external">DRAGEN (Dynamic Read Analysis for GENomics)</a> của Illumina đã khẳng định vị thế là một trong những giải pháp phân tích thứ cấp hàng đầu cho dữ liệu sequencing thế hệ mới, cung cấp các thuật toán được tối ưu hóa cao cho phân tích genomic và triển khai tăng tốc phần cứng cho các pipeline phân tích toàn diện về genomics và multiomics, bao gồm DNA germline, DNA somatic, cũng như phân tích RNA ở mức bulk và single-cell, proteomics, spatial, và nhiều hơn nữa.</p>
 <p>DRAGEN chạy nguyên bản trên các instance EC2 F2 và cung cấp cho khách hàng một phương pháp nhanh chóng để phân tích tập dữ liệu sinh học của họ. Việc di chuyển sang F2 được đơn giản hóa vì cùng một DRAGEN AMI được sử dụng cho cả F1 và F2, và kết quả phân tích sẽ tương đương nhau. Trong bài viết này, chúng tôi sẽ thảo luận về các đặc tính hiệu năng của DRAGEN trên các môi trường tính toán AWS khác nhau, cũng như cách triển khai <a href="https://investor.illumina.com/news/press-release-details/2025/Illumina-DRAGEN-v4-4-powers-clinical-oncology-research-and-multiomic-applications/default.aspx" rel="external">phiên bản DRAGEN v4.4 mới ra mắt gần đây</a> trên các instance Amazon EC2 F2.</p>
@@ -279,11 +279,11 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
 <p>Phân tích WGS đầy đủ, bao gồm alignment, small variant calling, calling of CNVs, SVs, repeat expansions, và variant annotation. Phân tích DRAGEN trên f2.6xlarge đạt tốc độ <strong>nhanh gấp 2 lần</strong> và <strong>chỉ tốn 30% chi phí compute EC2</strong> so với f1.4xlarge.</p>
 </li>
 </ul>
-<p><a href="#R-image-609e6ead93fd808dce042a04daa5337d" class="lightbox-link"><img alt="image2" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-609e6ead93fd808dce042a04daa5337d"><img alt="image2" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png"></a></p>
+<p><a href="#R-image-5c8516209b60632a5af242bc0ee0a3a8" class="lightbox-link"><img alt="image2" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5c8516209b60632a5af242bc0ee0a3a8"><img alt="image2" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png"></a></p>
 <p><em>Hình 1: Instance f2.6xlarge nhanh hơn 1.5 lần trong Phân tích WGS cơ bản và nhanh hơn 2.1 lần trong Phân tích WGS đầy đủ so với f1.4xlarge.</em></p>
-<p><a href="#R-image-134909ca4a4dff02f2984c2b682585e6" class="lightbox-link"><img alt="image3" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-134909ca4a4dff02f2984c2b682585e6"><img alt="image3" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png"></a></p>
+<p><a href="#R-image-63a61123414daf86f40f600db0bf0f39" class="lightbox-link"><img alt="image3" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-63a61123414daf86f40f600db0bf0f39"><img alt="image3" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png"></a></p>
 <p><em>Hình 2: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 40% chi phí trên f1.4xlarge cho Phân tích WGS cơ bản và bằng 30% chi phí trên f1.4xlarge cho Phân tích WGS đầy đủ.</em></p>
 <h2 id="so-sánh-hiệu-năng-về-tốc-độ-và-chi-phí-phân-tích-tumor-normal">
   So sánh hiệu năng về tốc độ và chi phí: Phân tích Tumor-Normal
@@ -299,11 +299,11 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
 <ul>
 <li>Phân tích Tumor-Normal, bao gồm alignment, small variant calling và calling CNVs/SVs. Phân tích bằng DRAGEN trên f2.6xlarge đạt tốc độ <strong>nhanh hơn 1.7 lần</strong> và <strong>chỉ tốn 35% chi phí compute EC2</strong> so với f1.4xlarge.</li>
 </ul>
-<p><a href="#R-image-afc56c66564a67cf1136abefad31d185" class="lightbox-link"><img alt="image4" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-afc56c66564a67cf1136abefad31d185"><img alt="image4" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png"></a></p>
+<p><a href="#R-image-431d5f94b8d2cf8eee6b0a14cd8757a9" class="lightbox-link"><img alt="image4" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-431d5f94b8d2cf8eee6b0a14cd8757a9"><img alt="image4" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png"></a></p>
 <p><em>Hình 3: Instance f2.6xlarge nhanh hơn 1.7 lần so với f1.4xlarge trong Phân tích Tumor-Normal.</em></p>
-<p><a href="#R-image-b45f29d2f73e08aedbd8755505d2c868" class="lightbox-link"><img alt="image5" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b45f29d2f73e08aedbd8755505d2c868"><img alt="image5" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png"></a></p>
+<p><a href="#R-image-66cb6cf9ea736f7226ce2e77beb2dc96" class="lightbox-link"><img alt="image5" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-66cb6cf9ea736f7226ce2e77beb2dc96"><img alt="image5" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png"></a></p>
 <p><em>Hình 4: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 35% chi phí trên f1.4xlarge cho Phân tích Tumor-Normal WGS.</em></p>
 <h2 id="các-lợi-ích-khác">
   Các lợi ích khác
@@ -433,7 +433,7 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_11/index.html"> <b> 3.11. </b>Blog 11</a></li>
             <li class="" data-nav-url="../../../en/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../en/3-translated_blogs/blog_12/index.html"> <b> 3.12. </b>Blog 12</a></li></ul></li>
             <li class="" data-nav-url="../../../en/4-events_participated/index.html"><a class="padding" href="../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a></li>
-            <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a></li>
+            <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
             <li class="" data-nav-url="../../../en/7-sharing_and_feedback/index.html"><a class="padding" href="../../../en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
           </ul>
@@ -481,8 +481,8 @@ Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1763479394" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1763479394" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764560889" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.js?1764560889" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 12 :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_12/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_12/index.html</link>
     <description>Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)&#xD;Bởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan&#xA;Ngày: 01 tháng 8 năm 2025&#xA;Thể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_12/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_12/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
