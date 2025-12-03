@@ -7,44 +7,7 @@ pre = "<b>5.5. </b>"
 
 
 ### **1. Hugo Commands**
-- Command to create multiple folders at a time
-```bash
-$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
 
-$folders = @(
-    "5.1-Workshop_Overview",
-    "5.2-Prerequisite",
-    "5.3-Deploy_Flow",
-    "5.4-Clean_Up"
-)
-
-foreach ($f in $folders) {
-    $fullPath = Join-Path $basePath $f
-    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-    New-Item -ItemType File -Path (Join-Path $fullPath "index.md") -Force | Out-Null
-}
-```
-
-
-- Command to create one folder at a time
-```bash
-$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
-$folderName = "5.1-Workshop_Overview"   # <-- Change name here
-
-$fullPath = Join-Path $basePath $folderName
-New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-New-Item -ItemType File -Path (Join-Path $fullPath "index.md") -Force | Out-Null
-```
-
-- Command to read the whole project structure
-```bash
-tree /f /a
-```
-
-- Command to read a directory structure
-```bash
-tree content/1-Worklog/1.1-PhanCanhTuanDat /F
-```
 
 
 
@@ -286,4 +249,46 @@ foreach ($userFolder in $userFolders) {
 }
 
 Write-Host "`n=== COMPLETED! PLEASE RUN: hugo server -D ===" -ForegroundColor Green
+```
+
+- Command to create multiple folders at a time
+```bash
+$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
+
+$folders = @(
+    "5.1-Workshop_Overview",
+    "5.2-Prerequisite",
+    "5.3-Deploy_Flow",
+    "5.4-Clean_Up"
+)
+
+foreach ($f in $folders) {
+    $fullPath = Join-Path $basePath $f
+    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+    New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
+}
+```
+
+
+
+
+
+- Command to create one folder at a time
+```bash
+$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
+$folderName = "5.1-Workshop_Overview"   # <-- Change name here
+
+$fullPath = Join-Path $basePath $folderName
+New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
+```
+
+- Command to read the whole project structure
+```bash
+tree /f /a
+```
+
+- Command to read a directory structure
+```bash
+tree content/1-Worklog/1.1-PhanCanhTuanDat /F
 ```

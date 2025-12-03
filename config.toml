@@ -21,6 +21,10 @@ home = [ "HTML", "RSS", "JSON"]
   themeVariant = ["relearn-light", "relearn-dark"]
   alwaysShowThemeSwitcher = true
   devBaseURL = "http://localhost:1313"
+  # Số 4 nghĩa là menu sẽ tự động hiển thị sâu đến cấp 4
+  collapseLevel = 4
+  # THÊM DÒNG NÀY ĐỂ KÍCH HOẠT CUSTOM CSS
+  customCSS = ["css/custom.css"]  # <--- QUAN TRỌNG
 
 # ------------------------------
 # Ngôn ngữ
@@ -37,47 +41,12 @@ home = [ "HTML", "RSS", "JSON"]
     weight = 2
     languageName = "Tiếng Việt"
 
+
+
 # ------------------------------
-# Menu
+# Cho phép Render HTML (thẻ <b>, <i>...)
 # ------------------------------
-[menu]
-
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-
-  [[menu.main]]
-    name = "Worklog"
-    url = "/worklog/"
-    weight = 2
-
-  [[menu.main]]
-    name = "Proposal"
-    url = "/proposal/"
-    weight = 3
-
-  [[menu.main]]
-    name = "Translated Blogs"
-    url = "/translated-blogs/"
-    weight = 4
-
-  [[menu.main]]
-    name = "Events Participated"
-    url = "/events/"
-    weight = 5
-
-  [[menu.main]]
-    name = "Workshop"
-    url = "/workshop/"
-    weight = 6
-
-  [[menu.main]]
-    name = "Self Assessment"
-    url = "/self-assessment/"
-    weight = 7
-
-  [[menu.main]]
-    name = "Sharing and Feedback"
-    url = "/feedback/"
-    weight = 8
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
