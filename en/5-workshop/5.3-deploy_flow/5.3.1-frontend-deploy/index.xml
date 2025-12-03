@@ -3,7 +3,7 @@
   <channel>
     <title>Frontend Deploy :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
-    <description>HEHEHEHE THIS IS FRONTEND DEPLOY</description>
+    <description>HƯỚNG DẪN DEPLOY FRONTEND MULTI-REGION&#xD;Project: SGU Task Management Web Application&#xA;Domain: sgutodolist.com&#xA;Frontend: ReactJS&#xA;Architecture: Multi-Region (Singapore + Virginia) + CloudFront CDN&#xA;Thời gian thực hiện: ~60-90 phút&#xA;MỤC LỤC&#xD;Prerequisites&#xA;Setup Domain &amp; Route 53&#xA;Prepare Buckets (Singapore + Virginia)</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.xml" rel="self" type="application/rss+xml" />
@@ -12,28 +12,28 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <description>1. PREREQUISITES&#xD;Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Đối với tài khoản Free Tier thì không được hỗ trợ tính năng đăng ký tên miền của dịch vụ Route 53, vì vậy project này đăng ký tên miền một nhà cung cấp tên miền khác và host tên miền ở Route Tài khoản AWS</description>
     </item>
     <item>
       <title>Setup Domain &amp; Route 53</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <description>2. SETUP DOMAIN &amp; ROUTE 53&#xD;BƯỚC 2.1: Tạo Hosted Zone trong Route 53&#xD;Đăng nhập AWS Console&#xA;Tìm và vào Route 53&#xA;Click Hosted zones (menu bên trái)&#xA;Click Create hosted zone&#xA;Điền thông tin:&#xA;Domain name: sgutodolist.com</description>
     </item>
     <item>
       <title>Prepare Buckets</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <description>3. PREPARE BUCKETS (SINGAPORE + VIRGINIA)&#xD;BƯỚC 3.1: Build ReactJS Project&#xD;3.1.1. Cấu hình package.json&#xD;Mở package.json, thêm/sửa dòng:&#xA;&#34;name&#34;: &#34;aws-todolist&#34;, &#34;version&#34;: &#34;0.1.0&#34;, &#34;homepage&#34;: &#34;.&#34;, &#34;private&#34;: true, ... }&#xD;3.1.2. Build Project&#xD;npm run build&#xD;Kiểm tra thư mục build/ có đầy đủ files.</description>
     </item>
     <item>
       <title>Cross-Region Replication</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <description>4. SETUP CROSS-REGION REPLICATION (CRR)&#xD;BƯỚC 4.1: Tạo IAM Policy&#xD;Vào IAM &gt; Policies &gt; Create policy&#xA;Tab JSON, paste:&#xA;{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }&#xD;Next</description>
     </item>
     <item>
       <title>Multi-Region Access Point</title>

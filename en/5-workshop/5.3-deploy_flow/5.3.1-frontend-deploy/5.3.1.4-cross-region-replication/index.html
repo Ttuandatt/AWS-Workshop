@@ -5,42 +5,50 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="description" content="4. SETUP CROSS-REGION REPLICATION (CRR)BƯỚC 4.1: Tạo IAM PolicyVào IAM &gt; Policies &gt; Create policy
+Tab JSON, paste:
+{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }Next">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Cross-Region Replication :: Internship Report">
-    <meta name="twitter:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="twitter:description" content="4. SETUP CROSS-REGION REPLICATION (CRR)BƯỚC 4.1: Tạo IAM PolicyVào IAM &gt; Policies &gt; Create policy
+Tab JSON, paste:
+{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }Next">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Cross-Region Replication :: Internship Report">
-    <meta property="og:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta property="og:description" content="4. SETUP CROSS-REGION REPLICATION (CRR)BƯỚC 4.1: Tạo IAM PolicyVào IAM &gt; Policies &gt; Create policy
+Tab JSON, paste:
+{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }Next">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Cross-Region Replication :: Internship Report">
-    <meta itemprop="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta itemprop="wordCount" content="5">
+    <meta itemprop="description" content="4. SETUP CROSS-REGION REPLICATION (CRR)BƯỚC 4.1: Tạo IAM PolicyVào IAM &gt; Policies &gt; Create policy
+Tab JSON, paste:
+{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }Next">
+    <meta itemprop="wordCount" content="363">
     <title>Cross-Region Replication :: Internship Report</title>
     <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.xml" rel="alternate" type="application/rss+xml" title="Cross-Region Replication :: Internship Report">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764736311" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.min.js?1764736311" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764743663" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.min.js?1764743663" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.en.js?1764736311";
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1764743663";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764736311" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764743663" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764736311" rel="stylesheet">
-    <link href="../../../../../css/theme.min.css?1764736311" rel="stylesheet">
-    <link href="../../../../../css/format-html.min.css?1764736311" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764743663" rel="stylesheet">
+    <link href="../../../../../css/theme.min.css?1764743663" rel="stylesheet">
+    <link href="../../../../../css/format-html.min.css?1764743663" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -92,7 +100,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1764736311" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1764743663" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html">
     <div id="R-body" class="default-animation">
@@ -124,9 +132,13 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#4-setup-cross-region-replication-crr">4. SETUP CROSS-REGION REPLICATION (CRR)</a>
       <ul>
-        <li><a href="#hehehehe-this-is-deploy-flow">HEHEHEHE THIS IS DEPLOY FLOW</a></li>
+        <li><a href="#bước-41-tạo-iam-policy">BƯỚC 4.1: Tạo IAM Policy</a></li>
+        <li><a href="#bước-42-tạo-iam-role">BƯỚC 4.2: Tạo IAM Role</a></li>
+        <li><a href="#bước-43-tạo-replication-rule">BƯỚC 4.3: Tạo Replication Rule</a></li>
+        <li><a href="#bước-44-replicate-existing-objects">BƯỚC 4.4: Replicate Existing Objects</a></li>
+        <li><a href="#bước-45-verify-replication">BƯỚC 4.5: Verify Replication</a></li>
       </ul>
     </li>
   </ul>
@@ -186,8 +198,8 @@
 
 <h1 id="cross-region-replication">Cross-Region Replication</h1>
 
-<h3 id="hehehehe-this-is-deploy-flow">
-  HEHEHEHE THIS IS DEPLOY FLOW
+<h2 id="4-setup-cross-region-replication-crr">
+  4. SETUP CROSS-REGION REPLICATION (CRR)
 
 
 
@@ -196,7 +208,327 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h2><h3 id="bước-41-tạo-iam-policy">
+  BƯỚC 4.1: Tạo IAM Policy
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p>Vào <strong>IAM</strong> &gt; <strong>Policies</strong> &gt; <strong>Create policy</strong></p>
+</li>
+<li>
+<p>Tab <strong>JSON</strong>, paste:</p>
+</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Statement&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3ReplicationSourcePermissions&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Action&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetReplicationConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:ListBucket&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Resource&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::sgutodolist-frontend-sg&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3ReplicationSourceObjectPermissions&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Action&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetObjectVersionForReplication&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetObjectVersionAcl&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetObjectVersionTagging&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetObjectRetention&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:GetObjectLegalHold&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Resource&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3ReplicationDestinationPermissions&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Action&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:ReplicateObject&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:ReplicateDelete&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:ReplicateTags&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;s3:ObjectOwnerOverrideToBucketOwner&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Resource&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
+<ol start="3">
+<li>
+<p><strong>Next</strong></p>
+</li>
+<li>
+<p><strong>Policy name</strong>: S3-CRR-Policy-Frontend</p>
+</li>
+<li>
+<p><strong>Create policy</strong></p>
+</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe10_1.jpg" alt="Hình 10.1. Tạo IAM Policy cho S3 Replication">
+    <figcaption><i>Hình 10.1. Tạo IAM Policy cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe10_2.jpg" alt="Hình 10.2. Tạo IAM Policy cho S3 Replication">
+    <figcaption><i>Hình 10.2. Tạo IAM Policy cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<p>Kết quả policy được tạo</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe10_3.jpg" alt="Hình 10.3. Tạo IAM Policy cho S3 Replication">
+    <figcaption><i>Hình 10.3. Tạo IAM Policy cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="bước-42-tạo-iam-role">
+  BƯỚC 4.2: Tạo IAM Role
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>IAM</strong> &gt; <strong>Roles</strong> &gt; <strong>Create role</strong></p>
+</li>
+<li>
+<p><strong>Trusted entity type</strong>: <strong>Custom trust policy</strong></p>
+</li>
+<li>
+<p>Paste:</p>
+</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Statement&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Principal&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;s3.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
+<ol start="4">
+<li>
+<p><strong>Next</strong></p>
+</li>
+<li>
+<p>Search và chọn: S3-CRR-Policy-Frontend</p>
+</li>
+<li>
+<p><strong>Next</strong></p>
+</li>
+<li>
+<p><strong>Role name</strong>: S3-CRR-Role-Frontend</p>
+</li>
+<li>
+<p><strong>Create role</strong></p>
+</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe11_1.jpg" alt="Hình 11.1. Tạo IAM Role cho S3 Replication">
+    <figcaption><i>Hình 11.1. Tạo IAM Role cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe11_2.jpg" alt="Hình 11.2. Tạo IAM Role cho S3 Replication">
+    <figcaption><i>Hình 11.2. Tạo IAM Role cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe11_3.jpg" alt="Hình 11.3. Tạo IAM Role cho S3 Replication">
+    <figcaption><i>Hình 11.3. Tạo IAM Role cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe11_4.jpg" alt="Hình 11.4. Tạo IAM Role cho S3 Replication">
+    <figcaption><i>Hình 11.4. Tạo IAM Role cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="bước-43-tạo-replication-rule">
+  BƯỚC 4.3: Tạo Replication Rule
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>Chuyển về region Singapore</strong> (ap-southeast-1)</p>
+</li>
+<li>
+<p><strong>S3</strong> &gt; Bucket sgutodolist-frontend-sg &gt; Tab <strong>Management</strong></p>
+</li>
+<li>
+<p><strong>Replication rules</strong> &gt; <strong>Create replication rule</strong></p>
+</li>
+<li>
+<p>Cấu hình:</p>
+<ul>
+<li>
+<p><strong>Name</strong>: frontend-sg-to-us</p>
+</li>
+<li>
+<p><strong>Status</strong>: <strong>Enabled</strong></p>
+</li>
+<li>
+<p><strong>Source bucket</strong>: Apply to all objects</p>
+</li>
+<li>
+<p><strong>Destination</strong>: Bucket sgutodolist-frontend-us</p>
+</li>
+<li>
+<p><strong>IAM role</strong>: S3-CRR-Role-Frontend</p>
+</li>
+<li>
+<p><strong>Storage class</strong>: Use source object class</p>
+</li>
+<li>
+<p><strong>Additional options</strong>: ✅ Replication metrics</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Save</strong></p>
+</li>
+</ol>
+<h3 id="bước-44-replicate-existing-objects">
+  BƯỚC 4.4: Replicate Existing Objects
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Nếu có popup &ldquo;Replicate existing objects?&rdquo;:</strong></p>
+<ul>
+<li>
+<p>Chọn <strong>&ldquo;Yes, replicate existing objects&rdquo;</strong></p>
+</li>
+<li>
+<p>Click <strong>Submit</strong></p>
+</li>
+</ul>
+<p><strong>Nếu KHÔNG có popup, tạo Batch Job thủ công:</strong></p>
+<ol>
+<li>
+<p><strong>S3</strong> &gt; <strong>Batch Operations</strong> (Region Singapore)</p>
+</li>
+<li>
+<p><strong>Create job</strong></p>
+</li>
+<li>
+<p><strong>Manifest</strong>:</p>
+<ul>
+<li>
+<p>Region: Singapore</p>
+</li>
+<li>
+<p>Format: <strong>S3 Replication configuration</strong></p>
+</li>
+<li>
+<p>Bucket: sgutodolist-frontend-sg</p>
+</li>
+<li>
+<p>Replication configuration: frontend-sg-to-us</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Next</strong></p>
+</li>
+<li>
+<p><strong>Operation</strong>: Replicate</p>
+</li>
+<li>
+<p><strong>Next</strong></p>
+</li>
+<li>
+<p><strong>Description</strong>: Replicate frontend SG to US</p>
+</li>
+<li>
+<p><strong>Completion report</strong>: Enable</p>
+<ul>
+<li>Destination: sgutodolist-frontend-sg</li>
+</ul>
+</li>
+<li>
+<p><strong>Permissions</strong>: Create a new role</p>
+</li>
+<li>
+<p><strong>Next</strong> &gt; <strong>Create job</strong></p>
+</li>
+<li>
+<p>Click vào job &gt; <strong>Confirm and run</strong></p>
+</li>
+</ol>
+<h3 id="bước-45-verify-replication">
+  BƯỚC 4.5: Verify Replication
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Đợi job complete (5-15 phút), sau đó:</strong></p>
+<ol>
+<li>
+<p>Chuyển sang <strong>region Virginia</strong></p>
+</li>
+<li>
+<p>Vào bucket sgutodolist-frontend-us</p>
+</li>
+<li>
+<p>Kiểm tra files đã xuất hiện</p>
+</li>
+<li>
+<p>Compare object count (Singapore vs Virginia phải bằng nhau)</p>
+</li>
+</ol>
+<p>✅ <strong>PHASE 2 COMPLETE</strong> - CRR setup xong!</p>
+
   <footer class="footline">
   </footer>
 </article>
@@ -251,7 +583,7 @@
             <li class="" data-nav-url="../../../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
-            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1  </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1.  </b> Prerequisites</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"> <b> 5.3.1.2.  </b> Setup Domain &amp; Route 53</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"> <b> 5.3.1.3.  </b> Prepare Buckets</a></li>
@@ -312,8 +644,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764736311" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764743663" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

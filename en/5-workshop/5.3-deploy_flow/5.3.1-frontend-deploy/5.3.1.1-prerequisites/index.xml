@@ -3,7 +3,7 @@
   <channel>
     <title>Prerequisites :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</link>
-    <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    <description>1. PREREQUISITES&#xD;Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Đối với tài khoản Free Tier thì không được hỗ trợ tính năng đăng ký tên miền của dịch vụ Route 53, vì vậy project này đăng ký tên miền một nhà cung cấp tên miền khác và host tên miền ở Route Tài khoản AWS</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.xml" rel="self" type="application/rss+xml" />

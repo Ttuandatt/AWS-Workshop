@@ -12,7 +12,7 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid>
-      <description>HEHEHEHE THIS IS FRONTEND DEPLOY</description>
+      <description>HƯỚNG DẪN DEPLOY FRONTEND MULTI-REGION&#xD;Project: SGU Task Management Web Application&#xA;Domain: sgutodolist.com&#xA;Frontend: ReactJS&#xA;Architecture: Multi-Region (Singapore + Virginia) + CloudFront CDN&#xA;Thời gian thực hiện: ~60-90 phút&#xA;MỤC LỤC&#xD;Prerequisites&#xA;Setup Domain &amp; Route 53&#xA;Prepare Buckets (Singapore + Virginia)</description>
     </item>
     <item>
       <title>Backend Deploy</title>

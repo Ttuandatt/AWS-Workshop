@@ -5,42 +5,62 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="description" content="2. SETUP DOMAIN &amp; ROUTE 53BƯỚC 2.1: Tạo Hosted Zone trong Route 53Đăng nhập AWS Console
+Tìm và vào Route 53
+Click Hosted zones (menu bên trái)
+Click Create hosted zone
+Điền thông tin:
+Domain name: sgutodolist.com">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Setup Domain & Route 53 :: Internship Report">
-    <meta name="twitter:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="twitter:description" content="2. SETUP DOMAIN &amp; ROUTE 53BƯỚC 2.1: Tạo Hosted Zone trong Route 53Đăng nhập AWS Console
+Tìm và vào Route 53
+Click Hosted zones (menu bên trái)
+Click Create hosted zone
+Điền thông tin:
+Domain name: sgutodolist.com">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Setup Domain & Route 53 :: Internship Report">
-    <meta property="og:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta property="og:description" content="2. SETUP DOMAIN &amp; ROUTE 53BƯỚC 2.1: Tạo Hosted Zone trong Route 53Đăng nhập AWS Console
+Tìm và vào Route 53
+Click Hosted zones (menu bên trái)
+Click Create hosted zone
+Điền thông tin:
+Domain name: sgutodolist.com">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Setup Domain & Route 53 :: Internship Report">
-    <meta itemprop="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta itemprop="wordCount" content="5">
+    <meta itemprop="description" content="2. SETUP DOMAIN &amp; ROUTE 53BƯỚC 2.1: Tạo Hosted Zone trong Route 53Đăng nhập AWS Console
+Tìm và vào Route 53
+Click Hosted zones (menu bên trái)
+Click Create hosted zone
+Điền thông tin:
+Domain name: sgutodolist.com">
+    <meta itemprop="wordCount" content="162">
     <title>Setup Domain &amp; Route 53 :: Internship Report</title>
     <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.xml" rel="alternate" type="application/rss+xml" title="Setup Domain &amp; Route 53 :: Internship Report">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764736311" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.min.js?1764736311" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764743663" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.min.js?1764743663" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.en.js?1764736311";
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1764743663";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764736311" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764743663" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764736311" rel="stylesheet">
-    <link href="../../../../../css/theme.min.css?1764736311" rel="stylesheet">
-    <link href="../../../../../css/format-html.min.css?1764736311" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764743663" rel="stylesheet">
+    <link href="../../../../../css/theme.min.css?1764743663" rel="stylesheet">
+    <link href="../../../../../css/format-html.min.css?1764743663" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -92,7 +112,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1764736311" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1764743663" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html">
     <div id="R-body" class="default-animation">
@@ -124,9 +144,11 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#2-setup-domain--route-53">2. SETUP DOMAIN &amp; ROUTE 53</a>
       <ul>
-        <li><a href="#hehehehe-this-is-deploy-flow">HEHEHEHE THIS IS DEPLOY FLOW</a></li>
+        <li><a href="#bước-21-tạo-hosted-zone-trong-route-53">BƯỚC 2.1: Tạo Hosted Zone trong Route 53</a></li>
+        <li><a href="#bước-22-lấy-name-servers">BƯỚC 2.2: Lấy Name Servers</a></li>
+        <li><a href="#bước-23-cập-nhật-name-servers-ở-nhà-đăng-ký">BƯỚC 2.3: Cập nhật Name Servers ở Nhà đăng ký</a></li>
       </ul>
     </li>
   </ul>
@@ -186,8 +208,8 @@
 
 <h1 id="setup-domain--route-53">Setup Domain &amp; Route 53</h1>
 
-<h3 id="hehehehe-this-is-deploy-flow">
-  HEHEHEHE THIS IS DEPLOY FLOW
+<h2 id="2-setup-domain--route-53">
+  2. SETUP DOMAIN &amp; ROUTE 53
 
 
 
@@ -196,7 +218,118 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h2><h3 id="bước-21-tạo-hosted-zone-trong-route-53">
+  BƯỚC 2.1: Tạo Hosted Zone trong Route 53
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p>Đăng nhập <strong>AWS Console</strong></p>
+</li>
+<li>
+<p>Tìm và vào <strong>Route 53</strong></p>
+</li>
+<li>
+<p>Click <strong>Hosted zones</strong> (menu bên trái)</p>
+</li>
+<li>
+<p>Click <strong>Create hosted zone</strong></p>
+</li>
+<li>
+<p>Điền thông tin:</p>
+<ul>
+<li>
+<p><strong>Domain name</strong>: sgutodolist.com</p>
+</li>
+<li>
+<p><strong>Type</strong>: <strong>Public hosted zone</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Create hosted zone</strong></p>
+</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe1.jpg" alt="Hình 1. Tạo Hosted Zone trong Route 53">
+    <figcaption><i>Hình 1. Tạo Hosted Zone trong Route 53</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="bước-22-lấy-name-servers">
+  BƯỚC 2.2: Lấy Name Servers
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Sau khi tạo xong, trong tab <strong>Records</strong>, ta sẽ thấy <strong>4 Name Servers (NS)</strong>:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>ns-1538.awsdns-00.co.uk
+ns-1374.awsdns-43.org
+ns-172.awsdns-21.com
+ns-547.awsdns-04.net</code></pre></div>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe2.jpg" alt="Hình 2. Các Name Servers">
+    <figcaption><i>Hình 2. Các Name Servers</i></figcaption>
+  </figure>
+</div>
+
+<p>Copy 4 Name Servers này</p>
+<h3 id="bước-23-cập-nhật-name-servers-ở-nhà-đăng-ký">
+  BƯỚC 2.3: Cập nhật Name Servers ở Nhà đăng ký
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p>Đăng nhập vào trang quản lý tên miền (GoDaddy, Namecheap, PA Vietnam&hellip;)</p>
+</li>
+<li>
+<p>Tìm phần <strong>Name Servers</strong> hoặc <strong>DNS Settings</strong></p>
+</li>
+<li>
+<p>Chuyển từ <strong>Default</strong> sang <strong>Custom Name Servers</strong></p>
+</li>
+<li>
+<p>Nhập <strong>4 Name Servers</strong> từ Route 53</p>
+</li>
+<li>
+<p><strong>Save changes</strong></p>
+</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe3.jpg" alt="Hình 3. Cập nhật các Name Servers ở trang quản lý tên miền">
+    <figcaption><i>Hình 3. Cập nhật các Name Servers ở trang quản lý tên miền</i></figcaption>
+  </figure>
+</div>
+
+<p><strong>Lưu ý:</strong> DNS propagation mất 24-48 giờ</p>
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 1: Prerequisites
+</a>
+<a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/" style="text-decoration: none; font-weight: bold;">
+BƯỚC 3: Prepare Buckets ➡
+</a>
+</div>
   <footer class="footline">
   </footer>
 </article>
@@ -251,7 +384,7 @@
             <li class="" data-nav-url="../../../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
-            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1  </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1.  </b> Prerequisites</a></li>
             <li class="active " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"> <b> 5.3.1.2.  </b> Setup Domain &amp; Route 53</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"> <b> 5.3.1.3.  </b> Prepare Buckets</a></li>
@@ -312,8 +445,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764736311" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764736311" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764743663" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

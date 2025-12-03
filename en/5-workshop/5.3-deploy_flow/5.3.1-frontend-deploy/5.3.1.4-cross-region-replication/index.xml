@@ -3,7 +3,7 @@
   <channel>
     <title>Cross-Region Replication :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</link>
-    <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    <description>4. SETUP CROSS-REGION REPLICATION (CRR)&#xD;BƯỚC 4.1: Tạo IAM Policy&#xD;Vào IAM &gt; Policies &gt; Create policy&#xA;Tab JSON, paste:&#xA;{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }&#xD;Next</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.xml" rel="self" type="application/rss+xml" />
