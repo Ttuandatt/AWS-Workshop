@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Frontend Deploy :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
+    <description>HEHEHEHE THIS IS FRONTEND DEPLOY</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prerequisites</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Setup Domain &amp; Route 53</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Prepare Buckets</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Cross-Region Replication</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Multi-Region Access Point</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>CloudFront Distribution</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>SSL Certificate</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>DNS Records</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Testing &amp; Verification</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.9-testing--verification/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.9-testing--verification/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+    <item>
+      <title>Maintenance &amp; Updates</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.10-maintenance--updates/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.10-maintenance--updates/index.html</guid>
+      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    </item>
+  </channel>
+</rss>

@@ -5,42 +5,58 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="1. Hugo CommandsCommand to create multiple folders at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folders = @( &#34;5.1-Workshop_Overview&#34;, &#34;5.2-Prerequisite&#34;, &#34;5.3-Deploy_Flow&#34;, &#34;5.4-Clean_Up&#34; ) foreach ($f in $folders) { $fullPath = Join-Path $basePath $f New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null }Command to create one folder at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folderName = &#34;5.1-Workshop_Overview&#34; # &lt;-- Change name here $fullPath = Join-Path $basePath $folderName New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-NullCommand to read the whole project structure tree /f /aCommand to read a directory structure tree content/1-Worklog/1.1-PhanCanhTuanDat /F2. Git Commands2.1 Check repository status">
+    <meta name="description" content="1. Hugo Commands2. Git Commands2.1 Check repository status
+git status2.2 List branches (local)
+git branch2.3 List all branches (local &#43; remote)
+git branch -a2.4 Switch to another branch
+git checkout &lt;branch-name&gt;Example: git checkout developer">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Mystic Skills :: Internship Report">
-    <meta name="twitter:description" content="1. Hugo CommandsCommand to create multiple folders at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folders = @( &#34;5.1-Workshop_Overview&#34;, &#34;5.2-Prerequisite&#34;, &#34;5.3-Deploy_Flow&#34;, &#34;5.4-Clean_Up&#34; ) foreach ($f in $folders) { $fullPath = Join-Path $basePath $f New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null }Command to create one folder at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folderName = &#34;5.1-Workshop_Overview&#34; # &lt;-- Change name here $fullPath = Join-Path $basePath $folderName New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-NullCommand to read the whole project structure tree /f /aCommand to read a directory structure tree content/1-Worklog/1.1-PhanCanhTuanDat /F2. Git Commands2.1 Check repository status">
+    <meta name="twitter:description" content="1. Hugo Commands2. Git Commands2.1 Check repository status
+git status2.2 List branches (local)
+git branch2.3 List all branches (local &#43; remote)
+git branch -a2.4 Switch to another branch
+git checkout &lt;branch-name&gt;Example: git checkout developer">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Mystic Skills :: Internship Report">
-    <meta property="og:description" content="1. Hugo CommandsCommand to create multiple folders at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folders = @( &#34;5.1-Workshop_Overview&#34;, &#34;5.2-Prerequisite&#34;, &#34;5.3-Deploy_Flow&#34;, &#34;5.4-Clean_Up&#34; ) foreach ($f in $folders) { $fullPath = Join-Path $basePath $f New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null }Command to create one folder at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folderName = &#34;5.1-Workshop_Overview&#34; # &lt;-- Change name here $fullPath = Join-Path $basePath $folderName New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-NullCommand to read the whole project structure tree /f /aCommand to read a directory structure tree content/1-Worklog/1.1-PhanCanhTuanDat /F2. Git Commands2.1 Check repository status">
+    <meta property="og:description" content="1. Hugo Commands2. Git Commands2.1 Check repository status
+git status2.2 List branches (local)
+git branch2.3 List all branches (local &#43; remote)
+git branch -a2.4 Switch to another branch
+git checkout &lt;branch-name&gt;Example: git checkout developer">
     <meta property="og:locale" content="en">
-    <meta property="og:type" content="article">
-    <meta property="article:section" content="Workshop">
+    <meta property="og:type" content="website">
     <meta itemprop="name" content="Mystic Skills :: Internship Report">
-    <meta itemprop="description" content="1. Hugo CommandsCommand to create multiple folders at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folders = @( &#34;5.1-Workshop_Overview&#34;, &#34;5.2-Prerequisite&#34;, &#34;5.3-Deploy_Flow&#34;, &#34;5.4-Clean_Up&#34; ) foreach ($f in $folders) { $fullPath = Join-Path $basePath $f New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-Null }Command to create one folder at a time $basePath = &#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34; $folderName = &#34;5.1-Workshop_Overview&#34; # &lt;-- Change name here $fullPath = Join-Path $basePath $folderName New-Item -ItemType Directory -Path $fullPath -Force | Out-Null New-Item -ItemType File -Path (Join-Path $fullPath &#34;index.md&#34;) -Force | Out-NullCommand to read the whole project structure tree /f /aCommand to read a directory structure tree content/1-Worklog/1.1-PhanCanhTuanDat /F2. Git Commands2.1 Check repository status">
+    <meta itemprop="description" content="1. Hugo Commands2. Git Commands2.1 Check repository status
+git status2.2 List branches (local)
+git branch2.3 List all branches (local &#43; remote)
+git branch -a2.4 Switch to another branch
+git checkout &lt;branch-name&gt;Example: git checkout developer">
     <meta itemprop="wordCount" content="920">
     <title>Mystic Skills :: Internship Report</title>
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764692691" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1764692691" defer></script>
+    <link href="../../../en/5-workshop/5.5-mystic-skills/index.xml" rel="alternate" type="application/rss+xml" title="Mystic Skills :: Internship Report">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764736311" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1764736311" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1764692691";
+      window.relearn.index_js_url="../../../searchindex.en.js?1764736311";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764692691" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764736311" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764692691" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764692691" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764692691" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1764692691" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1764692691" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764736311" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1764736311" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1764736311" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -92,7 +108,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1764692691" rel="stylesheet">
+    <link href="../../../css/custom.css?1764736311" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/5-workshop/5.5-mystic-skills/index.html">
     <div id="R-body" class="default-animation">
@@ -197,41 +213,7 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ul>
-<li>Command to create multiple folders at a time</li>
-</ul>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$basePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$folders <span style="color:#f92672">=</span> @<span style="color:#f92672">(</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.1-Workshop_Overview&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.2-Prerequisite&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.3-Deploy_Flow&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.4-Clean_Up&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>foreach <span style="color:#f92672">(</span>$f in $folders<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    $fullPath <span style="color:#f92672">=</span> Join-Path $basePath $f
-</span></span><span style="display:flex;"><span>    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-</span></span><span style="display:flex;"><span>    New-Item -ItemType File -Path <span style="color:#f92672">(</span>Join-Path $fullPath <span style="color:#e6db74">&#34;index.md&#34;</span><span style="color:#f92672">)</span> -Force | Out-Null
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
-<ul>
-<li>Command to create one folder at a time</li>
-</ul>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$basePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34;</span>
-</span></span><span style="display:flex;"><span>$folderName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;5.1-Workshop_Overview&#34;</span>   <span style="color:#75715e"># &lt;-- Change name here</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$fullPath <span style="color:#f92672">=</span> Join-Path $basePath $folderName
-</span></span><span style="display:flex;"><span>New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-</span></span><span style="display:flex;"><span>New-Item -ItemType File -Path <span style="color:#f92672">(</span>Join-Path $fullPath <span style="color:#e6db74">&#34;index.md&#34;</span><span style="color:#f92672">)</span> -Force | Out-Null</span></span></code></pre></div>
-<ul>
-<li>Command to read the whole project structure</li>
-</ul>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tree /f /a</span></span></code></pre></div>
-<ul>
-<li>Command to read a directory structure</li>
-</ul>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tree content/1-Worklog/1.1-PhanCanhTuanDat /F</span></span></code></pre></div>
-<h3 id="2-git-commands">
+</h3><h3 id="2-git-commands">
   <strong>2. Git Commands</strong>
 
 
@@ -426,6 +408,40 @@ Discard changes in a file:</p>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Write-Host <span style="color:#e6db74">&#34;`n=== COMPLETED! PLEASE RUN: hugo server -D ===&#34;</span> -ForegroundColor Green</span></span></code></pre></div>
+<ul>
+<li>Command to create multiple folders at a time</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$basePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$folders <span style="color:#f92672">=</span> @<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.1-Workshop_Overview&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.2-Prerequisite&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.3-Deploy_Flow&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5.4-Clean_Up&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>foreach <span style="color:#f92672">(</span>$f in $folders<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    $fullPath <span style="color:#f92672">=</span> Join-Path $basePath $f
+</span></span><span style="display:flex;"><span>    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+</span></span><span style="display:flex;"><span>    New-Item -ItemType File -Path <span style="color:#f92672">(</span>Join-Path $fullPath <span style="color:#e6db74">&#34;_index.md&#34;</span><span style="color:#f92672">)</span> -Force | Out-Null
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
+<ul>
+<li>Command to create one folder at a time</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$basePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop&#34;</span>
+</span></span><span style="display:flex;"><span>$folderName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;5.1-Workshop_Overview&#34;</span>   <span style="color:#75715e"># &lt;-- Change name here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$fullPath <span style="color:#f92672">=</span> Join-Path $basePath $folderName
+</span></span><span style="display:flex;"><span>New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+</span></span><span style="display:flex;"><span>New-Item -ItemType File -Path <span style="color:#f92672">(</span>Join-Path $fullPath <span style="color:#e6db74">&#34;_index.md&#34;</span><span style="color:#f92672">)</span> -Force | Out-Null</span></span></code></pre></div>
+<ul>
+<li>Command to read the whole project structure</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tree /f /a</span></span></code></pre></div>
+<ul>
+<li>Command to read a directory structure</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tree content/1-Worklog/1.1-PhanCanhTuanDat /F</span></span></code></pre></div>
 
   <footer class="footline">
   </footer>
@@ -480,7 +496,7 @@ Discard changes in a file:</p>
             <li class="parent " data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
             <li class="" data-nav-url="../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
             <li class="" data-nav-url="../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
-            <li class="" data-nav-url="../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a></li>
+            <li class="alwaysopen " data-nav-url="../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="../../../en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="../../../en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="active " data-nav-url="../../../en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="../../../en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
@@ -530,8 +546,8 @@ Discard changes in a file:</p>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1764692691" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1764736311" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

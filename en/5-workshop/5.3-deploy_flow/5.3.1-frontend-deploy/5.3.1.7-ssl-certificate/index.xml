@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSL Certificate :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</link>
+    <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

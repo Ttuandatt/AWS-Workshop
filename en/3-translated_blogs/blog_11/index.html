@@ -30,29 +30,29 @@ Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên đư
 Ngày: 01 tháng 8 năm 2025
 Thể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, &amp; Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng
 Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.">
-    <meta itemprop="wordCount" content="3463">
+    <meta itemprop="wordCount" content="3537">
     <title>Blog 11 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_11/index.xml" rel="alternate" type="application/rss+xml" title="Blog 11 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764692691" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1764692691" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764736311" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1764736311" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1764692691";
+      window.relearn.index_js_url="../../../searchindex.en.js?1764736311";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764692691" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764736311" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764692691" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764692691" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764692691" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1764692691" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1764692691" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764736311" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764736311" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1764736311" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1764736311" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -104,7 +104,7 @@ Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên đư
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../AWS-Workshop/css/custom.css?1764692691" rel="stylesheet">
+    <link href="../../../css/custom.css?1764736311" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_11/index.html">
     <div id="R-body" class="default-animation">
@@ -313,10 +313,22 @@ Sử dụng <strong>Chế độ Đếm (Count mode)</strong> ban đầu để gi
 <p>Nhóm quy tắc chung của Bot Control xác minh các bot tự nhận dạng thông qua xác thực chữ ký.<br>
 Nó bao gồm một quy tắc <strong>CategoryAI</strong> để phát hiện các bot AI đã được xác minh.<br>
 Hãy chắc chắn rằng bạn cấu hình nhóm quy tắc với <strong>phiên bản mới nhất</strong>, như được hiển thị trong <em>Hình 1</em> sau đây.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2025/08/01/NetCDNBlog-1534-1.jpeg" 
+       alt="Hình 1: Nhóm quy tắc AWS WAF Bot Control với mức kiểm tra “Common” và phiên bản 3.2" 
+       width="50%">
+  <br>
+  <em>Hình 1: Nhóm quy tắc AWS WAF Bot Control với mức kiểm tra “Common” và phiên bản 3.2</em>
+</p>
 <p>Sau khi chạy nhóm quy tắc được quản lý trong vài ngày, bạn có thể phân tích dữ liệu đã thu thập. Để xem các thông tin chi tiết, hãy mở <a href="https://console.aws.amazon.com/wafv2/home" rel="external">bảng điều khiển AWS WAF và AWS Shield</a> và chọn Khu vực AWS của bạn. Chọn gói bảo vệ của bạn và chọn xem bảng điều khiển. Điều hướng đến phần Tổng quan và chọn tùy chọn Bots để xem hoạt động, phát hiện, danh mục và tín hiệu của bot. Bảng điều khiển này cung cấp thông tin chi tiết về hoạt động của bot trên ứng dụng của bạn.</p>
 <p>Hình 2 sau đây cho thấy một ví dụ về phần Các danh mục Bot. Nó hiển thị một khối lượng lớn các yêu cầu được đánh dấu là <strong>ai - AllowedRequests</strong>. Đây là các bot AI được quy tắc <strong>CategoryAI</strong> xác định, nhưng không bị chặn. Bạn cũng có thể nhận thấy các bot khác đang gửi khối lượng lớn yêu cầu.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2025/08/01/NetCDNBlog-1534-2.jpg" 
+       alt="Hình 2: Tổng quan lưu lượng truy cập cho quy tắc CategoryAI được AWS WAF phát hiện" 
+       width="50%">
+  <br>
+  <em>Hình 2: Tổng quan lưu lượng truy cập cho quy tắc CategoryAI được AWS WAF phát hiện</em>
+</p>
 <h3 id="quản-lý-các-vấn-đề-do-bot-ai-gây-ra">
   Quản lý các vấn đề do bot AI gây ra
 
@@ -415,7 +427,13 @@ Quy tắc <code>CategoryAI</code> giờ đây sẽ chặn các yêu cầu bot AI
 <p>Ngoài các bot AI thuộc quy tắc <code>CategoryAI</code>, <strong>AWS WAF</strong> không chặn các bot phổ biến và có thể xác minh được.<br>
 Nếu bạn xác định một bot đã được xác minh, hoặc một danh mục bot, vẫn đang tạo ra khối lượng truy cập cao, thì bạn phải thêm một quy tắc một cách rõ ràng <strong>sau</strong> <strong>nhóm quy tắc AWS WAF Bot Control</strong>.</p>
 <p>Quy tắc này sẽ chặn bot cụ thể (hoặc nhóm bot được đại diện bởi một không gian tên nhãn), như được hiển thị trong <em>hình 3</em> sau đây.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2025/08/01/NetCDNBlog-1534-3.jpg" 
+       alt="Hình 3: Quy tắc tùy chỉnh AWS WAF để chặn yandexbot bằng cách sử dụng nhãn (labels)" 
+       width="50%">
+  <br>
+  <em>Hình 3: Quy tắc tùy chỉnh AWS WAF để chặn yandexbot bằng cách sử dụng nhãn (labels)</em>
+</p>
 <ol start="2">
 <li>
 <p><strong>Làm chậm các bot cào dữ liệu lẩn tránh:</strong> Các bot giả mạo tiêu đề HTTP user agent của chúng để giả vờ là các bot nổi tiếng, hoặc các máy khách hợp lệ của người dùng. Bạn có thể ngăn chặn các bot này làm quá tải ứng dụng của mình bằng cách sử dụng <strong>tính năng bảo vệ DDoS lớp ứng dụng (L7) nâng cao của AWS WAF</strong> và cả <strong>quy tắc dựa trên tỷ lệ của AWS WAF</strong>. Các quy tắc DDoS và quy tắc giới hạn tỷ lệ bảo vệ ứng dụng của bạn khỏi bất kỳ nguồn nào tạo ra khối lượng yêu cầu cao, bao gồm cả bot. Để tìm hiểu cách xác định ngưỡng quy tắc dựa trên tỷ lệ và các thông lệ tốt nhất về việc tạo quy tắc dựa trên tỷ lệ, hãy tham khảo bài viết <strong>&quot;<a href="https://aws.amazon.com/blogs/security/three-most-important-aws-waf-rate-based-rules/" rel="external">Ba quy tắc dựa trên tỷ lệ quan trọng nhất của AWS WAF</a>&quot;</strong>.</p>
@@ -425,12 +443,18 @@ Nếu bạn xác định một bot đã được xác minh, hoặc một danh m�
 </li>
 </ol>
 <p>Hình 4 sau đây chỉ ra cách thêm một quy tắc tùy chỉnh sau <strong>nhóm quy tắc AWS WAF Bot Control</strong>. Quy tắc này yêu cầu người dùng phải hoàn thành một thử thách trước khi tiếp tục, trừ khi họ là các bot được phép/đã xác minh. Các bot đã xác minh được xác định bằng cách có một nhãn trong không gian tên <code>awswaf:managed:aws:bot-control:bot</code>.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2025/08/01/NetCDNBlog-1534-4.jpg" 
+       alt="Hình 4: Quy tắc AWS WAF buộc thực hiện thử thách đối với toàn bộ lưu lượng bot chưa được xác minh" 
+       width="50%">
+  <br>
+  <em>Hình 4: Quy tắc AWS WAF buộc thực hiện thử thách đối với toàn bộ lưu lượng bot chưa được xác minh</em>
+</p>
 <p><strong>4. Sử dụng honeypot để bẫy các bot lẩn tránh</strong></p>
 <p><strong><a href="https://aws.amazon.com/solutions/implementations/aws-waf-security-automations/" rel="external">Giải pháp Tự động hóa Bảo mật cho AWS WAF</a></strong> bao gồm một <strong>điểm cuối honeypot</strong> dụ các bot đang cào dữ liệu ứng dụng của bạn đến một điểm cuối mà không người dùng hợp lệ hoặc bot tuân thủ quy tắc nào truy cập.<br>
 Điểm cuối này giúp <strong>phát hiện và chặn</strong> các IP độc hại, hạn chế hiệu quả tác động của các bot cào dữ liệu ứng dụng của bạn.</p>
 <p>-&gt; Xem video sau để hiểu rõ hơn</p>
-<!-- raw HTML omitted -->
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/2mlQL2cQfDY?si=zI3RyAYKjpGVVeHK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p><strong>Kịch bản 4: Quản lý các bot AI tự hành/tự động không mong muốn</strong></p>
 <p>Bạn có thể sử dụng các kỹ thuật sau để quản lý các bot AI tự hành:</p>
 <p><strong>Nhóm quy tắc AWS WAF Bot Control với Cấp độ Kiểm tra Chung:</strong> Quy tắc <strong>CategoryAI</strong> bao gồm các quy tắc cho các tác tử AI được xác định rõ ràng như <strong>Amazon Nova Act</strong>. Hơn nữa, các quy tắc <strong>SignalNonBrowserUserAgent</strong> và <strong>SignalAutomatedBrowser</strong> sẽ chặn <strong>các tác tử tự động hóa trình duyệt kiểu Playwright</strong>.</p>
@@ -561,8 +585,8 @@ Nếu bạn xác định một bot đã được xác minh, hoặc một danh m�
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764692691" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1764692691" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764736311" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1764736311" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
