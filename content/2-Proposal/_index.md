@@ -55,7 +55,7 @@ This architecture achieves **resilience, performance, and scalability** while op
 
 ### **3. Solution Architecture**  
 
-{{< figurecaption src="/images/todolist-architecture-4.jpg" caption="Figure 1. Architecture solution" >}}
+{{< figurecaption src="/images/todolist-architecture-5.jpg" caption="Figure 1. Architecture solution" >}}
 
 #### **3.1. Architecture Overview**
 

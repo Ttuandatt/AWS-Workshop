@@ -143,15 +143,57 @@ Kết quả policy được tạo
     *   **Additional options**: ✅ Replication metrics
         
 5.  **Save**
+
+{{< figurecaption src="/images/fe12_1.jpg" caption="Hình 12.1. Tạo Replication Rule cho S3 Replication">}}
+
+{{< figurecaption src="/images/fe12_2.jpg" caption="Hình 12.2. Tạo Replication Rule cho S3 Replication">}}
+
+{{< figurecaption src="/images/fe12_3.jpg" caption="Hình 12.3. Tạo Replication Rule cho S3 Replication">}}
+
+{{< figurecaption src="/images/fe12_4.jpg" caption="Hình 12.4. Tạo Replication Rule cho S3 Replication">}}
+
     
 
-### BƯỚC 4.4: Replicate Existing Objects
 
-**Nếu có popup "Replicate existing objects?":**
+### BƯỚC 4.4: Replicate Existing Objects (Sao chép dữ liệu cũ)
 
-*   Chọn **"Yes, replicate existing objects"**
-    
-*   Click **Submit**
+**Trường hợp 1: Có popup "Replicate existing objects?"**
+
+1.  Tại popup, chọn **"Yes, replicate existing objects"**.
+2.  Click **Submit**.
+3.  Hệ thống chuyển sang màn hình **Create Batch Operations job**. Cấu hình như sau:
+    * **Job run options:** Chọn **Automatically run the job when it's ready** (Để job tự chạy ngay khi chuẩn bị xong).
+    * **Completion report:**
+        * Tích chọn **Generate completion report**.
+        * **Scope:** Chọn **Failed tasks only** (Chỉ báo cáo file lỗi).
+        * **Destination:** Chọn **Browse S3** > Chọn bucket gốc `sgutodolist-frontend-sg`.
+    * **Permissions (Quan trọng):**
+        * Tại mục **IAM role**, chọn **Create new role**.
+        * > **Lưu ý:** Không chọn lại role `S3-CRR-Role-Frontend` cũ vì Batch Job cần một role riêng có quyền Batch Operations.
+4.  Cuộn xuống cuối và click **Save**.
+
+{{< figurecaption src="/images/fe13_1.jpg" caption="Hình 13.1. Replicate Existing Objects (Sao chép dữ liệu cũ)">}}
+
+{{< figurecaption src="/images/fe13_2.jpg" caption="Hình 13.2. Replicate Existing Objects (Sao chép dữ liệu cũ)">}}
+
+{{< figurecaption src="/images/fe13_3.jpg" caption="Hình 13.3. Replicate Existing Objects (Sao chép dữ liệu cũ)">}}
+
+
+
+**Trường hợp 2: KHÔNG có popup (Làm thủ công)**
+
+1.  Vào **S3** > **Batch Operations** (Region Singapore).
+2.  Chọn **Create job**.
+3.  **Manifest:**
+    * **Region:** Singapore.
+    * **Manifest format:** S3 Replication configuration.
+    * **Source bucket:** `sgutodolist-frontend-sg`.
+4.  **Operation:** Chọn **Replicate**.
+5.  **Configure:**
+    * **Description:** `Replicate frontend SG to US`.
+    * **Permissions:** Chọn **Create a new role**.
+6.  Click **Create job**.
+7.  Nếu job ở trạng thái *Awaiting confirmation*, chọn job đó và click **Run job**.
     
 
 **Nếu KHÔNG có popup, tạo Batch Job thủ công:**
@@ -200,6 +242,13 @@ Kết quả policy được tạo
 3.  Kiểm tra files đã xuất hiện
     
 4.  Compare object count (Singapore vs Virginia phải bằng nhau)
+
+Kết quả Replicate:
+
+{{< figurecaption src="/images/fe14_1.jpg" caption="Hình 14.1. Kết quả Batch Operation Jobs">}}
+
+{{< figurecaption src="/images/fe14_2.jpg" caption="Hình 14.2. S3 ở region Virginia đã Replicate thành công">}}
+
     
 
 ✅ **PHASE 2 COMPLETE** - CRR setup xong!
