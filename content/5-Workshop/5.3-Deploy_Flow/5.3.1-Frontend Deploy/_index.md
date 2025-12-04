@@ -6,37 +6,33 @@ pre = " <b> 5.3.1. </b> "
 alwaysopen = true
 +++
 
-HƯỚNG DẪN DEPLOY FRONTEND MULTI-REGION
-======================================================
 
-**Project:** SGU Task Management Web Application
+### Mô hình kiến trúc
 
-**Domain:** sgutodolist.com
+1.  **Domain:** Route 53 (DNS) + ACM (SSL Certificate).
 
-**Frontend:** ReactJS
+2.  **CDN:** CloudFront (Global Edge Network).
 
-**Architecture:** Multi-Region (Singapore + Virginia) + CloudFront CDN
+3.  **Storage (Primary):** S3 Singapore (`ap-southeast-1`).
 
-**Thời gian thực hiện:** ~60-90 phút
+4.  **Storage (Failover):** S3 N. Virginia (`us-east-1`).
 
-MỤC LỤC
-----------
+5.  **Replication:** Tự động copy code từ Sing -> Virginia.
+
+6.  **Security:** OAC (Origin Access Control) - Private Bucket.
+
+### MỤC LỤC
+
 1.  [Prerequisites]({{% relref "5.3.1.1-Prerequisites" %}})
     
-2.  [Setup Domain & Route 53]({{% relref "5.3.1.2-Setup Domain & Route 53" %}})
+2.  [S3 and Replication]({{% relref "5.3.1.2-S3 and Replication" %}})
     
-3.  [Prepare Buckets (Singapore + Virginia)]({{% relref "5.3.1.3-Prepare Buckets" %}})
+3.  [Route 53 and ACM]({{% relref "5.3.1.3-Route 53 and ACM" %}})
     
-4.  [Setup Cross-Region Replication (CRR)]({{% relref "5.3.1.4-Cross-Region Replication" %}})
+4.  [ClouFront and Failover]({{% relref "5.3.1.4-ClouFront and Failover" %}})
     
-5.  [Create Multi-Region Access Point (MRAP)]({{% relref "5.3.1.5-Multi-Region Access Point" %}})
+5.  [S3 Policy]({{% relref "5.3.1.5-S3 Policy" %}})
     
-6.  [Setup CloudFront Distribution]({{% relref "5.3.1.6-CloudFront Distribution" %}})
+6.  [DNS Record]({{% relref "5.3.1.6-DNS Record" %}})
     
-7.  [Request SSL Certificate]({{% relref "5.3.1.7-SSL Certificate" %}})
-    
-8.  [Configure DNS Records]({{% relref "5.3.1.8-DNS Records" %}})
-    
-9.  [Testing & Verification]({{% relref "5.3.1.9-Testing & Verification" %}})
-    
-10. [Maintenance & Updates]({{% relref "5.3.1.10-Maintenance & Updates" %}})
+7.  [Deploy and Test]({{% relref "5.3.1.7-Deploy and Test" %}})

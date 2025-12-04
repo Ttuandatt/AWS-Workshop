@@ -5,8 +5,6 @@ chapter = false
 pre = " <b> 5.3.1.1.  </b> "
 +++
 
-1\. PREREQUISITES
------------------
 
 ### Cần chuẩn bị:
 
@@ -31,11 +29,3 @@ pre = " <b> 5.3.1.1.  </b> "
 *   Biết build ReactJS project
 
 ---
-
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="">
-</a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.2-Setup Domain & Route 53" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 2: Setup Domain & Route 53 ➡
-</a>
-</div>
