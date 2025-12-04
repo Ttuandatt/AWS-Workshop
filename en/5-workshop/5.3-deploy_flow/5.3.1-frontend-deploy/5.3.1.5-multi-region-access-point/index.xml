@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Multi-Region Access Point :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</link>
-    <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</link>
+    <description>5. CREATE MULTI-REGION ACCESS POINT (MRAP)&#xD;BƯỚC 5.1: Create MRAP&#xD;S3 &gt; Multi-Region Access Points&#xA;Create Multi-Region Access Point&#xA;Name: sgutodolist-frontend-mrap&#xA;Add buckets:&#xA;Click Add buckets&#xA;Chọn: sgutodolist-frontend-sg (ap-southeast-1)&#xA;Click Add buckets lại&#xA;Chọn: sgutodolist-frontend-us (us-east-1)&#xA;Block Public Access: BỎ CHỌN TẤT CẢ 4 ô</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

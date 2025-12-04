@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="description" content="5. CREATE MULTI-REGION ACCESS POINT (MRAP)BƯỚC 5.1: Create MRAPS3 &gt; Multi-Region Access Points
+Create Multi-Region Access Point
+Name: sgutodolist-frontend-mrap
+Add buckets:
+Click Add buckets
+Chọn: sgutodolist-frontend-sg (ap-southeast-1)
+Click Add buckets lại
+Chọn: sgutodolist-frontend-us (us-east-1)
+Block Public Access: BỎ CHỌN TẤT CẢ 4 ô">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Multi-Region Access Point :: Internship Report">
-    <meta name="twitter:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html">
+    <meta name="twitter:description" content="5. CREATE MULTI-REGION ACCESS POINT (MRAP)BƯỚC 5.1: Create MRAPS3 &gt; Multi-Region Access Points
+Create Multi-Region Access Point
+Name: sgutodolist-frontend-mrap
+Add buckets:
+Click Add buckets
+Chọn: sgutodolist-frontend-sg (ap-southeast-1)
+Click Add buckets lại
+Chọn: sgutodolist-frontend-us (us-east-1)
+Block Public Access: BỎ CHỌN TẤT CẢ 4 ô">
+    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Multi-Region Access Point :: Internship Report">
-    <meta property="og:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta property="og:description" content="5. CREATE MULTI-REGION ACCESS POINT (MRAP)BƯỚC 5.1: Create MRAPS3 &gt; Multi-Region Access Points
+Create Multi-Region Access Point
+Name: sgutodolist-frontend-mrap
+Add buckets:
+Click Add buckets
+Chọn: sgutodolist-frontend-sg (ap-southeast-1)
+Click Add buckets lại
+Chọn: sgutodolist-frontend-us (us-east-1)
+Block Public Access: BỎ CHỌN TẤT CẢ 4 ô">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Multi-Region Access Point :: Internship Report">
-    <meta itemprop="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta itemprop="wordCount" content="5">
+    <meta itemprop="description" content="5. CREATE MULTI-REGION ACCESS POINT (MRAP)BƯỚC 5.1: Create MRAPS3 &gt; Multi-Region Access Points
+Create Multi-Region Access Point
+Name: sgutodolist-frontend-mrap
+Add buckets:
+Click Add buckets
+Chọn: sgutodolist-frontend-sg (ap-southeast-1)
+Click Add buckets lại
+Chọn: sgutodolist-frontend-us (us-east-1)
+Block Public Access: BỎ CHỌN TẤT CẢ 4 ô">
+    <meta itemprop="wordCount" content="223">
     <title>Multi-Region Access Point :: Internship Report</title>
     <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.xml" rel="alternate" type="application/rss+xml" title="Multi-Region Access Point :: Internship Report">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764811602" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.min.js?1764811602" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764857383" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.js?1764857383" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.en.js?1764811602";
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1764857383";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764857383" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764811602" rel="stylesheet">
-    <link href="../../../../../css/theme.min.css?1764811602" rel="stylesheet">
-    <link href="../../../../../css/format-html.min.css?1764811602" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764857383" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764857383" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764857383" rel="stylesheet">
+    <link href="../../../../../css/theme.css?1764857383" rel="stylesheet">
+    <link href="../../../../../css/format-html.css?1764857383" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.1-frontend-deploy\/5.3.1.5-multi-region-access-point\/index.html';
       window.relearn.relBasePath='..\/..\/..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -92,7 +124,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1764811602" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1764857383" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html">
     <div id="R-body" class="default-animation">
@@ -124,9 +156,11 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#5-create-multi-region-access-point-mrap">5. CREATE MULTI-REGION ACCESS POINT (MRAP)</a>
       <ul>
-        <li><a href="#hehehehe-this-is-deploy-flow">HEHEHEHE THIS IS DEPLOY FLOW</a></li>
+        <li><a href="#bước-51-create-mrap">BƯỚC 5.1: Create MRAP</a></li>
+        <li><a href="#bước-52-lấy-mrap-endpoint">BƯỚC 5.2: Lấy MRAP Endpoint</a></li>
+        <li><a href="#bước-53-configure-mrap-policy">BƯỚC 5.3: Configure MRAP Policy</a></li>
       </ul>
     </li>
   </ul>
@@ -186,8 +220,8 @@
 
 <h1 id="multi-region-access-point">Multi-Region Access Point</h1>
 
-<h3 id="hehehehe-this-is-deploy-flow">
-  HEHEHEHE THIS IS DEPLOY FLOW
+<h2 id="5-create-multi-region-access-point-mrap">
+  5. CREATE MULTI-REGION ACCESS POINT (MRAP)
 
 
 
@@ -196,7 +230,176 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h2><h3 id="bước-51-create-mrap">
+  BƯỚC 5.1: Create MRAP
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>S3</strong> &gt; <strong>Multi-Region Access Points</strong></p>
+</li>
+<li>
+<p><strong>Create Multi-Region Access Point</strong></p>
+</li>
+<li>
+<p><strong>Name</strong>: sgutodolist-frontend-mrap</p>
+</li>
+<li>
+<p><strong>Add buckets</strong>:</p>
+<ul>
+<li>
+<p>Click <strong>Add buckets</strong></p>
+</li>
+<li>
+<p>Chọn: sgutodolist-frontend-sg (ap-southeast-1)</p>
+</li>
+<li>
+<p>Click <strong>Add buckets</strong> lại</p>
+</li>
+<li>
+<p>Chọn: sgutodolist-frontend-us (us-east-1)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Block Public Access</strong>: <strong>BỎ CHỌN TẤT CẢ 4 ô</strong></p>
+<ul>
+<li>Chọn &ldquo;I Acknowledge&hellip;&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Multi-Region Access Point</strong></p>
+</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe15_1.jpg" alt="Hình 15.1. Tạo MRAP">
+    <figcaption><i>Hình 15.1. Tạo MRAP</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe15_2.jpg" alt="Hình 15.2. Tạo MRAP">
+    <figcaption><i>Hình 15.2. Tạo MRAP</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe15_3.jpg" alt="Hình 15.3. Tạo MRAP">
+    <figcaption><i>Hình 15.3. Tạo MRAP</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe15_4.jpg" alt="Hình 15.4. MRAP đang trong thời gian xử lý">
+    <figcaption><i>Hình 15.4. MRAP đang trong thời gian xử lý</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe15_5.jpg" alt="Hình 15.4. MRAP đã Ready">
+    <figcaption><i>Hình 15.4. MRAP đã Ready</i></figcaption>
+  </figure>
+</div>
+
+<p><strong>Thời gian: 15-30 phút</strong></p>
+<h3 id="bước-52-lấy-mrap-endpoint">
+  BƯỚC 5.2: Lấy MRAP Endpoint
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi <strong>Status = Ready</strong>:</p>
+<ol>
+<li>
+<p>Click vào sgutodolist-frontend-mrap</p>
+</li>
+<li>
+<p><strong>Copy các thông tin:</strong></p>
+</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>MRAP Alias : abcd1234efgh.mrap
+ARN        : arn:aws:s3::123456789012:accesspoint/abcd1234efgh.mrap
+Tự ghép chuỗi Endpoint theo công thức: [Alias].accesspoint.s3-global.amazonaws.com</code></pre></div>
+<p><strong>Lưu lại Endpoint để dùng cho CloudFront!</strong></p>
+<p><strong>Lưu ý: Trên giao diện AWS Console hiện tại sẽ không hiển thị dòng Endpoint. Bạn bắt buộc phải tự ghép từ Alias như hướng dẫn ở trên.</strong></p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe16.jpg" alt="Hình 16. Thông tin MRAP">
+    <figcaption><i>Hình 16. Thông tin MRAP</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="bước-53-configure-mrap-policy">
+  BƯỚC 5.3: Configure MRAP Policy
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p>Tab <strong>Permissions</strong> &gt; <strong>Multi-Region Access Point policy</strong> &gt; <strong>Edit</strong></p>
+</li>
+<li>
+<p>Paste (thay YOUR-ACCOUNT-ID và YOUR-MRAP-ALIAS):</p>
+</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Statement&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3::YOUR-ACCOUNT-ID:accesspoint/YOUR-MRAP-ALIAS/object/*&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe17_1.jpg" alt="Hình 17.1. Thiết lập MRAP Policy">
+    <figcaption><i>Hình 17.1. Thiết lập MRAP Policy</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe17_2.jpg" alt="Hình 17.2. Thiết lập MRAP Policy thành công">
+    <figcaption><i>Hình 17.2. Thiết lập MRAP Policy thành công</i></figcaption>
+  </figure>
+</div>
+
+<ol start="3">
+<li><strong>Save changes</strong></li>
+</ol>
+<p>✅ <strong>PHASE 3 COMPLETE</strong> - MRAP sẵn sàng!</p>
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 4: Cross-Region Replication
+</a>
+<a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/" style="text-decoration: none; font-weight: bold;">
+BƯỚC 6: CloudFront Distribution ➡
+</a>
+</div>
   <footer class="footline">
   </footer>
 </article>
@@ -252,7 +455,6 @@
             <li class="" data-nav-url="../../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1.  </b> Prerequisites</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"> <b> 5.3.1.2.  </b> Setup Domain &amp; Route 53</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"> <b> 5.3.1.3.  </b> Prepare Buckets</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html"> <b> 5.3.1.4.  </b> Cross-Region Replication</a></li>
@@ -312,8 +514,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764857383" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.js?1764857383" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

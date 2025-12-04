@@ -67,7 +67,7 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.2-week_2/index.html</loc>
@@ -91,7 +91,7 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-duongbinhminh/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</loc>
@@ -115,7 +115,7 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</loc>
@@ -139,10 +139,10 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_5/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.5-week_5/index.html</loc>
@@ -163,7 +163,7 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</loc>
@@ -184,10 +184,10 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</loc>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.7-week_7/index.html</loc>
@@ -205,9 +205,6 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html</loc>
-  </url>
-  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.8-week_8/index.html</loc>
   </url>
   <url>
@@ -223,9 +220,6 @@
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</loc>
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.9-testing--verification/index.html</loc>
-  </url>
-  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.9-week_9/index.html</loc>
   </url>
   <url>
@@ -239,9 +233,6 @@
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_10/index.html</loc>
-  </url>
-  <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.10-maintenance--updates/index.html</loc>
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-phancanhtuandat/1.1.10-week_10/index.html</loc>

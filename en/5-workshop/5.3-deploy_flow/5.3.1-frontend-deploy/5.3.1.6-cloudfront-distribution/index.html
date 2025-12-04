@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta name="description" content="6. SETUP CLOUDFRONT DISTRIBUTIONBƯỚC 6.1: Create CloudFront DistributionVào CloudFront &gt; Create distribution Cấu hình Origin: Origin domain: Paste MRAP endpoint: abcd1234efgh.accesspoint.s3-global.amazonaws.com (Thay bằng MRAP endpoint thực của bạn)Origin path: Để trống Name: Tự động điền (hoặc đặt: MRAP-Frontend-Origin) Origin access: Chọn Public (vì đã có bucket policy) Default cache behavior: Viewer protocol policy: Redirect HTTP to HTTPS Allowed HTTP methods: GET, HEAD Cache policy: CachingOptimized (recommended) Origin request policy: None Settings: Price class: Chọn theo budget (Use all edge locations = tốt nhất) Alternate domain names (CNAMEs): sgutodolist.comwww.sgutodolist.comCustom SSL certificate: Chưa chọn (sẽ làm bước 7) Default root object: index.html Create distribution ⏰ Thời gian deploy: 10-20 phút">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="CloudFront Distribution :: Internship Report">
-    <meta name="twitter:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html">
+    <meta name="twitter:description" content="6. SETUP CLOUDFRONT DISTRIBUTIONBƯỚC 6.1: Create CloudFront DistributionVào CloudFront &gt; Create distribution Cấu hình Origin: Origin domain: Paste MRAP endpoint: abcd1234efgh.accesspoint.s3-global.amazonaws.com (Thay bằng MRAP endpoint thực của bạn)Origin path: Để trống Name: Tự động điền (hoặc đặt: MRAP-Frontend-Origin) Origin access: Chọn Public (vì đã có bucket policy) Default cache behavior: Viewer protocol policy: Redirect HTTP to HTTPS Allowed HTTP methods: GET, HEAD Cache policy: CachingOptimized (recommended) Origin request policy: None Settings: Price class: Chọn theo budget (Use all edge locations = tốt nhất) Alternate domain names (CNAMEs): sgutodolist.comwww.sgutodolist.comCustom SSL certificate: Chưa chọn (sẽ làm bước 7) Default root object: index.html Create distribution ⏰ Thời gian deploy: 10-20 phút">
+    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="CloudFront Distribution :: Internship Report">
-    <meta property="og:description" content="HEHEHEHE THIS IS DEPLOY FLOW">
+    <meta property="og:description" content="6. SETUP CLOUDFRONT DISTRIBUTIONBƯỚC 6.1: Create CloudFront DistributionVào CloudFront &gt; Create distribution Cấu hình Origin: Origin domain: Paste MRAP endpoint: abcd1234efgh.accesspoint.s3-global.amazonaws.com (Thay bằng MRAP endpoint thực của bạn)Origin path: Để trống Name: Tự động điền (hoặc đặt: MRAP-Frontend-Origin) Origin access: Chọn Public (vì đã có bucket policy) Default cache behavior: Viewer protocol policy: Redirect HTTP to HTTPS Allowed HTTP methods: GET, HEAD Cache policy: CachingOptimized (recommended) Origin request policy: None Settings: Price class: Chọn theo budget (Use all edge locations = tốt nhất) Alternate domain names (CNAMEs): sgutodolist.comwww.sgutodolist.comCustom SSL certificate: Chưa chọn (sẽ làm bước 7) Default root object: index.html Create distribution ⏰ Thời gian deploy: 10-20 phút">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="CloudFront Distribution :: Internship Report">
-    <meta itemprop="description" content="HEHEHEHE THIS IS DEPLOY FLOW">
-    <meta itemprop="wordCount" content="5">
+    <meta itemprop="description" content="6. SETUP CLOUDFRONT DISTRIBUTIONBƯỚC 6.1: Create CloudFront DistributionVào CloudFront &gt; Create distribution Cấu hình Origin: Origin domain: Paste MRAP endpoint: abcd1234efgh.accesspoint.s3-global.amazonaws.com (Thay bằng MRAP endpoint thực của bạn)Origin path: Để trống Name: Tự động điền (hoặc đặt: MRAP-Frontend-Origin) Origin access: Chọn Public (vì đã có bucket policy) Default cache behavior: Viewer protocol policy: Redirect HTTP to HTTPS Allowed HTTP methods: GET, HEAD Cache policy: CachingOptimized (recommended) Origin request policy: None Settings: Price class: Chọn theo budget (Use all edge locations = tốt nhất) Alternate domain names (CNAMEs): sgutodolist.comwww.sgutodolist.comCustom SSL certificate: Chưa chọn (sẽ làm bước 7) Default root object: index.html Create distribution ⏰ Thời gian deploy: 10-20 phút">
+    <meta itemprop="wordCount" content="188">
     <title>CloudFront Distribution :: Internship Report</title>
     <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.xml" rel="alternate" type="application/rss+xml" title="CloudFront Distribution :: Internship Report">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764811602" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.min.js?1764811602" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764857384" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.js?1764857384" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.en.js?1764811602";
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1764857384";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764857384" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764811602" rel="stylesheet">
-    <link href="../../../../../css/theme.min.css?1764811602" rel="stylesheet">
-    <link href="../../../../../css/format-html.min.css?1764811602" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764857384" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764857384" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764857384" rel="stylesheet">
+    <link href="../../../../../css/theme.css?1764857384" rel="stylesheet">
+    <link href="../../../../../css/format-html.css?1764857384" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.1-frontend-deploy\/5.3.1.6-cloudfront-distribution\/index.html';
       window.relearn.relBasePath='..\/..\/..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -92,7 +92,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1764811602" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1764857384" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html">
     <div id="R-body" class="default-animation">
@@ -124,9 +124,10 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#6-setup-cloudfront-distribution">6. SETUP CLOUDFRONT DISTRIBUTION</a>
       <ul>
-        <li><a href="#hehehehe-this-is-deploy-flow">HEHEHEHE THIS IS DEPLOY FLOW</a></li>
+        <li><a href="#bước-61-create-cloudfront-distribution">BƯỚC 6.1: Create CloudFront Distribution</a></li>
+        <li><a href="#bước-62-configure-error-pages-single-page-app">BƯỚC 6.2: Configure Error Pages (Single Page App)</a></li>
       </ul>
     </li>
   </ul>
@@ -146,7 +147,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html" title="Multi-Region Access Point (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html" title="Frontend Deploy (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -186,8 +187,8 @@
 
 <h1 id="cloudfront-distribution">CloudFront Distribution</h1>
 
-<h3 id="hehehehe-this-is-deploy-flow">
-  HEHEHEHE THIS IS DEPLOY FLOW
+<h2 id="6-setup-cloudfront-distribution">
+  6. SETUP CLOUDFRONT DISTRIBUTION
 
 
 
@@ -196,7 +197,85 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h2><h3 id="bước-61-create-cloudfront-distribution">
+  BƯỚC 6.1: Create CloudFront Distribution
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>Vào <strong>CloudFront</strong> &gt; <strong>Create distribution</strong></li>
+<li>Cấu hình <strong>Origin</strong>: <strong>Origin domain:</strong>
+<ul>
+<li>Paste MRAP endpoint: <code>abcd1234efgh.accesspoint.s3-global.amazonaws.com</code></li>
+<li>(Thay bằng MRAP endpoint thực của bạn)<strong>Origin path:</strong> Để trống <strong>Name:</strong> Tự động điền (hoặc đặt: <code>MRAP-Frontend-Origin</code>) <strong>Origin access:</strong></li>
+<li>Chọn <strong>Public</strong> (vì đã có bucket policy)</li>
+</ul>
+</li>
+<li><strong>Default cache behavior:</strong>
+<ul>
+<li><strong>Viewer protocol policy:</strong> <strong>Redirect HTTP to HTTPS</strong></li>
+<li><strong>Allowed HTTP methods:</strong> <strong>GET, HEAD</strong></li>
+<li><strong>Cache policy:</strong> <strong>CachingOptimized</strong> (recommended)</li>
+<li><strong>Origin request policy:</strong> None</li>
+</ul>
+</li>
+<li><strong>Settings:</strong>
+<ul>
+<li><strong>Price class:</strong> Chọn theo budget (Use all edge locations = tốt nhất)</li>
+<li><strong>Alternate domain names (CNAMEs):</strong></li>
+</ul>
+</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>     sgutodolist.com
+     www.sgutodolist.com</code></pre></div>
+<ul>
+<li><strong>Custom SSL certificate:</strong> Chưa chọn (sẽ làm bước 7)</li>
+<li><strong>Default root object:</strong> <code>index.html</code></li>
+</ul>
+<ol>
+<li><strong>Create distribution</strong></li>
+</ol>
+<p><strong>⏰ Thời gian deploy: 10-20 phút</strong></p>
+<h3 id="bước-62-configure-error-pages-single-page-app">
+  BƯỚC 6.2: Configure Error Pages (Single Page App)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Sau khi distribution <strong>Status = Deployed</strong>:</p>
+<ol>
+<li>Click vào distribution vừa tạo</li>
+<li>Tab <strong>Error pages</strong> &gt; <strong>Create custom error response</strong></li>
+<li>Tạo 2 error responses:</li>
+</ol>
+<p><strong>Response 1:</strong></p>
+<ul>
+<li><strong>HTTP error code:</strong> 403</li>
+<li><strong>Customize error response:</strong> Yes</li>
+<li><strong>Response page path:</strong> <code>/index.html</code></li>
+<li><strong>HTTP response code:</strong> 200</li>
+<li>Create</li>
+</ul>
+<p><strong>Response 2:</strong></p>
+<ul>
+<li><strong>HTTP error code:</strong> 404</li>
+<li><strong>Customize error response:</strong> Yes</li>
+<li><strong>Response page path:</strong> <code>/index.html</code></li>
+<li><strong>HTTP response code:</strong> 200</li>
+<li>Create</li>
+</ul>
+<p><strong>📝 Lưu lại CloudFront Domain Name:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>d1234abcdef.cloudfront.net</code></pre></div>
+
   <footer class="footline">
   </footer>
 </article>
@@ -252,11 +331,6 @@
             <li class="" data-nav-url="../../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
             <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1.  </b> Prerequisites</a></li>
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html"> <b> 5.3.1.2.  </b> Setup Domain &amp; Route 53</a></li>
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html"> <b> 5.3.1.3.  </b> Prepare Buckets</a></li>
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html"> <b> 5.3.1.4.  </b> Cross-Region Replication</a></li>
-            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html"> <b> 5.3.1.5.  </b> Multi-Region Access Point</a></li>
             <li class="active " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html"> <b> 5.3.1.6.  </b> CloudFront Distribution</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html"> <b> 5.3.1.7.  </b> SSL Certificate</a></li>
             <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html"> <b> 5.3.1.8.  </b> DNS Records</a></li>
@@ -312,8 +386,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764811602" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764857384" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.js?1764857384" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

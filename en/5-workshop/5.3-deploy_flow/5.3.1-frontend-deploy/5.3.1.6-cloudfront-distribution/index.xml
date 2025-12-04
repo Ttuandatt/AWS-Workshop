@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CloudFront Distribution :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</link>
-    <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</link>
+    <description>6. SETUP CLOUDFRONT DISTRIBUTION&#xD;BƯỚC 6.1: Create CloudFront Distribution&#xD;Vào CloudFront &gt; Create distribution Cấu hình Origin: Origin domain: Paste MRAP endpoint: abcd1234efgh.accesspoint.s3-global.amazonaws.com (Thay bằng MRAP endpoint thực của bạn)Origin path: Để trống Name: Tự động điền (hoặc đặt: MRAP-Frontend-Origin) Origin access: Chọn Public (vì đã có bucket policy) Default cache behavior: Viewer protocol policy: Redirect HTTP to HTTPS Allowed HTTP methods: GET, HEAD Cache policy: CachingOptimized (recommended) Origin request policy: None Settings: Price class: Chọn theo budget (Use all edge locations = tốt nhất) Alternate domain names (CNAMEs): sgutodolist.com&#xD;www.sgutodolist.com&#xD;Custom SSL certificate: Chưa chọn (sẽ làm bước 7) Default root object: index.html Create distribution ⏰ Thời gian deploy: 10-20 phút</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

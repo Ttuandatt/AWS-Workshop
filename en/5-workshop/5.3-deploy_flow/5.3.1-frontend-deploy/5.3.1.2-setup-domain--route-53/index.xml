@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Setup Domain &amp; Route 53 :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</link>
     <description>2. SETUP DOMAIN &amp; ROUTE 53&#xD;BƯỚC 2.1: Tạo Hosted Zone trong Route 53&#xD;Đăng nhập AWS Console&#xA;Tìm và vào Route 53&#xA;Click Hosted zones (menu bên trái)&#xA;Click Create hosted zone&#xA;Điền thông tin:&#xA;Domain name: sgutodolist.com</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

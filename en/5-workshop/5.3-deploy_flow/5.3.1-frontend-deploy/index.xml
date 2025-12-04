@@ -3,7 +3,7 @@
   <channel>
     <title>Frontend Deploy :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
-    <description>HƯỚNG DẪN DEPLOY FRONTEND MULTI-REGION&#xD;Project: SGU Task Management Web Application&#xA;Domain: sgutodolist.com&#xA;Frontend: ReactJS&#xA;Architecture: Multi-Region (Singapore + Virginia) + CloudFront CDN&#xA;Thời gian thực hiện: ~60-90 phút&#xA;MỤC LỤC&#xD;Prerequisites&#xA;Setup Domain &amp; Route 53&#xA;Prepare Buckets (Singapore + Virginia)</description>
+    <description>Mô hình kiến trúc&#xD;Domain: Route 53 (DNS) + ACM (SSL Certificate).&#xA;CDN: CloudFront (Global Edge Network).&#xA;Storage (Primary): S3 Singapore (ap-southeast-1).&#xA;Storage (Failover): S3 N. Virginia (us-east-1).&#xA;Replication: Tự động copy code từ Sing -&gt; Virginia.&#xA;Security: OAC (Origin Access Control) - Private Bucket.&#xA;MỤC LỤC&#xD;Prerequisites</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.xml" rel="self" type="application/rss+xml" />
@@ -12,70 +12,49 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</guid>
-      <description>1. PREREQUISITES&#xD;Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Đối với tài khoản Free Tier thì không được hỗ trợ tính năng đăng ký tên miền của dịch vụ Route 53, vì vậy project này đăng ký tên miền một nhà cung cấp tên miền khác và host tên miền ở Route Tài khoản AWS</description>
+      <description>Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Đối với tài khoản Free Tier thì không được hỗ trợ tính năng đăng ký tên miền của dịch vụ Route 53, vì vậy project này đăng ký tên miền một nhà cung cấp tên miền khác và host tên miền ở Route Tài khoản AWS</description>
     </item>
     <item>
-      <title>Setup Domain &amp; Route 53</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</link>
+      <title>S3 and Replication</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-setup-domain--route-53/index.html</guid>
-      <description>2. SETUP DOMAIN &amp; ROUTE 53&#xD;BƯỚC 2.1: Tạo Hosted Zone trong Route 53&#xD;Đăng nhập AWS Console&#xA;Tìm và vào Route 53&#xA;Click Hosted zones (menu bên trái)&#xA;Click Create hosted zone&#xA;Điền thông tin:&#xA;Domain name: sgutodolist.com</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</guid>
+      <description>GIAI ĐOẠN 1: CHUẨN BỊ STORAGE (S3 &amp; REPLICATION)&#xD;Tạo nơi chứa resources, và một cơ chế tự động đồng bộ.&#xA;Bước 1.1: Tạo Bucket Chính (Singapore)&#xD;Vào S3 Console &gt; Chọn Region Asia Pacific (Singapore).&#xA;Click Create bucket.</description>
     </item>
     <item>
-      <title>Prepare Buckets</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</link>
+      <title>Route 53 and ACM</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-prepare-buckets/index.html</guid>
-      <description>3. PREPARE BUCKETS (SINGAPORE + VIRGINIA)&#xD;BƯỚC 3.1: Build ReactJS Project&#xD;3.1.1. Cấu hình package.json&#xD;Mở package.json, thêm/sửa dòng:&#xA;&#34;name&#34;: &#34;aws-todolist&#34;, &#34;version&#34;: &#34;0.1.0&#34;, &#34;homepage&#34;: &#34;.&#34;, &#34;private&#34;: true, ... }&#xD;3.1.2. Build Project&#xD;npm run build&#xD;Kiểm tra thư mục build/ có đầy đủ files.</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html</guid>
+      <description>GIAI ĐOẠN 2: CHUẨN BỊ TÊN MIỀN &amp; BẢO MẬT (ROUTE 53 &amp; ACM)&#xD;Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (SSL) và DNS.&#xA;Bước 2.1: Tạo Hosted Zone (Nếu chưa có)&#xD;Vào Route 53 &gt; Hosted zones.</description>
     </item>
     <item>
-      <title>Cross-Region Replication</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</link>
+      <title>ClouFront and Failover</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html</guid>
-      <description>4. SETUP CROSS-REGION REPLICATION (CRR)&#xD;BƯỚC 4.1: Tạo IAM Policy&#xD;Vào IAM &gt; Policies &gt; Create policy&#xA;Tab JSON, paste:&#xA;{ &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }&#xD;Next</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</guid>
+      <description>GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)&#xD;BƯỚC 3.1: Tạo Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront&#xA;Distribution type: Giữ nguyên Single website or app.</description>
     </item>
     <item>
-      <title>Multi-Region Access Point</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</link>
+      <title>S3 Policy</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-multi-region-access-point/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html</guid>
+      <description>GIAI ĐOẠN 4: CẤP QUYỀN S3 (POLICY)&#xD;CloudFront cần “giấy phép” để lấy file từ 2 bucket kín của bạn.&#xA;Trong CloudFront &gt; Tab Origins.&#xA;Chọn Origin Singapore &gt; Edit &gt; Copy policy.&#xA;Mở tab mới &gt; S3 Console &gt; Bucket sgutodolist-frontend-sg.&#xA;Tab Permissions &gt; Bucket Policy &gt; Edit &gt; Paste &gt; Save.&#xA;Lặp lại với Bucket Virginia:</description>
     </item>
     <item>
-      <title>CloudFront Distribution</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</link>
+      <title>DNS Record</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-cloudfront-distribution/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</guid>
+      <description>GIAI ĐOẠN 5: TRỎ DOMAIN CHÍNH THỨC (DNS RECORD)&#xD;Vào Route 53 &gt; Hosted zones &gt; sgutodolist.com.&#xA;Tạo Record cho Root domain:&#xA;Click Create record.&#xA;Record name: (để trống).&#xA;Type: A.&#xA;Alias: Yes (Gạt nút sang phải).&#xA;Route traffic to: Alias to CloudFront distribution.&#xA;Choose distribution: Chọn cái CloudFront domain (ví dụ d123...cloudfront.net).&#xA;Click Create records.</description>
     </item>
     <item>
-      <title>SSL Certificate</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</link>
+      <title>Deploy and Test</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-ssl-certificate/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
-    </item>
-    <item>
-      <title>DNS Records</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.8-dns-records/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
-    </item>
-    <item>
-      <title>Testing &amp; Verification</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.9-testing--verification/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.9-testing--verification/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
-    </item>
-    <item>
-      <title>Maintenance &amp; Updates</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.10-maintenance--updates/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.10-maintenance--updates/index.html</guid>
-      <description>HEHEHEHE THIS IS DEPLOY FLOW</description>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</guid>
+      <description>GIAI ĐOẠN 6: DEPLOY &amp; KIỂM TRA&#xD;Bước 6.1: Build &amp; Deploy&#xD;Tại máy tính local (trong folder project React):&#xA;# 1. Build ra folder production npm run build # 2. Upload lên bucket CHÍNH (Singapore) # Lưu ý: Chỉ cần upload lên Sing, AWS sẽ tự copy sang US aws s3 sync build/ s3://sgutodolist-frontend-sg --delete # 3. Xóa cache CloudFront để user thấy code mới ngay aws cloudfront create-invalidation --distribution-id &lt;ID_CUA_BAN&gt; --paths &#34;/*&#34;&#xD;Bước 6.2: Kiểm tra&#xD;Truy cập https://sgutodolist.com.</description>
     </item>
   </channel>
 </rss>
