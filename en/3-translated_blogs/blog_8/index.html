@@ -33,26 +33,26 @@ Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon 
     <meta itemprop="wordCount" content="1652">
     <title>Blog 8 :: Internship Report</title>
     <link href="../../../en/3-translated_blogs/blog_8/index.xml" rel="alternate" type="application/rss+xml" title="Blog 8 :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764743663" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1764743663" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764811602" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1764811602" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1764743663";
+      window.relearn.index_js_url="../../../searchindex.en.js?1764811602";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764743663" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764811602" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764743663" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1764743663" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1764743663" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764811602" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1764811602" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1764811602" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -104,7 +104,7 @@ Giới thiệuHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon 
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../css/custom.css?1764743663" rel="stylesheet">
+    <link href="../../../css/custom.css?1764811602" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../en/3-translated_blogs/blog_8/index.html">
     <div id="R-body" class="default-animation">
@@ -274,16 +274,16 @@ Trong bài viết này, bạn sẽ học cách sử dụng Amazon SQS fair queue
 </ul>
 <p>Hãy xem ví dụ sau với một hàng đợi multi-tenant và bốn tenant khác nhau (A, B, C và D).
 Trong trạng thái ổn định (steady state), hàng đợi không có backlog, và message in-flight được phân phối đều giữa các tenant. Tất cả message được xử lý ngay khi xuất hiện. Thời gian lưu message (dwell time) thấp cho tất cả tenant. Lưu ý rằng năng lực xử lý của consumer không phải lúc nào cũng được dùng hết trong trạng thái này.</p>
-<p><a href="#R-image-2f6e56ff98daccb4c0ec2ca2e56f275a" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2f6e56ff98daccb4c0ec2ca2e56f275a"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg"></a></p>
+<p><a href="#R-image-b32b8c55b784314870573c532b46290c" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b32b8c55b784314870573c532b46290c"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg"></a></p>
 <p><strong>Hình 1: Một hàng đợi multi-tenant ở trạng thái steady state</strong></p>
 <p>Bây giờ xét kịch bản có tenant gây ồn: số lượng message của tenant A tăng mạnh và tạo backlog trong hàng đợi. Consumer bận xử lý chủ yếu message từ tenant A, còn các message từ các tenant khác phải chờ trong hàng đợi, dẫn tới tăng dwell time cho tất cả.</p>
-<p><a href="#R-image-bef2f1c73841a54e85645bf5c239446e" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-bef2f1c73841a54e85645bf5c239446e"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg"></a></p>
+<p><a href="#R-image-834a7a775cd8b7a63441ef730a550ec0" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-834a7a775cd8b7a63441ef730a550ec0"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg"></a></p>
 <p><strong>Hình 2: Hàng đợi multi-tenant với một noisy tenant</strong></p>
 <p>Khi một tenant bắt đầu chiếm phần lớn tài nguyên consumer, Amazon SQS fair queues xem tenant đó là noisy neighbor và ưu tiên trả message của các tenant còn lại. Cách ưu tiên này giúp duy trì dwell time thấp cho các tenant yên lặng (B, C, D), trong khi dwell time của tenant A sẽ cao hơn cho tới khi backlog của nó được xử lý — nhưng không ảnh hưởng đến các tenant khác.</p>
-<p><a href="#R-image-1009aee7801a3f85d817c062ed6a1bc9" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-1009aee7801a3f85d817c062ed6a1bc9"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg"></a></p>
+<p><a href="#R-image-79daccd068bdbd4992f4b1d5ea923acd" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-79daccd068bdbd4992f4b1d5ea923acd"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg"></a></p>
 <p><strong>Hình 3: Hàng đợi multi-tenant với fair queues</strong></p>
 <p>Amazon SQS không giới hạn tốc độ tiêu thụ theo tenant. Consumer vẫn có thể nhận message từ tenant gây ồn khi còn tài nguyên xử lý và hàng đợi không còn message nào khác để trả về. Giống như SQS Standard queue, fair queues cho phép throughput gần như không giới hạn, và không có giới hạn số lượng tenant trong hàng đợi.</p>
 <h2 id="cách-sử-dụng">
@@ -320,8 +320,8 @@ Trong trạng thái ổn định (steady state), hàng đợi không có backlog
 </ol>
 <p>Kích hoạt Amazon SQS fair queues bằng cách thêm MessageGroupId (tenant identifier)
 Producer có thể thêm định danh tenant bằng cách đặt MessageGroupId cho message gửi đi:
-<a href="#R-image-d2acfc116c21eae4af982e4085b80a85" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d2acfc116c21eae4af982e4085b80a85"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg"></a></p>
+<a href="#R-image-42a067957780efb432001647e999eb5b" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-42a067957780efb432001647e999eb5b"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg"></a></p>
 <p>Tính năng fairness mới sẽ được áp dụng tự động cho tất cả SQS standard queues đối với các message có thuộc tính MessageGroupId.
 Không cần thay đổi code phía consumer.
 Không ảnh hưởng đến độ trễ API và không có giới hạn throughput.</p>
@@ -381,8 +381,8 @@ Fair queues cung cấp thêm các metric với hậu tố InQuietGroups, cho ph�
 <li>Khi một tenant tạo traffic đột biến, metric toàn queue tăng backlog</li>
 <li>Nhưng metric quiet groups vẫn thấp → chứng tỏ tenant khác không bị ảnh hưởng</li>
 </ul>
-<p><a href="#R-image-4b20815fe5080d8a816635cd510eb39c" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4b20815fe5080d8a816635cd510eb39c"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg"></a></p>
+<p><a href="#R-image-4ca32047fedf82e056c3c922e05af852" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4ca32047fedf82e056c3c922e05af852"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg"></a></p>
 <p><strong>Hình 4:</strong> Biểu đồ backlog tenant noisy vs quiet</p>
 <hr>
 <h2 id="xác-định-tenant-gây-tải-cao">
@@ -403,8 +403,8 @@ Fair queues cung cấp thêm các metric với hậu tố InQuietGroups, cho ph�
 </ul>
 <blockquote>
 <p>Điều này hữu ích khi có hàng nghìn tenant, giúp tránh chi phí metric lớn (<strong>high-cardinality</strong>).</p></blockquote>
-<p><a href="#R-image-900881c65e1f2ba286d4ff0c96eb75bf" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-900881c65e1f2ba286d4ff0c96eb75bf"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg"></a></p>
+<p><a href="#R-image-ab88cc25b582789c3354d07d8015b227" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ab88cc25b582789c3354d07d8015b227"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg"></a></p>
 <p><strong>Hình 5:</strong> Dashboard Contributor Insights dựa trên MessageGroupId</p>
 <p>Contributor Insights tạo metric từ log ứng dụng của bạn.
 Ứng dụng cần log số lượng message xử lý và MessageGroupId.
@@ -422,8 +422,8 @@ Ví dụ đầy đủ có trong sample app phần tiếp theo.</p>
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h2><p>Để giúp bạn bắt đầu dễ dàng hơn, chúng tôi đã chuẩn bị một ứng dụng mẫu để bạn có thể quan sát hành vi của Amazon SQS fair queues với các mức tải message khác nhau. Bạn có thể tìm mã nguồn, hạ tầng dưới dạng code (IaC) và <a href="https://github.com/aws-samples/sample-amazon-sqs-fair-queues" rel="external">hướng dẫn chạy mẫu</a> trong kho GitHub sqs-fair-queues.</p>
 <p>Ứng dụng ví dụ này bao gồm một trình tạo tải (load generator) để mô phỏng traffic multi-tenant và cung cấp một <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html" rel="external">CloudWatch dashboard</a> hiển thị các metric quan trọng nhất để trực quan hóa cách fair queues hoạt động. Hình dưới đây minh hoạ dashboard đó:</p>
-<p><a href="#R-image-7be93b71d19082d466dbd49aeb30878c" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7be93b71d19082d466dbd49aeb30878c"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg"></a></p>
+<p><a href="#R-image-891aa33a8e6f4934da7b1a7b27aea359" class="lightbox-link"><img alt="alt text" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-891aa33a8e6f4934da7b1a7b27aea359"><img alt="alt text" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg"></a></p>
 <p><strong>Hình 6:</strong> CloudWatch FairQueuesDashboard</p>
 <ul>
 <li>Mã nguồn và hướng dẫn chạy trong GitHub: <a href="https://github.com/aws-samples/sqs-fair-queues" rel="external">sqs-fair-queues</a></li>
@@ -567,8 +567,8 @@ Ví dụ đầy đủ có trong sample app phần tiếp theo.</p>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764743663" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1764743663" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764811602" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1764811602" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

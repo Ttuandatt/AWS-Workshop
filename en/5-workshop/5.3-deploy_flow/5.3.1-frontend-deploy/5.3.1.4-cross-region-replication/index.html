@@ -26,29 +26,29 @@ Tab JSON, paste:
     <meta itemprop="description" content="4. SETUP CROSS-REGION REPLICATION (CRR)BƯỚC 4.1: Tạo IAM PolicyVào IAM &gt; Policies &gt; Create policy
 Tab JSON, paste:
 { &#34;Version&#34;: &#34;2012-10-17&#34;, &#34;Statement&#34;: [ { &#34;Sid&#34;: &#34;S3ReplicationSourcePermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetReplicationConfiguration&#34;, &#34;s3:ListBucket&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationSourceObjectPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:GetObjectVersionForReplication&#34;, &#34;s3:GetObjectVersionAcl&#34;, &#34;s3:GetObjectVersionTagging&#34;, &#34;s3:GetObjectRetention&#34;, &#34;s3:GetObjectLegalHold&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-sg/*&#34; ] }, { &#34;Sid&#34;: &#34;S3ReplicationDestinationPermissions&#34;, &#34;Effect&#34;: &#34;Allow&#34;, &#34;Action&#34;: [ &#34;s3:ReplicateObject&#34;, &#34;s3:ReplicateDelete&#34;, &#34;s3:ReplicateTags&#34;, &#34;s3:ObjectOwnerOverrideToBucketOwner&#34; ], &#34;Resource&#34;: [ &#34;arn:aws:s3:::sgutodolist-frontend-us/*&#34; ] } ] }Next">
-    <meta itemprop="wordCount" content="363">
+    <meta itemprop="wordCount" content="613">
     <title>Cross-Region Replication :: Internship Report</title>
     <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.xml" rel="alternate" type="application/rss+xml" title="Cross-Region Replication :: Internship Report">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764743663" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.min.js?1764743663" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764811602" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.min.js?1764811602" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.en.js?1764743663";
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1764811602";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764811602" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764743663" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764743663" rel="stylesheet">
-    <link href="../../../../../css/theme.min.css?1764743663" rel="stylesheet">
-    <link href="../../../../../css/format-html.min.css?1764743663" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764811602" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764811602" rel="stylesheet">
+    <link href="../../../../../css/theme.min.css?1764811602" rel="stylesheet">
+    <link href="../../../../../css/format-html.min.css?1764811602" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -100,7 +100,7 @@ Tab JSON, paste:
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1764743663" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1764811602" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cross-region-replication/index.html">
     <div id="R-body" class="default-animation">
@@ -137,7 +137,7 @@ Tab JSON, paste:
         <li><a href="#bước-41-tạo-iam-policy">BƯỚC 4.1: Tạo IAM Policy</a></li>
         <li><a href="#bước-42-tạo-iam-role">BƯỚC 4.2: Tạo IAM Role</a></li>
         <li><a href="#bước-43-tạo-replication-rule">BƯỚC 4.3: Tạo Replication Rule</a></li>
-        <li><a href="#bước-44-replicate-existing-objects">BƯỚC 4.4: Replicate Existing Objects</a></li>
+        <li><a href="#bước-44-replicate-existing-objects-sao-chép-dữ-liệu-cũ">BƯỚC 4.4: Replicate Existing Objects (Sao chép dữ liệu cũ)</a></li>
         <li><a href="#bước-45-verify-replication">BƯỚC 4.5: Verify Replication</a></li>
       </ul>
     </li>
@@ -430,8 +430,36 @@ Tab JSON, paste:
 <p><strong>Save</strong></p>
 </li>
 </ol>
-<h3 id="bước-44-replicate-existing-objects">
-  BƯỚC 4.4: Replicate Existing Objects
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe12_1.jpg" alt="Hình 12.1. Tạo Replication Rule cho S3 Replication">
+    <figcaption><i>Hình 12.1. Tạo Replication Rule cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe12_2.jpg" alt="Hình 12.2. Tạo Replication Rule cho S3 Replication">
+    <figcaption><i>Hình 12.2. Tạo Replication Rule cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe12_3.jpg" alt="Hình 12.3. Tạo Replication Rule cho S3 Replication">
+    <figcaption><i>Hình 12.3. Tạo Replication Rule cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe12_4.jpg" alt="Hình 12.4. Tạo Replication Rule cho S3 Replication">
+    <figcaption><i>Hình 12.4. Tạo Replication Rule cho S3 Replication</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="bước-44-replicate-existing-objects-sao-chép-dữ-liệu-cũ">
+  BƯỚC 4.4: Replicate Existing Objects (Sao chép dữ liệu cũ)
 
 
 
@@ -440,15 +468,75 @@ Tab JSON, paste:
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Nếu có popup &ldquo;Replicate existing objects?&rdquo;:</strong></p>
+</h3><p><strong>Trường hợp 1: Có popup &ldquo;Replicate existing objects?&rdquo;</strong></p>
+<ol>
+<li>Tại popup, chọn <strong>&ldquo;Yes, replicate existing objects&rdquo;</strong>.</li>
+<li>Click <strong>Submit</strong>.</li>
+<li>Hệ thống chuyển sang màn hình <strong>Create Batch Operations job</strong>. Cấu hình như sau:
 <ul>
-<li>
-<p>Chọn <strong>&ldquo;Yes, replicate existing objects&rdquo;</strong></p>
+<li><strong>Job run options:</strong> Chọn <strong>Automatically run the job when it&rsquo;s ready</strong> (Để job tự chạy ngay khi chuẩn bị xong).</li>
+<li><strong>Completion report:</strong>
+<ul>
+<li>Tích chọn <strong>Generate completion report</strong>.</li>
+<li><strong>Scope:</strong> Chọn <strong>Failed tasks only</strong> (Chỉ báo cáo file lỗi).</li>
+<li><strong>Destination:</strong> Chọn <strong>Browse S3</strong> &gt; Chọn bucket gốc <code>sgutodolist-frontend-sg</code>.</li>
+</ul>
 </li>
+<li><strong>Permissions (Quan trọng):</strong>
+<ul>
+<li>Tại mục <strong>IAM role</strong>, chọn <strong>Create new role</strong>.</li>
 <li>
-<p>Click <strong>Submit</strong></p>
+<blockquote>
+<p><strong>Lưu ý:</strong> Không chọn lại role <code>S3-CRR-Role-Frontend</code> cũ vì Batch Job cần một role riêng có quyền Batch Operations.</p></blockquote>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li>Cuộn xuống cuối và click <strong>Save</strong>.</li>
+</ol>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe13_1.jpg" alt="Hình 13.1. Replicate Existing Objects (Sao chép dữ liệu cũ)">
+    <figcaption><i>Hình 13.1. Replicate Existing Objects (Sao chép dữ liệu cũ)</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe13_2.jpg" alt="Hình 13.2. Replicate Existing Objects (Sao chép dữ liệu cũ)">
+    <figcaption><i>Hình 13.2. Replicate Existing Objects (Sao chép dữ liệu cũ)</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe13_3.jpg" alt="Hình 13.3. Replicate Existing Objects (Sao chép dữ liệu cũ)">
+    <figcaption><i>Hình 13.3. Replicate Existing Objects (Sao chép dữ liệu cũ)</i></figcaption>
+  </figure>
+</div>
+
+<p><strong>Trường hợp 2: KHÔNG có popup (Làm thủ công)</strong></p>
+<ol>
+<li>Vào <strong>S3</strong> &gt; <strong>Batch Operations</strong> (Region Singapore).</li>
+<li>Chọn <strong>Create job</strong>.</li>
+<li><strong>Manifest:</strong>
+<ul>
+<li><strong>Region:</strong> Singapore.</li>
+<li><strong>Manifest format:</strong> S3 Replication configuration.</li>
+<li><strong>Source bucket:</strong> <code>sgutodolist-frontend-sg</code>.</li>
+</ul>
+</li>
+<li><strong>Operation:</strong> Chọn <strong>Replicate</strong>.</li>
+<li><strong>Configure:</strong>
+<ul>
+<li><strong>Description:</strong> <code>Replicate frontend SG to US</code>.</li>
+<li><strong>Permissions:</strong> Chọn <strong>Create a new role</strong>.</li>
+</ul>
+</li>
+<li>Click <strong>Create job</strong>.</li>
+<li>Nếu job ở trạng thái <em>Awaiting confirmation</em>, chọn job đó và click <strong>Run job</strong>.</li>
+</ol>
 <p><strong>Nếu KHÔNG có popup, tạo Batch Job thủ công:</strong></p>
 <ol>
 <li>
@@ -527,6 +615,21 @@ Tab JSON, paste:
 <p>Compare object count (Singapore vs Virginia phải bằng nhau)</p>
 </li>
 </ol>
+<p>Kết quả Replicate:</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe14_1.jpg" alt="Hình 14.1. Kết quả Batch Operation Jobs">
+    <figcaption><i>Hình 14.1. Kết quả Batch Operation Jobs</i></figcaption>
+  </figure>
+</div>
+
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../../../images/fe14_2.jpg" alt="Hình 14.2. S3 ở region Virginia đã Replicate thành công">
+    <figcaption><i>Hình 14.2. S3 ở region Virginia đã Replicate thành công</i></figcaption>
+  </figure>
+</div>
+
 <p>✅ <strong>PHASE 2 COMPLETE</strong> - CRR setup xong!</p>
 
   <footer class="footline">
@@ -644,8 +747,8 @@ Tab JSON, paste:
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764743663" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764743663" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764811602" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.min.js?1764811602" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
