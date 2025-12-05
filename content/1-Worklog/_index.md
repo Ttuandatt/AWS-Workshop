@@ -8,10 +8,30 @@ pre = "<b>1. </b>"
 
 
 
-**PhanCanhTuanDat:** [Worklog]({{% relref "1-Worklog/1.1-PhanCanhTuanDat/_index.md" %}})
+**Week 1:** [Worklog]({{% relref "1-Worklog/1.1-Week_1/_index.md" %}})
 
-**NgoTuanHung:** [Worklog]({{< relref "1-Worklog/1.2-NgoTuanHung/_index.md" >}})
+**Week 2:** [Worklog]({{% relref "1-Worklog/1.2-Week_2/_index.md" %}})
 
-**DuongBinhMinh:** [Worklog]({{< relref "1-Worklog/1.3-DuongBinhMinh/_index.md" >}})
+**Week 3:** [Worklog]({{% relref "1-Worklog/1.3-Week_3/_index.md" %}})
 
-**LeTrungKien:** [Worklog]({{< relref "1-Worklog/1.4-LeTrungKien/_index.md" >}})
+**Week 4:** [Worklog]({{% relref "1-Worklog/1.4-Week_4/_index.md" %}})
+
+**Week 5:** [Worklog]({{% relref "1-Worklog/1.5-Week_5/_index.md" %}})
+
+**Week 6:** [Worklog]({{% relref "1-Worklog/1.6-Week_6/_index.md" %}})
+
+**Week 7:** [Worklog]({{% relref "1-Worklog/1.7-Week_7/_index.md" %}})
+
+**Week 8:** [Worklog]({{% relref "1-Worklog/1.8-Week_8/_index.md" %}})
+
+**Week 9:** [Worklog]({{% relref "1-Worklog/1.9-Week_9/_index.md" %}})
+
+**Week 10:** [Worklog]({{% relref "1-Worklog/1.10-Week_10/_index.md" %}})
+
+**Week 11:** [Worklog]({{% relref "1-Worklog/1.11-Week_11/_index.md" %}})
+
+**Week 12:** [Worklog]({{% relref "1-Worklog/1.12-Week_12/_index.md" %}})
+
+**Week 13:** [Worklog]({{% relref "1-Worklog/1.13-Week_13/_index.md" %}})
+
+**Week 14:** [Worklog]({{% relref "1-Worklog/1.14-Week_14/_index.md" %}})
