@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Week 7 Worklog :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.7-week_7/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html</link>
     <description>Week 7 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 20/10/2025 20/10/2025 - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 2 - Learn about Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 3 - Learn how to deploy the system on cloud resources 22/10/2025 22/10/2025 - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 4 - Code backend User Service, Notification Service 23/10/2025 23/10/2025 - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. Build modals, popups, drag-and-drop features. Complete 80% of the main business flow. 5 - Code backend User Service, Notification Service 24/10/2025 24/10/2025 - Code frontend: Build modals, popups, drag-and-drop features. Complete 80% of the main business flow. - Test deploying the Frontend on S3</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.7-week_7/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

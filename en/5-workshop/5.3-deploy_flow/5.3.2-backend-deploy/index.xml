@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Backend Deploy :: Internship Report</title>
+    <title></title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
-    <description>HEHEHEHE THIS IS BACKEND DEPLOY</description>
+    <description>HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)&#xD;🏗 TỔNG QUAN HỆ THỐNG&#xD;Region: Singapore (ap-southeast-1).&#xA;Frontend Domain: https://sgutodolist.com.&#xA;Backend Domain: https://api.sgutodolist.com.&#xA;Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):&#xA;Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) + ALB + Bastion. (Bắt buộc để Task có thể tải Image từ Internet).</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />

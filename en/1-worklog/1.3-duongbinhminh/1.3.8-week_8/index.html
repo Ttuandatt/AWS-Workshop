@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Week 8 Worklog :: Internship Report">
     <meta name="twitter:description" content="Week 8 ObjectivesCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this weekDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 27/10/2025 27/10/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 28/10/2025 28/10/2025 - Code backend User Service, Notification Service - Learn and practice ALB 3 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 29/10/2025 29/10/2025 - Code backend User Service, Notification Service - Experiment deploy static resource on S3 4 - Code front end: Optimize loading performance (Code Splitting, Lazy Loading). 30/10/2025 30/10/2025 - Code backend User Service, Notification Service 5 - Code front end: Improve Accessibility (A11Y) and error handling (Error Boundaries). 31/10/2025 31/10/2025">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-duongbinhminh/1.3.8-week_8/index.html">
+    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/en/1-worklog/1.3-duongbinhminh/1.3.8-week_8/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Week 8 Worklog :: Internship Report">
     <meta property="og:description" content="Week 8 ObjectivesCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this weekDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 27/10/2025 27/10/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 28/10/2025 28/10/2025 - Code backend User Service, Notification Service - Learn and practice ALB 3 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 29/10/2025 29/10/2025 - Code backend User Service, Notification Service - Experiment deploy static resource on S3 4 - Code front end: Optimize loading performance (Code Splitting, Lazy Loading). 30/10/2025 30/10/2025 - Code backend User Service, Notification Service 5 - Code front end: Improve Accessibility (A11Y) and error handling (Error Boundaries). 31/10/2025 31/10/2025">
@@ -21,34 +21,34 @@
     <meta itemprop="wordCount" content="190">
     <title>Week 8 Worklog :: Internship Report</title>
     <link href="../../../../en/1-worklog/1.3-duongbinhminh/1.3.8-week_8/index.xml" rel="alternate" type="application/rss+xml" title="Week 8 Worklog :: Internship Report">
-    <link href="../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764865088" rel="stylesheet">
-    <script src="../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/search-lunr.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/search.min.js?1764865088" defer></script>
+    <link href="../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764901899" rel="stylesheet">
+    <script src="../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/search-lunr.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/search.js?1764901899" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../searchindex.en.js?1764865088";
+      window.relearn.index_js_url="../../../../searchindex.en.js?1764901899";
     </script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764865088" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.min.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764901899" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764865088" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764865088" rel="stylesheet"></noscript>
-    <link href="../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764865088" rel="stylesheet">
-    <link href="../../../../css/theme.min.css?1764865088" rel="stylesheet">
-    <link href="../../../../css/format-html.min.css?1764865088" rel="stylesheet" id="R-format-style">
+    <link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764901899" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764901899" rel="stylesheet"></noscript>
+    <link href="../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764901899" rel="stylesheet">
+    <link href="../../../../css/theme.css?1764901899" rel="stylesheet">
+    <link href="../../../../css/format-html.css?1764901899" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/1-worklog\/1.3-duongbinhminh\/1.3.8-week_8\/index.html';
       window.relearn.relBasePath='..\/..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -92,7 +92,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../css/custom.css?1764865088" rel="stylesheet">
+    <link href="../../../../css/custom.css?1764901899" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../en/1-worklog/1.3-duongbinhminh/1.3.8-week_8/index.html">
     <div id="R-body" class="default-animation">
@@ -424,8 +424,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764865088" defer></script>
-    <script src="../../../../AWS-Workshop/js/theme.min.js?1764865088" defer></script>
+    <script src="../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764901899" defer></script>
+    <script src="../../../../AWS-Workshop/js/theme.js?1764901899" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
