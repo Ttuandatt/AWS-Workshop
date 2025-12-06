@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair QueuesTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuAWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 8 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair QueuesTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuAWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 8 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair QueuesTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuAWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 8 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair QueuesTác giả: Maximilian Schellhorn &amp; Dirk Fröhner
+Ngày: 21/07/2025
+Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to
+Giới thiệuAWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.">
+    <meta itemprop="wordCount" content="1010">
+    <title>Blog 8 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_8/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_8/index.xml" rel="alternate" type="application/rss+xml" title="Blog 8 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_8\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_8/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#tổng-quan-về-bài-toán-multi-tenant">Tổng quan về bài toán multi-tenant</a></li>
+    <li><a href="#cách-amazon-sqs-fair-queues-hoạt-động">Cách Amazon SQS Fair Queues hoạt động</a>
+      <ul>
+        <li><a href="#trạng-thái-steady-state">Trạng thái steady state</a></li>
+        <li><a href="#khi-xuất-hiện-noisy-tenant">Khi xuất hiện noisy tenant</a></li>
+        <li><a href="#khi-kích-hoạt-fair-queues">Khi kích hoạt Fair Queues</a></li>
+      </ul>
+    </li>
+    <li><a href="#cách-sử-dụng-amazon-sqs-fair-queues">Cách sử dụng Amazon SQS Fair Queues</a>
+      <ul>
+        <li><a href="#1-kích-hoạt-fair-queues-bằng-messagegroupid">1. Kích hoạt Fair Queues bằng MessageGroupId</a></li>
+        <li><a href="#2-theo-dõi-bằng-amazon-cloudwatch-metrics">2. Theo dõi bằng Amazon CloudWatch Metrics</a></li>
+      </ul>
+    </li>
+    <li><a href="#theo-dõi-hiệu-ứng-công-bằng">Theo dõi hiệu ứng công bằng</a></li>
+    <li><a href="#xác-định-tenant-gây-tải-cao">Xác định tenant gây tải cao</a></li>
+    <li><a href="#ứng-dụng-ví-dụ">Ứng dụng ví dụ</a></li>
+    <li><a href="#kết-luận">Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 8</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_7/index.html" title="Blog 7 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_9/index.html" title="Blog 9 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-8">Blog 8</h1>
+
+<h1 id="xây-dựng-hệ-thống-đa-tenant-resilient-với-amazon-sqs-fair-queues">
+  Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair Queues
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong> Maximilian Schellhorn &amp; Dirk Fröhner<br>
+<strong>Ngày:</strong> 21/07/2025<br>
+<strong>Chuyên mục:</strong> Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to</p>
+<hr>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>AWS chính thức giới thiệu <strong>Amazon SQS Fair Queues</strong> — một tính năng mới giúp giảm thiểu hiện tượng <em>noisy neighbor</em> trong các hệ thống <strong>multi-tenant</strong>. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.</p>
+<p>Trong kiến trúc phân tán, <strong>message queue</strong> đóng vai trò nền tảng để xây dựng các hệ thống có khả năng chịu lỗi cao. Queue hoạt động như một lớp đệm (buffer) giữa các thành phần, cho phép xử lý bất đồng bộ và theo tốc độ riêng của từng service. Khi hệ thống gặp lượng truy cập tăng đột biến, queue giúp ngăn lỗi lan truyền bằng cách giữ lại các task và bảo vệ các service phía sau khỏi quá tải.</p>
+<p>Amazon SQS từ lâu đã là lựa chọn phổ biến để xây dựng ứng dụng có khả năng mở rộng, nhờ là một <strong>dịch vụ serverless được quản lý hoàn toàn</strong>, có thể xử lý hàng triệu message mỗi giây. Trong bài viết này, bạn sẽ tìm hiểu cách hoạt động của Amazon SQS Fair Queues và cách áp dụng chúng trong hệ thống thực tế.</p>
+<hr>
+<h2 id="tổng-quan-về-bài-toán-multi-tenant">
+  Tổng quan về bài toán multi-tenant
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Nhiều ứng dụng hiện đại áp dụng kiến trúc <strong>multi-tenant</strong>, trong đó một phiên bản ứng dụng phục vụ nhiều tenant khác nhau. Tenant có thể là khách hàng, ứng dụng client, hoặc một loại request cụ thể. Mô hình này giúp:</p>
+<ul>
+<li>Tối ưu chi phí vận hành</li>
+<li>Đơn giản hóa bảo trì</li>
+<li>Tăng hiệu quả sử dụng tài nguyên dùng chung</li>
+</ul>
+<p>Tuy nhiên, kiến trúc multi-tenant đối mặt với vấn đề <strong>noisy neighbor</strong> — khi một tenant tiêu thụ quá nhiều tài nguyên và ảnh hưởng đến các tenant khác. Trong hệ thống dựa trên queue, tenant này có thể:</p>
+<ul>
+<li>Gửi lượng message lớn</li>
+<li>Có message mất nhiều thời gian xử lý</li>
+</ul>
+<p>Điều này làm tăng <strong>dwell time</strong> (thời gian message nằm trong queue) cho tất cả tenant, gây suy giảm chất lượng dịch vụ và buộc hệ thống phải scale dư thừa hoặc xây dựng logic tùy chỉnh phức tạp.</p>
+<p><strong>Amazon SQS Fair Queues</strong> giải quyết vấn đề này bằng cách đảm bảo các tenant “yên lặng” vẫn được phục vụ công bằng, mà <strong>không cần thay đổi logic xử lý message hiện có</strong> ở consumer.</p>
+<hr>
+<h2 id="cách-amazon-sqs-fair-queues-hoạt-động">
+  Cách Amazon SQS Fair Queues hoạt động
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Amazon SQS liên tục theo dõi số lượng message <strong>in-flight</strong> (đã nhận nhưng chưa bị xóa) của từng tenant. Khi phát hiện mất cân bằng, hệ thống sẽ:</p>
+<ul>
+<li>Nhận diện tenant gây ồn (noisy tenant)</li>
+<li>Ưu tiên phân phối message của các tenant yên lặng</li>
+<li>Duy trì tổng throughput của queue</li>
+</ul>
+<h3 id="trạng-thái-steady-state">
+  Trạng thái steady state
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi không có backlog, message được phân phối đều giữa các tenant. Dwell time thấp cho tất cả tenant.</p>
+<p><a href="#R-image-2cf248c0f18c8eb73349e83d01c4fb98" class="lightbox-link"><img alt="Hình 1: Multi-tenant queue ở trạng thái steady state" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2cf248c0f18c8eb73349e83d01c4fb98"><img alt="Hình 1: Multi-tenant queue ở trạng thái steady state" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh3.jpg"></a></p>
+<hr>
+<h3 id="khi-xuất-hiện-noisy-tenant">
+  Khi xuất hiện noisy tenant
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Tenant A gửi lượng lớn message, tạo backlog. Consumer chủ yếu xử lý message của tenant A, khiến dwell time của các tenant khác tăng lên.</p>
+<p><a href="#R-image-b8f69bd857762a5802046ccab0c882ed" class="lightbox-link"><img alt="Hình 2: Multi-tenant queue với noisy tenant" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b8f69bd857762a5802046ccab0c882ed"><img alt="Hình 2: Multi-tenant queue với noisy tenant" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh4.jpg"></a></p>
+<hr>
+<h3 id="khi-kích-hoạt-fair-queues">
+  Khi kích hoạt Fair Queues
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>SQS xác định tenant A là noisy neighbor và ưu tiên message của các tenant B, C, D. Dwell time của các tenant yên lặng được duy trì thấp, trong khi tenant gây ồn chấp nhận có thời gian chờ cao hơn mà không ảnh hưởng đến tenant khác.</p>
+<p><a href="#R-image-880ce8b58567d5c9cda55dc68085df21" class="lightbox-link"><img alt="Hình 3: Multi-tenant queue với SQS Fair Queues" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-880ce8b58567d5c9cda55dc68085df21"><img alt="Hình 3: Multi-tenant queue với SQS Fair Queues" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh5.jpg"></a></p>
+<p><strong>Lưu ý:</strong></p>
+<ul>
+<li>Fair queues <strong>không giới hạn throughput theo tenant</strong></li>
+<li>Consumer vẫn xử lý message từ noisy tenant khi còn tài nguyên</li>
+<li>Không giới hạn số lượng tenant</li>
+<li>Không ảnh hưởng độ trễ API</li>
+</ul>
+<hr>
+<h2 id="cách-sử-dụng-amazon-sqs-fair-queues">
+  Cách sử dụng Amazon SQS Fair Queues
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="1-kích-hoạt-fair-queues-bằng-messagegroupid">
+  1. Kích hoạt Fair Queues bằng MessageGroupId
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Để sử dụng Fair Queues:</p>
+<ol>
+<li>Producer gửi message kèm <strong>MessageGroupId</strong> (định danh tenant)</li>
+<li>Cấu hình CloudWatch để theo dõi metric</li>
+<li>Quan sát hành vi queue với workload khác nhau</li>
+</ol>
+<p><a href="#R-image-595ebd68102c7784fd8c2654ce241e5d" class="lightbox-link"><img alt="Thêm MessageGroupId vào message" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-595ebd68102c7784fd8c2654ce241e5d"><img alt="Thêm MessageGroupId vào message" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh6.jpg"></a></p>
+<p>Amazon SQS sẽ <strong>tự động kích hoạt Fair Queues</strong> cho các SQS Standard Queue chứa MessageGroupId:</p>
+<ul>
+<li>Không cần thay đổi code consumer</li>
+<li>Không giới hạn throughput</li>
+<li>Không tăng latency API</li>
+</ul>
+<hr>
+<h3 id="2-theo-dõi-bằng-amazon-cloudwatch-metrics">
+  2. Theo dõi bằng Amazon CloudWatch Metrics
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Amazon SQS cung cấp các metric mới để theo dõi Fair Queues:</p>
+<ul>
+<li><code>ApproximateNumberOfNoisyGroups</code></li>
+<li><code>ApproximateNumberOfMessagesVisibleInQuietGroups</code></li>
+<li><code>ApproximateAgeOfOldestMessageInQuietGroups</code></li>
+<li><code>ApproximateNumberOfMessagesNotVisibleInQuietGroups</code></li>
+<li><code>ApproximateNumberOfMessagesDelayedInQuietGroups</code></li>
+</ul>
+<p>Metric quan trọng nhất là:</p>
+<p><strong><code>ApproximateNumberOfNoisyGroups</code></strong><br>
+→ Giúp phát hiện tenant tiêu thụ tài nguyên quá mức và thiết lập cảnh báo.</p>
+<p>Các metric với hậu tố <strong>InQuietGroups</strong> cho phép theo dõi riêng các tenant không gây ồn, thay vì toàn queue.</p>
+<hr>
+<h2 id="theo-dõi-hiệu-ứng-công-bằng">
+  Theo dõi hiệu ứng công bằng
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>So sánh metric <strong>InQuietGroups</strong> với metric queue thông thường:</p>
+<ul>
+<li>Backlog toàn queue tăng khi có noisy tenant</li>
+<li>Metric của quiet groups vẫn giữ ở mức thấp</li>
+<li>Chứng tỏ tenant khác không bị ảnh hưởng</li>
+</ul>
+<p><a href="#R-image-3634ef760b2d3b60e59304f7d75873d4" class="lightbox-link"><img alt="Hình 4: So sánh backlog noisy vs quiet tenant" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-3634ef760b2d3b60e59304f7d75873d4"><img alt="Hình 4: So sánh backlog noisy vs quiet tenant" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh7.jpg"></a></p>
+<hr>
+<h2 id="xác-định-tenant-gây-tải-cao">
+  Xác định tenant gây tải cao
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Sử dụng <strong>Amazon CloudWatch Contributor Insights</strong> để:</p>
+<ul>
+<li>Xác định top-N tenant tiêu thụ nhiều tài nguyên</li>
+<li>Theo dõi tổng số tenant</li>
+<li>Tránh chi phí metric cao do high-cardinality</li>
+</ul>
+<p><a href="#R-image-ff469b83aa8b5ba31442dd7171fea993" class="lightbox-link"><img alt="Hình 5: Contributor Insights theo MessageGroupId" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ff469b83aa8b5ba31442dd7171fea993"><img alt="Hình 5: Contributor Insights theo MessageGroupId" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh8.jpg"></a></p>
+<p>Contributor Insights tạo metric từ log ứng dụng, do đó ứng dụng cần log số lượng message và MessageGroupId.</p>
+<hr>
+<h2 id="ứng-dụng-ví-dụ">
+  Ứng dụng ví dụ
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>AWS cung cấp một <strong>sample application</strong> để minh họa Amazon SQS Fair Queues:</p>
+<ul>
+<li>Load generator mô phỏng traffic multi-tenant</li>
+<li>CloudWatch dashboard trực quan hóa các metric quan trọng</li>
+<li>Infrastructure as Code (IaC) đầy đủ</li>
+</ul>
+<p><a href="#R-image-4dec6dd3fddd210f52409097cb174ef8" class="lightbox-link"><img alt="Hình 6: CloudWatch FairQueues Dashboard" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4dec6dd3fddd210f52409097cb174ef8"><img alt="Hình 6: CloudWatch FairQueues Dashboard" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh9.jpg"></a></p>
+<p>Mã nguồn và hướng dẫn chạy:
+👉 <a href="https://github.com/aws-samples/sqs-fair-queues" rel="external">https://github.com/aws-samples/sqs-fair-queues</a></p>
+<hr>
+<h2 id="kết-luận">
+  Kết luận
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Amazon SQS Fair Queues tự động giảm thiểu ảnh hưởng của noisy neighbor trong các hệ thống multi-tenant. Chỉ cần thêm định danh tenant vào message, Amazon SQS sẽ tự động:</p>
+<ul>
+<li>Phát hiện tenant gây ồn</li>
+<li>Bảo vệ tenant khác khỏi bị ảnh hưởng</li>
+<li>Duy trì throughput và độ trễ ổn định</li>
+</ul>
+<p>Tính năng này giúp xây dựng hệ thống <strong>resilient, dễ vận hành và tiết kiệm chi phí</strong>, đặc biệt phù hợp cho các kiến trúc serverless và event-driven.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">
+  Tài liệu tham khảo
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>Amazon SQS Developer Guide</li>
+<li>Amazon SQS Fair Queues Documentation</li>
+<li>AWS Official Blog</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_8/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_8/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

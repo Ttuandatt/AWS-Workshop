@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 9 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 9 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 9 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
+Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
+    <meta itemprop="wordCount" content="826">
+    <title>Blog 9 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_9/index.xml" rel="alternate" type="application/rss+xml" title="Blog 9 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_9\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_9/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#kiến-trúc-nâng-cao-cho-nghiên-cứu-lượng-tử">Kiến trúc nâng cao cho nghiên cứu lượng tử</a></li>
+    <li><a href="#tính-khả-dụng-và-khả-năng-truy-cập">Tính khả dụng và khả năng truy cập</a></li>
+    <li><a href="#bắt-đầu-với-iqm-emerald-trên-amazon-braket">Bắt đầu với IQM Emerald trên Amazon Braket</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 9</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_8/index.html" title="Blog 8 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_10/index.html" title="Blog 10 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-9">Blog 9</h1>
+
+<h1 id="amazon-braket-ra-mắt-bộ-xử-lý-lượng-tử-siêu-dẫn-54-qubit-iqm-emerald">
+  Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong> Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer  </p>
+<p><strong>Ngày:</strong> 21/07/2025  </p>
+<p><strong>Chuyên mục:</strong> Amazon Braket &ndash; Quantum Technologies</p>
+<hr>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><a href="https://aws.amazon.com/braket/" rel="external">Amazon Braket</a> cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM &ndash; <strong>IQM Emerald</strong>. Đây là một QPU siêu dẫn <strong>54 qubit</strong>, cung cấp độ trung thực cổng cao hơn và <strong>kết nối lưới vuông đầy đủ (full square lattice connectivity)</strong>.</p>
+<p>Với việc bổ sung IQM Emerald, khách hàng hiện có thể truy cập hai bộ xử lý lượng tử của IQM trên Amazon Braket:</p>
+<ul>
+<li>
+<p><strong>IQM Garnet</strong> &ndash; 20 qubit  </p>
+</li>
+<li>
+<p><strong>IQM Emerald</strong> &ndash; 54 qubit</p>
+</li>
+</ul>
+<p>Cả hai thiết bị đều được triển khai tại <strong>Vùng Châu Âu (Stockholm)</strong>, mở rộng lựa chọn phần cứng cho các hoạt động nghiên cứu và phát triển thuật toán lượng tử.</p>
+<p><a href="#R-image-17cecb95a9d054304452b14e8c6fe097" class="lightbox-link"><img alt="IQM Emerald" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-17cecb95a9d054304452b14e8c6fe097"><img alt="IQM Emerald" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg"></a></p>
+<p><strong>Hình 1:</strong> Bộ xử lý lượng tử IQM Emerald</p>
+<p>Trong giai đoạn hiện tại của điện toán lượng tử, việc thử nghiệm trên nhiều nền tảng phần cứng là cực kỳ quan trọng nhằm đánh giá và phát triển thuật toán cho các bài toán phức tạp trong tài chính, năng lượng, dược phẩm và logistics. Với Amazon Braket, khách hàng có thể chạy workload lượng tử:</p>
+<ul>
+<li>
+<p>Theo yêu cầu (<em>on-demand</em>)</p>
+</li>
+<li>
+<p>Qua <strong>Hybrid Jobs</strong> cho các thuật toán biến phân</p>
+</li>
+<li>
+<p>Đặt trước tài nguyên thông qua <strong>Braket Direct</strong></p>
+</li>
+</ul>
+<p>Tất cả đều theo mô hình <strong>pay-as-you-go</strong>.</p>
+<hr>
+<h2 id="kiến-trúc-nâng-cao-cho-nghiên-cứu-lượng-tử">
+  Kiến trúc nâng cao cho nghiên cứu lượng tử
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>IQM Emerald sử dụng kiến trúc <strong>Crystal 54</strong>, với các qubit transmon siêu dẫn được sắp xếp theo <strong>lưới vuông (square lattice)</strong> và kết nối bằng các <strong>tunable coupler</strong>. Thiết kế này cho phép ánh xạ (mapping) thuật toán lượng tử hiệu quả lên topology phần cứng.</p>
+<p>Đáng chú ý, kiến trúc lưới vuông hỗ trợ trực tiếp <strong>surface-code error correction</strong>, giúp Emerald trở thành nền tảng phù hợp cho các hệ thống lượng tử chịu lỗi trong tương lai.</p>
+<p>Thiết bị hỗ trợ:</p>
+<ul>
+<li>
+<p>Các phép quay X và Y bất kỳ (arbitrary X, Y rotations) cho cổng một qubit  </p>
+</li>
+<li>
+<p>Cổng <strong>CZ</strong> là cổng hai qubit nguyên thủy</p>
+</li>
+</ul>
+<p>Dữ liệu ban đầu cho thấy:</p>
+<ul>
+<li>
+<p><strong>Độ trung thực cổng 1-qubit (median):</strong> 99.93%  </p>
+</li>
+<li>
+<p><strong>Độ trung thực cổng 2-qubit (median):</strong> 99.5%</p>
+</li>
+</ul>
+<p>Các chỉ số cập nhật được hiển thị trong Braket Console.</p>
+<p><a href="#R-image-afae37d551b79c6f0a0ecff031e12f5d" class="lightbox-link"><img alt="Emerald topology" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-afae37d551b79c6f0a0ecff031e12f5d"><img alt="Emerald topology" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg"></a></p>
+<p><strong>Hình 2:</strong> Topology lưới vuông 54-qubit của QPU Emerald</p>
+<hr>
+<h2 id="tính-khả-dụng-và-khả-năng-truy-cập">
+  Tính khả dụng và khả năng truy cập
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Cả IQM Emerald và Garnet đều khả dụng <strong>19 giờ mỗi ngày</strong>, tạo điều kiện thuận lợi cho khách hàng trên toàn cầu. Việc đặt thiết bị tại EU giúp đáp ứng các yêu cầu về <strong>data residency</strong> đồng thời tận dụng các workflow hybrid quantum&ndash;classical trong cùng môi trường AWS.</p>
+<hr>
+<h2 id="bắt-đầu-với-iqm-emerald-trên-amazon-braket">
+  Bắt đầu với IQM Emerald trên Amazon Braket
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Amazon Braket cung cấp giao diện lập trình thống nhất cho nhiều framework lượng tử, bao gồm:</p>
+<ul>
+<li>
+<p>Braket SDK  </p>
+</li>
+<li>
+<p>Qiskit  </p>
+</li>
+<li>
+<p>PennyLane  </p>
+</li>
+<li>
+<p>NVIDIA CUDA-Q</p>
+</li>
+</ul>
+<p>Để sử dụng Emerald, bạn chỉ cần chỉ định ARN của thiết bị:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> braket.aws <span style="color:#f92672">import</span> AwsDevice
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> AwsDevice(
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div>
+<p>Ví dụ: Tạo trạng thái Bell</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> braket.circuits <span style="color:#f92672">import</span> Circuit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bell <span style="color:#f92672">=</span> Circuit()<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>cnot(control<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, target<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> device<span style="color:#f92672">.</span>run(bell, shots<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>)<span style="color:#f92672">.</span>result()</span></span></code></pre></div>
+<p>Đoạn code trên tạo trạng thái Bell bằng cách áp dụng cổng Hadamard lên qubit 0, sau đó CNOT giữa qubit 0 và 1, chạy 1000 shots để thu kết quả.</p>
+<p>Khám phá trạng thái vướng mắc quy mô lớn</p>
+<p>Dung lượng 54 qubit cho phép Emerald triển khai các mạch lượng tử phức tạp hơn. Dựa trên các thí nghiệm GHZ trước đây trên Garnet, Emerald có thể tạo trạng thái GHZ 49-qubit nhờ topology kết nối cao.</p>
+<p>Ví dụ sử dụng đường đi qua topology của Emerald, áp dụng Hadamard lên qubit đầu và chuỗi CNOT để tạo GHZ state với 5000 shots.</p>
+<p>Lập trình nâng cao với Dynamic Circuits</p>
+<p>IQM Emerald hỗ trợ dynamic circuits (tính năng thử nghiệm), cho phép:</p>
+<p>Đo qubit giữa mạch (mid-circuit measurement)</p>
+<p>Thực hiện phép toán có điều kiện dựa trên kết quả đo</p>
+<p>Tái sử dụng qubit bằng active reset</p>
+<p>Giải thích các thành phần chính:</p>
+<p>EnableExperimentalCapability() &ndash; bật dynamic circuits</p>
+<p>measure_ff() &ndash; đo giữa mạch</p>
+<p>cc_prx() &ndash; cổng lượng tử có điều kiện</p>
+<p>add_verbatim_box() &ndash; truyền mạch động trực tiếp xuống phần cứng</p>
+<p>Kết quả đo chủ yếu trả về 0, chứng tỏ quá trình active reset hoạt động hiệu quả.</p>
+<p>Bắt đầu ngay hôm nay</p>
+<p>Bạn có thể bắt đầu với IQM Emerald bằng cách truy cập:</p>
+<p>Amazon Braket Management Console</p>
+<p>GitHub &ndash; Amazon Braket Examples</p>
+<p>AWS cũng cung cấp AWS Cloud Credits for Research cho các tổ chức nghiên cứu đủ điều kiện nhằm hỗ trợ chạy các thí nghiệm lượng tử trên Amazon Braket.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_9/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_9/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

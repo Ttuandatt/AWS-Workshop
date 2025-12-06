@@ -5,56 +5,57 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-    <meta name="description" content="HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)🏗 TỔNG QUAN HỆ THỐNGRegion: Singapore (ap-southeast-1).
-Frontend Domain: https://sgutodolist.com.
-Backend Domain: https://api.sgutodolist.com.
-Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):
-Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bastion. (Bắt buộc để Task có thể tải Image từ Internet).">
+    <meta name="description" content="Architecture ModelThis model illustrates the core services used for high-availability, low-latency content delivery and security:
+Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.
+CDN: CloudFront acts as the Global Edge Network for content delivery.
+Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:description" content="HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)🏗 TỔNG QUAN HỆ THỐNGRegion: Singapore (ap-southeast-1).
-Frontend Domain: https://sgutodolist.com.
-Backend Domain: https://api.sgutodolist.com.
-Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):
-Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bastion. (Bắt buộc để Task có thể tải Image từ Internet).">
+    <meta name="twitter:title" content="Backend Deploy :: Internship Report">
+    <meta name="twitter:description" content="Architecture ModelThis model illustrates the core services used for high-availability, low-latency content delivery and security:
+Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.
+CDN: CloudFront acts as the Global Edge Network for content delivery.
+Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html">
     <meta property="og:site_name" content="Internship Report">
-    <meta property="og:description" content="HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)🏗 TỔNG QUAN HỆ THỐNGRegion: Singapore (ap-southeast-1).
-Frontend Domain: https://sgutodolist.com.
-Backend Domain: https://api.sgutodolist.com.
-Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):
-Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bastion. (Bắt buộc để Task có thể tải Image từ Internet).">
+    <meta property="og:title" content="Backend Deploy :: Internship Report">
+    <meta property="og:description" content="Architecture ModelThis model illustrates the core services used for high-availability, low-latency content delivery and security:
+Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.
+CDN: CloudFront acts as the Global Edge Network for content delivery.
+Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
-    <meta itemprop="description" content="HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)🏗 TỔNG QUAN HỆ THỐNGRegion: Singapore (ap-southeast-1).
-Frontend Domain: https://sgutodolist.com.
-Backend Domain: https://api.sgutodolist.com.
-Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):
-Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bastion. (Bắt buộc để Task có thể tải Image từ Internet).">
-    <meta itemprop="wordCount" content="2485">
-    <title></title>
-    <link href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="alternate" type="application/rss+xml" title="">
-    <link href="../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1764948485" rel="stylesheet">
-    <script src="../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/search-lunr.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/search.min.js?1764948485" defer></script>
+    <meta itemprop="name" content="Backend Deploy :: Internship Report">
+    <meta itemprop="description" content="Architecture ModelThis model illustrates the core services used for high-availability, low-latency content delivery and security:
+Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.
+CDN: CloudFront acts as the Global Edge Network for content delivery.
+Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.">
+    <meta itemprop="wordCount" content="152">
+    <title>Backend Deploy :: Internship Report</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="alternate" type="application/rss+xml" title="Backend Deploy :: Internship Report">
+    <link href="../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040465" rel="stylesheet">
+    <script src="../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/search-lunr.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/search.min.js?1765040465" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../searchindex.en.js?1764948485";
+      window.relearn.index_js_url="../../../../searchindex.en.js?1765040465";
     </script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1764948485" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1765040465" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764948485" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1764948485" rel="stylesheet"></noscript>
-    <link href="../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1764948485" rel="stylesheet">
-    <link href="../../../../css/theme.min.css?1764948485" rel="stylesheet">
-    <link href="../../../../css/format-html.min.css?1764948485" rel="stylesheet" id="R-format-style">
+    <link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet"></noscript>
+    <link href="../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040465" rel="stylesheet">
+    <link href="../../../../css/theme.min.css?1765040465" rel="stylesheet">
+    <link href="../../../../css/format-html.min.css?1765040465" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -106,7 +107,7 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../css/custom.css?1764948485" rel="stylesheet">
+    <link href="../../../../css/custom.css?1765040465" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html">
     <div id="R-body" class="default-animation">
@@ -138,52 +139,19 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#-tổng-quan-hệ-thống">🏗 TỔNG QUAN HỆ THỐNG</a></li>
-    <li><a href="#giai-đoạn-1-chuẩn-bị-network--security">GIAI ĐOẠN 1: CHUẨN BỊ NETWORK &amp; SECURITY</a>
+    <li>
       <ul>
-        <li><a href="#11-tạo-vpc--subnets">1.1 Tạo VPC &amp; Subnets</a></li>
-        <li><a href="#12-tạo-security-groups-tường-lửa">1.2 Tạo Security Groups (Tường lửa)</a></li>
+        <li><a href="#architecture-model">Architecture Model</a></li>
+        <li><a href="#table-of-contents">TABLE OF CONTENTS</a></li>
       </ul>
     </li>
-    <li><a href="#giai-đoạn-2-thiết-lập-tên-miền--ssl">GIAI ĐOẠN 2: THIẾT LẬP TÊN MIỀN &amp; SSL</a></li>
-    <li><a href="#giai-đoạn-3-cấu-hình-infrastructure">GIAI ĐOẠN 3: CẤU HÌNH INFRASTRUCTURE</a>
-      <ul>
-        <li><a href="#31-rds-mysql">3.1 RDS MySQL</a></li>
-        <li><a href="#32-elasticache-redis-cấu-hình-chi-tiết">3.2 ElastiCache Redis (Cấu hình chi tiết)</a></li>
-        <li><a href="#33-kafka-docker-trên-ecs">3.3 Kafka (Docker trên ECS)</a></li>
-        <li><a href="#34-khởi-tạo-database-chi-tiết">3.4 Khởi tạo Database (Chi tiết)</a></li>
-      </ul>
-    </li>
-    <li><a href="#giai-đoạn-4-cập-nhật-code--build-image">GIAI ĐOẠN 4: CẬP NHẬT CODE &amp; BUILD IMAGE</a>
-      <ul>
-        <li><a href="#41-cấu-hình-api-gateway-quan-trọng">4.1 Cấu hình API Gateway (Quan trọng)</a></li>
-        <li><a href="#42-build--push-6-images-lên-ecr">4.2 Build &amp; Push 6 Images lên ECR</a></li>
-      </ul>
-    </li>
-    <li><a href="#giai-đoạn-5-cấu-hình-alb--https">GIAI ĐOẠN 5: CẤU HÌNH ALB &amp; HTTPS</a></li>
-    <li><a href="#giai-đoạn-5-cấu-hình-alb--https-1">GIAI ĐOẠN 5: CẤU HÌNH ALB &amp; HTTPS</a>
-      <ul>
-        <li><a href="#2-tạo-application-load-balancer-alb">2. Tạo Application Load Balancer (ALB)</a></li>
-        <li><a href="#3-cấu-hình-routing-rules-quy-trình-chuẩn-2-bước">3. Cấu hình Routing Rules (Quy trình chuẩn 2 bước)</a></li>
-      </ul>
-    </li>
-    <li><a href="#giai-đoạn-6-task-definitions-khớp-docker-compose">GIAI ĐOẠN 6: TASK DEFINITIONS (KHỚP DOCKER-COMPOSE)</a>
-      <ul>
-        <li><a href="#1-auth-service--user-service--taskflow-service">1. Auth Service &amp; User Service &amp; Taskflow Service</a></li>
-        <li><a href="#2-notification-service">2. Notification Service</a></li>
-        <li><a href="#3-ai-model-service-mới">3. AI Model Service (MỚI)</a></li>
-        <li><a href="#4-api-gateway-quan-trọng">4. API Gateway (QUAN TRỌNG)</a></li>
-      </ul>
-    </li>
-    <li><a href="#giai-đoạn-7-deploy-services">GIAI ĐOẠN 7: DEPLOY SERVICES</a></li>
-    <li><a href="#giai-đoạn-8-hoàn-tất">GIAI ĐOẠN 8: HOÀN TẤT</a></li>
   </ul>
 </nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Backend Deploy</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -204,7 +172,7 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../en/5-workshop/5.4-clean_up/index.html" title="Clean Up (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" title="Network & Security Preparation (VPC, SG) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -232,20 +200,10 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
   <header class="headline">
   </header>
 
-<h1 id=""></h1>
+<h1 id="backend-deploy">Backend Deploy</h1>
 
-<h1 id="hướng-dẫn-deploy-backend-microservices-trên-aws-ecs-final-version">
-  HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><h2 id="-tổng-quan-hệ-thống">
-  🏗 TỔNG QUAN HỆ THỐNG
+<h3 id="architecture-model">
+  Architecture Model
 
 
 
@@ -254,41 +212,29 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><ul>
+</h3><p>This model illustrates the core services used for high-availability, low-latency content delivery and security:</p>
+<ol>
 <li>
-<p><strong>Region:</strong> Singapore (<code>ap-southeast-1</code>).</p>
+<p><strong>Domain &amp; SSL:</strong> Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.</p>
 </li>
 <li>
-<p><strong>Frontend Domain:</strong> <code>https://sgutodolist.com</code>.</p>
+<p><strong>CDN:</strong> CloudFront acts as the Global Edge Network for content delivery.</p>
 </li>
 <li>
-<p><strong>Backend Domain:</strong> <code>https://api.sgutodolist.com</code>.</p>
+<p><strong>Storage (Primary):</strong> S3 in Singapore (<code>ap-southeast-1</code>) holds the main static assets.</p>
 </li>
 <li>
-<p><strong>Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):</strong></p>
-<ul>
-<li>
-<p><strong>Public Subnets:</strong> Chứa tất cả ECS Tasks (App, Kafka, AI) + ALB + Bastion. (Bắt buộc để Task có thể tải Image từ Internet).</p>
+<p><strong>Storage (Failover):</strong> S3 in N. Virginia (<code>us-east-1</code>) serves as the secondary storage location.</p>
 </li>
 <li>
-<p><strong>Private Subnets:</strong> Chứa RDS + Redis (Để bảo mật dữ liệu).</p>
+<p><strong>Replication:</strong> Automated replication copies files from Singapore to Virginia for redundancy.</p>
 </li>
-</ul>
+<li>
+<p><strong>Security:</strong> OAC (Origin Access Control) is implemented to keep the S3 buckets private and ensure traffic only flows via CloudFront.</p>
 </li>
-</ul>
-<hr>
-<h2 id="giai-đoạn-1-chuẩn-bị-network--security">
-  GIAI ĐOẠN 1: CHUẨN BỊ NETWORK &amp; SECURITY
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><h3 id="11-tạo-vpc--subnets">
-  1.1 Tạo VPC &amp; Subnets
+</ol>
+<h3 id="table-of-contents">
+  TABLE OF CONTENTS
 
 
 
@@ -299,1515 +245,24 @@ Public Subnets: Chứa tất cả ECS Tasks (App, Kafka, AI) &#43; ALB &#43; Bas
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><ol>
 <li>
-<p>Vào <strong>VPC Console</strong> &gt; <strong>Create VPC</strong>.</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/">Network &amp; Security Preparation (VPC, SG)</a></p>
 </li>
 <li>
-<p>Chọn <strong>VPC and more</strong>.</p>
-<ul>
-<li>
-<p><strong>Name tag auto-generation:</strong> Nhập <code>SGU-Microservices</code>.</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/">Infrastructure &amp; ALB Setup (RDS, Redis, Cloud Map, ALB Routing)</a></p>
 </li>
 <li>
-<p><strong>IPv4 CIDR block:</strong> <code>10.0.0.0/16</code>.</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/">Code Update &amp; Image Build (Create new Docker Image)</a></p>
 </li>
 <li>
-<p><strong>Number of Availability Zones (AZs):</strong> Chọn <strong>2</strong> (<code>ap-southeast-1a</code> và <code>ap-southeast-1b</code>).</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/">Task Definitions Creation (Configure settings, FIX environment variables)</a></p>
 </li>
 <li>
-<p><strong>Number of public subnets:</strong> Chọn <strong>2</strong>.</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/">Services Deployment (Following priority order and verification)</a></p>
 </li>
 <li>
-<p><strong>Number of private subnets:</strong> Chọn <strong>2</strong>.</p>
-</li>
-<li>
-<p><strong>NAT gateways:</strong> Chọn <strong>None</strong> (⚠️ Quan trọng để tiết kiệm ~$30/tháng).</p>
-</li>
-<li>
-<p><strong>VPC endpoints:</strong> Chọn <strong>None</strong>.</p>
-</li>
-<li>
-<p><strong>DNS options:</strong> Tích chọn cả <strong>Enable DNS hostnames</strong> và <strong>Enable DNS resolution</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Click <strong>Create VPC</strong>.</p>
+<p><a href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/">Completion &amp; Verification (Route 53, Google Console, Final Test)</a></p>
 </li>
 </ol>
-<h3 id="12-tạo-security-groups-tường-lửa">
-  1.2 Tạo Security Groups (Tường lửa)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Vào <strong>VPC</strong> &gt; <strong>Security Groups</strong> &gt; <strong>Create security group</strong>. Tạo lần lượt 4 nhóm:</p>
-<p><strong>1. <code>public-alb-sg</code></strong> (Cho Load Balancer):</p>
-<ul>
-<li>
-<p>Description: <code>Security group for SGUTODOLIST ALB</code>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p><strong>Inbound rules:</strong></p>
-<ul>
-<li>
-<p>Type: <code>HTTPS</code> (443) | Source: <code>0.0.0.0/0</code>.</p>
-</li>
-<li>
-<p>Type: <code>HTTP</code> (80) | Source: <code>0.0.0.0/0</code>.</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>2. <code>ecs-app-sg</code></strong> (Cho các Service Container):</p>
-<ul>
-<li>
-<p>Description: <code>Security group for SGUTODOLIST Service Container</code>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p><strong>Inbound rules (Bước 1):</strong></p>
-<ul>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>8080</code> | Source: Chọn <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>8081</code> | Source: Chọn <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>8082</code> | Source: Chọn <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>9998</code> | Source: Chọn <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>9999</code> | Source: Chọn <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> | Port: <code>9997</code> | Source: Chọn <code>public-alb-sg</code> (Cho AI Service).</p>
-</li>
-</ul>
-</li>
-<li>
-<p><em>Nhấn <strong>Create security group</strong> trước.</em></p>
-</li>
-<li>
-<p><strong>Inbound rules (Bước 2 - Self referencing):</strong></p>
-<ul>
-<li>
-<p>Chọn lại <code>ecs-app-sg</code> &gt; Edit inbound rules &gt; Add rule.</p>
-</li>
-<li>
-<p>Type: <code>All TCP</code> | Port: <code>0-65535</code> | Source: Tìm và chọn chính <code>ecs-app-sg</code>.</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>3. <code>private-db-sg</code></strong> (Cho RDS &amp; Redis &amp; Kafka):</p>
-<ul>
-<li>
-<p>Description: <code>Security group for SGUTODOLIST RDS &amp; Redis &amp; Kafka</code>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p><strong>Inbound rules:</strong></p>
-<ul>
-<li>
-<p>Type: <code>MySQL</code> (3306) | Source: Chọn <code>ecs-app-sg</code>.</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> (Port <code>6379</code>) | Source: Chọn <code>ecs-app-sg</code> (Redis).</p>
-</li>
-<li>
-<p>Type: <code>Custom TCP</code> (Port <code>9092</code>) | Source: Chọn <code>ecs-app-sg</code> (Kafka).</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>4. <code>bastion-sg</code></strong> (Cho máy nhảy):</p>
-<ul>
-<li>
-<p>Description: <code>Security group for SGUTODOLIST bastion</code>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p><strong>Inbound rules:</strong></p>
-<ul>
-<li>Type: <code>SSH</code> (22) | Source: <code>My IP</code> (IP máy của bạn).</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="giai-đoạn-2-thiết-lập-tên-miền--ssl">
-  GIAI ĐOẠN 2: THIẾT LẬP TÊN MIỀN &amp; SSL
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><ol>
-<li>
-<p>Đổi Region sang <strong>Singapore (ap-southeast-1)</strong>.</p>
-</li>
-<li>
-<p>Vào <strong>Certificate Manager (ACM)</strong>.</p>
-</li>
-<li>
-<p><strong>Request a certificate</strong> &gt; <strong>Request a public certificate</strong>.</p>
-</li>
-<li>
-<p>Domain names: <code>api.sgutodolist.com</code>.</p>
-</li>
-<li>
-<p>Validation method: <strong>DNS validation</strong>.</p>
-</li>
-<li>
-<p>Click <strong>Request</strong>.</p>
-</li>
-<li>
-<p>Click vào Certificate ID &gt; Phần <strong>Domains</strong> &gt; <strong>Create records in Route 53</strong>.</p>
-</li>
-<li>
-<p>Đợi trạng thái chuyển sang <strong>Issued</strong> (Màu xanh).</p>
-</li>
-</ol>
-<hr>
-<h2 id="giai-đoạn-3-cấu-hình-infrastructure">
-  GIAI ĐOẠN 3: CẤU HÌNH INFRASTRUCTURE
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><h3 id="31-rds-mysql">
-  3.1 RDS MySQL
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ol>
-<li>
-<p>Vào <strong>RDS</strong> &gt; <strong>Create database</strong> &gt; <strong>Standard create</strong> &gt; <strong>MySQL</strong>.</p>
-</li>
-<li>
-<p>Template: <strong>Free tier</strong>.</p>
-</li>
-<li>
-<p>Identifier: <code>sgu-todolist-db</code>.</p>
-</li>
-<li>
-<p>Username: <code>root</code> / Password: <code>12345678</code> (Ví dụ).</p>
-</li>
-<li>
-<p><strong>Connectivity:</strong></p>
-<ul>
-<li>
-<p>Compute resource: <strong>Don&rsquo;t connect to an EC2&hellip;</strong>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p>Public access: <strong>No</strong>.</p>
-</li>
-<li>
-<p>VPC security group: Chọn <code>private-db-sg</code> (bỏ default).</p>
-</li>
-<li>
-<p>Availability Zone: <strong><code>ap-southeast-1a</code></strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Click <strong>Create database</strong>.</p>
-</li>
-<li>
-<p><em>Sau khi tạo xong, copy <strong>Endpoint</strong> của database.</em></p>
-</li>
-</ol>
-<h3 id="32-elasticache-redis-cấu-hình-chi-tiết">
-  3.2 ElastiCache Redis (Cấu hình chi tiết)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ol>
-<li>Vào <strong>Redis OSS caches</strong> &gt; <strong>Create Redis OSS cache</strong>.</li>
-</ol>
-<h4 id="step-1-settings">
-  Step 1: SETTINGS
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><ul>
-<li>
-<p><strong>Cluster settings:</strong></p>
-<ul>
-<li>
-<p>Engine: <strong>Redis OSS</strong>.</p>
-</li>
-<li>
-<p>Deployment option: <strong>Node-based cluster</strong>.</p>
-</li>
-<li>
-<p>Creation method: <strong>Cluster cache</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Cluster info:</strong></p>
-<ul>
-<li>
-<p>Cluster mode: <strong>Disabled</strong>.</p>
-</li>
-<li>
-<p>Name: <code>sgu-redis</code>.</p>
-</li>
-<li>
-<p>Multi-AZ: <strong>Uncheck (Disable)</strong>.</p>
-</li>
-<li>
-<p>Auto-failover: <strong>Uncheck (Disable)</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Cache settings:</strong></p>
-<ul>
-<li>
-<p>Node type: <strong><code>cache.t3.micro</code></strong>.</p>
-</li>
-<li>
-<p>Number of replicas: <strong>0</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Connectivity:</strong></p>
-<ul>
-<li>
-<p>Subnet groups: <strong>Create a new subnet group</strong>.</p>
-<ul>
-<li>
-<p>Name: <code>sgu-redis-subnet-group</code>.</p>
-</li>
-<li>
-<p>VPC ID: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p>Selected subnets: Chọn 2 <strong>Private Subnets</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Availability Zone placements: <strong>Specify Availability Zones</strong>.</p>
-<ul>
-<li>Primary: <strong><code>ap-southeast-1a</code></strong>.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="step-2-advanced-settings">
-  Step 2: ADVANCED SETTINGS
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><ul>
-<li>
-<p><strong>Security:</strong></p>
-<ul>
-<li>Selected security groups: Chọn <strong><code>private-db-sg</code></strong> (Bỏ default).</li>
-</ul>
-</li>
-<li>
-<p><strong>Backup:</strong> Enable automatic backups: <strong>Uncheck (Disable)</strong>.</p>
-</li>
-<li>
-<p><strong>Logs:</strong> Disable hết.</p>
-</li>
-</ul>
-<p><em>(Nhấn Create. Sau khi xong, copy <strong>Primary Endpoint</strong>).</em></p>
-<h3 id="33-kafka-docker-trên-ecs">
-  3.3 Kafka (Docker trên ECS)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Bước 1: Tạo Namespace</strong></p>
-<ol>
-<li>
-<p>Vào <strong>Cloud Map</strong> &gt; <strong>Create namespace</strong>.</p>
-</li>
-<li>
-<p>Name: <code>sgu.local</code>.</p>
-</li>
-<li>
-<p>Instance discovery: <strong>API calls and DNS queries in VPCs</strong>.</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p>Create.</p>
-</li>
-</ol>
-<p><strong>Bước 2: Tạo Task Definition cho Kafka</strong></p>
-<ol>
-<li>
-<p>Vào ECS &gt; Task Definitions &gt; Create.</p>
-</li>
-<li>
-<p>Family: <code>kafka-server-td</code>.</p>
-</li>
-<li>
-<p>Container:</p>
-<ul>
-<li>
-<p>Name: <code>kafka-server</code></p>
-</li>
-<li>
-<p>Image: <code>bitnami/kafka:latest</code></p>
-</li>
-<li>
-<p>Port: <code>9092</code></p>
-</li>
-<li>
-<p><strong>Environment Variables:</strong></p>
-<ul>
-<li>
-<p><code>KAFKA_CFG_NODE_ID</code> = <code>0</code></p>
-</li>
-<li>
-<p><code>KAFKA_CFG_PROCESS_ROLES</code> = <code>controller,broker</code></p>
-</li>
-<li>
-<p><code>KAFKA_CFG_LISTENERS</code> = <code>PLAINTEXT://:9092,CONTROLLER://:9093</code></p>
-</li>
-<li>
-<p><code>KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP</code> = <code>CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT</code></p>
-</li>
-<li>
-<p><code>KAFKA_CFG_CONTROLLER_QUORUM_VOTERS</code> = <code>0@kafka.sgu.local:9093</code></p>
-</li>
-<li>
-<p><code>KAFKA_CFG_ADVERTISED_LISTENERS</code> = <code>PLAINTEXT://kafka.sgu.local:9092</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Create.</p>
-</li>
-</ol>
-<p><strong>Bước 3: Deploy Kafka Service</strong></p>
-<ol>
-<li>
-<p>ECS &gt; Cluster &gt; Services &gt; Create.</p>
-</li>
-<li>
-<p>Family: <code>kafka-server-td</code>. Service name: <code>svc-kafka</code>.</p>
-</li>
-<li>
-<p><strong>Networking:</strong></p>
-<ul>
-<li>
-<p>Subnets: <strong>2 Public Subnets</strong> (Bắt buộc vì không có NAT).</p>
-</li>
-<li>
-<p>Security Group: <code>private-db-sg</code>.</p>
-</li>
-<li>
-<p>Public IP: <strong>Turned ON</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Service Connect and Service Discovery:</strong></p>
-<ul>
-<li>
-<p>Use service discovery: <strong>Check</strong>.</p>
-</li>
-<li>
-<p>Namespace: <code>sgu.local</code>.</p>
-</li>
-<li>
-<p>Service name: <code>kafka</code>. (Kết quả DNS: <code>kafka.sgu.local</code>).</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="34-khởi-tạo-database-chi-tiết">
-  3.4 Khởi tạo Database (Chi tiết)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>1. Update Security Group:</strong></p>
-<ul>
-<li>Vào <code>private-db-sg</code> &gt; Inbound Rules &gt; Add: <code>MySQL (3306)</code> | Source: <code>bastion-sg</code>.</li>
-</ul>
-<p><strong>2. Tạo Bastion Host (EC2):</strong></p>
-<ul>
-<li>
-<p>Launch Instance &gt; Name <code>sgu-bastion</code> &gt; AMI <strong>Amazon Linux 2023</strong> &gt; Type <code>t3.micro</code>.</p>
-</li>
-<li>
-<p>Key pair: Tạo mới <code>sgutodolist-key</code> (tải về máy).</p>
-</li>
-<li>
-<p>VPC: <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p>Subnet: <strong>Public Subnet 1</strong>.</p>
-</li>
-<li>
-<p>Auto-assign public IP: <strong>Enable</strong> (Bắt buộc).</p>
-</li>
-<li>
-<p>Security groups: Chọn <code>bastion-sg</code>.</p>
-</li>
-</ul>
-<p><strong>3. Init Database (Chạy lệnh từ máy Local):</strong></p>
-<ul>
-<li>
-<p>Mở Terminal VS Code tại thư mục chứa <code>sgu-key.pem</code>.</p>
-</li>
-<li>
-<p><strong>Bước 1: SSH vào Bastion</strong></p>
-<p>PowerShell</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Với Windows
-icacls &#34;sgutodolist-key.pem&#34; /inheritance:r
-icacls &#34;sgutodolist-key.pem&#34; /grant:r &#34;$($env:USERNAME):(R)&#34;
-ssh -i &#34;sgu-key.pem&#34; ec2-user@&lt;PUBLIC-IP-BASTION&gt; (Public IPv4 address của máy chủ EC2 sgu-bastion)
-
-
-# Với Mac/Linux
-chmod 400 sgu-key.pem
-ssh -i sgu-key.pem ec2-user@&lt;PUBLIC-IP-BASTION&gt;</code></pre></div>
-</li>
-<li>
-<p><strong>Bước 2: Cài MySQL Client (trên Bastion)</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install mariadb105 -y</span></span></code></pre></div>
-</li>
-<li>
-<p><strong>Bước 3: Kết nối RDS</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>mysql -h sgu-todolist-db.cnsww4so4xfb.ap-southeast-1.rds.amazonaws.com -u root -p
-sgu-todolist-db.cnsww4so4xfb.ap-southeast-1.rds.amazonaws.com
-# Nhập password: 12345678</code></pre></div>
-</li>
-<li>
-<p><strong>Bước 4: Tạo Database (SQL)</strong></p>
-<p>SQL</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>CREATE DATABASE aws_todolist_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-SHOW DATABASES;
-EXIT;</code></pre></div>
-</li>
-<li>
-<p><strong>Bước 5:</strong> Gõ <code>exit</code> để thoát khỏi Bastion.</p>
-</li>
-</ul>
-<hr>
-<h2 id="giai-đoạn-4-cập-nhật-code--build-image">
-  GIAI ĐOẠN 4: CẬP NHẬT CODE &amp; BUILD IMAGE
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><h3 id="41-cấu-hình-api-gateway-quan-trọng">
-  4.1 Cấu hình API Gateway (Quan trọng)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Ta cần làm 2 việc tại source code của <strong>API Gateway</strong>:</p>
-<p><strong>Bước 1: Tạo file cấu hình CORS (Java)</strong> File này giúp xử lý CORS toàn cục một cách chính xác trên môi trường Reactive.</p>
-<ul>
-<li>
-<p><strong>File:</strong> <code>src/main/java/aws/todolist/api_gateway/config/CorsConfig.java</code></p>
-</li>
-<li>
-<p><strong>Nội dung:</strong></p>
-</li>
-</ul>
-<p>Java</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>package aws.todolist.api_gateway.config;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.CorsWebFilter;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import java.util.Arrays;
-
-@Configuration
-public class CorsConfig {
-
-    @Bean
-    public CorsWebFilter corsWebFilter() {
-        CorsConfiguration corsConfig = new CorsConfiguration();
-
-        // 1. Cho phép các Domain này gọi API
-        corsConfig.setAllowedOrigins(Arrays.asList(
-            &#34;https://sgutodolist.com&#34;,
-            &#34;https://www.sgutodolist.com&#34;,
-            &#34;http://localhost:3000&#34;, // Frontend Dev
-            &#34;http://localhost:4200&#34;, // Frontend Dev (Backup)
-            &#34;http://localhost:5500&#34;
-        ));
-
-        // 2. Cấu hình method và header
-        corsConfig.setMaxAge(3600L);
-        corsConfig.addAllowedMethod(&#34;*&#34;); // GET, POST, PUT, DELETE...
-        corsConfig.addAllowedHeader(&#34;*&#34;);
-        corsConfig.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration(&#34;/**&#34;, corsConfig);
-
-        return new CorsWebFilter(source);
-    }
-}</code></pre></div>
-<p>*<em>Bước 2: Cập nhật <code>application.yml</code> (Chuẩn hóa biến môi trường)</em></p>
-<ul>
-<li><strong>File:</strong> <code>src/main/resources/application.yml</code></li>
-</ul>
-<p>YAML</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>server:
-  port: 8080
-
-jwt:
-  secret: 843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3
-
-spring:
-  application:
-    name: api-gateway
-
-  cloud:
-    gateway:
-      # ⚠️ Đã tắt Global CORS ở đây để dùng file Java CorsConfig.java (tránh xung đột)
-      # globalcors: ... (Đã comment)
-
-      # 🔹 Routes Configuration (Sử dụng biến môi trường từ ECS Task Def)
-      routes:
-        - id: ai-model-service
-          uri: ${AI_MODEL_SERVICE:http://localhost:9997}
-          predicates:
-            - Path=/api/model/**
-
-        - id: user-service
-          uri: ${USER_SERVICE_URL:http://localhost:8081}
-          predicates:
-            - Path=/api/user/**
-
-        - id: taskflow-service
-          uri: ${TASKFLOW_SERVICE_URL:http://localhost:8082}
-          predicates:
-            - Path=/api/taskflow/**
-
-        - id: auth-service
-          uri: ${AUTH_SERVICE_URL:http://localhost:9999}
-          predicates:
-            - Path=/api/auth/**
-
-        # 🔹 Notification Routes
-        - id: notification-ws
-          uri: ${NOTIFICATION_SERVICE_URL:http://localhost:9998}
-          predicates:
-            - Path=/api/notification/ws/**
-
-        - id: notification-rest
-          uri: ${NOTIFICATION_SERVICE_URL:http://localhost:9998}
-          predicates:
-            - Path=/api/notification/**
-
-  # 🧱 Redis Configuration (Sử dụng biến môi trường)
-  data:
-    redis:
-      host: ${SPRING_DATA_REDIS_HOST:redis}
-      port: ${SPRING_DATA_REDIS_PORT:6379}
-      timeout: 6000
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 0
-          max-wait: -1ms
-
-# =========================
-# ⚙️ Management &amp; Monitoring
-# =========================
-management:
-  endpoints:
-    web:
-      exposure:
-        include: &#34;*&#34;
-  endpoint:
-    health:
-      show-details: always
-
-# =========================
-# 🧭 SpringDoc Swagger UI
-# =========================
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    urls:
-      # Sử dụng biến môi trường để Swagger hoạt động đúng trên Domain thật
-      - name: user-service
-        url: ${USER_SERVICE_URL:http://localhost:8081}/api/user/v3/api-docs
-      - name: taskflow-service
-        url: ${TASKFLOW_SERVICE_URL:http://localhost:8082}/api/taskflow/v3/api-docs
-      - name: auth-service
-        url: ${AUTH_SERVICE_URL:http://localhost:9999}/api/auth/v3/api-docs
-      - name: notification-service
-        url: ${NOTIFICATION_SERVICE_URL:http://localhost:9998}/api/notification/v3/api-docs</code></pre></div>
-<hr>
-<h3 id="42-build--push-6-images-lên-ecr">
-  4.2 Build &amp; Push 6 Images lên ECR
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Mở Terminal tại thư mục gốc của dự án (<code>todolist-backend</code>), chạy lần lượt các lệnh sau:</p>
-<p><strong>1. Đăng nhập ECR:</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com</code></pre></div>
-<p><strong>2. Build &amp; Push lần lượt 6 Services:</strong></p>
-<ul>
-<li>
-<p><strong>API Gateway:</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd api-gateway
-</span></span><span style="display:flex;"><span>docker build -t api-gateway:latest .
-</span></span><span style="display:flex;"><span>docker tag api-gateway:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/api-gateway:latest
-</span></span><span style="display:flex;"><span>docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/api-gateway:latest
-</span></span><span style="display:flex;"><span>cd ..</span></span></code></pre></div>
-</li>
-<li>
-<p><strong>Auth Service:</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>cd auth-service
-docker build -t auth-service:latest .
-docker tag auth-service:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/auth-service:latest
-docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/auth-service:latest
-cd ..</code></pre></div>
-</li>
-<li>
-<p><strong>User Service:</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>cd user-service
-docker build -t user-service:latest .
-docker tag user-service:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/user-service:latest
-docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/user-service:latest
-cd ..</code></pre></div>
-</li>
-<li>
-<p><strong>Taskflow Service:</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>cd taskflow-service
-docker build -t taskflow-service:latest .
-docker tag taskflow-service:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/taskflow-service:latest
-docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/taskflow-service:latest
-cd ..</code></pre></div>
-</li>
-<li>
-<p><strong>Notification Service:</strong></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>cd notification-service
-docker build -t notification-service:latest .
-docker tag notification-service:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/notification-service:latest
-docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/notification-service:latest
-cd ..</code></pre></div>
-</li>
-<li>
-<p><strong>AI Model Service:</strong> <em>Lưu ý: Thư mục chứa code AI của bạn tên là <code>model</code> trong docker-compose</em></p>
-<p>Bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>cd model
-docker build -t ai-model-service:latest .
-docker tag ai-model-service:latest 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/ai-model-service:latest
-docker push 031133710884.dkr.ecr.ap-southeast-1.amazonaws.com/ai-model-service:latest
-cd ..</code></pre></div>
-</li>
-</ul>
-<hr>
-<h2 id="giai-đoạn-5-cấu-hình-alb--https">
-  GIAI ĐOẠN 5: CẤU HÌNH ALB &amp; HTTPS
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><ol>
-<li>
-<p><strong>Target Groups:</strong> Tạo 5 cái (<code>IP addresses</code>, <code>HTTP</code>).</p>
-<ul>
-<li>
-<p><code>api-gateway-tg</code>: 8080</p>
-</li>
-<li>
-<p><code>auth-tg</code>: 9999</p>
-</li>
-<li>
-<p><code>user-tg</code>: 8081</p>
-</li>
-<li>
-<p><code>task-tg</code>: 8082</p>
-</li>
-<li>
-<p><code>noti-tg</code>: 9998</p>
-</li>
-<li>
-<p><em>(Không cần tạo TG cho AI Model vì Gateway gọi nội bộ).</em></p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Load Balancer:</strong></p>
-<ul>
-<li>
-<p>Tạo ALB <code>sgu-alb</code>. Scheme: <strong>Internet-facing</strong>.</p>
-</li>
-<li>
-<p>Subnets: <strong>2 Public Subnets</strong>. Security Group: <code>public-alb-sg</code>.</p>
-</li>
-<li>
-<p>Listener <strong>HTTPS:443</strong>: Forward to <code>tg-api-gateway</code>. Certificate <code>api.sgutodolist.com</code>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Rules (HTTPS Listener):</strong></p>
-<ul>
-<li>
-<p>Path <code>/api/auth/*</code> -&gt; <code>tg-auth</code>.</p>
-</li>
-<li>
-<p>Path <code>/api/users/*</code> -&gt; <code>tg-user</code>.</p>
-</li>
-<li>
-<p>Path <code>/api/tasks/*</code> -&gt; <code>tg-task</code>.</p>
-</li>
-<li>
-<p>Path <code>/api/notifications/*</code> -&gt; <code>tg-noti</code>.</p>
-</li>
-<li>
-<p>Default -&gt; <code>tg-api-gateway</code>.</p>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="giai-đoạn-5-cấu-hình-alb--https-1">
-  GIAI ĐOẠN 5: CẤU HÌNH ALB &amp; HTTPS
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><ol>
-<li><strong>Target Groups:</strong> Tạo 5 cái (<code>IP addresses</code>, <code>HTTP</code>).</li>
-</ol>
-<p><strong>Tạo 5 Target Groups</strong></p>
-<p>Ta cần lặp lại quy trình dưới đây <strong>5 lần</strong> cho 5 service, chỉ thay đổi <strong>Name</strong> và <strong>Port</strong>.</p>
-<p><strong>Quy trình chuẩn cho mỗi Target Group:</strong></p>
-<p><strong>Step 1: Create target group</strong></p>
-<ul>
-<li>
-<p><strong>Target type:</strong> Chọn <strong>IP addresses</strong> (Bắt buộc cho Fargate).</p>
-</li>
-<li>
-<p><strong>Target group name:</strong> Nhập tên tương ứng (ví dụ: <code>api-gateway-tg</code>).</p>
-</li>
-<li>
-<p><strong>Protocol:</strong> Chọn <strong>HTTP</strong>.</p>
-</li>
-<li>
-<p><strong>Port:</strong> Nhập port tương ứng (ví dụ: <code>8080</code>).</p>
-</li>
-<li>
-<p><strong>IP address type:</strong> <strong>IPv4</strong>.</p>
-</li>
-<li>
-<p><strong>VPC:</strong> Chọn <code>SGU-Microservices-vpc</code>.</p>
-</li>
-<li>
-<p><strong>Protocol version:</strong> <strong>HTTP1</strong>.</p>
-</li>
-<li>
-<p><strong>Health checks:</strong></p>
-<ul>
-<li>
-<p><strong>Health check protocol:</strong> <strong>HTTP</strong>.</p>
-</li>
-<li>
-<p><strong>Health check path:</strong> Nhập <code>/actuator/health</code> (Thay cho dấu <code>/</code> mặc định).</p>
-</li>
-</ul>
-</li>
-<li>
-<p><em>Các phần khác (Advanced health check settings, Tags&hellip;):</em> Giữ nguyên.</p>
-</li>
-<li>
-<p>Nhấn <strong>Next</strong>.</p>
-</li>
-</ul>
-<p><strong>Step 2: Register targets</strong></p>
-<ul>
-<li>
-<p>⚠️ <strong>QUAN TRỌNG:</strong> Tại màn hình này, ta <strong>KHÔNG LÀM GÌ CẢ</strong>.</p>
-</li>
-<li>
-<p>Không nhập IP, không nhấn &ldquo;Include as pending&rdquo;.</p>
-</li>
-<li>
-<p><em>Lý do:</em> Khi ta Deploy ECS Service ở Giai đoạn 7, ECS sẽ tự động thêm IP của container vào đây.</p>
-</li>
-<li>
-<p>Nhấn nút <strong>Next</strong>.</p>
-</li>
-</ul>
-<p><strong>Step 3: Review and create</strong></p>
-<ul>
-<li>Nhấn nút <strong>Create target group</strong>.</li>
-</ul>
-<p><strong>Danh sách thông số cho 5 Target Groups:</strong></p>
-<p>Bạn hãy tạo lần lượt với các thông số sau (các thông số khác giống hệt hướng dẫn trên):</p>
-<table>
-  <thead>
-      <tr>
-          <th><strong>Số TT</strong></th>
-          <th><strong>Target Group Name</strong></th>
-          <th><strong>Port</strong></th>
-          <th><strong>Health Check Path</strong></th>
-          <th><strong>Ghi chú</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><strong><code>api-gateway-tg</code></strong></td>
-          <td><strong>8080</strong></td>
-          <td><code>/actuator/health</code></td>
-          <td>Cho API Gateway</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><strong><code>auth-tg</code></strong></td>
-          <td><strong>9999</strong></td>
-          <td><code>/actuator/health</code></td>
-          <td>Cho Auth Service</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><strong><code>user-tg</code></strong></td>
-          <td><strong>8081</strong></td>
-          <td><code>/actuator/health</code></td>
-          <td>Cho User Service</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><strong><code>task-tg</code></strong></td>
-          <td><strong>8082</strong></td>
-          <td><code>/actuator/health</code></td>
-          <td>Cho TaskFlow</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><strong><code>noti-tg</code></strong></td>
-          <td><strong>9998</strong></td>
-          <td><code>/actuator/health</code></td>
-          <td>Cho Notification</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="2-tạo-application-load-balancer-alb">
-  2. Tạo Application Load Balancer (ALB)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Vào <strong>EC2 Console</strong> &gt; <strong>Load Balancers</strong> &gt; <strong>Create load balancer</strong>.</p>
-<p><strong>Step 1: Basic configuration</strong></p>
-<ul>
-<li>
-<p><strong>Load balancer type:</strong> Chọn <strong>Application Load Balancer</strong>.</p>
-</li>
-<li>
-<p><strong>Load balancer name:</strong> <code>sgu-alb</code>.</p>
-</li>
-<li>
-<p><strong>Scheme:</strong> Chọn <strong>Internet-facing</strong> (Quan trọng: Để user từ internet truy cập được).</p>
-</li>
-<li>
-<p><strong>IP address type:</strong> <strong>IPv4</strong>.</p>
-</li>
-</ul>
-<p><strong>Step 2: Network mapping</strong></p>
-<ul>
-<li>
-<p><strong>VPC:</strong> Chọn <code>SGU-Microservices-vpc</code>.</p>
-</li>
-<li>
-<p><strong>Mappings (Availability Zones):</strong> Bạn phải chọn 2 Zones và <strong>2 Public Subnets</strong>:</p>
-<ul>
-<li>
-<p>Tích chọn <strong>ap-southeast-1a</strong> -&gt; Chọn Subnet <strong>Public 1</strong> (Ví dụ: <code>...public1...</code>).</p>
-</li>
-<li>
-<p>Tích chọn <strong>ap-southeast-1b</strong> -&gt; Chọn Subnet <strong>Public 2</strong> (Ví dụ: <code>...public2...</code>).</p>
-</li>
-<li>
-<p><em>Lý do:</em> ALB phải nằm ở Public Subnet để nhận traffic từ Internet.</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Step 3: Security groups</strong></p>
-<ul>
-<li>
-<p>Bỏ chọn <code>default</code>.</p>
-</li>
-<li>
-<p>Chọn <strong><code>public-alb-sg</code></strong>.</p>
-</li>
-</ul>
-<p><strong>Step 4: Listeners and routing (Tạo 2 Listener)</strong></p>
-<ul>
-<li>
-<p><strong>Listener 1 (HTTP:80):</strong> (Có sẵn mặc định)</p>
-<ul>
-<li>
-<p>Protocol: <code>HTTP</code> | Port: <code>80</code>.</p>
-</li>
-<li>
-<p><strong>Default action:</strong> Chọn Forward to target group -&gt; <strong><code>api-gateway-tg</code></strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Listener 2 (HTTPS:443):</strong> (Bạn bấm nút <strong>Add listener</strong> để thêm dòng này)</p>
-<ul>
-<li>
-<p>Protocol: <code>HTTPS</code> | Port: <code>443</code>.</p>
-</li>
-<li>
-<p><strong>Default action:</strong> Chọn Forward to target group -&gt; <strong><code>api-gateway-tg</code></strong>.</p>
-</li>
-<li>
-<p><strong>Secure listener settings:</strong></p>
-<ul>
-<li>
-<p><strong>Certificate source:</strong> ACM.</p>
-</li>
-<li>
-<p><strong>Certificate:</strong> Chọn chứng chỉ <code>api.sgutodolist.com</code> (đã tạo ở Giai đoạn 2).</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Step 5: Review &amp; Create</strong></p>
-<ul>
-<li>
-<p>Nhấn <strong>Create load balancer</strong>.</p>
-</li>
-<li>
-<p><em>Đợi khoảng 2-3 phút để State chuyển từ <code>Provisioning</code> sang <code>Active</code>.</em></p>
-</li>
-</ul>
-<hr>
-<h3 id="3-cấu-hình-routing-rules-quy-trình-chuẩn-2-bước">
-  3. Cấu hình Routing Rules (Quy trình chuẩn 2 bước)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Chúng ta sẽ thêm <strong>4 Rules</strong> mới. Mặc định ALB đã có Rule cuối cùng (Default) trỏ về <code>api-gateway-tg</code> rồi, không cần sửa.</p>
-<p><strong>Bảng thông số cần nhập:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th><strong>Priority (Độ ưu tiên)</strong></th>
-          <th><strong>Tên Rule (Name)</strong></th>
-          <th><strong>Condition (Path)</strong></th>
-          <th><strong>Action (Forward to)</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>1</strong></td>
-          <td>Auth Rule</td>
-          <td><code>/api/auth/*</code></td>
-          <td><strong><code>auth-tg</code></strong></td>
-      </tr>
-      <tr>
-          <td><strong>2</strong></td>
-          <td>User Rule</td>
-          <td><code>/api/user/*</code></td>
-          <td><strong><code>user-tg</code></strong></td>
-      </tr>
-      <tr>
-          <td><strong>3</strong></td>
-          <td>Task Rule</td>
-          <td><code>/api/taskflow/*</code></td>
-          <td><strong><code>task-tg</code></strong></td>
-      </tr>
-      <tr>
-          <td><strong>4</strong></td>
-          <td>Noti Rule</td>
-          <td><code>/api/notification/*</code></td>
-          <td><strong><code>noti-tg</code></strong></td>
-      </tr>
-  </tbody>
-</table>
-<p>Tại tab <strong>Listeners and rules</strong> của ALB, nhấn <strong>Add rule</strong>.</p>
-<h4 id="step-1-define-rule-cấu-hình-điều-kiện--hành-động">
-  Step 1: Define rule (Cấu hình điều kiện &amp; hành động)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><ol>
-<li>
-<p><strong>Name and tags:</strong></p>
-<ul>
-<li><strong>Name:</strong> Nhập tên rule (Ví dụ: <code>Auth Rule</code>).</li>
-</ul>
-</li>
-<li>
-<p><strong>Conditions:</strong></p>
-<ul>
-<li>
-<p>Nhấn <strong>Add condition</strong>.</p>
-</li>
-<li>
-<p>Chọn <strong>Path</strong>.</p>
-</li>
-<li>
-<p><strong>Path condition value:</strong> Nhập <code>/api/auth/*</code> (Chú ý dấu <code>*</code> ở cuối).</p>
-</li>
-<li>
-<p>Nhấn <strong>Confirm</strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Actions:</strong></p>
-<ul>
-<li>
-<p><strong>Routing action:</strong> Chọn <strong>Forward to target groups</strong>.</p>
-</li>
-<li>
-<p><strong>Target group:</strong> Chọn <strong><code>auth-tg</code></strong>.</p>
-</li>
-<li>
-<p><strong>Weight:</strong> <code>1</code> (Mặc định).</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Kéo xuống dưới cùng, nhấn nút <strong>Next</strong>.</p>
-</li>
-</ol>
-<h4 id="step-2-set-rule-policy-cấu-hình-độ-ưu-tiên">
-  Step 2: Set rule policy (Cấu hình độ ưu tiên)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><p>Đây là màn hình bạn đang thấy.</p>
-<ol>
-<li>
-<p>Tại ô <strong>Priority</strong> (bên cạnh tên rule bạn vừa tạo):</p>
-<ul>
-<li>Nhập số <strong><code>1</code></strong> (Vì đây là Auth Rule).</li>
-</ul>
-</li>
-<li>
-<p>Kiểm tra lại danh sách:</p>
-<ul>
-<li>
-<p>Dòng Priority 1: Auth Rule (Forward to <code>auth-tg</code>).</p>
-</li>
-<li>
-<p>Dòng Last (default): Default (Forward to <code>api-gateway-tg</code>).</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Nhấn nút <strong>Add rule</strong>.</p>
-</li>
-</ol>
-<p><strong>👉 Làm tương tự cho 3 rules còn lại:</strong></p>
-<ol>
-<li>
-<p><strong>User Rule:</strong></p>
-<ul>
-<li>
-<p>Step 1: Path <code>/api/user/*</code> -&gt; Forward to <code>user-tg</code>.</p>
-</li>
-<li>
-<p>Step 2: Priority nhập <strong><code>2</code></strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Task Rule:</strong></p>
-<ul>
-<li>
-<p>Step 1: Path <code>/api/taskflow/*</code> -&gt; Forward to <code>task-tg</code>.</p>
-</li>
-<li>
-<p>Step 2: Priority nhập <strong><code>3</code></strong>.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Notification Rule:</strong></p>
-<ul>
-<li>
-<p>Step 1: Path <code>/api/notification/*</code> -&gt; Forward to <code>noti-tg</code>.</p>
-</li>
-<li>
-<p>Step 2: Priority nhập <strong><code>4</code></strong>.</p>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>(Đã đến khúc này lúc 22:26 ngày 05/12/2025)</p>
-<h2 id="giai-đoạn-6-task-definitions-khớp-docker-compose">
-  GIAI ĐOẠN 6: TASK DEFINITIONS (KHỚP DOCKER-COMPOSE)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><h3 id="1-auth-service--user-service--taskflow-service">
-  1. Auth Service &amp; User Service &amp; Taskflow Service
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><em>(Tạo 3 Task riêng, cấu hình giống nhau, khác Image và Port)</em></p>
-<ul>
-<li>
-<p><strong>Ports:</strong> Auth (9999), User (8081), Taskflow (8082).</p>
-</li>
-<li>
-<p><strong>Env Vars (Copy chính xác):</strong></p>
-</li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th><strong>Key</strong></th>
-          <th><strong>Value</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>SPRING_DATASOURCE_URL</code></td>
-          <td><code>jdbc:mysql://&lt;RDS-ENDPOINT&gt;:3306/aws_todolist_database?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
-          <td><code>root</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
-          <td><code>12345678</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_HOST</code></td>
-          <td><code>&lt;REDIS-ENDPOINT&gt;</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_PORT</code></td>
-          <td><code>6379</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
-          <td><code>kafka.sgu.local:9092</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI</code></td>
-          <td><code>https://api.sgutodolist.com/api/auth/login/oauth2/code/google</code></td>
-      </tr>
-      <tr>
-          <td><code>APP_OAUTH2_REDIRECT_URI</code></td>
-          <td><code>https://sgutodolist.com/oauth2/redirect</code></td>
-      </tr>
-  </tbody>
-</table>
-<p><em>(Lưu ý: User &amp; Taskflow Service không cần các biến OAUTH2, chỉ Auth cần, nhưng để chung cũng không lỗi).</em></p>
-<hr>
-<h3 id="2-notification-service">
-  2. Notification Service
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ul>
-<li>
-<p><strong>Port:</strong> 9998.</p>
-</li>
-<li>
-<p><strong>Env Vars:</strong> Giống trên, thêm biến <code>CLIENT_URL</code>: <code>https://sgutodolist.com</code>.</p>
-</li>
-</ul>
-<hr>
-<h3 id="3-ai-model-service-mới">
-  3. AI Model Service (MỚI)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ul>
-<li>
-<p><strong>Family:</strong> <code>ai-model-service-td</code>.</p>
-</li>
-<li>
-<p><strong>Image:</strong> Link ECR AI Model.</p>
-</li>
-<li>
-<p><strong>Port:</strong> 9997.</p>
-</li>
-<li>
-<p><strong>Env Vars:</strong> (Tùy theo code Flask của bạn, nếu không có thì để trống).</p>
-</li>
-</ul>
-<hr>
-<h3 id="4-api-gateway-quan-trọng">
-  4. API Gateway (QUAN TRỌNG)
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><ul>
-<li>
-<p><strong>Port:</strong> 8080.</p>
-</li>
-<li>
-<p><strong>Env Vars:</strong></p>
-</li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th><strong>Key</strong></th>
-          <th><strong>Value</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_HOST</code></td>
-          <td><code>&lt;REDIS-ENDPOINT&gt;</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_PORT</code></td>
-          <td><code>6379</code></td>
-      </tr>
-      <tr>
-          <td><code>AUTH_SERVICE_URL</code></td>
-          <td><code>https://api.sgutodolist.com/api/auth</code></td>
-      </tr>
-      <tr>
-          <td><code>USER_SERVICE_URL</code></td>
-          <td><code>https://api.sgutodolist.com/api/users</code></td>
-      </tr>
-      <tr>
-          <td><code>TASKFLOW_SERVICE_URL</code></td>
-          <td><code>https://api.sgutodolist.com/api/tasks</code></td>
-      </tr>
-      <tr>
-          <td><code>NOTIFICATION_SERVICE_URL</code></td>
-          <td><code>https://api.sgutodolist.com/api/notifications</code></td>
-      </tr>
-      <tr>
-          <td><code>AI_MODEL_SERVICE</code></td>
-          <td><code>http://ai-model.sgu.local:9997</code></td>
-      </tr>
-      <tr>
-          <td><code>CORS_ALLOWED_ORIGINS</code></td>
-          <td><code>https://sgutodolist.com,https://www.sgutodolist.com</code></td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="giai-đoạn-7-deploy-services">
-  GIAI ĐOẠN 7: DEPLOY SERVICES
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><p>Deploy lần lượt 6 Services (Auth, User, Taskflow, Notification, Gateway, AI Model).</p>
-<p><strong>CẤU HÌNH CHUNG KHI TẠO SERVICE:</strong></p>
-<ol>
-<li>
-<p><strong>VPC:</strong> <code>SGU-Microservices-VPC</code>.</p>
-</li>
-<li>
-<p><strong>Subnets:</strong> <strong>2 PUBLIC SUBNETS</strong>. (Bắt buộc vì không có NAT).</p>
-</li>
-<li>
-<p><strong>Security Group:</strong> <code>ecs-app-sg</code>.</p>
-</li>
-<li>
-<p><strong>Public IP:</strong> <strong>TURN ON</strong> (Bắt buộc).</p>
-</li>
-</ol>
-<p><strong>RIÊNG CHO AI MODEL SERVICE:</strong></p>
-<ul>
-<li>
-<p>Khi tạo service <code>svc-ai-model</code>:</p>
-</li>
-<li>
-<p><strong>Service discovery:</strong> Check.</p>
-</li>
-<li>
-<p>Namespace: <code>sgu.local</code>.</p>
-</li>
-<li>
-<p>Service name: <code>ai-model</code>.</p>
-</li>
-<li>
-<p><em>(Để Gateway gọi được qua <code>http://ai-model.sgu.local:9997</code>).</em></p>
-</li>
-</ul>
-<hr>
-<h2 id="giai-đoạn-8-hoàn-tất">
-  GIAI ĐOẠN 8: HOÀN TẤT
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><ol>
-<li>
-<p><strong>Route 53:</strong> Tạo A Record <code>api.sgutodolist.com</code> trỏ về ALB.</p>
-</li>
-<li>
-<p><strong>Google Console:</strong> Add Redirect URI <code>https://api.sgutodolist.com/api/auth/login/oauth2/code/google</code>.</p>
-</li>
-</ol>
-<p><strong>CHECKLIST:</strong></p>
-<ul>
-<li>
-<p>Vào <code>https://api.sgutodolist.com/actuator/health</code> -&gt; OK.</p>
-</li>
-<li>
-<p>Vào <code>https://sgutodolist.com</code> -&gt; Login -&gt; OK.</p>
-</li>
-</ul>
 
   <footer class="footline">
   </footer>
@@ -1858,13 +313,19 @@ cd ..</code></pre></div>
             <li class="" data-nav-url="../../../../en/1-worklog/index.html"><a class="padding" href="../../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="../../../../en/2-proposal/index.html"><a class="padding" href="../../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
             <li class="" data-nav-url="../../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="../../../../en/4-events_participated/index.html"><a class="padding" href="../../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a></li>
+            <li class="" data-nav-url="../../../../en/4-events_participated/index.html"><a class="padding" href="../../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
             <li class="parent " data-nav-url="../../../../en/5-workshop/index.html"><a class="padding" href="../../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
             <li class="" data-nav-url="../../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
             <li class="" data-nav-url="../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
             <li class="alwaysopen " data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
-            <li class="active hidden " data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"></a></li></ul></li>
+            <li class="active parent alwaysopen " data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Backend Deploy</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu">
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"> <b> 5.3.2.1. </b> Network &amp; Security Preparation (VPC, SG)</a></li>
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"> <b> 5.3.2.2. </b> Infrastructure &amp; ALB Setup (RDS, Redis, Cloud Map, ALB Routing)</a></li>
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Code Update &amp; Image Build (Create new Docker Image)</a></li>
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Task Definitions Creation (Configure settings, Fix environment variables)</a></li>
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"> <b> 5.3.2.5. </b> Services Deployment (Following priority order and verification)</a></li>
+            <li class="" data-nav-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Completion &amp; Verification (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
             <li class="" data-nav-url="../../../../en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="../../../../en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="" data-nav-url="../../../../en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="../../../../en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="../../../../en/6-self-assesment/index.html"><a class="padding" href="../../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
@@ -1889,6 +350,7 @@ cd ..</code></pre></div>
                   <label class="a11y-only" for="R-select-language">Language</label>
                   <select id="R-select-language">
                     <option id="R-select-language-en" value="en" data-url="../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../../vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html" lang="vi">Tiếng Việt</option>
                   </select>
                 </div>
                 <div class="clear"></div>
@@ -1914,8 +376,8 @@ cd ..</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1764948485" defer></script>
-    <script src="../../../../AWS-Workshop/js/theme.min.js?1764948485" defer></script>
+    <script src="../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040465" defer></script>
+    <script src="../../../../AWS-Workshop/js/theme.min.js?1765040465" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiênTác giả: Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi Ngày: 17/07/2025
+Danh mục: Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to
+Giới thiệuArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernetes theo mô hình khai báo, trong đó Git đóng vai trò là nguồn chân lý duy nhất (single source of truth). ArgoCD cung cấp nhiều tính năng mạnh mẽ như:">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 4 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiênTác giả: Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi Ngày: 17/07/2025
+Danh mục: Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to
+Giới thiệuArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernetes theo mô hình khai báo, trong đó Git đóng vai trò là nguồn chân lý duy nhất (single source of truth). ArgoCD cung cấp nhiều tính năng mạnh mẽ như:">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 4 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiênTác giả: Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi Ngày: 17/07/2025
+Danh mục: Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to
+Giới thiệuArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernetes theo mô hình khai báo, trong đó Git đóng vai trò là nguồn chân lý duy nhất (single source of truth). ArgoCD cung cấp nhiều tính năng mạnh mẽ như:">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 4 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiênTác giả: Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi Ngày: 17/07/2025
+Danh mục: Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to
+Giới thiệuArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernetes theo mô hình khai báo, trong đó Git đóng vai trò là nguồn chân lý duy nhất (single source of truth). ArgoCD cung cấp nhiều tính năng mạnh mẽ như:">
+    <meta itemprop="wordCount" content="883">
+    <title>Blog 4 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_4/index.xml" rel="alternate" type="application/rss+xml" title="Blog 4 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_4\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_4/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#điểm-khó-khăn-khi-sử-dụng-argocd-theo-cách-truyền-thống">Điểm khó khăn khi sử dụng ArgoCD theo cách truyền thống</a></li>
+    <li><a href="#cách-argocd-mcp-server-và-amazon-q-cli-giải-quyết-vấn-đề">Cách ArgoCD MCP Server và Amazon Q CLI giải quyết vấn đề</a></li>
+    <li><a href="#so-sánh-argocd-truyền-thống-và-argocd-mcp--amazon-q-cli">So sánh ArgoCD truyền thống và ArgoCD MCP + Amazon Q CLI</a></li>
+    <li><a href="#các-thao-tác-hỗ-trợ-bằng-ngôn-ngữ-tự-nhiên">Các thao tác hỗ trợ bằng ngôn ngữ tự nhiên</a></li>
+    <li><a href="#thiết-lập-môi-trường">Thiết lập môi trường</a>
+      <ul>
+        <li><a href="#điều-kiện-tiên-quyết">Điều kiện tiên quyết</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 4</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_3/index.html" title="Blog 3 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_5/index.html" title="Blog 5 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-4">Blog 4</h1>
+
+<h1 id="triển-khai-liên-tục-theo-gitops-với-argocd-và-eks-bằng-ngôn-ngữ-tự-nhiên">
+  Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiên
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong> Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi  </p>
+<p><strong>Ngày:</strong> 17/07/2025</p>
+<p><strong>Danh mục:</strong>  </p>
+<p>Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to</p>
+<hr>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>ArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai <strong>Kubernetes</strong> theo mô hình khai báo, trong đó <strong>Git đóng vai trò là nguồn chân lý duy nhất (single source of truth)</strong>. ArgoCD cung cấp nhiều tính năng mạnh mẽ như:</p>
+<ul>
+<li>
+<p>Đồng bộ hóa tự động</p>
+</li>
+<li>
+<p>Khả năng khôi phục (rollback)</p>
+</li>
+<li>
+<p>Phát hiện sai lệch cấu hình</p>
+</li>
+<li>
+<p>Chiến lược triển khai nâng cao</p>
+</li>
+<li>
+<p>Tích hợp RBAC</p>
+</li>
+<li>
+<p>Hỗ trợ đa cụm (multi-cluster)</p>
+</li>
+</ul>
+<p>Nhờ đó, ArgoCD trở thành lựa chọn phổ biến cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi tổ chức mở rộng quy mô, nhiều thách thức vận hành bắt đầu xuất hiện.</p>
+<hr>
+<h2 id="điểm-khó-khăn-khi-sử-dụng-argocd-theo-cách-truyền-thống">
+  Điểm khó khăn khi sử dụng ArgoCD theo cách truyền thống
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li><strong>Rào cản kỹ thuật cao</strong>  </li>
+</ul>
+<p>  Giao diện UI và CLI của ArgoCD yêu cầu người dùng hiểu rõ YAML, kiến trúc Kubernetes và các mối quan hệ giữa tài nguyên. Điều này làm hạn chế khả năng tiếp cận GitOps với các bên liên quan không chuyên về kỹ thuật và tăng phụ thuộc vào đội ngũ DevOps.</p>
+<ul>
+<li><strong>Quản lý đa cụm phức tạp</strong>  </li>
+</ul>
+<p>  Các mô hình như hub-spoke, per-cluster hoặc grouped làm tăng độ phức tạp trong vận hành, khi phải quản lý nhiều instance ArgoCD và duy trì cấu hình nhất quán.</p>
+<ul>
+<li><strong>Thiếu tích hợp tác vụ tiền/hậu triển khai</strong>  </li>
+</ul>
+<p>  ArgoCD không hỗ trợ sẵn các bước như quét image hoặc kiểm thử tải, buộc các nhóm phải sử dụng công cụ ngoài hoặc script tùy chỉnh, gây phân mảnh quy trình.</p>
+<ul>
+<li><strong>Chuyển đổi môi trường kém linh hoạt</strong>  </li>
+</ul>
+<p>  Việc promotion ứng dụng từ Dev → Test → Prod thường phải làm thủ công hoặc qua script, làm chậm quá trình phát hành.</p>
+<ul>
+<li><strong>Quản lý RBAC và khả năng hiển thị khó khăn</strong>  </li>
+</ul>
+<p>  Trong môi trường đa cụm, việc quản lý quyền truy cập và giám sát có thể dẫn đến rủi ro bảo mật tiềm ẩn.</p>
+<hr>
+<h2 id="cách-argocd-mcp-server-và-amazon-q-cli-giải-quyết-vấn-đề">
+  Cách ArgoCD MCP Server và Amazon Q CLI giải quyết vấn đề
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Việc tích hợp <strong>ArgoCD MCP Server</strong> với <strong>Amazon Q CLI</strong> mang lại trải nghiệm GitOps hoàn toàn mới thông qua <strong>ngôn ngữ tự nhiên</strong>.</p>
+<p>Những lợi ích chính:</p>
+<ul>
+<li>
+<p>Cho phép người dùng quản lý ứng dụng ArgoCD bằng câu lệnh hội thoại thay vì CLI hoặc YAML.</p>
+</li>
+<li>
+<p>Dân chủ hóa GitOps cho các vai trò như QA, Product Manager hay Support Engineer.</p>
+</li>
+<li>
+<p>Đơn giản hóa quản lý đa cụm và đa môi trường.</p>
+</li>
+<li>
+<p>MCP Server đảm nhiệm xác thực, quản lý session và xử lý lỗi.</p>
+</li>
+<li>
+<p>Amazon Q cung cấp gợi ý theo ngữ cảnh và phản hồi chi tiết.</p>
+</li>
+<li>
+<p>Hỗ trợ tự động hóa và gỡ lỗi bằng AI, đóng vai trò như một <strong>DevOps ảo</strong>.</p>
+</li>
+</ul>
+<p>Ví dụ câu lệnh:</p>
+<ul>
+<li>
+<p>&ldquo;Những ứng dụng nào đang out-of-sync ở production?&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;Đồng bộ ứng dụng api-service.&rdquo;</p>
+</li>
+</ul>
+<hr>
+<h2 id="so-sánh-argocd-truyền-thống-và-argocd-mcp--amazon-q-cli">
+  So sánh ArgoCD truyền thống và ArgoCD MCP + Amazon Q CLI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>| Tiêu chí | ArgoCD truyền thống | MCP Server + Amazon Q CLI |</p>
+<p>|&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|</p>
+<p>| Giao diện | UI/CLI kỹ thuật | Ngôn ngữ tự nhiên |</p>
+<p>| Người dùng không kỹ thuật | Hạn chế | Dễ tiếp cận |</p>
+<p>| Quản lý đa cụm | Phức tạp | Được trừu tượng hóa |</p>
+<p>| Tiền/Hậu triển khai | Dùng công cụ ngoài | Dễ gọi qua AI |</p>
+<p>| Promotion môi trường | Thủ công | Hội thoại |</p>
+<p>| Khắc phục sự cố | Phụ thuộc kỹ thuật | Có AI hỗ trợ |</p>
+<p>| Tự động hóa | Script | AI/Agent |</p>
+<hr>
+<h2 id="các-thao-tác-hỗ-trợ-bằng-ngôn-ngữ-tự-nhiên">
+  Các thao tác hỗ trợ bằng ngôn ngữ tự nhiên
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Thông qua tích hợp Amazon Q CLI, bạn có thể:</p>
+<ul>
+<li>
+<p>Quản lý ứng dụng ArgoCD</p>
+</li>
+<li>
+<p>Đồng bộ và theo dõi trạng thái</p>
+</li>
+<li>
+<p>Trực quan hóa cây tài nguyên</p>
+</li>
+<li>
+<p>Giám sát sức khỏe tài nguyên</p>
+</li>
+<li>
+<p>Theo dõi sự kiện</p>
+</li>
+<li>
+<p>Truy xuất log</p>
+</li>
+<li>
+<p>Thực hiện hành động trên tài nguyên Kubernetes</p>
+</li>
+</ul>
+<hr>
+<h2 id="thiết-lập-môi-trường">
+  Thiết lập môi trường
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="điều-kiện-tiên-quyết">
+  Điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Tài khoản AWS</p>
+</li>
+<li>
+<p>AWS CLI ≥ 2.13.0</p>
+</li>
+<li>
+<p>Node.js ≥ 18.0.0</p>
+</li>
+<li>
+<p>npm ≥ 9.0.0</p>
+</li>
+<li>
+<p>Amazon Q CLI ≥ 1.0.0  </p>
+</li>
+</ul>
+<p>  ```bash</p>
+<p>  npm install -g @aws/amazon-q-cli</p>
+<p>Cụm EKS (≥ 1.27) với ArgoCD ≥ 2.8</p>
+<p>Kết nối với EKS</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws eks update-kubeconfig --name &lt;cluster_name&gt; --region &lt;region&gt; --role-arn &lt;iam_role_arn&gt;</span></span></code></pre></div>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl get pods -n argocd</span></span></code></pre></div>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl port-forward svc/blueprints-addon-argocd-server -n argocd 8080:443</span></span></code></pre></div>
+<p>Tích hợp Amazon Q CLI với ArgoCD MCP</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;mcpServers&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;argocd-mcp-stdio&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;args&#34;</span>: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;argocd-mcp@latest&#34;</span>, <span style="color:#e6db74">&#34;stdio&#34;</span><span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;env&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ARGOCD_BASE_URL&#34;</span>: <span style="color:#e6db74">&#34;&lt;ARGOCD_BASE_URL&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ARGOCD_API_TOKEN&#34;</span>: <span style="color:#e6db74">&#34;&lt;ARGOCD_API_TOKEN&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;NODE_TLS_REJECT_UNAUTHORIZED&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
+<p>Tổng kết</p>
+<p>Việc tích hợp Amazon Q CLI với ArgoCD thông qua MCP Server đánh dấu một bước tiến quan trọng trong quản lý Kubernetes. Giải pháp này chuyển đổi các thao tác phức tạp thành tương tác hội thoại tự nhiên, giúp:</p>
+<p>Giảm gánh nặng kỹ thuật</p>
+<p>Tăng tốc triển khai</p>
+<p>Mở rộng GitOps cho toàn bộ tổ chức</p>
+<p>Thay vì ghi nhớ lệnh và xử lý YAML, các nhóm giờ đây có thể quản lý hạ tầng cloud thông qua đối thoại, giúp hành trình cloud-native trở nên dễ tiếp cận và hiệu quả hơn.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_4/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_4/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -89,21 +89,21 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.12-week_12/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.12-week_12/index.html</guid>
-      <description>Week 12 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 24/11/2025 24/11/2025 - Experimental S3 single region deployment 2 25/11/2025 25/11/2025 - Experimental S3 single region deployment 3 26/11/2025 26/11/2025 - Experimental S3 multi-region deployment 4 27/11/2025 27/11/2025 - Experimental S3 multi-region deployment 5 28/11/2025 28/11/2025 - Experimental S3 multi-region deployment - Update worklog, workshop</description>
+      <description>Week 12 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 24/11/2025 24/11/2025 - Experimental S3 single region deployment 2 - Complete part 4. Events participated of Workshop 25/11/2025 25/11/2025 - Experimental S3 single region deployment 3 - Experimental VPC deployment 26/11/2025 26/11/2025 - Experimental S3 multi-region deployment 4 - Config Google OAuth 27/11/2025 27/11/2025 - Experimental S3 multi-region deployment 5 - Adjust solution architecture to single-region (as for Free account and cost limitations) 28/11/2025 28/11/2025 - Deploy frontend resources to S3 successfully - Update worklog, workshop</description>
     </item>
     <item>
       <title>Week 13 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.html</guid>
-      <description>Week 13 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 01/11/2025 01/11/2025 - Successful S3 multi-region deployment and access - Update worklog: create worklog categories base on team members 2 - Setup VPC, Subnets, Internet Gateway 02/11/2025 02/11/2025 3 - Setup VPC, Subnets, Internet Gateway 03/11/2025 03/11/2025 4 - Setup ECR, Fargate 04/11/2025 04/11/2025 5 - Setup ECR, Fargate 05/11/2025 05/11/2025</description>
+      <description>Week 13 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 01/11/2025 01/11/2025 - Setup VPC, Subnets, Internet Gateway, Security groups - Update worklog: create worklog categories base on team members 2 - Setup VPC, Subnets, Internet Gateway 02/11/2025 02/11/2025 - Setup ALB, Security groups, RDS MySQL 3 - Setup VPC, Subnets, Internet Gateway, Security groups 03/11/2025 03/11/2025 - Deploy images to ECR, ECS Fargate - Setup ALB, Security groups, RDS MySQL 4 - Deploy images to ECR, ECS Fargate, ALB, RDS 04/11/2025 04/11/2025 - Setup ALB, Security groups, RDS MySQL 5 - Deploy images to ECR, ECS Fargate, ALB, RDS 05/11/2025 05/11/2025 - Setup ALB, Security groups, RDS MySQL - Config Google OAuth Redirect</description>
     </item>
     <item>
       <title>Week 14 Worklog</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.14-week_14/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.14-week_14/index.html</guid>
-      <description>Week 14 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 08/11/2025 08/11/2025 2 09/11/2025 09/11/2025 3 10/11/2025 10/11/2025 4 11/11/2025 11/11/2025 5 12/11/2025 12/11/2025</description>
+      <description>Week 14 Objectives&#xD;Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Complete deploying ECS Fargate, run test 08/11/2025 08/11/2025 - Complete worklog &amp; Workshop 2 09/11/2025 09/11/2025 3 10/11/2025 10/11/2025 4 11/11/2025 11/11/2025 5 12/11/2025 12/11/2025</description>
     </item>
   </channel>
 </rss>

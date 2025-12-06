@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
+    <description>HƯỚNG DẪN DEPLOY BACKEND MICROSERVICES TRÊN AWS ECS (FINAL VERSION)&#xD;🏗 TỔNG QUAN HỆ THỐNG&#xD;Region: Singapore (ap-southeast-1).&#xA;Frontend Domain: https://sgutodolist.com.&#xA;Backend Domain: https://api.sgutodolist.com.&#xA;Kiến trúc Mạng (Tiết kiệm chi phí - Không dùng NAT Gateway):</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mystic Skills :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html</link>
+    <description>1. Hugo Commands&#xD;2. Git Commands&#xD;2.1 Check repository status&#xA;git status&#xD;2.2 List branches (local)&#xA;git branch&#xD;2.3 List all branches (local + remote)&#xA;git branch -a&#xD;2.4 Switch to another branch</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

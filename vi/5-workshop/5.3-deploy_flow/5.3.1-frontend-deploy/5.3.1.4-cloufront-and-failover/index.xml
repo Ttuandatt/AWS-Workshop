@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ClouFront and Failover :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</link>
+    <description>GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)&#xD;BƯỚC 3.1: Tạo Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

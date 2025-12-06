@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
+Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 6 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
+Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_6/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 6 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
+Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 6 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions
+Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)">
+    <meta itemprop="wordCount" content="2365">
+    <title>Blog 6 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_6/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_6/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_6/index.xml" rel="alternate" type="application/rss+xml" title="Blog 6 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_6\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_6/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#tổng-quan-về-các-instance-amazon-ec2-f2">Tổng quan về các instance Amazon EC2 F2</a></li>
+    <li><a href="#phương-pháp-đánh-giá-hiệu-năng">Phương pháp đánh giá hiệu năng</a></li>
+    <li><a href="#so-sánh-hiệu-năng-về-tốc-độ-và-chi-phí-phân-tích-wgs">So sánh hiệu năng về tốc độ và chi phí: Phân tích WGS</a></li>
+    <li><a href="#so-sánh-hiệu-năng-về-tốc-độ-và-chi-phí-phân-tích-tumor-normal">So sánh hiệu năng về tốc độ và chi phí: Phân tích Tumor-Normal</a></li>
+    <li><a href="#các-lợi-ích-khác">Các lợi ích khác</a></li>
+    <li><a href="#khả-năng-triển-khai-và-các-tùy-chọn-triển-khai-trên-cloud-của-instance-f2">Khả năng triển khai và các tùy chọn triển khai trên cloud của instance F2</a></li>
+    <li><a href="#kết-luận">Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+    <li><a href="#chú-thích">Chú thích</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 6</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_5/index.html" title="Blog 5 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_7/index.html" title="Blog 7 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-6">Blog 6</h1>
+
+<h1 id="kích-hoạt-phân-tích-dữ-liệu-genomic-và-multiomic-nhanh-chóng-với-illumina-dragen-v44-trên-các-instance-amazon-ec2-f2">
+  <strong>Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><em>Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia</em> | 15/07/2025 | <a href="https://aws.amazon.com/blogs/hpc/category/high-performance-computing/" rel="external">High Performance Computing</a>, <a href="https://aws.amazon.com/blogs/hpc/category/industries/life-sciences/" rel="external">Life Sciences</a>, <a href="https://aws.amazon.com/blogs/hpc/category/post-types/partner-solutions/" rel="external">Partner solutions</a></p>
+<p>Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)</p>
+<p><a href="#R-image-342b536417efa06ffb56e8b3a77e1e15" class="lightbox-link"><img alt="image1" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-342b536417efa06ffb56e8b3a77e1e15"><img alt="image1" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-p1-1024x286.png"></a></p>
+<p>Việc phân tích lượng dữ liệu genomic và multiomic ngày càng gia tăng đòi hỏi các giải pháp tính toán hiệu quả, có khả năng mở rộng và tiết kiệm chi phí. Amazon Web Services (AWS) tiếp tục hỗ trợ các workload này thông qua các dịch vụ tính toán tăng tốc FPGA như các <a href="https://aws.amazon.com/ec2/instance-types/f2/" rel="external">instance Amazon EC2 F2</a>.</p>
+<p>Giải pháp phân tích thứ cấp <a href="https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis.html" rel="external">DRAGEN (Dynamic Read Analysis for GENomics)</a> của Illumina đã khẳng định vị thế là một trong những giải pháp phân tích thứ cấp hàng đầu cho dữ liệu sequencing thế hệ mới, cung cấp các thuật toán được tối ưu hóa cao cho phân tích genomic và triển khai tăng tốc phần cứng cho các pipeline phân tích toàn diện về genomics và multiomics, bao gồm DNA germline, DNA somatic, cũng như phân tích RNA ở mức bulk và single-cell, proteomics, spatial, và nhiều hơn nữa.</p>
+<p>DRAGEN chạy nguyên bản trên các instance EC2 F2 và cung cấp cho khách hàng một phương pháp nhanh chóng để phân tích tập dữ liệu sinh học của họ. Việc di chuyển sang F2 được đơn giản hóa vì cùng một DRAGEN AMI được sử dụng cho cả F1 và F2, và kết quả phân tích sẽ tương đương nhau. Trong bài viết này, chúng tôi sẽ thảo luận về các đặc tính hiệu năng của DRAGEN trên các môi trường tính toán AWS khác nhau, cũng như cách triển khai <a href="https://investor.illumina.com/news/press-release-details/2025/Illumina-DRAGEN-v4-4-powers-clinical-oncology-research-and-multiomic-applications/default.aspx" rel="external">phiên bản DRAGEN v4.4 mới ra mắt gần đây</a> trên các instance Amazon EC2 F2.</p>
+<h2 id="tổng-quan-về-các-instance-amazon-ec2-f2">
+  Tổng quan về các instance Amazon EC2 F2
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Các instance F2 là thế hệ thứ 2 của các instance EC2 được trang bị FPGA để tăng tốc phân tích dữ liệu genomic và multimedia trong môi trường cloud. Những instance này mang lại cải tiến đáng kể so với thế hệ trước — các instance F1 — với hiệu suất giá thành được cải thiện tốt hơn tới 60%. Dưới đây là các tính năng và thông số kỹ thuật chính của instance F2:</p>
+<ul>
+<li>
+<p>Cấu hình FPGA: Instance F2 được trang bị tối đa tám AMD Virtex UltraScale+ HBM VU47P FPGAs, mỗi FPGA tích hợp 16GB bộ nhớ băng thông cao (HBM – High-Bandwidth Memory).</p>
+</li>
+<li>
+<p>Bộ xử lý: Được vận hành bởi bộ vi xử lý AMD EPYC thế hệ thứ 3 (Milan), instance F2 cung cấp tới 192 vCPU — gấp ba lần số lõi xử lý so với instance F1.</p>
+</li>
+<li>
+<p>Bộ nhớ: Instance này hỗ trợ tới 2 TiB bộ nhớ hệ thống, gấp đôi dung lượng bộ nhớ của instance F1.</p>
+</li>
+<li>
+<p>Lưu trữ: F2 đi kèm với tối đa 7.6 TiB bộ nhớ SSD NVMe, gấp đôi dung lượng lưu trữ của F1.</p>
+</li>
+<li>
+<p>Networking: Tốc độ băng thông mạng lên tới 100 Gbps, cao gấp bốn lần so với băng thông mạng có sẵn trên instance F1.</p>
+</li>
+</ul>
+<table>
+  <tr>
+    <th>Instance Name</th>
+    <th>FPGAs</th>
+    <th>vCPUs</th>
+    <th>Instance Memory</th>
+    <th>NVMe Storage</th>
+    <th>Network Bandwidth</th>
+  </tr>
+  <tr>
+    <td>f1.2xlarge</td>
+    <td>1</td>
+    <td>8</td>
+    <td>122</td>
+    <td>470</td>
+    <td>Up to 10 Gbps</td>
+  </tr>
+  <tr style="background-color:#A5CEF0;color: black;"> <!-- tô màu xanh lá -->
+    <td>f1.4xlarge</td>
+    <td>2</td>
+    <td>16</td>
+    <td>244</td>
+    <td>940</td>
+    <td>10 Gbps</td>
+  </tr>
+  <tr style="background-color:#A9D979;color: black;"> <!-- tô màu xanh lá -->
+    <td>f2.6xlarge</td>
+    <td>1</td>
+    <td>24</td>
+    <td>256</td>
+    <td>950</td>
+    <td>10 Gbps</td>
+  </tr>
+   <tr>
+    <td>F2.12xlarge</td>
+    <td>2</td>
+    <td>48</td>
+    <td>512</td>
+    <td>1900</td>
+    <td>25 Gbps</td>
+  </tr>
+   <tr>
+    <td>f1.16xlarge</td>
+    <td>8</td>
+    <td>64</td>
+    <td>976</td>
+    <td>44x940</td>
+    <td>25 Gbps</td>
+  </tr>
+   <tr>
+    <td>F2.48xlarge</td>
+    <td>8</td>
+    <td>192</td>
+    <td>2048</td>
+    <td>7600</td>
+    <td>100 Gbps</td>
+  </tr>
+</table>
+<p><em>Bảng 1: Bảng so sánh thông số kỹ thuật về compute, memory, storage, và networking giữa các instance F1 và F2.</em></p>
+<h2 id="phương-pháp-đánh-giá-hiệu-năng">
+  Phương pháp đánh giá hiệu năng
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Illumina khuyến nghị sử dụng f1.4xlarge khi dùng instance F1 và f2.6xlarge khi dùng instance F2. Để đánh giá hiệu năng trên các instance này, DRAGEN đã được cấu hình và chạy trên AWS theo <a href="https://help.dragen.illumina.com/product-guides/dragen-v4.4" rel="external">hướng dẫn người dùng Illumina DRAGEN</a>, và các liên kết tới genome reference file có thể tìm thấy trên <a href="https://support.illumina.com/sequencing/sequencing_software/dragen-bio-it-platform/product_files.html" rel="external">trang web Illumina DRAGEN Product Files</a>.</p>
+<ol>
+<li>
+<p>Phân tích Whole Genome Sequencing (WGS) với độ phủ khoảng 35x sử dụng một mẫu có sẵn công khai. Mẫu HG002 từ <a href="https://www.nist.gov/programs-projects/genome-bottle" rel="external">dự án NIST Genome in a Bottle</a> đã được sử dụng. Mẫu này được phân tích bằng DRAGEN v4.4 Germline pipeline theo hai cách khác nhau. Phân tích “cơ bản” chỉ bao gồm alignment cơ bản và small variant calling, nhằm tạo điều kiện so sánh với các pipeline tin sinh học phổ biến cho mẫu germline như BWA/GATK. Phân tích “đầy đủ” sử dụng tất cả các variant caller, bao gồm cả copy number và structural variants, cùng các tùy chọn bổ sung như gọi pharmacogenetic star allele và gọi HLA (Human Leukocyte Antigen), để tạo ra một bộ genome được phân tích đầy đủ. Trong cả hai trường hợp, tham chiếu đồ thị multigenome hg38 của DRAGEN được sử dụng cho phân tích WGS. Các file dữ liệu fastq của mẫu có thể truy cập trên Amazon S3 qua các liên kết: <a href="https://s3/ilmn-dragen-giab-samples/WGS/precisionFDA_v2_HG002/HG002.novaseq.pcr-free.35x.R1.fastq.gz" rel="external">fastq R1</a>, <a href="https://s3/ilmn-dragen-giab-samples/WGS/precisionFDA_v2_HG002/HG002.novaseq.pcr-free.35x.R2.fastq.gz" rel="external">fastq R2</a>.</p>
+</li>
+<li>
+<p>Phân tích Tumor-Normal sử dụng một cặp mẫu đã được khảo sát trong một <a href="https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2" rel="external">ấn phẩm về phân tích ung thư của DRAGEN</a> trước đây. Hai mẫu này có độ phủ khoảng 110x (tumor) và 40x (normal). Các mẫu được phân tích bằng DRAGEN v4.4 Somatic pipeline, bao gồm alignment, small variant calling, cũng như phân tích CNV và SV. Phân tích Tumor-Normal sử dụng hg38 linear genome reference của DRAGEN. Các file dữ liệu fastq của mẫu có thể truy cập trên Amazon S3 qua các liên kết: <a href="https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/tumor/T_SRR7890895_75pc_1.fastq.gz" rel="external">Tumor fastq R1</a>, <a href="https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/tumor/T_SRR7890895_75pc_2.fastq.gz" rel="external">Tumor fastq R2</a>, <a href="https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/normal/N_SRR7890889_1.fastq.gz" rel="external">Normal fastq R1</a>, <a href="https://s3/dragen-wgs-tn-somatic-benchmarking-datasets/fastq/HCC1395_75pc/normal/N_SRR7890889_2.fastq.gz" rel="external">Normal fastq R2</a>.</p>
+</li>
+</ol>
+<h2 id="so-sánh-hiệu-năng-về-tốc-độ-và-chi-phí-phân-tích-wgs">
+  So sánh hiệu năng về tốc độ và chi phí: Phân tích WGS
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Phân tích WGS sử dụng DRAGEN v4.4 cho thấy lợi thế đáng kể về hiệu suất chi phí trên các instance Amazon EC2 F2 so với F1, đồng thời vẫn cho ra kết quả phân tích tương đương giữa hai thế hệ instance¹:</p>
+<ul>
+<li>
+<p>Phân tích WGS cơ bản, bao gồm alignment và small variant calling. DRAGEN v4.4 chạy trên f2.6xlarge đạt tốc độ <strong>nhanh hơn 1,5 lần</strong> và <strong>chỉ tốn 40% chi phí compute EC2</strong> so với f1.4xlarge.</p>
+</li>
+<li>
+<p>Phân tích WGS đầy đủ, bao gồm alignment, small variant calling, calling of CNVs, SVs, repeat expansions, và variant annotation. Phân tích DRAGEN trên f2.6xlarge đạt tốc độ <strong>nhanh gấp 2 lần</strong> và <strong>chỉ tốn 30% chi phí compute EC2</strong> so với f1.4xlarge.</p>
+</li>
+</ul>
+<p><a href="#R-image-b214f58fcd635dadc6d4e6638bb3fc57" class="lightbox-link"><img alt="image2" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b214f58fcd635dadc6d4e6638bb3fc57"><img alt="image2" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f1.png"></a></p>
+<p><em>Hình 1: Instance f2.6xlarge nhanh hơn 1.5 lần trong Phân tích WGS cơ bản và nhanh hơn 2.1 lần trong Phân tích WGS đầy đủ so với f1.4xlarge.</em></p>
+<p><a href="#R-image-b8ef0e30e1616cc0291f367279653554" class="lightbox-link"><img alt="image3" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b8ef0e30e1616cc0291f367279653554"><img alt="image3" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f2.png"></a></p>
+<p><em>Hình 2: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 40% chi phí trên f1.4xlarge cho Phân tích WGS cơ bản và bằng 30% chi phí trên f1.4xlarge cho Phân tích WGS đầy đủ.</em></p>
+<h2 id="so-sánh-hiệu-năng-về-tốc-độ-và-chi-phí-phân-tích-tumor-normal">
+  So sánh hiệu năng về tốc độ và chi phí: Phân tích Tumor-Normal
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Giống như kết quả WGS, trong phân tích Tumor-Normal, DRAGEN v4.4 cũng cho thấy lợi thế đáng kể về hiệu suất chi phí trên các instance Amazon EC2 F2 so với F1, đồng thời vẫn tạo ra kết quả phân tích tương đương giữa hai thế hệ instance¹:</p>
+<ul>
+<li>Phân tích Tumor-Normal, bao gồm alignment, small variant calling và calling CNVs/SVs. Phân tích bằng DRAGEN trên f2.6xlarge đạt tốc độ <strong>nhanh hơn 1.7 lần</strong> và <strong>chỉ tốn 35% chi phí compute EC2</strong> so với f1.4xlarge.</li>
+</ul>
+<p><a href="#R-image-da0bcd11562b1f858b6bea9d8dd5b81b" class="lightbox-link"><img alt="image4" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-da0bcd11562b1f858b6bea9d8dd5b81b"><img alt="image4" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f3.png"></a></p>
+<p><em>Hình 3: Instance f2.6xlarge nhanh hơn 1.7 lần so với f1.4xlarge trong Phân tích Tumor-Normal.</em></p>
+<p><a href="#R-image-c678e770a9bf0dd752cb52e5bc72c49d" class="lightbox-link"><img alt="image5" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c678e770a9bf0dd752cb52e5bc72c49d"><img alt="image5" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog8/HPCBlog-366-f4.png"></a></p>
+<p><em>Hình 4: Chi phí compute EC2 trên f2.6xlarge chỉ bằng 35% chi phí trên f1.4xlarge cho Phân tích Tumor-Normal WGS.</em></p>
+<h2 id="các-lợi-ích-khác">
+  Các lợi ích khác
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Các pipeline phân tích genomic truyền thống sử dụng BWA-MEM và GATK chạy trên CPU từng là tiêu chuẩn công nghiệp trong quá khứ, nhưng DRAGEN đã ngày càng được ưa chuộng nhờ những ưu thế vượt trội về tốc độ và độ chính xác. Nhiều công bố đã được bình duyệt đã so sánh tốc độ và độ chính xác của DRAGEN với các pipeline dựa trên BWA/GATK chạy trên CPU. Ví dụ, <a href="https://pubmed.ncbi.nlm.nih.gov/36513709/" rel="external">Ziegler et al. (2022)</a> đã phát hiện ra rằng phân tích DRAGEN trên phần cứng FPGA nhanh hơn gấp hơn 8 lần và chính xác hơn so với các pipeline dựa trên BWA/GATK chạy trên CPU, trong khi <a href="https://www.nature.com/articles/s41587-024-02382-1" rel="external">Sedlazek et al. (2024)</a> cũng ghi nhận DRAGEN cho hiệu suất và độ chính xác cao hơn so với các pipeline dựa trên BWA/GATK.</p>
+<p>Việc sử dụng DRAGEN trên các instance F, được tăng tốc bởi FPGA, còn mang lại lợi thế về tiêu thụ điện năng so với các giải pháp truyền thống dựa trên CPU và GPU. FPGA vốn dĩ tiết kiệm năng lượng hơn, tiêu thụ ít điện năng hơn nhưng vẫn đạt hiệu năng tính toán tương đương cho các workload này. Điều này đặc biệt quan trọng trong các tác vụ phân tích dữ liệu genomic, nơi khối lượng dữ liệu và thời gian xử lý có thể rất lớn.</p>
+<p>Chẳng hạn, FPGA đạt được hiệu suất trên mỗi watt cao hơn so với CPU và GPU trong các tác vụ WGS của DRAGEN. Các bộ tăng tốc dựa trên FPGA có thể cung cấp thông lượng vượt trội với mức tiêu thụ điện năng thấp hơn. Điều này là nhờ khả năng tùy chỉnh linh hoạt của FPGA, cho phép cấu hình tối ưu hóa nhằm nâng cao hiệu quả năng lượng. Ngược lại, CPU và GPU, dù mạnh mẽ, thường tiêu tốn nhiều năng lượng hơn để thực hiện cùng một tác vụ, dẫn đến chi phí vận hành cao hơn và tác động môi trường lớn hơn.</p>
+<p>Việc tiêu thụ điện năng thấp hơn của các FPGA dẫn đến giảm các yêu cầu về làm mát, đây có thể là một yếu tố chi phí đáng kể trong các môi trường điện toán quy mô lớn. Ngoài ra, hiệu quả năng lượng của FPGA khiến chúng trở thành lựa chọn hấp dẫn cho các ứng dụng điện toán hiệu năng cao, nơi khả năng mở rộng và hiệu quả chi phí đóng vai trò then chốt.</p>
+<p>Tóm lại, việc triển khai DRAGEN trên các instance thuộc họ ‘F’ của Amazon EC2 mang lại một giải pháp tiết kiệm năng lượng hơn cho phân tích dữ liệu genomic so với các phương pháp truyền thống dựa trên CPU hoặc GPU, đồng thời mang lại cả lợi ích về chi phí lẫn lợi ích môi trường.</p>
+<h2 id="khả-năng-triển-khai-và-các-tùy-chọn-triển-khai-trên-cloud-của-instance-f2">
+  Khả năng triển khai và các tùy chọn triển khai trên cloud của instance F2
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Các instance Amazon EC2 F2 hiện đã có sẵn tại nhiều Region của AWS, bao gồm US East (N. Virginia), US West (Oregon), Europe (London) và Asia Pacific (Sydney), với kế hoạch mở rộng thêm sang nhiều Region khác trong tương lai. F2 cung cấp nhiều kích cỡ khác nhau như f2.6xlarge, f2.12xlarge và f2.48xlarge, nhằm đáp ứng đa dạng nhu cầu workload.</p>
+<p>Khi cấu hình lưu trữ và compute để chạy các workload DRAGEN trên các instance F của AWS, bạn cần lựa chọn các tùy chọn phù hợp để cân bằng giữa hiệu năng và chi phí. Hãy cân nhắc các tùy chọn lưu trữ như là <a href="https://aws.amazon.com/ebs/general-purpose/" rel="external">Amazon EBS gp3 volumes</a> được cấu hình theo RAID, <a href="https://aws.amazon.com/fsx/lustre/" rel="external">Amazon FSx for Lustre</a> cho thông lượng cao hơn và <a href="https://aws.amazon.com/efs/" rel="external">Amazon Elastic File System (EFS)</a> cho lưu trữ liên tục. Ngoài ra, việc truyền trực tuyến các tệp BAM và dữ liệu tham chiếu từ <a href="https://aws.amazon.com/s3/" rel="external">Amazon Simple Storage Service (Amazon S3)</a> hoặc sử dụng <a href="https://aws.amazon.com/s3/features/mountpoint/" rel="external">Mountpoint for Amazon S3</a> để mount bucket S3 vào hệ thống file cục bộ giúp truy cập dữ liệu một cách tiết kiệm chi phí và dễ dàng. Bằng cách lựa chọn và cấu hình cẩn thận các giải pháp lưu trữ này, bạn có thể đảm bảo hiệu năng tối ưu và hiệu quả chi phí cho các workload HPC của mình. Bên cạnh đó, bạn cũng nên cân nhắc sử dụng <a href="https://www.illumina.com/products/by-type/informatics-products/connected-analytics.html" rel="external">Illumina Connected Analytics (ICA)</a> hoặc <a href="https://aws.amazon.com/batch/" rel="external">AWS Batch</a> để quản lý workflow. Illumina cung cấp hướng dẫn chi tiết về cách triển khai <a href="https://help.dragen.illumina.com/reference/dragen-multi-cloud/dragen-on-aws" rel="external">DRAGEN trên AWS</a> trong <a href="https://help.dragen.illumina.com/" rel="external">tài liệu hướng dẫn người dùng DRAGEN trực tuyến</a> của họ.</p>
+<h2 id="kết-luận">
+  Kết luận
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Tóm lại, các instance Amazon EC2 F2 đánh dấu một bước tiến đáng kể trong lĩnh vực điện toán đám mây được cung cấp bởi FPGA, mang lại hiệu năng, bộ nhớ, dung lượng lưu trữ và khả năng kết nối mạng vượt trội so với thế hệ trước. Sự kết hợp giữa các pipeline toàn diện của DRAGEN và sức mạnh tính toán được nâng cấp của Amazon EC2 F2 cho phép xử lý nhanh hơn, hiệu quả hơn đối với các bộ dữ liệu phức tạp – từ whole genome sequencing đến phân tích single-cell RNA.</p>
+<p>Hãy bắt đầu chuyển đổi sang F2 ngay hôm nay. Vui lòng liên hệ với đội ngũ tài khoản AWS của bạn hoặc Illumina để được hỗ trợ trong quá trình chuyển đổi sang Amazon EC2 F2 instances.</p>
+<p>Để biết thêm thông tin về DRAGEN trên AWS, hãy tìm kiếm <a href="https://aws.amazon.com/marketplace/search/results?searchTerms=DRAGEN+Complete+Suite" rel="external">DRAGEN Complete Suite trên AWS Marketplace</a>, xem <a href="https://developer.illumina.com/news-updates/dragen-v4-4" rel="external">blog DRAGEN v4.4</a>, hoặc truy cập <a href="https://www.illumina.com/products/by-type/informatics-products.html" rel="external">trang chủ Illumina Informatics Solutions</a>.</p>
+<h2 id="tài-liệu-tham-khảo">
+  Tài liệu tham khảo
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Scheffler, K. et al. “Somatic small-variant calling methods in Illumina DRAGEN™ Secondary Analysis.” BioRxiv (2023). <a href="https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2" rel="external">https://www.biorxiv.org/content/10.1101/2023.03.23.534011v2</a></p>
+<p>Sedlazeck, F. J. et al. “Comprehensive genome analysis and variant detection at scale using DRAGEN.” Nature Biotechnology (2024). <a href="https://www.nature.com/articles/s41587-024-02382-1" rel="external">https://www.nature.com/articles/s41587-024-02382-1</a></p>
+<p>Ziegler, A. et al. “Comparison of calling pipelines for whole genome sequencing: an empirical study demonstrating the importance of mapping and alignment.” Scientific Reports (2022).
+<a href="https://pubmed.ncbi.nlm.nih.gov/36513709/" rel="external">https://pubmed.ncbi.nlm.nih.gov/36513709/</a></p>
+<h2 id="chú-thích">
+  Chú thích
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Sự tương đương giữa F1 và F2 hard-filtered.vcf cùng các tệp kết quả khác dựa trên kết quả phân tích sử dụng DRAGEN 4.4.4 theo hướng dẫn sử dụng DRAGEN của Illumina. Lệnh vim diff cho thấy sự khác biệt duy nhất giữa hai tệp VCF là một mục hiển thị thời gian thực hiện phân tích. Khách hàng có thể tự thực hiện các phân tích tương tự để xác minh hoặc liên hệ với Illumina để biết thêm thông tin.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_6/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_6/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025
+Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to
+Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 1 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025
+Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to
+Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_1/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 1 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025
+Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to
+Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 1 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025
+Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to
+Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.">
+    <meta itemprop="wordCount" content="2600">
+    <title>Blog 1 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_1/index.xml" rel="alternate" type="application/rss+xml" title="Blog 1 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_1\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_1/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tổng-quan-giải-pháp">Tổng quan giải pháp</a></li>
+        <li><a href="#điều-kiện-tiên-quyết">Điều kiện tiên quyết</a></li>
+        <li><a href="#ví-dụ">Ví dụ</a></li>
+        <li><a href="#eips">EIPs</a></li>
+        <li><a href="#security-group">Security Group</a></li>
+        <li><a href="#amazon-ec2">Amazon EC2</a></li>
+        <li><a href="#nftables">nftables</a></li>
+        <li><a href="#tùy-chọn-1-chỉnh-sửa-trực-tiếp-tệp-nftables">Tùy chọn 1: Chỉnh sửa trực tiếp tệp nftables.</a></li>
+        <li><a href="#tùy-chọn-2-script-cấu-hình-nftables-cli">Tùy chọn 2: Script cấu hình nftables CLI</a></li>
+        <li><a href="#bảng-định-tuyến">Bảng định tuyến</a></li>
+        <li><a href="#fsx-cho-ontap-security-group">FSx cho ONTAP security group</a></li>
+        <li><a href="#kết-nối-ngang-hàng-giữa-các-hệ-thống-tệp">Kết nối ngang hàng giữa các hệ thống tệp</a></li>
+        <li><a href="#dọn-dẹp">Dọn dẹp</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 1</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/index.html" title="Translated Blogs (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_2/index.html" title="Blog 2 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-1">Blog 1</h1>
+
+<h1 id="một-giải-pháp-có-khả-năng-mở-rộng-cao-cho-việc-sao-chép-dữ-liệu-sử-dụng-amazon-fsx-for-netapp-ontap-và-netapp-snapmirror">
+  <strong>Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><em>Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025</em><br>
+<em>Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to</em></p>
+<hr>
+<p>Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.</p>
+<p>NetApp SnapMirror™ là một tính năng thường được sử dụng cho khôi phục sau thảm họa (DR), sao lưu và sao chép dữ liệu trong hệ thống lưu trữ NetApp ONTAP, cả tại chỗ lẫn trên đám mây. Amazon FSx for NetApp ONTAP bao gồm SnapMirror như một phần của dịch vụ được quản lý toàn diện trong AWS. Tuy nhiên, vì NetApp SnapMirror không hỗ trợ NAT, và các địa chỉ IP này được xác minh đối chiếu với các hệ thống tệp được ghép cặp, nên cần triển khai một thiết bị NAT dựa trên Amazon Elastic Compute Cloud (Amazon EC2) với các Elastic IPs, để đảm bảo các tiêu đề lớp 3 (L3 headers) trùng khớp giữa mỗi hệ thống tệp và internet.</p>
+<p>Trong bài viết này, chúng tôi thảo luận về một kiến trúc và thiết kế nhằm hợp lý hóa và mở rộng quy mô cho thách thức di chuyển dữ liệu này trong môi trường AWS. Một lựa chọn khác có thể là thiết lập các đường hầm VPN riêng lẻ giữa trung tâm dữ liệu và AWS. Tuy nhiên, cách này sẽ rất khó quản lý khi mở rộng quy mô. Nguyên nhân khiến NetApp SnapMirror không hỗ trợ NAT là vì các siêu dữ liệu được trao đổi trong quá trình ghép cặp — chẳng hạn như các địa chỉ Logical Interface (LIF) — được xác minh đối chiếu với các hệ thống tệp đang được ghép cặp. Nếu chúng không khớp, kết nối sẽ thất bại. Từ thông tin này, ta có thể nói rằng NAT không phá vỡ SnapMirror, mà chính việc thay đổi địa chỉ IP mới là nguyên nhân. Vậy, nếu chúng ta có thể thực hiện NAT theo cách mà SnapMirror vẫn có thể xác minh các địa chỉ IP đó thì sao? Chúng ta chỉ cần đảm bảo rằng các tiêu đề lớp 3 (L3 Headers) trong các gói IP trùng khớp, và cách linh hoạt nhất để làm điều đó là sử dụng một lớp NAT thứ hai.</p>
+<hr>
+<h3 id="tổng-quan-giải-pháp">
+  Tổng quan giải pháp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Để làm cho các headers lớp 3 (L3 headers) trùng khớp, chúng ta cần một thiết bị NAT nằm giữa mỗi hệ thống tệp và internet. Thiết bị này có thể là một máy chủ Linux, tường lửa, bộ định tuyến hoặc bất kỳ thiết bị nào trong trung tâm dữ liệu có khả năng thực hiện NAT và đáp ứng đủ băng thông cần thiết. Trong bài viết này, chúng tôi triển khai một phiên bản EC2 được tối ưu hóa cho mạng dựa trên kiến trúc Graviton trong Amazon Virtual Private Cloud (Amazon VPC). Chúng tôi sử dụng phiên bản c7gn.medium, có thông lượng mạng đạt 3.5 GB/s. Kích thước phiên bản này có thể được mở rộng tùy theo nhu cầu băng thông của bạn. Vì yêu cầu về CPU và bộ nhớ là rất nhỏ, lựa chọn này mang lại hiệu suất mạng tốt nhất so với chi phí tại thời điểm viết bài.</p>
+<hr>
+<h3 id="điều-kiện-tiên-quyết">
+  Điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Các điều kiện sau là cần thiết để hoàn thành giải pháp này:</p>
+<ul>
+<li>Một thiết bị NAT mà SnapMirror có thể đi qua tại mỗi hệ thống tệp (filer).</li>
+<li>Một subnet riêng biệt cho từng hệ thống tệp.</li>
+</ul>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img1-Blog1.png" alt="Hình 1. Sơ đồ kiến trúc AWS minh họa hai VPC được kết nối thông qua một cổng NAT tự quản lý dựa trên Linux.">
+    <figcaption><i>Hình 1. Sơ đồ kiến trúc AWS minh họa hai VPC được kết nối thông qua một cổng NAT tự quản lý dựa trên Linux.</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="ví-dụ">
+  Ví dụ
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Cấu hình ví dụ được triển khai từ AWS đến AWS để đảm bảo tính trực quan, như minh họa trong hình trên, nhưng một trong hai phía đều có thể được thay thế bằng bất kỳ thiết bị NAT nào thực hiện chức năng tương tự. Tương tự, ví dụ này dựa trên hệ thống tệp FSx for ONTAP trong một Single-<a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" rel="external">Availability Zone (AZ)</a>. Nếu bạn đang sử dụng hệ thống tệp Multi-AZ, chúng tôi khuyến nghị triển khai hai phiên bản Amazon EC2 trong từng Availability Zone (AZ) của hệ thống tệp Multi-AZ và định tuyến lưu lượng thông qua phiên bản nằm trong từng AZ đó.</p>
+<h3 id="eips">
+  EIPs
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Trong ví dụ của chúng tôi, chúng tôi sử dụng một địa chỉ EIP cho mỗi giao diện liên cụm (inter-cluster interface) của FSx for ONTAP. Ban đầu, chúng tôi sẽ yêu cầu bốn địa chỉ EIP chưa được gán cho bất kỳ tài nguyên nào. Việc phân bổ cổng có thể cho phép sử dụng ít địa chỉ IP hơn, nhưng điều đó nằm ngoài phạm vi của ví dụ này.</p>
+<h3 id="security-group">
+  Security Group
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Việc gán trực tiếp các địa chỉ EIP cho Amazon EC2 mà không có bất kỳ giới hạn nào là một thực hành bảo mật kém. Do đó, chúng tôi đã tạo một nhóm bảo mật (security group) trong mỗi VPC và cho phép toàn bộ lưu lượng đến từ bốn địa chỉ EIP này. Về mặt kỹ thuật, chỉ cần mở các cổng TCP 10000, 11104, 11105 và ICMP là đủ, nhưng bộ định tuyến của chúng tôi chỉ chuyển tiếp các cổng này.
+Phần sau đây tóm tắt cấu hình mạng mẫu cho hai triển khai FSx for ONTAP. Các địa chỉ IP được liệt kê chỉ nhằm mục đích minh họa — các giá trị thực tế trong môi trường của bạn sẽ khác tùy theo cấu hình mạng.
+Side A:
+VPC: 10.1.0.0/16FSx ONTAP inter-cluster endpoint 1: 10.1.0.137FSx ONTAP inter-cluster endpoint 2: 10.1.0.125inter_1 EIP: 18.190.143.162inter_2 EIP: 3.128.12.212
+Side B:
+VPC: 10.2.0.0/16FSx ONTAP inter-cluster endpoint 1: 10.2.0.155FSx ONTAP inter-cluster endpoint 2: 10.2.0.110inter_1 EIP: 3.135.134.67inter_2 EIP: 3.146.166.253</p>
+<h3 id="amazon-ec2">
+  Amazon EC2
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Để xử lý các NAT, hãy triển khai một phiên bản EC2 chạy RedHat 9, kèm theo nhóm bảo mật mà chúng ta đã tạo trước đó. RedHat không phải là bắt buộc, và bất kỳ bản phân phối Linux nào hỗ trợ <a href="https://www.redhat.com/en/blog/using-nftables-red-hat-enterprise-linux-8" rel="external">nftables</a> đều có thể hoạt động cho bài thực hành này. Đối với mỗi phiên bản EC2, chúng ta cần gắn kết hai địa chỉ EIP trong số các địa chỉ đã tạo. Mỗi địa chỉ EIP này phải được liên kết với một địa chỉ IP riêng (private IP) khác nhau. Cuối cùng, chúng ta phải tắt kiểm tra nguồn/đích (source/destination check) trên giao diện mạng. Điều này cho phép Amazon EC2 gửi các gói tin có địa chỉ IP nguồn không thuộc quyền sở hữu của nó.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img2-Blog1.png" alt="Hình 2. Ảnh chụp màn hình của trang tổng quan mạng (network summary page) của một phiên bản EC2, trong đó địa chỉ IP riêng (private IP) và địa chỉ IP công cộng (public IP) được tô sáng (highlighted).">
+    <figcaption><i>Hình 2. Ảnh chụp màn hình của trang tổng quan mạng (network summary page) của một phiên bản EC2, trong đó địa chỉ IP riêng (private IP) và địa chỉ IP công cộng (public IP) được tô sáng (highlighted).</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="nftables">
+  nftables
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Trên mỗi phiên bản Linux này, chúng ta cần thêm một số quy tắc nftables để xử lý các kết nối. Điều này tạo ra một ánh xạ 1:1 giữa các giao diện của cụm FSx for ONTAP và một địa chỉ EIP. Đối với môi trường ví dụ của chúng ta, cấu hình nftables cho Side B sẽ như sau.</p>
+<h3 id="tùy-chọn-1-chỉnh-sửa-trực-tiếp-tệp-nftables">
+  Tùy chọn 1: Chỉnh sửa trực tiếp tệp nftables.
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>table ip nat {
+   chain prerouting {
+       type nat hook prerouting priority dstnat; policy accept;
+       tcp dport 11104 ip daddr 10.1.0.135 dnat to 10.1.0.125
+       tcp dport 11105 ip daddr 10.1.0.135 dnat to 10.1.0.125
+       tcp dport 10000 ip daddr 10.1.0.135 dnat to 10.1.0.125
+       icmp type { echo-reply, echo-request } ip daddr 10.1.0.135 dnat to 10.1.0.125
+       tcp dport 11104 ip daddr 10.1.0.123 dnat to 10.1.0.137
+       tcp dport 11105 ip daddr 10.1.0.123 dnat to 10.1.0.137
+       tcp dport 10000 ip daddr 10.1.0.123 dnat to 10.1.0.137
+       icmp type { echo-reply, echo-request } ip daddr 10.1.0.123 dnat to 10.1.0.137
+       ip daddr 10.2.0.110 dnat to 3.146.166.253
+       icmp type { echo-reply, echo-request } ip daddr 10.2.0.110 dnat to 3.146.166.253
+       ip daddr 10.2.0.155 dnat to 3.135.134.67
+       icmp type { echo-reply, echo-request } ip daddr 10.2.0.155 dnat to 3.135.134.67
+   }
+
+   chain postrouting {
+       type nat hook postrouting priority srcnat; policy accept;
+       ip saddr 10.1.0.125 snat to 10.1.0.135
+       icmp type { echo-reply, echo-request } ip saddr 10.1.0.125 snat to 10.1.0.135
+       ip saddr 10.1.0.137 snat to 10.1.0.123
+       icmp type { echo-reply, echo-request } ip saddr 10.1.0.137 snat to 10.1.0.123
+       tcp dport 11104 ip saddr 3.146.166.253 snat to 10.2.0.110
+       tcp dport 11105 ip saddr 3.146.166.253 snat to 10.2.0.110
+       tcp dport 10000 ip saddr 3.146.166.253 snat to 10.2.0.110
+       icmp type { echo-reply, echo-request } ip saddr 3.146.166.253 snat to 10.2.0.110
+       tcp dport 11104 ip saddr 3.135.134.67 snat to 10.2.0.155
+       tcp dport 11105 ip saddr 3.135.134.67 snat to 10.2.0.155
+       tcp dport 10000 ip saddr 3.135.134.67 snat to 10.2.0.155
+       icmp type { echo-reply, echo-request } ip saddr 3.135.134.67 snat to 10.2.0.155
+   }
+}</code></pre></div>
+<h3 id="tùy-chọn-2-script-cấu-hình-nftables-cli">
+  Tùy chọn 2: Script cấu hình nftables CLI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>#!/bin/bash
+# Install nftables and enable ip forwarding in the kernel
+dnf install -y
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+echo &#34;net.ipv4.ip_forward = 1&#34; &gt;&gt; /etc/sysctl.conf
+
+# Create the pre-routing and postrouting chains in nftables.
+nft add table ip nat
+nft -- add chain ip nat prerouting { type nat hook prerouting priority -100 \; }
+nft add chain ip nat postrouting { type nat hook postrouting priority 100 \; }
+
+# Unmap any incoming packets from the internet to the local fsx interface
+# Map packets destined to 3.146.166.253(10.2.0.70) -&gt; 10.2.0.110
+nft add rule ip nat prerouting tcp dport 11104 ip daddr 10.2.0.70 dnat to 10.2.0.110
+nft add rule ip nat prerouting tcp dport 11105 ip daddr 10.2.0.70 dnat to 10.2.0.110
+nft add rule ip nat prerouting tcp dport 10000 ip daddr 10.2.0.70 dnat to 10.2.0.110
+nft add rule ip nat prerouting icmp type { echo-request, echo-reply } ip daddr 10.2.0.70 dnat to 10.2.0.110
+# Map packets destined to 3.135.134.67(10.2.0.186) -&gt; 10.2.0.155
+nft add rule ip nat prerouting tcp dport 11104 ip daddr 10.2.0.186 dnat to 10.2.0.155
+nft add rule ip nat prerouting tcp dport 11105 ip daddr 10.2.0.186 dnat to 10.2.0.155
+nft add rule ip nat prerouting tcp dport 10000 ip daddr 10.2.0.186 dnat to 10.2.0.155
+nft add rule ip nat prerouting icmp type { echo-request, echo-reply } ip daddr 10.2.0.186 dnat to 10.2.0.155
+
+# Map any outgoing packets from the local fsx interface to its respective public IP
+# 10.2.0.110 -&gt; 3.146.166.253(10.2.0.70)
+nft add rule ip nat postrouting ip saddr 10.2.0.110 snat to 10.2.0.70
+nft add rule ip nat postrouting icmp type { echo-request, echo-reply } ip saddr 10.2.0.110 snat to 10.2.0.70
+# 10.2.0.155 -&gt; 3.135.134.67(10.2.0.186)
+nft add rule ip nat postrouting ip saddr 10.2.0.155 snat to 10.2.0.186
+nft add rule ip nat postrouting icmp type { echo-request, echo-reply } ip saddr 10.2.0.155 snat to 10.2.0.186
+
+# Unmap any incoming packets for the remote EIPs to the originating FSX internal IP
+# 3.128.12.212 -&gt; 10.1.0.125
+nft add rule ip nat postrouting tcp dport 11104 ip saddr 3.128.12.212 snat to 10.1.0.125
+nft add rule ip nat postrouting tcp dport 11105 ip saddr 3.128.12.212 snat to 10.1.0.125
+nft add rule ip nat postrouting tcp dport 10000 ip saddr 3.128.12.212 snat to 10.1.0.125
+nft add rule ip nat postrouting icmp type { echo-request, echo-reply } ip saddr 3.128.12.212 snat to 10.1.0.125
+# 18.190.143.162 -&gt; 10.1.0.137
+nft add rule ip nat postrouting tcp dport 11104 ip saddr 18.190.143.162 snat to 10.1.0.137
+nft add rule ip nat postrouting tcp dport 11105 ip saddr 18.190.143.162 snat to 10.1.0.137
+nft add rule ip nat postrouting tcp dport 10000 ip saddr 18.190.143.162 snat to 10.1.0.137
+nft add rule ip nat postrouting icmp type { echo-request, echo-reply } ip saddr 18.190.143.162 snat to 10.1.0.137
+
+# Map any outgoing packets destined to a remote fsx interface to their respective public IP
+# 10.1.0.125 -&gt; 3.128.12.212
+nft add rule ip nat prerouting ip daddr 10.1.0.125 dnat to 3.128.12.212
+nft add rule ip nat prerouting icmp type { echo-request, echo-reply } ip daddr 10.1.0.125 dnat to 3.128.12.212
+# 10.1.0.137 -&gt; 18.190.143.162
+nft add rule ip nat prerouting ip daddr 10.1.0.137 dnat to 18.190.143.162
+nft add rule ip nat prerouting icmp type { echo-request, echo-reply } ip daddr 10.1.0.137 dnat to 18.190.143.162
+
+# Persist the config
+nft list ruleset &gt; /etc/sysconfig/nftables.conf</code></pre></div>
+<h3 id="bảng-định-tuyến">
+  Bảng định tuyến
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi cả hai bộ định tuyến đã được cấu hình, chúng ta cần đảm bảo rằng lưu lượng SnapMirror sẽ đi qua chúng. Để thực hiện điều này, chúng ta cập nhật bảng định tuyến (route table) được liên kết với FSx for ONTAP để gửi lưu lượng từ VPC ở xa đến giao diện mạng (network interface) của các phiên bản EC2. Ví dụ, ở Side B, chúng ta thêm một tuyến (route) trỏ 10.1.0.0/16 đến Elastic Network Interface của phiên bản EC2. Ở Side A, chúng ta sẽ làm ngược lại: trỏ 10.2.0.0/16 đến EC2 instance tương ứng.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img3-Blog1.png" alt="Hình 3. Bảng định tuyến (Route table) được liên kết với FSx for ONTAP.">
+    <figcaption><i>Hình 3. Bảng định tuyến (Route table) được liên kết với FSx for ONTAP.</i></figcaption>
+  </figure>
+</div>
+
+<h3 id="fsx-cho-ontap-security-group">
+  FSx cho ONTAP security group
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Là bước thiết lập cuối cùng, chúng ta cần cho phép mạng VPC từ xa được kết nối đến các giao diện của FSx for ONTAP. Để làm điều này, chúng ta đã thêm dải địa chỉ 10.0.0.0/8 vào nhóm bảo mật (security group) trên cả hai phiên bản FSx for ONTAP.</p>
+<h3 id="kết-nối-ngang-hàng-giữa-các-hệ-thống-tệp">
+  Kết nối ngang hàng giữa các hệ thống tệp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Khi các kết nối mạng đã được thiết lập, việc còn lại là <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#cluster-peering" rel="external">kết nối ngang hàng (peer) giữa các hệ thống tệp FSx for ONTAP</a>. Trước tiên, chúng ta đăng nhập vào Side A và bắt đầu yêu cầu peering.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img4-Blog1.png" alt="">
+    <figcaption><i></i></figcaption>
+  </figure>
+</div>
+
+<p>Sau đó, chúng ta đăng nhập vào Side B và thực thi cùng một lệnh, nhưng không sử dụng tùy chọn generate passphrase và dùng các địa chỉ IP từ Side A. Thao tác này được thực hiện từ phía Side B của hệ thống tệp FSx for ONTAP.</p>
+<div style="text-align:center;">
+  <figure>
+    <img src="../../../images/Img5-Blog1.png" alt="">
+    <figcaption><i></i></figcaption>
+  </figure>
+</div>
+
+<p>Từ đây, các <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#svm-peering" rel="external">SVM (Storage Virtual Machine) có thể được kết nối ngang hàng (peered)</a> và <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#snapmirror-relationship" rel="external">một mối quan hệ SnapMirror có thể được tạo ra</a>.</p>
+<h3 id="dọn-dẹp">
+  Dọn dẹp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Việc chạy các phiên bản EC2 và hệ thống tệp FSx for ONTAP sẽ phát sinh chi phí. Hãy nhớ xóa và chấm dứt (terminate) các tài nguyên này nếu chúng không còn cần thiết. Để xóa một hệ thống tệp, hãy làm theo hướng dẫn trong tài liệu <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/getting-started.html#getting-started-step3" rel="external">hướng dẫn người dùng FSx for NetApp ONTAP</a>. Để <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html" rel="external">chấm dứt các phiên bản EC2</a>, hãy truy cập phần Terminate Your Instance trong tài liệu hướng dẫn người dùng Amazon EC2.</p>
+<p>Link bài viết gốc: (<a href="https://aws.amazon.com/blogs/storage/highly-scalable-solution-design-to-replicate-data-using-amazon-fsx-for-netapp-ontap-and-snapmirror/" rel="external">https://aws.amazon.com/blogs/storage/highly-scalable-solution-design-to-replicate-data-using-amazon-fsx-for-netapp-ontap-and-snapmirror/</a>)</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_1/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_1/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

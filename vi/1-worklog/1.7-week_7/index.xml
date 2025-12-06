@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 7 Worklog :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</link>
+    <description>Week 7 Objectives&#xD;Code Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 Team meeting to discuss about the development process 20/10/2025 20/10/2025 Code backend User Service &amp; Notification Service Code frontend: Develop Detail Page, integrate Get By ID API, build advanced Search &amp; Filter 2 Learn about Application Load Balancer (ALB) 21/10/2025 21/10/2025 https://www.youtube.com/watch?v=cuJTmBvFCS0, https://www.youtube.com/watch?v=ZGGpEwThhrM Code backend User Service &amp; Notification Service Code frontend: Develop Detail Page, integrate Get By ID API, build advanced Search &amp; Filter 3 Learn how to deploy the system on cloud resources 22/10/2025 22/10/2025 Code backend User Service &amp; Notification Service Code frontend: Develop Detail Page, integrate Get By ID API, build advanced Search &amp; Filter 4 Code backend User Service &amp; Notification Service 23/10/2025 23/10/2025 Code frontend: Build modals, popups, drag-and-drop features; complete ~80% main business flow 5 Code backend User Service &amp; Notification Service 24/10/2025 24/10/2025 Code frontend: Build modals, popups, drag-and-drop features Test deploying the Frontend on S3</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

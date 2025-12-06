@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog 3 :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_3/index.html</link>
+    <description>Khắc phục sự cố môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xD;Tác giả: Adarsh Suresh, Chandu Utlapalli Ngày: 29/07/2025&#xA;Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to&#xA;Giới thiệu&#xD;Các nhà phát triển làm việc với AWS thường đánh giá cao AWS Elastic Beanstalk nhờ khả năng đơn giản hóa việc triển khai và vận hành các ứng dụng web mà không cần phải quản lý trực tiếp cơ sở hạ tầng nền tảng. Chỉ cần tải mã nguồn ứng dụng lên, Elastic Beanstalk sẽ tự động xử lý các tác vụ như cấp phát tài nguyên, cân bằng tải, tự động mở rộng và giám sát hệ thống, cho phép các nhóm tập trung hoàn toàn vào việc phát triển ứng dụng.</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_3/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

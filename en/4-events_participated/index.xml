@@ -3,9 +3,23 @@
   <channel>
     <title>Events Participated :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
-    <description>Chapter X&#xD;Some Chapter title&#xD;Lorem Ipsum.</description>
+    <description>During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.&#xA;Event 1&#xD;Event Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025&#xA;Date &amp; Time: 8:30 AM Saturday, September 6, 2025&#xA;Location: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Event 1</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</guid>
+      <description>Summary Report: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Event Objectives&#xD;Officially kick off the AWS First Cloud Journey Workforce OJT Fall 2025 program Introduce students to the objectives, structure, and learning paths of the program Provide insights into career opportunities in Cloud Computing, AI/ML, DevOps, and Security Connect students with AWS Study Group community and partner companies Inspire students to build practical skills and prepare for a career in cloud technology Speakers &amp; Key Presenters&#xD;Nguyen Gia Hung – Head of Solutions Architect, AWS Vietnam Shared insights on AWS First Cloud Journey and future career opportunities in cloud computing</description>
+    </item>
+    <item>
+      <title>Event 2</title>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</guid>
+      <description>Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”&#xD;Event Objectives&#xD;Understand the Security Pillar in the AWS Well-Architected Framework Learn core principles: Least Privilege, Zero Trust, Defense in Depth Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response Learn how to apply tools, playbooks, and automation to secure cloud systems Enhance security skills for AWS applications and infrastructure Key Highlights&#xD;Identity &amp; Access Management (IAM)&#xD;Users, Roles, Policies – avoid long-term credentials IAM Identity Center: SSO, permission sets SCP &amp; permission boundaries for multi-account environments MFA, credential rotation, Access Analyzer Mini Demo: Validate IAM Policy + simulate access Detection &amp; Continuous Monitoring&#xD;CloudTrail (organization-level), GuardDuty, Security Hub Logging at all layers: VPC Flow Logs, ALB/S3 logs Alerting &amp; automation with EventBridge Detection-as-Code (infrastructure + rules) Infrastructure Protection&#xD;VPC segmentation, private vs public placement Security Groups vs NACLs WAF + Shield + Network Firewall Workload protection: EC2, ECS/EKS security basics Data Protection&#xD;Encryption, KMS, key policies, grants, rotation Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB Secrets Manager &amp; Parameter Store – rotation patterns Data classification &amp; access guardrails Incident Response&#xD;IR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection Snapshot, isolation, evidence collection Auto-response using Lambda / Step Functions Key Takeaways&#xD;Gained in-depth understanding of the 5 pillars of AWS Well-Architected Security Framework Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response Practiced playbooks and automation to reduce security risks Able to apply knowledge to real cloud projects, enhancing security, resilience, and compliance Developed hands-on experience with AWS tools and learned directly from experts Event Experience&#xD;Hands-on learning across IAM, Detection, Protection, Data &amp; IR pillars Insights into security optimization and best practices for AWS environments Learned from case studies, demos, and direct interactions with experts Strengthened awareness of system security, risk mitigation, and compliance standards Attending the AWS Cloud Mastery Series #3 provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.</description>
+    </item>
   </channel>
 </rss>

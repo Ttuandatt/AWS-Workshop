@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”Event ObjectivesUnderstand the Security Pillar in the AWS Well-Architected Framework Learn core principles: Least Privilege, Zero Trust, Defense in Depth Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response Learn how to apply tools, playbooks, and automation to secure cloud systems Enhance security skills for AWS applications and infrastructure Key HighlightsIdentity &amp; Access Management (IAM)Users, Roles, Policies – avoid long-term credentials IAM Identity Center: SSO, permission sets SCP &amp; permission boundaries for multi-account environments MFA, credential rotation, Access Analyzer Mini Demo: Validate IAM Policy &#43; simulate access Detection &amp; Continuous MonitoringCloudTrail (organization-level), GuardDuty, Security Hub Logging at all layers: VPC Flow Logs, ALB/S3 logs Alerting &amp; automation with EventBridge Detection-as-Code (infrastructure &#43; rules) Infrastructure ProtectionVPC segmentation, private vs public placement Security Groups vs NACLs WAF &#43; Shield &#43; Network Firewall Workload protection: EC2, ECS/EKS security basics Data ProtectionEncryption, KMS, key policies, grants, rotation Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB Secrets Manager &amp; Parameter Store – rotation patterns Data classification &amp; access guardrails Incident ResponseIR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection Snapshot, isolation, evidence collection Auto-response using Lambda / Step Functions Key TakeawaysGained in-depth understanding of the 5 pillars of AWS Well-Architected Security Framework Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response Practiced playbooks and automation to reduce security risks Able to apply knowledge to real cloud projects, enhancing security, resilience, and compliance Developed hands-on experience with AWS tools and learned directly from experts Event ExperienceHands-on learning across IAM, Detection, Protection, Data &amp; IR pillars Insights into security optimization and best practices for AWS environments Learned from case studies, demos, and direct interactions with experts Strengthened awareness of system security, risk mitigation, and compliance standards Attending the AWS Cloud Mastery Series #3 provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Event 2 :: Internship Report">
+    <meta name="twitter:description" content="Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”Event ObjectivesUnderstand the Security Pillar in the AWS Well-Architected Framework Learn core principles: Least Privilege, Zero Trust, Defense in Depth Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response Learn how to apply tools, playbooks, and automation to secure cloud systems Enhance security skills for AWS applications and infrastructure Key HighlightsIdentity &amp; Access Management (IAM)Users, Roles, Policies – avoid long-term credentials IAM Identity Center: SSO, permission sets SCP &amp; permission boundaries for multi-account environments MFA, credential rotation, Access Analyzer Mini Demo: Validate IAM Policy &#43; simulate access Detection &amp; Continuous MonitoringCloudTrail (organization-level), GuardDuty, Security Hub Logging at all layers: VPC Flow Logs, ALB/S3 logs Alerting &amp; automation with EventBridge Detection-as-Code (infrastructure &#43; rules) Infrastructure ProtectionVPC segmentation, private vs public placement Security Groups vs NACLs WAF &#43; Shield &#43; Network Firewall Workload protection: EC2, ECS/EKS security basics Data ProtectionEncryption, KMS, key policies, grants, rotation Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB Secrets Manager &amp; Parameter Store – rotation patterns Data classification &amp; access guardrails Incident ResponseIR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection Snapshot, isolation, evidence collection Auto-response using Lambda / Step Functions Key TakeawaysGained in-depth understanding of the 5 pillars of AWS Well-Architected Security Framework Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response Practiced playbooks and automation to reduce security risks Able to apply knowledge to real cloud projects, enhancing security, resilience, and compliance Developed hands-on experience with AWS tools and learned directly from experts Event ExperienceHands-on learning across IAM, Detection, Protection, Data &amp; IR pillars Insights into security optimization and best practices for AWS environments Learned from case studies, demos, and direct interactions with experts Strengthened awareness of system security, risk mitigation, and compliance standards Attending the AWS Cloud Mastery Series #3 provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html">
+    <meta property="og:site_name" content="Internship Report">
+    <meta property="og:title" content="Event 2 :: Internship Report">
+    <meta property="og:description" content="Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”Event ObjectivesUnderstand the Security Pillar in the AWS Well-Architected Framework Learn core principles: Least Privilege, Zero Trust, Defense in Depth Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response Learn how to apply tools, playbooks, and automation to secure cloud systems Enhance security skills for AWS applications and infrastructure Key HighlightsIdentity &amp; Access Management (IAM)Users, Roles, Policies – avoid long-term credentials IAM Identity Center: SSO, permission sets SCP &amp; permission boundaries for multi-account environments MFA, credential rotation, Access Analyzer Mini Demo: Validate IAM Policy &#43; simulate access Detection &amp; Continuous MonitoringCloudTrail (organization-level), GuardDuty, Security Hub Logging at all layers: VPC Flow Logs, ALB/S3 logs Alerting &amp; automation with EventBridge Detection-as-Code (infrastructure &#43; rules) Infrastructure ProtectionVPC segmentation, private vs public placement Security Groups vs NACLs WAF &#43; Shield &#43; Network Firewall Workload protection: EC2, ECS/EKS security basics Data ProtectionEncryption, KMS, key policies, grants, rotation Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB Secrets Manager &amp; Parameter Store – rotation patterns Data classification &amp; access guardrails Incident ResponseIR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection Snapshot, isolation, evidence collection Auto-response using Lambda / Step Functions Key TakeawaysGained in-depth understanding of the 5 pillars of AWS Well-Architected Security Framework Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response Practiced playbooks and automation to reduce security risks Able to apply knowledge to real cloud projects, enhancing security, resilience, and compliance Developed hands-on experience with AWS tools and learned directly from experts Event ExperienceHands-on learning across IAM, Detection, Protection, Data &amp; IR pillars Insights into security optimization and best practices for AWS environments Learned from case studies, demos, and direct interactions with experts Strengthened awareness of system security, risk mitigation, and compliance standards Attending the AWS Cloud Mastery Series #3 provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Event 2 :: Internship Report">
+    <meta itemprop="description" content="Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”Event ObjectivesUnderstand the Security Pillar in the AWS Well-Architected Framework Learn core principles: Least Privilege, Zero Trust, Defense in Depth Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response Learn how to apply tools, playbooks, and automation to secure cloud systems Enhance security skills for AWS applications and infrastructure Key HighlightsIdentity &amp; Access Management (IAM)Users, Roles, Policies – avoid long-term credentials IAM Identity Center: SSO, permission sets SCP &amp; permission boundaries for multi-account environments MFA, credential rotation, Access Analyzer Mini Demo: Validate IAM Policy &#43; simulate access Detection &amp; Continuous MonitoringCloudTrail (organization-level), GuardDuty, Security Hub Logging at all layers: VPC Flow Logs, ALB/S3 logs Alerting &amp; automation with EventBridge Detection-as-Code (infrastructure &#43; rules) Infrastructure ProtectionVPC segmentation, private vs public placement Security Groups vs NACLs WAF &#43; Shield &#43; Network Firewall Workload protection: EC2, ECS/EKS security basics Data ProtectionEncryption, KMS, key policies, grants, rotation Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB Secrets Manager &amp; Parameter Store – rotation patterns Data classification &amp; access guardrails Incident ResponseIR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection Snapshot, isolation, evidence collection Auto-response using Lambda / Step Functions Key TakeawaysGained in-depth understanding of the 5 pillars of AWS Well-Architected Security Framework Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response Practiced playbooks and automation to reduce security risks Able to apply knowledge to real cloud projects, enhancing security, resilience, and compliance Developed hands-on experience with AWS tools and learned directly from experts Event ExperienceHands-on learning across IAM, Detection, Protection, Data &amp; IR pillars Insights into security optimization and best practices for AWS environments Learned from case studies, demos, and direct interactions with experts Strengthened awareness of system security, risk mitigation, and compliance standards Attending the AWS Cloud Mastery Series #3 provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.">
+    <meta itemprop="wordCount" content="338">
+    <title>Event 2 :: Internship Report</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../en/4-events_participated/4.2-event-2/index.xml" rel="alternate" type="application/rss+xml" title="Event 2 :: Internship Report">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040465" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040465" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.en.js?1765040465";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1765040465" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040465" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040465" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040465" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/4-events_participated\/4.2-event-2\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040465" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../en/4-events_participated/4.2-event-2/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#event-objectives">Event Objectives</a></li>
+        <li><a href="#key-highlights">Key Highlights</a></li>
+        <li><a href="#key-takeaways">Key Takeaways</a></li>
+        <li><a href="#event-experience">Event Experience</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/4-events_participated/index.html"><span itemprop="name">Events Participated</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Event 2</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/4-events_participated/4.1-event-1/index.html" title="Event 1 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/5-workshop/index.html" title="Workshop (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 4-events_participated" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="event-2">Event 2</h1>
+
+<h1 id="summary-report-aws-cloud-mastery-series-3--security-pillar-workshop">
+  Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><h3 id="event-objectives">
+  Event Objectives
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Understand the Security Pillar in the AWS Well-Architected Framework</li>
+<li>Learn core principles: <strong>Least Privilege, Zero Trust, Defense in Depth</strong></li>
+<li>Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response</li>
+<li>Learn how to apply tools, playbooks, and automation to secure cloud systems</li>
+<li>Enhance security skills for AWS applications and infrastructure</li>
+</ul>
+<h3 id="key-highlights">
+  Key Highlights
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="identity--access-management-iam">
+  Identity &amp; Access Management (IAM)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>Users, Roles, Policies – avoid long-term credentials</li>
+<li>IAM Identity Center: SSO, permission sets</li>
+<li>SCP &amp; permission boundaries for multi-account environments</li>
+<li>MFA, credential rotation, Access Analyzer</li>
+<li>Mini Demo: Validate IAM Policy + simulate access</li>
+</ul>
+<h4 id="detection--continuous-monitoring">
+  Detection &amp; Continuous Monitoring
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>CloudTrail (organization-level), GuardDuty, Security Hub</li>
+<li>Logging at all layers: VPC Flow Logs, ALB/S3 logs</li>
+<li>Alerting &amp; automation with EventBridge</li>
+<li>Detection-as-Code (infrastructure + rules)</li>
+</ul>
+<h4 id="infrastructure-protection">
+  Infrastructure Protection
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>VPC segmentation, private vs public placement</li>
+<li>Security Groups vs NACLs</li>
+<li>WAF + Shield + Network Firewall</li>
+<li>Workload protection: EC2, ECS/EKS security basics</li>
+</ul>
+<h4 id="data-protection">
+  Data Protection
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>Encryption, KMS, key policies, grants, rotation</li>
+<li>Encryption at-rest &amp; in-transit: S3, EBS, RDS, DynamoDB</li>
+<li>Secrets Manager &amp; Parameter Store – rotation patterns</li>
+<li>Data classification &amp; access guardrails</li>
+</ul>
+<h4 id="incident-response">
+  Incident Response
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>IR Playbook &amp; Automation: compromised IAM key, S3 public exposure, EC2 malware detection</li>
+<li>Snapshot, isolation, evidence collection</li>
+<li>Auto-response using Lambda / Step Functions</li>
+</ul>
+<h3 id="key-takeaways">
+  Key Takeaways
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Gained in-depth understanding of the <strong>5 pillars</strong> of AWS Well-Architected Security Framework</li>
+<li>Learned how to protect infrastructure, data, IAM, and implement detection &amp; incident response</li>
+<li>Practiced <strong>playbooks and automation</strong> to reduce security risks</li>
+<li>Able to apply knowledge to real cloud projects, enhancing <strong>security, resilience, and compliance</strong></li>
+<li>Developed hands-on experience with AWS tools and learned directly from experts</li>
+</ul>
+<h3 id="event-experience">
+  Event Experience
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>Hands-on learning across <strong>IAM, Detection, Protection, Data &amp; IR</strong> pillars</li>
+<li>Insights into <strong>security optimization</strong> and best practices for AWS environments</li>
+<li>Learned from case studies, demos, and direct interactions with experts</li>
+<li>Strengthened awareness of <strong>system security, risk mitigation, and compliance standards</strong></li>
+</ul>
+<blockquote>
+<p>Attending the <strong>AWS Cloud Mastery Series #3</strong> provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.</p></blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../en/index.html">
+            <div class="logo-title">Internship Report</div>
+          </a>
+        </div>
+        <search><form action="../../../en/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../en/index.html"><a class="padding" href="../../../en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../en/1-worklog/index.html"><a class="padding" href="../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../en/2-proposal/index.html"><a class="padding" href="../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="" data-nav-url="../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="../../../en/4-events_participated/index.html"><a class="padding" href="../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu">
+            <li class="" data-nav-url="../../../en/4-events_participated/4.1-event-1/index.html"><a class="padding" href="../../../en/4-events_participated/4.1-event-1/index.html"> <b> 4.1.  </b> Event 1</a></li>
+            <li class="active " data-nav-url="../../../en/4-events_participated/4.2-event-2/index.html"><a class="padding" href="../../../en/4-events_participated/4.2-event-2/index.html"> <b> 4.2.  </b> Event 2</a></li></ul></li>
+            <li class="" data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="../../../en/7-sharing_and_feedback/index.html"><a class="padding" href="../../../en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Language</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/4-events_participated/4.2-event-2/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/4-events_participated/4.2-event-2/index.html" lang="vi">Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040465" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040465" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

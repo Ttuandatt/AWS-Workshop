@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 13 Worklog :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html</link>
+    <description>Week 13 Objectives&#xD;Review system issues and team progress Deploy and validate AWS infrastructure components Update and organize worklog documentation Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 Team meeting to review issues to be solved 01/11/2025 01/11/2025 Successful S3 multi-region deployment and access 01/11/2025 01/11/2025 Update worklog: create worklog categories based on team members 01/11/2025 01/11/2025 2 Setup VPC, Subnets, Internet Gateway 02/11/2025 02/11/2025 3 Setup VPC, Subnets, Internet Gateway 03/11/2025 03/11/2025 4 Setup ECR, Fargate 04/11/2025 04/11/2025 5 Setup ECR, Fargate 05/11/2025 05/11/2025</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

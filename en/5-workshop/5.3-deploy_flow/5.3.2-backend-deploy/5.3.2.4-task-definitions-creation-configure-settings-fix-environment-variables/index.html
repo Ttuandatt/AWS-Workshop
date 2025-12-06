@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
+PreparationRecord the following values before creating Task Definitions:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
+    <meta name="twitter:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
+PreparationRecord the following values before creating Task Definitions:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html">
+    <meta property="og:site_name" content="Internship Report">
+    <meta property="og:title" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
+    <meta property="og:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
+PreparationRecord the following values before creating Task Definitions:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
+    <meta itemprop="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
+PreparationRecord the following values before creating Task Definitions:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta itemprop="wordCount" content="434">
+    <title>Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report</title>
+    <link href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.xml" rel="alternate" type="application/rss+xml" title="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040465" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.min.js?1765040465" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../../../searchindex.en.js?1765040465";
+    </script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.en.min.js?1765040465" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040465" rel="stylesheet">
+    <link href="../../../../../css/theme.min.css?1765040465" rel="stylesheet">
+    <link href="../../../../../css/format-html.min.css?1765040465" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.2-backend-deploy\/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../../../css/custom.css?1765040465" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#preparation">Preparation</a></li>
+        <li><a href="#standard-task-definition-process">Standard Task Definition Process</a></li>
+        <li><a href="#task-definition-1-auth-service">Task Definition 1: Auth Service</a></li>
+        <li><a href="#task-definition-2-user-service">Task Definition 2: User Service</a></li>
+        <li><a href="#task-definition-3-taskflow-service">Task Definition 3: Taskflow Service</a></li>
+        <li><a href="#task-definition-4-notification-service">Task Definition 4: Notification Service</a></li>
+        <li><a href="#task-definition-5-ai-model-service">Task Definition 5: AI Model Service</a></li>
+        <li><a href="#task-definition-6-api-gateway">Task Definition 6: API Gateway</a></li>
+        <li><a href="#task-definition-validation">Task Definition Validation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../../en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Backend Deploy</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Task Definitions Creation (Configure settings, Fix environment variables)</span><meta itemprop="position" content="5"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html" title="Code Update & Image Build (Create new Docker Image) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html" title="Services Deployment (Following priority order and verification) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="task-definitions-creation-configure-settings-fix-environment-variables">Task Definitions Creation (Configure settings, Fix environment variables)</h1>
+
+<p>Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.</p>
+<h3 id="preparation">
+  Preparation
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Record the following values before creating Task Definitions:</strong></p>
+<ol>
+<li><strong>RDS Endpoint</strong>: <code>sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com</code></li>
+<li><strong>Redis Endpoint</strong>: <code>sgu-redis.[random].cache.amazonaws.com</code> (without :6379)</li>
+<li><strong>Kafka Bootstrap Server</strong>: <code>kafka.sgu.local:9092</code></li>
+<li><strong>Google OAuth Credentials</strong>:
+<ul>
+<li>Client ID</li>
+<li>Client Secret</li>
+</ul>
+</li>
+<li><strong>ECR Image URIs</strong>: All 6 service images from ECR</li>
+</ol>
+<hr>
+<h3 id="standard-task-definition-process">
+  Standard Task Definition Process
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>For each service, follow this standard configuration process:</p>
+<p><strong>Base Configuration (Common for all services):</strong></p>
+<ol>
+<li>Navigate to <strong>Amazon ECS</strong> → <strong>Task definitions</strong> → <strong>Create new task definition</strong></li>
+<li>Infrastructure configuration:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Launch type</td>
+          <td>AWS Fargate</td>
+      </tr>
+      <tr>
+          <td>Operating system</td>
+          <td>Linux/X86_64</td>
+      </tr>
+      <tr>
+          <td>CPU</td>
+          <td>0.5 vCPU</td>
+      </tr>
+      <tr>
+          <td>Memory</td>
+          <td>1 GB</td>
+      </tr>
+      <tr>
+          <td>Task execution role</td>
+          <td><code>ecsTaskExecutionRole</code></td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Container configuration:
+<ul>
+<li><strong>Protocol</strong>: TCP</li>
+<li><strong>App protocol</strong>: HTTP</li>
+<li><strong>Logging</strong>: Enable &ldquo;Use log collection&rdquo;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="task-definition-1-auth-service">
+  Task Definition 1: Auth Service
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>auth-service-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>auth-service</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/auth-service:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>9999</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SPRING_DATASOURCE_URL</code></td>
+          <td><code>jdbc:mysql://[RDS-ENDPOINT]:3306/aws_todolist_database?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
+          <td><code>root</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
+          <td><code>[your-password]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
+          <td><code>kafka.sgu.local:9092</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID</code></td>
+          <td><code>[GOOGLE-CLIENT-ID]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET</code></td>
+          <td><code>[GOOGLE-CLIENT-SECRET]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI</code></td>
+          <td><code>https://api.sgutodolist.com/api/auth/login/oauth2/code/google</code></td>
+      </tr>
+      <tr>
+          <td><code>APP_OAUTH2_REDIRECT_URI</code></td>
+          <td><code>https://sgutodolist.com/oauth2/redirect</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="task-definition-2-user-service">
+  Task Definition 2: User Service
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>user-service-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>user-service</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/user-service:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>8081</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SPRING_DATASOURCE_URL</code></td>
+          <td>Same as Auth Service</td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
+          <td><code>root</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
+          <td><code>[your-password]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
+          <td><code>kafka.sgu.local:9092</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="task-definition-3-taskflow-service">
+  Task Definition 3: Taskflow Service
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>taskflow-service-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>taskflow-service</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/taskflow-service:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>8082</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SPRING_DATASOURCE_URL</code></td>
+          <td>Same as Auth Service</td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
+          <td><code>root</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
+          <td><code>[your-password]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
+          <td><code>kafka.sgu.local:9092</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="task-definition-4-notification-service">
+  Task Definition 4: Notification Service
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>notification-service-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>notification-service</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/notification-service:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>9998</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SPRING_DATASOURCE_URL</code></td>
+          <td>Same as Auth Service</td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
+          <td><code>root</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
+          <td><code>[your-password]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
+          <td><code>kafka.sgu.local:9092</code></td>
+      </tr>
+      <tr>
+          <td><code>CLIENT_URL</code></td>
+          <td><code>https://sgutodolist.com</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="task-definition-5-ai-model-service">
+  Task Definition 5: AI Model Service
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>ai-model-service-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>ai-model-service</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/ai-model-service:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>9997</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<p>If your Python Flask AI service requires database connectivity, add the same database variables as other services. Otherwise, leave environment variables empty.</p>
+<hr>
+<h3 id="task-definition-6-api-gateway">
+  Task Definition 6: API Gateway
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Critical Configuration</strong>: This service orchestrates all backend services and must know their internal addresses.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>api-gateway-td</code></td>
+      </tr>
+      <tr>
+          <td>Container name</td>
+          <td><code>api-gateway</code></td>
+      </tr>
+      <tr>
+          <td>Image URI</td>
+          <td><code>[ECR-URI]/api-gateway:latest</code></td>
+      </tr>
+      <tr>
+          <td>Container port</td>
+          <td>8080</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+          <td>Rate limiting</td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+          <td>Redis connection</td>
+      </tr>
+      <tr>
+          <td><code>AUTH_SERVICE_URL</code></td>
+          <td><code>http://auth.sgu.local:9999</code></td>
+          <td>Internal routing</td>
+      </tr>
+      <tr>
+          <td><code>USER_SERVICE_URL</code></td>
+          <td><code>http://user.sgu.local:8081</code></td>
+          <td>Internal routing</td>
+      </tr>
+      <tr>
+          <td><code>TASKFLOW_SERVICE_URL</code></td>
+          <td><code>http://taskflow.sgu.local:8082</code></td>
+          <td>Internal routing</td>
+      </tr>
+      <tr>
+          <td><code>NOTIFICATION_SERVICE_URL</code></td>
+          <td><code>http://notification.sgu.local:9998</code></td>
+          <td>Internal routing</td>
+      </tr>
+      <tr>
+          <td><code>AI_MODEL_SERVICE</code></td>
+          <td><code>http://ai-model.sgu.local:9997</code></td>
+          <td>Internal routing</td>
+      </tr>
+      <tr>
+          <td><code>CORS_ALLOWED_ORIGINS</code></td>
+          <td><code>https://sgutodolist.com</code></td>
+          <td>Frontend access</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="task-definition-validation">
+  Task Definition Validation
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>After creating all 6 Task Definitions, verify:</p>
+<ul>
+<li><input disabled="" type="checkbox"> All Task Definitions created successfully</li>
+<li><input disabled="" type="checkbox"> Latest revisions available for each family</li>
+<li><input disabled="" type="checkbox"> Environment variables correctly configured</li>
+<li><input disabled="" type="checkbox"> Image URIs point to correct ECR repositories</li>
+<li><input disabled="" type="checkbox"> Logging enabled for all containers</li>
+</ul>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../../../en/index.html">
+            <div class="logo-title">Internship Report</div>
+          </a>
+        </div>
+        <search><form action="../../../../../en/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../../../en/index.html"><a class="padding" href="../../../../../en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../../../en/1-worklog/index.html"><a class="padding" href="../../../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../../en/2-proposal/index.html"><a class="padding" href="../../../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="" data-nav-url="../../../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../../en/4-events_participated/index.html"><a class="padding" href="../../../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="../../../../../en/5-workshop/index.html"><a class="padding" href="../../../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
+            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Backend Deploy</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu">
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"> <b> 5.3.2.1. </b> Network &amp; Security Preparation (VPC, SG)</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"> <b> 5.3.2.2. </b> Infrastructure &amp; ALB Setup (RDS, Redis, Cloud Map, ALB Routing)</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Code Update &amp; Image Build (Create new Docker Image)</a></li>
+            <li class="active " data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Task Definitions Creation (Configure settings, Fix environment variables)</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"> <b> 5.3.2.5. </b> Services Deployment (Following priority order and verification)</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Completion &amp; Verification (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="../../../../../en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="" data-nav-url="../../../../../en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="../../../../../en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
+            <li class="" data-nav-url="../../../../../en/6-self-assesment/index.html"><a class="padding" href="../../../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="../../../../../en/7-sharing_and_feedback/index.html"><a class="padding" href="../../../../../en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Language</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../../../en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html" lang="en" selected data-selected>English</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040465" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.min.js?1765040465" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

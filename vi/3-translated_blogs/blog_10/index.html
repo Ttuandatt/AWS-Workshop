@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon BedrockTác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)
+Ngày: 04/08/2025
+Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 10 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon BedrockTác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)
+Ngày: 04/08/2025
+Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 10 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon BedrockTác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)
+Ngày: 04/08/2025
+Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 10 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon BedrockTác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)
+Ngày: 04/08/2025
+Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh">
+    <meta itemprop="wordCount" content="863">
+    <title>Blog 10 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_10/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_10/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_10/index.xml" rel="alternate" type="application/rss+xml" title="Blog 10 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_10\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_10/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#thách-thức-đảm-bảo-chất-lượng-thủ-công-ở-quy-mô-lớn">Thách thức: Đảm bảo chất lượng thủ công ở quy mô lớn</a></li>
+    <li><a href="#tổng-quan-giải-pháp">Tổng quan giải pháp</a></li>
+    <li><a href="#quy-trình-xử-lý">Quy trình xử lý</a></li>
+    <li><a href="#lợi-ích-của-việc-tận-dụng-dịch-vụ-aws-có-sẵn">Lợi ích của việc tận dụng dịch vụ AWS có sẵn</a></li>
+    <li><a href="#bảo-mật-và-ai-có-trách-nhiệm">Bảo mật và AI có trách nhiệm</a></li>
+    <li><a href="#kết-quả-đạt-được">Kết quả đạt được</a></li>
+    <li><a href="#bài-học-kinh-nghiệm">Bài học kinh nghiệm</a></li>
+    <li><a href="#hướng-phát-triển-tiếp-theo">Hướng phát triển tiếp theo</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 10</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_9/index.html" title="Blog 9 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_11/index.html" title="Blog 11 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-10">Blog 10</h1>
+
+<h1 id="empower-đã-mở-rộng-quy-mô-đảm-bảo-chất-lượng-trung-tâm-liên-hệ-như-thế-nào-với-amazon-connect-và-amazon-bedrock">
+  Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong> Marcos Ortiz, <a href="https://www.accenture.com/" rel="external">Illan Geller (Accenture)</a>, <a href="https://www.accenture.com/" rel="external">Ozlem Celik-Tinmaz (Accenture)</a>, <a href="https://www.accenture.com/" rel="external">Prabhu Akula (Accenture)</a>, và <a href="https://www.empower.com/" rel="external">Ryan Baham (Empower)</a><br>
+<strong>Ngày:</strong> 04/08/2025<br>
+<strong>Thể loại:</strong> Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh</p>
+<hr>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p><a href="https://www.empower.com/" rel="external"><strong>Empower</strong></a> là một trong những công ty dịch vụ tài chính hàng đầu tại Hoa Kỳ, phục vụ hơn 18 triệu khách hàng với tổng tài sản quản lý lên đến 1,8 nghìn tỷ USD. Hàng năm, Empower xử lý khoảng 10 triệu cuộc gọi thông qua các trung tâm liên hệ của mình.</p>
+<p>Để duy trì chất lượng dịch vụ ở quy mô lớn như vậy, Empower đã hợp tác với <a href="https://aws.amazon.com/" rel="external"><strong>AWS (Amazon Web Services)</strong></a> và Accenture nhằm chuyển đổi quy trình đảm bảo chất lượng (QA) bằng cách ứng dụng <strong>AI tạo sinh</strong>. Thông qua việc triển khai một giải pháp tùy chỉnh dựa trên <a href="https://aws.amazon.com/connect/" rel="external"><strong>Amazon Connect</strong></a> và <a href="https://aws.amazon.com/bedrock/" rel="external"><strong>Amazon Bedrock</strong></a>, Empower đã mở rộng phạm vi kiểm soát chất lượng cuộc gọi lên <strong>gấp 20 lần</strong>, đồng thời rút ngắn thời gian đánh giá từ vài ngày xuống chỉ còn vài phút.</p>
+<p>Giải pháp này được đưa vào môi trường sản xuất chỉ trong <strong>7 tháng</strong>, cho thấy hiệu quả của việc kết hợp hạ tầng AWS, chuyên môn triển khai của Accenture và tầm nhìn đổi mới công nghệ của Empower.</p>
+<hr>
+<h2 id="thách-thức-đảm-bảo-chất-lượng-thủ-công-ở-quy-mô-lớn">
+  Thách thức: Đảm bảo chất lượng thủ công ở quy mô lớn
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Empower sử dụng khung đánh giá <strong>GEDAC</strong> (Greeting, Engagement, Discovery, Action, Close) để đo lường hiệu suất của tổng đài viên. Trước đây, việc đánh giá được thực hiện thủ công bởi các chuyên viên QA thông qua việc nghe lại ghi âm cuộc gọi và chấm điểm theo các tiêu chí định sẵn.</p>
+<p>Cách làm này tồn tại nhiều hạn chế:</p>
+<ul>
+<li>Chỉ có thể đánh giá một tỷ lệ rất nhỏ trong số 10 triệu cuộc gọi mỗi năm</li>
+<li>Tính không nhất quán giữa các chuyên viên đánh giá</li>
+<li>Thời gian phản hồi chậm, đôi khi kéo dài hàng tuần</li>
+<li>Không thể mở rộng khi lưu lượng cuộc gọi ngày càng tăng</li>
+</ul>
+<blockquote>
+<p>“Để thực sự cải thiện trải nghiệm khách hàng trên quy mô lớn, chúng tôi buộc phải tái định hình hoàn toàn cách tiếp cận đối với việc đảm bảo chất lượng,”<br>
+— <strong>Joe Mieras</strong>, VP Dịch vụ Thành viên tại Empower</p></blockquote>
+<hr>
+<h2 id="tổng-quan-giải-pháp">
+  Tổng quan giải pháp
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Empower đã xây dựng một hệ thống QA tự động dựa trên:</p>
+<ul>
+<li><strong>Amazon Connect Contact Lens</strong>: Gỡ băng cuộc gọi, loại bỏ PII</li>
+<li><strong>Amazon Bedrock + Claude 3.5 Sonnet</strong>: Đánh giá nội dung cuộc gọi theo khung GEDAC</li>
+<li><strong>AWS Lambda, SQS, EventBridge, Step Functions</strong>: Điều phối và xử lý hàng loạt</li>
+</ul>
+<p>Giải pháp xử lý <strong>5.000 bản ghi mỗi ngày</strong>, đánh giá nhất quán và ghi kết quả trực tiếp trở lại Amazon Connect.</p>
+<p align="center">
+  <img src="https://d2908q01vomqb2.cloudfront.net/af3e133428b9e25c55bc59fe534248e6a0c0f17b/2025/07/30/connect-blog-12941-image-1.png" width="60%"/>
+  <br><em>Sơ đồ kiến trúc tổng thể</em>
+</p>
+<hr>
+<h2 id="quy-trình-xử-lý">
+  Quy trình xử lý
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ol>
+<li><strong>Gỡ băng cuộc gọi</strong> bằng Amazon Connect Contact Lens</li>
+<li><strong>Lưu trữ bản ghi</strong> vào Amazon S3</li>
+<li><strong>EventBridge</strong> phát hiện dữ liệu mới</li>
+<li><strong>Amazon SQS</strong> quản lý hàng đợi xử lý</li>
+<li><strong>AWS Lambda &amp; Step Functions</strong> điều phối quy trình GEDAC</li>
+<li><strong>Amazon Bedrock</strong> đánh giá bằng Claude 3.5 Sonnet</li>
+<li><strong>Kết quả</strong> được ghi trực tiếp vào Amazon Connect</li>
+</ol>
+<hr>
+<h2 id="lợi-ích-của-việc-tận-dụng-dịch-vụ-aws-có-sẵn">
+  Lợi ích của việc tận dụng dịch vụ AWS có sẵn
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>Tự động loại bỏ PII – đảm bảo tuân thủ ngay từ đầu</li>
+<li>Không cần xây dựng pipeline ETL tùy chỉnh</li>
+<li>Giao diện hiển thị kết quả sẵn có trong Amazon Connect</li>
+<li>Dễ mở rộng và vận hành ở quy mô lớn</li>
+</ul>
+<blockquote>
+<p>“Chúng tôi không cần phải phát minh lại bánh xe,”<br>
+— <strong>Joseph Mieras</strong>, VP Trải nghiệm Khách hàng tại Empower</p></blockquote>
+<hr>
+<h2 id="bảo-mật-và-ai-có-trách-nhiệm">
+  Bảo mật và AI có trách nhiệm
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Giải pháp đáp ứng đầy đủ các yêu cầu về:</p>
+<ul>
+<li>Mã hóa dữ liệu khi truyền và khi lưu trữ</li>
+<li>Kiểm soát truy cập theo vai trò</li>
+<li>Ghi log kiểm toán đầy đủ</li>
+<li>Giám sát mô hình AI liên tục</li>
+</ul>
+<p>Empower cũng thành lập <strong>Ủy ban Quản trị AI</strong>, đảm bảo việc triển khai AI phù hợp với các tiêu chuẩn pháp lý, đạo đức và minh bạch.</p>
+<hr>
+<h2 id="kết-quả-đạt-được">
+  Kết quả đạt được
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>Phạm vi QA tăng <strong>20 lần</strong></li>
+<li>Thời gian đánh giá giảm từ <strong>vài ngày xuống vài phút</strong></li>
+<li>Đánh giá nhất quán và có khả năng giải thích</li>
+<li>Nhân sự QA tập trung vào các ca phức tạp và huấn luyện chuyên sâu</li>
+</ul>
+<hr>
+<h2 id="bài-học-kinh-nghiệm">
+  Bài học kinh nghiệm
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>Bắt đầu từ mục tiêu kinh doanh rõ ràng</li>
+<li>Đầu tư nghiêm túc vào thiết kế prompt</li>
+<li>Lên kế hoạch mở rộng ngay từ đầu</li>
+<li>AI <strong>hỗ trợ</strong>, không thay thế con người</li>
+<li>Cải tiến liên tục dựa trên phản hồi thực tế</li>
+</ul>
+<hr>
+<h2 id="hướng-phát-triển-tiếp-theo">
+  Hướng phát triển tiếp theo
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Empower đang xây dựng một <strong>nền tảng AI tạo sinh tập trung</strong> cho hơn 1.500 lập trình viên, hỗ trợ:</p>
+<ul>
+<li>Quản trị AI tập trung</li>
+<li>Theo dõi chi phí và hiệu suất</li>
+<li>Tái sử dụng mô hình và best practices</li>
+</ul>
+<p>Giải pháp QA trung tâm liên hệ là nền tảng cho chiến lược AI dài hạn của Empower trong toàn doanh nghiệp.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_10/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_10/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. ">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 7 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. ">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_7/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 7 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. ">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 7 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web ConnectTác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025
+Giới thiệuCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. ">
+    <meta itemprop="wordCount" content="755">
+    <title>Blog 7 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_7/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_7/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_7/index.xml" rel="alternate" type="application/rss+xml" title="Blog 7 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_7\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_7/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#vì-sao-cần-tích-hợp-web-crawler">Vì sao cần tích hợp Web Crawler?</a></li>
+    <li><a href="#1-giai-đoạn-planning-lập-kế-hoạch">1. Giai đoạn Planning (Lập kế hoạch)</a>
+      <ul>
+        <li><a href="#11-chiến-lược-quản-lý-tri-thức">1.1. Chiến lược quản lý tri thức</a></li>
+        <li><a href="#12-phân-tích-người-dùng-cuối">1.2. Phân tích người dùng cuối</a></li>
+        <li><a href="#13-khả-năng-truy-cập-nội-dung">1.3. Khả năng truy cập nội dung</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-giai-đoạn-staged-implementation-triển-khai-theo-giai-đoạn">2. Giai đoạn Staged Implementation (Triển khai theo giai đoạn)</a></li>
+    <li><a href="#3-giai-đoạn-optimization-tối-ưu-hóa">3. Giai đoạn Optimization (Tối ưu hóa)</a>
+      <ul>
+        <li><a href="#31-giới-hạn-dịch-vụ">3.1. Giới hạn dịch vụ</a></li>
+        <li><a href="#32-tốc-độ-crawl">3.2. Tốc độ crawl</a></li>
+        <li><a href="#33-phạm-vi-crawl">3.3. Phạm vi crawl</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 7</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_6/index.html" title="Blog 6 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_8/index.html" title="Blog 8 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-7">Blog 7</h1>
+
+<h1 id="những-hiểu-biết-sâu-sắc-và-bài-học-kinh-nghiệm-từ-amazon-q-trong-tích-hợp-trình-thu-thập-thông-tin-web-connect">
+  Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong> Vikas Prasad &amp; Ayush Mehta  </p>
+<p><strong>Ngày:</strong> 22/07/2025</p>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Các nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức.  </p>
+<p>Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.</p>
+<p>Để đáp ứng nhu cầu này, Amazon Connect giới thiệu <a href="https://aws.amazon.com/connect/q/" rel="external">Amazon Q in Connect</a> &mdash; một trợ lý AI sinh nội dung (Generative AI assistant), cung cấp các phản hồi và hành động gợi ý theo thời gian thực, được cá nhân hóa giúp nhân viên tổng đài thực hiện công việc hiệu quả và nhanh chóng hơn.</p>
+<p>Amazon Q in Connect có thể tích hợp với nhiều cơ sở tri thức (knowledge base) khác nhau thông qua các phương thức tích hợp đa dạng.  </p>
+<p>Bài viết này tập trung vào phương pháp tích hợp bằng <strong>Web Crawler</strong>, bao gồm những lưu ý quan trọng khi triển khai và các thực hành tốt nhất.</p>
+<hr>
+<h2 id="vì-sao-cần-tích-hợp-web-crawler">
+  Vì sao cần tích hợp Web Crawler?
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Nội dung thường bị phân tán trên nhiều website, buộc agent phải tra cứu nhiều nguồn khác nhau khi hỗ trợ khách hàng. Điều này làm chậm quá trình xử lý và ảnh hưởng đến chất lượng tương tác.</p>
+<p>Khi được cấu hình với <strong>Web Crawler</strong>, Amazon Q in Connect có thể:</p>
+<ul>
+<li>
+<p>Tự động thu thập và lập chỉ mục nội dung từ nhiều website, trang hỗ trợ  </p>
+</li>
+<li>
+<p>Cung cấp cho agent thông tin nhanh chóng và chính xác  </p>
+</li>
+<li>
+<p>Hiển thị liên kết nguồn để đối chiếu  </p>
+</li>
+<li>
+<p>Loại bỏ việc cập nhật thủ công khi nội dung website thay đổi</p>
+</li>
+</ul>
+<p><a href="#R-image-029ddafaa88c8e55049f9db651c954b6" class="lightbox-link"><img alt="Web crawler phases" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-029ddafaa88c8e55049f9db651c954b6"><img alt="Web crawler phases" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh1.jpg"></a></p>
+<p><strong>Hình 1:</strong> Các giai đoạn tối ưu triển khai Web Crawler</p>
+<hr>
+<h2 id="1-giai-đoạn-planning-lập-kế-hoạch">
+  1. Giai đoạn Planning (Lập kế hoạch)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Trước khi triển khai Web Crawler, bạn nên tham khảo tài liệu chính thức của  </p>
+<p><a href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html" rel="external">Amazon Connect &ndash; Enable Amazon Q</a>.</p>
+<p>Ba nhóm câu hỏi nền tảng cần xác định:</p>
+<h3 id="11-chiến-lược-quản-lý-tri-thức">
+  1.1. Chiến lược quản lý tri thức
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Ai chịu trách nhiệm quản lý nội dung (Marketing / IT / CX)?</p>
+</li>
+<li>
+<p>Quy trình cập nhật nội dung như thế nào?</p>
+</li>
+<li>
+<p>Cách đồng bộ nội dung với Amazon Connect</p>
+</li>
+</ul>
+<h3 id="12-phân-tích-người-dùng-cuối">
+  1.2. Phân tích người dùng cuối
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Agent tuyến 1 hay hỗ trợ kỹ thuật chuyên sâu?</p>
+</li>
+<li>
+<p>Mức độ chi tiết của nội dung cần crawl?</p>
+</li>
+</ul>
+<h3 id="13-khả-năng-truy-cập-nội-dung">
+  1.3. Khả năng truy cập nội dung
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Nội dung công khai hay cần xác thực?</p>
+</li>
+<li>
+<p>Tuân thủ bảo mật &amp; quyền riêng tư</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-giai-đoạn-staged-implementation-triển-khai-theo-giai-đoạn">
+  2. Giai đoạn Staged Implementation (Triển khai theo giai đoạn)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li>
+<p>Tạo từng <strong>knowledge base riêng biệt</strong></p>
+</li>
+<li>
+<p>Kiểm thử độc lập các cấu hình URL</p>
+</li>
+<li>
+<p>Thu thập phản hồi từ agent</p>
+</li>
+<li>
+<p>Mở rộng phạm vi crawl theo từng bước</p>
+</li>
+</ul>
+<p>Cách tiếp cận này giúp:</p>
+<ul>
+<li>
+<p>Dễ troubleshoot</p>
+</li>
+<li>
+<p>Kiểm soát chất lượng dữ liệu</p>
+</li>
+<li>
+<p>Tối ưu hiệu suất</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-giai-đoạn-optimization-tối-ưu-hóa">
+  3. Giai đoạn Optimization (Tối ưu hóa)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="31-giới-hạn-dịch-vụ">
+  3.1. Giới hạn dịch vụ
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Mỗi crawler tối đa <strong>25.000 file</strong></p>
+</li>
+<li>
+<p>Cần:</p>
+</li>
+</ul>
+<p>  - Ưu tiên nội dung quan trọng</p>
+<p>  - Regex URL</p>
+<p>  - Metadata filtering</p>
+<h3 id="32-tốc-độ-crawl">
+  3.2. Tốc độ crawl
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p>Bắt đầu crawl rate thấp</p>
+</li>
+<li>
+<p>Theo dõi server response</p>
+</li>
+<li>
+<p>Tránh lỗi <code>504 Gateway Timeout</code></p>
+</li>
+</ul>
+<h3 id="33-phạm-vi-crawl">
+  3.3. Phạm vi crawl
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Ví dụ seed URL:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://example.com/products/&#34;</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{ <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://example.com/documentation/&#34;</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3.4</span><span style="color:#960050;background-color:#1e0010">.</span> <span style="color:#960050;background-color:#1e0010">Chiến</span> <span style="color:#960050;background-color:#1e0010">lược</span> <span style="color:#960050;background-color:#1e0010">knowledge</span> <span style="color:#960050;background-color:#1e0010">base</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Unified</span> <span style="color:#960050;background-color:#1e0010">KB</span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#960050;background-color:#1e0010">nhiều</span> <span style="color:#960050;background-color:#1e0010">sản</span> <span style="color:#960050;background-color:#1e0010">phẩm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Separate</span> <span style="color:#960050;background-color:#1e0010">KBs</span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#960050;background-color:#1e0010">từng</span> <span style="color:#960050;background-color:#1e0010">dòng</span> <span style="color:#960050;background-color:#1e0010">sản</span> <span style="color:#960050;background-color:#1e0010">phẩm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Có</span> <span style="color:#960050;background-color:#1e0010">thể</span> <span style="color:#960050;background-color:#1e0010">dynamic</span> <span style="color:#960050;background-color:#1e0010">switch</span> <span style="color:#960050;background-color:#1e0010">bằng:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">AI</span> <span style="color:#960050;background-color:#1e0010">Agent</span> <span style="color:#960050;background-color:#1e0010">override</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Update</span> <span style="color:#960050;background-color:#1e0010">Session</span> <span style="color:#960050;background-color:#1e0010">API</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span><span style="color:#960050;background-color:#1e0010">\.</span> <span style="color:#960050;background-color:#1e0010">Giai</span> <span style="color:#960050;background-color:#1e0010">đoạn</span> <span style="color:#960050;background-color:#1e0010">Implementation</span> <span style="color:#960050;background-color:#1e0010">(Triển</span> <span style="color:#960050;background-color:#1e0010">khai</span> <span style="color:#960050;background-color:#1e0010">thực</span> <span style="color:#960050;background-color:#1e0010">tế)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4.1</span><span style="color:#960050;background-color:#1e0010">.</span> <span style="color:#960050;background-color:#1e0010">Execution</span> <span style="color:#960050;background-color:#1e0010">Timeout</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Ưu</span> <span style="color:#960050;background-color:#1e0010">tiên</span> <span style="color:#960050;background-color:#1e0010">URL</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Tối</span> <span style="color:#960050;background-color:#1e0010">ưu</span> <span style="color:#960050;background-color:#1e0010">crawl</span> <span style="color:#960050;background-color:#1e0010">pattern</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Chia</span> <span style="color:#960050;background-color:#1e0010">nhỏ</span> <span style="color:#960050;background-color:#1e0010">crawl</span> <span style="color:#960050;background-color:#1e0010">job</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4.2</span><span style="color:#960050;background-color:#1e0010">.</span> <span style="color:#960050;background-color:#1e0010">URL</span> <span style="color:#960050;background-color:#1e0010">Configuration</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">UI:</span> <span style="color:#960050;background-color:#1e0010">max</span> <span style="color:#ae81ff">10</span> <span style="color:#960050;background-color:#1e0010">URLs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">API:</span> <span style="color:#960050;background-color:#1e0010">max</span> <span style="color:#ae81ff">100</span> <span style="color:#960050;background-color:#1e0010">URLs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Dùng</span> <span style="color:#960050;background-color:#1e0010">regex</span> <span style="color:#960050;background-color:#1e0010">thay</span> <span style="color:#960050;background-color:#1e0010">vì</span> <span style="color:#960050;background-color:#1e0010">liệt</span> <span style="color:#960050;background-color:#1e0010">kê</span> <span style="color:#960050;background-color:#1e0010">thủ</span> <span style="color:#960050;background-color:#1e0010">công</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Ví</span> <span style="color:#960050;background-color:#1e0010">dụ:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```regex</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">.*_domain\.com/support/.*\.pdf</span></span></span></code></pre></div>
+<p>Kết luận</p>
+<p>Quy trình tích hợp Web Crawler cho Amazon Q in Connect gồm 4 giai đoạn:</p>
+<p>Planning</p>
+<p>Staged Implementation</p>
+<p>Optimization</p>
+<p>Implementation</p>
+<p>Toàn bộ quy trình mang tính lặp (iterative), liên tục cải thiện dựa trên feedback và metric.</p>
+<p>Các lưu ý quan trọng:</p>
+<p>Xác định nội dung ưu tiên cao</p>
+<p>Đặt seed URL hợp lý</p>
+<p>Sử dụng regex để lọc chính xác</p>
+<p>Theo dõi qua Amazon CloudWatch Logs</p>
+<p>Việc áp dụng đúng chiến lược giúp Amazon Q in Connect trở thành công cụ tri thức mạnh mẽ, hỗ trợ agent hiệu quả và nâng cao trải nghiệm khách hàng.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_7/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_7/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event 1 :: Internship Report</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</link>
+    <description>Summary Report: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Event Objectives&#xD;Officially kick off the AWS First Cloud Journey Workforce OJT Fall 2025 program Introduce students to the objectives, structure, and learning paths of the program Provide insights into career opportunities in Cloud Computing, AI/ML, DevOps, and Security Connect students with AWS Study Group community and partner companies Inspire students to build practical skills and prepare for a career in cloud technology Speakers &amp; Key Presenters&#xD;Nguyen Gia Hung – Head of Solutions Architect, AWS Vietnam Shared insights on AWS First Cloud Journey and future career opportunities in cloud computing</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

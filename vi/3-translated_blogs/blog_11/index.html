@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, David MacDonald
+Ngày: 01/08/2025
+Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog 11 :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, David MacDonald
+Ngày: 01/08/2025
+Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Blog 11 :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, David MacDonald
+Ngày: 01/08/2025
+Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Blog 11 :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mậtTác giả: Kartik Bheemisetty, David MacDonald
+Ngày: 01/08/2025
+Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership
+Giới thiệuTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.">
+    <meta itemprop="wordCount" content="969">
+    <title>Blog 11 :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_11/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html" rel="alternate" hreflang="vi">
+    <link href="../../../vi/3-translated_blogs/blog_11/index.xml" rel="alternate" type="application/rss+xml" title="Blog 11 :: Báo Cáo Thực Tập">
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040467" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765040467";
+    </script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765040467" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040467" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765040467" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765040467" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/3-translated_blogs\/blog_11\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="../../../css/custom.css?1765040467" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_11/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#điều-kiện-tiên-quyết">Điều kiện tiên quyết</a></li>
+    <li><a href="#các-vấn-đề-do-bot-ai-gây-ra">Các vấn đề do bot AI gây ra</a>
+      <ul>
+        <li><a href="#1-sử-dụng-dữ-liệu-độc-quyền-để-huấn-luyện-mô-hình">1. Sử dụng dữ liệu độc quyền để huấn luyện mô hình</a></li>
+        <li><a href="#2-suy-giảm-hiệu-năng-và-gia-tăng-chi-phí">2. Suy giảm hiệu năng và gia tăng chi phí</a></li>
+        <li><a href="#3-hành-vi-tự-động-không-mong-muốn">3. Hành vi tự động không mong muốn</a></li>
+      </ul>
+    </li>
+    <li><a href="#xác-định-quy-mô-hoạt-động-của-bot-ai">Xác định quy mô hoạt động của bot AI</a></li>
+    <li><a href="#quản-lý-bot-ai">Quản lý bot AI</a>
+      <ul>
+        <li><a href="#chặn-sớm-bằng-robotstxt">Chặn sớm bằng robots.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../vi/3-translated_blogs/index.html"><span itemprop="name">Translated Blogs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Blog 11</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_10/index.html" title="Blog 10 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="../../../vi/3-translated_blogs/blog_12/index.html" title="Blog 12 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-translated_blogs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blog-11">Blog 11</h1>
+
+<h1 id="làm-thế-nào-để-quản-lý-bot-ai-bằng-aws-waf-và-tăng-cường-bảo-mật">
+  Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mật
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h1><p><strong>Tác giả:</strong>  </p>
+<p>Kartik Bheemisetty, David MacDonald</p>
+<p><strong>Ngày:</strong> 01/08/2025</p>
+<p><strong>Danh mục:</strong> AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership</p>
+<hr>
+<h2 id="giới-thiệu">
+  Giới thiệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Trình thu thập dữ liệu web (<em>web crawler</em>) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những <strong>bot hiện đại được hỗ trợ bởi AI</strong>, có khả năng tự động hóa và tự hành.</p>
+<p>Ngày nay, Internet ngày càng bị chi phối bởi các <strong>bot AI</strong> tự động tương tác với ứng dụng nhằm phục vụ nhiều tác vụ liên quan đến trí tuệ nhân tạo.</p>
+<p>Bot AI có thể được phân thành ba nhóm chính:</p>
+<ul>
+<li><strong>Bot AI cào dữ liệu (AI scrapers):</strong>  </li>
+</ul>
+<p>  Thu thập dữ liệu một cách có hệ thống từ ứng dụng nhằm phục vụ huấn luyện mô hình AI.</p>
+<ul>
+<li><strong>Công cụ AI (AI tools):</strong>  </li>
+</ul>
+<p>  Hiển thị và sử dụng dữ liệu ứng dụng thông qua các kỹ thuật như <em>Function Calling</em>.</p>
+<ul>
+<li><strong>Tác tử AI (AI agents):</strong>  </li>
+</ul>
+<p>  Có khả năng tự chủ điều hướng và tương tác động với ứng dụng để thực hiện các tác vụ phức tạp.</p>
+<p>Mặc dù một số bot AI mang lại giá trị (ví dụ: tự động hóa các tác vụ lặp lại), nhưng <strong>bot độc hại</strong> có thể gây ra nhiều rủi ro nghiêm trọng đối với ứng dụng web như tiêu tốn tài nguyên, suy giảm hiệu năng hoặc gián đoạn dịch vụ. Nếu không được kiểm soát, các vấn đề này sẽ ảnh hưởng trực tiếp đến bảo mật, niềm tin người dùng và uy tín thương hiệu.</p>
+<p>Bài viết này trình bày các rủi ro do bot AI gây ra và cách <strong>phát hiện, quản lý bot AI bằng AWS WAF</strong>.</p>
+<hr>
+<h2 id="điều-kiện-tiên-quyết">
+  Điều kiện tiên quyết
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Bài viết tập trung vào <strong>AWS WAF</strong> như tuyến phòng thủ đầu tiên để quan sát và quản lý hoạt động của bot AI nhắm vào ứng dụng.</p>
+<p>Nếu bạn chưa bật AWS WAF, hãy bắt đầu bằng việc:</p>
+<ul>
+<li>
+<p>Sử dụng <strong>AWS Shield Network Security Director</strong> để xác định các tài nguyên chưa được bảo vệ.</p>
+</li>
+<li>
+<p>Thiết lập cấu hình bảo mật ban đầu thông qua tích hợp một cú nhấp chuột để tạo <strong>Web ACL</strong>.</p>
+</li>
+</ul>
+<p>Các tích hợp được hỗ trợ:</p>
+<ul>
+<li>
+<p><strong>Amazon CloudFront:</strong> Bật AWS WAF trực tiếp từ CloudFront.</p>
+</li>
+<li>
+<p><strong>Application Load Balancer (ALB):</strong> Bật AWS WAF trực tiếp từ ALB.</p>
+</li>
+</ul>
+<hr>
+<h2 id="các-vấn-đề-do-bot-ai-gây-ra">
+  Các vấn đề do bot AI gây ra
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Sự bùng nổ của <strong>Large Language Models (LLMs)</strong> và các <strong>tác tử AI tự hành</strong> đã khiến hành vi của bot ngày càng tinh vi, đặt ra nhiều thách thức:</p>
+<h3 id="1-sử-dụng-dữ-liệu-độc-quyền-để-huấn-luyện-mô-hình">
+  1. Sử dụng dữ liệu độc quyền để huấn luyện mô hình
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Việc thu thập dữ liệu trái phép có thể gây rủi ro về sở hữu trí tuệ và làm giảm giá trị nội dung độc quyền của doanh nghiệp.</p>
+<h3 id="2-suy-giảm-hiệu-năng-và-gia-tăng-chi-phí">
+  2. Suy giảm hiệu năng và gia tăng chi phí
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bot AI tạo ra lượng lớn lưu lượng truy cập, dẫn đến:</p>
+<ul>
+<li>
+<p>Tăng chi phí truyền dữ liệu (DTO)</p>
+</li>
+<li>
+<p>Tiêu thụ tài nguyên backend</p>
+</li>
+<li>
+<p>Nguy cơ gián đoạn dịch vụ</p>
+</li>
+</ul>
+<h3 id="3-hành-vi-tự-động-không-mong-muốn">
+  3. Hành vi tự động không mong muốn
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Bot AI có thể cạnh tranh trực tiếp với người dùng hợp lệ trong các quy trình nhạy cảm về thời gian như:</p>
+<ul>
+<li>
+<p>Săn vé</p>
+</li>
+<li>
+<p>Mua hàng số lượng giới hạn</p>
+</li>
+</ul>
+<p>Các kỹ thuật thường được sử dụng:</p>
+<ul>
+<li>
+<p>Function calling và tìm kiếm AI</p>
+</li>
+<li>
+<p>Tự động hóa trình duyệt (Playwright)</p>
+</li>
+<li>
+<p>Tương tác thông qua môi trường VM</p>
+</li>
+</ul>
+<hr>
+<h2 id="xác-định-quy-mô-hoạt-động-của-bot-ai">
+  Xác định quy mô hoạt động của bot AI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Để đánh giá mức độ ảnh hưởng của bot AI:</p>
+<p>1. Thêm <strong>AWS WAF Bot Control &ndash; Common Inspection</strong></p>
+<p>2. Đặt rule ở chế độ <strong>Count</strong></p>
+<p>Sau vài ngày thu thập dữ liệu, bạn có thể phân tích:</p>
+<ul>
+<li>
+<p>Loại bot</p>
+</li>
+<li>
+<p>Hành vi truy cập</p>
+</li>
+<li>
+<p>Khối lượng lưu lượng</p>
+</li>
+</ul>
+<p>Thông tin này giúp xây dựng chiến lược kiểm soát phù hợp trước khi triển khai các biện pháp chặn.</p>
+<hr>
+<h2 id="quản-lý-bot-ai">
+  Quản lý bot AI
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="chặn-sớm-bằng-robotstxt">
+  Chặn sớm bằng robots.txt
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="kịch-bản-1-chặn-bot-tuân-thủ-quy-tắc">
+  Kịch bản 1: Chặn bot tuân thủ quy tắc
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Tệp <code>robots.txt</code> cho phép kiểm soát các bot tuân thủ tiêu chuẩn. Các dự án như <strong>ai.robots.txt</strong> cung cấp danh sách bot AI phổ biến để chặn sớm.</p>
+<p>Ví dụ:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>User-agent: Amazonbot
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disallow: /private/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Allow: /public/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Kịch bản 2: Kiểm soát cách bot sử dụng dữ liệu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Amazonbot: sử dụng header X-Robots-Tag: noarchive
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Applebot: khai báo User-agent: Applebot-Extended trong robots.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Googlebot: sử dụng User-agent: Google-Extended
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Lưu ý: Không phải bot nào cũng tôn trọng robots.txt, vì vậy cần kết hợp AWS WAF.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sử dụng AWS WAF để bảo vệ nâng cao
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Kịch bản 3: Giảm tác động hiệu năng và chi phí
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Bot Control -- Common Inspection: Chặn bot AI tự nhận diện (CategoryAI)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Rate limiting &amp; L7 DDoS protection: Bảo vệ trước lưu lượng bất thường
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AWS WAF Challenge: Buộc bot thực hiện các phép kiểm tra tốn chi phí
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Honeypot: Dẫn bot vào các endpoint giả để phát hiện hành vi độc hại
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Kịch bản 4: Quản lý bot AI tự hành
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Bot Control (Common &amp; Targeted Inspection)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CAPTCHA
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Các biện pháp xác thực nâng cao (bao gồm sinh trắc học)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Kết luận
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Bot AI mang lại nhiều thách thức về bảo mật, hiệu năng và quyền kiểm soát dữ liệu. Bằng cách kết hợp robots.txt, AWS WAF Bot Control, giới hạn tỷ lệ, CAPTCHA và các kỹ thuật nâng cao khác, doanh nghiệp có thể:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ngăn chặn bot độc hại
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Giảm chi phí vận hành
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Vẫn cho phép các bot hợp lệ mang lại giá trị
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Để tìm hiểu sâu hơn, hãy theo dõi AWS WAF Security Blog và các tài nguyên thuộc lĩnh vực Security, Identity &amp; Compliance của AWS.</span></span></code></pre></div>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../../../vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="../../../vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../vi/index.html"><a class="padding" href="../../../vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../vi/1-worklog/index.html"><a class="padding" href="../../../vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/2-proposal/index.html"><a class="padding" href="../../../vi/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="parent " data-nav-url="../../../vi/3-translated_blogs/index.html"><a class="padding" href="../../../vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu">
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_1/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_1/index.html"><b>3.1. </b>Blog 1</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_2/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_2/index.html"> <b> 3.2. </b>Blog 2</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_3/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_3/index.html"><b> 3.3. </b>Blog 3</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_4/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_4/index.html"><b> 3.4. </b>Blog 4</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_5/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_5/index.html"><b> 3.5. </b>Blog 5</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_6/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_6/index.html"> <b> 3.6. </b>Blog 6</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_7/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_7/index.html"><b>3.7.</b>Blog 7</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_8/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_8/index.html"><b> 3.8. </b>Blog 8</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_9/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_9/index.html"><b>3.9.</b>Blog 9</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_10/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_10/index.html"><b>3.10.</b>Blog 10</a></li>
+            <li class="active " data-nav-url="../../../vi/3-translated_blogs/blog_11/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_11/index.html"><b> 3.11. </b>Blog 11</a></li>
+            <li class="" data-nav-url="../../../vi/3-translated_blogs/blog_12/index.html"><a class="padding" href="../../../vi/3-translated_blogs/blog_12/index.html"><b> 3.12. </b>Blog 12</a></li></ul></li>
+            <li class="" data-nav-url="../../../vi/4-events_participated/index.html"><a class="padding" href="../../../vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/5-workshop/index.html"><a class="padding" href="../../../vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../vi/6-self-assesment/index.html"><a class="padding" href="../../../vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="../../../vi/7-sharing_and_feedback/index.html"><a class="padding" href="../../../vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="../../../en/3-translated_blogs/blog_11/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/3-translated_blogs/blog_11/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040467" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765040467" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
