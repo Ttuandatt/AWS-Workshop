@@ -1,7 +1,6 @@
 +++
 title = "Nhật ký công việc"
-date = 2025-09-09T10:59:48+07:00
-weight = 2
+weight = 1
 chapter = false
 pre = "<b>1. </b>"
 +++

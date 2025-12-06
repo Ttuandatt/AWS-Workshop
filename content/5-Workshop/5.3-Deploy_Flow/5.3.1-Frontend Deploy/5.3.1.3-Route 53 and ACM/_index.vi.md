@@ -1,8 +1,8 @@
 +++
 title = "Route 53 and ACM"
-weight = 3
+weight =  3
 chapter = false
-pre = " <b> 5.3.1.3.  </b> "
+pre = " <b> 5.3.1.3.  </b>"
 +++
 
 
@@ -76,11 +76,3 @@ Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (
 
 
 * * * * *
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.2-S3 and Replication" %}}" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 2: S3 and Replication
-</a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-ClouFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 4: ClouFront and Failover ➡
-</a>
-</div>

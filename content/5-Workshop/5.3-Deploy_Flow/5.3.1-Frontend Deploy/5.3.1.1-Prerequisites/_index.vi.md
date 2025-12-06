@@ -28,12 +28,4 @@ pre = " <b> 5.3.1.1.  </b> "
     
 *   Biết build ReactJS project
 
-* * * * *
-
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.1-Prerequisites" %}}" style="text-decoration: none; font-weight: bold;">
-</a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.2-S3 and Replication" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 2: S3 and Replication ➡
-</a>
-</div>
+---

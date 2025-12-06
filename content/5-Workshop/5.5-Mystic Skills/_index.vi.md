@@ -271,6 +271,9 @@ foreach ($f in $folders) {
 
 
 
+
+
+
 - Command to create one folder at a time
 ```bash
 $basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"

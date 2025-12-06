@@ -20,3 +20,5 @@ During my internship, I participated in two events. Each one was a memorable exp
 - Description: A kick-off event for FCAJ members to meet up and be familiar with the support & admin team, as well as get to know about the program
 
 - Outcomes: Gained a clear understanding about the FCAJ program and know about the support team and admin team members
+
+### Event 2
