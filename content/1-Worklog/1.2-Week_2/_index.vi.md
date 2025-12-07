@@ -1,27 +1,28 @@
 +++
-title = "Week 2 Worklog"
+title = "Nhật ký công việc Tuần 2"
 weight = 2
-chapter = false
+chapters = false
 pre = "<b>1.1.2.</b>"
 +++
 
-## Week 2 Objectives
-- Study Module 1: practicing VPC and EC2
-- Learn and practice configuring VPC, EC2, and related features
-- Assign tasks for the team project
-- Update worklog structure
+## Mục tiêu Tuần 2
+- Mô-đun Học tập 1: Thực hành VPC và EC2
+- Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan
+- Phân công nhiệm vụ cho dự án nhóm
+- Cập nhật cấu trúc nhật ký công việc
 
-## Tasks to be carried out this week
+## Các nhiệm vụ cần thực hiện trong tuần này
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-|----:|------|------------|-----------------|-------------------|
-| 1 | Learn about VPC and its features | 15/09/2025 | 15/09/2025 | [VPC](https://000003.awsstudygroup.com/), [YouTube Lesson](https://www.youtube.com/watch?v=O9Ac_vGHquM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=25) |
-| 2 | Practice creating VPC, Subnets, and Internet Gateway | 16/09/2025 | 16/09/2025 | [Create VPC](https://000003.awsstudygroup.com/vi/3-prerequisite/3.1-createvpc/), [Create Subnets](https://000003.awsstudygroup.com/vi/3-prerequisite/3.2-createsubnet/), [Create Internet Gateway](https://000003.awsstudygroup.com/vi/3-prerequisite/3.3-createigw/) |
-|   | Update worklog | | | |
-| 3 | Practice creating Route Tables and Security Groups | 17/09/2025 | 17/09/2025 | [Create Route Table](https://000003.awsstudygroup.com/vi/3-prerequisite/3.4-createroutetable/), [Create Security Groups](https://000003.awsstudygroup.com/vi/3-prerequisite/3.5-createsecuritygroup/) |
-|   | Decide project scope and assign tasks | | | |
-| 4 | Learn about deploying Amazon EC2 instances | 18/09/2025 | 18/09/2025 | [Deploying Amazon EC2 Instances](https://000003.awsstudygroup.com/vi/4-createec2server/), [YouTube Tutorial](https://www.youtube.com/watch?v=duJEdF_g1To&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=41) |
-|   | Practice creating EC2 instances, checking connection, and creating NAT Gateway | | | [Create EC2 Instance](https://000003.awsstudygroup.com/vi/4-createec2server/4.1-createec2/), [Check Connection](https://000003.awsstudygroup.com/vi/4-createec2server/4.2-connectec2/), [Create NAT Gateway](https://000003.awsstudygroup.com/vi/4-createec2server/4.3-natgateway/) |
-| 5 | Practice using Reachability Analyzer | 19/09/2025 | 19/09/2025 | [Reachability Analyzer](https://000003.awsstudygroup.com/vi/4-createec2server/4.4-createreachabilityanalyzer/) |
-|   | Team meeting to decide project proposal | | | |
-|   | Update worklog | | | |
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+|----:|-------|--------------|-----------------|-----------------|
+| 1 | Tìm hiểu về VPC và các tính năng của nó | 15 tháng 9, 2025 | 15 tháng 9, 2025 | [VPC](https://000003.awsstudygroup.com/), [Bài học trên YouTube](https://www.youtube.com/watch?v=O9Ac_vGHquM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=25) |
+| 2 | Thực hành tạo VPC, Mạng con và Cổng Internet | 16 tháng 9, 2025 | 16 tháng 9, 2025 | [Tạo VPC](https://0000003.awsstudygroup.com/vi/3-prerequisite/3.1-createvpc/), [Tạo Mạng con](https://000003.awsstudygroup.com/vi/3-prerequisite/3.2-createsubnet/), [Tạo Cổng Internet](https://000003.awsstudygroup.com/en/3-prerequisite/3.3-createigw/) |
+| | Cập nhật nhật ký công việc | | | |
+| 3 | Thực hành tạo Bảng định tuyến và Nhóm bảo mật | 17 tháng 9, 2025 | 17 tháng 9, 2025 | [Tạo Bảng Định Tuyến](https://0000003.awsstudygroup.com/vi/3-prerequisite/3.4-createroutetable/), [Tạo Nhóm Bảo Mật](https://000003.awsstudygroup.com/vi/3-prerequisite/3.5-createsecuritygroup/) |
+| | Quyết định phạm vi dự án và phân công nhiệm vụ | | | |
+| 4 | Tìm hiểu về việc triển khai các phiên bản Amazon EC2 | 18 tháng 9, 2025 | 18 tháng 9, 2025 | [Triển khai các phiên bản Amazon EC2](https://000003.awsstudygroup.com/vi/4-createec2server/), [Hướng dẫn trên YouTube](https://www.youtube.com/watch?v=duJEdF_g1To&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=41) |
+| | Thực hành tạo EC2 instance, kiểm tra kết nối và tạo NAT Gateway | | | [Tạo EC2 Instance](https://000003.awsstudygroup.com/vi/4-createec2server/4.1-createec2/), [Kiểm tra kết nối](https://000003.awsstudygroup.com/vi/4-createec2server/4.2-connectec2/), [Tạo NAT Gateway](https://000003.awsstudygroup.com/vi/4-createec2server/4.3-natgateway/) |
+| 5 | Thực hành sử dụng Reachability Analyzer | 19 tháng 9, 2025 | 19 tháng 9, 2025 | [Reachability Analyzer](https://000003.awsstudygroup.com/vi/4-createec2server/4.4-createreachabilityanalyzer/) |
+| | Họp nhóm để quyết định đề xuất dự án | | | |
+| | Cập nhật nhật ký công việc | | | |

@@ -314,3 +314,11 @@ Deployment is considered successful when:
 6.  ✅ All services accessible via internal DNS (*.sgu.local)
 
 * * * * *
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment (Following priority order and verification)" %}}" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 5: Code Update & Image Build
+</a>
+<a href="" style="text-decoration: none; font-weight: bold;">
+</a>
+</div>

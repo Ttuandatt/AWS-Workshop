@@ -21,7 +21,7 @@ alwaysopen = true
 
 6. **Security:** OAC (Origin Access Control) - Private Bucket.
 
-### TABLE OF CONTENTS
+### **Table of Contents**
 
 1. [Prerequisites]({{% relref "5.3.1.1-Prerequisites" %}})
 

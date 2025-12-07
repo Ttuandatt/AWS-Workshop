@@ -1,33 +1,32 @@
 +++
-title = "Week 4 Worklog"
+title = "Nhật ký công việc Tuần 4"
 weight = 4
 chapter = false
 pre = "<b> 1.1.4. </b>"
 +++
 
-## Week 4 Objectives
-- Begin coding the backend authentication service and frontend
-- Discuss and list the APIs required for the TaskFlow Service
-- Learn and practice S3
-- Explore API Gateway
-- Translate technical blogs
+## Mục tiêu Tuần 4
+- Bắt đầu viết mã cho dịch vụ xác thực backend và frontend
+- Thảo luận và liệt kê các API cần thiết cho dịch vụ taskflow.
+- Học và thực hành S3
+- Khám phá API Gateway
+- Dịch các blog kỹ thuật.
 
-## Tasks to be carried out this week
-
-| Day | Task | Start Date | Completion Date | Reference Material |
-|-----|------|------------|-----------------|-------------------|
-| 1 | Team meeting to discuss architecture and backend/frontend configuration | 29/09/2025 | 29/09/2025 | |
-|   | Translate blog | | | [Translated Blog 1]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}}) |
-|   | Research and list APIs needed for the TaskFlow Service | | | |
-| 2 | Learn and practice Amazon S3 service | 30/09/2025 | 30/09/2025 | <https://www.youtube.com/watch?v=3vSrTeWroSs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=86> |
-|   | Code backend Authentication Service | | | |
-| 3 | Code backend Authentication Service | 01/10/2025 | 01/10/2025 | |
-|   | Initialize frontend project (React setup, env config, routing, folder structure, Git) | | | |
-| 4 | Learn and practice API Gateway service | 02/10/2025 | 02/10/2025 | <https://www.youtube.com/watch?v=pgpWyn_6zlA>, <https://www.youtube.com/watch?v=YjOjDtprDSo> |
-|   | Code backend Authentication Service | | | |
-|   | Set up UI/CSS libraries (Tailwind, MUI), define global styles, build base components | | | |
-|   | Translate blogs | | | [Translated Blog 2]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}}), [Translated Blog 3]({{< relref "3-Translated_Blogs/Blog_3/_index.md" >}}) |
-| 5 | Code backend Authentication Service | 03/10/2025 | 03/10/2025 | |
-|   | Set up UI/CSS libraries and reusable components | | | |
-|   | Code frontend: Header, Footer, Sidebar, Landing Page (basic responsive) | | | |
-|   | Translate blogs | | | [Translated Blog 4]({{< relref "3-Translated_Blogs/Blog_4/_index.md" >}}), [Translated Blog 5]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}}) |
+## Nhiệm vụ cần thực hiện trong tuần này
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|-----|------------------------------------------------------------------------------------------------|-------------------------|-------------------------------------------------------- |
+| 1 | - Họp nhóm để thảo luận về kiến ​​trúc, cấu hình backend và frontend | 29/09/2025 | 29/09/2025 ||
+| | - Dịch blog|||[Blog đã dịch 1]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}})|
+| | - Nghiên cứu và lập danh sách các API cần thiết cho Dịch vụ TaskFlow.||||
+| 2 | - Học và thực hành dịch vụ S3| 30/09/2025 | 30/09/2025 | [Bài học S3](https://www.youtube.com/watch?v=3vSrTeWroSs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=86)|
+| | - Dịch vụ Xác thực Backend Code ||||
+| 3 | - Dịch vụ Xác thực Backend Code |01/10/2025|01/10/2025||
+| | - Khởi tạo dự án (React, cấu hình môi trường, thiết lập định tuyến cơ bản, cấu trúc thư mục, tích hợp Git).||||
+| 4 | - Tìm hiểu và thực hành dịch vụ API Gateway|02/10/2025|02/10/2025|[Giới thiệu về AWS API Gateway](https://www.youtube.com/watch?v=pgpWyn_6zlA), [Tạo API sử dụng Amazon API Gateway - Hành trình phát triển AWS Serverless](https://www.youtube.com/watch?v=YjOjDtprDSo)|
+| | - Mã hóa dịch vụ xác thực backend ||||
+| | - Thiết lập thư viện UI/CSS (ví dụ: Tailwind, Material UI), định nghĩa các biến CSS toàn cục, xây dựng các thành phần cơ bản (Button, Input, Card).||||
+| | - Dịch blog|||[Blog 2 đã dịch]({{< relref "3-Translated_Blogs/Blog_2/_index.md" >}}), [Blog 3 đã dịch]({{< relref "3-Translated_Blogs/Blog_3/_index.md" >}})|
+| 5 | - Dịch vụ Xác thực Backend Mã |03/10/2025|03/10/2025||
+| | - Thiết lập thư viện UI/CSS (ví dụ: Tailwind, Material UI), định nghĩa các biến CSS toàn cục, xây dựng các Thành phần cơ bản (Nút, Đầu vào, Thẻ).||||
+| | - Frontend Mã: Xây dựng Header, Footer, Sidebar và Landing Page. Đảm bảo thiết kế đáp ứng cơ bản.||||
+| | - Dịch blog|||[Blog đã dịch 4]({{< relref "3-Translated_Blogs/Blog_4/_index.md" >}}), [Blog đã dịch 5]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}})|

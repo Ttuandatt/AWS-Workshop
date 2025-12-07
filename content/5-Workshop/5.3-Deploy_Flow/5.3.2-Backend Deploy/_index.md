@@ -22,7 +22,7 @@ This model illustrates the core services used for high-availability, low-latency
 
 6.  **Security:** OAC (Origin Access Control) is implemented to keep the S3 buckets private and ensure traffic only flows via CloudFront.
 
-### TABLE OF CONTENTS
+### **Table of Contents**
 
 1.  [Network & Security Preparation (VPC, SG)]({{% relref "5.3.2.1-Network & Security Preparation (VPC, SG)" %}})
 

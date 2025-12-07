@@ -1,32 +1,31 @@
 +++
-title = "Week 9 Worklog"
+title = "Nhật ký công việc Tuần 9"
 weight = 9
 chapter = false
 pre = "<b> 1.1.9. </b>"
 +++
 
-## Week 9 Objectives
-- Review and check backend service code
-- Develop and integrate frontend features for Notification & Auth
-- Adjust and refine system architecture through team discussions
-- Implement and update WebSocket for real-time notifications
-- Integrate Google OAuth2 login for Authentication Service
-- Fix bugs related to WebSocket reconnection and authentication state
+## Mục tiêu Tuần 9
+- Xem xét và kiểm tra mã dịch vụ backend
+- Phát triển và tích hợp các tính năng frontend cho Notification & Auth
+- Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm
+- Triển khai và cập nhật WebSocket cho thông báo thời gian thực
+- Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực
+- Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực
 
-## Tasks to be carried out this week
-
-| Day | Task | Start Date | Completion Date | Reference Material |
-|-----|------|------------|-----------------|-------------------|
-| 1 | Team meeting to discuss about the development process | 03/11/2025 | 03/11/2025 | |
-|   | Build the Notification interface, integrate APIs, and establish WebSocket connection | | | |
-|   | Check the services code | | | |
-| 2 | Update WebSocket for Notification Service | 04/11/2025 | 04/11/2025 | |
-|   | Refactor NotificationService flow for real-time push notifications | | | |
-|   | Code frontend: Review services UI for flaws | | | |
-| 3 | Implement Google OAuth2 Login for Auth Service | 05/11/2025 | 05/11/2025 | |
-|   | Test login flow and integrate Google OAuth callback | | | |
-|   | Update worklog | | | |
-| 4 | Continue integrating Notification & Auth features on frontend | 06/11/2025 | 06/11/2025 | |
-|   | Fix bugs related to WebSocket reconnection & auth state | | | |
-| 5 | Testing for the week’s features | 07/11/2025 | 07/11/2025 | |
-|   | Prepare weekly report & deployment checklist | | | |
+## Các nhiệm vụ cần thực hiện trong tuần này
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|-----|------------------------------------------------------------------------------------------------|------------|---------------------|-------------------------------------------------------- |
+| 1 | - Họp nhóm để thảo luận về quy trình phát triển | 03/11/2025 | 03/11/2025 | |
+| | - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. ||||
+| | - Kiểm tra mã dịch vụ | | | |
+| 2 | - Cập nhật WebSocket cho Notification Service | 04/11/2025 | 04/11/2025 | |
+| | - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực | | | |
+| | - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ||||
+| 3 | - Triển khai OAuth2 Login Google cho Auth Service | 05/11/2025 | 05/11/2025 | |
+| | - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth | | | |
+| | - Cập nhật nhật ký công việc||||
+| 4 | - Tiếp tục tích hợp các tính năng Notification & Auth trên front-end | 06/11/2025 | 06/11/2025 | |
+| | - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực | | | |
+| 5 | - Kiểm tra các tính năng trong tuần | 07/11/2025 | 07/11/2025 | |
+| | - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai | | | |

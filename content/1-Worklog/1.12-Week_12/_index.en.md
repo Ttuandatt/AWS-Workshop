@@ -16,9 +16,9 @@ pre = "<b> 1.1.12. </b>"
 | 2   | - Complete part 4. Events participated of Workshop|25/11/2025|25/11/2025||
 |     | - Experimental S3 single region deployment 
 | 3   | - Experimental VPC deployment|26/11/2025|26/11/2025||
-|     | - Experimental S3 multi-region deployment 
+|     | - Practice using RDS MySQL, ElastiCacheForRedis ||||
 | 4   | - Config Google OAuth|27/11/2025|27/11/2025||
-|     | - Experimental S3 multi-region deployment 
+|     | - Practice using RDS MySQL, ElastiCacheForRedis ||||
 | 5   | - Adjust solution architecture to single-region (as for Free account and cost limitations)|28/11/2025|28/11/2025||||
 |     | - Deploy frontend resources to S3 successfully||||
 |     | - Update worklog, workshop||||

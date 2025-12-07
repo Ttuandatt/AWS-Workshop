@@ -1,51 +1,56 @@
 baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
-canonifyURLs = true
-relativeURLs = true
 publishDir = "public"
-languageCode = "en-us"
+
+# ❗ QUAN TRỌNG: TẮT khi dùng multilingual + Relearn
+canonifyURLs = false
+relativeURLs  = false
+
 title = "AWS Internship"
 theme = "relearn"
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 
-# search
+# ------------------------------------------------
+# Outputs (search dùng cho Relearn)
+# ------------------------------------------------
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
 
-# ------------------------------
-# Params
-# ------------------------------
+# ------------------------------------------------
+# Params (Relearn theme)
+# ------------------------------------------------
 [params]
   showLanguageSelector = true
   themeVariant = ["relearn-light", "relearn-dark"]
   alwaysShowThemeSwitcher = true
-  devBaseURL = "http://localhost:1313"
-  # Số 4 nghĩa là menu sẽ tự động hiển thị sâu đến cấp 4
-  collapseLevel = 4
-  # THÊM DÒNG NÀY ĐỂ KÍCH HOẠT CUSTOM CSS
-  customCSS = ["css/custom.css"]  # <--- QUAN TRỌNG
 
-# ------------------------------
-# Ngôn ngữ
-# ------------------------------
+  # ✅ URL riêng cho môi trường dev
+  devBaseURL = "http://localhost:1313"
+
+  collapseLevel = 4
+  customCSS = ["css/custom.css"]
+
+# ------------------------------------------------
+# Languages (BẮT BUỘC có languageCode)
+# ------------------------------------------------
 [languages]
 
   [languages.en]
     title = "Internship Report"
-    weight = 1
     languageName = "English"
+    languageCode = "en"
+    weight = 1
 
   [languages.vi]
     title = "Báo Cáo Thực Tập"
-    weight = 2
     languageName = "Tiếng Việt"
+    languageCode = "vi"
+    weight = 2
 
-
-
-# ------------------------------
-# Cho phép Render HTML (thẻ <b>, <i>...)
-# ------------------------------
+# ------------------------------------------------
+# Markup
+# ------------------------------------------------
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

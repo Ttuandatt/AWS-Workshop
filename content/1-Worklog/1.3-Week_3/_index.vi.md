@@ -1,27 +1,27 @@
 +++
-title = "Week 3 Worklog"
+title = "Nhật ký công việc Tuần 3"
 weight = 3
 chapter = false
-pre = "<b>1.1.3.</b>"
+pre = "<b>1.1.3. </b>"
 +++
 
-## Week 3 Objectives
-- Study Module 2 in the *First Cloud Journey Bootcamp – 2025* playlist
-- Learn and get familiar with Route 53, CloudFormation, and their related features
-- Design the database and set up Backend & Frontend
-- Update worklog structure
+## Mục tiêu Tuần 3
+- Học Mô-đun 2 trong danh sách phát First Cloud Journey Bootcamp – 2025
+- Tìm hiểu và làm quen với Route 53, CloudFormation và các tính năng liên quan
+- Thiết kế cơ sở dữ liệu và thiết lập Backend & Frontend
+- Cập nhật cấu trúc nhật ký công việc
 
-## Tasks to be carried out this week
-
-| Day | Task | Start Date | Completion Date | Reference Material |
-|----:|------|------------|-----------------|-------------------|
-| 1 | Learn about Route 53 and its features | 22/09/2025 | 22/09/2025 | [Route 53](https://000010.awsstudygroup.com/vi/1-introduce/) |
-| 2 | Practice creating Key Pair, CloudFormation Template, and configuring Security Group | 23/09/2025 | 23/09/2025 | [Create Key Pair](https://000010.awsstudygroup.com/vi/2-prerequiste/2.1-createkeypair/), [CloudFormation Template](https://000010.awsstudygroup.com/vi/2-prerequiste/2.2-launchcloudformation/) |
-| 3 | Practice creating Key Pair, CloudFormation Template, and configuring Security Group | 24/09/2025 | 24/09/2025 | [Create Key Pair](https://000010.awsstudygroup.com/vi/2-prerequiste/2.1-createkeypair/), [CloudFormation Template](https://000010.awsstudygroup.com/vi/2-prerequiste/2.2-launchcloudformation/), [Security Group](https://000010.awsstudygroup.com/vi/2-prerequiste/2.3-security/) |
-|   | Team meeting to discuss Database Design, Backend, and Frontend | | | |
-| 4 | Practice connecting to RDGW via RDP | 25/09/2025 | 25/09/2025 | [Connecting to RDGW](https://000010.awsstudygroup.com/vi/3-connecttordgw/), [YouTube Tutorial](https://www.youtube.com/watch?v=fHaA6XBBiWA&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=49) |
-|   | Design solution architecture | | | |
-|   | Team meeting to discuss workshop project | | | |
-| 5 | Practice deploying Microsoft Active Directory | 26/09/2025 | 26/09/2025 | [Deploy Microsoft AD](https://000010.awsstudygroup.com/vi/4-setupad/) |
-|   | Practice configuring DNS | | | [Configure DNS](https://000010.awsstudygroup.com/vi/5-setuphyriddns/) |
-|   | Update worklog | | | |
+## Các công việc cần thực hiện trong tuần này
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|-----|------------------------------------------------------------------------------------------------|-------------------------|-------------------------------------------------------- |
+| 1 | - Tìm hiểu về Route 53 và các tính năng của nó | 22/09/2025 | 22/09/2025 | [Tuyến đường 53](https://000010.awsstudygroup.com/vi/1-introduce/)|
+| 2 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 23/09/2025 | 23/09/2025 | [Tạo cặp khóa](https://000010.awsstudygroup.com/vi/2-prerequiste/2.1-createkeypair/), [Khởi tạo mẫu CloudFormation](https://000010.awsstudygroup.com/vi/2-prerequiste/2.2-launchcloudformation/)|
+| 3 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 24/09/2025 | 24/09/2025 | [Tạo cặp khóa](https://000010.awsstudygroup.com/vi/2-prerequiste/2.1-createkeypair/), [Khởi tạo mẫu CloudFormation](https://000010.awsstudygroup.com/vi/2-prerequiste/2.2-launchcloudformation/), [Cấu hình nhóm bảo mật](https://000010.awsstudygroup.com/vi/2-prerequiste/2.3-security/)|
+| | - Họp nhóm và thảo luận về thiết kế cơ sở dữ liệu, Backend, Frontend|||
+| 4 | - Thực hành kết nối với Remote Desktop Gateway (RDGW) bằng Giao thức Remote Desktop (RDP)| 25/09/2025 | 25/09/2025 | [Kết nối với RDGW](https://000010.awsstudygroup.com/vi/3-connecttordgw/), [Hướng dẫn trên Youtube](https://www.youtube.com/watch?v=fHaA6XBBiWA&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=49)|
+| | - Thiết kế kiến ​​trúc giải pháp||||
+| | - Họp nhóm để thảo luận về dự án hội thảo||||
+| 5 | - Thực hành triển khai Microsoft Active Directory| 26/09/2025 | 26/09/2025 | [Triển khai Microsoft Active Directory](https://000010.awsstudygroup.com/vi/4-setupad/)|
+| | - Thực hành triển khai Microsoft Active Directory||| [Triển khai Microsoft Active Directory](https://000010.awsstudygroup.com/vi/4-setupad/)|
+| | - Thực hành cấu hình DNS||| [Cấu hình DNS](https://000010.awsstudygroup.com/vi/5-setuphyriddns/)|
+| | - Cập nhật nhật ký công việc||||

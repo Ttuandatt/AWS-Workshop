@@ -145,3 +145,12 @@ Before proceeding to the next phase, verify:
 -   [ ]  DNS hostnames and resolution enabled
 -   [ ]  All 4 security groups created with correct rules
 -   [ ]  `ecs-app-sg` includes self-referencing rule
+
+* * * * *
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="" style="text-decoration: none; font-weight: bold;">
+</a>
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.2-Infrastructure & ALB Setup (RDS, Redis, Cloud Map, ALB Routing)" %}}" style="text-decoration: none; font-weight: bold;">
+BƯỚC 2: Infrastructure & ALB Setup ➡
+</a>
+</div>

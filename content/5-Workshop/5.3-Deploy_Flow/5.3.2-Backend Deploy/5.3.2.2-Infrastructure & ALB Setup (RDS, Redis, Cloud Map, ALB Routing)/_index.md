@@ -408,3 +408,12 @@ Before proceeding to code deployment, verify:
 -   [ ]  4 path-based routing rules configured
 
 * * * * *
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.1-Network & Security Preparation (VPC, SG)" %}}" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 1: Network & Security Preparation
+</a>
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.3-Code Update & Image Build (Create new Docker Image)" %}}" style="text-decoration: none; font-weight: bold;">
+BƯỚC 3: Code Update & Image Build ➡
+</a>
+</div>

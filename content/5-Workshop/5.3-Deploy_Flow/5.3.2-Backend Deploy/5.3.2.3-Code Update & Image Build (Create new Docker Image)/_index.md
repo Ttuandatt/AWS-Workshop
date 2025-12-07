@@ -270,3 +270,12 @@ aws ecr describe-images --repository-name ai-model-service --region ap-southeast
 -   [ ]  Image URIs recorded for Task Definition configuration
 
 * * * * *
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.2-Infrastructure & ALB Setup (RDS, Redis, Cloud Map, ALB Routing)" %}}" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 2: Infrastructure & ALB Setup
+</a>
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.4-Task Definitions Creation (Configure settings, FIX environment variables)" %}}" style="text-decoration: none; font-weight: bold;">
+BƯỚC 4: Task Definitions Creation ➡
+</a>
+</div>
