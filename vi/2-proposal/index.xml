@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Proposal :: Báo Cáo Thực Tập</title>
+    <title>Đề xuất :: Báo Cáo Thực Tập</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</link>
-    <description>Multi-Region SaaS Task Management Platform&#xD;A Global AWS Solution for Low-Latency, Resilient Collaboration&#xD;1. Executive Summary&#xD;The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency, high availability, and regional scalability across Asia-Pacific.</description>
+    <description>Nền tảng Quản lý Tác vụ SaaS Tối Ưu Chi Phí&#xD;Khả năng Sẵn sàng Cao (HA) Đơn Vùng với ECS Fargate&#xD;1. Tóm Tắt Điều Hành (Executive Summary)&#xD;Nền tảng Quản lý Tác vụ SaaS được thiết kế để mang lại trải nghiệm cộng tác tương tự Todoist với Khả năng Sẵn sàng Cao (HA) và Hiệu Quả Chi Phí, được tối ưu hóa đặc biệt cho các giới hạn của AWS Free Tier.</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.xml" rel="self" type="application/rss+xml" />

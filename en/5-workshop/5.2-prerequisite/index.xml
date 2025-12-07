@@ -3,7 +3,7 @@
   <channel>
     <title>Prerequisite :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</link>
-    <description>HI THIS IS WORKSHOP OVERVIEW</description>
+    <description>Preamble: Prerequisites for Backend Deployment&#xD;Before initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.&#xA;Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; Credentials&#xD;AWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.xml" rel="self" type="application/rss+xml" />

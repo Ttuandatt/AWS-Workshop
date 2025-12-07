@@ -56,10 +56,22 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_2/index.html" />
   </url>
   <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html" />
+  </url>
+  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html" />
+  </url>
+  <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</loc>
@@ -68,22 +80,10 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" />
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html" />
-  </url>
-  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html" />
-  </url>
-  <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.2-week_2/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_3/index.html</loc>
@@ -98,6 +98,12 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html" />
   </url>
   <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-week_3/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-week_3/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html" />
+  </url>
+  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html" />
@@ -108,12 +114,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html" />
-  </url>
-  <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-week_3/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.3-week_3/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html</loc>
@@ -188,6 +188,12 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html" />
   </url>
   <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html" />
+  </url>
+  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html" />
@@ -210,12 +216,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html" />
-  </url>
-  <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.6-week_6/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</loc>

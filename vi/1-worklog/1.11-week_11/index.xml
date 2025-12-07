@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Week 11 Worklog :: Báo Cáo Thực Tập</title>
+    <title>Nhật ký công việc Tuần 11 :: Báo Cáo Thực Tập</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</link>
-    <description>Week 11 Objectives&#xD;Identify and fix existing bugs Complete and refine the solution architecture Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 Team meeting to discuss the development process 17/11/2025 17/11/2025 Adjust the solution architecture 17/11/2025 17/11/2025 Backend development: Fix bugs in User Service 17/11/2025 17/11/2025 2 Backend development: Fix bugs in User Service 18/11/2025 18/11/2025 3 Adjust solution architecture 19/11/2025 19/11/2025 Team meeting to review existing issues in Frontend and Backend 19/11/2025 19/11/2025 4 Adjust solution architecture 20/11/2025 20/11/2025 5 Team meeting 21/11/2025 21/11/2025 Experimental deployment of VPC and Subnets 21/11/2025 21/11/2025</description>
+    <description>Mục tiêu Tuần 11&#xD;Tìm lỗi và sửa lỗi Hoàn thiện kiến ​​trúc giải pháp Nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|——————————————————————————————|————————-|———————————————–|</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.xml" rel="self" type="application/rss+xml" />

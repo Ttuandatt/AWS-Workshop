@@ -3,7 +3,7 @@
   <channel>
     <title>Workshop :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
-    <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;This project is …..&#xA;Content&#xD;1. Workshop Overview&#xA;2. Prerequisite&#xA;3. Deploy Flow&#xA;4. Clean Up&#xA;5. Mystic Skills</description>
+    <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;SGU TodoList is a task management application built using a Microservices architecture on the AWS Cloud platform. Using core AWS services such as S3, VPC, ECS Fargate, ALB, …&#xA;Table of Contents&#xD;1. Workshop Overview</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
@@ -19,21 +19,21 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</guid>
-      <description>HI THIS IS WORKSHOP OVERVIEW</description>
+      <description>Preamble: Prerequisites for Backend Deployment&#xD;Before initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.&#xA;Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; Credentials&#xD;AWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.</description>
     </item>
     <item>
       <title>Deploy Flow</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</guid>
-      <description>Content&#xD;5.3.1. Frontend Deploy&#xA;5.3.2. Backend Deploy</description>
+      <description>Table of Contents&#xD;5.3.1. Frontend Deploy&#xA;5.3.2. Backend Deploy</description>
     </item>
     <item>
       <title>Clean Up</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</guid>
-      <description>HEHEHEHE THIS IS WORKSHOP CLEANUP</description>
+      <description>Cleanup Guide&#xD;This guide provides a comprehensive instruction to completely terminate all deployed AWS resources across the ap-southeast-1 (Singapore) and us-east-1 (N. Virginia) regions. The sequence is optimized to avoid orphaned resources and subsequent charges.&#xA;I. Deployed AWS Services Summary&#xD;Before proceeding, verify the existence of the following active services in your account:</description>
     </item>
     <item>
       <title>Mystic Skills</title>

@@ -5,52 +5,56 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HI THIS IS WORKSHOP OVERVIEW">
+    <meta name="description" content="Preamble: Prerequisites for Backend DeploymentBefore initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.
+Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; CredentialsAWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prerequisite :: Internship Report">
-    <meta name="twitter:description" content="HI THIS IS WORKSHOP OVERVIEW">
+    <meta name="twitter:description" content="Preamble: Prerequisites for Backend DeploymentBefore initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.
+Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; CredentialsAWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Prerequisite :: Internship Report">
-    <meta property="og:description" content="HI THIS IS WORKSHOP OVERVIEW">
+    <meta property="og:description" content="Preamble: Prerequisites for Backend DeploymentBefore initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.
+Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; CredentialsAWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Prerequisite :: Internship Report">
-    <meta itemprop="description" content="HI THIS IS WORKSHOP OVERVIEW">
-    <meta itemprop="wordCount" content="5">
+    <meta itemprop="description" content="Preamble: Prerequisites for Backend DeploymentBefore initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.
+Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; CredentialsAWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.">
+    <meta itemprop="wordCount" content="545">
     <title>Prerequisite :: Internship Report</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" rel="alternate" hreflang="vi">
-    <link href="../../../en/5-workshop/5.2-prerequisite/index.xml" rel="alternate" type="application/rss+xml" title="Prerequisite :: Internship Report">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765040465" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/search.min.js?1765040465" defer></script>
+    <link href="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.xml" rel="alternate" type="application/rss+xml" title="Prerequisite :: Internship Report">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765092214" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765092214" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1765040465";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765092214";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.en.min.js?1765040465" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765092214" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765040465" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765040465" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1765040465" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1765040465" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765092214" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765092214" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765092214" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = `.min`;
       window.relearn.path='\/5-workshop\/5.2-prerequisite\/index.html';
       window.relearn.relBasePath='..\/..\/..';
-      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
@@ -95,9 +99,9 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../css/custom.css?1765040465" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765092214" rel="stylesheet">
   </head>
-  <body class="mobile-support html" data-url="../../../en/5-workshop/5.2-prerequisite/index.html">
+  <body class="mobile-support html" data-url="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -129,7 +133,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#hi-this-is-workshop-overview">HI THIS IS WORKSHOP OVERVIEW</a></li>
+        <li><a href="#preamble-prerequisites-for-backend-deployment"><strong>Preamble: Prerequisites for Backend Deployment</strong></a></li>
+        <li><a href="#i-tools--credentials"><strong>I. Tools &amp; Credentials</strong></a></li>
+        <li><a href="#ii-domain-ssl-and-dns-preparation"><strong>II. Domain, SSL, and DNS Preparation</strong></a></li>
+        <li><a href="#iii-network-foundation-vpc--subnets"><strong>III. Network Foundation (VPC &amp; Subnets)</strong></a></li>
+        <li><a href="#iv-data--storage-pre-configuration"><strong>IV. Data &amp; Storage Pre-Configuration</strong></a></li>
+        <li><a href="#v-compute--service-preparation"><strong>V. Compute &amp; Service Preparation</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -138,7 +147,7 @@
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Prerequisite</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Prerequisite</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -149,7 +158,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/5-workshop/5.1-workshop_overview/index.html" title="Workshop Overview (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html" title="Workshop Overview (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -159,7 +168,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="../../../en/5-workshop/5.3-deploy_flow/index.html" title="Deploy Flow (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html" title="Deploy Flow (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -189,8 +198,8 @@
 
 <h1 id="prerequisite">Prerequisite</h1>
 
-<h3 id="hi-this-is-workshop-overview">
-  HI THIS IS WORKSHOP OVERVIEW
+<h3 id="preamble-prerequisites-for-backend-deployment">
+  <strong>Preamble: Prerequisites for Backend Deployment</strong>
 
 
 
@@ -199,7 +208,182 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h3><p>Before initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the <strong>ap-southeast-1 (Singapore)</strong> region.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Step</strong></th>
+          <th><strong>Requirement</strong></th>
+          <th><strong>Purpose</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><strong>AWS Account &amp; CLI</strong></td>
+          <td>Access and command-line management.</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><strong>Domain &amp; SSL</strong></td>
+          <td>Securing traffic and global content delivery.</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><strong>Source Code &amp; Artifacts</strong></td>
+          <td>Building the deployable microservice images.</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><strong>AWS Network Foundation</strong></td>
+          <td>Setting up the isolated, highly available VPC structure.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="i-tools--credentials">
+  <strong>I. Tools &amp; Credentials</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>AWS Account Setup:</strong> A valid AWS Account is required, and initial <strong>billing alerts (AWS Budgets)</strong> must be configured to monitor Free Tier usage.</p>
+</li>
+<li>
+<p><strong>AWS CLI:</strong> AWS Command Line Interface must be installed and configured with appropriate <strong>IAM User credentials</strong> granting necessary permissions (EC2, RDS, S3, CloudFront, Route 53, IAM, CloudWatch).</p>
+</li>
+<li>
+<p><strong>Docker:</strong> Docker Engine must be installed locally to build the container images for the Spring Boot microservices.</p>
+</li>
+<li>
+<p><strong>Java/Maven:</strong> Local environment must be set up to compile and package the Spring Boot application code.</p>
+</li>
+</ol>
+<h3 id="ii-domain-ssl-and-dns-preparation">
+  <strong>II. Domain, SSL, and DNS Preparation</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>Registered Domain:</strong> A domain name must be registered (e.g., via Route 53 or an external registrar).</p>
+</li>
+<li>
+<p><strong>Route 53 Hosted Zone:</strong> The domain must be managed within an <strong>Amazon Route 53 Hosted Zone</strong>.</p>
+</li>
+<li>
+<p><strong>ACM Certificate:</strong> An <strong>AWS Certificate Manager (ACM)</strong> certificate must be provisioned for the domain (e.g., <code>*.taskmanager.com</code>) in <strong>two regions</strong>:</p>
+<ul>
+<li>
+<p><strong>us-east-1 (N. Virginia):</strong> Required for CloudFront (Global Service).</p>
+</li>
+<li>
+<p><strong>ap-southeast-1 (Singapore):</strong> Required for the Application Load Balancer (ALB).</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="iii-network-foundation-vpc--subnets">
+  <strong>III. Network Foundation (VPC &amp; Subnets)</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>A VPC must be created in <strong>ap-southeast-1</strong> with the following structure for High Availability (HA) across at least two Availability Zones (AZs):</p>
+<ol>
+<li>
+<p><strong>VPC:</strong> One primary VPC (e.g., CIDR 10.0.0.0/16).</p>
+</li>
+<li>
+<p><strong>Public Subnets (Multi-AZ):</strong> To host the <strong>Application Load Balancer (ALB)</strong> and <strong>Internet Gateway (IGW)</strong>.</p>
+</li>
+<li>
+<p><strong>Private Subnets (Multi-AZ):</strong> To host the application instances (<strong>EC2/ECS</strong>), <strong>RDS</strong>, and <strong>ElastiCache</strong>.</p>
+</li>
+<li>
+<p><strong>NAT Gateway:</strong> Deployed in at least one Public Subnet to allow resources in the Private Subnets (EC2 instances) to securely access the internet for updates and communication with AWS services (like S3/ECR).</p>
+</li>
+<li>
+<p><strong>Security Groups (SG):</strong> Initial Security Groups must be defined following the principle of least privilege:</p>
+<ul>
+<li>
+<p><strong>ALB SG:</strong> Allows inbound traffic on <strong>HTTP (80) and HTTPS (443)</strong> from the internet.</p>
+</li>
+<li>
+<p><strong>EC2/ECS SG:</strong> Allows inbound traffic <em>only</em> from the <strong>ALB SG</strong> on the application port (e.g., 8080).</p>
+</li>
+<li>
+<p><strong>RDS/ElastiCache SG:</strong> Allows inbound traffic <em>only</em> from the <strong>EC2/ECS SG</strong> on their respective ports (e.g., MySQL 3306, Redis 6379).</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="iv-data--storage-pre-configuration">
+  <strong>IV. Data &amp; Storage Pre-Configuration</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>S3 Primary Bucket (ap-southeast-1):</strong> An S3 bucket must be created in <code>ap-southeast-1</code> to hold static assets and application deployment artifacts (JARs/Docker Images).</p>
+</li>
+<li>
+<p><strong>S3 DR Bucket (us-east-1):</strong> A secondary S3 bucket must be created in <code>us-east-1</code> (N. Virginia) to serve as the Disaster Recovery target.</p>
+</li>
+<li>
+<p><strong>Cross-Region Replication (CRR):</strong> <strong>S3 CRR</strong> must be configured to automatically replicate objects from the primary bucket in <code>ap-southeast-1</code> to the DR bucket in <code>us-east-1</code>.</p>
+</li>
+</ol>
+<h3 id="v-compute--service-preparation">
+  <strong>V. Compute &amp; Service Preparation</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>Docker Images:</strong> The Spring Boot microservices must be built into production-ready Docker images.</p>
+</li>
+<li>
+<p><strong>ECR Repository (Optional):</strong> If using ECS, a repository must be prepared in <strong>ECR (Elastic Container Registry)</strong> to store the Docker images.</p>
+</li>
+<li>
+<p><strong>IAM Roles:</strong> Necessary <strong>IAM Roles</strong> must be created for:</p>
+<ul>
+<li>
+<p><strong>EC2/ECS Tasks:</strong> Grants permissions to access S3, CloudWatch, and the RDS database.</p>
+</li>
+<li>
+<p><strong>ALB:</strong> Allows the load balancer to perform its function.</p>
+</li>
+</ul>
+</li>
+</ol>
+
   <footer class="footline">
   </footer>
 </article>
@@ -210,11 +394,11 @@
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
         <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="../../../en/index.html">
+          <a id="R-logo" class="R-default" href="/AWS-Workshop/en/index.html">
             <div class="logo-title">Internship Report</div>
           </a>
         </div>
-        <search><form action="../../../en/search/index.html" method="get">
+        <search><form action="/AWS-Workshop/en/search/index.html" method="get">
           <div class="searchbox default-animation">
             <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
@@ -229,7 +413,7 @@
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-homelinks">
           <ul class="space collapsible-menu">
-            <li class="" data-nav-url="../../../en/index.html"><a class="padding" href="../../../en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/index.html"><a class="padding" href="/AWS-Workshop/en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
           </ul>
         </div>
         <div class="R-menu-divider default-animation">
@@ -246,18 +430,18 @@
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-url="../../../en/1-worklog/index.html"><a class="padding" href="../../../en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="../../../en/2-proposal/index.html"><a class="padding" href="../../../en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
-            <li class="" data-nav-url="../../../en/3-translated_blogs/index.html"><a class="padding" href="../../../en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="../../../en/4-events_participated/index.html"><a class="padding" href="../../../en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-url="../../../en/5-workshop/index.html"><a class="padding" href="../../../en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
-            <li class="" data-nav-url="../../../en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="../../../en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
-            <li class="active " data-nav-url="../../../en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="../../../en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
-            <li class="alwaysopen " data-nav-url="../../../en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="../../../en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="../../../en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="../../../en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
-            <li class="" data-nav-url="../../../en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="../../../en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
-            <li class="" data-nav-url="../../../en/6-self-assesment/index.html"><a class="padding" href="../../../en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
-            <li class="" data-nav-url="../../../en/7-sharing_and_feedback/index.html"><a class="padding" href="../../../en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="/AWS-Workshop/en/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
+            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/7-sharing_and_feedback/index.html"><a class="padding" href="/AWS-Workshop/en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
           </ul>
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
@@ -277,8 +461,8 @@
                 <div class="control-style">
                   <label class="a11y-only" for="R-select-language">Language</label>
                   <select id="R-select-language">
-                    <option id="R-select-language-en" value="en" data-url="../../../en/5-workshop/5.2-prerequisite/index.html" lang="en" selected data-selected>English</option>
-                    <option id="R-select-language-vi" value="vi" data-url="../../../vi/5-workshop/5.2-prerequisite/index.html" lang="vi">Tiếng Việt</option>
+                    <option id="R-select-language-en" value="en" data-url="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" lang="vi">Tiếng Việt</option>
                   </select>
                 </div>
                 <div class="clear"></div>
@@ -304,8 +488,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765040465" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.min.js?1765040465" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765092214" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

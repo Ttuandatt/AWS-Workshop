@@ -16,11 +16,11 @@
       <description>Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản&#xA;Week 2: Doing task A…&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
     </item>
     <item>
-      <title>Proposal</title>
+      <title>Đề xuất</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</guid>
-      <description>Multi-Region SaaS Task Management Platform&#xD;A Global AWS Solution for Low-Latency, Resilient Collaboration&#xD;1. Executive Summary&#xD;The Multi-Region SaaS Task Management Platform is designed to deliver a Trello/Asana-like experience with low latency, high availability, and regional scalability across Asia-Pacific.</description>
+      <description>Nền tảng Quản lý Tác vụ SaaS Tối Ưu Chi Phí&#xD;Khả năng Sẵn sàng Cao (HA) Đơn Vùng với ECS Fargate&#xD;1. Tóm Tắt Điều Hành (Executive Summary)&#xD;Nền tảng Quản lý Tác vụ SaaS được thiết kế để mang lại trải nghiệm cộng tác tương tự Todoist với Khả năng Sẵn sàng Cao (HA) và Hiệu Quả Chi Phí, được tối ưu hóa đặc biệt cho các giới hạn của AWS Free Tier.</description>
     </item>
     <item>
       <title>Translated Blogs</title>
