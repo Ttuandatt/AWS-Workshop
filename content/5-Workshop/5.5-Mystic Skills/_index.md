@@ -290,3 +290,22 @@ tree /f /a
 ```bash
 tree content/1-Worklog/1.1-PhanCanhTuanDat /F
 ```
+
+- Command to read a directory structure
+```bash
+# 1. Xóa worktree gh-pages cũ (kể cả khi folder không còn)
+git worktree remove "D:/IT/AWS-FCJ/AWS-Workshop/public/public" --force
+
+# 2. Dọn metadata worktree mồ côi
+git worktree prune
+
+# 3. Kiểm tra – chỉ còn main
+git worktree list
+
+# 4. Tạo lại worktree gh-pages tại thư mục public
+git worktree add -B gh-pages public origin/gh-pages
+
+# 5. Vào public và kiểm tra
+cd public
+git status
+```
