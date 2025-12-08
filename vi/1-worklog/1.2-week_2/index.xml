@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 2 :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
     <description>Mục tiêu Tuần 2&#xD;Mô-đun Học tập 1: Thực hành VPC và EC2 Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan Phân công nhiệm vụ cho dự án nhóm Cập nhật cấu trúc nhật ký công việc Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

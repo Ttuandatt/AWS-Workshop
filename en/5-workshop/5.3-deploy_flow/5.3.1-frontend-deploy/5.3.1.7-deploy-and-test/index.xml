@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deploy and Test :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</link>
     <description>PHASE 6: DEPLOY &amp; TESTING&#xD;Step 6.1: Build &amp; Deploy&#xD;On your local computer (in the React project folder):&#xA;# 1. Build to the production folder npm run build # 2. Upload to the MAIN bucket (Singapore) # Note: Just upload to Sing, AWS will automatically copy to US aws s3 sync build/ s3://sgutodolist-frontend-sg --delete # 3. Clear the CloudFront cache so users can see the new code immediately aws cloudfront create-invalidation --distribution-id &lt;ID_CUA_BAN&gt; --paths &#34;/*&#34;&#xD;Step 6.2: Test&#xD;Go to https://sgutodolist.com.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

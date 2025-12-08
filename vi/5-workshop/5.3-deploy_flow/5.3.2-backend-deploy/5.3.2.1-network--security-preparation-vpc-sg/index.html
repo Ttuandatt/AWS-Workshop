@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
@@ -12,7 +12,7 @@ Cấu hình VPC và SubnetBước 1: Tạo Hạ tầng VPCTruy cập VPC Conso
     <meta name="twitter:title" content="Chuẩn bị Mạng & Bảo mật (VPC, Security Group) :: Báo Cáo Thực Tập">
     <meta name="twitter:description" content="Giai đoạn này thiết lập hạ tầng mạng nền tảng và ranh giới bảo mật cho quá trình triển khai hệ thống Microservices.
 Cấu hình VPC và SubnetBước 1: Tạo Hạ tầng VPCTruy cập VPC Console → Create VPC Chọn tùy chọn VPC and more Cấu hình các tham số cho VPC như sau: Tham số Giá trị Mục đích Tự động tạo Name tag SGU-Microservices Chuẩn hoá quy ước đặt tên IPv4 CIDR block 10.0.0.0/16 Dải mạng private tiêu chuẩn Số Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) Đảm bảo tính sẵn sàng cao Số public subnet 2 Cho các tài nguyên public-facing Số private subnet 2 Cô lập tầng dữ liệu NAT Gateway Không tạo Tối ưu chi phí (~ tiết kiệm $30/tháng) VPC Endpoint Không tạo Tối ưu chi phí DNS options Enable DNS hostnames &#43; Enable DNS resolution Phục vụ service discovery Nhấn Create VPC Kết quả kiến trúc mạngVPC: 10.0.0.0/16 ├── Public Subnet 1: 10.0.0.0/20 (ap-southeast-1a) ├── Public Subnet 2: 10.0.16.0/20 (ap-southeast-1b) ├── Private Subnet 1: 10.0.128.0/20 (ap-southeast-1a) └── Private Subnet 2: 10.0.144.0/20 (ap-southeast-1b)">
-    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Chuẩn bị Mạng & Bảo mật (VPC, Security Group) :: Báo Cáo Thực Tập">
     <meta property="og:description" content="Giai đoạn này thiết lập hạ tầng mạng nền tảng và ranh giới bảo mật cho quá trình triển khai hệ thống Microservices.
@@ -24,38 +24,38 @@ Cấu hình VPC và SubnetBước 1: Tạo Hạ tầng VPCTruy cập VPC Conso
 Cấu hình VPC và SubnetBước 1: Tạo Hạ tầng VPCTruy cập VPC Console → Create VPC Chọn tùy chọn VPC and more Cấu hình các tham số cho VPC như sau: Tham số Giá trị Mục đích Tự động tạo Name tag SGU-Microservices Chuẩn hoá quy ước đặt tên IPv4 CIDR block 10.0.0.0/16 Dải mạng private tiêu chuẩn Số Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) Đảm bảo tính sẵn sàng cao Số public subnet 2 Cho các tài nguyên public-facing Số private subnet 2 Cô lập tầng dữ liệu NAT Gateway Không tạo Tối ưu chi phí (~ tiết kiệm $30/tháng) VPC Endpoint Không tạo Tối ưu chi phí DNS options Enable DNS hostnames &#43; Enable DNS resolution Phục vụ service discovery Nhấn Create VPC Kết quả kiến trúc mạngVPC: 10.0.0.0/16 ├── Public Subnet 1: 10.0.0.0/20 (ap-southeast-1a) ├── Public Subnet 2: 10.0.16.0/20 (ap-southeast-1b) ├── Private Subnet 1: 10.0.128.0/20 (ap-southeast-1a) └── Private Subnet 2: 10.0.144.0/20 (ap-southeast-1b)">
     <meta itemprop="wordCount" content="647">
     <title>Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group) :: Báo Cáo Thực Tập</title>
-    <link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="x-default">
-    <link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="en">
-    <link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="vi">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" rel="alternate" hreflang="vi">
     <link href="../../../../../vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.xml" rel="alternate" type="application/rss+xml" title="Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group) :: Báo Cáo Thực Tập">
-    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765207503" rel="stylesheet">
-    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search-lunr.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/search.js?1765207503" defer></script>
+    <link href="../../../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765207793" rel="stylesheet">
+    <script src="../../../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search-lunr.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/search.min.js?1765207793" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../../../searchindex.vi.js?1765207503";
+      window.relearn.index_js_url="../../../../../searchindex.vi.js?1765207793";
     </script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765207503" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765207793" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207503" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207503" rel="stylesheet"></noscript>
-    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765207503" rel="stylesheet">
-    <link href="../../../../../css/theme.css?1765207503" rel="stylesheet">
-    <link href="../../../../../css/format-html.css?1765207503" rel="stylesheet" id="R-format-style">
+    <link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207793" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207793" rel="stylesheet"></noscript>
+    <link href="../../../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765207793" rel="stylesheet">
+    <link href="../../../../../css/theme.min.css?1765207793" rel="stylesheet">
+    <link href="../../../../../css/format-html.min.css?1765207793" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = ``;
+      window.relearn.min = `.min`;
       window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.2-backend-deploy\/5.3.2.1-network--security-preparation-vpc-sg\/index.html';
       window.relearn.relBasePath='..\/..\/..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -99,7 +99,7 @@ Cấu hình VPC và SubnetBước 1: Tạo Hạ tầng VPCTruy cập VPC Conso
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../../../css/custom.css?1765207503" rel="stylesheet">
+    <link href="../../../../../css/custom.css?1765207793" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../../../vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html">
     <div id="R-body" class="default-animation">
@@ -801,8 +801,8 @@ Tạo <strong>4 Security Group</strong> với cấu hình sau:</p>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765207503" defer></script>
-    <script src="../../../../../AWS-Workshop/js/theme.js?1765207503" defer></script>
+    <script src="../../../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765207793" defer></script>
+    <script src="../../../../../AWS-Workshop/js/theme.min.js?1765207793" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

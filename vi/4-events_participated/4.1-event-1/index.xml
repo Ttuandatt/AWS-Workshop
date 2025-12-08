@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sự kiện 1 :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</link>
     <description>Báo Cáo Tổng Kết: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Mục Tiêu Sự Kiện&#xD;Chính thức khởi động chương trình AWS First Cloud Journey Workforce OJT Fall 2025 Giới thiệu cho sinh viên mục tiêu, cấu trúc và lộ trình học tập của chương trình Cung cấp góc nhìn tổng quan về cơ hội nghề nghiệp trong các lĩnh vực Cloud Computing, AI/ML, DevOps và Security Kết nối sinh viên với cộng đồng AWS Study Group và các đối tác doanh nghiệp Truyền cảm hứng cho sinh viên xây dựng kỹ năng thực hành và chuẩn bị cho sự nghiệp trong lĩnh vực cloud Diễn Giả &amp; Khách Mời Chính&#xD;Nguyễn Gia Hưng – Head of Solutions Architect, AWS Vietnam&#xA;Chia sẻ tổng quan về AWS First Cloud Journey và cơ hội nghề nghiệp trong ngành điện toán đám mây</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

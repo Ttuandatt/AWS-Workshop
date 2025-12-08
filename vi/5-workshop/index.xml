@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html</link>
     <description>Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi Phí&#xD;Tổng quan&#xD;SGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.&#xA;Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tổng quan Workshop</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</guid>
       <description>Giới thiệu dự án&#xD;SGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.&#xA;Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.</description>
     </item>
     <item>
       <title>Điều kiện tiên quyết</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</guid>
       <description>Các điều kiện tiên quyết cho triển khai Backend&#xD;Trước khi bắt đầu các bước triển khai được trình bày trong Mục lục, cần hoàn tất các công cụ nền tảng, cấu hình hệ thống và thiết lập dịch vụ AWS dưới đây nhằm đảm bảo quá trình triển khai diễn ra ổn định, an toàn và tối ưu chi phí trong khu vực ap-southeast-1 (Singapore).</description>
     </item>
     <item>
       <title>Quy trình triển khai</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</guid>
       <description>Mục lục&#xD;Phần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.&#xA;Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.</description>
     </item>
     <item>
       <title>Clean Up</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</guid>
       <description>HEHEHEHE THIS IS WORKSHOP CLEANUP</description>
     </item>
     <item>
       <title>Mystic Skills</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html</guid>
       <description>1. Hugo Commands&#xD;2. Git Commands&#xD;2.1 Check repository status&#xA;git status&#xD;2.2 List branches (local)&#xA;git branch&#xD;2.3 List all branches (local + remote)&#xA;git branch -a&#xD;2.4 Switch to another branch</description>
     </item>
   </channel>

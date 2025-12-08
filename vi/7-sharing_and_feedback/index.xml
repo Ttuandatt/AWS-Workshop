@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chia sẻ và Phản hồi :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/7-sharing_and_feedback/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html</link>
     <description>Đánh giá tổng quan&#xD;1. Môi trường làm việc&#xA;Môi trường làm việc vô cùng thân thiện, cởi mở và hỗ trợ lẫn nhau. Các thành viên FCAJ luôn sẵn sàng giúp đỡ nhau mỗi khi có khó khăn phát sinh. Mọi người không chỉ trao đổi về công việc mà còn thoải mái chia sẻ về việc học tập, sở thích cá nhân và những câu chuyện thường ngày. Không gian làm việc được sắp xếp gọn gàng, thoải mái, tạo nên bầu không khí tích cực giúp tôi dễ dàng tập trung và duy trì sự hứng thú trong công việc.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/7-sharing_and_feedback/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

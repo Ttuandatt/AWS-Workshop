@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 11 :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html</link>
     <description>Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mật&#xD;Tác giả: Kartik Bheemisetty, David MacDonald&#xA;Ngày: 01/08/2025&#xA;Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership&#xA;Giới thiệu&#xD;Trình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_11/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,107 +2,107 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</link>
     <description>Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản&#xA;Week 2: Doing task A…&#xA;Week 3: Doing task B…&#xA;Week 4: Doing task C…&#xA;Week 5: Doing task D…&#xA;Week 6: Doing task E…&#xA;Week 7: Doing task F…&#xA;Week 8: Doing task G…&#xA;Week 9: Doing task H…&#xA;Week 10: Doing task I…&#xA;Week 11: Doing task J…&#xA;Week 12: Doing task K…</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/1-worklog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nhật ký công việc Tuần 1</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html</guid>
       <description>Mục tiêu tuần 1&#xD;Tìm hiểu các quy định Kết nối với các thành viên FCJ khác Hiểu và thực hành các dịch vụ AWS cơ bản Các công việc cần thực hiện trong tuần&#xD;Ngày Công việc Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Làm quen với các thành viên FCJ 09/09/2025 09/09/2025 - Đọc và ghi chú các quy định của đơn vị thực tập - Học và thực hành tạo website tĩnh bằng Hugo - Tạo tài khoản AWS. Thực hành tạo Nhóm người dùng và Người dùng (IAM user) 2 - Học và thực hành tạo Ngân sách (Mẫu &amp; Tùy chỉnh: Chi phí, Sử dụng, Gói tiết kiệm, Đặt chỗ) 10/09/2025 10/09/2025 - Cập nhật nhật ký công việc 3 - Tìm hiểu về các gói hỗ trợ, các loại yêu cầu hỗ trợ, cách tạo yêu cầu hỗ trợ 11/09/2025 11/09/2025 4 - Dịch một bài blog 12/09/2025 12/09/2025 - Cập nhật nhật ký công việc (UI, blog đã dịch) 5 - Học lý thuyết về VPC (Subnet, Route Table, Internet Gateway, NAT Gateway) 13/09/2025 13/09/2025 - Cập nhật nhật ký công việc 6 - Dịch bài blog thứ 2 14/09/2025 14/09/2025 - Cập nhật nhật ký công việc</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 2</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</guid>
       <description>Mục tiêu Tuần 2&#xD;Mô-đun Học tập 1: Thực hành VPC và EC2 Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan Phân công nhiệm vụ cho dự án nhóm Cập nhật cấu trúc nhật ký công việc Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 3</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</guid>
       <description>Mục tiêu Tuần 3&#xD;Học Mô-đun 2 trong danh sách phát First Cloud Journey Bootcamp – 2025 Tìm hiểu và làm quen với Route 53, CloudFormation và các tính năng liên quan Thiết kế cơ sở dữ liệu và thiết lập Backend &amp; Frontend Cập nhật cấu trúc nhật ký công việc Các công việc cần thực hiện trong tuần này&#xD;| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————————-|——————————————————– | | 1 | - Tìm hiểu về Route 53 và các tính năng của nó | 22/09/2025 | 22/09/2025 | Tuyến đường 53| | 2 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 23/09/2025 | 23/09/2025 | Tạo cặp khóa, Khởi tạo mẫu CloudFormation| | 3 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 24/09/2025 | 24/09/2025 | Tạo cặp khóa, Khởi tạo mẫu CloudFormation, Cấu hình nhóm bảo mật| | | - Họp nhóm và thảo luận về thiết kế cơ sở dữ liệu, Backend, Frontend||| | 4 | - Thực hành kết nối với Remote Desktop Gateway (RDGW) bằng Giao thức Remote Desktop (RDP)| 25/09/2025 | 25/09/2025 | Kết nối với RDGW, Hướng dẫn trên Youtube| | | - Thiết kế kiến ​​trúc giải pháp|||| | | - Họp nhóm để thảo luận về dự án hội thảo|||| | 5 | - Thực hành triển khai Microsoft Active Directory| 26/09/2025 | 26/09/2025 | Triển khai Microsoft Active Directory| | | - Thực hành triển khai Microsoft Active Directory||| Triển khai Microsoft Active Directory| | | - Thực hành cấu hình DNS||| Cấu hình DNS| | | - Cập nhật nhật ký công việc||||</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 4</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html</guid>
       <description>Mục tiêu Tuần 4&#xD;Bắt đầu viết mã cho dịch vụ xác thực backend và frontend Thảo luận và liệt kê các API cần thiết cho dịch vụ taskflow. Học và thực hành S3 Khám phá API Gateway Dịch các blog kỹ thuật. Nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————————-|——————————————————– | | 1 | - Họp nhóm để thảo luận về kiến ​​trúc, cấu hình backend và frontend | 29/09/2025 | 29/09/2025 || | | - Dịch blog|||Blog đã dịch 1| | | - Nghiên cứu và lập danh sách các API cần thiết cho Dịch vụ TaskFlow.|||| | 2 | - Học và thực hành dịch vụ S3| 30/09/2025 | 30/09/2025 | Bài học S3| | | - Dịch vụ Xác thực Backend Code |||| | 3 | - Dịch vụ Xác thực Backend Code |01/10/2025|01/10/2025|| | | - Khởi tạo dự án (React, cấu hình môi trường, thiết lập định tuyến cơ bản, cấu trúc thư mục, tích hợp Git).|||| | 4 | - Tìm hiểu và thực hành dịch vụ API Gateway|02/10/2025|02/10/2025|Giới thiệu về AWS API Gateway, Tạo API sử dụng Amazon API Gateway - Hành trình phát triển AWS Serverless| | | - Mã hóa dịch vụ xác thực backend |||| | | - Thiết lập thư viện UI/CSS (ví dụ: Tailwind, Material UI), định nghĩa các biến CSS toàn cục, xây dựng các thành phần cơ bản (Button, Input, Card).|||| | | - Dịch blog|||Blog 2 đã dịch, Blog 3 đã dịch| | 5 | - Dịch vụ Xác thực Backend Mã |03/10/2025|03/10/2025|| | | - Thiết lập thư viện UI/CSS (ví dụ: Tailwind, Material UI), định nghĩa các biến CSS toàn cục, xây dựng các Thành phần cơ bản (Nút, Đầu vào, Thẻ).|||| | | - Frontend Mã: Xây dựng Header, Footer, Sidebar và Landing Page. Đảm bảo thiết kế đáp ứng cơ bản.|||| | | - Dịch blog|||Blog đã dịch 4, Blog đã dịch 5|</description>
     </item>
     <item>
       <title>Week 5 Worklog</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</guid>
       <description>Week 5 Objectives&#xD;Continue frontend and backend development Learn EC2 Auto Scaling Group Practice AWS CloudShell setups Translate blogs. Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 06/10/2025 06/10/2025 - Translate blogs Translated Blog 6, Translated Blog 7 - Code backend Authentication Service, User Service - Install state management library (Redux), define the initial State Model, integrate API services for Login/Register pages. 2 - Learn and practice EC2 Auto Scaling Group 07/10/2025 07/10/2025 Module-03-02 - EC2 Autoscaling - EFS/FSx - Lightsail - MGN, AWS EC2 Auto Scaling : Step By Step Tutorial - Code backend Authentication Service, User Service, Taskflow Service - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Translate blog Translated Blog 8, Translated Blog 9 3 - Code backend Authentication Service, User Service 08/10/2025 08/10/2025 - Learn and pratice Kafka for messaging - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Update worklog 4 - Code backend Authentication Service, User Service 09/10/2025 09/10/2025 - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Learn about Caching to apply cache for database - Translate blog Translated Blog 10, Translated Blog 11 5 - Learn and practice using CloudShell 10/10/2025 10/10/2025 AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Translate blog Translated Blog 12</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 6</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</guid>
       <description>Mục tiêu Tuần 6&#xD;Tiếp tục phát triển front-end và back-end Khám phá Elasticache cho Redis và các dịch vụ Amazon RDS Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|——————————————————————————————|————————-|———————————————–|</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 7</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</guid>
       <description>Mục tiêu Tuần 7&#xD;Mã Backend Dịch vụ Người dùng và Dịch vụ Thông báo Mã Frontend Khám phá dịch vụ Cân bằng Tải Ứng dụng Tìm hiểu cách triển khai hệ thống trên tài nguyên đám mây Kiểm tra việc triển khai Frontend trên S3 Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————————-|——————————————————– | | 1 | - Họp nhóm để thảo luận về quy trình phát triển | 20/10/2025 | 20/10/2025 || | | - Mã Backend Dịch vụ Người dùng, Dịch vụ Thông báo |||| | | - Mã Frontend: Phát triển Trang Chi tiết và tích hợp API Get By ID. Xây dựng chức năng Tìm kiếm/Lọc nâng cao.|||| | 2 | - Tìm hiểu về Application Load Balancer|21/10/2025|21/10/2025|AWS ALB (Application Load Balancer) - Hướng dẫn từng bước, Tạo Application Load Balancer (ALB) trong AWS - Hướng dẫn AWS Elastic Load Balancing dành cho người mới bắt đầu| | | - Mã backend User Service, Notification Service |||| | | - Mã frontend: Phát triển Trang Chi tiết và tích hợp API Get By ID. Xây dựng chức năng Tìm kiếm/Lọc nâng cao.|||| | 3 | - Tìm hiểu cách triển khai hệ thống trên tài nguyên đám mây | 22/10/2025|22/10/2025|| | | - Mã backend User Service, Notification Service |||| | | - Mã frontend: Phát triển Trang Chi tiết và tích hợp API Get By ID. Xây dựng chức năng Tìm kiếm/Lọc nâng cao. |||| | 4 | - Mã backend Dịch vụ Người dùng, Dịch vụ Thông báo |23/10/2025|23/10/2025|| | | - Mã frontend: Phát triển Trang Chi tiết và tích hợp API Get By ID. Xây dựng chức năng Tìm kiếm/Lọc nâng cao. Xây dựng các hộp thoại, cửa sổ bật lên, tính năng kéo thả. Hoàn thành 80% quy trình nghiệp vụ chính. |||| | 5 | - Mã backend Dịch vụ Người dùng, Dịch vụ Thông báo |24/10/2025|24/10/2025|| | | - Mã frontend: Xây dựng các hộp thoại, cửa sổ bật lên, tính năng kéo thả. Hoàn thành 80% quy trình nghiệp vụ chính. |||| | | - Kiểm tra việc triển khai Frontend trên S3||||</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 8</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html</guid>
       <description>Mục tiêu Tuần 8&#xD;Code Backend - Dịch vụ Người dùng và Dịch vụ Thông báo Code Frontend Khám phá dịch vụ Cân bằng Tải Ứng dụng Tìm hiểu cách triển khai hệ thống trên tài nguyên đám mây Kiểm tra việc triển khai Frontend trên S3 Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————————-|——————————————————– | | 1 | - Họp nhóm để thảo luận về quy trình phát triển | 27/10/2025 | 27/10/2025 || | | - Xây dựng giao diện Thông báo cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend.|||| | | - Kiểm tra mã dịch vụ|||| | 2 | - Code front end: Viết Unit Test cho các thành phần và chức năng chính. Thực hiện Kiểm tra Tích hợp cho các luồng nghiệp vụ chính. | 28/10/2025| 28/10/2025||||| | | - Code backend User Service, Notification Service | | - Học và thực hành ALB|||| | 3 | - Code front end: Viết Unit Test cho các thành phần và chức năng chính. Thực hiện Kiểm tra Tích hợp cho các luồng nghiệp vụ chính. | 29/10/2025| 29/10/2025||||| | | - Code backend User Service, Notification Service | | - Thử nghiệm triển khai tài nguyên tĩnh trên S3 | 4 | - Code front end: Tối ưu hóa hiệu suất tải (Chia mã, Tải chậm). | 30/10/2025| 30/10/2025||||| | | - Code backend User Service, Notification Service | 5 | - Mã nguồn front-end: Cải thiện khả năng truy cập (A11Y) và xử lý lỗi (Giới hạn lỗi).|31/10/2025|31/10/2025|||||</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 9</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</guid>
       <description>Mục tiêu Tuần 9&#xD;Xem xét và kiểm tra mã dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Các nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quy trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. - Kiểm tra mã dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth - Cập nhật nhật ký công việc 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực 5 - Kiểm tra các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 10</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html</guid>
       <description>Mục tiêu Tuần 10&#xD;Thực hiện UAT nội bộ cho frontend, thu thập phản hồi, khắc phục sự cố UI và tinh chỉnh giao diện người dùng trong suốt tuần Sửa lỗi backend chủ yếu trong Task Service, cùng với các bản sửa lỗi bổ sung trong User Service Tham gia các cuộc họp nhóm để thảo luận về quy trình phát triển, điều chỉnh kiến ​​trúc và các sự cố backend Cập nhật nhật ký công việc và duy trì theo dõi tiến độ Các công việc cần thực hiện trong tuần này&#xD;| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————|———————————————-|</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 11</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</guid>
       <description>Mục tiêu Tuần 11&#xD;Tìm lỗi và sửa lỗi Hoàn thiện kiến ​​trúc giải pháp Nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|——————————————————————————————|————————-|———————————————–|</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 12</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</guid>
       <description>Mục tiêu Tuần 12&#xD;Nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để xem xét các vấn đề cần giải quyết 24/11/2025 24/11/2025 - Triển khai S3 vùng đơn thử nghiệm 2 - Hoàn thành phần 4. Các sự kiện tham gia Hội thảo 25/11/2025 25/11/2025 - Triển khai S3 vùng đơn thử nghiệm 3 - Triển khai VPC thử nghiệm 26/11/2025 26/11/2025 - Thực hành sử dụng RDS MySQL, ElastiCacheForRedis 4 - Cấu hình Google OAuth 27/11/2025 27/11/2025 - Thực hành sử dụng RDS MySQL, ElastiCacheForRedis 5 - Điều chỉnh kiến ​​trúc giải pháp thành vùng đơn (như đối với tài khoản miễn phí và giới hạn chi phí) 28/11/2025 28/11/2025 - Triển khai tài nguyên frontend lên S3 thành công - Cập nhật nhật ký công việc, hội thảo</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 13</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html</guid>
       <description>Mục tiêu Tuần 13&#xD;Nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để xem xét các vấn đề cần giải quyết 01/11/2025 01/11/2025 - Thiết lập VPC, Mạng con, Cổng Internet, Nhóm bảo mật - Cập nhật nhật ký công việc: tạo danh mục nhật ký công việc dựa trên thành viên nhóm 2 - Thiết lập VPC, Mạng con, Cổng Internet 02/11/2025 02/11/2025 - Thiết lập ALB, Nhóm bảo mật, RDS MySQL 3 - Thiết lập VPC, Mạng con, Cổng Internet, Nhóm bảo mật 03/11/2025 03/11/2025 - Triển khai hình ảnh lên ECR, ECS Fargate - Thiết lập ALB, Nhóm bảo mật, RDS MySQL 4 - Triển khai hình ảnh lên ECR, ECS Fargate, ALB, RDS 04/11/2025 04/11/2025 - Thiết lập ALB, Nhóm bảo mật, RDS MySQL 5 - Triển khai hình ảnh lên ECR, ECS Fargate, ALB, RDS 05/11/2025 05/11/2025 - Thiết lập ALB, Nhóm bảo mật, RDS MySQL - Cấu hình Google OAuth Redirect</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 14</title>
-      <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html</link>
+      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html</guid>
+      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html</guid>
       <description>Mục tiêu Tuần 14&#xD;Nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Hoàn thành triển khai ECS Fargate, chạy thử nghiệm 08/11/2025 08/11/2025 - Hoàn thành nhật ký công việc &amp; Hội thảo 2 09/11/2025 09/11/2025 3 10/11/2025 10/11/2025 4 11/11/2025 11/11/2025 5 12/11/2025 12/11/2025</description>
     </item>
   </channel>

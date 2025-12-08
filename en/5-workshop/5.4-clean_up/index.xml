@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clean Up :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
     <description>Cleanup Guide&#xD;This guide provides a comprehensive instruction to completely terminate all deployed AWS resources across the ap-southeast-1 (Singapore) and us-east-1 (N. Virginia) regions. The sequence is optimized to avoid orphaned resources and subsequent charges.&#xA;I. Deployed AWS Services Summary&#xD;Before proceeding, verify the existence of the following active services in your account:</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.4-clean_up/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network &amp; Security Preparation (VPC, SG) :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
     <description>This phase establishes the foundational network infrastructure and security boundaries for the microservices deployment.&#xA;VPC and Subnet Configuration&#xD;Step 1: Create VPC Infrastructure&#xA;Navigate to VPC Console → Create VPC Select VPC and more option Configure VPC parameters: Parameter Value Rationale Name tag auto-generation SGU-Microservices Naming convention IPv4 CIDR block 10.0.0.0/16 Standard private network range Number of Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) High availability across AZs Number of public subnets 2 For internet-facing resources Number of private subnets 2 For data layer isolation NAT gateways None Cost optimization (~$30/month savings) VPC endpoints None Cost optimization DNS options Enable DNS hostnames + Enable DNS resolution Required for service discovery Click Create VPC Network Architecture Result:</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 3 :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
     <description>Mục tiêu Tuần 3&#xD;Học Mô-đun 2 trong danh sách phát First Cloud Journey Bootcamp – 2025 Tìm hiểu và làm quen với Route 53, CloudFormation và các tính năng liên quan Thiết kế cơ sở dữ liệu và thiết lập Backend &amp; Frontend Cập nhật cấu trúc nhật ký công việc Các công việc cần thực hiện trong tuần này&#xD;| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|————————————————————————————————|————————-|——————————————————– | | 1 | - Tìm hiểu về Route 53 và các tính năng của nó | 22/09/2025 | 22/09/2025 | Tuyến đường 53| | 2 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 23/09/2025 | 23/09/2025 | Tạo cặp khóa, Khởi tạo mẫu CloudFormation| | 3 | - Thực hành tạo cặp khóa, mẫu CloudFormation, cấu hình nhóm bảo mật | 24/09/2025 | 24/09/2025 | Tạo cặp khóa, Khởi tạo mẫu CloudFormation, Cấu hình nhóm bảo mật| | | - Họp nhóm và thảo luận về thiết kế cơ sở dữ liệu, Backend, Frontend||| | 4 | - Thực hành kết nối với Remote Desktop Gateway (RDGW) bằng Giao thức Remote Desktop (RDP)| 25/09/2025 | 25/09/2025 | Kết nối với RDGW, Hướng dẫn trên Youtube| | | - Thiết kế kiến ​​trúc giải pháp|||| | | - Họp nhóm để thảo luận về dự án hội thảo|||| | 5 | - Thực hành triển khai Microsoft Active Directory| 26/09/2025 | 26/09/2025 | Triển khai Microsoft Active Directory| | | - Thực hành triển khai Microsoft Active Directory||| Triển khai Microsoft Active Directory| | | - Thực hành cấu hình DNS||| Cấu hình DNS| | | - Cập nhật nhật ký công việc||||</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/1-worklog/1.3-week_3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

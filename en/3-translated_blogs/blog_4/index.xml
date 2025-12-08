@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 4 :: Internship Report</title>
-    <link>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html</link>
     <description>Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên&#xD;Jagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink&#xA;Giới thiệu&#xD;ArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_4/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

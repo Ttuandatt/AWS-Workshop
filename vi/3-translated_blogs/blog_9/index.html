@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head><script src="/AWS-Workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS-Workshop/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
@@ -12,7 +12,7 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
     <meta name="twitter:title" content="Blog 9 :: Báo Cáo Thực Tập">
     <meta name="twitter:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
 Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
-    <meta property="og:url" content="http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Blog 9 :: Báo Cáo Thực Tập">
     <meta property="og:description" content="Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM EmeraldTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies
@@ -24,38 +24,38 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
 Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).">
     <meta itemprop="wordCount" content="826">
     <title>Blog 9 :: Báo Cáo Thực Tập</title>
-    <link href="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="x-default">
-    <link href="http://localhost:1313/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="en">
-    <link href="http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="vi">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html" rel="alternate" hreflang="vi">
     <link href="../../../vi/3-translated_blogs/blog_9/index.xml" rel="alternate" type="application/rss+xml" title="Blog 9 :: Báo Cáo Thực Tập">
-    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765207503" rel="stylesheet">
-    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/search-lunr.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/search.js?1765207503" defer></script>
+    <link href="../../../AWS-Workshop/css/auto-complete/auto-complete.min.css?1765207793" rel="stylesheet">
+    <script src="../../../AWS-Workshop/js/auto-complete/auto-complete.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/search-lunr.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/search.min.js?1765207793" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.vi.js?1765207503";
+      window.relearn.index_js_url="../../../searchindex.vi.js?1765207793";
     </script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765207503" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.multi.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/lunr/lunr.vi.min.js?1765207793" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207503" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207503" rel="stylesheet"></noscript>
-    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765207503" rel="stylesheet">
-    <link href="../../../css/theme.css?1765207503" rel="stylesheet">
-    <link href="../../../css/format-html.css?1765207503" rel="stylesheet" id="R-format-style">
+    <link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207793" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765207793" rel="stylesheet"></noscript>
+    <link href="../../../AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765207793" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1765207793" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1765207793" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = ``;
+      window.relearn.min = `.min`;
       window.relearn.path='\/3-translated_blogs\/blog_9\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -99,7 +99,7 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="../../../css/custom.css?1765207503" rel="stylesheet">
+    <link href="../../../css/custom.css?1765207793" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="../../../vi/3-translated_blogs/blog_9/index.html">
     <div id="R-body" class="default-animation">
@@ -227,8 +227,8 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
 </li>
 </ul>
 <p>Cả hai thiết bị đều được triển khai tại <strong>Vùng Châu Âu (Stockholm)</strong>, mở rộng lựa chọn phần cứng cho các hoạt động nghiên cứu và phát triển thuật toán lượng tử.</p>
-<p><a href="#R-image-e8f1aa31ef713cf9703b7d17c2fe8561" class="lightbox-link"><img alt="IQM Emerald" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e8f1aa31ef713cf9703b7d17c2fe8561"><img alt="IQM Emerald" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg"></a></p>
+<p><a href="#R-image-c64d1add2ce760200b76a0e622ca8d81" class="lightbox-link"><img alt="IQM Emerald" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c64d1add2ce760200b76a0e622ca8d81"><img alt="IQM Emerald" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh10.jpg"></a></p>
 <p><strong>Hình 1:</strong> Bộ xử lý lượng tử IQM Emerald</p>
 <p>Trong giai đoạn hiện tại của điện toán lượng tử, việc thử nghiệm trên nhiều nền tảng phần cứng là cực kỳ quan trọng nhằm đánh giá và phát triển thuật toán cho các bài toán phức tạp trong tài chính, năng lượng, dược phẩm và logistics. Với Amazon Braket, khách hàng có thể chạy workload lượng tử:</p>
 <ul>
@@ -275,8 +275,8 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
 </li>
 </ul>
 <p>Các chỉ số cập nhật được hiển thị trong Braket Console.</p>
-<p><a href="#R-image-df2b6742011fe5e8832ddb39b2b910ca" class="lightbox-link"><img alt="Emerald topology" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-df2b6742011fe5e8832ddb39b2b910ca"><img alt="Emerald topology" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg"></a></p>
+<p><a href="#R-image-ef0609d75dfdf98a65af06ea97b87dc8" class="lightbox-link"><img alt="Emerald topology" class="lazy lightbox figure-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ef0609d75dfdf98a65af06ea97b87dc8"><img alt="Emerald topology" class="lazy lightbox lightbox-image" loading="lazy" src="../../../aws/hinhanh/hinh11.jpg"></a></p>
 <p><strong>Hình 2:</strong> Topology lưới vuông 54-qubit của QPU Emerald</p>
 <hr>
 <h2 id="tính-khả-dụng-và-khả-năng-truy-cập">
@@ -462,8 +462,8 @@ Giới thiệuAmazon Braket cho phép khách hàng thiết kế và chạy thu�
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765207503" defer></script>
-    <script src="../../../AWS-Workshop/js/theme.js?1765207503" defer></script>
+    <script src="../../../AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765207793" defer></script>
+    <script src="../../../AWS-Workshop/js/theme.min.js?1765207793" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

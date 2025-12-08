@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Đề xuất :: Báo Cáo Thực Tập</title>
-    <link>http://localhost:1313/AWS-Workshop/vi/2-proposal/index.html</link>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</link>
     <description>Nền tảng Quản lý Tác vụ SaaS Tối Ưu Chi Phí&#xD;Khả năng Sẵn sàng Cao (HA) Đơn Vùng với ECS Fargate&#xD;1. Tóm Tắt Điều Hành (Executive Summary)&#xD;Nền tảng Quản lý Tác vụ SaaS được thiết kế để mang lại trải nghiệm cộng tác tương tự Todoist với Khả năng Sẵn sàng Cao (HA) và Hiệu Quả Chi Phí, được tối ưu hóa đặc biệt cho các giới hạn của AWS Free Tier.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/AWS-Workshop/vi/2-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
