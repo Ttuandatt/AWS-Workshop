@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Services Deployment (Following priority order and verification) :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html</link>
     <description>This phase deploys containerized applications to ECS Fargate following a specific order to ensure proper dependency resolution.&#xA;Critical Network Configuration&#xD;For ALL service deployments, the following network settings are mandatory:&#xA;1. VPC: SGU-Microservices-VPC&#xA;2. Subnets: Select both Public Subnets (required for image pulling)&#xA;3. Security Group: ecs-app-sg (remove default)&#xA;4. Public IP: Turned on (critical for ECR access)</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

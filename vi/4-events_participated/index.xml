@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Events Participated :: Báo Cáo Thực Tập</title>
+    <title>Sự kiện đã tham gia :: Báo Cáo Thực Tập</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</link>
-    <description>During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.&#xA;Event 1&#xD;Event Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025&#xA;Date &amp; Time: 8:30 AM Saturday, September 6, 2025&#xA;Location: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City</description>
+    <description>Trong thời gian thực tập, tôi đã tham gia hai sự kiện. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại nhiều kiến thức mới, thú vị và hữu ích, cùng với những phần quà và khoảnh khắc ý nghĩa.&#xA;Sự kiện 1&#xD;Tên sự kiện: Kick-off AWS FCJ Workforce – FPTU OJT FALL 2025</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.xml" rel="self" type="application/rss+xml" />

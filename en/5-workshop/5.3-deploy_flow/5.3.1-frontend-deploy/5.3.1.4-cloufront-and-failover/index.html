@@ -5,49 +5,49 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)BƯỚC 3.1: Tạo DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
-Distribution type: Giữ nguyên Single website or app.">
+    <meta name="description" content="STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)STEP 3.1: Create DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
+Distribution type: Keep Single website or app.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ClouFront and Failover :: Internship Report">
-    <meta name="twitter:description" content="GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)BƯỚC 3.1: Tạo DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
-Distribution type: Giữ nguyên Single website or app.">
+    <meta name="twitter:description" content="STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)STEP 3.1: Create DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
+Distribution type: Keep Single website or app.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="ClouFront and Failover :: Internship Report">
-    <meta property="og:description" content="GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)BƯỚC 3.1: Tạo DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
-Distribution type: Giữ nguyên Single website or app.">
+    <meta property="og:description" content="STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)STEP 3.1: Create DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
+Distribution type: Keep Single website or app.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="ClouFront and Failover :: Internship Report">
-    <meta itemprop="description" content="GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)BƯỚC 3.1: Tạo DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
-Distribution type: Giữ nguyên Single website or app.">
-    <meta itemprop="wordCount" content="532">
+    <meta itemprop="description" content="STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)STEP 3.1: Create DistributionStep 1: Get startedDistribution name: sgutodolist-frontend-cloudfront
+Distribution type: Keep Single website or app.">
+    <meta itemprop="wordCount" content="527">
     <title>ClouFront and Failover :: Internship Report</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.xml" rel="alternate" type="application/rss+xml" title="ClouFront and Failover :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765170765" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765170765" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765170765";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765203878";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765170765" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170765" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170765" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765170765" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765170765" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765170765" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -99,7 +99,7 @@ Distribution type: Giữ nguyên Single website or app.">
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765170765" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html">
     <div id="R-body" class="default-animation">
@@ -133,9 +133,9 @@ Distribution type: Giữ nguyên Single website or app.">
   <ul>
     <li>
       <ul>
-        <li><a href="#giai-đoạn-3-cấu-hình-cloudfront-cdn--failover">GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)</a></li>
-        <li><a href="#bước-31-tạo-distribution">BƯỚC 3.1: Tạo Distribution</a></li>
-        <li><a href="#bước-31-bổ-sung-cấu-hình-sau-khi-tạo-bắt-buộc">BƯỚC 3.1 (Bổ sung): Cấu hình sau khi tạo (Bắt buộc)</a></li>
+        <li><a href="#stage-3-configuration-cloudfront-cdn--failover">STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)</a></li>
+        <li><a href="#step-31-create-distribution">STEP 3.1: Create Distribution</a></li>
+        <li><a href="#step-31-additional-post-creation-configuration-required">STEP 3.1 (Additional): Post-creation configuration (Required)</a></li>
       </ul>
     </li>
   </ul>
@@ -195,8 +195,8 @@ Distribution type: Giữ nguyên Single website or app.">
 
 <h1 id="cloufront-and-failover">ClouFront and Failover</h1>
 
-<h3 id="giai-đoạn-3-cấu-hình-cloudfront-cdn--failover">
-  GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)
+<h3 id="stage-3-configuration-cloudfront-cdn--failover">
+  STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)
 
 
 
@@ -205,8 +205,8 @@ Distribution type: Giữ nguyên Single website or app.">
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><h3 id="bước-31-tạo-distribution">
-  BƯỚC 3.1: Tạo Distribution
+</h3><h3 id="step-31-create-distribution">
+  STEP 3.1: Create Distribution
 
 
 
@@ -230,21 +230,19 @@ Distribution type: Giữ nguyên Single website or app.">
 <p><strong>Distribution name:</strong> <code>sgutodolist-frontend-cloudfront</code></p>
 </li>
 <li>
-<p><strong>Distribution type:</strong> Giữ nguyên <strong>Single website or app</strong>.</p>
+<p><strong>Distribution type:</strong> Keep <strong>Single website or app</strong>.</p>
 </li>
 <li>
 <p><strong>Domain:</strong></p>
-<ul>
-<li>
-<p>Tại ô <strong>Route 53 managed domain</strong>, nhập: <code>sgutodolist.com</code>.</p>
 </li>
 <li>
-<p>(Nếu có ô Alternate domain names, nhập thêm <code>www.sgutodolist.com</code> nếu giao diện cho phép, nếu không ta sẽ thêm sau).</p>
-</li>
-</ul>
+<p>In the <strong>Route 53 managed domain</strong> box, enter: <code>sgutodolist.com</code>.</p>
 </li>
 <li>
-<p>Bấm <strong>Next</strong>.</p>
+<p>(If there is an Alternate domain names box, enter <code>www.sgutodolist.com</code> if the interface allows, otherwise we will add it later).</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -266,25 +264,25 @@ Distribution type: Giữ nguyên Single website or app.">
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ul>
 <li>
-<p><strong>Origin type:</strong> Chọn <strong>Amazon S3</strong>.</p>
+<p><strong>Origin type:</strong> Select <strong>Amazon S3</strong>.</p>
 </li>
 <li>
 <p><strong>Origin:</strong></p>
-<ul>
-<li>Bấm vào ô tìm kiếm, chọn bucket Singapore: <code>sgutodolist-frontend-sg...</code>.</li>
-</ul>
+</li>
+<li>
+<p>Click on the search box, select bucket Singapore: <code>sgutodolist-frontend-sg...</code>.</p>
 </li>
 <li>
 <p><strong>Allow private S3 bucket access to CloudFront:</strong></p>
-<ul>
-<li>Chọn: <strong>Allow private S3 bucket access to CloudFront - Recommended</strong>.</li>
-</ul>
 </li>
 <li>
-<p><strong>Cache settings:</strong> Giữ nguyên &ldquo;Use recommended cache settings&hellip;&rdquo;.</p>
+<p>Select: <strong>Allow private S3 bucket access to CloudFront - Recommended</strong>.</p>
 </li>
 <li>
-<p>Bấm <strong>Next</strong>.</p>
+<p><strong>Cache settings:</strong> Leave &ldquo;Use recommended cache settings&hellip;&rdquo; unchanged.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -307,12 +305,12 @@ Distribution type: Giữ nguyên Single website or app.">
 </h4><ul>
 <li>
 <p><strong>Web Application Firewall (WAF):</strong></p>
-<ul>
-<li>Chọn ô bên phải: <strong>Do not enable security protections</strong> (để tiết kiệm chi phí).</li>
-</ul>
 </li>
 <li>
-<p>Bấm <strong>Next</strong>.</p>
+<p>Check the box on the right: <strong>Do not enable security protections</strong> (to save costs).</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -335,12 +333,12 @@ Distribution type: Giữ nguyên Single website or app.">
 </h4><ul>
 <li>
 <p><strong>TLS certificate:</strong></p>
-<ul>
-<li>Chọn chứng chỉ ACM đã tạo: <code>sgutodolist.com (...)</code>.</li>
-</ul>
 </li>
 <li>
-<p>Bấm <strong>Next</strong>.</p>
+<p>Select the generated ACM certificate: <code>sgutodolist.com (...)</code>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -361,7 +359,7 @@ Distribution type: Giữ nguyên Single website or app.">
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ul>
-<li>Kéo xuống dưới cùng và bấm nút màu cam <strong>Create distribution</strong>.</li>
+<li>Scroll down to the bottom and click the orange button <strong>Create distribution</strong>.</li>
 </ul>
 <div style="text-align:center;">
   <figure>
@@ -371,8 +369,8 @@ Distribution type: Giữ nguyên Single website or app.">
 </div>
 
 <hr>
-<h3 id="bước-31-bổ-sung-cấu-hình-sau-khi-tạo-bắt-buộc">
-  BƯỚC 3.1 (Bổ sung): Cấu hình sau khi tạo (Bắt buộc)
+<h3 id="step-31-additional-post-creation-configuration-required">
+  STEP 3.1 (Additional): Post-creation configuration (Required)
 
 
 
@@ -381,15 +379,21 @@ Distribution type: Giữ nguyên Single website or app.">
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Origin access control:</strong> bước này làm sau khi tạo Distribution thành công, vào tab Origin của Distribution vừa tạo, click vào origin và nhấn edit</p>
-<pre><code>-   Click **Create new OAC**.
-
--   Name: `S3-OAC-HA`.
-
--   Signing behavior: **Sign requests**.
-
--   Click **Create**.
-</code></pre>
+</h3><p><strong>Origin access control:</strong> This step is done after successfully creating a Distribution, go to the Origin tab of the newly created Distribution, click on origin and click edit</p>
+<ul>
+<li>
+<p>Click <strong>Create new OAC</strong>.</p>
+</li>
+<li>
+<p>Name: <code>S3-OAC-HA</code>.</p>
+</li>
+<li>
+<p>Signing behavior: <strong>Sign requests</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
+</ul>
 <div style="text-align:center;">
   <figure>
     <img src="/images/fe3.1_6.jpg" alt="">
@@ -397,17 +401,17 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<p>Tiếp đó:</p>
-<p><strong>1. Copy Policy (Quan trọng):</strong></p>
+<p>Next:</p>
+<p><strong>1. Copy Policy (Important):</strong></p>
 <ul>
 <li>
-<p>Click vào Distribution vừa tạo</p>
+<p>Click on the newly created Distribution</p>
 </li>
 <li>
-<p>Vào tab Origin của Distribution vừa tạo</p>
+<p>Go to the Origin tab of the newly created Distribution</p>
 </li>
 <li>
-<p>Click vào origin trong danh sách Origins và nhấn nút Edit</p>
+<p>Click on the origin in the Origins list and click the Edit button</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -418,7 +422,7 @@ Distribution type: Giữ nguyên Single website or app.">
 </div>
 
 <ul>
-<li>Bấm nút <strong>Copy policy</strong> ở Origin access control.</li>
+<li>Click the <strong>Copy policy</strong> button in the Origin access control.</li>
 </ul>
 <div style="text-align:center;">
   <figure>
@@ -428,7 +432,7 @@ Distribution type: Giữ nguyên Single website or app.">
 </div>
 
 <ul>
-<li>Sang tab S3 Console &gt; Bucket Singapore &gt; Permissions &gt; Bucket Policy &gt; Paste vào &gt; Save.</li>
+<li>Go to the S3 Console tab &gt; Bucket Singapore &gt; Permissions &gt; Bucket Policy &gt; Paste &gt; Save.</li>
 </ul>
 <div style="text-align:center;">
   <figure>
@@ -437,25 +441,25 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<p><strong>2. Thêm Default Root Object (Sửa lỗi màn hình trắng):</strong></p>
+<p><strong>2. Add Default Root Object (Fix white screen error):</strong></p>
 <ul>
 <li>
-<p>Trong màn hình chi tiết Distribution vừa tạo, chọn tab <strong>General</strong> (Tab đầu tiên).</p>
+<p>In the newly created Distribution details screen, select the <strong>General</strong> tab (first tab).</p>
 </li>
 <li>
-<p>Kéo xuống mục <strong>Settings</strong>, bấm nút <strong>Edit</strong> (nằm bên phải mục Settings).</p>
+<p>Scroll down to the <strong>Settings</strong> section, click the <strong>Edit</strong> button (located to the right of the Settings section).</p>
 </li>
 <li>
-<p>Tìm ô <strong>Default root object</strong>.</p>
+<p>Find the <strong>Default root object</strong> box.</p>
 </li>
 <li>
-<p>Nhập: <code>index.html</code>.</p>
+<p>Enter: <code>index.html</code>.</p>
 </li>
 <li>
-<p>(Tiện thể kiểm tra mục <strong>Alternate domain names (CNAMEs)</strong>: Đảm bảo đã có cả <code>sgutodolist.com</code> và <code>www.sgutodolist.com</code>. Nếu thiếu thì Add item thêm vào).</p>
+<p>(By the way, check the <strong>Alternate domain names (CNAMEs)</strong> section: Make sure both <code>sgutodolist.com</code> and <code>www.sgutodolist.com</code> are present. If missing, add the item).</p>
 </li>
 <li>
-<p>Kéo xuống bấm <strong>Save changes</strong>.</p>
+<p>Scroll down and click <strong>Save changes</strong>.</p>
 </li>
 </ul>
 <div style="text-align:center;">
@@ -465,8 +469,8 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<h4 id="bước-32-thêm-origin-phụ-virginia">
-  Bước 3.2: Thêm Origin Phụ (Virginia)
+<h4 id="step-32-add-secondary-origin-virginia">
+  Step 3.2: Add Secondary Origin (Virginia)
 
 
 
@@ -477,25 +481,25 @@ Distribution type: Giữ nguyên Single website or app.">
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ol>
 <li>
-<p>Vào Distribution vừa tạo &gt; Tab <strong>Origins</strong>.</p>
+<p>Go to the newly created Distribution &gt; <strong>Origins</strong> tab.</p>
 </li>
 <li>
 <p>Click <strong>Create origin</strong>.</p>
+</li>
+</ol>
 <ul>
 <li>
-<p><strong>Origin domain:</strong> Chọn bucket Virginia (<code>sgutodolist-frontend-us.s3...</code>).</p>
+<p><strong>Origin domain:</strong> Select the Virginia bucket (<code>sgutodolist-frontend-us.s3...</code>).</p>
 </li>
 <li>
-<p><strong>Origin access:</strong> Chọn lại cái <code>S3-OAC-HA</code> đã tạo lúc nãy.</p>
+<p><strong>Origin access:</strong> Reselect the <code>S3-OAC-HA</code> created earlier.</p>
 </li>
 <li>
 <p><strong>Name:</strong> <code>Failover-US</code>.</p>
 </li>
 </ul>
-</li>
-<li>
-<p>Click <strong>Create origin</strong>.</p>
-</li>
+<ol start="3">
+<li>Click <strong>Create origin</strong>.</li>
 </ol>
 <div style="text-align:center;">
   <figure>
@@ -511,8 +515,8 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<h4 id="bước-33-tạo-origin-group-kích-hoạt-high-availability">
-  Bước 3.3: Tạo Origin Group (Kích hoạt High Availability)
+<h4 id="step-33-create-origin-group-enable-high-availability">
+  Step 3.3: Create Origin Group (Enable High Availability)
 
 
 
@@ -523,24 +527,26 @@ Distribution type: Giữ nguyên Single website or app.">
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ol>
 <li>
-<p>Vẫn ở tab Origins &gt; Click <strong>Create origin group</strong>.</p>
+<p>Still on the Origins tab &gt; Click <strong>Create origin group</strong>.</p>
 </li>
 <li>
 <p><strong>Name:</strong> <code>HighAvailability-Group</code>.</p>
 </li>
 <li>
 <p><strong>Origins:</strong></p>
+</li>
+</ol>
 <ul>
 <li>
-<p>Add <code>Primary-SG</code> (Lên trên - Ưu tiên 1).</p>
+<p>Add <code>Primary-SG</code> (Up - Priority 1).</p>
 </li>
 <li>
-<p>Add <code>Failover-US</code> (Xuống dưới - Ưu tiên 2).</p>
+<p>Add <code>Failover-US</code> (Down - Priority 2).</p>
 </li>
 </ul>
-</li>
+<ol start="4">
 <li>
-<p><strong>Failover criteria:</strong> Tích chọn: <strong>500, 502, 503, 504</strong>.</p>
+<p><strong>Failover criteria:</strong> Select: <strong>500, 502, 503, 504</strong>.</p>
 </li>
 <li>
 <p>Click <strong>Create origin group</strong>.</p>
@@ -553,7 +559,7 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<p>Ta sẽ có 2 origins và 1 origin group:
+<p>We will have 2 origins and 1 origin group:
 <div style="text-align:center;">
   <figure>
     <img src="/images/fe3.3_2.jpg" alt="">
@@ -561,8 +567,8 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 </p>
-<h4 id="bước-34-cập-nhật-behavior">
-  Bước 3.4: Cập nhật Behavior
+<h4 id="step-34-update-behavior">
+  Step 3.4: Update Behavior
 
 
 
@@ -573,10 +579,10 @@ Distribution type: Giữ nguyên Single website or app.">
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ol>
 <li>
-<p>Tab <strong>Behaviors</strong> &gt; Chọn <code>Default (*)</code> &gt; <strong>Edit</strong>.</p>
+<p><strong>Behaviors</strong> Tab &gt; Select <code>Default (*)</code> &gt; <strong>Edit</strong>.</p>
 </li>
 <li>
-<p><strong>Origin and origin groups:</strong> Đổi từ <code>Primary-SG</code> sang <strong><code>HighAvailability-Group</code></strong>.</p>
+<p><strong>Origin and origin groups:</strong> Change from <code>Primary-SG</code> to <strong><code>HighAvailability-Group</code></strong>.</p>
 </li>
 <li>
 <p>Click <strong>Save changes</strong>.</p>
@@ -589,8 +595,8 @@ Distribution type: Giữ nguyên Single website or app.">
   </figure>
 </div>
 
-<h4 id="bước-35-cấu-hình-spa-routing-xử-lý-lỗi-404-react">
-  Bước 3.5: Cấu hình SPA Routing (Xử lý lỗi 404 React)
+<h4 id="step-35-configure-spa-routing-handle-404-react-errors">
+  Step 3.5: Configure SPA Routing (Handle 404 React errors)
 
 
 
@@ -604,7 +610,9 @@ Distribution type: Giữ nguyên Single website or app.">
 <p>Tab <strong>Error pages</strong> &gt; <strong>Create custom error response</strong>.</p>
 </li>
 <li>
-<p><strong>Rule 1 (Cho OAC):</strong></p>
+<p><strong>Rule 1 (For OAC):</strong></p>
+</li>
+</ol>
 <ul>
 <li>
 <p>HTTP error code: <strong>403</strong>.</p>
@@ -619,8 +627,6 @@ Distribution type: Giữ nguyên Single website or app.">
 <p>HTTP response code: <strong>200</strong>.</p>
 </li>
 </ul>
-</li>
-</ol>
 <div style="text-align:center;">
   <figure>
     <img src="/images/fe3.5_1.jpg" alt="">
@@ -629,13 +635,11 @@ Distribution type: Giữ nguyên Single website or app.">
 </div>
 
 <ol start="3">
-<li>
-<p><strong>Rule 2 (Cho React Router):</strong></p>
-<ul>
-<li>Tạo thêm 1 cái tương tự cho mã <strong>404</strong>. (Path vẫn là <code>/index.html</code>, code 200).</li>
-</ul>
-</li>
+<li><strong>Rule 2 (For React Router):</strong></li>
 </ol>
+<ul>
+<li>Create another similar one for the code <strong>404</strong>. (Path is still <code>/index.html</code>, code 200).</li>
+</ul>
 <div style="text-align:center;">
   <figure>
     <img src="/images/fe3.5_2.jpg" alt="">
@@ -646,10 +650,10 @@ Distribution type: Giữ nguyên Single website or app.">
 <hr>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 3: Route 53 and ACM
+⬅ STEP 3: Route 53 and ACM
 </a>
 <a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/" style="text-decoration: none; font-weight: bold;">
-BƯỚC 5: S3 Policy ➡
+STEP 5: S3 Policy ➡
 </a>
 </div>
   <footer class="footline">
@@ -707,13 +711,13 @@ BƯỚC 5: S3 Policy ➡
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
             <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
             <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu">
-            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1.  </b> Prerequisites</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"> <b> 5.3.1.2.  </b> S3 and Replication</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"> <b> 5.3.1.1. </b> Prerequisites</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"> <b> 5.3.1.2. </b> S3 and Replication</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html"> <b> 5.3.1.3.  </b> Route 53 and ACM</a></li>
-            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"> <b> 5.3.1.4.  </b> ClouFront and Failover</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"> <b> 5.3.1.5.  </b> S3 Policy</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"> <b> 5.3.1.6.  </b> DNS Record</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"> <b> 5.3.1.7.  </b> Deploy and Test</a></li></ul></li>
+            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"> <b> 5.3.1.4. </b> ClouFront and Failover</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"> <b> 5.3.1.5. </b> S3 Policy</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"> <b> 5.3.1.6. </b> DNS Record</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"> <b> 5.3.1.7. </b> Deploy and Test</a></li></ul></li>
             <li class="alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Backend Deploy</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
@@ -765,8 +769,8 @@ BƯỚC 5: S3 Policy ➡
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765170765" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765170765" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

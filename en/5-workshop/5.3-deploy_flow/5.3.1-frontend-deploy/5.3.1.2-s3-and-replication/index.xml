@@ -3,7 +3,7 @@
   <channel>
     <title>S3 and Replication :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</link>
-    <description>GIAI ĐOẠN 1: CHUẨN BỊ STORAGE (S3 &amp; REPLICATION)&#xD;Tạo nơi chứa resources, và một cơ chế tự động đồng bộ.&#xA;Bước 1.1: Tạo Bucket Chính (Singapore)&#xD;Vào S3 Console &gt; Chọn Region Asia Pacific (Singapore).&#xA;Click Create bucket.</description>
+    <description>PHASE 1: STORAGE PREPARATION (S3 &amp; REPLICATION)&#xD;This phase focuses on creating a durable storage layer for frontend resources and setting up an automated cross-region synchronization mechanism.&#xA;Step 1.1: Create the Primary Bucket (Singapore)&#xD;Open the Amazon S3 Console and select the Asia Pacific (Singapore) region.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.xml" rel="self" type="application/rss+xml" />

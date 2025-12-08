@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
+DNS ConfigurationStep 1: Create Route 53 A Record
+Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Completion & Verification (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
+DNS ConfigurationStep 1: Create Route 53 A Record
+Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Completion & Verification (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
+DNS ConfigurationStep 1: Create Route 53 A Record
+Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Completion & Verification (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
+DNS ConfigurationStep 1: Create Route 53 A Record
+Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta itemprop="wordCount" content="752">
+    <title>Completion &amp; Verification (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="vi">
+    <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.xml" rel="alternate" type="application/rss+xml" title="Completion &amp; Verification (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765203878";
+    </script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765203878" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.2-backend-deploy\/5.3.2.6-completion--verification-route-53-google-console-final-test\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#dns-configuration">DNS Configuration</a></li>
+        <li><a href="#google-oauth-configuration-update">Google OAuth Configuration Update</a></li>
+        <li><a href="#system-health-verification">System Health Verification</a></li>
+        <li><a href="#performance-baseline">Performance Baseline</a></li>
+        <li><a href="#post-deployment-security-checklist">Post-Deployment Security Checklist</a></li>
+        <li><a href="#final-deployment-checklist">Final Deployment Checklist</a></li>
+        <li><a href="#known-limitations-and-future-improvements">Known Limitations and Future Improvements</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting-guide">Troubleshooting Guide</a>
+      <ul>
+        <li><a href="#quick-diagnosis-commands">Quick Diagnosis Commands</a></li>
+        <li><a href="#emergency-rollback-procedure">Emergency Rollback Procedure</a></li>
+      </ul>
+    </li>
+    <li><a href="#success-criteria">Success Criteria</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Quy trình triển khai</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Triển khai Backend</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Completion &amp; Verification (Route 53, Google Console, Final Test)</span><meta itemprop="position" content="5"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html" title="Triển khai Services (Theo thứ tự ưu tiên và kiểm tra) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html" title="Clean Up (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="completion--verification-route-53-google-console-final-test">Completion &amp; Verification (Route 53, Google Console, Final Test)</h1>
+
+<p>This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.</p>
+<h3 id="dns-configuration">
+  DNS Configuration
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Step 1: Create Route 53 A Record</strong></p>
+<ol>
+<li>Navigate to <strong>Route 53</strong> → <strong>Hosted zones</strong></li>
+<li>Select <code>sgutodolist.com</code> hosted zone</li>
+<li>Click <strong>Create record</strong></li>
+<li>Configure record:
+<ul>
+<li><strong>Record name</strong>: <code>api</code></li>
+<li><strong>Record type</strong>: A</li>
+<li><strong>Alias</strong>: Enable</li>
+<li><strong>Route traffic to</strong>: Alias to Application Load Balancer</li>
+<li><strong>Region</strong>: Asia Pacific (Singapore)</li>
+<li><strong>Load balancer</strong>: Select <code>sgu-alb</code></li>
+</ul>
+</li>
+<li>Click <strong>Create records</strong></li>
+</ol>
+<p><strong>DNS Propagation:</strong> Wait 2-5 minutes for DNS changes to propagate.</p>
+<p><strong>Verification:</strong></p>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>nslookup sgutodolist.com
+# Should return ALB&#39;s IP addresses</code></pre></div>
+<hr>
+<h3 id="google-oauth-configuration-update">
+  Google OAuth Configuration Update
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Step 1: Update Authorized Redirect URIs</strong></p>
+<ol>
+<li>Access <strong>Google Cloud Console</strong> (console.cloud.google.com)</li>
+<li>Navigate to <strong>APIs &amp; Services</strong> → <strong>Credentials</strong></li>
+<li>Select your OAuth 2.0 Client ID</li>
+<li>Under <strong>Authorized redirect URIs</strong>, add:</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   https://sgutodolist.com/api/auth/login/oauth2/code/google</code></pre></div>
+<ol>
+<li>Click <strong>Save</strong></li>
+</ol>
+<p><strong>Note:</strong> Keep existing localhost URIs for local development.</p>
+<hr>
+<h3 id="system-health-verification">
+  System Health Verification
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Perform the following tests to verify deployment success:</p>
+<h4 id="test-1-api-gateway-health-check">
+  Test 1: API Gateway Health Check
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>curl https://sgutodolist.com/actuator/health</code></pre></div>
+<p><strong>Expected Response:</strong></p>
+<p>json</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>{
+  &#34;status&#34;: &#34;UP&#34;
+}</code></pre></div>
+<h4 id="test-2-individual-service-health-checks">
+  Test 2: Individual Service Health Checks
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Auth Service
+curl https://sgutodolist.com/api/auth/actuator/health
+
+# User Service
+curl https://sgutodolist.com/api/user/actuator/health
+
+# Taskflow Service
+curl https://sgutodolist.com/api/taskflow/actuator/health
+
+# Notification Service
+curl https://sgutodolist.com/api/notification/actuator/health</code></pre></div>
+<p>All should return <code>{&quot;status&quot;:&quot;UP&quot;}</code>.</p>
+<h4 id="test-3-service-discovery-verification">
+  Test 3: Service Discovery Verification
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>From the Bastion Host, verify internal DNS resolution:</p>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># SSH to Bastion
+ssh -i sgutodolist-key.pem ec2-user@[BASTION-IP]
+
+# Test DNS resolution
+nslookup auth.sgu.local
+nslookup user.sgu.local
+nslookup taskflow.sgu.local
+nslookup notification.sgu.local
+nslookup ai-model.sgu.local
+nslookup kafka.sgu.local</code></pre></div>
+<p>All should resolve to internal ECS task IP addresses.</p>
+<h4 id="test-4-database-connectivity">
+  Test 4: Database Connectivity
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Verify services can connect to RDS:</p>
+<ol>
+<li>Check CloudWatch Logs for any service</li>
+<li>Look for successful database connection messages</li>
+<li>Verify no connection errors in startup logs</li>
+</ol>
+<h4 id="test-5-redis-connectivity">
+  Test 5: Redis Connectivity
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># From Bastion Host
+redis-cli -h [REDIS-ENDPOINT] ping
+# Expected response: PONG</code></pre></div>
+<h4 id="test-6-end-to-end-authentication-flow">
+  Test 6: End-to-End Authentication Flow
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ol>
+<li>Access frontend at <code>https://sgutodolist.com</code></li>
+<li>Click &ldquo;Sign in with Google&rdquo;</li>
+<li>Complete OAuth flow</li>
+<li>Verify successful login and token issuance</li>
+<li>Verify user profile loads correctly</li>
+</ol>
+<hr>
+<h3 id="performance-baseline">
+  Performance Baseline
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Record initial performance metrics:</p>
+<p><strong>Response Time Benchmarks:</strong></p>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># API Gateway response time
+time curl -o /dev/null -s https://sgutodolist.com/actuator/health
+
+# Auth service response time
+time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code></pre></div>
+<p><strong>CloudWatch Metrics to Monitor:</strong></p>
+<ul>
+<li>ECS Task CPU Utilization</li>
+<li>ECS Task Memory Utilization</li>
+<li>ALB Target Response Time</li>
+<li>ALB Request Count</li>
+<li>RDS CPU Utilization</li>
+<li>Redis CPU Utilization</li>
+</ul>
+<hr>
+<h3 id="post-deployment-security-checklist">
+  Post-Deployment Security Checklist
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li><input disabled="" type="checkbox"> All sensitive environment variables secured (not in version control)</li>
+<li><input disabled="" type="checkbox"> Database password meets complexity requirements</li>
+<li><input disabled="" type="checkbox"> Security groups follow least privilege principle</li>
+<li><input disabled="" type="checkbox"> SSL/TLS certificates valid and auto-renewal enabled</li>
+<li><input disabled="" type="checkbox"> Bastion Host accessible only from authorized IPs</li>
+<li><input disabled="" type="checkbox"> CloudWatch Logs retention configured</li>
+<li><input disabled="" type="checkbox"> AWS Budget alerts active</li>
+</ul>
+<hr>
+<h3 id="final-deployment-checklist">
+  Final Deployment Checklist
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Infrastructure:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> VPC and subnets operational</li>
+<li><input disabled="" type="checkbox"> All 4 security groups correctly configured</li>
+<li><input disabled="" type="checkbox"> RDS database accessible and initialized</li>
+<li><input disabled="" type="checkbox"> Redis cache operational</li>
+<li><input disabled="" type="checkbox"> Kafka service running</li>
+<li><input disabled="" type="checkbox"> ALB active with healthy targets</li>
+</ul>
+<p><strong>Application:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> All 6 services deployed and running</li>
+<li><input disabled="" type="checkbox"> Service Discovery functional</li>
+<li><input disabled="" type="checkbox"> ALB routing rules working correctly</li>
+<li><input disabled="" type="checkbox"> Health checks passing</li>
+<li><input disabled="" type="checkbox"> CloudWatch Logs collecting data</li>
+</ul>
+<p><strong>Integration:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> DNS record pointing to ALB</li>
+<li><input disabled="" type="checkbox"> SSL certificate valid</li>
+<li><input disabled="" type="checkbox"> Google OAuth configured</li>
+<li><input disabled="" type="checkbox"> Frontend can communicate with backend</li>
+<li><input disabled="" type="checkbox"> Authentication flow working</li>
+</ul>
+<p><strong>Monitoring:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> CloudWatch dashboards created</li>
+<li><input disabled="" type="checkbox"> Budget alerts configured</li>
+<li><input disabled="" type="checkbox"> Performance baseline recorded</li>
+</ul>
+<hr>
+<h3 id="known-limitations-and-future-improvements">
+  Known Limitations and Future Improvements
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Current Architecture Constraints:</strong></p>
+<ol>
+<li><strong>Single-AZ Database</strong>: RDS is deployed in a single availability zone for cost optimization</li>
+<li><strong>Single-Node Redis</strong>: No automatic failover for cache layer</li>
+<li><strong>Single-Node Kafka</strong>: Not production-grade for high-throughput scenarios</li>
+<li><strong>Public Subnet ECS Tasks</strong>: Security trade-off for cost savings</li>
+</ol>
+<p><strong>Recommended Production Enhancements:</strong></p>
+<ol>
+<li>Enable RDS Multi-AZ deployment</li>
+<li>Implement Redis Cluster Mode with multiple replicas</li>
+<li>Deploy Kafka with multiple brokers across AZs</li>
+<li>Add NAT Gateway and move ECS tasks to private subnets</li>
+<li>Implement AWS WAF on ALB for DDoS protection</li>
+<li>Enable ECS Service Auto Scaling</li>
+<li>Implement CI/CD pipeline for automated deployments</li>
+</ol>
+<hr>
+<h2 id="troubleshooting-guide">
+  Troubleshooting Guide
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="quick-diagnosis-commands">
+  Quick Diagnosis Commands
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Check ECS service status
+aws ecs describe-services --cluster [CLUSTER-NAME] --services [SERVICE-NAME] --region ap-southeast-1
+
+# Check task status
+aws ecs describe-tasks --cluster [CLUSTER-NAME] --tasks [TASK-ARN] --region ap-southeast-1
+
+# View recent logs
+aws logs tail /ecs/[SERVICE-NAME] --follow --region ap-southeast-1
+
+# Check target health
+aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southeast-1</code></pre></div>
+<h3 id="emergency-rollback-procedure">
+  Emergency Rollback Procedure
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>If deployment fails:</p>
+<ol>
+<li><strong>Identify failing service</strong>:</li>
+</ol>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs list-services --cluster [CLUSTER-NAME] --region ap-southeast-1</code></pre></div>
+<ol>
+<li><strong>Update service to previous task definition revision</strong>:</li>
+</ol>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs update-service\
+     --cluster [CLUSTER-NAME]\
+     --service [SERVICE-NAME]\
+     --task-definition [TASK-DEF-FAMILY]:[PREVIOUS-REVISION]\
+     --region ap-southeast-1</code></pre></div>
+<ol>
+<li><strong>Force new deployment</strong>:</li>
+</ol>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs update-service\
+     --cluster [CLUSTER-NAME]\
+     --service [SERVICE-NAME]\
+     --force-new-deployment\
+     --region ap-southeast-1</code></pre></div>
+<hr>
+<h2 id="success-criteria">
+  Success Criteria
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><p>Deployment is considered successful when:</p>
+<ol>
+<li>✅ All 6 ECS services show status: RUNNING</li>
+<li>✅ All 5 target groups show: Healthy</li>
+<li>✅ <code>https://sgutodolist.com/actuator/health</code> returns HTTP 200</li>
+<li>✅ Frontend at <code>https://sgutodolist.com</code> can authenticate via Google OAuth</li>
+<li>✅ CloudWatch Logs show no critical errors</li>
+<li>✅ All services accessible via internal DNS (*.sgu.local)</li>
+</ol>
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 5: Code Update & Image Build
+</a>
+<a href="" style="text-decoration: none; font-weight: bold;">
+</a>
+</div>
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/AWS-Workshop/vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="/AWS-Workshop/vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/index.html"><a class="padding" href="/AWS-Workshop/vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Triển khai Frontend</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"> <b> 5.3.2.1. </b> Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"> <b> 5.3.2.2. </b> Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Cập Nhật Code &amp; Xây Dựng Image (Tạo Docker Image Mới)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Tạo Task Definitions</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"> <b> 5.3.2.5. </b> Triển khai Services (Theo thứ tự ưu tiên và kiểm tra)</a></li>
+            <li class="active " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Completion &amp; Verification (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><a class="padding" href="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

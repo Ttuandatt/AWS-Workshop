@@ -5,49 +5,49 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Content5.3.1. Frontend Deploy
-5.3.2. Backend Deploy">
+    <meta name="description" content="Mục lụcPhần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.
+Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Deploy Flow :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="Content5.3.1. Frontend Deploy
-5.3.2. Backend Deploy">
+    <meta name="twitter:title" content="Quy trình triển khai :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Mục lụcPhần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.
+Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
-    <meta property="og:title" content="Deploy Flow :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="Content5.3.1. Frontend Deploy
-5.3.2. Backend Deploy">
+    <meta property="og:title" content="Quy trình triển khai :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Mục lụcPhần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.
+Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Deploy Flow :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="Content5.3.1. Frontend Deploy
-5.3.2. Backend Deploy">
-    <meta itemprop="wordCount" content="7">
-    <title>Deploy Flow :: Báo Cáo Thực Tập</title>
+    <meta itemprop="name" content="Quy trình triển khai :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Mục lụcPhần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.
+Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.">
+    <meta itemprop="wordCount" content="143">
+    <title>Quy trình triển khai :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html" rel="alternate" hreflang="vi">
-    <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.xml" rel="alternate" type="application/rss+xml" title="Deploy Flow :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765170766" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765170766" defer></script>
+    <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.xml" rel="alternate" type="application/rss+xml" title="Quy trình triển khai :: Báo Cáo Thực Tập">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765170766";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765203878";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765170766" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -99,7 +99,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765170766" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html">
     <div id="R-body" class="default-animation">
@@ -133,7 +133,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#content">Content</a></li>
+        <li><a href="#mục-lục"><strong>Mục lục</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -142,7 +142,7 @@
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Deploy Flow</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Quy trình triển khai</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -153,7 +153,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" title="Prerequisite (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" title="Điều kiện tiên quyết (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -163,7 +163,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html" title="Frontend Deploy (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html" title="Triển khai Frontend (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -191,10 +191,10 @@
   <header class="headline">
   </header>
 
-<h1 id="deploy-flow">Deploy Flow</h1>
+<h1 id="quy-trình-triển-khai">Quy trình triển khai</h1>
 
-<h3 id="content">
-  Content
+<h3 id="mục-lục">
+  <strong>Mục lục</strong>
 
 
 
@@ -203,8 +203,14 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>5.3.1.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/">Frontend Deploy</a></p>
-<p><strong>5.3.2.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/">Backend Deploy</a></p>
+</h3><p>Phần này cung cấp <strong>hướng dẫn từng bước</strong> để triển khai cả <strong>Frontend</strong> và <strong>Backend</strong> lên hạ tầng điện toán đám mây.<br>
+Nội dung bao quát <strong>toàn bộ quy trình triển khai</strong>, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.</p>
+<p><strong>5.3.1.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/">Triển khai Frontend</a><br>
+  Hướng dẫn build, cấu hình và triển khai frontend lên <strong>Amazon S3 + CloudFront</strong>, bao gồm cơ chế <strong>failover đa vùng (cross-region)</strong>.</p>
+<p><strong>5.3.2.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/">Triển khai Backend</a><br>
+  Hướng dẫn triển khai các backend microservices lên <strong>AWS ECS/Fargate</strong>, bao gồm cấu hình mạng, cân bằng tải và tích hợp giữa các dịch vụ.</p>
+<blockquote>
+<p>Sau khi hoàn thành phần này, ứng dụng sẽ được triển khai đầy đủ trên AWS với kiến trúc <strong>bảo mật</strong>, <strong>có khả năng mở rộng</strong> và <strong>tối ưu chi phí</strong>.</p></blockquote>
 
   <footer class="footline">
   </footer>
@@ -254,13 +260,14 @@
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
             <li class="parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
-            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
-            <li class="active parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
-            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="active parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Triển khai Frontend</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
@@ -311,8 +318,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

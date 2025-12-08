@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Triển khai Services (Theo thứ tự ưu tiên và kiểm tra) :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link>
+    <description>Giai đoạn này triển khai các ứng dụng container lên ECS Fargate theo thứ tự cụ thể để đảm bảo các phụ thuộc được giải quyết đúng cách.&#xA;Cấu hình mạng quan trọng&#xD;Với tất cả các service triển khai, các thiết lập mạng sau là bắt buộc:&#xA;1. VPC: SGU-Microservices-VPC&#xA;2. Subnets: Chọn cả hai Public Subnets (bắt buộc để kéo image)</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

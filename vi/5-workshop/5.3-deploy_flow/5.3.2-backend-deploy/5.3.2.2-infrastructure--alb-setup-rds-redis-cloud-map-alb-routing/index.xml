@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập</title>
+    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</link>
+    <description>Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.&#xA;Cấp phát SSL Certificate&#xD;Bước 1: Yêu cầu ACM Certificate&#xA;Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệu&#xD;RDS MySQL Database&#xD;Mục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -3,7 +3,7 @@
   <channel>
     <title>Code Update &amp; Image Build (Create new Docker Image) :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
-    <description>This phase prepares the application code and builds Docker images for deployment to ECR.&#xA;API Gateway Configuration&#xD;The API Gateway requires specific configuration changes to support the AWS deployment environment.&#xA;CORS Configuration File&#xD;Purpose: Handle Cross-Origin Resource Sharing for the React frontend in a reactive environment.</description>
+    <description>This phase focuses on adapting the application source code for the cloud environment. We will configure Cross-Origin Resource Sharing (CORS) for the reactive API Gateway, refactor application configurations to use dynamic environment variables, and finally build and push all microservice Docker images to the Amazon Elastic Container Registry (ECR).&#xA;Objectives:&#xA;Configure the code to work seamlessly in both Local (Docker Compose) and Cloud (AWS ECS) environments.&#xA;Create Repositories on AWS ECR.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.xml" rel="self" type="application/rss+xml" />

@@ -5,57 +5,49 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Multi-Region SaaS Task Managemen Web ApplicationOverviewThis project is …..
-Content1. Workshop Overview
-2. Prerequisite
-3. Deploy Flow">
+    <meta name="description" content="Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi PhíTổng quanSGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.
+Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Workshop :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="Multi-Region SaaS Task Managemen Web ApplicationOverviewThis project is …..
-Content1. Workshop Overview
-2. Prerequisite
-3. Deploy Flow">
+    <meta name="twitter:description" content="Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi PhíTổng quanSGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.
+Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Workshop :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="Multi-Region SaaS Task Managemen Web ApplicationOverviewThis project is …..
-Content1. Workshop Overview
-2. Prerequisite
-3. Deploy Flow">
+    <meta property="og:description" content="Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi PhíTổng quanSGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.
+Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Workshop :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="Multi-Region SaaS Task Managemen Web ApplicationOverviewThis project is …..
-Content1. Workshop Overview
-2. Prerequisite
-3. Deploy Flow">
-    <meta itemprop="wordCount" content="26">
+    <meta itemprop="description" content="Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi PhíTổng quanSGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.
+Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.">
+    <meta itemprop="wordCount" content="300">
     <title>Workshop :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/5-workshop/index.xml" rel="alternate" type="application/rss+xml" title="Workshop :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765170766" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765170766" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765170766";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765203878";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765170766" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -107,7 +99,7 @@ Content1. Workshop Overview
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765170766" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/index.html">
     <div id="R-body" class="default-animation">
@@ -141,8 +133,9 @@ Content1. Workshop Overview
   <ul>
     <li>
       <ul>
-        <li><a href="#overview"><strong>Overview</strong></a></li>
-        <li><a href="#content"><strong>Content</strong></a></li>
+        <li><a href="#tổng-quan"><strong>Tổng quan</strong></a></li>
+        <li><a href="#công-nghệ-và-khái-niệm-chính"><strong>Công nghệ và khái niệm chính</strong></a></li>
+        <li><a href="#mục-lục-nội-dung"><strong>Mục lục nội dung</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -172,7 +165,7 @@ Content1. Workshop Overview
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html" title="Workshop Overview (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html" title="Tổng quan Workshop (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -202,8 +195,8 @@ Content1. Workshop Overview
 
 <h1 id="workshop">Workshop</h1>
 
-<h1 id="multi-region-saas-task-managemen-web-application">
-  <strong>Multi-Region SaaS Task Managemen Web Application</strong>
+<h1 id="nền-tảng-saas-quản-lý-công-việc-tối-ưu-chi-phí">
+  <strong>Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi Phí</strong>
 
 
 
@@ -212,8 +205,8 @@ Content1. Workshop Overview
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h1><h3 id="overview">
-  <strong>Overview</strong>
+</h1><h3 id="tổng-quan">
+  <strong>Tổng quan</strong>
 
 
 
@@ -222,9 +215,11 @@ Content1. Workshop Overview
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>This project is &hellip;..</p>
-<h3 id="content">
-  <strong>Content</strong>
+</h3><p><strong>SGU TodoList</strong> là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo <strong>kiến trúc Microservices</strong> nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.<br>
+Mục tiêu chính của workshop này là hướng dẫn người học <strong>triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud</strong>, với trọng tâm vào <strong>tối ưu chi phí</strong> và <strong>vận hành theo mô hình serverless</strong>.</p>
+<p>Thông qua việc tận dụng các dịch vụ cốt lõi của AWS như <strong>ECS Fargate</strong>, <strong>S3</strong>, <strong>ALB</strong> và <strong>VPC</strong>, bạn sẽ học cách thiết lập một hạ tầng có <strong>hiệu năng cao</strong>, <strong>tính sẵn sàng cao</strong>, đồng thời <strong>giảm thiểu chi phí vận hành</strong> so với việc sử dụng EC2 truyền thống.</p>
+<h3 id="công-nghệ-và-khái-niệm-chính">
+  <strong>Công nghệ và khái niệm chính</strong>
 
 
 
@@ -233,11 +228,31 @@ Content1. Workshop Overview
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>1.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/">Workshop Overview</a></p>
-<p><strong>2.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/">Prerequisite</a></p>
-<p><strong>3.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/">Deploy Flow</a></p>
-<p><strong>4.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/">Clean Up</a></p>
-<p><strong>5.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/">Mystic Skills</a></p>
+</h3><p>Workshop này tập trung vào triển khai thực tế với các công nghệ và khái niệm:</p>
+<ul>
+<li><strong>Kiến trúc:</strong> Microservices, Event-Driven (Kafka).</li>
+<li><strong>Tài nguyên tính toán:</strong> AWS ECS Fargate (Container Serverless).</li>
+<li><strong>Backend:</strong> Spring Boot (Java 21).</li>
+<li><strong>Frontend:</strong> ReactJS.</li>
+<li><strong>Hệ thống dữ liệu:</strong> AWS RDS (MySQL), ElastiCache (Redis).</li>
+<li><strong>Mạng &amp; khám phá dịch vụ:</strong> AWS ALB, AWS Cloud Map (Service Discovery).</li>
+<li><strong>Triển khai:</strong> AWS CLI và các script tự động bằng PowerShell.</li>
+</ul>
+<h3 id="mục-lục-nội-dung">
+  <strong>Mục lục nội dung</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>1.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/">Tổng quan Workshop</a> – <em>Mục tiêu và kết quả học tập đạt được.</em></p>
+<p><strong>2.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/">Điều kiện tiên quyết</a> – <em>Các công cụ và quyền AWS cần thiết để triển khai.</em></p>
+<p><strong>3.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/">Quy trình triển khai</a> – <em>Hướng dẫn từng bước triển khai Backend và Frontend.</em></p>
+<p><strong>4.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/">Dọn dẹp tài nguyên</a> – <em>Hướng dẫn xóa toàn bộ tài nguyên nhằm tránh phát sinh chi phí.</em></p>
+<p><strong>5.</strong> <a href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/">Bí thuật</a> – <em>Bí thuật.</em></p>
 
   <footer class="footline">
   </footer>
@@ -287,12 +302,12 @@ Content1. Workshop Overview
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
             <li class="active parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
-            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
-            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
@@ -343,8 +358,8 @@ Content1. Workshop Overview
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

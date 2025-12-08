@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prerequisites :: Báo Cáo Thực Tập</title>
+    <title>Điều kiện tiên quyết :: Báo Cáo Thực Tập</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html</link>
-    <description>Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Đối với tài khoản Free Tier thì không được hỗ trợ tính năng đăng ký tên miền của dịch vụ Route 53, vì vậy project này đăng ký tên miền một nhà cung cấp tên miền khác và host tên miền ở Route Tài khoản AWS</description>
+    <description>Cần chuẩn bị:&#xD;Tên miền đã đăng ký (VD: sgutodolist.com)&#xA;Với tài khoản AWS Free Tier, Route 53 không hỗ trợ đăng ký domain&#xA;→ sử dụng nhà cung cấp bên thứ ba và trỏ DNS về Route 53 Tài khoản AWS&#xA;Dự án ReactJS đã build thành công&#xA;AWS CLI (không bắt buộc, dùng để test)</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.xml" rel="self" type="application/rss+xml" />

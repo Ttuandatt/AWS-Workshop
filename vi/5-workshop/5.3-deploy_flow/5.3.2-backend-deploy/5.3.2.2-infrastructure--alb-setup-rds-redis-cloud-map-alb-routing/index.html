@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
+Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
+Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
+Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
+Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+    <meta itemprop="wordCount" content="1471">
+    <title>Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập</title>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="en">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="vi">
+    <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.xml" rel="alternate" type="application/rss+xml" title="Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765203878";
+    </script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765203878" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.2-backend-deploy\/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#cấp-phát-ssl-certificate">Cấp phát SSL Certificate</a></li>
+        <li><a href="#hạ-tầng-tầng-dữ-liệu">Hạ tầng Tầng Dữ liệu</a></li>
+        <li><a href="#cấu-hình-application-load-balancer">Cấu hình Application Load Balancer</a></li>
+        <li><a href="#xác-thực-hạ-tầng">Xác thực Hạ tầng</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Quy trình triển khai</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Triển khai Backend</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing)</span><meta itemprop="position" content="5"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html" title="Chuẩn bị Mạng & Bảo mật (VPC, Security Group) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html" title="Cập Nhật Code & Xây Dựng Image (Tạo Docker Image Mới) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="thiết-lập-hạ-tầng-alb-rds-redis-cloud-map-alb-routing">Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing)</h1>
+
+<p>Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.</p>
+<h3 id="cấp-phát-ssl-certificate">
+  Cấp phát SSL Certificate
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><strong>Bước 1: Yêu cầu ACM Certificate</strong></p>
+<ol>
+<li>Chuyển region sang <strong>Singapore (ap-southeast-1)</strong></li>
+<li>Điều hướng đến <strong>Certificate Manager (ACM)</strong></li>
+<li>Chọn <strong>Request a certificate</strong> → <strong>Request a public certificate</strong></li>
+<li>Cấu hình yêu cầu certificate:
+<ul>
+<li><strong>Domain name</strong>: <code>sgutodolist.com</code></li>
+<li><strong>Validation method</strong>: DNS validation</li>
+</ul>
+</li>
+<li>Nhấn <strong>Request</strong></li>
+<li>Truy cập chi tiết certificate → Trong phần <strong>Domains</strong> → Nhấn <strong>Create records in Route 53</strong></li>
+<li>Đợi trạng thái chuyển thành <strong>Issued</strong> (thường mất 5-10 phút)</li>
+</ol>
+<hr>
+<h3 id="hạ-tầng-tầng-dữ-liệu">
+  Hạ tầng Tầng Dữ liệu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="rds-mysql-database">
+  RDS MySQL Database
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Mục đích</strong>: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.</p>
+<p><strong>Các bước cấu hình:</strong></p>
+<ol>
+<li>Điều hướng đến <strong>RDS Console</strong> → <strong>Create database</strong></li>
+<li>Chọn <strong>Standard create</strong> → Engine <strong>MySQL</strong></li>
+<li>Cấu hình database instance:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Tham số</th>
+          <th>Giá trị</th>
+          <th>Lý do</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Template</td>
+          <td>Free tier</td>
+          <td>Tối ưu chi phí</td>
+      </tr>
+      <tr>
+          <td>DB instance identifier</td>
+          <td><code>sgu-todolist-db</code></td>
+          <td>Quy ước đặt tên</td>
+      </tr>
+      <tr>
+          <td>Master username</td>
+          <td><code>root</code></td>
+          <td>Tài khoản admin chuẩn</td>
+      </tr>
+      <tr>
+          <td>Master password</td>
+          <td><code>[mật-khẩu-bảo-mật]</code></td>
+          <td>Ghi chép cẩn thận</td>
+      </tr>
+      <tr>
+          <td>DB instance class</td>
+          <td><code>db.t3.micro</code></td>
+          <td>Đủ điều kiện free tier</td>
+      </tr>
+      <tr>
+          <td>Allocated storage</td>
+          <td>20 GiB</td>
+          <td>Giới hạn free tier</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Cấu hình mạng:
+<ul>
+<li><strong>Compute resource</strong>: Don&rsquo;t connect to an EC2 compute resource</li>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+<li><strong>Public access</strong>: No</li>
+<li><strong>VPC security group</strong>: Chọn <code>private-db-sg</code> (xóa default)</li>
+<li><strong>Availability Zone</strong>: <code>ap-southeast-1a</code></li>
+</ul>
+</li>
+<li>Nhấn <strong>Create database</strong></li>
+<li>Sau khi tạo xong, ghi lại địa chỉ <strong>Endpoint</strong> (định dạng: <code>sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com</code>)</li>
+</ol>
+<hr>
+<h4 id="elasticache-redis">
+  ElastiCache Redis
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Mục đích</strong>: Tầng caching cho quản lý session, rate limiting và lưu trữ dữ liệu tạm thời.</p>
+<p><strong>Các bước cấu hình:</strong></p>
+<p><strong>Giai đoạn 1 - Cài đặt cơ bản:</strong></p>
+<ol>
+<li>Điều hướng đến <strong>ElastiCache Console</strong> → <strong>Redis OSS caches</strong> → <strong>Create Redis OSS cache</strong></li>
+<li>Cấu hình cluster:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Tham số</th>
+          <th>Giá trị</th>
+          <th>Lý do</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Engine</td>
+          <td>Redis OSS</td>
+          <td>Tương thích open source</td>
+      </tr>
+      <tr>
+          <td>Deployment option</td>
+          <td>Node-based cluster</td>
+          <td>Triển khai single node</td>
+      </tr>
+      <tr>
+          <td>Creation method</td>
+          <td>Cluster cache</td>
+          <td>Tạo chuẩn</td>
+      </tr>
+      <tr>
+          <td>Cluster mode</td>
+          <td>Disabled</td>
+          <td>Kiến trúc đơn giản</td>
+      </tr>
+      <tr>
+          <td>Cluster name</td>
+          <td><code>sgu-redis</code></td>
+          <td>Quy ước đặt tên</td>
+      </tr>
+      <tr>
+          <td>Multi-AZ</td>
+          <td>Disabled</td>
+          <td>Tối ưu chi phí</td>
+      </tr>
+      <tr>
+          <td>Auto-failover</td>
+          <td>Disabled</td>
+          <td>Không cần cho môi trường phát triển</td>
+      </tr>
+      <tr>
+          <td>Node type</td>
+          <td><code>cache.t3.micro</code></td>
+          <td>Đủ điều kiện free tier</td>
+      </tr>
+      <tr>
+          <td>Number of replicas</td>
+          <td>0</td>
+          <td>Cấu hình single node</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Cấu hình mạng:
+<ul>
+<li><strong>Subnet groups</strong>: Create a new subnet group
+<ul>
+<li><strong>Name</strong>: <code>sgu-redis-subnet-group</code></li>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+<li><strong>Selected subnets</strong>: Cả hai Private Subnets</li>
+</ul>
+</li>
+<li><strong>Availability Zone placement</strong>: Specify Availability Zones
+<ul>
+<li><strong>Primary</strong>: <code>ap-southeast-1a</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Giai đoạn 2 - Cài đặt nâng cao:</strong></p>
+<ol>
+<li>Cấu hình bảo mật:
+<ul>
+<li><strong>Security groups</strong>: Chọn <code>private-db-sg</code> (xóa default)</li>
+</ul>
+</li>
+<li>Cấu hình backup:
+<ul>
+<li><strong>Enable automatic backups</strong>: Disabled</li>
+</ul>
+</li>
+<li>Logs: Tắt tất cả các loại log</li>
+<li>Nhấn <strong>Create</strong></li>
+<li>Ghi lại <strong>Primary Endpoint</strong> (định dạng: <code>sgu-redis.[random].cache.amazonaws.com</code>)</li>
+</ol>
+<p><strong>Quan trọng:</strong> Không bao gồm <code>:6379</code> khi ghi endpoint cho biến môi trường.</p>
+<hr>
+<h4 id="thiết-lập-service-discovery">
+  Thiết lập Service Discovery
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Mục đích</strong>: Phân giải DNS nội bộ cho giao tiếp giữa các microservices.</p>
+<p><strong>Bước 1: Tạo Cloud Map Namespace</strong></p>
+<ol>
+<li>Điều hướng đến <strong>AWS Cloud Map</strong> → <strong>Create namespace</strong></li>
+<li>Cấu hình namespace:
+<ul>
+<li><strong>Name</strong>: <code>sgu.local</code></li>
+<li><strong>Instance discovery</strong>: API calls and DNS queries in VPCs</li>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+</ul>
+</li>
+<li>Nhấn <strong>Create</strong></li>
+</ol>
+<p><strong>Kết quả</strong>: Tên miền DNS nội bộ <code>sgu.local</code> hiện đã sẵn sàng để đăng ký dịch vụ.</p>
+<hr>
+<h4 id="apache-kafka-message-broker">
+  Apache Kafka Message Broker
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Mục đích</strong>: Event streaming và giao tiếp bất đồng bộ giữa các microservices.</p>
+<p><strong>Bước 1: Tạo Kafka Task Definition</strong></p>
+<ol>
+<li>Điều hướng đến <strong>Amazon ECS</strong> → <strong>Task definitions</strong> → <strong>Create new task definition</strong></li>
+<li>Cấu hình hạ tầng:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Tham số</th>
+          <th>Giá trị</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Task definition family</td>
+          <td><code>kafka-server-td</code></td>
+      </tr>
+      <tr>
+          <td>Launch type</td>
+          <td>AWS Fargate</td>
+      </tr>
+      <tr>
+          <td>Operating system</td>
+          <td>Linux/x86_64</td>
+      </tr>
+      <tr>
+          <td>CPU</td>
+          <td>0.5 vCPU</td>
+      </tr>
+      <tr>
+          <td>Memory</td>
+          <td>1 GB</td>
+      </tr>
+      <tr>
+          <td>Task execution role</td>
+          <td><code>ecsTaskExecutionRole</code></td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Cấu hình container:
+<ul>
+<li><strong>Name</strong>: <code>kafka-server</code></li>
+<li><strong>Image URI</strong>: <code>bitnami/kafka:latest</code></li>
+<li><strong>Port mappings</strong>:
+<ul>
+<li>Container port: <code>9092</code></li>
+<li>Protocol: TCP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Biến môi trường:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Mục đích</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>KAFKA_CFG_NODE_ID</code></td>
+          <td><code>0</code></td>
+          <td>Định danh node</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_PROCESS_ROLES</code></td>
+          <td><code>controller,broker</code></td>
+          <td>Chế độ kết hợp (KRaft)</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LISTENERS</code></td>
+          <td><code>PLAINTEXT://:9092,CONTROLLER://:9093</code></td>
+          <td>Listeners nội bộ</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP</code></td>
+          <td><code>CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT</code></td>
+          <td>Ánh xạ protocol</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_CONTROLLER_QUORUM_VOTERS</code></td>
+          <td><code>0@127.0.0.1:9093</code></td>
+          <td>Tự tham chiếu</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_ADVERTISED_LISTENERS</code></td>
+          <td><code>PLAINTEXT://kafka.sgu.local:9092</code></td>
+          <td>Địa chỉ service discovery</td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LOG_DIRS</code></td>
+          <td><code>/tmp/kafka-logs</code></td>
+          <td>Lưu trữ log tạm thời</td>
+      </tr>
+      <tr>
+          <td><code>ALLOW_PLAINTEXT_LISTENER</code></td>
+          <td><code>yes</code></td>
+          <td>Giao tiếp không SSL</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Bật <strong>Use log collection</strong> cho CloudWatch Logs</li>
+<li>Nhấn <strong>Create</strong></li>
+</ol>
+<p><strong>Bước 2: Triển khai Kafka Service</strong></p>
+<ol>
+<li>Điều hướng đến ECS Cluster → <strong>Services</strong> → <strong>Create</strong></li>
+<li>Cấu hình service:
+<ul>
+<li><strong>Task definition</strong>: <code>kafka-server-td</code> (phiên bản mới nhất)</li>
+<li><strong>Service name</strong>: <code>kafka-server</code></li>
+<li><strong>Desired tasks</strong>: 1</li>
+</ul>
+</li>
+<li>Cấu hình mạng:
+<ul>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+<li><strong>Subnets</strong>: Cả hai Public Subnets</li>
+<li><strong>Security group</strong>: <code>private-db-sg</code></li>
+<li><strong>Public IP</strong>: Enabled</li>
+</ul>
+</li>
+<li>Load balancing: Không cấu hình</li>
+<li>Service Discovery:
+<ul>
+<li>Bật <strong>Use service discovery</strong></li>
+<li><strong>Namespace</strong>: <code>sgu.local</code></li>
+<li><strong>Service discovery name</strong>: <code>kafka</code></li>
+<li><strong>Result DNS</strong>: <code>kafka.sgu.local:9092</code></li>
+</ul>
+</li>
+<li>Nhấn <strong>Create</strong></li>
+</ol>
+<hr>
+<h4 id="khởi-tạo-database">
+  Khởi tạo Database
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Mục đích</strong>: Tạo schema database ứng dụng một cách an toàn thông qua jump server.</p>
+<p><strong>Bước 1: Cập nhật Security Group</strong></p>
+<ol>
+<li>Điều hướng đến <code>private-db-sg</code> → <strong>Inbound Rules</strong> → <strong>Edit</strong></li>
+<li>Thêm rule tạm thời:
+<ul>
+<li><strong>Type</strong>: MySQL/Aurora (port 3306)</li>
+<li><strong>Source</strong>: <code>bastion-sg</code></li>
+</ul>
+</li>
+<li>Lưu rules</li>
+</ol>
+<p><strong>Bước 2: Tạo Bastion Host</strong></p>
+<ol>
+<li>Điều hướng đến <strong>EC2</strong> → <strong>Launch Instance</strong></li>
+<li>Cấu hình instance:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Tham số</th>
+          <th>Giá trị</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Name</td>
+          <td><code>sgu-bastion</code></td>
+      </tr>
+      <tr>
+          <td>AMI</td>
+          <td>Amazon Linux 2023</td>
+      </tr>
+      <tr>
+          <td>Instance type</td>
+          <td><code>t3.micro</code></td>
+      </tr>
+      <tr>
+          <td>Key pair</td>
+          <td>Tạo mới: <code>sgutodolist-key</code> (tải .pem)</td>
+      </tr>
+      <tr>
+          <td>VPC</td>
+          <td><code>SGU-Microservices-VPC</code></td>
+      </tr>
+      <tr>
+          <td>Subnet</td>
+          <td>Public Subnet 1</td>
+      </tr>
+      <tr>
+          <td>Auto-assign public IP</td>
+          <td>Enable</td>
+      </tr>
+      <tr>
+          <td>Security group</td>
+          <td><code>bastion-sg</code></td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Nhấn <strong>Launch instance</strong></li>
+<li>Ghi lại địa chỉ <strong>Public IPv4 address</strong></li>
+</ol>
+<p><strong>Bước 3: Kết nối và Khởi tạo Database</strong></p>
+<p><strong>Windows (PowerShell):</strong></p>
+<p>powershell</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Thiết lập quyền chính xác
+icacls &#34;sgutodolist-key.pem&#34; /inheritance:r
+icacls &#34;sgutodolist-key.pem&#34; /grant:r &#34;$($env:USERNAME):(R)&#34;
+
+# Kết nối đến Bastion
+ssh -i &#34;sgutodolist-key.pem&#34; ec2-user@[BASTION-PUBLIC-IP]</code></pre></div>
+<p><strong>macOS/Linux:</strong></p>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Thiết lập quyền chính xác
+chmod 400 sgutodolist-key.pem
+
+# Kết nối đến Bastion
+ssh -i sgutodolist-key.pem ec2-user@[BASTION-PUBLIC-IP]</code></pre></div>
+<p><strong>Trên Bastion Host:</strong></p>
+<p>bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Cài đặt MySQL client
+sudo dnf install mariadb105 -y
+
+# Kết nối đến RDS
+mysql -h [RDS-ENDPOINT] -u root -p
+# Nhập password khi được yêu cầu
+
+# Tạo database
+CREATE DATABASE aws_todolist_database
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+# Kiểm tra
+SHOW DATABASES;
+
+# Thoát
+EXIT;
+exit</code></pre></div>
+<p><strong>Bước 4: Dọn dẹp Bảo mật</strong></p>
+<p>Xóa quyền truy cập database tạm thời:</p>
+<ol>
+<li>Quay lại <code>private-db-sg</code> → <strong>Inbound Rules</strong></li>
+<li>Xóa rule cho phép <code>bastion-sg</code> truy cập port 3306</li>
+</ol>
+<hr>
+<h3 id="cấu-hình-application-load-balancer">
+  Cấu hình Application Load Balancer
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="tạo-target-groups">
+  Tạo Target Groups
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Tạo 5 target groups cho các microservices sẽ nhận traffic bên ngoài.</p>
+<p><strong>Quy trình Cấu hình Chuẩn (Lặp lại 5 lần):</strong></p>
+<ol>
+<li>Điều hướng đến <strong>EC2</strong> → <strong>Target Groups</strong> → <strong>Create target group</strong></li>
+<li>Cấu hình cơ bản:
+<ul>
+<li><strong>Target type</strong>: IP addresses (bắt buộc cho Fargate)</li>
+<li><strong>Protocol</strong>: HTTP</li>
+<li><strong>IP address type</strong>: IPv4</li>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+<li><strong>Protocol version</strong>: HTTP1</li>
+</ul>
+</li>
+<li>Cấu hình health check:
+<ul>
+<li><strong>Health check protocol</strong>: HTTP</li>
+<li><strong>Health check path</strong>: <code>/actuator/health</code></li>
+</ul>
+</li>
+<li>Nhấn <strong>Next</strong> (không đăng ký targets thủ công)</li>
+<li>Nhấn <strong>Create target group</strong></li>
+</ol>
+<p><strong>Chi tiết Target Groups:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>Tên Target Group</th>
+          <th>Port</th>
+          <th>Health Check Path</th>
+          <th>Mục đích</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><code>api-gateway-tg</code></td>
+          <td>8080</td>
+          <td><code>/actuator/health</code></td>
+          <td>API Gateway</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><code>auth-tg</code></td>
+          <td>9999</td>
+          <td><code>/actuator/health</code></td>
+          <td>Auth Service</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><code>user-tg</code></td>
+          <td>8081</td>
+          <td><code>/actuator/health</code></td>
+          <td>User Service</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><code>task-tg</code></td>
+          <td>8082</td>
+          <td><code>/actuator/health</code></td>
+          <td>Taskflow Service</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><code>noti-tg</code></td>
+          <td>9998</td>
+          <td><code>/actuator/health</code></td>
+          <td>Notification Service</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Lưu ý:</strong> AI Model Service không cần target group vì chỉ được truy cập nội bộ qua API Gateway.</p>
+<hr>
+<h4 id="tạo-load-balancer">
+  Tạo Load Balancer
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Bước 1: Tạo ALB</strong></p>
+<ol>
+<li>Điều hướng đến <strong>EC2</strong> → <strong>Load Balancers</strong> → <strong>Create load balancer</strong></li>
+<li>Chọn <strong>Application Load Balancer</strong></li>
+<li>Cấu hình cơ bản:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Tham số</th>
+          <th>Giá trị</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Name</td>
+          <td><code>sgu-alb</code></td>
+      </tr>
+      <tr>
+          <td>Scheme</td>
+          <td>Internet-facing</td>
+      </tr>
+      <tr>
+          <td>IP address type</td>
+          <td>IPv4</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>Ánh xạ mạng:
+<ul>
+<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
+<li><strong>Availability Zones</strong>: Chọn cả hai
+<ul>
+<li><code>ap-southeast-1a</code> → Public Subnet 1</li>
+<li><code>ap-southeast-1b</code> → Public Subnet 2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Security groups:
+<ul>
+<li>Xóa <code>default</code></li>
+<li>Chọn <code>public-alb-sg</code></li>
+</ul>
+</li>
+<li>Listeners và routing:
+<ul>
+<li><strong>Listener 1 (HTTP:80)</strong>:
+<ul>
+<li>Protocol: HTTP | Port: 80</li>
+<li>Default action: Forward to <code>api-gateway-tg</code></li>
+</ul>
+</li>
+<li><strong>Listener 2 (HTTPS:443)</strong>: Nhấn <strong>Add listener</strong>
+<ul>
+<li>Protocol: HTTPS | Port: 443</li>
+<li>Default action: Forward to <code>api-gateway-tg</code></li>
+<li>Certificate source: ACM</li>
+<li>Certificate: Chọn <code>sgutodolist.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Nhấn <strong>Create load balancer</strong></li>
+<li>Đợi trạng thái chuyển từ <code>Provisioning</code> sang <code>Active</code></li>
+</ol>
+<hr>
+<h4 id="cấu-hình-routing-rules">
+  Cấu hình Routing Rules
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Cấu hình định tuyến dựa trên path cho HTTPS listener.</p>
+<p><strong>Bước 1: Truy cập Listener Rules</strong></p>
+<ol>
+<li>Chọn ALB → Tab <strong>Listeners and rules</strong></li>
+<li>Chọn listener <strong>HTTPS:443</strong> → Nhấn <strong>Manage rules</strong></li>
+</ol>
+<p><strong>Bước 2: Thêm Routing Rules</strong></p>
+<p>Tạo 4 rules với các thông số sau:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Ưu tiên</th>
+          <th>Tên Rule</th>
+          <th>Path Pattern</th>
+          <th>Target Group</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Auth Rule</td>
+          <td><code>/api/auth/*</code></td>
+          <td><code>auth-tg</code></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>User Rule</td>
+          <td><code>/api/user/*</code></td>
+          <td><code>user-tg</code></td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Task Rule</td>
+          <td><code>/api/taskflow/*</code></td>
+          <td><code>task-tg</code></td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Noti Rule</td>
+          <td><code>/api/notification/*</code></td>
+          <td><code>noti-tg</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Quy trình Tạo Rule (Lặp lại 4 lần):</strong></p>
+<ol>
+<li>Nhấn <strong>Add rule</strong></li>
+<li><strong>Bước 1 - Define rule</strong>:
+<ul>
+<li><strong>Name</strong>: Nhập tên rule (ví dụ: &ldquo;Auth Rule&rdquo;)</li>
+<li><strong>Conditions</strong>: Add condition → Path → Nhập path pattern (ví dụ: <code>/api/auth/*</code>)</li>
+<li><strong>Actions</strong>: Forward to target groups → Chọn target group tương ứng</li>
+<li>Nhấn <strong>Next</strong></li>
+</ul>
+</li>
+<li><strong>Bước 2 - Set rule priority</strong>:
+<ul>
+<li><strong>Priority</strong>: Nhập số ưu tiên (1-4)</li>
+<li>Nhấn <strong>Add rule</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>Kiểm tra</strong>: Rule mặc định chuyển tiếp đến <code>api-gateway-tg</code> nên ở cuối với ưu tiên &ldquo;Last&rdquo;.</p>
+<hr>
+<h3 id="xác-thực-hạ-tầng">
+  Xác thực Hạ tầng
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Trước khi tiến hành triển khai code, kiểm tra:</p>
+<p><strong>Tầng Dữ liệu:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Trạng thái RDS instance: Available</li>
+<li><input disabled="" type="checkbox"> Đã ghi endpoint RDS</li>
+<li><input disabled="" type="checkbox"> Database <code>aws_todolist_database</code> đã được tạo</li>
+</ul>
+<p><strong>Tầng Caching:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Trạng thái Redis cluster: Available</li>
+<li><input disabled="" type="checkbox"> Đã ghi endpoint Redis (không có :6379)</li>
+</ul>
+<p><strong>Service Discovery:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Cloud Map namespace <code>sgu.local</code> đã được tạo</li>
+<li><input disabled="" type="checkbox"> Kafka service đang chạy với DNS <code>kafka.sgu.local</code></li>
+</ul>
+<p><strong>Load Balancer:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Trạng thái ALB: Active</li>
+<li><input disabled="" type="checkbox"> 5 target groups đã được tạo</li>
+<li><input disabled="" type="checkbox"> HTTPS listener đã cấu hình với ACM certificate</li>
+<li><input disabled="" type="checkbox"> 4 path-based routing rules đã được cấu hình</li>
+</ul>
+<hr>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 1: Chuẩn bị Mạng & Bảo mật
+</a>
+<a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/" style="text-decoration: none; font-weight: bold;">
+BƯỚC 3: Cập Nhật Code & Xây Dựng Image ➡
+</a>
+</div>
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/AWS-Workshop/vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="/AWS-Workshop/vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/index.html"><a class="padding" href="/AWS-Workshop/vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Triển khai Frontend</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"> <b> 5.3.2.1. </b> Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group)</a></li>
+            <li class="active " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"> <b> 5.3.2.2. </b> Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Cập Nhật Code &amp; Xây Dựng Image (Tạo Docker Image Mới)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Tạo Task Definitions</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"> <b> 5.3.2.5. </b> Triển khai Services (Theo thứ tự ưu tiên và kiểm tra)</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Completion &amp; Verification (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><a class="padding" href="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

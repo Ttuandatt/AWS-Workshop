@@ -3,7 +3,7 @@
   <channel>
     <title>Workshop :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
-    <description>Multi-Region SaaS Task Managemen Web Application&#xD;Overview&#xD;SGU TodoList is a task management application built using a Microservices architecture on the AWS Cloud platform. Using core AWS services such as S3, VPC, ECS Fargate, ALB, …&#xA;Table of Contents&#xD;1. Workshop Overview</description>
+    <description>Cost-Optimized SaaS Task Management Platform&#xD;Overview&#xD;SGU TodoList is a robust and resilient task management application built using a Microservices architecture designed for high scalability and decoupling. The primary goal of this workshop is to guide you through deploying and managing a complex application stack on the AWS Cloud platform, with a strong focus on cost optimization and serverless operations.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
@@ -26,7 +26,7 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</guid>
-      <description>Table of Contents&#xD;5.3.1. Frontend Deploy&#xA;5.3.2. Backend Deploy</description>
+      <description>Table of Contents&#xD;This section provides step-by-step guidance for deploying both Frontend and Backend components onto the cloud infrastructure.&#xA;It covers the complete deployment workflow, from build artifacts preparation to production-ready release on AWS services.&#xA;5.3.1. Frontend Deploy&#xA;Guidelines for building, configuring, and deploying the frontend to Amazon S3 + CloudFront with cross-region failover.&#xA;5.3.2. Backend Deploy&#xA;Instructions for deploying backend microservices to AWS ECS/Fargate, including network configuration, load balancing, and service integration.</description>
     </item>
     <item>
       <title>Clean Up</title>

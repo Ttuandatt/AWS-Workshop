@@ -5,45 +5,49 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Giới Thiệu Dự ÁnSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud. Dự án được thiết kế ban đầu với mục tiêu triển khai theo mô hình Multi-Region SaaS để đảm bảo high availability và disaster recovery. Tuy nhiên, do giới hạn về ngân sách và tài khoản AWS Free Tier, nhóm đã tối ưu hóa kiến trúc về Single-Region Deployment với cơ chế Cross-Region Failover cho frontend.">
+    <meta name="description" content="Giới thiệu dự ánSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.
+Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Workshop Overview :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="Giới Thiệu Dự ÁnSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud. Dự án được thiết kế ban đầu với mục tiêu triển khai theo mô hình Multi-Region SaaS để đảm bảo high availability và disaster recovery. Tuy nhiên, do giới hạn về ngân sách và tài khoản AWS Free Tier, nhóm đã tối ưu hóa kiến trúc về Single-Region Deployment với cơ chế Cross-Region Failover cho frontend.">
+    <meta name="twitter:title" content="Tổng quan Workshop :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Giới thiệu dự ánSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.
+Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
-    <meta property="og:title" content="Workshop Overview :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="Giới Thiệu Dự ÁnSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud. Dự án được thiết kế ban đầu với mục tiêu triển khai theo mô hình Multi-Region SaaS để đảm bảo high availability và disaster recovery. Tuy nhiên, do giới hạn về ngân sách và tài khoản AWS Free Tier, nhóm đã tối ưu hóa kiến trúc về Single-Region Deployment với cơ chế Cross-Region Failover cho frontend.">
+    <meta property="og:title" content="Tổng quan Workshop :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Giới thiệu dự ánSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.
+Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Workshop Overview :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="Giới Thiệu Dự ÁnSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud. Dự án được thiết kế ban đầu với mục tiêu triển khai theo mô hình Multi-Region SaaS để đảm bảo high availability và disaster recovery. Tuy nhiên, do giới hạn về ngân sách và tài khoản AWS Free Tier, nhóm đã tối ưu hóa kiến trúc về Single-Region Deployment với cơ chế Cross-Region Failover cho frontend.">
-    <meta itemprop="wordCount" content="84">
-    <title>Workshop Overview :: Báo Cáo Thực Tập</title>
+    <meta itemprop="name" content="Tổng quan Workshop :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Giới thiệu dự ánSGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.
+Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.">
+    <meta itemprop="wordCount" content="904">
+    <title>Tổng quan Workshop :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html" rel="alternate" hreflang="vi">
-    <link href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.xml" rel="alternate" type="application/rss+xml" title="Workshop Overview :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765170766" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765170766" defer></script>
+    <link href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.xml" rel="alternate" type="application/rss+xml" title="Tổng quan Workshop :: Báo Cáo Thực Tập">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765203878" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765170766";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765203878";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765203878" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765170766" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765170766" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765170766" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765203878" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765203878" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765203878" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -95,7 +99,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765170766" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765203878" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html">
     <div id="R-body" class="default-animation">
@@ -127,14 +131,45 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#giới-thiệu-dự-án">Giới Thiệu Dự Án</a></li>
+    <li><a href="#giới-thiệu-dự-án">Giới thiệu dự án</a></li>
+    <li><a href="#tổng-quan-kiến-trúc">Tổng quan kiến trúc</a>
+      <ul>
+        <li><a href="#kiến-trúc-backend-single-region-singapore">Kiến trúc Backend (Single-Region: Singapore)</a></li>
+        <li><a href="#kiến-trúc-frontend-multi-region-failover">Kiến trúc Frontend (Multi-Region Failover)</a></li>
+      </ul>
+    </li>
+    <li><a href="#thành-phần-chính">Thành phần chính</a>
+      <ul>
+        <li><a href="#1-backend-services-ecs-fargate"><strong>1. Backend Services (ECS Fargate)</strong></a></li>
+        <li><a href="#2-thành-phần-hạ-tầng"><strong>2. Thành phần hạ tầng</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#chi-phí--tối-ưu">Chi phí &amp; Tối ưu</a>
+      <ul>
+        <li><a href="#các-quyết-định-kiến-trúc-quan-trọng"><strong>Các quyết định kiến trúc quan trọng</strong></a></li>
+        <li><a href="#chiến-lược-public-subnet-cho-ecs"><strong>Chiến lược Public Subnet cho ECS</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#chiến-lược-domain--ssl">Chiến lược Domain &amp; SSL</a>
+      <ul>
+        <li><a href="#domain-production"><strong>Domain Production</strong></a></li>
+        <li><a href="#chứng-chỉ-ssl"><strong>Chứng chỉ SSL</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#kiến-trúc-bảo-mật">Kiến trúc bảo mật</a>
+      <ul>
+        <li><a href="#ma-trận-security-group"><strong>Ma trận Security Group</strong></a></li>
+        <li><a href="#luồng-xác-thực"><strong>Luồng xác thực</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#thông-tin-nhóm">Thông tin nhóm</a></li>
   </ul>
 </nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Workshop Overview</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Tổng quan Workshop</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -155,7 +190,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" title="Prerequisite (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html" title="Điều kiện tiên quyết (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -183,10 +218,10 @@
   <header class="headline">
   </header>
 
-<h1 id="workshop-overview">Workshop Overview</h1>
+<h1 id="tổng-quan-workshop">Tổng quan Workshop</h1>
 
 <h2 id="giới-thiệu-dự-án">
-  Giới Thiệu Dự Án
+  Giới thiệu dự án
 
 
 
@@ -195,7 +230,482 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><p><strong>SGU TodoList</strong> là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc <strong>Microservices</strong> trên nền tảng AWS Cloud. Dự án được thiết kế ban đầu với mục tiêu triển khai theo mô hình <strong>Multi-Region SaaS</strong> để đảm bảo high availability và disaster recovery. Tuy nhiên, do giới hạn về ngân sách và tài khoản AWS Free Tier, nhóm đã tối ưu hóa kiến trúc về <strong>Single-Region Deployment</strong> với cơ chế <strong>Cross-Region Failover</strong> cho frontend.</p>
+</h2><p><strong>SGU TodoList</strong> là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc <strong>Microservices</strong> trên nền tảng <strong>AWS Cloud</strong>.<br>
+Dự án ban đầu được thiết kế theo mô hình <strong>Multi-Region SaaS</strong> nhằm đảm bảo <strong>High Availability</strong> và <strong>Disaster Recovery</strong>. Tuy nhiên, do hạn chế về ngân sách và giới hạn của <strong>AWS Free Tier</strong>, nhóm đã tối ưu kiến trúc sang mô hình <strong>Single-Region Deployment</strong>, kết hợp với cơ chế <strong>Cross-Region Failover</strong> cho tầng frontend.</p>
+<h2 id="tổng-quan-kiến-trúc">
+  Tổng quan kiến trúc
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="kiến-trúc-backend-single-region-singapore">
+  Kiến trúc Backend (Single-Region: Singapore)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><pre><code>    ┌─────────────────────────────────────────────────┐
+    │                 Người dùng Internet             │
+    └───────────────────────┬─────────────────────────┘
+                            │
+                            ▼
+                   ┌────────────────┐
+                   │   Route 53     │ ◄── Quản lý DNS
+                   │ (Global DNS)   │
+                   └────────┬───────┘
+                            │
+                            ▼
+                ┌──────────────────────┐
+                │  Application Load    │
+                │  Balancer (ALB)      │ ◄── Kết thúc SSL/TLS
+                │  + ACM Certificate   │     (sgutodolist.com)
+                └───────────┬──────────┘
+                            │
+            ┌───────────────┼──────────────┐
+            │               │              │
+            ▼               ▼              ▼
+         ┌─────────┐   ┌─────────┐   ┌──────────┐
+         │  Auth   │   │  User   │   │ Taskflow │ ◄── ECS Fargate
+         │ Service │   │ Service │   │ Service  │     Microservices
+         └────┬────┘   └────┬────┘   └────┬─────┘     (Public Subnets)
+              │             │             │
+              └─────────────┼─────────────┘
+                            │
+                 ┌──────────┴──────────┐
+                 │     API Gateway     │ ◄── Điểm truy cập trung tâm
+                 │     (Port 8080)     │     + CORS + Rate Limiting
+                 └──────────┬──────────┘
+                            │
+            ┌───────────────┼──────────────┐
+            │               │              │
+            ▼               ▼              ▼
+        ┌─────────────┐ ┌─────────┐  ┌──────────┐
+        │ Notification│ │  Kafka  │  │ AI Model │
+        │   Service   │ │ Cluster │  │ Service  │
+        └──────┬──────┘ └────┬────┘  └─────┬────┘
+               │             │             │
+               └─────────────┼─────────────┘
+                             │
+                  ┌──────────┴──────────┐
+                  │                     │
+                  ▼                     ▼
+             ┌─────────┐          ┌───────────┐
+             │   RDS   │          │  Redis    │ ◄── Tầng dữ liệu
+             │  MySQL  │          │ElastiCache│     (Private Subnets)
+             └─────────┘          └───────────┘
+</code></pre>
+<h3 id="kiến-trúc-frontend-multi-region-failover">
+  Kiến trúc Frontend (Multi-Region Failover)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><pre><code>    ┌─────────────────────────────────────────────────────────┐
+    │                    Người dùng Internet                  │
+    └──────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+                       ┌──────────────┐
+                       │   Route 53   │ ◄── DNS: sgutodolist.com
+                       └────────┬─────┘
+                                │
+                                ▼
+                       ┌────────────────┐
+                       │  CloudFront    │ ◄── CDN toàn cầu
+                       │  Distribution  │     SSL Certificate
+                       └────────┬───────┘     Custom Domain
+                                │
+                  ┌─────────────┴─────────────┐
+                  │     Origin Group (HA)     │
+                  │   ┌─────────────────┐     │
+                  │   │ Primary Origin  │     │
+                  │   │  S3 Singapore   │ ◄───┼── Vùng chính
+                  │   └─────────────────┘     │
+                  │            │              │
+                  │   ┌────────▼──────────┐   │
+                  │   │ Failover Origin   │   │
+                  │   │  S3 N. Virginia   │ ◄─┼── Vùng dự phòng
+                  │   └───────────────────┘   │
+                  └───────────────────────────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │ S3 Cross-Region       │
+                    │ Replication (CRR)     │ ◄── Đồng bộ tự động
+                    └───────────────────────┘
+</code></pre>
+<h2 id="thành-phần-chính">
+  Thành phần chính
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="1-backend-services-ecs-fargate">
+  <strong>1. Backend Services (ECS Fargate)</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Dịch vụ</th>
+          <th>Port</th>
+          <th>Chức năng</th>
+          <th>Phụ thuộc</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>API Gateway</td>
+          <td>8080</td>
+          <td>- Điều phối routing<br>- Xử lý CORS<br>- Giới hạn tần suất (Rate limiting)</td>
+          <td>Redis, Tất cả service</td>
+      </tr>
+      <tr>
+          <td>Auth Service</td>
+          <td>9999</td>
+          <td>- Xác thực JWT<br>- OAuth2 (Google)<br>- Quản lý token</td>
+          <td>RDS, Redis, Kafka</td>
+      </tr>
+      <tr>
+          <td>User Service</td>
+          <td>8081</td>
+          <td>- Quản lý thông tin người dùng<br>- CRUD User</td>
+          <td>RDS, Redis, Kafka</td>
+      </tr>
+      <tr>
+          <td>Taskflow Service</td>
+          <td>8082</td>
+          <td>- Quản lý công việc<br>- Workflow</td>
+          <td>RDS, Redis, Kafka</td>
+      </tr>
+      <tr>
+          <td>Notification Service</td>
+          <td>9998</td>
+          <td>- WebSocket realtime<br>- Push notification</td>
+          <td>RDS, Redis, Kafka</td>
+      </tr>
+      <tr>
+          <td>AI Model Service</td>
+          <td>9997</td>
+          <td>- Ưu tiên task<br>- Gợi ý thông minh</td>
+          <td>Python Flask</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-thành-phần-hạ-tầng">
+  <strong>2. Thành phần hạ tầng</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="networking">
+  <strong>Networking</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li><strong>VPC</strong>: <code>10.0.0.0/16</code> tại Singapore (<code>ap-southeast-1</code>)</li>
+<li><strong>Public Subnets (2 AZs)</strong>: ECS Tasks, ALB, Bastion</li>
+<li><strong>Private Subnets (2 AZs)</strong>: RDS, Redis (tầng dữ liệu)</li>
+<li><strong>Chiến lược bảo mật</strong>: Loại bỏ NAT Gateway để tiết kiệm chi phí (~30 USD/tháng)</li>
+</ul>
+<h4 id="lưu-trữ-dữ-liệu">
+  <strong>Lưu trữ dữ liệu</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li><strong>RDS MySQL</strong>: CSDL chính, Free Tier (<code>db.t3.micro</code>)</li>
+<li><strong>ElastiCache Redis</strong>: Cache + Rate limiting (<code>cache.t3.micro</code>)</li>
+<li><strong>Kafka (ECS)</strong>: Event streaming, Service Discovery (<code>kafka.sgu.local</code>)</li>
+</ul>
+<h4 id="cân-bằng-tải--ssl">
+  <strong>Cân bằng tải &amp; SSL</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li><strong>Application Load Balancer</strong>: Kết thúc HTTPS, routing theo path</li>
+<li><strong>ACM Certificate</strong>: <code>sgutodolist.com</code></li>
+<li><strong>Target Groups</strong>: Mỗi service có target group riêng với health check</li>
+</ul>
+<h4 id="service-discovery">
+  <strong>Service Discovery</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li><strong>AWS Cloud Map</strong>: Namespace <code>sgu.local</code></li>
+<li><strong>DNS nội bộ</strong>:
+<ul>
+<li><code>auth.sgu.local:9999</code></li>
+<li><code>user.sgu.local:8081</code></li>
+<li><code>taskflow.sgu.local:8082</code></li>
+<li><code>notification.sgu.local:9998</code></li>
+<li><code>ai-model.sgu.local:9997</code></li>
+<li><code>kafka.sgu.local:9092</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="chi-phí--tối-ưu">
+  Chi phí &amp; Tối ưu
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="các-quyết-định-kiến-trúc-quan-trọng">
+  <strong>Các quyết định kiến trúc quan trọng</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>Yếu tố</th>
+          <th>Lựa chọn ban đầu</th>
+          <th>Lựa chọn cuối cùng</th>
+          <th>Tiết kiệm</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>NAT Gateway</strong></td>
+          <td>2 NAT (HA)</td>
+          <td>❌ Không dùng</td>
+          <td>~60 USD/tháng</td>
+      </tr>
+      <tr>
+          <td><strong>ECS Compute</strong></td>
+          <td>EC2 Instances</td>
+          <td>✅ Fargate Spot (0.5 vCPU)</td>
+          <td>~40 USD/tháng</td>
+      </tr>
+      <tr>
+          <td><strong>RDS</strong></td>
+          <td>Multi-AZ</td>
+          <td>✅ Single-AZ Free Tier</td>
+          <td>~30 USD/tháng</td>
+      </tr>
+      <tr>
+          <td><strong>Redis</strong></td>
+          <td>Cluster Mode</td>
+          <td>✅ Single Node</td>
+          <td>~20 USD/tháng</td>
+      </tr>
+      <tr>
+          <td><strong>Backend Multi-Region</strong></td>
+          <td>Active-Active</td>
+          <td>✅ Single Region</td>
+          <td>~200 USD/tháng</td>
+      </tr>
+      <tr>
+          <td><strong>Frontend HA</strong></td>
+          <td>Multi-Region Active</td>
+          <td>✅ Failover Only</td>
+          <td>~50 USD/tháng</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="chiến-lược-public-subnet-cho-ecs">
+  <strong>Chiến lược Public Subnet cho ECS</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Thay vì sử dụng NAT Gateway tốn kém, toàn bộ ECS Tasks được triển khai trên <strong>Public Subnets</strong> với <strong>Public IP</strong> bật sẵn. Điều này cho phép:</p>
+<ul>
+<li>✅ Pull Docker image từ ECR qua Internet</li>
+<li>✅ Kết nối outbound tới các dịch vụ AWS</li>
+<li>✅ Tiết kiệm 100% chi phí NAT Gateway</li>
+<li>⚠️ Đánh đổi: cần cấu hình Security Group chặt chẽ</li>
+</ul>
+<h2 id="chiến-lược-domain--ssl">
+  Chiến lược Domain &amp; SSL
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="domain-production">
+  <strong>Domain Production</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li><strong>Frontend</strong>: <code>https://sgutodolist.com</code> (CloudFront + ACM us-east-1)</li>
+<li><strong>Backend API</strong>: <code>https://sgutodolist.com</code> (ALB + ACM ap-southeast-1)</li>
+</ul>
+<h3 id="chứng-chỉ-ssl">
+  <strong>Chứng chỉ SSL</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li><strong>Chứng chỉ 1</strong> (us-east-1): Dành cho CloudFront (bắt buộc ở Virginia)
+<ul>
+<li>Domain: <code>sgutodolist.com</code>, <code>*.sgutodolist.com</code></li>
+</ul>
+</li>
+<li><strong>Chứng chỉ 2</strong> (ap-southeast-1): Dành cho ALB Singapore
+<ul>
+<li>Domain: <code>sgutodolist.com</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="kiến-trúc-bảo-mật">
+  Kiến trúc bảo mật
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><h3 id="ma-trận-security-group">
+  <strong>Ma trận Security Group</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><table>
+  <thead>
+      <tr>
+          <th>SG Name</th>
+          <th>Mục đích</th>
+          <th>Inbound Rules</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>public-alb-sg</code></td>
+          <td>ALB public facing</td>
+          <td>0.0.0.0/0:443, 0.0.0.0/0:80</td>
+      </tr>
+      <tr>
+          <td><code>ecs-app-sg</code></td>
+          <td>ECS Tasks</td>
+          <td>ALB:8080-8082, 9998-9999; Self: all ports (inter-service)</td>
+      </tr>
+      <tr>
+          <td><code>private-db-sg</code></td>
+          <td>RDS + Redis + Kafka</td>
+          <td>ecs-app-sg:3306, 6379, 9092</td>
+      </tr>
+      <tr>
+          <td><code>bastion-sg</code></td>
+          <td>Bastion SSH Jump Host</td>
+          <td>My IP:22</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="luồng-xác-thực">
+  <strong>Luồng xác thực</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>User → CloudFront → API Gateway → Auth Service
+                                      ↓
+                              JWT + Redis Session
+                                      ↓
+                              Google OAuth2 (Optional)</code></pre></div>
+<h2 id="thông-tin-nhóm">
+  Thông tin nhóm
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h2><ul>
+<li><strong>Dự án</strong>: SGU TodoList – Hệ thống quản lý công việc</li>
+<li><strong>Kiến trúc</strong>: Microservices Single-Region (Tối ưu chi phí)</li>
+<li><strong>Region chính</strong>: Asia Pacific (Singapore) – ap-southeast-1</li>
+<li><strong>Region dự phòng</strong>: US East (N. Virginia) – us-east-1 (chỉ frontend)</li>
+<li><strong>Mô hình triển khai</strong>: Tối ưu AWS Free Tier</li>
+</ul>
 
   <footer class="footline">
   </footer>
@@ -245,12 +755,12 @@
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
             <li class="parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
-            <li class="active " data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
-            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
-            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
+            <li class="active " data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
@@ -301,8 +811,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765170766" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765170766" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765203878" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765203878" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <channel>
     <title>ClouFront and Failover :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</link>
-    <description>GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)&#xD;BƯỚC 3.1: Tạo Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront&#xA;Distribution type: Giữ nguyên Single website or app.</description>
+    <description>STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)&#xD;STEP 3.1: Create Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront&#xA;Distribution type: Keep Single website or app.</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.xml" rel="self" type="application/rss+xml" />
