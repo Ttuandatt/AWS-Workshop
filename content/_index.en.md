@@ -20,7 +20,12 @@ chapter = false
 **Internship Duration:** From 29/09/2025 to 22/11/2025
 
 
-![MyAvatar](/images/forest.jpg)
+<!-- ![MyAvatar](/images/forest.jpg) -->
+
+<figure>
+  <img src="/images/forest.jpg" alt="Figure 1. Single-Region ECS Fargate Architecture" style="max-width:100%;height:auto;">
+  <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
+</figure>
 
 
 ### Report Content

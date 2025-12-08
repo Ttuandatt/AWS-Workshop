@@ -38,6 +38,7 @@ Các điều kiện sau là cần thiết để hoàn thành giải pháp này:
 {{< figurecaption src="/images/Img1-Blog1.png" caption="Hình 1. Sơ đồ kiến trúc AWS minh họa hai VPC được kết nối thông qua một cổng NAT tự quản lý dựa trên Linux." >}}
 
 
+
 ### Ví dụ
 
 Cấu hình ví dụ được triển khai từ AWS đến AWS để đảm bảo tính trực quan, như minh họa trong hình trên, nhưng một trong hai phía đều có thể được thay thế bằng bất kỳ thiết bị NAT nào thực hiện chức năng tương tự. Tương tự, ví dụ này dựa trên hệ thống tệp FSx for ONTAP trong một Single-[Availability Zone (AZ)](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/). Nếu bạn đang sử dụng hệ thống tệp Multi-AZ, chúng tôi khuyến nghị triển khai hai phiên bản Amazon EC2 trong từng Availability Zone (AZ) của hệ thống tệp Multi-AZ và định tuyến lưu lượng thông qua phiên bản nằm trong từng AZ đó.
