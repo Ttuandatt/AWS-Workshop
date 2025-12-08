@@ -35,7 +35,10 @@ Các điều kiện sau là cần thiết để hoàn thành giải pháp này:
 - Một thiết bị NAT mà SnapMirror có thể đi qua tại mỗi hệ thống tệp (filer).
 - Một subnet riêng biệt cho từng hệ thống tệp.
 
-{{< figurecaption src="/images/Img1-Blog1.png" caption="Hình 1. Sơ đồ kiến trúc AWS minh họa hai VPC được kết nối thông qua một cổng NAT tự quản lý dựa trên Linux." >}}
+
+<figure>
+  <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
+</figure>
 
 
 
