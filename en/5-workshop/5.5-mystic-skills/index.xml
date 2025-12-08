@@ -3,7 +3,7 @@
   <channel>
     <title>Mystic Skills :: Internship Report</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</link>
-    <description>1. Hugo Commands&#xD;2. Git Commands&#xD;2.1 Check repository status&#xA;git status&#xD;2.2 List local branches&#xA;git branch&#xD;2.3 List all branches (local + remote)&#xA;git branch -a&#xD;2.4 Switch to another branch</description>
+    <description>1. Hugo Commands&#xD;1.1&#xA;hugo build&#xD;1.2&#xA;hugo server -D&#xD;2. Git Commands&#xD;2.1 Check repository status&#xA;git status&#xD;2.2 List local branches&#xA;git branch&#xD;2.3 List all branches (local + remote)</description>
     <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.xml" rel="self" type="application/rss+xml" />
