@@ -83,6 +83,7 @@ Navigate to **VPC** → **Security Groups** → **Create security group**. Creat
 | Custom TCP | TCP | 8082 | public-alb-sg | ALB to Taskflow Service |
 | Custom TCP | TCP | 9998 | public-alb-sg | ALB to Notification Service |
 | Custom TCP | TCP | 9999 | public-alb-sg | ALB to Auth Service |
+| Custom TCP | TCP | 9092 | public-alb-sg | Services call to Kafka |
 | Custom TCP | TCP | 9997 | public-alb-sg | ALB to AI Service |
 
 **Important:** Click **Create security group** before proceeding to Phase 2.
@@ -114,6 +115,12 @@ Navigate to **VPC** → **Security Groups** → **Create security group**. Creat
 | MySQL/Aurora | TCP | 3306 | ecs-app-sg | RDS database access |
 | Custom TCP | TCP | 6379 | ecs-app-sg | Redis cache access |
 | Custom TCP | TCP | 9092 | ecs-app-sg | Kafka broker access |
+| MySQL/Aurora | TCP | 3306 | bastion-sg | Access Database from the Bastion Host (Admin/Debug) |
+| Custom TCP | TCP | 6379 | bastion-sg | Access Redis from the Bastion Host (Admin/Debug) |
+| MySQL/Aurora | TCP | 3306 | 14.186.212.182/32 | Direct Access from a fixed IP address (Personal/Debug) |
+
+
+
 
 * * * * *
 
@@ -152,6 +159,6 @@ Before proceeding to the next phase, verify:
 <a href="" style="text-decoration: none; font-weight: bold;">
 </a>
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.2-Infrastructure & ALB Setup (RDS, Redis, Cloud Map, ALB Routing)" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 2: Infrastructure & ALB Setup ➡
+STEP 2: Infrastructure & ALB Setup ➡
 </a>
 </div>

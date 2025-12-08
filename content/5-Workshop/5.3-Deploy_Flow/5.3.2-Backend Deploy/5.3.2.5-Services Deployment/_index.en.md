@@ -1,5 +1,5 @@
 +++
-title = "Services Deployment (Following priority order and verification)"
+title = "Services Deployment "
 weight = 5
 chapter = false
 pre = " <b> 5.3.2.5. </b> "
@@ -94,6 +94,9 @@ These services require both ALB integration (for external access) and Service Di
 
     -   **Desired tasks**: 1
 
+    -   **Desired tasks**: 1
+
+    -       
 5\.  **Networking:**
 
     -   **VPC**: `SGU-Microservices-VPC`
@@ -116,9 +119,13 @@ These services require both ALB integration (for external access) and Service Di
 
     -   **Enable**: Use service discovery
 
+    -   **Configure namespace**: Select an existing namespace
+
     -   **Namespace**: `sgu.local`
 
-    -   **Service discovery name**: Enter discovery name (e.g., `auth`)
+    -   **Configure service discovery service**: `Select an existing service discovery service`
+
+    -   **Existing service discovery service**: Choose discovery name (e.g., `auth`)
 
     -   **Result DNS**: `auth.sgu.local` (for example)
 

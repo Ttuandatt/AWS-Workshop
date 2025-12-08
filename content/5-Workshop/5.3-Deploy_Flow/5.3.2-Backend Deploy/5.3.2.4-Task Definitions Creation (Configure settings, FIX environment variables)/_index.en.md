@@ -184,7 +184,7 @@ After creation, please verify:
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.3-Code Update & Image Build (Create new Docker Image)" %}}" style="text-decoration: none; font-weight: bold;">
 ⬅ STEP 3: Code Update & Image Build
 </a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment (Following priority order and verification)" %}}" style="text-decoration: none; font-weight: bold;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment" %}}" style="text-decoration: none; font-weight: bold;">
 STEP 5: Services Deployment ➡
 </a>
 </div>

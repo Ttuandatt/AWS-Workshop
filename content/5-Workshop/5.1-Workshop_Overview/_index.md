@@ -29,9 +29,9 @@ Overall architecture
                         ┌──────────────────────┐
                         │  Application Load    │
                         │  Balancer (ALB)      │ ◄── SSL/TLS Termination
-                        │  + ACM Certificate   │     (api.sgutodolist.com)
+                        │  + ACM Certificate   │     (sgutodolist.com)
                         └──────────┬───────────┘
-                                │
+                                   │
                     ┌──────────────┼──────────────┐
                     │              │              │
                     ▼              ▼              ▼
@@ -39,31 +39,31 @@ Overall architecture
                 │  Auth   │  │  User   │   │Taskflow  │  ◄── ECS Fargate
                 │ Service │  │ Service │   │ Service  │      Microservices
                 └────┬────┘  └────┬────┘   └────┬─────┘      (Public Subnets)
-                    │            │             │
-                    └────────────┼─────────────┘
-                                │
-                        ┌────────┴────────┐
-                        │   API Gateway   │ ◄── Central Entry Point
-                        │   (Port 8080)   │     + CORS + Rate Limiting
-                        └────────┬────────┘
-                                │
-                    ┌─────────────┼─────────────┐
-                    │             │             │
-                    ▼             ▼             ▼
-                ┌────────────┐ ┌─────────┐  ┌──────────┐
-                │Notification│ │  Kafka  │  │ AI Model │
-                │  Service   │ │ Cluster │  │ Service  │
-                └──────┬─────┘ └────┬────┘  └────┬─────┘
-                    │            │            │
-                    └────────────┼────────────┘
-                                    │
-                        ┌──────────┴──────────┐
-                        │                     │
-                        ▼                     ▼
-                    ┌─────────┐          ┌───────────┐
-                    │   RDS   │          │  Redis    │  ◄── Data Layer
-                    │  MySQL  │          │ElastiCache│     (Private Subnets)
-                    └─────────┘          └───────────┘
+                     │            │             │
+                     └────────────┼─────────────┘
+                                  │
+                         ┌────────┴────────┐
+                         │   API Gateway   │ ◄── Central Entry Point
+                         │   (Port 8080)   │     + CORS + Rate Limiting
+                         └────────┬────────┘
+                                  │
+                      ┌───────────┼─────────────┐
+                      │           │             │
+                      ▼           ▼             ▼
+              ┌────────────┐ ┌─────────┐  ┌──────────┐
+              │Notification│ │  Kafka  │  │ AI Model │
+              │  Service   │ │ Cluster │  │ Service  │
+              └──────┬─────┘ └────┬────┘  └────┬─────┘
+                     │            │            │
+                     └────────────┼────────────┘
+                                  │
+                       ┌──────────┴──────────┐
+                       │                     │
+                       ▼                     ▼
+                  ┌─────────┐          ┌───────────┐
+                  │   RDS   │          │  Redis    │  ◄── Data Layer
+                  │  MySQL  │          │ElastiCache│     (Private Subnets)
+                  └─────────┘          └───────────┘
 ```
 
 ### Frontend Architecture (Multi-Region Failover)
@@ -133,7 +133,7 @@ Overall architecture
 #### **Load Balancing & SSL**
 
 -   **Application Load Balancer**: HTTPS termination, path-based routing
--   **ACM Certificate**: `api.sgutodolist.com`
+-   **ACM Certificate**: `sgutodolist.com`
 -   **Target Groups**: Each service has their onw target group with health checks
 
 #### **Service Discovery**
@@ -177,14 +177,14 @@ Domain & SSL Strategy
 ### **Production Domains**
 
 -   **Frontend**: `https://sgutodolist.com` (CloudFront + ACM us-east-1)
--   **Backend API**: `https://api.sgutodolist.com` (ALB + ACM ap-southeast-1)
+-   **Backend API**: `https://sgutodolist.com` (ALB + ACM ap-southeast-1)
 
 ### **SSL Certificates**
 
 -   **Certificate 1** (us-east-1): For CloudFront (Must be in Virginia)
     -   Domain: `sgutodolist.com`, `*.sgutodolist.com`
 -   **Certificate 2** (ap-southeast-1): For ALB Singapore
-    -   Domain: `api.sgutodolist.com`
+    -   Domain: `sgutodolist.com`
 
     
 Security Architecture

@@ -1,24 +1,38 @@
 +++
-title = "Events Participated"
+title = "Sự kiện đã tham gia"
 weight = 4
 chapter = false
 pre = "<b>4. </b>"
 +++
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+Trong thời gian thực tập, tôi đã tham gia **hai sự kiện**. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại nhiều kiến thức mới, thú vị và hữu ích, cùng với những phần quà và khoảnh khắc ý nghĩa.
 
+### [Sự kiện 1]({{% relref "4-Events_Participated/4.1-Event 1/_index.en.md" %}})
+- **Tên sự kiện**: Kick-off AWS FCJ Workforce – FPTU OJT FALL 2025  
 
-### Event 1
-- Event Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025
+- **Thời gian**: 8:30 sáng, Thứ Bảy, ngày 06 tháng 09 năm 2025  
 
-- Date & Time: 8:30 AM Saturday, September 6, 2025
+- **Địa điểm**: Tầng 26, Tòa nhà Bitexco, số 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh  
 
-- Location: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
+- **Vai trò**: Người tham dự  
 
-- Role: Attendee
+- **Mô tả**:  
+  Sự kiện khởi động dành cho các thành viên FCAJ nhằm gặp gỡ, làm quen với đội ngũ hỗ trợ và quản trị, đồng thời tìm hiểu tổng quan về chương trình.
 
-- Description: A kick-off event for FCAJ members to meet up and be familiar with the support & admin team, as well as get to know about the program
+- **Kết quả đạt được**:  
+  Nắm được cái nhìn tổng quan và hiểu rõ hơn về chương trình FCAJ, cũng như biết thêm về các thành viên trong đội ngũ hỗ trợ và quản trị.
 
-- Outcomes: Gained a clear understanding about the FCAJ program and know about the support team and admin team members
+### [Sự kiện 2]({{% relref "4-Events_Participated/4.2-Event 2/_index.en.md" %}})
+- **Tên sự kiện**: AWS CLOUD MASTERY SERIES #3 – Security on AWS  
 
-### Event 2
+- **Thời gian**: 8:30 – 12:00, Thứ Bảy, ngày 29 tháng 11 năm 2025  
+
+- **Địa điểm**: Tầng 26, Tòa nhà Bitexco, số 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh  
+
+- **Vai trò**: Người tham dự  
+
+- **Mô tả**:  
+  Buổi chia sẻ chuyên sâu giúp người tham dự nắm vững 5 trụ cột bảo mật theo **AWS Well-Architected Security Pillar**, đồng thời tìm hiểu cách bảo vệ hệ thống cloud trước các mối đe dọa ngày càng gia tăng.
+
+- **Kết quả đạt được**:  
+  Hiểu rõ cách thiết kế hệ thống điện toán đám mây an toàn dựa trên AWS Well-Architected Security Pillar, đồng thời được trải nghiệm các demo thực tế về IAM, phát hiện mối đe dọa và phản ứng sự cố trong môi trường cloud thực tế.

@@ -31,7 +31,7 @@ This final phase connects the deployed backend to the public domain and verifies
 bash
 
 ```
-nslookup api.sgutodolist.com
+nslookup sgutodolist.com
 # Should return ALB's IP addresses
 ```
 
@@ -47,7 +47,7 @@ nslookup api.sgutodolist.com
 4.  Under **Authorized redirect URIs**, add:
 
 ```
-   https://api.sgutodolist.com/api/auth/login/oauth2/code/google
+   https://sgutodolist.com/api/auth/login/oauth2/code/google
 ```
 
 1.  Click **Save**
@@ -65,7 +65,7 @@ Perform the following tests to verify deployment success:
 bash
 
 ```
-curl https://api.sgutodolist.com/actuator/health
+curl https://sgutodolist.com/actuator/health
 ```
 
 **Expected Response:**
@@ -84,16 +84,16 @@ bash
 
 ```
 # Auth Service
-curl https://api.sgutodolist.com/api/auth/actuator/health
+curl https://sgutodolist.com/api/auth/actuator/health
 
 # User Service
-curl https://api.sgutodolist.com/api/user/actuator/health
+curl https://sgutodolist.com/api/user/actuator/health
 
 # Taskflow Service
-curl https://api.sgutodolist.com/api/taskflow/actuator/health
+curl https://sgutodolist.com/api/taskflow/actuator/health
 
 # Notification Service
-curl https://api.sgutodolist.com/api/notification/actuator/health
+curl https://sgutodolist.com/api/notification/actuator/health
 ```
 
 All should return `{"status":"UP"}`.
@@ -157,10 +157,10 @@ bash
 
 ```
 # API Gateway response time
-time curl -o /dev/null -s https://api.sgutodolist.com/actuator/health
+time curl -o /dev/null -s https://sgutodolist.com/actuator/health
 
 # Auth service response time
-time curl -o /dev/null -s https://api.sgutodolist.com/api/auth/actuator/health
+time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health
 ```
 
 **CloudWatch Metrics to Monitor:**
@@ -308,7 +308,7 @@ Deployment is considered successful when:
 
 1.  ✅ All 6 ECS services show status: RUNNING
 2.  ✅ All 5 target groups show: Healthy
-3.  ✅ `https://api.sgutodolist.com/actuator/health` returns HTTP 200
+3.  ✅ `https://sgutodolist.com/actuator/health` returns HTTP 200
 4.  ✅ Frontend at `https://sgutodolist.com` can authenticate via Google OAuth
 5.  ✅ CloudWatch Logs show no critical errors
 6.  ✅ All services accessible via internal DNS (*.sgu.local)
@@ -316,7 +316,7 @@ Deployment is considered successful when:
 * * * * *
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment (Following priority order and verification)" %}}" style="text-decoration: none; font-weight: bold;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment" %}}" style="text-decoration: none; font-weight: bold;">
 ⬅ BƯỚC 5: Code Update & Image Build
 </a>
 <a href="" style="text-decoration: none; font-weight: bold;">

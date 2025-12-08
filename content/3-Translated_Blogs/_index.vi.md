@@ -1,5 +1,5 @@
 +++
-title = "Translated Blogs"
+title = "Blogs đã dịch"
 weight = 3
 chapter = true
 pre = "<b>3. </b>"

@@ -32,6 +32,6 @@ This model illustrates the core services used for high-availability, low-latency
 
 4.  [Task Definitions Creation (Configure settings, FIX environment variables)]({{% relref "5.3.2.4-Task Definitions Creation (Configure settings, FIX environment variables)" %}})
 
-5.  [Services Deployment (Following priority order and verification)]({{% relref "5.3.2.5-Services Deployment (Following priority order and verification)" %}})
+5.  [Services Deployment ]({{% relref "5.3.2.5-Services Deployment" %}})
 
 6.  [Completion & Verification (Route 53, Google Console, Final Test)]({{% relref "5.3.2.6-Completion & Verification (Route 53, Google Console, Final Test)" %}})

@@ -339,7 +339,7 @@ Dịch vụ A → AWS Cloud Map (service-b.local:PORT)
 
 **Yêu cầu API (Backend Microservices):**
 
-1.  Frontend thực hiện cuộc gọi API: `https://api.sgutodolist.com/api/tasks`.
+1.  Frontend thực hiện cuộc gọi API: `https://sgutodolist.com/api/tasks`.
 
 2.  Route 53 phân giải đến Application Load Balancer ở Singapore.
 

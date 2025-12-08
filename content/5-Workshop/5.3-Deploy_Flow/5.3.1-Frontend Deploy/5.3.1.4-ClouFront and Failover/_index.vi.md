@@ -1,5 +1,5 @@
 +++
-title = "ClouFront and Failover"
+title = "ClouFront & Failover"
 weight =  4
 chapter = false
 pre = " <b> 5.3.1.4.  </b>"
@@ -211,3 +211,13 @@ Ta sẽ có 2 origins và 1 origin group:
 
 
 * * * * *
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.3-Route 53 and ACM" %}}" style="text-decoration: none; font-weight: bold;">
+⬅ BƯỚC 3: Route 53 và ACM
+</a>
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.5-S3 Policy" %}}" style="text-decoration: none; font-weight: bold;">
+BƯỚC 5: S3 Policy ➡
+</a>
+</div>
+
