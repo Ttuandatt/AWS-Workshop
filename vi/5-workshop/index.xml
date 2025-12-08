@@ -29,11 +29,11 @@
       <description>Mục lục&#xD;Phần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.&#xA;Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.</description>
     </item>
     <item>
-      <title>Clean Up</title>
+      <title>Dọn Dẹp</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</guid>
-      <description>HEHEHEHE THIS IS WORKSHOP CLEANUP</description>
+      <description>Hướng Dẫn Dọn Dẹp&#xD;Hướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.</description>
     </item>
     <item>
       <title>Mystic Skills</title>

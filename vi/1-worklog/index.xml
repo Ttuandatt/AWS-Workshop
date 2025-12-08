@@ -19,7 +19,7 @@
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</guid>
-      <description>Mục tiêu Tuần 2&#xD;Mô-đun Học tập 1: Thực hành VPC và EC2 Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan Phân công nhiệm vụ cho dự án nhóm Cập nhật cấu trúc nhật ký công việc Các nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |</description>
+      <description>Mục tiêu Tuần 2&#xD;Mô-đun Học tập 1: Thực hành VPC và EC2 Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan Phân công nhiệm vụ cho dự án nhóm Cập nhật cấu trúc nhật ký công việc Các nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 Tìm hiểu về VPC và các tính năng của nó 15/09/2025 15/09/2025 VPC, YouTube 2 Thực hành tạo VPC, Mạng con và Cổng Internet 16/09/2025 16/09/2025 Tạo VPC, Tạo Mạng con, Tạo IGW Cập nhật nhật ký công việc 3 Thực hành tạo Bảng định tuyến và Nhóm bảo mật 17/09/2025 17/09/2025 Tạo Bảng Định Tuyến, Tạo Nhóm Bảo Mật Quyết định phạm vi dự án và phân công nhiệm vụ 4 Tìm hiểu về triển khai các phiên bản Amazon EC2 18/09/2025 18/09/2025 Triển khai EC2, YouTube Thực hành tạo EC2 instance, kiểm tra kết nối và tạo NAT Gateway Tạo EC2, Kiểm tra kết nối, Tạo NAT Gateway 5 Thực hành sử dụng Reachability Analyzer 19/09/2025 19/09/2025 Reachability Analyzer Họp nhóm để quyết định đề xuất dự án Cập nhật nhật ký công việc</description>
     </item>
     <item>
       <title>Nhật ký công việc Tuần 3</title>

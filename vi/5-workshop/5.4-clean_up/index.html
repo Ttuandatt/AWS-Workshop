@@ -5,45 +5,45 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="HEHEHEHE THIS IS WORKSHOP CLEANUP">
+    <meta name="description" content="Hướng Dẫn Dọn DẹpHướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Clean Up :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="HEHEHEHE THIS IS WORKSHOP CLEANUP">
+    <meta name="twitter:title" content="Dọn Dẹp :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Hướng Dẫn Dọn DẹpHướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
-    <meta property="og:title" content="Clean Up :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="HEHEHEHE THIS IS WORKSHOP CLEANUP">
+    <meta property="og:title" content="Dọn Dẹp :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Hướng Dẫn Dọn DẹpHướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Clean Up :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="HEHEHEHE THIS IS WORKSHOP CLEANUP">
-    <meta itemprop="wordCount" content="5">
-    <title>Clean Up :: Báo Cáo Thực Tập</title>
+    <meta itemprop="name" content="Dọn Dẹp :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Hướng Dẫn Dọn DẹpHướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.">
+    <meta itemprop="wordCount" content="670">
+    <title>Dọn Dẹp :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html" rel="alternate" hreflang="vi">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.xml" rel="alternate" type="application/rss+xml" title="Clean Up :: Báo Cáo Thực Tập">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765211415" rel="stylesheet">
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765211415" defer></script>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.xml" rel="alternate" type="application/rss+xml" title="Dọn Dẹp :: Báo Cáo Thực Tập">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765214330" rel="stylesheet">
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765214330" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765211415";
+      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765214330";
     </script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765211415" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765214330" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765211415" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765211415" rel="stylesheet"></noscript>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765211415" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765211415" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765211415" rel="stylesheet" id="R-format-style">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet"></noscript>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765214330" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765214330" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765214330" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765211415" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765214330" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html">
     <div id="R-body" class="default-animation">
@@ -127,9 +127,11 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#hướng-dẫn-dọn-dẹp">Hướng Dẫn Dọn Dẹp</a>
       <ul>
-        <li><a href="#hehehehe-this-is-workshop-cleanup">HEHEHEHE THIS IS WORKSHOP CLEANUP</a></li>
+        <li><a href="#i-tổng-quan-dịch-vụ-aws-đang-hoạt-động"><strong>I. Tổng Quan Dịch Vụ AWS Đang Hoạt Động</strong></a></li>
+        <li><a href="#ii-quy-trình-dọn-dẹp-từng-bước"><strong>II. Quy Trình Dọn Dẹp (Từng Bước)</strong></a></li>
+        <li><a href="#iii-kiểm-tra-cuối-cùng"><strong>III. Kiểm Tra Cuối Cùng</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -138,7 +140,7 @@
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Clean Up</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Dọn Dẹp</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -149,7 +151,7 @@
 
 
 
-<span class="btn cstyle button link noborder notitle interactive"><a href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" title="Completion & Verification (Route 53, Google Console, Final Test) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" title="Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 
@@ -187,10 +189,10 @@
   <header class="headline">
   </header>
 
-<h1 id="clean-up">Clean Up</h1>
+<h1 id="dọn-dẹp">Dọn Dẹp</h1>
 
-<h3 id="hehehehe-this-is-workshop-cleanup">
-  HEHEHEHE THIS IS WORKSHOP CLEANUP
+<h2 id="hướng-dẫn-dọn-dẹp">
+  Hướng Dẫn Dọn Dẹp
 
 
 
@@ -199,7 +201,272 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3>
+</h2><p>Hướng dẫn này cung cấp các bước chi tiết để <strong>xóa hoàn toàn tất cả tài nguyên AWS</strong> đã triển khai trên các vùng <strong>ap-southeast-1 (Singapore)</strong> và <strong>us-east-1 (N. Virginia)</strong>. Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.</p>
+<h3 id="i-tổng-quan-dịch-vụ-aws-đang-hoạt-động">
+  <strong>I. Tổng Quan Dịch Vụ AWS Đang Hoạt Động</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Trước khi thực hiện, hãy kiểm tra sự tồn tại của các dịch vụ sau trong tài khoản:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Danh Mục Dịch Vụ</th>
+          <th>Tên Dịch Vụ/Tài Nguyên</th>
+          <th>Vùng</th>
+          <th>Mục Đích</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Compute/Scaling</strong></td>
+          <td>ECS Cluster/ASG, EC2 Instances</td>
+          <td>ap-southeast-1</td>
+          <td>Lưu trữ ứng dụng</td>
+      </tr>
+      <tr>
+          <td><strong>Cơ Sở Dữ Liệu/Cache</strong></td>
+          <td>RDS DB Instance (Multi-AZ), ElastiCache Redis Cluster</td>
+          <td>ap-southeast-1</td>
+          <td>Lưu trữ dữ liệu &amp; Quản lý phiên</td>
+      </tr>
+      <tr>
+          <td><strong>Mạng</strong></td>
+          <td>Application Load Balancer (ALB), Target Groups, NAT Gateway, VPC</td>
+          <td>ap-southeast-1</td>
+          <td>Phân phối lưu lượng &amp; Truy cập Internet</td>
+      </tr>
+      <tr>
+          <td><strong>Lưu Trữ/Tài Nguyên</strong></td>
+          <td>S3 Primary Bucket, S3 DR Bucket, ECR Repositories</td>
+          <td>ap-southeast-1, us-east-1</td>
+          <td>Lưu trữ file &amp; hosting image</td>
+      </tr>
+      <tr>
+          <td><strong>Toàn Cầu/DNS/Bảo Mật</strong></td>
+          <td>CloudFront Distribution, ACM Certificates, Route 53 Hosted Zone</td>
+          <td>Global (Edge), us-east-1, ap-southeast-1</td>
+          <td>CDN &amp; bảo mật SSL</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="ii-quy-trình-dọn-dẹp-từng-bước">
+  <strong>II. Quy Trình Dọn Dẹp (Từng Bước)</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="1-dọn-dẹp-lớp-ứng-dụng-ap-southeast-1">
+  <strong>1. Dọn Dẹp Lớp Ứng Dụng (ap-southeast-1)</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Bắt đầu với việc xóa các tài nguyên chạy ứng dụng và kết nối đến cơ sở dữ liệu.</p>
+<ol>
+<li>
+<p><strong>Dừng ECS/EC2 Compute:</strong></p>
+<ul>
+<li><strong>Nếu sử dụng ECS:</strong>
+<ul>
+<li>Vào <strong>Amazon ECS</strong> → <strong>Clusters</strong>.</li>
+<li>Chọn Cluster → Tab <strong>Services</strong>.</li>
+<li>Chọn tất cả Services → Click <strong>Update</strong>.</li>
+<li>Đặt <strong>Desired tasks</strong> = <strong>0</strong> → <strong>Next</strong> → <strong>Update Service</strong>.</li>
+<li>Chờ tasks dừng hoàn toàn. Sau đó chọn lại Services → <strong>Delete</strong> → Xác nhận với <code>delete me</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa Thành Phần Load Balancer (ALB):</strong></p>
+<ul>
+<li>
+<p>Vào <strong>EC2</strong> → <strong>Target Groups</strong>. Chọn Target Groups → <strong>Actions</strong> → <strong>Delete</strong>.</p>
+</li>
+<li>
+<p>Vào <strong>EC2</strong> → <strong>Load Balancers</strong>. Chọn ALB → <strong>Actions</strong> → <strong>Delete</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-xóa-dịch-vụ-cơ-sở-dữ-liệu-và-cache">
+  <strong>2. Xóa Dịch Vụ Cơ Sở Dữ Liệu và Cache</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ol>
+<li>
+<p><strong>Xóa ElastiCache (Redis):</strong></p>
+<ul>
+<li>Vào <strong>ElastiCache</strong> → <strong>Redis Clusters</strong>. Chọn Cluster → <strong>Actions</strong> → <strong>Delete</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa RDS Database (Bước quan trọng về chi phí):</strong></p>
+<ul>
+<li>
+<p>Vào <strong>RDS</strong> → <strong>Databases</strong>. Chọn Instance.</p>
+</li>
+<li>
+<p>Nếu <strong>Deletion protection</strong> đang <em>Enabled</em>, click <strong>Modify</strong> → Bỏ chọn <em>Deletion protection</em> → <strong>Continue</strong> → <strong>Apply immediately</strong>.</p>
+</li>
+<li>
+<p>Chọn Instance → <strong>Actions</strong> → <strong>Delete</strong>.</p>
+</li>
+<li>
+<p><strong>Bỏ chọn</strong> <strong>Create final snapshot</strong> → Nhập tên DB để xác nhận → Click <strong>Delete</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-dọn-dẹp-dịch-vụ-toàn-cầu-và-certificates">
+  <strong>3. Dọn Dẹp Dịch Vụ Toàn Cầu và Certificates</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Bao gồm các tài nguyên trải dài nhiều vùng.</p>
+<ol>
+<li>
+<p><strong>Xóa CloudFront Distribution:</strong></p>
+<ul>
+<li>
+<p>Vào <strong>CloudFront</strong>. Chọn Distribution → Click <strong>Disable</strong>. (Chờ 10-15 phút để trạng thái thay đổi).</p>
+</li>
+<li>
+<p>Khi Disabled, chọn Distribution → Click <strong>Delete</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa ACM Certificates (cần thực hiện ở cả hai vùng):</strong></p>
+<ul>
+<li>
+<p><strong>us-east-1 (N. Virginia):</strong> Chuyển vùng → Vào <strong>ACM</strong>. Chọn Certificate → Click <strong>Delete</strong>.</p>
+</li>
+<li>
+<p><strong>ap-southeast-1 (Singapore):</strong> Chuyển vùng → Vào <strong>ACM</strong>. Chọn Certificate → Click <strong>Delete</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-dọn-dẹp-lưu-trữ-và-artifacts">
+  <strong>4. Dọn Dẹp Lưu Trữ và Artifacts</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ol>
+<li>
+<p><strong>Xóa ECR Repositories:</strong></p>
+<ul>
+<li>Vào <strong>Elastic Container Registry (ECR)</strong>. Chọn Repositories → Click <strong>Delete</strong> → Nhập <code>delete</code> để xác nhận.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dọn dẹp và Xóa S3 Buckets:</strong></p>
+<ul>
+<li>
+<p><strong>Loại bỏ CRR:</strong> Vào <strong>S3</strong> → Chọn Primary Bucket (ap-southeast-1) → Tab <strong>Management</strong> → <strong>Replication Rules</strong> → <strong>Delete</strong> rule.</p>
+</li>
+<li>
+<p><strong>Xóa nội dung:</strong> Với cả hai S3 Buckets, vào Tab <strong>Objects</strong> → Chọn tất cả → Click <strong>Delete</strong> → Nhập <code>permanently delete</code> để xác nhận.</p>
+</li>
+<li>
+<p><strong>Xóa Bucket:</strong> Sau khi empty, vào Tab <strong>Properties</strong> → Click <strong>Delete</strong> → Nhập tên Bucket để xác nhận.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="5-xóa-mạng-và-dns">
+  <strong>5. Xóa Mạng và DNS</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ol>
+<li>
+<p><strong>Xóa NAT Gateway (Bước quan trọng về chi phí):</strong></p>
+<ul>
+<li>Vào <strong>VPC</strong> → <strong>NAT Gateways</strong>. Chọn Gateway → <strong>Actions</strong> → <strong>Delete NAT Gateway</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa Internet Gateway (IGW):</strong></p>
+<ul>
+<li>
+<p>Vào <strong>VPC</strong> → <strong>Internet Gateways</strong>. Chọn IGW → <strong>Actions</strong> → <strong>Detach from VPC</strong>.</p>
+</li>
+<li>
+<p>Chọn IGW → <strong>Actions</strong> → <strong>Delete Internet Gateway</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa các thành phần VPC:</strong></p>
+<ul>
+<li>Xóa <strong>Security Groups</strong> → Xóa <strong>Subnets</strong> → Xóa <strong>VPC</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Xóa Route 53 Hosted Zone:</strong></p>
+<ul>
+<li>Vào <strong>Route 53</strong> → <strong>Hosted Zones</strong>. Xóa tất cả các custom records → Click <strong>Delete Hosted Zone</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="iii-kiểm-tra-cuối-cùng">
+  <strong>III. Kiểm Tra Cuối Cùng</strong>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ul>
+<li>
+<p><strong>AWS Billing/Cost Explorer:</strong> Kiểm tra ngay để đảm bảo chi phí ước tính giờ đã giảm xuống <strong>$0.00</strong>.</p>
+</li>
+<li>
+<p><strong>Dashboard:</strong> Xác nhận trên EC2, ECS, RDS ở <strong>ap-southeast-1</strong> không còn tài nguyên đang chạy.</p>
+</li>
+</ul>
+
   <footer class="footline">
   </footer>
 </article>
@@ -254,7 +521,7 @@
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
             <li class="alwaysopen " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu"></ul></li>
-            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Dọn Dẹp</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
@@ -304,8 +571,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765211415" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765211415" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765214330" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

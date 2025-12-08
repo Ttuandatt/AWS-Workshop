@@ -146,16 +146,16 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html" />
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html" />
-  </url>
-  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
+  </url>
+  <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html</loc>
@@ -218,16 +218,16 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_6/index.html" />
   </url>
   <url>
-    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
-  </url>
-  <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html" />
     <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html" />
+  </url>
+  <url>
+    <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" />
   </url>
   <url>
     <loc>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html</loc>
