@@ -5,66 +5,86 @@ chapter = false
 pre = " <b> 4.2.  </b> "
 +++
 
-# Summary Report: “AWS Cloud Mastery Series #3 – Security Pillar Workshop”
+# AWS Cloud Mastery Series #3 – Security Pillar Workshop
 
-### Event Objectives
+This workshop focused on helping participants understand how to design and operate secure AWS systems based on the **Security Pillar of the AWS Well-Architected Framework**, combining theory with practical demos and real-world scenarios.
 
-* Understand the Security Pillar in the AWS Well-Architected Framework
-* Learn core principles: **Least Privilege, Zero Trust, Defense in Depth**
-* Practice managing IAM, Detection, Infrastructure Protection, Data Protection, and Incident Response
-* Learn how to apply tools, playbooks, and automation to secure cloud systems
-* Enhance security skills for AWS applications and infrastructure
+---
 
-### Key Highlights
+## What I Learned
 
-#### Identity & Access Management (IAM)
+### Security Foundation
 
-* Users, Roles, Policies – avoid long-term credentials
-* IAM Identity Center: SSO, permission sets
-* SCP & permission boundaries for multi-account environments
-* MFA, credential rotation, Access Analyzer
-* Mini Demo: Validate IAM Policy + simulate access
+The session started with an overview of the **Security Pillar** and its role in cloud architecture. Key security principles such as **Least Privilege, Zero Trust, and Defense in Depth** were explained in a practical context.  
+The speaker also clarified the **AWS Shared Responsibility Model**, highlighting common misunderstandings and real security risks seen in cloud environments in Vietnam.
 
-#### Detection & Continuous Monitoring
+---
 
-* CloudTrail (organization-level), GuardDuty, Security Hub
-* Logging at all layers: VPC Flow Logs, ALB/S3 logs
-* Alerting & automation with EventBridge
-* Detection-as-Code (infrastructure + rules)
+### Identity & Access Management (IAM)
 
-#### Infrastructure Protection
+This part covered modern IAM design and best practices, including:
+- How to use **IAM Roles instead of long-term credentials**
+- Managing access with **IAM Users, Roles, and Policies**
+- Using **IAM Identity Center** for SSO and permission sets
+- Applying **Service Control Policies (SCP)** and permission boundaries in multi-account setups
+- Enforcing security with **MFA, credential rotation, and Access Analyzer**
 
-* VPC segmentation, private vs public placement
-* Security Groups vs NACLs
-* WAF + Shield + Network Firewall
-* Workload protection: EC2, ECS/EKS security basics
+A short demo demonstrated how to **validate IAM policies and simulate access**, showing how misconfigurations can easily lead to over-permission.
 
-#### Data Protection
+---
 
-* Encryption, KMS, key policies, grants, rotation
-* Encryption at-rest & in-transit: S3, EBS, RDS, DynamoDB
-* Secrets Manager & Parameter Store – rotation patterns
-* Data classification & access guardrails
+### Detection & Monitoring
 
-#### Incident Response
+The workshop then moved on to detection and monitoring, where I learned how AWS provides visibility into security events:
+- Using **CloudTrail**, **GuardDuty**, and **Security Hub** for continuous detection
+- Implementing logging at multiple layers (VPC Flow Logs, ALB logs, S3 logs)
+- Automating alerts and responses with **EventBridge**
+- Applying the concept of **Detection-as-Code** to make detection consistent and repeatable
 
-* IR Playbook & Automation: compromised IAM key, S3 public exposure, EC2 malware detection
-* Snapshot, isolation, evidence collection
-* Auto-response using Lambda / Step Functions
+---
 
-### Key Takeaways
+### Infrastructure Protection
 
-* Gained in-depth understanding of the **5 pillars** of AWS Well-Architected Security Framework
-* Learned how to protect infrastructure, data, IAM, and implement detection & incident response
-* Practiced **playbooks and automation** to reduce security risks
-* Able to apply knowledge to real cloud projects, enhancing **security, resilience, and compliance**
-* Developed hands-on experience with AWS tools and learned directly from experts
+This section focused on securing the network and compute layer:
+- Designing VPCs with proper **segmentation and public/private placement**
+- Understanding the difference between **Security Groups and Network ACLs**
+- Protecting workloads with **WAF, Shield, and Network Firewall**
+- Basic security practices for **EC2 and container workloads (ECS/EKS)**
 
-### Event Experience
+The examples helped connect architectural decisions to real security outcomes.
 
-* Hands-on learning across **IAM, Detection, Protection, Data & IR** pillars
-* Insights into **security optimization** and best practices for AWS environments
-* Learned from case studies, demos, and direct interactions with experts
-* Strengthened awareness of **system security, risk mitigation, and compliance standards**
+---
 
-> Attending the **AWS Cloud Mastery Series #3** provided a comprehensive view of AWS security, enhancing my ability to deploy, manage, and respond to cloud system incidents safely and effectively.
+### Data Protection
+
+Data security was covered through practical encryption and access strategies:
+- Managing encryption keys with **AWS KMS** (policies, grants, rotation)
+- Encrypting data **at rest and in transit** across services like S3, EBS, RDS, and DynamoDB
+- Storing and rotating secrets using **Secrets Manager** and **Parameter Store**
+- Applying **data classification and guardrails** to reduce the risk of data leakage
+
+---
+
+### Incident Response
+
+The final technical session focused on **incident response**:
+- AWS-recommended IR lifecycle
+- Playbooks for real-world cases such as:
+  - Compromised IAM credentials
+  - Public S3 bucket exposure
+  - Malware detected on EC2
+- Techniques for isolation, snapshotting, and evidence collection
+- Automating responses with **Lambda** and **Step Functions**
+
+This section highlighted the importance of preparing response workflows **before** incidents occur.
+
+---
+
+## Key Takeaways
+
+- I gained a clear understanding of how the **five Security Pillars** work together in AWS.
+- Security is not just about tools, but about **design, automation, and continuous monitoring**.
+- Proper IAM design is critical and often the weakest point in cloud environments.
+- Incident response should be automated and tested, not handled manually under pressure.
+
+> Overall, the workshop provided practical insights into securing AWS environments and helped strengthen my confidence in designing and operating cloud systems with security in mind.

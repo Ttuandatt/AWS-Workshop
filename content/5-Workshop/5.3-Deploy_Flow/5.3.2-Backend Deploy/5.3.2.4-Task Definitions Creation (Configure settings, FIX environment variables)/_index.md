@@ -1,24 +1,25 @@
 +++
-title = "Task Definitions Creation (Configure settings, Fix environment variables)"
+title = "Task Definitions Creation"
 weight = 4
 chapter = false
 pre = " <b> 5.3.2.4. </b> "
 alwaysopen = true
 +++
 
-Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
+
+Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.
 
 ### Preparation
 
-**Record the following values before creating Task Definitions:**
+**Record the following values before starting:**
 
 1.  **RDS Endpoint**: `sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com`
-2.  **Redis Endpoint**: `sgu-redis.[random].cache.amazonaws.com` (without :6379)
-3.  **Kafka Bootstrap Server**: `kafka.sgu.local:9092`
-4.  **Google OAuth Credentials**:
-    -   Client ID
-    -   Client Secret
-5.  **ECR Image URIs**: All 6 service images from ECR
+
+2.  **Redis Endpoint**: `sgu-redis.[random].cache.amazonaws.com` (Without :6379)
+
+3.  **ECR Image URIs**: The URIs of the 6 repositories from the Image Build step.
+
+4.  **Google OAuth Credentials**: Client ID and Client Secret.
 
 * * * * *
 
@@ -26,177 +27,164 @@ Task Definitions serve as blueprints that define how ECS should run containers, 
 
 For each service, follow this standard configuration process:
 
-**Base Configuration (Common for all services):**
+**1\. Base Configuration:**
 
-1.  Navigate to **Amazon ECS** → **Task definitions** → **Create new task definition**
-2.  Infrastructure configuration:
+-   Navigate to **Amazon ECS** → **Task definitions** → **Create new task definition**.
 
-| Parameter | Value |
-| --- | --- |
-| Launch type | AWS Fargate |
-| Operating system | Linux/X86_64 |
-| CPU | 0.5 vCPU |
-| Memory | 1 GB |
-| Task execution role | `ecsTaskExecutionRole` |
+-   **Infrastructure:**
 
-1.  Container configuration:
-    -   **Protocol**: TCP
-    -   **App protocol**: HTTP
-    -   **Logging**: Enable "Use log collection"
+    -   Launch type: **AWS Fargate**
 
-* * * * *
+    -   Operating system: **Linux/X86_64**
 
-### Task Definition 1: Auth Service
+    -   Task Execution Role: `ecsTaskExecutionRole`
 
-| Parameter | Value |
-| --- | --- |
-| Task definition family | `auth-service-td` |
-| Container name | `auth-service` |
-| Image URI | `[ECR-URI]/auth-service:latest` |
-| Container port | 9999 |
+-   **Container Details:**
 
-**Environment Variables:**
+    -   Protocol: **TCP**
 
-| Key | Value |
-| --- | --- |
-| `SPRING_DATASOURCE_URL` | `jdbc:mysql://[RDS-ENDPOINT]:3306/aws_todolist_database?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC` |
-| `SPRING_DATASOURCE_USERNAME` | `root` |
-| `SPRING_DATASOURCE_PASSWORD` | `[your-password]` |
-| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |
-| `SPRING_DATA_REDIS_PORT` | `6379` |
-| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |
-| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID` | `[GOOGLE-CLIENT-ID]` |
-| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET` | `[GOOGLE-CLIENT-SECRET]` |
-| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI` | `https://api.sgutodolist.com/api/auth/login/oauth2/code/google` |
-| `APP_OAUTH2_REDIRECT_URI` | `https://sgutodolist.com/oauth2/redirect` |
+    -   Port Mapping: Refer to the specific service details below.
+
+    -   Log collection: **Turned on** (Essential for debugging).
 
 * * * * *
 
-### Task Definition 2: User Service
+### 1\. Kafka Server (Infrastructure Backbone)
 
-| Parameter | Value |
+*Note: Kafka must be deployed first so other services can connect upon startup.*
+
+| **Parameter** | **Value** |
 | --- | --- |
-| Task definition family | `user-service-td` |
-| Container name | `user-service` |
-| Image URI | `[ECR-URI]/user-service:latest` |
-| Container port | 8081 |
+| **Family Name** | `kafka-server-td` |
+| **Task Memory** | **2 GB** (Critical) |
+| **Task CPU** | **1 vCPU** |
+| **Container Port** | `9092` |
 
-**Environment Variables:**
+**Environment Variables (Copy exactly):**
 
-| Key | Value |
+| **Key** | **Value** |
 | --- | --- |
-| `SPRING_DATASOURCE_URL` | Same as Auth Service |
-| `SPRING_DATASOURCE_USERNAME` | `root` |
-| `SPRING_DATASOURCE_PASSWORD` | `[your-password]` |
-| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |
-| `SPRING_DATA_REDIS_PORT` | `6379` |
-| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |
+| `ALLOW_PLAINTEXT_LISTENER` | `yes` |
+| `KAFKA_CFG_ADVERTISED_LISTENERS` | `PLAINTEXT://kafka.sgu.local:9092` |
+| `KAFKA_CFG_CONTROLLER_LISTENER_NAMES` | `CONTROLLER` |
+| `KAFKA_CFG_CONTROLLER_QUORUM_VOTERS` | `0@127.0.0.1:9093` |
+| `KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP` | `CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT` |
+| `KAFKA_CFG_LISTENERS` | `PLAINTEXT://:9092,CONTROLLER://:9093` |
+| `KAFKA_CFG_LOG_DIRS` | `/tmp/kafka-logs` |
+| `KAFKA_CFG_NODE_ID` | `0` |
+| `KAFKA_CFG_PROCESS_ROLES` | `controller,broker` |
+| `KAFKA_HEAP_OPTS` | `-Xmx512m` |
 
 * * * * *
 
-### Task Definition 3: Taskflow Service
+### 2\. Auth Service (Critical Security Service)
 
-| Parameter | Value |
+*Note: This service requires high RAM to handle Login processes and Encryption.*
+
+| **Parameter** | **Value** |
 | --- | --- |
-| Task definition family | `taskflow-service-td` |
-| Container name | `taskflow-service` |
-| Image URI | `[ECR-URI]/taskflow-service:latest` |
-| Container port | 8082 |
+| **Family Name** | `auth-service-td` |
+| **Task Memory** | **2 GB** (Mandatory to prevent Exit Code 137) |
+| **Task CPU** | **0.5 vCPU** |
+| **Container Port** | `9999` |
 
 **Environment Variables:**
 
-| Key | Value |
-| --- | --- |
-| `SPRING_DATASOURCE_URL` | Same as Auth Service |
-| `SPRING_DATASOURCE_USERNAME` | `root` |
-| `SPRING_DATASOURCE_PASSWORD` | `[your-password]` |
-| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |
-| `SPRING_DATA_REDIS_PORT` | `6379` |
-| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |
-
-* * * * *
-
-### Task Definition 4: Notification Service
-
-| Parameter | Value |
-| --- | --- |
-| Task definition family | `notification-service-td` |
-| Container name | `notification-service` |
-| Image URI | `[ECR-URI]/notification-service:latest` |
-| Container port | 9998 |
-
-**Environment Variables:**
-
-| Key | Value |
-| --- | --- |
-| `SPRING_DATASOURCE_URL` | Same as Auth Service |
-| `SPRING_DATASOURCE_USERNAME` | `root` |
-| `SPRING_DATASOURCE_PASSWORD` | `[your-password]` |
-| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |
-| `SPRING_DATA_REDIS_PORT` | `6379` |
-| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |
-| `CLIENT_URL` | `https://sgutodolist.com` |
-
-* * * * *
-
-### Task Definition 5: AI Model Service
-
-| Parameter | Value |
-| --- | --- |
-| Task definition family | `ai-model-service-td` |
-| Container name | `ai-model-service` |
-| Image URI | `[ECR-URI]/ai-model-service:latest` |
-| Container port | 9997 |
-
-**Environment Variables:**
-
-If your Python Flask AI service requires database connectivity, add the same database variables as other services. Otherwise, leave environment variables empty.
-
-* * * * *
-
-### Task Definition 6: API Gateway
-
-**Critical Configuration**: This service orchestrates all backend services and must know their internal addresses.
-
-| Parameter | Value |
-| --- | --- |
-| Task definition family | `api-gateway-td` |
-| Container name | `api-gateway` |
-| Image URI | `[ECR-URI]/api-gateway:latest` |
-| Container port | 8080 |
-
-**Environment Variables:**
-
-| Key | Value | Purpose |
+| **Key** | **Value** | **Notes** |
 | --- | --- | --- |
-| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` | Rate limiting |
-| `SPRING_DATA_REDIS_PORT` | `6379` | Redis connection |
-| `AUTH_SERVICE_URL` | `http://auth.sgu.local:9999` | Internal routing |
-| `USER_SERVICE_URL` | `http://user.sgu.local:8081` | Internal routing |
-| `TASKFLOW_SERVICE_URL` | `http://taskflow.sgu.local:8082` | Internal routing |
-| `NOTIFICATION_SERVICE_URL` | `http://notification.sgu.local:9998` | Internal routing |
-| `AI_MODEL_SERVICE` | `http://ai-model.sgu.local:9997` | Internal routing |
-| `CORS_ALLOWED_ORIGINS` | `https://sgutodolist.com` | Frontend access |
+| `SERVER_PORT` | `9999` |  |
+| `JAVA_OPTS` | `-Xmx768m` | Must include the hyphen `-`. |
+| `SPRING_JPA_HIBERNATE_DDL_AUTO` | **`none`** | **CRITICAL:** Prevents 500 Errors caused by DB schema conflicts. |
+| `SERVER_FORWARD_HEADERS_STRATEGY` | `native` | Fixes HTTP/HTTPS redirect issues behind ALB. |
+| `SPRING_DATASOURCE_URL` | `jdbc:mysql://[RDS-ENDPOINT]:3306/aws_todolist_database?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC` |  |
+| `SPRING_DATASOURCE_USERNAME` | `root` |  |
+| `SPRING_DATASOURCE_PASSWORD` | `[DB_PASSWORD]` |  |
+| `SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE` | `5` |  |
+| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |  |
+| `SPRING_DATA_REDIS_PORT` | `6379` |  |
+| `SPRING_DATA_REDIS_SSL_ENABLED` | **`true`** | Mandatory for AWS ElastiCache. |
+| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |  |
+| `DOMAIN_FRONTEND` | `https://sgutodolist.com` |  |
+| `APP_OAUTH2_REDIRECT_URI` | `https://sgutodolist.com/oauth2/redirect` |  |
+| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID` | `[GOOGLE_CLIENT_ID]` |  |
+| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET` | `[GOOGLE_CLIENT_SECRET]` |  |
+| `SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI` | `https://sgutodolist.com/api/auth/login/oauth2/code/google` | Note: Include `/api/auth` in path. |
 
 * * * * *
 
-### Task Definition Validation
+### 3\. User Service & Taskflow Service
 
-After creating all 6 Task Definitions, verify:
+*These are business logic services requiring permission to create DB tables on first run.*
 
--   [ ]  All Task Definitions created successfully
--   [ ]  Latest revisions available for each family
--   [ ]  Environment variables correctly configured
--   [ ]  Image URIs point to correct ECR repositories
--   [ ]  Logging enabled for all containers
+| **Parameter** | **Value** |
+| --- | --- |
+| **Family Name** | `user-service-td` / `taskflow-service-td` |
+| **Task Memory** | **1 GB** |
+| **Task CPU** | **0.5 vCPU** |
+| **Container Port** | `8081` (User) / `8082` (Taskflow) |
+
+**Environment Variables (Common for both):**
+
+| **Key** | **Value** | **Notes** |
+| --- | --- | --- |
+| `SERVER_PORT` | `8081` (User) or `8082` (Taskflow) |  |
+| `JAVA_OPTS` | `-Xmx512m` |  |
+| `SPRING_JPA_HIBERNATE_DDL_AUTO` | **`update`** | Allows service to create tables on startup. |
+| `SPRING_DATASOURCE_URL` | *(Same as Auth Service)* |  |
+| `SPRING_DATASOURCE_USERNAME` | `root` |  |
+| `SPRING_DATASOURCE_PASSWORD` | `[DB_PASSWORD]` |  |
+| `SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE` | `5` |  |
+| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` |  |
+| `SPRING_DATA_REDIS_PORT` | `6379` |  |
+| `SPRING_DATA_REDIS_SSL_ENABLED` | `true` |  |
+| `SPRING_KAFKA_BOOTSTRAP_SERVERS` | `kafka.sgu.local:9092` |  |
 
 * * * * *
+
+### 4\. API Gateway (The Orchestrator)
+
+*The most critical service for internal routing.*
+
+| **Parameter** | **Value** |
+| --- | --- |
+| **Family Name** | `api-gateway-td` |
+| **Task Memory** | **1 GB** |
+| **Task CPU** | **0.5 vCPU** |
+| **Container Port** | `8080` |
+
+**Environment Variables:**
+
+| **Key** | **Value** | **Explanation** |
+| --- | --- | --- |
+| `SERVER_PORT` | `8080` |  |
+| `CORS_ALLOWED_ORIGINS` | `https://sgutodolist.com,https://www.sgutodolist.com` | Allows Frontend API access. |
+| `AUTH_SERVICE_URL` | `http://auth.sgu.local:9999` | Internal routing via Service Discovery. |
+| `USER_SERVICE_URL` | **`http://user.sgu.local:8081`** | Note the name: `user` (not `user-service`). |
+| `TASKFLOW_SERVICE_URL` | **`http://taskflow.sgu.local:8082`** | Note the name: `taskflow`. |
+| `NOTIFICATION_SERVICE_URL` | **`http://notification.sgu.local:9998`** | Note the name: `notification`. |
+| `SPRING_DATA_REDIS_HOST` | `[REDIS-ENDPOINT]` | Used for Rate Limiting. |
+| `SPRING_DATA_REDIS_PORT` | `6379` |  |
+| `SPRING_DATA_REDIS_SSL_ENABLED` | `true` |  |
+
+* * * * *
+
+### Task Definition Validation Checklist
+
+After creation, please verify:
+
+-   [ ] **RAM Allocation:** Auth Service must be **2GB**, others at least **1GB**.
+
+-   [ ] **Redis SSL:** Variable `SPRING_DATA_REDIS_SSL_ENABLED` = `true` is set for all services connecting to Redis.
+
+-   [ ] **Internal URLs:** All `_SERVICE_URL` variables in Gateway must end with `.sgu.local`.
+
+-   [ ] **DDL Auto:** Auth Service must be `none`, User/Taskflow should be `update`.
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.3-Code Update & Image Build (Create new Docker Image)" %}}" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 3: Code Update & Image Build
+⬅ STEP 3: Code Update & Image Build
 </a>
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment (Following priority order and verification)" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 5: Services Deployment ➡
+STEP 5: Services Deployment ➡
 </a>
 </div>

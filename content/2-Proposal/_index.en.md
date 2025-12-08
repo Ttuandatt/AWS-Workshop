@@ -340,7 +340,7 @@ Service A → AWS Cloud Map (service-b.local:PORT)
 
 **API Requests (Backend Microservices):**
 
-1.  Frontend makes API call: `https://api.sgutodolist.com/api/tasks`
+1.  Frontend makes API call: `https://sgutodolist.com/api/task`
 
 2.  Route 53 resolves to Application Load Balancer in Singapore
 
@@ -348,13 +348,13 @@ Service A → AWS Cloud Map (service-b.local:PORT)
 
 4.  API Gateway (running on ECS) receives the request and **internally routes** via AWS Cloud Map based on the path:
 
-    -   Requests to `/api/auth/*` are routed to **Auth Service (Port 9999)**.
+    -   Requests to `/api/auth/**` are routed to **Auth Service (Port 9999)**.
 
-    -   Requests to `/api/users/*` are routed to **User Service (Port 8081)**.
+    -   Requests to `/api/user/**` are routed to **User Service (Port 8081)**.
 
-    -   Requests to `/api/taskflow/*` are routed to **Taskflow Service (Port 8082)**.
+    -   Requests to `/api/taskflow/**` are routed to **Taskflow Service (Port 8082)**.
 
-    -   Requests to `/api/notifications/*` are routed to **Notification Service (Port 9998)**.
+    -   Requests to `/api/notifications/**` are routed to **Notification Service (Port 9998)**.
 
 5.  The target microservice processes the request.
 
@@ -485,7 +485,7 @@ docker push {account-id}.dkr.ecr.ap-southeast-1.amazonaws.com/task-service:v1.2.
 
 2.  Monitor CloudWatch Logs for errors: `/ecs/task-service`
 
-3.  Test API endpoints via ALB: `curl https://api.sgutodolist.com/api/tasks/health`
+3.  Test API endpoints via ALB: `curl https://sgutodolist.com/api/task/health`
 
 4.  Check CloudWatch Metrics: CPU, memory, request count, error rate
 

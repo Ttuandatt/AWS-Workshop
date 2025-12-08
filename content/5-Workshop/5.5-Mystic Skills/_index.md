@@ -8,304 +8,416 @@ pre = "<b>5.5. </b>"
 
 ### **1. Hugo Commands**
 
+---
 
+### **2\. Git Commands**
 
+2.1 Check repository status
 
-
-### **2. Git Commands**
-**2.1 Check repository status**
 ```bash
 git status
 ```
 
-**2.2 List branches (local)**
+2.2 List local branches
+
 ```bash
 git branch
 ```
 
-**2.3 List all branches (local + remote)**
+2.3 List all branches (local + remote)
+
 ```bash
 git branch -a
 ```
 
-**2.4 Switch to another branch**
+
+2.4 Switch to another branch
+
 ```bash
 git checkout <branch-name>
 ```
-Example: git checkout developer
 
-**2.5 Create and switch to a new branch**
+2.5 Create and switch to a new branch
+
 ```bash
 git checkout -b <branch-name>
 ```
-Example: git checkout -b feature/login
 
-**2.6 Pull latest updates from remote**
+2.6 Pull the latest updates from remote
+
 ```bash
 git pull
 ```
 
-**2.7 Fetch updates without merging**
+
+2.7 Fetch updates without merging
+
 ```bash
 git fetch
 ```
 
-**2.8 Add files to staging**
+
+2.8 Add files to staging
+
 ```bash
 git add <file>
 ```
-Add all changes: git add .
 
-**2.9 Commit changes**
+Add all changes:
+
+```bash
+git add .
+```
+
+
+2.9 Commit changes
+
 ```bash
 git commit -m "your message"
 ```
 
-**2.10 Push changes to remote**
+
+2.10 Push changes to remote
+
 ```bash
 git push
 ```
+
 Push a new branch for the first time:
+
 ```bash
 git push -u origin <branch-name>
 ```
 
-2.11 View remote**
+
+2.11 View remote repositories
+
 ```bash
 git remote -v
 ```
 
-**2.12 Merge a branch into the current branch**
+
+2.12 Merge a branch into the current branch
+
 ```bash
 git merge <branch-name>
-```
-Example:
-```bash
+
+# Example:
 git checkout main
 git merge developer
 ```
 
-**2.13 Delete a branch**
-Delete local branch: 
+2.13 Delete a branch
+
+Delete local branch:
+
 ```bash
 git branch -d <branch-name>
 ```
-Delete remote branch: 
+
+Delete remote branch:
+
 ```bash
 git push origin --delete <branch-name>
 ```
 
-**2.14 Undo changes**
+
+2.14 Undo changes
+
 Discard changes in a file:
+
 ```bash
 git checkout -- <file>
 ```
-Reset everything to last commit:
+
+Reset everything to the last commit:
+
 ```bash
 git reset --hard
 ```
+---
 
+### **3\. PowerShell Commands**
 
-**3. Powershell commands**
-- Command to automatically update file _index.md for all the weeks in a defined directory
+3.1 Automatically update _index.md for all weeks in a specific directory
+
 ```bash
-# Đường dẫn tới thư mục của Dương Bình Minh
+# Target directory path
+
 $targetDir = "content/1-Worklog/1.3-DuongBinhMinh"
 
-# Kiểm tra xem thư mục có tồn tại không
+# Check if directory exists
+
 if (-not (Test-Path $targetDir)) {
-    Write-Host "Lỗi: Không tìm thấy thư mục $targetDir" -ForegroundColor Red
-    break
+
+    Write-Host "Error: Directory not found $targetDir" -ForegroundColor Red
+
+    break
+
 }
 
-# Lấy danh sách các folder con
+# Get subfolders
+
 $folders = Get-ChildItem -Path $targetDir -Directory
 
 foreach ($folder in $folders) {
-    if ($folder.Name -match "Week_(\d+)") {
-        $weekNum = $matches[1]
-        $filePath = Join-Path $folder.FullName "_index.md"
 
-        if (Test-Path $filePath) {
-            # Đọc nội dung file
-            $content = Get-Content -Path $filePath -Raw -Encoding UTF8
+    if ($folder.Name -match "Week_(\d+)") {
 
-            # Tạo nội dung pre mới
-            $newPreLine = "pre = `" <b> 1.3.$weekNum. </b> `""
+        $weekNum = $matches[1]
 
-            # Thay thế dòng pre cũ
-            $newContent = $content -replace '(?m)^pre\s*=\s*".*"', $newPreLine
+        $filePath = Join-Path $folder.FullName "_index.md"
 
-            # Ghi đè lại file
-            Set-Content -Path $filePath -Value $newContent -Encoding UTF8
-            
-            # ĐÃ SỬA DÒNG NÀY: Dùng $($weekNum) để tránh lỗi cú pháp với dấu hai chấm
-            Write-Host "Đã sửa Week $($weekNum): $newPreLine" -ForegroundColor Green
-        } else {
-            Write-Host "Bỏ qua $folder.Name (Không tìm thấy _index.md)" -ForegroundColor Yellow
-        }
-    }
+        if (Test-Path $filePath) {
+
+            # Read file content
+
+            $content = Get-Content -Path $filePath -Raw -Encoding UTF8
+
+            # Generate new pre value
+
+            $newPreLine = "pre = `" <b> 1.3.$weekNum. </b> `""
+
+            # Replace old pre line
+
+            $newContent = $content -replace '(?m)^pre\s*=\s*".*"', $newPreLine
+
+            # Overwrite file
+
+            Set-Content -Path $filePath -Value $newContent -Encoding UTF8
+
+            Write-Host "Updated Week $($weekNum): $newPreLine" -ForegroundColor Green
+
+        } else {
+
+            Write-Host "Skipped $folder.Name (_index.md not found)" -ForegroundColor Yellow
+
+        }
+
+    }
+
 }
 
-Write-Host "Hoàn tất cập nhật!" -ForegroundColor Cyan
+Write-Host "Update completed!" -ForegroundColor Cyan
 ```
 
-- Command to automatically standardize folder names, convert 'Leaf Bundles' to 'Branch Bundles', update Frontmatter 'pre' values, and repair broken internal links for all users
+3.2 Standardize folder structure, convert Leaf Bundles → Branch Bundles, fix frontmatter and internal links
+
 ```bash
 # --- CONFIGURATION ---
+
 $worklogPath = "content/1-Worklog"
 
-# --- HELPER FUNCTION: Fix index.md -> _index.md ---
+# --- HELPER FUNCTION: Rename index.md to _index.md ---
+
 Function Fix-IndexFileName ($dirPath) {
-    $wrongFile = Join-Path $dirPath "index.md"
-    $correctFile = Join-Path $dirPath "_index.md"
-    if (Test-Path $wrongFile) {
-        if (-not (Test-Path $correctFile)) {
-            Rename-Item -Path $wrongFile -NewName "_index.md"
-            Write-Host "  [File] Fixed index.md -> _index.md" -ForegroundColor Magenta
-        }
-    }
+
+    $wrongFile = Join-Path $dirPath "index.md"
+
+    $correctFile = Join-Path $dirPath "_index.md"
+
+    if (Test-Path $wrongFile) {
+
+        if (-not (Test-Path $correctFile)) {
+
+            Rename-Item -Path $wrongFile -NewName "_index.md"
+
+            Write-Host "  [File] Renamed index.md -> _index.md" -ForegroundColor Magenta
+
+        }
+
+    }
+
 }
 
-# --- START PROCESSING ---
 Write-Host "=== STARTING HUGO DATA STANDARDIZATION ===" -ForegroundColor Cyan
 
-# 1. Get all user directories (e.g., 1.1, 1.2, 1.3...)
+# Get all user directories (e.g., 1.1, 1.2, 1.3 ...)
+
 $userFolders = Get-ChildItem -Path $worklogPath -Directory
 
 foreach ($userFolder in $userFolders) {
-    # Check if folder matches pattern "1.x-Name"
-    if ($userFolder.Name -match "^(\d+\.\d+)-") {
-        $userPrefix = $matches[1] 
-        Write-Host "`n--- Processing User: $($userFolder.Name) (Prefix: $userPrefix) ---" -ForegroundColor Cyan
 
-        # STEP 1: Fix the User's main _index.md
-        Fix-IndexFileName $userFolder.FullName
-        
-        $parentIndexFile = Join-Path $userFolder.FullName "_index.md"
-        if (Test-Path $parentIndexFile) {
-            $pContent = Get-Content -Path $parentIndexFile -Raw -Encoding UTF8
-            
-            # Fix Hugo shortcode syntax warning (< > to % %)
-            # Tách chuỗi '{' + '{' để Hugo không hiểu nhầm là shortcode
-            $pContent = $pContent -replace '\{\{<\s*relref', ('{' + '{% relref')
-            $pContent = $pContent -replace '>\}\}\)', ('%' + '}})')
+    if ($userFolder.Name -match "^(\d+\.\d+)-") {
 
-            # Repair broken links to match the current User Prefix
-            $pContent = [Regex]::Replace($pContent, 'relref\s*"[^"]*?Week_(\d+)"', {
-                param($m)
-                $w = $m.Groups[1].Value
-                return 'relref "' + "$userPrefix.$w-Week_$w" + '"'
-            })
+        $userPrefix = $matches[1]
 
-            Set-Content -Path $parentIndexFile -Value $pContent -Encoding UTF8
-            Write-Host "  [Link] Updated links in parent _index.md" -ForegroundColor Green
-        }
+        Write-Host "`n--- Processing User: $($userFolder.Name) (Prefix: $userPrefix) ---" -ForegroundColor Cyan
 
-        # STEP 2: Process Sub-folders (Weeks)
-        $weekFolders = Get-ChildItem -Path $userFolder.FullName -Directory | Where-Object { $_.Name -match "Week_" }
+        # Fix parent index file
 
-        foreach ($weekFolder in $weekFolders) {
-            if ($weekFolder.Name -match "Week_(\d+)") {
-                $weekNum = $matches[1]
-                
-                # A. Standardize Folder Name (e.g., 1.3.1-Week_1)
-                $correctFolderName = "$userPrefix.$weekNum-Week_$weekNum"
-                $currentFolderPath = $weekFolder.FullName
+        Fix-IndexFileName $userFolder.FullName
 
-                if ($weekFolder.Name -ne $correctFolderName) {
-                    try {
-                        Rename-Item -Path $currentFolderPath -NewName $correctFolderName -ErrorAction Stop
-                        $currentFolderPath = Join-Path $userFolder.FullName $correctFolderName
-                        Write-Host "  [Folder] Renamed to: $correctFolderName" -ForegroundColor Yellow
-                    } catch {
-                        Write-Host "  [Error] Could not rename folder $($weekFolder.Name)" -ForegroundColor Red
-                        continue
-                    }
-                }
+        $parentIndexFile = Join-Path $userFolder.FullName "_index.md"
 
-                # B. Fix Bundle Type inside the Week folder
-                Fix-IndexFileName $currentFolderPath
+        if (Test-Path $parentIndexFile) {
 
-                $childIndexFile = Join-Path $currentFolderPath "_index.md"
-                if (Test-Path $childIndexFile) {
-                    $cContent = Get-Content -Path $childIndexFile -Raw -Encoding UTF8
-                    
-                    # C. Update 'pre' in Frontmatter for Sidebar Navigation
-                    $newPre = "pre = `" <b> $userPrefix.$weekNum. </b> `""
-                    
-                    if ($cContent -match '(?m)^pre\s*=') {
-                        $cContent = $cContent -replace '(?m)^pre\s*=\s*".*"', $newPre
-                    } else {
-                        $cContent = $cContent -replace '(?m)^weight\s*=\s*(\d+)', "weight = `$1`n$newPre"
-                    }
+            $pContent = Get-Content -Path $parentIndexFile -Raw -Encoding UTF8
 
-                    Set-Content -Path $childIndexFile -Value $cContent -Encoding UTF8
-                    Write-Host "  [Pre] Updated frontmatter pre to: $userPrefix.$weekNum." -ForegroundColor Gray
-                }
-            }
-        }
-    }
+            # Fix Hugo shortcode format
+
+            $pContent = $pContent -replace '\{\{<\s*relref', ('{' + '{% relref')
+
+            $pContent = $pContent -replace '>\}\}\)', ('%' + '}})')
+
+            # Fix broken internal links
+
+            $pContent = [Regex]::Replace($pContent, 'relref\s*"[^"]*?Week_(\d+)"', {
+
+                param($m)
+
+                $w = $m.Groups[1].Value
+
+                return 'relref "' + "$userPrefix.$w-Week_$w" + '"'
+
+            })
+
+            Set-Content -Path $parentIndexFile -Value $pContent -Encoding UTF8
+
+            Write-Host "  [Link] Updated links in parent _index.md" -ForegroundColor Green
+
+        }
+
+        # Process week folders
+
+        $weekFolders = Get-ChildItem -Path $userFolder.FullName -Directory | Where-Object { $_.Name -match "Week_" }
+
+        foreach ($weekFolder in $weekFolders) {
+
+            if ($weekFolder.Name -match "Week_(\d+)") {
+
+                $weekNum = $matches[1]
+
+                $correctFolderName = "$userPrefix.$weekNum-Week_$weekNum"
+
+                $currentFolderPath = $weekFolder.FullName
+
+                if ($weekFolder.Name -ne $correctFolderName) {
+
+                    Rename-Item -Path $currentFolderPath -NewName $correctFolderName
+
+                    $currentFolderPath = Join-Path $userFolder.FullName $correctFolderName
+
+                    Write-Host "  [Folder] Renamed to: $correctFolderName" -ForegroundColor Yellow
+
+                }
+
+                Fix-IndexFileName $currentFolderPath
+
+                $childIndexFile = Join-Path $currentFolderPath "_index.md"
+
+                if (Test-Path $childIndexFile) {
+
+                    $cContent = Get-Content -Path $childIndexFile -Raw -Encoding UTF8
+
+                    $newPre = "pre = `" <b> $userPrefix.$weekNum. </b> `""
+
+                    if ($cContent -match '(?m)^pre\s*=') {
+
+                        $cContent = $cContent -replace '(?m)^pre\s*=\s*".*"', $newPre
+
+                    } else {
+
+                        $cContent = $cContent -replace '(?m)^weight\s*=\s*(\d+)', "weight = `$1`n$newPre"
+
+                    }
+
+                    Set-Content -Path $childIndexFile -Value $cContent -Encoding UTF8
+
+                    Write-Host "  [Pre] Updated pre to: $userPrefix.$weekNum." -ForegroundColor Gray
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
 Write-Host "`n=== COMPLETED! PLEASE RUN: hugo server -D ===" -ForegroundColor Green
 ```
 
-- Command to create multiple folders at a time
+3.3 Create multiple folders at once
+
 ```bash
 $basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
 
 $folders = @(
-    "5.1-Workshop_Overview",
-    "5.2-Prerequisite",
-    "5.3-Deploy_Flow",
-    "5.4-Clean_Up"
+
+    "5.1-Workshop_Overview",
+
+    "5.2-Prerequisite",
+
+    "5.3-Deploy_Flow",
+
+    "5.4-Clean_Up"
+
 )
 
 foreach ($f in $folders) {
-    $fullPath = Join-Path $basePath $f
-    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-    New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
+
+    $fullPath = Join-Path $basePath $f
+
+    New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+
+    New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
+
 }
 ```
 
+3.4 Create a single folder
 
-
-- Command to create one folder at a time
 ```bash
 $basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
-$folderName = "5.1-Workshop_Overview"   # <-- Change name here
+
+$folderName = "5.1-Workshop_Overview"
 
 $fullPath = Join-Path $basePath $folderName
+
 New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
+
 New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
 ```
 
-- Command to read the whole project structure
+
+3.5 Display the entire project structure
+
 ```bash
 tree /f /a
 ```
 
-- Command to read a directory structure
+
+3.6 Display a specific directory structure
+
 ```bash
 tree content/1-Worklog/1.1-PhanCanhTuanDat /F
 ```
 
-- Command to read a directory structure
+
+3.7 Recreate gh-pages worktree safely
+
 ```bash
-# 1. Xóa worktree gh-pages cũ (kể cả khi folder không còn)
+# 1. Remove old gh-pages worktree (even if folder no longer exists)
+
 git worktree remove "D:/IT/AWS-FCJ/AWS-Workshop/public/public" --force
 
-# 2. Dọn metadata worktree mồ côi
+# 2. Clean orphaned worktree metadata
+
 git worktree prune
 
-# 3. Kiểm tra – chỉ còn main
+# 3. Verify remaining worktrees
+
 git worktree list
 
-# 4. Tạo lại worktree gh-pages tại thư mục public
+# 4. Recreate gh-pages worktree at /public
+
 git worktree add -B gh-pages public origin/gh-pages
 
-# 5. Vào public và kiểm tra
+# 5. Verify status
+
 cd public
+
 git status
 ```

@@ -147,6 +147,7 @@ Before proceeding to the next phase, verify:
 -   [ ]  `ecs-app-sg` includes self-referencing rule
 
 * * * * *
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="" style="text-decoration: none; font-weight: bold;">
 </a>
