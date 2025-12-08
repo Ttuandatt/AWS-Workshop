@@ -48,17 +48,13 @@ These services require both ALB integration (for external access) and Service Di
 
 **Deployment Parameters Reference Table:**
 
-| Service | Task Definition | Service Name | Target Group | Service Discovery Name |
+| Service       | Task Definition        | Service Name         | Target Group | Service Discovery Name |
+|---------------|-----------------------|--------------------|--------------|----------------------|
+| Auth          | `auth-service-td`     | `auth-service`      | `auth-tg`    | `auth`               |
+| User          | `user-service-td`     | `user-service`      | `user-tg`    | `user`               |
+| Taskflow      | `taskflow-service-td` | `taskflow-service`  | `task-tg`    | `taskflow`           |
+| Notification  | `notification-service-td` | `notification-service` | `noti-tg` | `notification`       |
 
-| --- | --- | --- | --- | --- |
-
-| Auth | `auth-service-td` | `auth-service` | `auth-tg` | `auth` |
-
-| User | `user-service-td` | `user-service` | `user-tg` | `user` |
-
-| Taskflow | `taskflow-service-td` | `taskflow-service` | `task-tg` | `taskflow` |
-
-| Notification | `notification-service-td` | `notification-service` | `noti-tg` | `notification` |
 
 **Standard Deployment Process (Repeat 4 times):**
 
@@ -96,7 +92,7 @@ These services require both ALB integration (for external access) and Service Di
 
     -   **Desired tasks**: 1
 
-    -       
+    
 5\.  **Networking:**
 
     -   **VPC**: `SGU-Microservices-VPC`
@@ -283,17 +279,13 @@ Navigate to **Cluster** → **Tasks** tab
 
 **Common Causes:**
 
-| Error Message | Cause | Solution |
+| Error Message               | Cause                                           | Solution                                                      |
+|-----------------------------|-------------------------------------------------|---------------------------------------------------------------|
+| `Connection refused`        | Incorrect RDS/Redis endpoint in environment variables | Verify endpoint values in Task Definition                     |
+| `CannotPullContainerError`  | Missing Public IP or subnet without internet access | Ensure Public IP is enabled and using Public Subnets          |
+| `Health check failed`       | Service startup time exceeds ALB timeout       | Increase health check interval and timeout in Target Group settings |
+| `ResourceInitializationError` | Insufficient CPU/Memory                       | Verify task size configuration                                 |
 
-| --- | --- | --- |
-
-| `Connection refused` | Incorrect RDS/Redis endpoint in environment variables | Verify endpoint values in Task Definition |
-
-| `CannotPullContainerError` | Missing Public IP or subnet without internet access | Ensure Public IP is enabled and using Public Subnets |
-
-| `Health check failed` | Service startup time exceeds ALB timeout | Increase health check interval and timeout in Target Group settings |
-
-| `ResourceInitializationError` | Insufficient CPU/Memory | Verify task size configuration |
 
 **Solution for Health Check Failures:**
 

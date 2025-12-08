@@ -1,5 +1,5 @@
 +++
-title = "Completion & Verification (Route 53, Google Console, Final Test)"
+title = "Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test)"
 weight = 6
 chapter = false
 pre = " <b> 5.3.2.6. </b> "

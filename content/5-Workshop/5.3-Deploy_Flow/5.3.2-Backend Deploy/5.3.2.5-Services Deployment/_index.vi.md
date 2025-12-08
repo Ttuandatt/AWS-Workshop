@@ -256,9 +256,9 @@ Sau khi triển khai tất cả service, theo dõi trạng thái trong ECS Clust
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.4-Task Definitions Creation (Configure settings, FIX environment variables)" %}}" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 4: Task Definitions Creation
+⬅ BƯỚC 4: Tạo Task Definitions
 </a>
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.6-Completion & Verification (Route 53, Google Console, Final Test)" %}}" style="text-decoration: none; font-weight: bold;">
-BƯỚC 6: Completion & Verification ➡
+BƯỚC 6: Hoàn thiện & Xác nhận ➡
 </a>
 </div>
