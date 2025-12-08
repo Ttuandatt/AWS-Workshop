@@ -5,50 +5,62 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
-PreparationRecord the following values before creating Task Definitions:
-RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta name="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.
+PreparationRecord the following values before starting:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com
+Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)
+ECR Image URIs: The URIs of the 6 repositories from the Image Build step.
+Google OAuth Credentials: Client ID and Client Secret.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
-    <meta name="twitter:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
-PreparationRecord the following values before creating Task Definitions:
-RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta name="twitter:title" content="Task Definitions Creation :: Internship Report">
+    <meta name="twitter:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.
+PreparationRecord the following values before starting:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com
+Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)
+ECR Image URIs: The URIs of the 6 repositories from the Image Build step.
+Google OAuth Credentials: Client ID and Client Secret.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html">
     <meta property="og:site_name" content="Internship Report">
-    <meta property="og:title" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
-    <meta property="og:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
-PreparationRecord the following values before creating Task Definitions:
-RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
+    <meta property="og:title" content="Task Definitions Creation :: Internship Report">
+    <meta property="og:description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.
+PreparationRecord the following values before starting:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com
+Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)
+ECR Image URIs: The URIs of the 6 repositories from the Image Build step.
+Google OAuth Credentials: Client ID and Client Secret.">
     <meta property="og:locale" content="en">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
-    <meta itemprop="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.
-PreparationRecord the following values before creating Task Definitions:
-RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (without :6379) Kafka Bootstrap Server: kafka.sgu.local:9092 Google OAuth Credentials: Client ID Client Secret ECR Image URIs: All 6 service images from ECR Standard Task Definition ProcessFor each service, follow this standard configuration process:">
-    <meta itemprop="wordCount" content="447">
-    <title>Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report</title>
-    <link href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.xml" rel="alternate" type="application/rss+xml" title="Task Definitions Creation (Configure settings, Fix environment variables) :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765092214" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765092214" defer></script>
+    <meta itemprop="name" content="Task Definitions Creation :: Internship Report">
+    <meta itemprop="description" content="Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.
+PreparationRecord the following values before starting:
+RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com
+Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)
+ECR Image URIs: The URIs of the 6 repositories from the Image Build step.
+Google OAuth Credentials: Client ID and Client Secret.">
+    <meta itemprop="wordCount" content="520">
+    <title>Task Definitions Creation :: Internship Report</title>
+    <link href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.xml" rel="alternate" type="application/rss+xml" title="Task Definitions Creation :: Internship Report">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765167806" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765167806" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765092214";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765167806";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765167806" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765092214" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765092214" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765092214" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765167806" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765167806" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765167806" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765167806" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765167806" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -100,7 +112,7 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765092214" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765167806" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html">
     <div id="R-body" class="default-animation">
@@ -136,13 +148,11 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
       <ul>
         <li><a href="#preparation">Preparation</a></li>
         <li><a href="#standard-task-definition-process">Standard Task Definition Process</a></li>
-        <li><a href="#task-definition-1-auth-service">Task Definition 1: Auth Service</a></li>
-        <li><a href="#task-definition-2-user-service">Task Definition 2: User Service</a></li>
-        <li><a href="#task-definition-3-taskflow-service">Task Definition 3: Taskflow Service</a></li>
-        <li><a href="#task-definition-4-notification-service">Task Definition 4: Notification Service</a></li>
-        <li><a href="#task-definition-5-ai-model-service">Task Definition 5: AI Model Service</a></li>
-        <li><a href="#task-definition-6-api-gateway">Task Definition 6: API Gateway</a></li>
-        <li><a href="#task-definition-validation">Task Definition Validation</a></li>
+        <li><a href="#1-kafka-server-infrastructure-backbone">1. Kafka Server (Infrastructure Backbone)</a></li>
+        <li><a href="#2-auth-service-critical-security-service">2. Auth Service (Critical Security Service)</a></li>
+        <li><a href="#3-user-service--taskflow-service">3. User Service &amp; Taskflow Service</a></li>
+        <li><a href="#4-api-gateway-the-orchestrator">4. API Gateway (The Orchestrator)</a></li>
+        <li><a href="#task-definition-validation-checklist">Task Definition Validation Checklist</a></li>
       </ul>
     </li>
   </ul>
@@ -151,7 +161,7 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Backend Deploy</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Task Definitions Creation (Configure settings, Fix environment variables)</span><meta itemprop="position" content="5"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Backend Deploy</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Task Definitions Creation</span><meta itemprop="position" content="5"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -200,9 +210,9 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
   <header class="headline">
   </header>
 
-<h1 id="task-definitions-creation-configure-settings-fix-environment-variables">Task Definitions Creation (Configure settings, Fix environment variables)</h1>
+<h1 id="task-definitions-creation">Task Definitions Creation</h1>
 
-<p>Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation and environment configuration.</p>
+<p>Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.</p>
 <h3 id="preparation">
   Preparation
 
@@ -213,18 +223,20 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Record the following values before creating Task Definitions:</strong></p>
+</h3><p><strong>Record the following values before starting:</strong></p>
 <ol>
-<li><strong>RDS Endpoint</strong>: <code>sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com</code></li>
-<li><strong>Redis Endpoint</strong>: <code>sgu-redis.[random].cache.amazonaws.com</code> (without :6379)</li>
-<li><strong>Kafka Bootstrap Server</strong>: <code>kafka.sgu.local:9092</code></li>
-<li><strong>Google OAuth Credentials</strong>:
-<ul>
-<li>Client ID</li>
-<li>Client Secret</li>
-</ul>
+<li>
+<p><strong>RDS Endpoint</strong>: <code>sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com</code></p>
 </li>
-<li><strong>ECR Image URIs</strong>: All 6 service images from ECR</li>
+<li>
+<p><strong>Redis Endpoint</strong>: <code>sgu-redis.[random].cache.amazonaws.com</code> (Without :6379)</p>
+</li>
+<li>
+<p><strong>ECR Image URIs</strong>: The URIs of the 6 repositories from the Image Build step.</p>
+</li>
+<li>
+<p><strong>Google OAuth Credentials</strong>: Client ID and Client Secret.</p>
+</li>
 </ol>
 <hr>
 <h3 id="standard-task-definition-process">
@@ -238,53 +250,43 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><p>For each service, follow this standard configuration process:</p>
-<p><strong>Base Configuration (Common for all services):</strong></p>
-<ol>
-<li>Navigate to <strong>Amazon ECS</strong> → <strong>Task definitions</strong> → <strong>Create new task definition</strong></li>
-<li>Infrastructure configuration:</li>
-</ol>
-<table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Launch type</td>
-          <td>AWS Fargate</td>
-      </tr>
-      <tr>
-          <td>Operating system</td>
-          <td>Linux/X86_64</td>
-      </tr>
-      <tr>
-          <td>CPU</td>
-          <td>0.5 vCPU</td>
-      </tr>
-      <tr>
-          <td>Memory</td>
-          <td>1 GB</td>
-      </tr>
-      <tr>
-          <td>Task execution role</td>
-          <td><code>ecsTaskExecutionRole</code></td>
-      </tr>
-  </tbody>
-</table>
-<ol>
-<li>Container configuration:
+<p><strong>1. Base Configuration:</strong></p>
 <ul>
-<li><strong>Protocol</strong>: TCP</li>
-<li><strong>App protocol</strong>: HTTP</li>
-<li><strong>Logging</strong>: Enable &ldquo;Use log collection&rdquo;</li>
+<li>
+<p>Navigate to <strong>Amazon ECS</strong> → <strong>Task definitions</strong> → <strong>Create new task definition</strong>.</p>
+</li>
+<li>
+<p><strong>Infrastructure:</strong></p>
+<ul>
+<li>
+<p>Launch type: <strong>AWS Fargate</strong></p>
+</li>
+<li>
+<p>Operating system: <strong>Linux/X86_64</strong></p>
+</li>
+<li>
+<p>Task Execution Role: <code>ecsTaskExecutionRole</code></p>
+</li>
 </ul>
 </li>
-</ol>
+<li>
+<p><strong>Container Details:</strong></p>
+<ul>
+<li>
+<p>Protocol: <strong>TCP</strong></p>
+</li>
+<li>
+<p>Port Mapping: Refer to the specific service details below.</p>
+</li>
+<li>
+<p>Log collection: <strong>Turned on</strong> (Essential for debugging).</p>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h3 id="task-definition-1-auth-service">
-  Task Definition 1: Auth Service
+<h3 id="1-kafka-server-infrastructure-backbone">
+  1. Kafka Server (Infrastructure Backbone)
 
 
 
@@ -293,29 +295,119 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><table>
+</h3><p><em>Note: Kafka must be deployed first so other services can connect upon startup.</em></p>
+<table>
   <thead>
       <tr>
-          <th>Parameter</th>
-          <th>Value</th>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Value</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Task definition family</td>
+          <td><strong>Family Name</strong></td>
+          <td><code>kafka-server-td</code></td>
+      </tr>
+      <tr>
+          <td><strong>Task Memory</strong></td>
+          <td><strong>2 GB</strong> (Critical)</td>
+      </tr>
+      <tr>
+          <td><strong>Task CPU</strong></td>
+          <td><strong>1 vCPU</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Container Port</strong></td>
+          <td><code>9092</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables (Copy exactly):</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Key</strong></th>
+          <th><strong>Value</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ALLOW_PLAINTEXT_LISTENER</code></td>
+          <td><code>yes</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_ADVERTISED_LISTENERS</code></td>
+          <td><code>PLAINTEXT://kafka.sgu.local:9092</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_CONTROLLER_LISTENER_NAMES</code></td>
+          <td><code>CONTROLLER</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_CONTROLLER_QUORUM_VOTERS</code></td>
+          <td><code>0@127.0.0.1:9093</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP</code></td>
+          <td><code>CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LISTENERS</code></td>
+          <td><code>PLAINTEXT://:9092,CONTROLLER://:9093</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_LOG_DIRS</code></td>
+          <td><code>/tmp/kafka-logs</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_NODE_ID</code></td>
+          <td><code>0</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_CFG_PROCESS_ROLES</code></td>
+          <td><code>controller,broker</code></td>
+      </tr>
+      <tr>
+          <td><code>KAFKA_HEAP_OPTS</code></td>
+          <td><code>-Xmx512m</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="2-auth-service-critical-security-service">
+  2. Auth Service (Critical Security Service)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><em>Note: This service requires high RAM to handle Login processes and Encryption.</em></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Value</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Family Name</strong></td>
           <td><code>auth-service-td</code></td>
       </tr>
       <tr>
-          <td>Container name</td>
-          <td><code>auth-service</code></td>
+          <td><strong>Task Memory</strong></td>
+          <td><strong>2 GB</strong> (Mandatory to prevent Exit Code 137)</td>
       </tr>
       <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/auth-service:latest</code></td>
+          <td><strong>Task CPU</strong></td>
+          <td><strong>0.5 vCPU</strong></td>
       </tr>
       <tr>
-          <td>Container port</td>
-          <td>9999</td>
+          <td><strong>Container Port</strong></td>
+          <td><code>9999</code></td>
       </tr>
   </tbody>
 </table>
@@ -323,56 +415,102 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 <table>
   <thead>
       <tr>
-          <th>Key</th>
-          <th>Value</th>
+          <th><strong>Key</strong></th>
+          <th><strong>Value</strong></th>
+          <th><strong>Notes</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
+          <td><code>SERVER_PORT</code></td>
+          <td><code>9999</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>JAVA_OPTS</code></td>
+          <td><code>-Xmx768m</code></td>
+          <td>Must include the hyphen <code>-</code>.</td>
+      </tr>
+      <tr>
+          <td><code>SPRING_JPA_HIBERNATE_DDL_AUTO</code></td>
+          <td><strong><code>none</code></strong></td>
+          <td><strong>CRITICAL:</strong> Prevents 500 Errors caused by DB schema conflicts.</td>
+      </tr>
+      <tr>
+          <td><code>SERVER_FORWARD_HEADERS_STRATEGY</code></td>
+          <td><code>native</code></td>
+          <td>Fixes HTTP/HTTPS redirect issues behind ALB.</td>
+      </tr>
+      <tr>
           <td><code>SPRING_DATASOURCE_URL</code></td>
           <td><code>jdbc:mysql://[RDS-ENDPOINT]:3306/aws_todolist_database?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATASOURCE_USERNAME</code></td>
           <td><code>root</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
-          <td><code>[your-password]</code></td>
+          <td><code>[DB_PASSWORD]</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE</code></td>
+          <td><code>5</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATA_REDIS_HOST</code></td>
           <td><code>[REDIS-ENDPOINT]</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATA_REDIS_PORT</code></td>
           <td><code>6379</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_SSL_ENABLED</code></td>
+          <td><strong><code>true</code></strong></td>
+          <td>Mandatory for AWS ElastiCache.</td>
       </tr>
       <tr>
           <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
           <td><code>kafka.sgu.local:9092</code></td>
+          <td></td>
       </tr>
       <tr>
-          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID</code></td>
-          <td><code>[GOOGLE-CLIENT-ID]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET</code></td>
-          <td><code>[GOOGLE-CLIENT-SECRET]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI</code></td>
-          <td><code>https://api.sgutodolist.com/api/auth/login/oauth2/code/google</code></td>
+          <td><code>DOMAIN_FRONTEND</code></td>
+          <td><code>https://sgutodolist.com</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>APP_OAUTH2_REDIRECT_URI</code></td>
           <td><code>https://sgutodolist.com/oauth2/redirect</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID</code></td>
+          <td><code>[GOOGLE_CLIENT_ID]</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET</code></td>
+          <td><code>[GOOGLE_CLIENT_SECRET]</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI</code></td>
+          <td><code>https://sgutodolist.com/api/auth/login/oauth2/code/google</code></td>
+          <td>Note: Include <code>/api/auth</code> in path.</td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h3 id="task-definition-2-user-service">
-  Task Definition 2: User Service
+<h3 id="3-user-service--taskflow-service">
+  3. User Service &amp; Taskflow Service
 
 
 
@@ -381,70 +519,103 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Task definition family</td>
-          <td><code>user-service-td</code></td>
-      </tr>
-      <tr>
-          <td>Container name</td>
-          <td><code>user-service</code></td>
-      </tr>
-      <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/user-service:latest</code></td>
-      </tr>
-      <tr>
-          <td>Container port</td>
-          <td>8081</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Environment Variables:</strong></p>
+</h3><p><em>These are business logic services requiring permission to create DB tables on first run.</em></p>
 <table>
   <thead>
       <tr>
-          <th>Key</th>
-          <th>Value</th>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Value</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
+          <td><strong>Family Name</strong></td>
+          <td><code>user-service-td</code> / <code>taskflow-service-td</code></td>
+      </tr>
+      <tr>
+          <td><strong>Task Memory</strong></td>
+          <td><strong>1 GB</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Task CPU</strong></td>
+          <td><strong>0.5 vCPU</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Container Port</strong></td>
+          <td><code>8081</code> (User) / <code>8082</code> (Taskflow)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Environment Variables (Common for both):</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Key</strong></th>
+          <th><strong>Value</strong></th>
+          <th><strong>Notes</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SERVER_PORT</code></td>
+          <td><code>8081</code> (User) or <code>8082</code> (Taskflow)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>JAVA_OPTS</code></td>
+          <td><code>-Xmx512m</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_JPA_HIBERNATE_DDL_AUTO</code></td>
+          <td><strong><code>update</code></strong></td>
+          <td>Allows service to create tables on startup.</td>
+      </tr>
+      <tr>
           <td><code>SPRING_DATASOURCE_URL</code></td>
-          <td>Same as Auth Service</td>
+          <td><em>(Same as Auth Service)</em></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATASOURCE_USERNAME</code></td>
           <td><code>root</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
-          <td><code>[your-password]</code></td>
+          <td><code>[DB_PASSWORD]</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE</code></td>
+          <td><code>5</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATA_REDIS_HOST</code></td>
           <td><code>[REDIS-ENDPOINT]</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_DATA_REDIS_PORT</code></td>
           <td><code>6379</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_SSL_ENABLED</code></td>
+          <td><code>true</code></td>
+          <td></td>
       </tr>
       <tr>
           <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
           <td><code>kafka.sgu.local:9092</code></td>
+          <td></td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h3 id="task-definition-3-taskflow-service">
-  Task Definition 3: Taskflow Service
+<h3 id="4-api-gateway-the-orchestrator">
+  4. API Gateway (The Orchestrator)
 
 
 
@@ -453,217 +624,30 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Task definition family</td>
-          <td><code>taskflow-service-td</code></td>
-      </tr>
-      <tr>
-          <td>Container name</td>
-          <td><code>taskflow-service</code></td>
-      </tr>
-      <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/taskflow-service:latest</code></td>
-      </tr>
-      <tr>
-          <td>Container port</td>
-          <td>8082</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Environment Variables:</strong></p>
+</h3><p><em>The most critical service for internal routing.</em></p>
 <table>
   <thead>
       <tr>
-          <th>Key</th>
-          <th>Value</th>
+          <th><strong>Parameter</strong></th>
+          <th><strong>Value</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><code>SPRING_DATASOURCE_URL</code></td>
-          <td>Same as Auth Service</td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
-          <td><code>root</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
-          <td><code>[your-password]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_HOST</code></td>
-          <td><code>[REDIS-ENDPOINT]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_PORT</code></td>
-          <td><code>6379</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
-          <td><code>kafka.sgu.local:9092</code></td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h3 id="task-definition-4-notification-service">
-  Task Definition 4: Notification Service
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Task definition family</td>
-          <td><code>notification-service-td</code></td>
-      </tr>
-      <tr>
-          <td>Container name</td>
-          <td><code>notification-service</code></td>
-      </tr>
-      <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/notification-service:latest</code></td>
-      </tr>
-      <tr>
-          <td>Container port</td>
-          <td>9998</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Environment Variables:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>Key</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>SPRING_DATASOURCE_URL</code></td>
-          <td>Same as Auth Service</td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_USERNAME</code></td>
-          <td><code>root</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATASOURCE_PASSWORD</code></td>
-          <td><code>[your-password]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_HOST</code></td>
-          <td><code>[REDIS-ENDPOINT]</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_DATA_REDIS_PORT</code></td>
-          <td><code>6379</code></td>
-      </tr>
-      <tr>
-          <td><code>SPRING_KAFKA_BOOTSTRAP_SERVERS</code></td>
-          <td><code>kafka.sgu.local:9092</code></td>
-      </tr>
-      <tr>
-          <td><code>CLIENT_URL</code></td>
-          <td><code>https://sgutodolist.com</code></td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h3 id="task-definition-5-ai-model-service">
-  Task Definition 5: AI Model Service
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Task definition family</td>
-          <td><code>ai-model-service-td</code></td>
-      </tr>
-      <tr>
-          <td>Container name</td>
-          <td><code>ai-model-service</code></td>
-      </tr>
-      <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/ai-model-service:latest</code></td>
-      </tr>
-      <tr>
-          <td>Container port</td>
-          <td>9997</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Environment Variables:</strong></p>
-<p>If your Python Flask AI service requires database connectivity, add the same database variables as other services. Otherwise, leave environment variables empty.</p>
-<hr>
-<h3 id="task-definition-6-api-gateway">
-  Task Definition 6: API Gateway
-
-
-
-
-
-
-
-<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Critical Configuration</strong>: This service orchestrates all backend services and must know their internal addresses.</p>
-<table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Task definition family</td>
+          <td><strong>Family Name</strong></td>
           <td><code>api-gateway-td</code></td>
       </tr>
       <tr>
-          <td>Container name</td>
-          <td><code>api-gateway</code></td>
+          <td><strong>Task Memory</strong></td>
+          <td><strong>1 GB</strong></td>
       </tr>
       <tr>
-          <td>Image URI</td>
-          <td><code>[ECR-URI]/api-gateway:latest</code></td>
+          <td><strong>Task CPU</strong></td>
+          <td><strong>0.5 vCPU</strong></td>
       </tr>
       <tr>
-          <td>Container port</td>
-          <td>8080</td>
+          <td><strong>Container Port</strong></td>
+          <td><code>8080</code></td>
       </tr>
   </tbody>
 </table>
@@ -671,57 +655,62 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 <table>
   <thead>
       <tr>
-          <th>Key</th>
-          <th>Value</th>
-          <th>Purpose</th>
+          <th><strong>Key</strong></th>
+          <th><strong>Value</strong></th>
+          <th><strong>Explanation</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><code>SPRING_DATA_REDIS_HOST</code></td>
-          <td><code>[REDIS-ENDPOINT]</code></td>
-          <td>Rate limiting</td>
+          <td><code>SERVER_PORT</code></td>
+          <td><code>8080</code></td>
+          <td></td>
       </tr>
       <tr>
-          <td><code>SPRING_DATA_REDIS_PORT</code></td>
-          <td><code>6379</code></td>
-          <td>Redis connection</td>
+          <td><code>CORS_ALLOWED_ORIGINS</code></td>
+          <td><code>https://sgutodolist.com,https://www.sgutodolist.com</code></td>
+          <td>Allows Frontend API access.</td>
       </tr>
       <tr>
           <td><code>AUTH_SERVICE_URL</code></td>
           <td><code>http://auth.sgu.local:9999</code></td>
-          <td>Internal routing</td>
+          <td>Internal routing via Service Discovery.</td>
       </tr>
       <tr>
           <td><code>USER_SERVICE_URL</code></td>
-          <td><code>http://user.sgu.local:8081</code></td>
-          <td>Internal routing</td>
+          <td><strong><code>http://user.sgu.local:8081</code></strong></td>
+          <td>Note the name: <code>user</code> (not <code>user-service</code>).</td>
       </tr>
       <tr>
           <td><code>TASKFLOW_SERVICE_URL</code></td>
-          <td><code>http://taskflow.sgu.local:8082</code></td>
-          <td>Internal routing</td>
+          <td><strong><code>http://taskflow.sgu.local:8082</code></strong></td>
+          <td>Note the name: <code>taskflow</code>.</td>
       </tr>
       <tr>
           <td><code>NOTIFICATION_SERVICE_URL</code></td>
-          <td><code>http://notification.sgu.local:9998</code></td>
-          <td>Internal routing</td>
+          <td><strong><code>http://notification.sgu.local:9998</code></strong></td>
+          <td>Note the name: <code>notification</code>.</td>
       </tr>
       <tr>
-          <td><code>AI_MODEL_SERVICE</code></td>
-          <td><code>http://ai-model.sgu.local:9997</code></td>
-          <td>Internal routing</td>
+          <td><code>SPRING_DATA_REDIS_HOST</code></td>
+          <td><code>[REDIS-ENDPOINT]</code></td>
+          <td>Used for Rate Limiting.</td>
       </tr>
       <tr>
-          <td><code>CORS_ALLOWED_ORIGINS</code></td>
-          <td><code>https://sgutodolist.com</code></td>
-          <td>Frontend access</td>
+          <td><code>SPRING_DATA_REDIS_PORT</code></td>
+          <td><code>6379</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>SPRING_DATA_REDIS_SSL_ENABLED</code></td>
+          <td><code>true</code></td>
+          <td></td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h3 id="task-definition-validation">
-  Task Definition Validation
+<h3 id="task-definition-validation-checklist">
+  Task Definition Validation Checklist
 
 
 
@@ -730,21 +719,27 @@ RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com Redis En
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>After creating all 6 Task Definitions, verify:</p>
+</h3><p>After creation, please verify:</p>
 <ul>
-<li><input disabled="" type="checkbox"> All Task Definitions created successfully</li>
-<li><input disabled="" type="checkbox"> Latest revisions available for each family</li>
-<li><input disabled="" type="checkbox"> Environment variables correctly configured</li>
-<li><input disabled="" type="checkbox"> Image URIs point to correct ECR repositories</li>
-<li><input disabled="" type="checkbox"> Logging enabled for all containers</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>RAM Allocation:</strong> Auth Service must be <strong>2GB</strong>, others at least <strong>1GB</strong>.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>Redis SSL:</strong> Variable <code>SPRING_DATA_REDIS_SSL_ENABLED</code> = <code>true</code> is set for all services connecting to Redis.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>Internal URLs:</strong> All <code>_SERVICE_URL</code> variables in Gateway must end with <code>.sgu.local</code>.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>DDL Auto:</strong> Auth Service must be <code>none</code>, User/Taskflow should be <code>update</code>.</p>
+</li>
 </ul>
-<hr>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 3: Code Update & Image Build
+⬅ STEP 3: Code Update & Image Build
 </a>
 <a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/" style="text-decoration: none; font-weight: bold;">
-BƯỚC 5: Services Deployment ➡
+STEP 5: Services Deployment ➡
 </a>
 </div>
   <footer class="footline">
@@ -806,7 +801,7 @@ BƯỚC 5: Services Deployment ➡
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"> <b> 5.3.2.1. </b> Network &amp; Security Preparation (VPC, SG)</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"> <b> 5.3.2.2. </b> Infrastructure &amp; ALB Setup (RDS, Redis, Cloud Map, ALB Routing)</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Code Update &amp; Image Build (Create new Docker Image)</a></li>
-            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Task Definitions Creation (Configure settings, Fix environment variables)</a></li>
+            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Task Definitions Creation</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment-following-priority-order-and-verification/index.html"> <b> 5.3.2.5. </b> Services Deployment (Following priority order and verification)</a></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Completion &amp; Verification (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
@@ -858,8 +853,8 @@ BƯỚC 5: Services Deployment ➡
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765167806" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

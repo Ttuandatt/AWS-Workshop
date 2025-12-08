@@ -24,26 +24,26 @@
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/en/2-proposal/index.xml" rel="alternate" type="application/rss+xml" title="Proposal :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765092214" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765092214" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765167806" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765167806" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765092214";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765167806";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765167806" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765092214" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765092214" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765092214" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765092214" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765167806" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765167806" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765167806" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765167806" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765167806" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765092214" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765167806" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/2-proposal/index.html">
     <div id="R-body" class="default-animation">
@@ -952,7 +952,7 @@ API Gateway Internal Routing (Port-based, via Cloud Map):
 <p><strong>API Requests (Backend Microservices):</strong></p>
 <ol>
 <li>
-<p>Frontend makes API call: <code>https://api.sgutodolist.com/api/tasks</code></p>
+<p>Frontend makes API call: <code>https://sgutodolist.com/api/task</code></p>
 </li>
 <li>
 <p>Route 53 resolves to Application Load Balancer in Singapore</p>
@@ -964,16 +964,16 @@ API Gateway Internal Routing (Port-based, via Cloud Map):
 <p>API Gateway (running on ECS) receives the request and <strong>internally routes</strong> via AWS Cloud Map based on the path:</p>
 <ul>
 <li>
-<p>Requests to <code>/api/auth/*</code> are routed to <strong>Auth Service (Port 9999)</strong>.</p>
+<p>Requests to <code>/api/auth/**</code> are routed to <strong>Auth Service (Port 9999)</strong>.</p>
 </li>
 <li>
-<p>Requests to <code>/api/users/*</code> are routed to <strong>User Service (Port 8081)</strong>.</p>
+<p>Requests to <code>/api/user/**</code> are routed to <strong>User Service (Port 8081)</strong>.</p>
 </li>
 <li>
-<p>Requests to <code>/api/taskflow/*</code> are routed to <strong>Taskflow Service (Port 8082)</strong>.</p>
+<p>Requests to <code>/api/taskflow/**</code> are routed to <strong>Taskflow Service (Port 8082)</strong>.</p>
 </li>
 <li>
-<p>Requests to <code>/api/notifications/*</code> are routed to <strong>Notification Service (Port 9998)</strong>.</p>
+<p>Requests to <code>/api/notifications/**</code> are routed to <strong>Notification Service (Port 9998)</strong>.</p>
 </li>
 </ul>
 </li>
@@ -1160,7 +1160,7 @@ docker push {account-id}.dkr.ecr.ap-southeast-1.amazonaws.com/task-service:v1.2.
 <p>Monitor CloudWatch Logs for errors: <code>/ecs/task-service</code></p>
 </li>
 <li>
-<p>Test API endpoints via ALB: <code>curl https://api.sgutodolist.com/api/tasks/health</code></p>
+<p>Test API endpoints via ALB: <code>curl https://sgutodolist.com/api/task/health</code></p>
 </li>
 <li>
 <p>Check CloudWatch Metrics: CPU, memory, request count, error rate</p>
@@ -3175,8 +3175,8 @@ Step 7: End-to-end testing (20 minutes)</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765092214" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765092214" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765167806" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765167806" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

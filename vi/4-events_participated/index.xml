@@ -8,18 +8,18 @@
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Event 1</title>
+      <title>Sự kiện 1</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</guid>
-      <description>Summary Report: “Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025”&#xD;Event Objectives&#xD;Provide information about the Internship program FCAJ Introduce support &amp; admin team Speakers&#xD;Mr. Nguyen Gia Hưng – Head of Solutions Architect - Viet Nam &amp; Cambodia | Champion Authorized Instructor Mr. Nguyen Dong Thanh Hiep – Principal Cloud Engineer | AWS First Cloud Journey | AWS Community Builders Mr. Danh Hoang Hieu Nghi – AI Engineer at Renova Cloud | 2x AWS Certified | AWS First Cloud AI Journey Key Highlights&#xD;Introduce the FCAJ program&#xD;The history of the program The reasons for why this program was established The overall aim of the program The learning materials Speakers share their stories&#xD;Networking and discussions&#xD;The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the ubiquitous language between business and tech. Real-world examples reinforced the importance of the business-first approach rather than focusing solely on technology. Lessons learned&#xD;Know more about the overall view of the cloud industry How to study and work smartly in a fast pace world Be more determined with the career path Some event photos&#xD;Overall, the event provided detailed information about the program as well as give me an opportunity to make friends with passionate peers.</description>
+      <description>Báo Cáo Tổng Kết: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Mục Tiêu Sự Kiện&#xD;Chính thức khởi động chương trình AWS First Cloud Journey Workforce OJT Fall 2025 Giới thiệu cho sinh viên mục tiêu, cấu trúc và lộ trình học tập của chương trình Cung cấp góc nhìn tổng quan về cơ hội nghề nghiệp trong các lĩnh vực Cloud Computing, AI/ML, DevOps và Security Kết nối sinh viên với cộng đồng AWS Study Group và các đối tác doanh nghiệp Truyền cảm hứng cho sinh viên xây dựng kỹ năng thực hành và chuẩn bị cho sự nghiệp trong lĩnh vực cloud Diễn Giả &amp; Khách Mời Chính&#xD;Nguyễn Gia Hưng – Head of Solutions Architect, AWS Vietnam&#xA;Chia sẻ tổng quan về AWS First Cloud Journey và cơ hội nghề nghiệp trong ngành điện toán đám mây</description>
     </item>
     <item>
-      <title>Event 2</title>
+      <title>Sự kiện 2</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</guid>
-      <description></description>
+      <description>AWS Cloud Mastery Series #3 – Security Pillar Workshop&#xD;Buổi workshop tập trung giúp người tham gia hiểu cách thiết kế và vận hành hệ thống AWS an toàn dựa trên Security Pillar của AWS Well-Architected Framework, kết hợp giữa lý thuyết, demo thực tế và các tình huống trong môi trường triển khai thật.</description>
     </item>
   </channel>
 </rss>
