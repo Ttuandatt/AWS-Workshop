@@ -7,6 +7,16 @@ pre = "<b>5.5. </b>"
 
 
 ### **1. Hugo Commands**
+1.1
+```bash
+hugo build
+```
+
+1.2
+```bash
+hugo server -D
+```
+
 
 ---
 
