@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 12 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html</link>
     <description>Mục tiêu Tuần 12&#xD;Nhiệm vụ cần thực hiện trong tuần này&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để xem xét các vấn đề cần giải quyết 24/11/2025 24/11/2025 - Triển khai S3 vùng đơn thử nghiệm 2 - Hoàn thành phần 4. Các sự kiện tham gia Hội thảo 25/11/2025 25/11/2025 - Triển khai S3 vùng đơn thử nghiệm 3 - Triển khai VPC thử nghiệm 26/11/2025 26/11/2025 - Thực hành sử dụng RDS MySQL, ElastiCacheForRedis 4 - Cấu hình Google OAuth 27/11/2025 27/11/2025 - Thực hành sử dụng RDS MySQL, ElastiCacheForRedis 5 - Điều chỉnh kiến ​​trúc giải pháp thành vùng đơn (như đối với tài khoản miễn phí và giới hạn chi phí) 28/11/2025 28/11/2025 - Triển khai tài nguyên frontend lên S3 thành công - Cập nhật nhật ký công việc, hội thảo</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/1-worklog/1.12-week_12/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

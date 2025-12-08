@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Quy trình triển khai :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html</link>
     <description>Mục lục&#xD;Phần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.&#xA;Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Triển khai Frontend</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid>
       <description>Mô hình kiến trúc&#xD;Domain: Route 53 (DNS) + ACM (SSL Certificate).&#xA;CDN: CloudFront (Global Edge Network).&#xA;Storage (Primary): S3 Singapore (ap-southeast-1).&#xA;Storage (Failover): S3 N. Virginia (us-east-1).&#xA;Replication: Tự động copy code từ Sing -&gt; Virginia.&#xA;Security: OAC (Origin Access Control) - Private Bucket.&#xA;MỤC LỤC&#xD;Điều kiện tiên quyết</description>
     </item>
     <item>
       <title>Triển khai Backend</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
       <description>Mô hình kiến trúc&#xD;Mô hình này minh họa các dịch vụ cốt lõi được sử dụng nhằm đảm bảo tính sẵn sàng cao, độ trễ thấp và bảo mật cho hệ thống:&#xA;Tên miền &amp; SSL: Route 53 (DNS) được dùng để quản lý tên miền, trong khi ACM (SSL Certificate) đảm bảo mã hóa và bảo mật lưu lượng truy cập.</description>
     </item>
   </channel>

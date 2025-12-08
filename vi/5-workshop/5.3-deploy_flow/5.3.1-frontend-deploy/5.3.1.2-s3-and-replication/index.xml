@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>S3 và Replication :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html</link>
     <description>GIAI ĐOẠN 1: CHUẨN BỊ STORAGE (S3 &amp; REPLICATION)&#xD;Giai đoạn này tập trung vào việc xây dựng lớp lưu trữ bền vững cho frontend và thiết lập cơ chế đồng bộ dữ liệu tự động giữa các region (Cross-Region Replication) nhằm phục vụ khả năng failover và high availability.&#xA;Bước 1.1: Tạo Bucket Chính (Singapore)&#xD;Truy cập Amazon S3 Console và chọn region Asia Pacific (Singapore).</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

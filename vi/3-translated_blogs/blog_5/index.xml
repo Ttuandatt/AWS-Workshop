@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 5 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_5/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_5/index.html</link>
     <description>Ra mắt Strands Agents 1.0: Đơn giản hóa điều phối Multi-Agent cho môi trường production&#xD;Ryan Coleman, Belle Guttman Ngày: 15/07/2025 Chủ đề: Amazon Machine Learning, Announcements, Artificial Intelligence, Open Source&#xA;Hôm nay, chúng tôi vui mừng giới thiệu Strands Agents SDK phiên bản 1.0, đánh dấu một cột mốc quan trọng trong hành trình giúp việc xây dựng các agent AI trở nên đơn giản, đáng tin cậy và sẵn sàng cho môi trường production.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/3-translated_blogs/blog_5/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

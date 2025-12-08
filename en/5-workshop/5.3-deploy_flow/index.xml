@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deploy Flow :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
     <description>Table of Contents&#xD;This section provides step-by-step guidance for deploying both Frontend and Backend components onto the cloud infrastructure.&#xA;It covers the complete deployment workflow, from build artifacts preparation to production-ready release on AWS services.&#xA;5.3.1. Frontend Deploy&#xA;Guidelines for building, configuring, and deploying the frontend to Amazon S3 + CloudFront with cross-region failover.&#xA;5.3.2. Backend Deploy&#xA;Instructions for deploying backend microservices to AWS ECS/Fargate, including network configuration, load balancing, and service integration.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Frontend Deploy</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid>
       <description>Architectural model&#xD;Domain: Route 53 (DNS) + ACM (SSL Certificate).&#xA;CDN: CloudFront (Global Edge Network).&#xA;Storage (Primary): S3 Singapore (ap-southeast-1).&#xA;Storage (Failover): S3 N. Virginia (us-east-1).&#xA;Replication: Automatically copy code from Singapore -&gt; Virginia.&#xA;Security: OAC (Origin Access Control) - Private Bucket.&#xA;Table of Contents&#xD;Prerequisites</description>
     </item>
     <item>
       <title>Backend Deploy</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
       <description>Architecture Model&#xD;This model illustrates the core services used for high-availability, low-latency content delivery and security:&#xA;Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.&#xA;CDN: CloudFront acts as the Global Edge Network for content delivery.&#xA;Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.</description>
     </item>
   </channel>

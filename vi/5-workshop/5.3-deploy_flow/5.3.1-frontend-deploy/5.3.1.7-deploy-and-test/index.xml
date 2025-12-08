@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deploy and Test :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html</link>
     <description>GIAI ĐOẠN 6: DEPLOY &amp; KIỂM TRA&#xD;Bước 6.1: Build &amp; Deploy&#xD;Tại máy tính local (trong folder project React):&#xA;# 1. Build ra folder production npm run build # 2. Upload lên bucket CHÍNH (Singapore) # Lưu ý: Chỉ cần upload lên Sing, AWS sẽ tự copy sang US aws s3 sync build/ s3://sgutodolist-frontend-sg --delete # 3. Xóa cache CloudFront để user thấy code mới ngay aws cloudfront create-invalidation --distribution-id &lt;ID_CUA_BAN&gt; --paths &#34;/*&#34;&#xD;Bước 6.2: Kiểm tra&#xD;Truy cập https://sgutodolist.com.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

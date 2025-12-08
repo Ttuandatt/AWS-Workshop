@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Triển khai Backend :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
     <description>Mô hình kiến trúc&#xD;Mô hình này minh họa các dịch vụ cốt lõi được sử dụng nhằm đảm bảo tính sẵn sàng cao, độ trễ thấp và bảo mật cho hệ thống:&#xA;Tên miền &amp; SSL: Route 53 (DNS) được dùng để quản lý tên miền, trong khi ACM (SSL Certificate) đảm bảo mã hóa và bảo mật lưu lượng truy cập.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</guid>
       <description>Giai đoạn này thiết lập hạ tầng mạng nền tảng và ranh giới bảo mật cho quá trình triển khai hệ thống Microservices.&#xA;Cấu hình VPC và Subnet&#xD;Bước 1: Tạo Hạ tầng VPC&#xD;Truy cập VPC Console → Create VPC Chọn tùy chọn VPC and more Cấu hình các tham số cho VPC như sau: Tham số Giá trị Mục đích Tự động tạo Name tag SGU-Microservices Chuẩn hoá quy ước đặt tên IPv4 CIDR block 10.0.0.0/16 Dải mạng private tiêu chuẩn Số Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) Đảm bảo tính sẵn sàng cao Số public subnet 2 Cho các tài nguyên public-facing Số private subnet 2 Cô lập tầng dữ liệu NAT Gateway Không tạo Tối ưu chi phí (~ tiết kiệm $30/tháng) VPC Endpoint Không tạo Tối ưu chi phí DNS options Enable DNS hostnames + Enable DNS resolution Phục vụ service discovery Nhấn Create VPC Kết quả kiến trúc mạng&#xD;VPC: 10.0.0.0/16 ├── Public Subnet 1: 10.0.0.0/20 (ap-southeast-1a) ├── Public Subnet 2: 10.0.16.0/20 (ap-southeast-1b) ├── Private Subnet 1: 10.0.128.0/20 (ap-southeast-1a) └── Private Subnet 2: 10.0.144.0/20 (ap-southeast-1b)</description>
     </item>
     <item>
       <title>Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</guid>
       <description>Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.&#xA;Cấp phát SSL Certificate&#xD;Bước 1: Yêu cầu ACM Certificate&#xA;Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệu&#xD;RDS MySQL Database&#xD;Mục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.</description>
     </item>
     <item>
       <title>Cập Nhật Code &amp; Xây Dựng Image (Tạo Docker Image Mới)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</guid>
       <description>Giai đoạn này tập trung vào việc điều chỉnh mã nguồn ứng dụng cho môi trường cloud. Chúng ta sẽ cấu hình Cross-Origin Resource Sharing (CORS) cho reactive API Gateway, tái cấu trúc các cấu hình ứng dụng để sử dụng biến môi trường động, và cuối cùng xây dựng và đẩy tất cả các Docker image của microservices lên Amazon Elastic Container Registry (ECR).&#xA;Mục tiêu:&#xA;Cấu hình code để chạy mượt mà cả trên môi trường Local (Docker Compose) và Cloud (AWS ECS). Tạo Repositories trên AWS ECR. Xây dựng và đẩy tất cả 6 Docker image lên AWS. 1. TẠO REPOSITORIES TRÊN AWS ECR&#xD;Trước khi đẩy image, bạn cần tạo một “repository” cho từng service. Chạy các lệnh sau trong Terminal (PowerShell hoặc Git Bash):</description>
     </item>
     <item>
       <title>Tạo Task Definitions</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</guid>
       <description>Task Definitions đóng vai trò như bản thiết kế, xác định cách ECS chạy các container, bao gồm phân bổ tài nguyên (RAM/CPU) và các biến môi trường quan trọng để kết nối giữa các service.&#xA;Chuẩn bị&#xD;Ghi lại các giá trị sau trước khi bắt đầu:&#xA;RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com&#xA;Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (không kèm :6379)</description>
     </item>
     <item>
       <title>Triển khai Services (Theo thứ tự ưu tiên và kiểm tra)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</guid>
       <description>Giai đoạn này triển khai các ứng dụng container lên ECS Fargate theo thứ tự cụ thể để đảm bảo các phụ thuộc được giải quyết đúng cách.&#xA;Cấu hình mạng quan trọng&#xD;Với tất cả các service triển khai, các thiết lập mạng sau là bắt buộc:&#xA;1. VPC: SGU-Microservices-VPC&#xA;2. Subnets: Chọn cả hai Public Subnets (bắt buộc để kéo image)</description>
     </item>
     <item>
       <title>Completion &amp; Verification (Route 53, Google Console, Final Test)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</guid>
       <description>This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.&#xA;DNS Configuration&#xD;Step 1: Create Route 53 A Record&#xA;Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.</description>
     </item>
   </channel>

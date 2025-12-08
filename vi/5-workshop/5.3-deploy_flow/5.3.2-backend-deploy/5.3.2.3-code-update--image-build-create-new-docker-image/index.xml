@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cập Nhật Code &amp; Xây Dựng Image (Tạo Docker Image Mới) :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
     <description>Giai đoạn này tập trung vào việc điều chỉnh mã nguồn ứng dụng cho môi trường cloud. Chúng ta sẽ cấu hình Cross-Origin Resource Sharing (CORS) cho reactive API Gateway, tái cấu trúc các cấu hình ứng dụng để sử dụng biến môi trường động, và cuối cùng xây dựng và đẩy tất cả các Docker image của microservices lên Amazon Elastic Container Registry (ECR).&#xA;Mục tiêu:&#xA;Cấu hình code để chạy mượt mà cả trên môi trường Local (Docker Compose) và Cloud (AWS ECS). Tạo Repositories trên AWS ECR. Xây dựng và đẩy tất cả 6 Docker image lên AWS. 1. TẠO REPOSITORIES TRÊN AWS ECR&#xD;Trước khi đẩy image, bạn cần tạo một “repository” cho từng service. Chạy các lệnh sau trong Terminal (PowerShell hoặc Git Bash):</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

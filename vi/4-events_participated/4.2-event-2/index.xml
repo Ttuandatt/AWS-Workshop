@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sự kiện 2 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</link>
     <description>AWS Cloud Mastery Series #3 – Security Pillar Workshop&#xD;Buổi workshop tập trung giúp người tham gia hiểu cách thiết kế và vận hành hệ thống AWS an toàn dựa trên Security Pillar của AWS Well-Architected Framework, kết hợp giữa lý thuyết, demo thực tế và các tình huống trong môi trường triển khai thật.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

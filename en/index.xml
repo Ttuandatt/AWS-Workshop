@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/index.html</link>
     <description>Team Information&#xD;Full Name Phone Number Email Class Unversity Phan Canh Tuan Dat 0867829257 pcanhtuandat@gmail.com DCT1226 Sai Gon University Ngo Tuan Hung 0776136425 hungnt.020404@gmail.com DKP1221 Sai Gon University Le Trung Kien 0931261009 trungkien1862@gmail.com DCT1213 Sai Gon University Duong Binh Minh 0355578938 duongbinhminh10032004@gmail.com DCT1226 Sai Gon University Internship Company: Amazon Web Services Vietnam Co., Ltd.&#xA;Internship Position: FCJ Cloud Intern&#xA;Internship Duration: From 29/09/2025 to 22/11/2025</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Worklog</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/1-worklog/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/1-worklog/index.html</guid>
       <description>Week 1: Orientation, team formation, and building a foundational understanding of AWS services and tools required for the program&#xA;Week 2: Explore and practice core VPC and EC2 concepts through hands-on configuration, foundational networking setup, and initial project planning activities.&#xA;Week 3: Study and apply Route 53 and CloudFormation concepts while progressing solution architecture design and setting up foundational backend, frontend, and database components.&#xA;Week 4: Develop backend authentication and frontend foundations while exploring S3 and API Gateway services, defining required APIs, translating technical blogs, and establishing core project architecture and UI structure.</description>
     </item>
     <item>
       <title>Proposal</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/2-proposal/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/2-proposal/index.html</guid>
       <description>Cost-Optimized SaaS Task Management Platform&#xD;Single-Region High Availability with ECS Fargate&#xD;1. Executive Summary&#xD;The SaaS Task Management Platform is designed to deliver a Todoist-like collaborative experience with High Availability (HA) and Cost Efficiency, specifically optimized for AWS Free Tier constraints.</description>
     </item>
     <item>
       <title>Translated Blogs</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/3-translated_blogs/index.html</guid>
       <description>Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.&#xA;Blog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)&#xA;Blog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xA;Blog 4: Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên</description>
     </item>
     <item>
       <title>Events Participated</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/4-events_participated/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/4-events_participated/index.html</guid>
       <description>During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.&#xA;Event 1&#xD;Event Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025&#xA;Date &amp; Time: 8:30 AM Saturday, September 6, 2025&#xA;Location: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City</description>
     </item>
     <item>
       <title>Workshop</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/5-workshop/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/5-workshop/index.html</guid>
       <description>Cost-Optimized SaaS Task Management Platform&#xD;Overview&#xD;SGU TodoList is a robust and resilient task management application built using a Microservices architecture designed for high scalability and decoupling. The primary goal of this workshop is to guide you through deploying and managing a complex application stack on the AWS Cloud platform, with a strong focus on cost optimization and serverless operations.</description>
     </item>
     <item>
       <title>Self Assesment</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.html</guid>
       <description>During my internship at AMAZON WEB SERVICES VIETNAM COMPANY LIMITED from 08/09/2025 to 09/12/2025, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.&#xA;I participated in developing a Multi-region SaaS Task Management Web Application, through which I enhanced my skills in Backend Development, AWS Services, and Cloud Architecture. In the backend domain, I strengthened my ability to:&#xA;Develop RESTful APIs Work with Microservices Architecture Effectively utilize various AWS services I also gained practical experience in designing AWS architectures that are scalable, secure, and cost-optimized for real-world projects.</description>
     </item>
     <item>
       <title>Sharing and Feedback</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
+      <link>http://localhost:1313/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</guid>
+      <guid>http://localhost:1313/AWS-Workshop/en/7-sharing_and_feedback/index.html</guid>
       <description>Overall Evaluation&#xD;1. Working Environment&#xA;The working environment is incredibly friendly, open, and supportive. FCAJ members are always willing to help each other whenever an issue arises, and everyone is very open to discussing not only work-related topics but also studies, hobbies, and personal interests. The workspace itself is comfortable and well-organized, creating a productive atmosphere that makes it easier to stay focused and engaged.</description>
     </item>
   </channel>

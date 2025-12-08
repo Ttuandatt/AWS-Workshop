@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DNS Record :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html</link>
     <description>PHASE 5: POINT OFFICIAL DOMAIN (DNS RECORD)&#xD;Go to Route 53 &gt; Hosted zones &gt; sgutodolist.com.&#xA;Create Record for Root domain:&#xA;Click Create record.&#xA;Record name: (leave blank).&#xA;Type: A.&#xA;Alias: Yes (Swipe the button to the right).&#xA;Route traffic to: Alias ​​to CloudFront distribution.&#xA;Choose distribution: Select the CloudFront domain (e.g. d123...cloudfront.net).&#xA;Click Create records.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

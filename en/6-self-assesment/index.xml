@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Self Assesment :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.html</link>
     <description>During my internship at AMAZON WEB SERVICES VIETNAM COMPANY LIMITED from 08/09/2025 to 09/12/2025, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.&#xA;I participated in developing a Multi-region SaaS Task Management Web Application, through which I enhanced my skills in Backend Development, AWS Services, and Cloud Architecture. In the backend domain, I strengthened my ability to:&#xA;Develop RESTful APIs Work with Microservices Architecture Effectively utilize various AWS services I also gained practical experience in designing AWS architectures that are scalable, secure, and cost-optimized for real-world projects.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/6-self-assesment/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/6-self-assesment/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

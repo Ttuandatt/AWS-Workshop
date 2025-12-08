@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Week 1 Worklog :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-week_1/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/en/1-worklog/1.1-week_1/index.html</link>
     <description>Week 1 Objectives&#xD;Learn the regulations Connect with other FCJ members Form team and decide team project Understand and practice basic AWS services Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Get acquainted with FCJ members 08/09/2025 08/09/2025 - Read and take note of internship unit rules and regulations Rules and regulations - Learn and practice making a static website with Hugo Hugo quickstart, Learn Hugo Theme - Create AWS account. Practice creating Users group, Users (IAM user) Create AWS account; Create user, group user 2 - Learn and practice creating Budget (Template &amp; Custom: Cost, Usage, Saving plans, Reservation) 09/09/2025 09/09/2025 Create budget - Update worklog Sample worklog 3 - Learn about support packages, types of support request, how to create a support 10/09/2025 10/09/2025 Support packages 4 - Update worklog (UI) 11/09/2025 11/09/2025 5 - Learn theory about VPC (Subnet, Route Table, Internet Gateway, NAT Gateway) 12/09/2025 12/09/2025 AWS Virtual Private Cloud - Update worklog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.1-week_1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/en/1-worklog/1.1-week_1/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

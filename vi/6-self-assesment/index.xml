@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tự đánh giá :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</link>
+    <link>http://localhost:1313/AWS-Workshop/vi/6-self-assesment/index.html</link>
     <description>Trong thời gian thực tập tại AMAZON WEB SERVICES VIETNAM COMPANY LIMITED từ ngày 08/09/2025 đến 09/12/2025, tôi đã có cơ hội học hỏi, thực hành và áp dụng những kiến thức đã được học tại trường vào môi trường làm việc thực tế.&#xA;Tôi đã tham gia phát triển Ứng dụng Web Quản lý Công việc (Task Management) theo mô hình SaaS đa vùng (Multi-region). Thông qua dự án này, tôi đã nâng cao kỹ năng về Backend Development, các dịch vụ AWS, cũng như kiến trúc Cloud.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/6-self-assesment/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
