@@ -4,7 +4,7 @@ publishDir = "public"
 
 # ❗ TẮT cho multilingual + Relearn
 canonifyURLs = false
-relativeURLs = true
+relativeURLs = false
 
 title = "AWS Internship"
 theme = "relearn"
