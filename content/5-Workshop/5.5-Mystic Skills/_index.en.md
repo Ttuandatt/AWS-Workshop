@@ -409,6 +409,9 @@ tree content/1-Worklog/1.1-PhanCanhTuanDat /F
 3.7 Recreate gh-pages worktree safely
 
 ```bash
+# 0. Remove current public folder
+Remove-Item -Recurse -Force .\public
+
 # 1. Remove old gh-pages worktree (even if folder no longer exists)
 
 git worktree remove "D:/IT/AWS-FCJ/AWS-Workshop/public/public" --force

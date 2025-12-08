@@ -1,6 +1,16 @@
-<div style="text-align:center;">
-  <figure>
-    <img src="{{ .Get "src" }}" alt="{{ .Get "caption" }}">
-    <figcaption><i>{{ .Get "caption" }}</i></figcaption>
+<div style="text-align:center; margin: 2em 0;">
+  <figure style="margin: 0;">
+    {{- $src := .Get "src" -}}
+    {{- if not (hasPrefix $src "http") -}}
+      {{- $src = $src | relURL -}}
+    {{- end -}}
+    
+    <img src="{{ $src }}" 
+         alt="{{ .Get "caption" }}" 
+         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+         loading="lazy">
+    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
+      {{ .Get "caption" }}
+    </figcaption>
   </figure>
 </div>

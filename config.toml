@@ -1,9 +1,10 @@
+# Production URL (dùng khi deploy)
 baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
 publishDir = "public"
 
-# ❗ QUAN TRỌNG: TẮT khi dùng multilingual + Relearn
+# ❗ TẮT cho multilingual + Relearn
 canonifyURLs = false
-relativeURLs  = false
+relativeURLs = true
 
 title = "AWS Internship"
 theme = "relearn"
@@ -12,7 +13,7 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 
 # ------------------------------------------------
-# Outputs (search dùng cho Relearn)
+# Outputs (search cho Relearn)
 # ------------------------------------------------
 [outputs]
 home = ["HTML", "RSS", "JSON"]
@@ -24,18 +25,13 @@ home = ["HTML", "RSS", "JSON"]
   showLanguageSelector = true
   themeVariant = ["relearn-light", "relearn-dark"]
   alwaysShowThemeSwitcher = true
-
-  # ✅ URL riêng cho môi trường dev
-  devBaseURL = "http://localhost:1313"
-
   collapseLevel = 4
   customCSS = ["css/custom.css"]
 
 # ------------------------------------------------
-# Languages (BẮT BUỘC có languageCode)
+# Languages
 # ------------------------------------------------
 [languages]
-
   [languages.en]
     title = "Internship Report"
     languageName = "English"
