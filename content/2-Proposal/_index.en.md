@@ -163,7 +163,7 @@ This project adopts a **Single-Region (ap-southeast-1) High Availability** archi
 
 <!-- {{< figurecaption src="/images/todolist-architecture-6.jpg" caption="Figure 1. Single-Region ECS Fargate Architecture" >}} -->
 <figure>
-  <img src="/images/todolist-architecture-6.jpg" alt="Figure 1. Single-Region ECS Fargate Architecture" style="max-width:100%;height:auto;">
+  <img src="../images/todolist-architecture-6.jpg" alt="Figure 1. Single-Region ECS Fargate Architecture" style="max-width:100%;height:auto;">
   <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
 </figure>
 
