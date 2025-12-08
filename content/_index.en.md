@@ -23,8 +23,7 @@ chapter = false
 <!-- ![MyAvatar](/images/forest.jpg) -->
 
 <figure>
-  <img src="/images/forest.jpg" alt="Figure 1. Single-Region ECS Fargate Architecture" style="max-width:100%;height:auto;">
-  <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
+  <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
 </figure>
 
 

@@ -1,5 +1,5 @@
 +++
-title = "Triển khai Services (Theo thứ tự ưu tiên và kiểm tra)"
+title = "Triển khai Services"
 weight = 5
 chapter = false
 pre = " <b> 5.3.2.5. </b> "

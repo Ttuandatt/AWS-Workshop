@@ -339,7 +339,7 @@ Dịch vụ A → AWS Cloud Map (service-b.local:PORT)
 
 **Yêu cầu API (Backend Microservices):**
 
-1.  Frontend thực hiện cuộc gọi API: `https://sgutodolist.com/api/tasks`.
+1.  Frontend thực hiện cuộc gọi API: `https://sgutodolist.com/api/taskflow`.
 
 2.  Route 53 phân giải đến Application Load Balancer ở Singapore.
 
@@ -484,7 +484,7 @@ docker push {account-id}.dkr.ecr.ap-southeast-1.amazonaws.com/task-service:v1.2.
 
 2.  Giám sát CloudWatch Logs để tìm lỗi: `/ecs/task-service`.
 
-3.  Kiểm thử các endpoint API qua ALB: `curl https://api.sgutodolist.com/api/tasks/health`.
+3.  Kiểm thử các endpoint API qua ALB: `curl https://sgutodolist.com/api/taskflow/health`.
 
 4.  Kiểm tra CloudWatch Metrics: CPU, bộ nhớ, số lượng yêu cầu, tỷ lệ lỗi.
 
