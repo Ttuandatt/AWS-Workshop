@@ -22,10 +22,11 @@ chapter = false
 
 <!-- ![MyAvatar](/images/forest.jpg) -->
 
-<figure>
+<!-- <figure>
   <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
-</figure>
+</figure> -->
 
+![MyAvatar](images/forest.jpg)
 
 ### Report Content
 **1. [Worklog](1-Worklog)**  
