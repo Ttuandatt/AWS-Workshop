@@ -3,8 +3,8 @@ baseURL = "https://Ttuandatt.github.io/AWS-Workshop/"
 publishDir = "public"
 
 # ❗ TẮT cho multilingual + Relearn
-canonifyURLs = false
-relativeURLs = true
+canonifyURLs = true
+relativeURLs = false
 
 title = "AWS Internship"
 theme = "relearn"
