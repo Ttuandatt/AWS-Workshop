@@ -18,32 +18,32 @@
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Đề xuất :: Báo Cáo Thực Tập">
     <meta itemprop="description" content="Nền tảng Quản lý Tác vụ SaaS Tối Ưu Chi PhíKhả năng Sẵn sàng Cao (HA) Đơn Vùng với ECS Fargate1. Tóm Tắt Điều Hành (Executive Summary)Nền tảng Quản lý Tác vụ SaaS được thiết kế để mang lại trải nghiệm cộng tác tương tự Todoist với Khả năng Sẵn sàng Cao (HA) và Hiệu Quả Chi Phí, được tối ưu hóa đặc biệt cho các giới hạn của AWS Free Tier.">
-    <meta itemprop="wordCount" content="8901">
+    <meta itemprop="wordCount" content="8895">
     <title>Đề xuất :: Báo Cáo Thực Tập</title>
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" rel="alternate" hreflang="x-default">
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html" rel="alternate" hreflang="en">
     <link href="https://ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/2-proposal/index.xml" rel="alternate" type="application/rss+xml" title="Đề xuất :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765296413" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765296413" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765296803" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765296803" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765296413";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765296803";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765296413" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765296803" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765296413" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765296413" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765296413" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765296413" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765296413" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765296803" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765296803" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765296803" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765296803" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765296803" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765296413" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765296803" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/2-proposal/index.html">
     <div id="R-body" class="default-animation">
@@ -492,10 +492,12 @@
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><figure>
+</h3><!-- <figure>
   <img src="/images/todolist-architecture-6.jpg" alt="" style="max-width:100%;height:auto;">
   <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
-</figure>
+</figure> -->
+<p><a href="#R-image-6018678b963c49a6ab1d01e8eaf44a09" class="lightbox-link"><img alt="Hình 1. Kiến trúc ECS Fargate Đơn vùng" class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/todolist-architecture-6.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6018678b963c49a6ab1d01e8eaf44a09"><img alt="Hình 1. Kiến trúc ECS Fargate Đơn vùng" class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/todolist-architecture-6.jpg"></a></p>
 <h4 id="31-tổng-quan-kiến-trúc">
   <strong>3.1. Tổng Quan Kiến Trúc</strong>
 
@@ -3173,8 +3175,8 @@ Bước 7: Kiểm thử đầu cuối (20 phút)</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765296413" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765296413" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765296803" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765296803" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
