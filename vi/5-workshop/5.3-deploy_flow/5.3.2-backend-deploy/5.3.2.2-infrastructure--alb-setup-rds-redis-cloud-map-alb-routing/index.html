@@ -7,51 +7,51 @@
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
     <meta name="description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
 Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
-Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MYSQL (Cơ sở dữ liệu chính – Primary Database)Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
     <meta name="twitter:description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
 Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
-Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MYSQL (Cơ sở dữ liệu chính – Primary Database)Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
     <meta property="og:description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
 Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
-Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MYSQL (Cơ sở dữ liệu chính – Primary Database)Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Thiết lập hạ tầng &ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
     <meta itemprop="description" content="Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế service discovery và hạ tầng cân bằng tải.
 Cấp phát SSL CertificateBước 1: Yêu cầu ACM Certificate
-Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MySQL DatabaseMục đích: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.">
-    <meta itemprop="wordCount" content="1471">
+Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certificate Manager (ACM) Chọn Request a certificate → Request a public certificate Cấu hình yêu cầu certificate: Domain name: sgutodolist.com Validation method: DNS validation Nhấn Request Truy cập chi tiết certificate → Trong phần Domains → Nhấn Create records in Route 53 Đợi trạng thái chuyển thành Issued (thường mất 5-10 phút) Hạ tầng Tầng Dữ liệuRDS MYSQL (Cơ sở dữ liệu chính – Primary Database)Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).">
+    <meta itemprop="wordCount" content="1669">
     <title>Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.xml" rel="alternate" type="application/rss+xml" title="Thiết lập hạ tầng &amp;ALB (RDS, Redis, Cloud Map, ALB Routing) :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765259714" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765259714" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765281159" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765281159" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765259714";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765281159";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765259714" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765281159" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765259714" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765259714" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765259714" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765259714" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765259714" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765281159" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765281159" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765281159" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765281159" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765281159" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -103,7 +103,7 @@ Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certific
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765259714" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765281159" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html">
     <div id="R-body" class="default-animation">
@@ -139,6 +139,8 @@ Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certific
       <ul>
         <li><a href="#cấp-phát-ssl-certificate">Cấp phát SSL Certificate</a></li>
         <li><a href="#hạ-tầng-tầng-dữ-liệu">Hạ tầng Tầng Dữ liệu</a></li>
+        <li><a href="#rds-mysql-cơ-sở-dữ-liệu-chính--primary-database">RDS MYSQL (Cơ sở dữ liệu chính – Primary Database)</a></li>
+        <li><a href="#rds-read-replica-phục-vụ-demo-high-availability">RDS READ REPLICA (Phục vụ Demo High Availability)</a></li>
         <li><a href="#cấu-hình-application-load-balancer">Cấu hình Application Load Balancer</a></li>
         <li><a href="#xác-thực-hạ-tầng">Xác thực Hạ tầng</a></li>
       </ul>
@@ -237,8 +239,8 @@ Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certific
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><h4 id="rds-mysql-database">
-  RDS MySQL Database
+</h3><h3 id="rds-mysql-cơ-sở-dữ-liệu-chính--primary-database">
+  RDS MYSQL (Cơ sở dữ liệu chính – Primary Database)
 
 
 
@@ -247,67 +249,131 @@ Chuyển region sang Singapore (ap-southeast-1) Điều hướng đến Certific
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><p><strong>Mục đích</strong>: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.</p>
-<p><strong>Các bước cấu hình:</strong></p>
+</h3><p><em>Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).</em></p>
 <ol>
-<li>Điều hướng đến <strong>RDS Console</strong> → <strong>Create database</strong></li>
-<li>Chọn <strong>Standard create</strong> → Engine <strong>MySQL</strong></li>
-<li>Cấu hình database instance:</li>
-</ol>
-<table>
-  <thead>
-      <tr>
-          <th>Tham số</th>
-          <th>Giá trị</th>
-          <th>Lý do</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Template</td>
-          <td>Free tier</td>
-          <td>Tối ưu chi phí</td>
-      </tr>
-      <tr>
-          <td>DB instance identifier</td>
-          <td><code>sgu-todolist-db</code></td>
-          <td>Quy ước đặt tên</td>
-      </tr>
-      <tr>
-          <td>Master username</td>
-          <td><code>root</code></td>
-          <td>Tài khoản admin chuẩn</td>
-      </tr>
-      <tr>
-          <td>Master password</td>
-          <td><code>[mật-khẩu-bảo-mật]</code></td>
-          <td>Ghi chép cẩn thận</td>
-      </tr>
-      <tr>
-          <td>DB instance class</td>
-          <td><code>db.t3.micro</code></td>
-          <td>Đủ điều kiện free tier</td>
-      </tr>
-      <tr>
-          <td>Allocated storage</td>
-          <td>20 GiB</td>
-          <td>Giới hạn free tier</td>
-      </tr>
-  </tbody>
-</table>
-<ol>
-<li>Cấu hình mạng:
+<li>
+<p>Truy cập <strong>RDS</strong> → <strong>Create database</strong>.</p>
+</li>
+<li>
+<p><strong>Choose a database creation method:</strong> chọn <strong>Standard create</strong> (Cấu hình đầy đủ).</p>
+</li>
+<li>
+<p><strong>Engine options:</strong> chọn <strong>MySQL</strong>.</p>
+</li>
+<li>
+<p><strong>Engine Version:</strong> chọn <strong>8.0.x</strong> (ví dụ: 8.0.35 hoặc 8.0.39) để khớp với Docker Compose.</p>
+</li>
+<li>
+<p><strong>Templates:</strong> chọn <strong>Free tier</strong>.</p>
+</li>
+<li>
+<p><strong>Settings:</strong></p>
 <ul>
-<li><strong>Compute resource</strong>: Don&rsquo;t connect to an EC2 compute resource</li>
-<li><strong>VPC</strong>: <code>SGU-Microservices-VPC</code></li>
-<li><strong>Public access</strong>: No</li>
-<li><strong>VPC security group</strong>: Chọn <code>private-db-sg</code> (xóa default)</li>
-<li><strong>Availability Zone</strong>: <code>ap-southeast-1a</code></li>
+<li><strong>DB Instance identifier:</strong> <code>sgu-todolist-db</code></li>
+<li><strong>Master username:</strong> <code>root</code></li>
+<li><strong>Master password:</strong> <code>12345678</code> (Ví dụ minh họa).</li>
 </ul>
 </li>
-<li>Nhấn <strong>Create database</strong></li>
-<li>Sau khi tạo xong, ghi lại địa chỉ <strong>Endpoint</strong> (định dạng: <code>sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com</code>)</li>
+<li>
+<p><strong>Instance configuration:</strong> chọn <strong><code>db.t3.micro</code></strong>.</p>
+</li>
+<li>
+<p><strong>Storage:</strong></p>
+<ul>
+<li><strong>Storage type:</strong> <code>gp2</code> hoặc <code>gp3</code></li>
+<li><strong>Allocated storage:</strong> <code>20 GiB</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Connectivity (QUAN TRỌNG):</strong></p>
+<ul>
+<li><strong>Compute resource:</strong> Không kết nối với EC2 nào.</li>
+<li><strong>VPC:</strong> chọn <code>SGU-Microservices-vpc</code>.</li>
+<li><strong>DB Subnet group:</strong> chọn <strong>Create new</strong> (hoặc chọn subnet group sẵn có trỏ tới Private Subnets).</li>
+<li><strong>Public access:</strong> <strong>NO</strong> (Hoàn toàn Private).</li>
+<li><strong>VPC security group:</strong> chọn <strong><code>private-db-sg</code></strong> (Xóa <code>default</code>).</li>
+<li><strong>Availability Zone:</strong> chọn <strong><code>ap-southeast-1a</code></strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Additional configuration:</strong></p>
+<ul>
+<li><strong>Initial database name:</strong> để trống (sẽ tạo sau thông qua Bastion Host).</li>
+<li><strong>Backup:</strong> <strong>Bật Automated Backups</strong><br>
+⚠️ <strong>BẮT BUỘC</strong>: cần bật để sau này tạo Read Replica.<br>
+Đặt <strong>Retention period = 1 day</strong> để tiết kiệm chi phí.</li>
+</ul>
+</li>
+<li>
+<p>Nhấn <strong>Create database</strong>.</p>
+</li>
 </ol>
+<p><em>Chờ đến khi trạng thái là <strong>Available</strong>, sau đó copy <strong>Endpoint</strong>.</em></p>
+<hr>
+<h3 id="rds-read-replica-phục-vụ-demo-high-availability">
+  RDS READ REPLICA (Phục vụ Demo High Availability)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p><em>Mục tiêu: Tạo Database phụ ở Availability Zone khác (AZ B) để minh họa kiến trúc Multi-AZ.</em></p>
+<ol>
+<li>
+<p>Vào <strong>RDS Console</strong> → <strong>Databases</strong>.</p>
+</li>
+<li>
+<p>Chọn database chính: <strong><code>sgu-todolist-db</code></strong>.</p>
+</li>
+<li>
+<p>Nhấn nút <strong>Actions</strong> → chọn <strong>Create read replica</strong>.</p>
+</li>
+<li>
+<p><strong>Settings:</strong></p>
+<ul>
+<li><strong>DB instance identifier:</strong> <code>sgu-todolist-db-replica</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Instance configuration:</strong></p>
+<ul>
+<li><strong>DB instance class:</strong> chọn <strong><code>db.t3.micro</code></strong> (PHẢI giống Primary).</li>
+</ul>
+</li>
+<li>
+<p><strong>Availability:</strong></p>
+<ul>
+<li><strong>Deployment options:</strong> chọn <strong>Single-AZ DB instance deployment</strong><br>
+(Replica chạy Single-AZ, nhưng khi kết hợp với Primary sẽ tạo thành hệ Multi-AZ).</li>
+</ul>
+</li>
+<li>
+<p><strong>Connectivity (CỰC KỲ QUAN TRỌNG):</strong></p>
+<ul>
+<li><strong>AWS Region:</strong> <code>Asia Pacific (Singapore)</code></li>
+<li><strong>Availability Zone:</strong> chọn <strong><code>ap-southeast-1b</code></strong> (KHÁC AZ của Primary).</li>
+<li><strong>Public access:</strong> <strong>Not publicly accessible</strong>.</li>
+<li><strong>Existing VPC security groups:</strong> chọn <strong><code>private-db-sg</code></strong> (Xóa <code>default</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitoring:</strong></p>
+<ul>
+<li><strong>Enable Enhanced monitoring:</strong> <strong>Bỏ chọn</strong> (Tiết kiệm chi phí).</li>
+</ul>
+</li>
+<li>
+<p>Nhấn <strong>Create read replica</strong>.</p>
+</li>
+</ol>
+<p>*Kết quả: Bạn sẽ thấy 2 database:</p>
+<ul>
+<li>Primary tại <code>ap-southeast-1a</code></li>
+<li>Read Replica tại <code>ap-southeast-1b</code>*</li>
+</ul>
 <hr>
 <h4 id="elasticache-redis">
   ElastiCache Redis
@@ -1109,8 +1175,8 @@ BƯỚC 3: Cập Nhật Code & Xây Dựng Image ➡
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765259714" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765259714" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765281159" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765281159" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
