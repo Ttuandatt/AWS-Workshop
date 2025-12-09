@@ -299,3 +299,20 @@ tree /f /a
 ```bash
 tree content/1-Worklog/1.1-PhanCanhTuanDat /F
 ```
+
+```bash
+1. Từ máy tính cá nhân (SSH vào Bastion)
+Mở Terminal tại thư mục chứa file key .pem:
+ssh -i "sgu-key.pem" ec2-user@<PUBLIC-IP-CỦA-BASTION>
+
+2. Từ EC2 Bastion (Kết nối vào Redis)
+Sau khi đã đứng ở màn hình đen của EC2 ([ec2-user@ip... ~]$), bạn chạy lệnh sau. Lưu ý: Bắt buộc phải có cờ --tls vì Redis trên AWS ElastiCache mặc định bật mã hóa.
+redis6-cli -h master.sgu-redis.xmoqlj.apse1.cache.amazonaws.com -p 6379 --tls
+
+3. Trong chế độ Redis (Thao tác dữ liệu)
+Khi màn hình hiện ra dấu nhắc: master.sgu-redis...:6379>, bạn gõ trực tiếp các lệnh Redis (không thêm chữ redis-cli hay redis6-cli ở đầu nữa).
+
+4. Thoát
+Để thoát khỏi Redis và quay lại EC2:
+exit
+```

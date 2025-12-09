@@ -25,53 +25,99 @@ This phase provisions the data layer components, service discovery mechanism, an
 
 * * * * *
 
-### RDS MYSQL (Database)
+### RDS MYSQL (Primary Database)
 
-*Goal: Create MySQL 8.0 Database located in Private Subnet.*
+*Goal: Create the main MySQL 8.0 Database located in Private Subnet (AZ A).*
 
-1. Go to **RDS** > **Create database**.
+1.  Go to **RDS** > **Create database**.
 
-2. **Choose a database creation method:** **Full Configuration** (To customize).
+2.  **Choose a database creation method:** **Standard create** (Full Configuration).
 
-3. **Engine options:** Select **MySQL**.
+3.  **Engine options:** Select **MySQL**.
 
-4. **Engine Version:** Select **8.0.x** (For example 8.0.35 or 8.0.39) to match Docker Compose.
+4.  **Engine Version:** Select **8.0.x** (e.g., 8.0.35 or 8.0.39) to match Docker Compose.
 
-5. **Templates:** Select **Free tier**.
+5.  **Templates:** Select **Free tier**.
 
-6. **Settings:** 
+6.  **Settings:**
 
-- **DB Instance identifier:** `sgu-todolist-db` 
+    -   **DB Instance identifier:** `sgu-todolist-db`
 
-- **Master username:** `root` 
+    -   **Master username:** `root`
 
-- **Master password:** `12345678` (Example).
+    -   **Master password:** `12345678` (Example).
 
-7. **Instance configuration:** Select **`db.t3.micro`** (or `t2.micro` if the account is old).
+7.  **Instance configuration:** Select **`db.t3.micro`**.
 
-8. **Connectivity (IMPORTANT):** 
+8.  **Storage:**
 
-- **Compute resource:** Don't connect to an EC2 compute resource. 
+    -   **Storage type:** `gp2` or `gp3`.
 
-- **VPC:** Select `SGU-Microservices-vpc`. 
+    -   **Allocated storage:** `20 GiB`.
 
-- **DB Subnet group:** Select `Create new` (or select the existing one pointing to 2 Private Subnets). 
+9.  **Connectivity (IMPORTANT):**
 
-- **Public access:** **NO** (Because the DB is in the Private area). 
+    -   **Compute resource:** Don't connect to an EC2 compute resource.
 
-- **VPC security group:** Select **`private-db-sg`** (Uncheck default). 
+    -   **VPC:** Select `SGU-Microservices-vpc`.
 
-- **Availability Zone:** Select **`ap-southeast-1a`**.
+    -   **DB Subnet group:** Select `Create new` (or select the existing one pointing to Private Subnets).
 
-9. **Additional configuration:** 
+    -   **Public access:** **NO** (Strictly Private).
 
-- **Initial database name:** `aws_todolist_database` (Enter it here to avoid having to run the CREATE DATABASE command manually, if desired). *However, it's best to leave it blank and use the Bastion created later to be sure.* 
+    -   **VPC security group:** Select **`private-db-sg`** (Remove `default`).
 
-- Uncheck **Enable automated backups** (to save storage space if only testing).
+    -   **Availability Zone:** Select **`ap-southeast-1a`**.
 
-10. Click **Create database**.
+10. **Additional configuration:**
 
-👉 *After creating (Status: Available), copy **Endpoint**.*
+    -   **Initial database name:** (Leave blank, we will create it via Bastion later).
+
+    -   **Backup:** **Enable automated backups** (⚠️ **Mandatory**: You must enable this to create a Read Replica later. Set retention period to **1 day** to save costs).
+
+11. Click **Create database**.
+
+*Wait until Status is **Available**, then copy the **Endpoint**.*
+
+### RDS READ REPLICA (For High Availability Demo)
+
+*Goal: Create a secondary database in a different Availability Zone (AZ B) to demonstrate Multi-AZ architecture.*
+
+1.  In the **RDS Console** > **Databases**.
+
+2.  Select the primary database: **`sgu-todolist-db`**.
+
+3.  Click **Actions** button > Select **Create read replica**.
+
+4.  **Settings:**
+
+    -   **DB instance identifier:** `sgu-todolist-db-replica`.
+
+5.  **Instance configuration:**
+
+    -   **DB instance class:** Select **`db.t3.micro`** (Must match Primary).
+
+6.  **Availability:**
+
+    -   **Deployment options:** Select **Single-AZ DB instance deployment** (The Replica itself is single AZ, but combined with Primary, it forms a Multi-AZ system).
+
+7.  **Connectivity (CRITICAL):**
+
+    -   **AWS Region:** `Asia Pacific (Singapore)`.
+
+    -   **Availability Zone:** Select **`ap-southeast-1b`** (Must be different from Primary).
+
+    -   **Public access:** **Not publicly accessible**.
+
+    -   **Existing VPC security groups:** Select **`private-db-sg`** (Remove `default`).
+
+8.  **Monitoring:**
+
+    -   **Enable Enhanced monitoring:** **Uncheck** (Save cost).
+
+9.  Click **Create read replica**.
+
+*Result: You will see two databases. One in `ap-southeast-1a` (Primary) and one in `ap-southeast-1b` (Replica).*
 
 * * * * *
 

@@ -27,33 +27,96 @@ Giai đoạn này triển khai các thành phần tầng dữ liệu, cơ chế 
 
 ### Hạ tầng Tầng Dữ liệu
 
-#### RDS MySQL Database
+### RDS MYSQL (Cơ sở dữ liệu chính – Primary Database)
 
-**Mục đích**: Cơ sở dữ liệu quan hệ chính cho tất cả các microservices.
+*Mục tiêu: Tạo MySQL 8.0 Database chính, đặt trong Private Subnet (AZ A).*
 
-**Các bước cấu hình:**
+1. Truy cập **RDS** → **Create database**.
 
-1.  Điều hướng đến **RDS Console** → **Create database**
-2.  Chọn **Standard create** → Engine **MySQL**
-3.  Cấu hình database instance:
+2. **Choose a database creation method:** chọn **Standard create** (Cấu hình đầy đủ).
 
-| Tham số | Giá trị | Lý do |
-| --- | --- | --- |
-| Template | Free tier | Tối ưu chi phí |
-| DB instance identifier | `sgu-todolist-db` | Quy ước đặt tên |
-| Master username | `root` | Tài khoản admin chuẩn |
-| Master password | `[mật-khẩu-bảo-mật]` | Ghi chép cẩn thận |
-| DB instance class | `db.t3.micro` | Đủ điều kiện free tier |
-| Allocated storage | 20 GiB | Giới hạn free tier |
+3. **Engine options:** chọn **MySQL**.
 
-1.  Cấu hình mạng:
-    -   **Compute resource**: Don't connect to an EC2 compute resource
-    -   **VPC**: `SGU-Microservices-VPC`
-    -   **Public access**: No
-    -   **VPC security group**: Chọn `private-db-sg` (xóa default)
-    -   **Availability Zone**: `ap-southeast-1a`
-2.  Nhấn **Create database**
-3.  Sau khi tạo xong, ghi lại địa chỉ **Endpoint** (định dạng: `sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com`)
+4. **Engine Version:** chọn **8.0.x** (ví dụ: 8.0.35 hoặc 8.0.39) để khớp với Docker Compose.
+
+5. **Templates:** chọn **Free tier**.
+
+6. **Settings:**
+
+   - **DB Instance identifier:** `sgu-todolist-db`  
+   - **Master username:** `root`  
+   - **Master password:** `12345678` (Ví dụ minh họa).
+
+7. **Instance configuration:** chọn **`db.t3.micro`**.
+
+8. **Storage:**
+
+   - **Storage type:** `gp2` hoặc `gp3`  
+   - **Allocated storage:** `20 GiB`
+
+9. **Connectivity (QUAN TRỌNG):**
+
+   - **Compute resource:** Không kết nối với EC2 nào.  
+   - **VPC:** chọn `SGU-Microservices-vpc`.  
+   - **DB Subnet group:** chọn **Create new** (hoặc chọn subnet group sẵn có trỏ tới Private Subnets).  
+   - **Public access:** **NO** (Hoàn toàn Private).  
+   - **VPC security group:** chọn **`private-db-sg`** (Xóa `default`).  
+   - **Availability Zone:** chọn **`ap-southeast-1a`**.
+
+10. **Additional configuration:**
+
+    - **Initial database name:** để trống (sẽ tạo sau thông qua Bastion Host).  
+    - **Backup:** **Bật Automated Backups**  
+      ⚠️ **BẮT BUỘC**: cần bật để sau này tạo Read Replica.  
+      Đặt **Retention period = 1 day** để tiết kiệm chi phí.
+
+11. Nhấn **Create database**.
+
+*Chờ đến khi trạng thái là **Available**, sau đó copy **Endpoint**.*
+
+
+---
+
+### RDS READ REPLICA (Phục vụ Demo High Availability)
+
+*Mục tiêu: Tạo Database phụ ở Availability Zone khác (AZ B) để minh họa kiến trúc Multi-AZ.*
+
+1. Vào **RDS Console** → **Databases**.
+
+2. Chọn database chính: **`sgu-todolist-db`**.
+
+3. Nhấn nút **Actions** → chọn **Create read replica**.
+
+4. **Settings:**
+
+   - **DB instance identifier:** `sgu-todolist-db-replica`
+
+5. **Instance configuration:**
+
+   - **DB instance class:** chọn **`db.t3.micro`** (PHẢI giống Primary).
+
+6. **Availability:**
+
+   - **Deployment options:** chọn **Single-AZ DB instance deployment**  
+     (Replica chạy Single-AZ, nhưng khi kết hợp với Primary sẽ tạo thành hệ Multi-AZ).
+
+7. **Connectivity (CỰC KỲ QUAN TRỌNG):**
+
+   - **AWS Region:** `Asia Pacific (Singapore)`  
+   - **Availability Zone:** chọn **`ap-southeast-1b`** (KHÁC AZ của Primary).  
+   - **Public access:** **Not publicly accessible**.  
+   - **Existing VPC security groups:** chọn **`private-db-sg`** (Xóa `default`).
+
+8. **Monitoring:**
+
+   - **Enable Enhanced monitoring:** **Bỏ chọn** (Tiết kiệm chi phí).
+
+9. Nhấn **Create read replica**.
+
+*Kết quả: Bạn sẽ thấy 2 database:  
+- Primary tại `ap-southeast-1a`  
+- Read Replica tại `ap-southeast-1b`*
+
 
 * * * * *
 
