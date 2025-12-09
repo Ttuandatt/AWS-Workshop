@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.html</link>
     <description>Cost-Optimized SaaS Task Management Platform&#xD;Overview&#xD;SGU TodoList is a robust and resilient task management application built using a Microservices architecture designed for high scalability and decoupling. The primary goal of this workshop is to guide you through deploying and managing a complex application stack on the AWS Cloud platform, with a strong focus on cost optimization and serverless operations.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Workshop Overview</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</guid>
       <description>Project Introduction&#xD;SGU TodoList is a task management application built using a Microservices architecture on the AWS Cloud platform. The project was initially designed to be deployed as a Multi-Region SaaS model to ensure high availability and disaster recovery. However, due to budget constraints and AWS Free Tier limitations, the team optimized the architecture for a Single-Region Deployment with a Cross-Region Failover mechanism for the frontend.</description>
     </item>
     <item>
       <title>Prerequisite</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html</guid>
       <description>Preamble: Prerequisites for Backend Deployment&#xD;Before initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.&#xA;Step Requirement Purpose 1 AWS Account &amp; CLI Access and command-line management. 2 Domain &amp; SSL Securing traffic and global content delivery. 3 Source Code &amp; Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools &amp; Credentials&#xD;AWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.</description>
     </item>
     <item>
       <title>Deploy Flow</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html</guid>
       <description>Table of Contents&#xD;This section provides step-by-step guidance for deploying both Frontend and Backend components onto the cloud infrastructure.&#xA;It covers the complete deployment workflow, from build artifacts preparation to production-ready release on AWS services.&#xA;5.3.1. Frontend Deploy&#xA;Guidelines for building, configuring, and deploying the frontend to Amazon S3 + CloudFront with cross-region failover.&#xA;5.3.2. Backend Deploy&#xA;Instructions for deploying backend microservices to AWS ECS/Fargate, including network configuration, load balancing, and service integration.</description>
     </item>
     <item>
       <title>Clean Up</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html</guid>
       <description>Cleanup Guide&#xD;This guide provides a comprehensive instruction to completely terminate all deployed AWS resources across the ap-southeast-1 (Singapore) and us-east-1 (N. Virginia) regions. The sequence is optimized to avoid orphaned resources and subsequent charges.&#xA;I. Deployed AWS Services Summary&#xD;Before proceeding, verify the existence of the following active services in your account:</description>
     </item>
     <item>
       <title>Mystic Skills</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html</guid>
       <description>1. Hugo Commands&#xD;1.1&#xA;hugo build&#xD;1.2&#xA;hugo server -D&#xD;2. Git Commands&#xD;2.1 Check repository status&#xA;git status&#xD;2.2 List local branches&#xA;git branch&#xD;2.3 List all branches (local + remote)</description>
     </item>
   </channel>

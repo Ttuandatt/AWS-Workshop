@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 10 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html</link>
     <description>Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock&#xD;Tác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)&#xA;Ngày: 04/08/2025&#xA;Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

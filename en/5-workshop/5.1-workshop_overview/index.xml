@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop Overview :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html</link>
     <description>Project Introduction&#xD;SGU TodoList is a task management application built using a Microservices architecture on the AWS Cloud platform. The project was initially designed to be deployed as a Multi-Region SaaS model to ensure high availability and disaster recovery. However, due to budget constraints and AWS Free Tier limitations, the team optimized the architecture for a Single-Region Deployment with a Cross-Region Failover mechanism for the frontend.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

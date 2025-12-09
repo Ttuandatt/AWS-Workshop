@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 8 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html</link>
     <description>Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair Queues&#xD;Tác giả: Maximilian Schellhorn &amp; Dirk Fröhner&#xA;Ngày: 21/07/2025&#xA;Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to&#xA;Giới thiệu&#xD;AWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

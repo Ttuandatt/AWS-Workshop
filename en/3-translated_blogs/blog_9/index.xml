@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 9 :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.html</link>
     <description>Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald&#xD;Tác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer&#xA;Ngày: 21/07/2025&#xA;Chuyên mục: Amazon Braket – Quantum Technologies&#xA;Giới thiệu&#xD;Amazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_9/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thẻ :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/tags/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/tags/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

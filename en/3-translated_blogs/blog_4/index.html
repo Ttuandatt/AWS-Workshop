@@ -12,7 +12,7 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
     <meta name="twitter:title" content="Blog 4 :: Internship Report">
     <meta name="twitter:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
 Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
+    <meta property="og:url" content="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
     <meta property="og:site_name" content="Internship Report">
     <meta property="og:title" content="Blog 4 :: Internship Report">
     <meta property="og:description" content="Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiênJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink
@@ -24,30 +24,30 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.">
     <meta itemprop="wordCount" content="2099">
     <title>Blog 4 :: Internship Report</title>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="x-default">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="en">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="vi">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="en">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/en/3-translated_blogs/blog_4/index.xml" rel="alternate" type="application/rss+xml" title="Blog 4 :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765294238" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765294238" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765295032" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765294238";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765295032";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765294238" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765295032" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -55,7 +55,7 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
       window.relearn.path='\/3-translated_blogs\/blog_4\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -99,7 +99,7 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765294238" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765295032" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/3-translated_blogs/blog_4/index.html">
     <div id="R-body" class="default-animation">
@@ -488,27 +488,27 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 </h3><p>Dưới đây là một số câu lệnh (prompts) để tương tác với các ứng dụng ArgoCD trong cụm EKS của bạn</p>
 <p><strong>Liệt kê ứng dụng Argo</strong></p>
 <p><strong>Câu lệnh</strong>: <code>List all ArgoCD applications in my cluster</code></p>
-<p><a href="#R-image-a47b181477eb4e47d02b722de61c23d3" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a47b181477eb4e47d02b722de61c23d3"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
+<p><a href="#R-image-283ada86b5ee0df574e690ec86ded8c1" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-283ada86b5ee0df574e690ec86ded8c1"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q sẽ sử dụng máy chủ ArgoCD MCP để truy xuất và hiển thị tất cả các ứng dụng</i></p>
 <p><strong>Tạo ứng dụng ArgoCD mới</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Create new argocd application using App name: game-2048   Repo: https://github.com/aws-ia/terraform-aws-eks-blueprints  Path: patterns/gitops/getting-started-argocd/k8s. Branch: main  Namespace: argocd</code></p>
-<p><a href="#R-image-480edf3c9cf6b76811dde2f22dec0efb" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-480edf3c9cf6b76811dde2f22dec0efb"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png"></a></p>
+<p><a href="#R-image-d626826c41cab7ce10c27c7d87e89826" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d626826c41cab7ce10c27c7d87e89826"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-2.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q sẽ tạo một ứng dụng mới từ thông tin GitRepo cung cấp</i></p>
 <p><strong>Xem trạng thái triển khai</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Show me the resource tree for team-carmen app</code></p>
-<p><a href="#R-image-1aeb37e53b0695c6a7bf56b8e4e7ad04" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-1aeb37e53b0695c6a7bf56b8e4e7ad04"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
+<p><a href="#R-image-bfcf7d5d08d11e818bbb5ef60793d7c0" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../static/images/17632-image-8.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-bfcf7d5d08d11e818bbb5ef60793d7c0"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../static/images/17632-image-8.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q sẽ hiển thị cấu trúc phân cấp của các tài nguyên Kubernetes do ứng dụng quản lý.</i></p>
 <p><strong>Đồng bộ hóa ứng dụng</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Show me the applications that’s out of sync</code></p>
-<p><a href="#R-image-dbe2069299b2e8a77827ff1a2fe1360a" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-dbe2069299b2e8a77827ff1a2fe1360a"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png"></a></p>
+<p><a href="#R-image-52116b361fbe4947341c52b72bcd1259" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-52116b361fbe4947341c52b72bcd1259"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-3.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q sẽ hiển thị các ứng dụng không đồng bộ</i></p>
 <p><strong>Câu lệnh</strong>: <code>Sync the application</code></p>
-<p><a href="#R-image-3ab4d97d94508a3dae8d21b156e3002d" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-3ab4d97d94508a3dae8d21b156e3002d"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png"></a></p>
+<p><a href="#R-image-e8e07a539156a2d91cb99e120cb54590" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e8e07a539156a2d91cb99e120cb54590"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-4.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q đang đồng bộ hóa các ứng dụng</i></p>
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -518,8 +518,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 </ul>
 <p><strong>Kiểm tra sức khỏe và giám sát</strong></p>
 <p><strong>Câu lệnh</strong>: <code>Check the health of all resources in the team-geordie application</code></p>
-<p><a href="#R-image-c77be85630aad2b6bc1c8cbc0653802f" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c77be85630aad2b6bc1c8cbc0653802f"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png"></a></p>
+<p><a href="#R-image-507877a8308e7acb5728288a7e1d8f5c" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-507877a8308e7acb5728288a7e1d8f5c"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-6.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q đang đưa ra trạng thái sức khỏe của tất cả tài nguyên trong một ứng dụng</i></p>
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -528,8 +528,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 <li>Cung cấp các khuyến nghị để giải quyết các vấn đề</li>
 </ul>
 <p><strong>Câu lệnh</strong>: <code>Show me the logs for the failing pod in the team-platform application</code></p>
-<p><a href="#R-image-8a0472a4a2ce93b233c406f5efb5fe40" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8a0472a4a2ce93b233c406f5efb5fe40"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png"></a></p>
+<p><a href="#R-image-73767df2063cfb748a43582422b4a08b" class="lightbox-link"><img alt="example" class="lazy lightbox figure-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-73767df2063cfb748a43582422b4a08b"><img alt="example" class="lazy lightbox lightbox-image" loading="lazy" src="../../../images/Blog6/17632-image-7.png"></a></p>
 <p style="text-align: center;"><i>Amazon Q đang hiển thị các log của pod gặp sự cố</i></p>
 <p>Amazon Q sẽ:</p>
 <ul>
@@ -660,8 +660,8 @@ Giới thiệuArgoCD là một bộ công cụ GitOps hàng đầu giúp các n
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765295032" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

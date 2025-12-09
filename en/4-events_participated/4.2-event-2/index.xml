@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Event 2 :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</link>
     <description>AWS Cloud Mastery Series #3 – Security Pillar Workshop&#xD;This workshop focused on helping participants understand how to design and operate secure AWS systems based on the Security Pillar of the AWS Well-Architected Framework, combining theory with practical demos and real-world scenarios.&#xA;What I Learned&#xD;Security Foundation&#xD;The session started with an overview of the Security Pillar and its role in cloud architecture. Key security principles such as Least Privilege, Zero Trust, and Defense in Depth were explained in a practical context.&#xA;The speaker also clarified the AWS Shared Responsibility Model, highlighting common misunderstandings and real security risks seen in cloud environments in Vietnam.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

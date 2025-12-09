@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sharing and Feedback :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.html</link>
     <description>Overall Evaluation&#xD;1. Working Environment&#xA;The working environment is incredibly friendly, open, and supportive. FCAJ members are always willing to help each other whenever an issue arises, and everyone is very open to discussing not only work-related topics but also studies, hobbies, and personal interests. The workspace itself is comfortable and well-organized, creating a productive atmosphere that makes it easier to stay focused and engaged.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/7-sharing_and_feedback/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

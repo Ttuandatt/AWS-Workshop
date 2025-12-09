@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Backend Deploy :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link>
     <description>Architecture Model&#xD;This model illustrates the core services used for high-availability, low-latency content delivery and security:&#xA;Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.&#xA;CDN: CloudFront acts as the Global Edge Network for content delivery.&#xA;Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Network &amp; Security Preparation (VPC, SG)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</guid>
       <description>This phase establishes the foundational network infrastructure and security boundaries for the microservices deployment.&#xA;VPC and Subnet Configuration&#xD;Step 1: Create VPC Infrastructure&#xA;Navigate to VPC Console → Create VPC Select VPC and more option Configure VPC parameters: Parameter Value Rationale Name tag auto-generation SGU-Microservices Naming convention IPv4 CIDR block 10.0.0.0/16 Standard private network range Number of Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) High availability across AZs Number of public subnets 2 For internet-facing resources Number of private subnets 2 For data layer isolation NAT gateways None Cost optimization (~$30/month savings) VPC endpoints None Cost optimization DNS options Enable DNS hostnames + Enable DNS resolution Required for service discovery Click Create VPC Network Architecture Result:</description>
     </item>
     <item>
       <title>Infrastructure &amp; ALB Setup (RDS, Redis, Cloud Map, ALB Routing)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html</guid>
       <description>This phase provisions the data layer components, service discovery mechanism, and load balancing infrastructure.&#xA;SSL Certificate Provisioning&#xD;Request ACM Certificate&#xA;Switch region to Singapore (ap-southeast-1) Navigate to Certificate Manager (ACM) Select Request a certificate → Request a public certificate Configure certificate request: Domain name: sgutodolist.com Validation method: DNS validation Click Request Access the certificate details → Under Domains section → Click Create records in Route 53 Wait for status to change to Issued (typically 5-10 minutes) RDS MYSQL (Primary Database)&#xD;Goal: Create the main MySQL 8.0 Database located in Private Subnet (AZ A).</description>
     </item>
     <item>
       <title>Code Update &amp; Image Build (Create new Docker Image)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html</guid>
       <description>This phase focuses on adapting the application source code for the cloud environment. We will configure Cross-Origin Resource Sharing (CORS) for the reactive API Gateway, refactor application configurations to use dynamic environment variables, and finally build and push all microservice Docker images to the Amazon Elastic Container Registry (ECR).&#xA;Objectives:&#xA;Configure the code to work seamlessly in both Local (Docker Compose) and Cloud (AWS ECS) environments.&#xA;Create Repositories on AWS ECR.</description>
     </item>
     <item>
       <title>Task Definitions Creation</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html</guid>
       <description>Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.&#xA;Preparation&#xD;Record the following values before starting:&#xA;RDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com&#xA;Redis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)&#xA;ECR Image URIs: The URIs of the 6 repositories from the Image Build step.&#xA;Google OAuth Credentials: Client ID and Client Secret.</description>
     </item>
     <item>
       <title>Services Deployment </title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</guid>
       <description>This phase deploys containerized applications to ECS Fargate following a specific order to ensure proper dependency resolution.&#xA;Critical Network Configuration&#xD;For ALL service deployments, the following network settings are mandatory:&#xA;1. VPC: SGU-Microservices-VPC&#xA;2. Subnets: Select both Public Subnets (required for image pulling)&#xA;3. Security Group: ecs-app-sg (remove default)&#xA;4. Public IP: Turned on (critical for ECR access)</description>
     </item>
     <item>
       <title>Completion &amp; Verification (Route 53, Google Console, Final Test)</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</guid>
       <description>This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.&#xA;DNS Configuration&#xD;Step 1: Create Route 53 A Record&#xA;Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.</description>
     </item>
   </channel>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Week 13 Worklog :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.html</link>
     <description>Week 13 Objectives&#xD;Review and resolve remaining setup issues from previous deployments Set up VPC, Subnets, Internet Gateway, and Security Groups Configure Application Load Balancer (ALB) Deploy backend and frontend images to ECR and ECS Fargate Set up Amazon RDS MySQL Configure Google OAuth redirect for Authentication Service Organize and update worklog categories based on team members Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 01/11/2025 01/11/2025 - Setup VPC, Subnets, Internet Gateway, Security groups - Update worklog: create worklog categories base on team members 2 - Setup VPC, Subnets, Internet Gateway 02/11/2025 02/11/2025 - Setup ALB, Security groups, RDS MySQL 3 - Setup VPC, Subnets, Internet Gateway, Security groups 03/11/2025 03/11/2025 - Deploy images to ECR, ECS Fargate - Setup ALB, Security groups, RDS MySQL 4 - Deploy images to ECR, ECS Fargate, ALB, RDS 04/11/2025 04/11/2025 - Setup ALB, Security groups, RDS MySQL 5 - Deploy images to ECR, ECS Fargate, ALB, RDS 05/11/2025 05/11/2025 - Setup ALB, Security groups, RDS MySQL - Config Google OAuth Redirect</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.13-week_13/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

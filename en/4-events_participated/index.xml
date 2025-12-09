@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Events Participated :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.html</link>
     <description>During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.&#xA;Event 1&#xD;Event Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025&#xA;Date &amp; Time: 8:30 AM Saturday, September 6, 2025&#xA;Location: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Event 1</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html</guid>
       <description>Summary Report: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Event Objectives&#xD;Officially kick off the AWS First Cloud Journey Workforce OJT Fall 2025 program Introduce students to the objectives, structure, and learning paths of the program Provide insights into career opportunities in Cloud Computing, AI/ML, DevOps, and Security Connect students with AWS Study Group community and partner companies Inspire students to build practical skills and prepare for a career in cloud technology Speakers &amp; Key Presenters&#xD;Nguyen Gia Hung – Head of Solutions Architect, AWS Vietnam Shared insights on AWS First Cloud Journey and future career opportunities in cloud computing</description>
     </item>
     <item>
       <title>Event 2</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html</guid>
       <description>AWS Cloud Mastery Series #3 – Security Pillar Workshop&#xD;This workshop focused on helping participants understand how to design and operate secure AWS systems based on the Security Pillar of the AWS Well-Architected Framework, combining theory with practical demos and real-world scenarios.&#xA;What I Learned&#xD;Security Foundation&#xD;The session started with an overview of the Security Pillar and its role in cloud architecture. Key security principles such as Least Privilege, Zero Trust, and Defense in Depth were explained in a practical context.&#xA;The speaker also clarified the AWS Shared Responsibility Model, highlighting common misunderstandings and real security risks seen in cloud environments in Vietnam.</description>
     </item>
   </channel>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Proposal :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.html</link>
     <description>Cost-Optimized SaaS Task Management Platform&#xD;Single-Region High Availability with ECS Fargate&#xD;1. Executive Summary&#xD;The SaaS Task Management Platform is designed to deliver a Todoist-like collaborative experience with High Availability (HA) and Cost Efficiency, specifically optimized for AWS Free Tier constraints.</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

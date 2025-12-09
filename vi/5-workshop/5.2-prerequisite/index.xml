@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Điều kiện tiên quyết :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html</link>
     <description>Các điều kiện tiên quyết cho triển khai Backend&#xD;Trước khi bắt đầu các bước triển khai được trình bày trong Mục lục, cần hoàn tất các công cụ nền tảng, cấu hình hệ thống và thiết lập dịch vụ AWS dưới đây nhằm đảm bảo quá trình triển khai diễn ra ổn định, an toàn và tối ưu chi phí trong khu vực ap-southeast-1 (Singapore).</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

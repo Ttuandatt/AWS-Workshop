@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/index.html</link>
     <description>Thông Tin Nhóm&#xD;Họ và Tên Số Điện Thoại Email Lớp Trường Đại Học Phan Cảnh Tuấn Đạt 0867829257 pcanhtuandat@gmail.com DCT1226 Đại học Sài Gòn Ngô Tuấn Hưng 0776136425 hungnt.020404@gmail.com DKP1221 Đại học Sài Gòn Lê Trung Kiên 0931261009 trungkien1862@gmail.com DCT1213 Đại học Sài Gòn Dương Bình Minh 0355578938 duongbinhminh10032004@gmail.com DCT1226 Đại học Sài Gòn Công Ty Thực Tập: Amazon Web Services Vietnam Co., Ltd.&#xA;Vị Trí Thực Tập: Thực Tập Sinh FCJ Cloud&#xA;Thời Gian Thực Tập: Từ 29/09/2025 đến 22/11/2025</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nhật Ký Công Việc</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html</guid>
       <description>Tuần 1: Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình&#xA;Tuần 2: Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.&#xA;Tuần 3: Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.</description>
     </item>
     <item>
       <title>Đề xuất</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html</guid>
       <description>Nền tảng Quản lý Tác vụ SaaS Tối Ưu Chi Phí&#xD;Khả năng Sẵn sàng Cao (HA) Đơn Vùng với ECS Fargate&#xD;1. Tóm Tắt Điều Hành (Executive Summary)&#xD;Nền tảng Quản lý Tác vụ SaaS được thiết kế để mang lại trải nghiệm cộng tác tương tự Todoist với Khả năng Sẵn sàng Cao (HA) và Hiệu Quả Chi Phí, được tối ưu hóa đặc biệt cho các giới hạn của AWS Free Tier.</description>
     </item>
     <item>
       <title>Blogs đã dịch</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html</guid>
       <description>Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.&#xA;Blog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)&#xA;Blog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xA;Blog 4: Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên</description>
     </item>
     <item>
       <title>Sự kiện đã tham gia</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</guid>
       <description>Trong thời gian thực tập, tôi đã tham gia hai sự kiện. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại nhiều kiến thức mới, thú vị và hữu ích, cùng với những phần quà và khoảnh khắc ý nghĩa.&#xA;Sự kiện 1&#xD;Tên sự kiện: Kick-off AWS FCJ Workforce – FPTU OJT FALL 2025</description>
     </item>
     <item>
       <title>Workshop</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html</guid>
       <description>Nền tảng SaaS Quản Lý Công Việc Tối Ưu Chi Phí&#xD;Tổng quan&#xD;SGU TodoList là một ứng dụng quản lý công việc có tính ổn định cao và khả năng chịu lỗi tốt, được xây dựng theo kiến trúc Microservices nhằm đảm bảo khả năng mở rộng và tách biệt các thành phần.&#xA;Mục tiêu chính của workshop này là hướng dẫn người học triển khai và quản lý một hệ thống ứng dụng phức tạp trên nền tảng AWS Cloud, với trọng tâm vào tối ưu chi phí và vận hành theo mô hình serverless.</description>
     </item>
     <item>
       <title>Tự đánh giá</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html</guid>
       <description>Trong thời gian thực tập tại AMAZON WEB SERVICES VIETNAM COMPANY LIMITED từ ngày 08/09/2025 đến 09/12/2025, tôi đã có cơ hội học hỏi, thực hành và áp dụng những kiến thức đã được học tại trường vào môi trường làm việc thực tế.&#xA;Tôi đã tham gia phát triển Ứng dụng Web Quản lý Công việc (Task Management) theo mô hình SaaS đa vùng (Multi-region). Thông qua dự án này, tôi đã nâng cao kỹ năng về Backend Development, các dịch vụ AWS, cũng như kiến trúc Cloud.</description>
     </item>
     <item>
       <title>Chia sẻ và Phản hồi</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/7-sharing_and_feedback/index.html</guid>
       <description>Đánh giá tổng quan&#xD;1. Môi trường làm việc&#xA;Môi trường làm việc vô cùng thân thiện, cởi mở và hỗ trợ lẫn nhau. Các thành viên FCAJ luôn sẵn sàng giúp đỡ nhau mỗi khi có khó khăn phát sinh. Mọi người không chỉ trao đổi về công việc mà còn thoải mái chia sẻ về việc học tập, sở thích cá nhân và những câu chuyện thường ngày. Không gian làm việc được sắp xếp gọn gàng, thoải mái, tạo nên bầu không khí tích cực giúp tôi dễ dàng tập trung và duy trì sự hứng thú trong công việc.</description>
     </item>
   </channel>

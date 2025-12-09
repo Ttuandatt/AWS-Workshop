@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 7 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html</link>
     <description>Mục Tiêu Tuần 7&#xD;Lập trình Backend User Service và Notification Service Lập trình Frontend Khám phá dịch vụ Application Load Balancer (ALB) Học cách triển khai hệ thống trên tài nguyên cloud Thử nghiệm triển khai Frontend trên S3 Nhiệm Vụ Thực Hiện Trong Tuần&#xD;Ngày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 20/10/2025 20/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 2 - Học về Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 3 - Học cách triển khai hệ thống trên tài nguyên cloud 22/10/2025 22/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 4 - Lập trình backend User Service, Notification Service 23/10/2025 23/10/2025 - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao, xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính 5 - Lập trình backend User Service, Notification Service 24/10/2025 24/10/2025 - Lập trình frontend: Xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính - Thử nghiệm triển khai Frontend trên S3</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

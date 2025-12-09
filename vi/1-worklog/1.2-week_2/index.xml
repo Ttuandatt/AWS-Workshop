@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 2 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html</link>
     <description>Mục Tiêu Tuần 2&#xD;Nghiên cứu Module 1, thực hành VPC và EC2 Học và thực hành cấu hình VPC, EC2 và các tính năng liên quan Phân công nhiệm vụ cho dự án nhóm Cập nhật cấu trúc nhật ký công việc Nhiệm Vụ Thực Hiện Trong Tuần&#xD;Ngày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Tìm hiểu về VPC và các tính năng của nó 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Thực hành tạo VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Cập nhật nhật ký công việc 3 - Thực hành tạo Route Table, Security Groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups - Xác định phạm vi dự án, phân công nhiệm vụ 4 - Tìm hiểu về triển khai Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Thực hành tạo EC2 server, kiểm tra kết nối, tạo NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway 5 - Thực hành sử dụng Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Họp nhóm để quyết định đề xuất dự án - Cập nhật nhật ký công việc</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

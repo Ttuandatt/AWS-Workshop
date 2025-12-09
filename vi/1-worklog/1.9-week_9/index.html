@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
     <meta name="twitter:description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html">
+    <meta property="og:url" content="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
     <meta property="og:description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
@@ -20,30 +20,30 @@
     <meta itemprop="description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
     <meta itemprop="wordCount" content="251">
     <title>Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập</title>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="x-default">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="en">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="vi">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="en">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/1-worklog/1.9-week_9/index.xml" rel="alternate" type="application/rss+xml" title="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765294238" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765294238" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765295032" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765294238";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765295032";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765294238" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765295032" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -51,7 +51,7 @@
       window.relearn.path='\/1-worklog\/1.9-week_9\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765294238" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765295032" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html">
     <div id="R-body" class="default-animation">
@@ -432,8 +432,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765295032" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

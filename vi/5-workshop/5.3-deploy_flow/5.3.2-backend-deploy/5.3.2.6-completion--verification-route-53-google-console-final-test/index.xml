@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
     <description>Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).&#xA;Cấu hình DNS&#xD;Bước 1: Tạo bản ghi A (A Record) trên Route 53&#xA;Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

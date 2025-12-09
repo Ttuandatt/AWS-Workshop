@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 3 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html</link>
     <description>Mục Tiêu Tuần 3&#xD;Nghiên cứu Module 2 trong danh sách phát First Cloud Journey Bootcamp – 2025 Học và làm quen với Route 53, CloudFormation và các tính năng liên quan Thiết kế cơ sở dữ liệu và thiết lập Backend &amp; Frontend Cập nhật cấu trúc nhật ký công việc Nhiệm Vụ Thực Hiện Trong Tuần&#xD;Ngày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Tìm hiểu về Route 53 và các tính năng của nó 22/09/2025 22/09/2025 Route 53 2 - Thực hành tạo Key pair, CloudFormation Template, cấu hình Security Group 23/09/2025 23/09/2025 Create Key pair, Initialize CloudFormation Template 3 - Thực hành tạo Key pair, CloudFormation Template, cấu hình Security Group 24/09/2025 24/09/2025 Create Key pair, Initialize CloudFormation Template, Configure Security Group - Họp nhóm và thảo luận về thiết kế cơ sở dữ liệu, Backend, Frontend 4 - Thực hành kết nối Remote Desktop Gateway (RDGW) bằng Remote Desktop Protocol (RDP) 25/09/2025 25/09/2025 Connecting to RDGW, Youtube tutorial - Thiết kế kiến trúc giải pháp - Họp nhóm để thảo luận về dự án workshop 5 - Thực hành triển khai Microsoft Active Directory 26/09/2025 26/09/2025 Deploy Microsoft Active Directory - Thực hành triển khai Microsoft Active Directory Deploy Microsoft Active Directory - Thực hành cấu hình DNS Configure DNS - Cập nhật nhật ký công việc</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

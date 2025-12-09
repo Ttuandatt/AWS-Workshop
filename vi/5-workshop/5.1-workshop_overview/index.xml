@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tổng quan Workshop :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html</link>
     <description>Giới thiệu dự án&#xD;SGU TodoList là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc Microservices trên nền tảng AWS Cloud.&#xA;Dự án ban đầu được thiết kế theo mô hình Multi-Region SaaS nhằm đảm bảo High Availability và Disaster Recovery. Tuy nhiên, do hạn chế về ngân sách và giới hạn của AWS Free Tier, nhóm đã tối ưu kiến trúc sang mô hình Single-Region Deployment, kết hợp với cơ chế Cross-Region Failover cho tầng frontend.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

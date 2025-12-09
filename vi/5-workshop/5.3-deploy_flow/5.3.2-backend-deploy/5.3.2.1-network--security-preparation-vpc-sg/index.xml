@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chuẩn bị Mạng &amp; Bảo mật (VPC, Security Group) :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html</link>
     <description>Giai đoạn này thiết lập hạ tầng mạng nền tảng và ranh giới bảo mật cho quá trình triển khai hệ thống Microservices.&#xA;Cấu hình VPC và Subnet&#xD;Bước 1: Tạo Hạ tầng VPC&#xD;Truy cập VPC Console → Create VPC Chọn tùy chọn VPC and more Cấu hình các tham số cho VPC như sau: Tham số Giá trị Mục đích Tự động tạo Name tag SGU-Microservices Chuẩn hoá quy ước đặt tên IPv4 CIDR block 10.0.0.0/16 Dải mạng private tiêu chuẩn Số Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) Đảm bảo tính sẵn sàng cao Số public subnet 2 Cho các tài nguyên public-facing Số private subnet 2 Cô lập tầng dữ liệu NAT Gateway Không tạo Tối ưu chi phí (~ tiết kiệm $30/tháng) VPC Endpoint Không tạo Tối ưu chi phí DNS options Enable DNS hostnames + Enable DNS resolution Phục vụ service discovery Nhấn Create VPC Kết quả kiến trúc mạng&#xD;VPC: 10.0.0.0/16 ├── Public Subnet 1: 10.0.0.0/20 (ap-southeast-1a) ├── Public Subnet 2: 10.0.16.0/20 (ap-southeast-1b) ├── Private Subnet 1: 10.0.128.0/20 (ap-southeast-1a) └── Private Subnet 2: 10.0.144.0/20 (ap-southeast-1b)</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

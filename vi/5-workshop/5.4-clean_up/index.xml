@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dọn Dẹp :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</link>
     <description>Hướng Dẫn Dọn Dẹp&#xD;Hướng dẫn này cung cấp các bước chi tiết để xóa hoàn toàn tất cả tài nguyên AWS đã triển khai trên các vùng ap-southeast-1 (Singapore) và us-east-1 (N. Virginia). Thứ tự thực hiện được tối ưu để tránh tài nguyên thừa và các chi phí phát sinh không mong muốn.</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

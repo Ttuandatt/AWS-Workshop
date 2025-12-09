@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog 12 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.html</link>
     <description>Hỗ trợ tùy chỉnh trên quy mô lớn: Chuyển đổi một cơ sở kiến thức Salesforce hợp nhất thành các tác tử AI theo từng LOB&#xD;Tác giả: Bhaskar Rao, Saqib M, Dipkumar Mehta, Murtuza Kainan&#xA;Ngày: 01/08/2025&#xA;Danh mục: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Customer Engagement, Customer Solutions, Technical Guide</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

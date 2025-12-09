@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 5 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html</link>
     <description>Mục Tiêu Tuần 5&#xD;Tiếp tục phát triển frontend và backend Học về EC2 Auto Scaling Group Thực hành cài đặt AWS CloudShell Dịch các blog kỹ thuật Nhiệm Vụ Thực Hiện Trong Tuần&#xD;Ngày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 06/10/2025 06/10/2025 - Dịch blog Blog dịch 6, Blog dịch 7 - Lập trình backend Authentication Service, User Service - Cài đặt thư viện quản lý trạng thái (Redux), định nghĩa State Model ban đầu, tích hợp API cho trang Login/Register 2 - Học và thực hành EC2 Auto Scaling Group 07/10/2025 07/10/2025 Module-03-02 - EC2 Autoscaling - EFS/FSx - Lightsail - MGN, AWS EC2 Auto Scaling : Step By Step Tutorial - Lập trình backend Authentication Service, User Service, Taskflow Service - Lập trình frontend: Xây dựng UI hiển thị các danh sách dữ liệu chính (table, grid). Tích hợp API Get List và phân trang - Dịch blog Blog dịch 8, Blog dịch 9 3 - Lập trình backend Authentication Service, User Service 08/10/2025 08/10/2025 - Học và thực hành Kafka cho messaging - Lập trình frontend: Xây dựng UI hiển thị các danh sách dữ liệu chính (table, grid). Tích hợp API Get List và phân trang - Cập nhật nhật ký công việc 4 - Lập trình backend Authentication Service, User Service 09/10/2025 09/10/2025 - Lập trình frontend: Xây dựng UI hiển thị các danh sách dữ liệu chính (table, grid). Tích hợp API Get List và phân trang - Học về Caching và áp dụng cache cho cơ sở dữ liệu - Dịch blog Blog dịch 10, Blog dịch 11 5 - Học và thực hành sử dụng CloudShell 10/10/2025 10/10/2025 AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Dịch blog Blog dịch 12</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

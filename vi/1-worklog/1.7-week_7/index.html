@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nhật ký công việc Tuần 7 :: Báo Cáo Thực Tập">
     <meta name="twitter:description" content="Mục Tiêu Tuần 7Lập trình Backend User Service và Notification Service Lập trình Frontend Khám phá dịch vụ Application Load Balancer (ALB) Học cách triển khai hệ thống trên tài nguyên cloud Thử nghiệm triển khai Frontend trên S3 Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 20/10/2025 20/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 2 - Học về Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 3 - Học cách triển khai hệ thống trên tài nguyên cloud 22/10/2025 22/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 4 - Lập trình backend User Service, Notification Service 23/10/2025 23/10/2025 - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao, xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính 5 - Lập trình backend User Service, Notification Service 24/10/2025 24/10/2025 - Lập trình frontend: Xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính - Thử nghiệm triển khai Frontend trên S3">
-    <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html">
+    <meta property="og:url" content="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Nhật ký công việc Tuần 7 :: Báo Cáo Thực Tập">
     <meta property="og:description" content="Mục Tiêu Tuần 7Lập trình Backend User Service và Notification Service Lập trình Frontend Khám phá dịch vụ Application Load Balancer (ALB) Học cách triển khai hệ thống trên tài nguyên cloud Thử nghiệm triển khai Frontend trên S3 Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 20/10/2025 20/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 2 - Học về Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 3 - Học cách triển khai hệ thống trên tài nguyên cloud 22/10/2025 22/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 4 - Lập trình backend User Service, Notification Service 23/10/2025 23/10/2025 - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao, xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính 5 - Lập trình backend User Service, Notification Service 24/10/2025 24/10/2025 - Lập trình frontend: Xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính - Thử nghiệm triển khai Frontend trên S3">
@@ -20,30 +20,30 @@
     <meta itemprop="description" content="Mục Tiêu Tuần 7Lập trình Backend User Service và Notification Service Lập trình Frontend Khám phá dịch vụ Application Load Balancer (ALB) Học cách triển khai hệ thống trên tài nguyên cloud Thử nghiệm triển khai Frontend trên S3 Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 20/10/2025 20/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 2 - Học về Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 3 - Học cách triển khai hệ thống trên tài nguyên cloud 22/10/2025 22/10/2025 - Lập trình backend User Service, Notification Service - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao 4 - Lập trình backend User Service, Notification Service 23/10/2025 23/10/2025 - Lập trình frontend: Phát triển Detail Page và tích hợp API Get By ID. Xây dựng chức năng Search/Filter nâng cao, xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính 5 - Lập trình backend User Service, Notification Service 24/10/2025 24/10/2025 - Lập trình frontend: Xây dựng modals, popups, tính năng kéo-thả. Hoàn thành 80% luồng nghiệp vụ chính - Thử nghiệm triển khai Frontend trên S3">
     <meta itemprop="wordCount" content="296">
     <title>Nhật ký công việc Tuần 7 :: Báo Cáo Thực Tập</title>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="x-default">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="en">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="vi">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="en">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/1-worklog/1.7-week_7/index.xml" rel="alternate" type="application/rss+xml" title="Nhật ký công việc Tuần 7 :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765294238" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765294238" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765295032" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765294238";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765295032";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765295032" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765294238" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765294238" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765294238" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765295032" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765295032" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765295032" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -51,7 +51,7 @@
       window.relearn.path='\/1-worklog\/1.7-week_7\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
-      window.relearn.absBaseUri='https:\/\/Ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.absBaseUri='https:\/\/ttuandatt.github.io\/AWS-Workshop';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765294238" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765295032" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html">
     <div id="R-body" class="default-animation">
@@ -438,8 +438,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765294238" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765294238" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765295032" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765295032" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Week 9 Worklog :: Internship Report</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html</link>
     <description>Week 9 Objectives&#xD;Review and check backend service code Develop and integrate frontend features for Notification &amp; Auth Adjust and refine system architecture through team discussions Implement and update WebSocket for real-time notifications Integrate Google OAuth2 login for Authentication Service Fix bugs related to WebSocket reconnection and authentication state Tasks to be carried out this week&#xD;Day Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 03/11/2025 03/11/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 - Update WebSocket for Notification Service 04/11/2025 04/11/2025 - Refactor NotificationService flow to support real-time push notifications - Code front end: Review services UI for flaws 3 - Implement OAuth2 Login Google for Auth Service 05/11/2025 05/11/2025 - Test login flow and integrate Google OAuth callback - Update worklog 4 - Continue integrating Notification &amp; Auth features on frontend 06/11/2025 06/11/2025 - Fix bugs related to WebSocket reconnection &amp; auth state 5 - Testing for the week’s features 07/11/2025 07/11/2025 - Prepare weekly report &amp; deployment checklist</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

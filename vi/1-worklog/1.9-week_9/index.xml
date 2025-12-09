@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html</link>
     <description>Mục Tiêu Tuần 9&#xD;Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong Tuần&#xD;Ngày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

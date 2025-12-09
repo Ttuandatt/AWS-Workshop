@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sự kiện đã tham gia :: Báo Cáo Thực Tập</title>
-    <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</link>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html</link>
     <description>Trong thời gian thực tập, tôi đã tham gia hai sự kiện. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại nhiều kiến thức mới, thú vị và hữu ích, cùng với những phần quà và khoảnh khắc ý nghĩa.&#xA;Sự kiện 1&#xD;Tên sự kiện: Kick-off AWS FCJ Workforce – FPTU OJT FALL 2025</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sự kiện 1</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.1-event-1/index.html</guid>
       <description>Báo Cáo Tổng Kết: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”&#xD;Mục Tiêu Sự Kiện&#xD;Chính thức khởi động chương trình AWS First Cloud Journey Workforce OJT Fall 2025 Giới thiệu cho sinh viên mục tiêu, cấu trúc và lộ trình học tập của chương trình Cung cấp góc nhìn tổng quan về cơ hội nghề nghiệp trong các lĩnh vực Cloud Computing, AI/ML, DevOps và Security Kết nối sinh viên với cộng đồng AWS Study Group và các đối tác doanh nghiệp Truyền cảm hứng cho sinh viên xây dựng kỹ năng thực hành và chuẩn bị cho sự nghiệp trong lĩnh vực cloud Diễn Giả &amp; Khách Mời Chính&#xD;Nguyễn Gia Hưng – Head of Solutions Architect, AWS Vietnam&#xA;Chia sẻ tổng quan về AWS First Cloud Journey và cơ hội nghề nghiệp trong ngành điện toán đám mây</description>
     </item>
     <item>
       <title>Sự kiện 2</title>
-      <link>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</link>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/4.2-event-2/index.html</guid>
       <description>AWS Cloud Mastery Series #3 – Security Pillar Workshop&#xD;Buổi workshop tập trung giúp người tham gia hiểu cách thiết kế và vận hành hệ thống AWS an toàn dựa trên Security Pillar của AWS Well-Architected Framework, kết hợp giữa lý thuyết, demo thực tế và các tình huống trong môi trường triển khai thật.</description>
     </item>
   </channel>
