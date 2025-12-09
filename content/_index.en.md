@@ -26,7 +26,9 @@ chapter = false
   <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
 </figure> -->
 
-![MyAvatar](images/forest.jpg)
+<!-- ![MyAvatar](images/forest.jpg) -->
+
+![MyAvatar](/AWS-Workshop/images/forest.jpg)
 
 ### Report Content
 **1. [Worklog](1-Worklog)**  
