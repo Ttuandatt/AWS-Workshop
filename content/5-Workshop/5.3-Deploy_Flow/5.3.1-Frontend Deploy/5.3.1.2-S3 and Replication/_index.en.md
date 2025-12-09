@@ -27,11 +27,12 @@ This phase focuses on creating a durable storage layer for frontend resources an
 
 3. Click **Create bucket**.
 
-{{< figurecaption src="/images/fe1.1_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_1.jpg)
 
-{{< figurecaption src="/images/fe1.1_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_2.jpg)
 
-{{< figurecaption src="/images/fe1.1_3.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_3.jpg)
+
 
 ---
 
@@ -52,7 +53,10 @@ After completing **Step 1.1** and **Step 1.2**, two S3 buckets should be availab
 - Primary bucket: Singapore (`ap-southeast-1`)
 - Secondary bucket: N. Virginia (`us-east-1`)
 
-{{< figurecaption src="/images/fe1.1_1.2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe1.1_1.2.jpg" caption="">}} -->
+
+![](/AWS-Workshop/images/fe1.1_1.2.jpg)
+
 
 ---
 
@@ -76,12 +80,16 @@ After completing **Step 1.1** and **Step 1.2**, two S3 buckets should be availab
    (The bucket is currently empty.)
 
 {{< figurecaption src="/images/fe1.3_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_1.jpg)
 
 {{< figurecaption src="/images/fe1.3_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_2.jpg)
 
 {{< figurecaption src="/images/fe1.3_3.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_3.jpg)
 
 {{< figurecaption src="/images/fe1.3_4.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_4.jpg)
 
 ---
 

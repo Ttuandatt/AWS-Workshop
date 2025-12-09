@@ -162,10 +162,13 @@ Dự án này áp dụng kiến trúc **Khả năng Sẵn sàng Cao Đơn Vùng 
 
 ### **3\. Kiến Trúc Giải Pháp**
 
-<figure>
+<!-- <figure>
   <img src="/images/todolist-architecture-6.jpg" alt="" style="max-width:100%;height:auto;">
   <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
-</figure>
+</figure> -->
+
+![Hình 1. Kiến trúc ECS Fargate Đơn vùng](/AWS-Workshop/images/todolist-architecture-6.jpg)
+
 
 #### **3.1. Tổng Quan Kiến Trúc**
 
