@@ -5,7 +5,7 @@ var relearn_searchindex = [
     "description": "Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.\rTác giả: Gaurav Acharya, Jay Horne – 30/7/2025\nChủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to\nNhững khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.",
     "tags": [],
     "title": "Blog 1",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_1/index.html"
+    "uri": "/en/3-translated_blogs/blog_1/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Events Participated",
@@ -13,7 +13,7 @@ var relearn_searchindex = [
     "description": "Summary Report: “Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025”\rEvent Objectives\rOfficially kick off the AWS First Cloud Journey Workforce OJT Fall 2025 program Introduce students to the objectives, structure, and learning paths of the program Provide insights into career opportunities in Cloud Computing, AI/ML, DevOps, and Security Connect students with AWS Study Group community and partner companies Inspire students to build practical skills and prepare for a career in cloud technology Speakers \u0026 Key Presenters\rNguyen Gia Hung – Head of Solutions Architect, AWS Vietnam Shared insights on AWS First Cloud Journey and future career opportunities in cloud computing",
     "tags": [],
     "title": "Event 1",
-    "uri": "/AWS-Workshop/en/4-events_participated/4.1-event-1/index.html"
+    "uri": "/en/4-events_participated/4.1-event-1/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow",
@@ -21,7 +21,7 @@ var relearn_searchindex = [
     "description": "Architectural model\rDomain: Route 53 (DNS) + ACM (SSL Certificate).\nCDN: CloudFront (Global Edge Network).\nStorage (Primary): S3 Singapore (ap-southeast-1).\nStorage (Failover): S3 N. Virginia (us-east-1).\nReplication: Automatically copy code from Singapore -\u003e Virginia.\nSecurity: OAC (Origin Access Control) - Private Bucket.\nTable of Contents\rPrerequisites",
     "tags": [],
     "title": "Frontend Deploy",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"
   },
   {
     "breadcrumb": "",
@@ -29,7 +29,7 @@ var relearn_searchindex = [
     "description": "Team Information\rFull Name Phone Number Email Class Unversity Phan Canh Tuan Dat 0867829257 pcanhtuandat@gmail.com DCT1226 Sai Gon University Ngo Tuan Hung 0776136425 hungnt.020404@gmail.com DKP1221 Sai Gon University Le Trung Kien 0931261009 trungkien1862@gmail.com DCT1213 Sai Gon University Duong Binh Minh 0355578938 duongbinhminh10032004@gmail.com DCT1226 Sai Gon University Internship Company: Amazon Web Services Vietnam Co., Ltd.\nInternship Position: FCJ Cloud Intern\nInternship Duration: From 29/09/2025 to 22/11/2025",
     "tags": [],
     "title": "Internship Report",
-    "uri": "/AWS-Workshop/en/index.html"
+    "uri": "/en/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -37,7 +37,7 @@ var relearn_searchindex = [
     "description": "This phase establishes the foundational network infrastructure and security boundaries for the microservices deployment.\nVPC and Subnet Configuration\rStep 1: Create VPC Infrastructure\nNavigate to VPC Console → Create VPC Select VPC and more option Configure VPC parameters: Parameter Value Rationale Name tag auto-generation SGU-Microservices Naming convention IPv4 CIDR block 10.0.0.0/16 Standard private network range Number of Availability Zones 2 (ap-southeast-1a, ap-southeast-1b) High availability across AZs Number of public subnets 2 For internet-facing resources Number of private subnets 2 For data layer isolation NAT gateways None Cost optimization (~$30/month savings) VPC endpoints None Cost optimization DNS options Enable DNS hostnames + Enable DNS resolution Required for service discovery Click Create VPC Network Architecture Result:",
     "tags": [],
     "title": "Network \u0026 Security Preparation (VPC, SG)",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.1-network--security-preparation-vpc-sg/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -45,7 +45,7 @@ var relearn_searchindex = [
     "description": "Preparation Requirements\rA registered domain name (e.g. sgutodolist.com)\nWith AWS Free Tier accounts, Route 53 domain registration is not supported.\nTherefore, in this project, the domain is registered with a third-party domain provider and then hosted on Amazon Route 53. An AWS account\nA successfully built ReactJS project\nAWS CLI (optional, for testing and validation)",
     "tags": [],
     "title": "Prerequisites",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.1-prerequisites/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -53,7 +53,7 @@ var relearn_searchindex = [
     "description": "Week 1 Objectives\rLearn the regulations Connect with other FCJ members Form team and decide team project Understand and practice basic AWS services Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Get acquainted with FCJ members 08/09/2025 08/09/2025 - Read and take note of internship unit rules and regulations Rules and regulations - Learn and practice making a static website with Hugo Hugo quickstart, Learn Hugo Theme - Create AWS account. Practice creating Users group, Users (IAM user) Create AWS account; Create user, group user 2 - Learn and practice creating Budget (Template \u0026 Custom: Cost, Usage, Saving plans, Reservation) 09/09/2025 09/09/2025 Create budget - Update worklog Sample worklog 3 - Learn about support packages, types of support request, how to create a support 10/09/2025 10/09/2025 Support packages 4 - Update worklog (UI) 11/09/2025 11/09/2025 5 - Learn theory about VPC (Subnet, Route Table, Internet Gateway, NAT Gateway) 12/09/2025 12/09/2025 AWS Virtual Private Cloud - Update worklog",
     "tags": [],
     "title": "Week 1 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.1-week_1/index.html"
+    "uri": "/en/1-worklog/1.1-week_1/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -61,7 +61,7 @@ var relearn_searchindex = [
     "description": "Week 1: Orientation, team formation, and building a foundational understanding of AWS services and tools required for the program\nWeek 2: Explore and practice core VPC and EC2 concepts through hands-on configuration, foundational networking setup, and initial project planning activities.\nWeek 3: Study and apply Route 53 and CloudFormation concepts while progressing solution architecture design and setting up foundational backend, frontend, and database components.\nWeek 4: Develop backend authentication and frontend foundations while exploring S3 and API Gateway services, defining required APIs, translating technical blogs, and establishing core project architecture and UI structure.",
     "tags": [],
     "title": "Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/index.html"
+    "uri": "/en/1-worklog/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop",
@@ -69,7 +69,7 @@ var relearn_searchindex = [
     "description": "Project Introduction\rSGU TodoList is a task management application built using a Microservices architecture on the AWS Cloud platform. The project was initially designed to be deployed as a Multi-Region SaaS model to ensure high availability and disaster recovery. However, due to budget constraints and AWS Free Tier limitations, the team optimized the architecture for a Single-Region Deployment with a Cross-Region Failover mechanism for the frontend.",
     "tags": [],
     "title": "Workshop Overview",
-    "uri": "/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html"
+    "uri": "/en/5-workshop/5.1-workshop_overview/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow",
@@ -77,7 +77,7 @@ var relearn_searchindex = [
     "description": "Architecture Model\rThis model illustrates the core services used for high-availability, low-latency content delivery and security:\nDomain \u0026 SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.\nCDN: CloudFront acts as the Global Edge Network for content delivery.\nStorage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.",
     "tags": [],
     "title": "Backend Deploy",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -85,7 +85,7 @@ var relearn_searchindex = [
     "description": "Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)\rTác giả: Gabe Kafity – 29/7/2025\nChủ đề: Best Practices, High Performance Computing\nTrong ngành hàng không vũ trụ đang phát triển nhanh chóng ngày nay, khả năng đổi mới nhanh chóng và hiệu quả không chỉ là một lợi thế – mà đó là một điều cần thiết. Khi các công nghệ như UAVs (Unmanned Aerial Vehicle) tự hành, các chùm vệ tinh (satellite constellations), tên lửa tái sử dụng và thực tế tăng cường/ảo (augmented/virtual reality) tiến bộ, khả năng đổi mới nhanh chóng mang lại cho các tổ chức hàng không vũ trụ lợi thế cạnh tranh. High Performance Computing (HPC) rất quan trọng đối với đổi mới hàng không vũ trụ và đã trở thành nền tảng của sự tiến bộ trong ngành hàng không vũ trụ. Bất kể quy mô, tuổi đời hay tốc độ lặp lại (iteration speed) của một tổ chức, Amazon Web Services (AWS) luôn sẵn sàng giúp thúc đẩy các sứ mệnh hàng không vũ trụ của họ tiến lên.",
     "tags": [],
     "title": "Blog 2",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_2/index.html"
+    "uri": "/en/3-translated_blogs/blog_2/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Events Participated",
@@ -93,7 +93,7 @@ var relearn_searchindex = [
     "description": "AWS Cloud Mastery Series #3 – Security Pillar Workshop\rThis workshop focused on helping participants understand how to design and operate secure AWS systems based on the Security Pillar of the AWS Well-Architected Framework, combining theory with practical demos and real-world scenarios.\nWhat I Learned\rSecurity Foundation\rThe session started with an overview of the Security Pillar and its role in cloud architecture. Key security principles such as Least Privilege, Zero Trust, and Defense in Depth were explained in a practical context.\nThe speaker also clarified the AWS Shared Responsibility Model, highlighting common misunderstandings and real security risks seen in cloud environments in Vietnam.",
     "tags": [],
     "title": "Event 2",
-    "uri": "/AWS-Workshop/en/4-events_participated/4.2-event-2/index.html"
+    "uri": "/en/4-events_participated/4.2-event-2/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -101,7 +101,7 @@ var relearn_searchindex = [
     "description": "This phase provisions the data layer components, service discovery mechanism, and load balancing infrastructure.\nSSL Certificate Provisioning\rRequest ACM Certificate\nSwitch region to Singapore (ap-southeast-1) Navigate to Certificate Manager (ACM) Select Request a certificate → Request a public certificate Configure certificate request: Domain name: sgutodolist.com Validation method: DNS validation Click Request Access the certificate details → Under Domains section → Click Create records in Route 53 Wait for status to change to Issued (typically 5-10 minutes) RDS MYSQL (Primary Database)\rGoal: Create the main MySQL 8.0 Database located in Private Subnet (AZ A).",
     "tags": [],
     "title": "Infrastructure \u0026 ALB Setup (RDS, Redis, Cloud Map, ALB Routing)",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.2-infrastructure--alb-setup-rds-redis-cloud-map-alb-routing/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop",
@@ -109,7 +109,7 @@ var relearn_searchindex = [
     "description": "Preamble: Prerequisites for Backend Deployment\rBefore initiating the deployment steps outlined in the Table of Contents, the following foundational tools, configurations, and AWS service setups must be completed to ensure a smooth, secure, and cost-optimized deployment into the ap-southeast-1 (Singapore) region.\nStep Requirement Purpose 1 AWS Account \u0026 CLI Access and command-line management. 2 Domain \u0026 SSL Securing traffic and global content delivery. 3 Source Code \u0026 Artifacts Building the deployable microservice images. 4 AWS Network Foundation Setting up the isolated, highly available VPC structure. I. Tools \u0026 Credentials\rAWS Account Setup: A valid AWS Account is required, and initial billing alerts (AWS Budgets) must be configured to monitor Free Tier usage.",
     "tags": [],
     "title": "Prerequisite",
-    "uri": "/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"
+    "uri": "/en/5-workshop/5.2-prerequisite/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -117,7 +117,7 @@ var relearn_searchindex = [
     "description": "Cost-Optimized SaaS Task Management Platform\rSingle-Region High Availability with ECS Fargate\r1. Executive Summary\rThe SaaS Task Management Platform is designed to deliver a Todoist-like collaborative experience with High Availability (HA) and Cost Efficiency, specifically optimized for AWS Free Tier constraints.",
     "tags": [],
     "title": "Proposal",
-    "uri": "/AWS-Workshop/en/2-proposal/index.html"
+    "uri": "/en/2-proposal/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -125,7 +125,7 @@ var relearn_searchindex = [
     "description": "PHASE 1: STORAGE PREPARATION (S3 \u0026 REPLICATION)\rThis phase focuses on creating a durable storage layer for frontend resources and setting up an automated cross-region synchronization mechanism.\nStep 1.1: Create the Primary Bucket (Singapore)\rOpen the Amazon S3 Console and select the Asia Pacific (Singapore) region.",
     "tags": [],
     "title": "S3 and Replication",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -133,7 +133,7 @@ var relearn_searchindex = [
     "description": "Week 2 Objectives\rStudy Module 1 practicing VPC and EC2 Learn and practice configure VPC, EC2 and their related features Assign tasks for team project Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about VPC and its feature 15/09/2025 15/09/2025 VPC, Youtube Lesson 2 - Practice creating VPC, Subnets, Internet Gateway 16/09/2025 16/09/2025 Create VPC, Create Subnets, Create Internet Gateway - Update worklog 3 - Practice creating Route table, Security groups 17/09/2025 17/09/2025 Create Route Table, Create Security Groups - Decide project scopes, assgign tasks 4 - Learn about Deploying Amazon EC2 Instances 18/09/2025 18/09/2025 Deploying Amazon EC2 Instances, Youtube Tutorial - Practice creating EC2 server, Checking connection, creating NAT Gateway Create EC2 instance, Check connection, Create NAT Gateway 5 - Practice using Reachability Analyzer 19/09/2025 19/09/2025 Create Reachability Analyzer - Team meeting to decide proposal project - Update worklog",
     "tags": [],
     "title": "Week 2 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.2-week_2/index.html"
+    "uri": "/en/1-worklog/1.2-week_2/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -141,7 +141,7 @@ var relearn_searchindex = [
     "description": "Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI\rTác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025\nChủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to\nGiới thiệu\rCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.",
     "tags": [],
     "title": "Blog 3",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_3/index.html"
+    "uri": "/en/3-translated_blogs/blog_3/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -149,7 +149,7 @@ var relearn_searchindex = [
     "description": "This phase focuses on adapting the application source code for the cloud environment. We will configure Cross-Origin Resource Sharing (CORS) for the reactive API Gateway, refactor application configurations to use dynamic environment variables, and finally build and push all microservice Docker images to the Amazon Elastic Container Registry (ECR).\nObjectives:\nConfigure the code to work seamlessly in both Local (Docker Compose) and Cloud (AWS ECS) environments.\nCreate Repositories on AWS ECR.",
     "tags": [],
     "title": "Code Update \u0026 Image Build (Create new Docker Image)",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop",
@@ -157,7 +157,7 @@ var relearn_searchindex = [
     "description": "Table of Contents\rThis section provides step-by-step guidance for deploying both Frontend and Backend components onto the cloud infrastructure.\nIt covers the complete deployment workflow, from build artifacts preparation to production-ready release on AWS services.\n5.3.1. Frontend Deploy\nGuidelines for building, configuring, and deploying the frontend to Amazon S3 + CloudFront with cross-region failover.\n5.3.2. Backend Deploy\nInstructions for deploying backend microservices to AWS ECS/Fargate, including network configuration, load balancing, and service integration.",
     "tags": [],
     "title": "Deploy Flow",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -165,7 +165,7 @@ var relearn_searchindex = [
     "description": "PHASE 2: DOMAIN \u0026 SECURITY PREPARATION (ROUTE 53 \u0026 ACM)\rBefore creating the CloudFront distribution, the domain name system (DNS) and SSL certificates must be properly prepared.\nStep 2.1: Create a Hosted Zone (If Not Exists)\rNavigate to Amazon Route 53 → Hosted zones.",
     "tags": [],
     "title": "Route 53 and ACM",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -173,7 +173,7 @@ var relearn_searchindex = [
     "description": "Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.\nBlog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)\nBlog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI\nBlog 4: Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên",
     "tags": [],
     "title": "Translated Blogs",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/index.html"
+    "uri": "/en/3-translated_blogs/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -181,7 +181,7 @@ var relearn_searchindex = [
     "description": "Week 3 Objectives\rStudy Module 2 in the First Cloud Journey Bootcamp – 2025 playlist Learn and get familiar with Route 53, CloudFormation and their related features Design the database and set up Backend \u0026 Frontend Update worklog structure Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Learn about Route 53 and its feature 22/09/2025 22/09/2025 Route 53 2 - Practice creating Key pair, CloudFormation Template, Configure Security Group 23/09/2025 23/09/2025 Create Key pair, Initialize CloudFormation Template 3 - Practice creating Key pair, CloudFormation Template, Configure Security Group 24/09/2025 24/09/2025 Create Key pair, Initialize CloudFormation Template, Configure Security Group - Team meeting and discuss about Database design, Backend, Frontend 4 - Practice connecting to Remote Desktop Gateway (RDGW) by Remote Desktop Protocol (RDP) 25/09/2025 25/09/2025 Connecting to RDGW, Youtube tutorial - Design solution architecture - Team meeting to discuss about workshop project 5 - Practice deploy Microsoft Active Directory 26/09/2025 26/09/2025 Deploy Microsoft Active Directory - Practice deploy Microsoft Active Directory Deploy Microsoft Active Directory - Pratice configure DNS Configure DNS - Update worklog",
     "tags": [],
     "title": "Week 3 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.3-week_3/index.html"
+    "uri": "/en/1-worklog/1.3-week_3/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -189,7 +189,7 @@ var relearn_searchindex = [
     "description": "Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên\rJagdish Komakula, Aditya Ambati và Anand Krishna Varanasi | 17/07/2025 | Amazon Elastic Kubernetes Service, Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to | Permalink\nGiới thiệu\rArgoCD là một bộ công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernets một cách khai báo, sử dụng Git là nguồn thông tin đáng tin cậy duy nhất. Bộ tính năng mạnh mẽ của nó bao gồm hệ thống đồng bộ tự động, hỗ trợ khôi phục, phát hiện sai lệch, chiến lược triển khai nâng cao, Tích hợp RBAC, và hỗ trợ đa cụm (multi-cluster), khiến nó trở thành giải pháp được ưa chuộng cho việc triển khai ứng dụng trên Kubernetes. Tuy nhiên, khi các tổ chức mở rộng quy mô, một vài điểm khó khăn và thử thách vận hành bắt đầu xuất hiện.",
     "tags": [],
     "title": "Blog 4",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_4/index.html"
+    "uri": "/en/3-translated_blogs/blog_4/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop",
@@ -197,7 +197,7 @@ var relearn_searchindex = [
     "description": "Cleanup Guide\rThis guide provides a comprehensive instruction to completely terminate all deployed AWS resources across the ap-southeast-1 (Singapore) and us-east-1 (N. Virginia) regions. The sequence is optimized to avoid orphaned resources and subsequent charges.\nI. Deployed AWS Services Summary\rBefore proceeding, verify the existence of the following active services in your account:",
     "tags": [],
     "title": "Clean Up",
-    "uri": "/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"
+    "uri": "/en/5-workshop/5.4-clean_up/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -205,7 +205,7 @@ var relearn_searchindex = [
     "description": "STAGE 3: CONFIGURATION CLOUDFRONT (CDN \u0026 FAILOVER)\rSTEP 3.1: Create Distribution\rStep 1: Get started\rDistribution name: sgutodolist-frontend-cloudfront\nDistribution type: Keep Single website or app.",
     "tags": [],
     "title": "ClouFront and Failover",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -213,7 +213,7 @@ var relearn_searchindex = [
     "description": "During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.\nEvent 1\rEvent Name: Kick-off AWS FCJ Workforce - FPTU OJT FALL 2025\nDate \u0026 Time: 8:30 AM Saturday, September 6, 2025\nLocation: 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City",
     "tags": [],
     "title": "Events Participated",
-    "uri": "/AWS-Workshop/en/4-events_participated/index.html"
+    "uri": "/en/4-events_participated/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -221,7 +221,7 @@ var relearn_searchindex = [
     "description": "Task Definitions serve as blueprints that define how ECS should run containers, including resource allocation (RAM/CPU) and essential environment variables for service connectivity.\nPreparation\rRecord the following values before starting:\nRDS Endpoint: sgu-todolist-db.[random].ap-southeast-1.rds.amazonaws.com\nRedis Endpoint: sgu-redis.[random].cache.amazonaws.com (Without :6379)\nECR Image URIs: The URIs of the 6 repositories from the Image Build step.\nGoogle OAuth Credentials: Client ID and Client Secret.",
     "tags": [],
     "title": "Task Definitions Creation",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -229,7 +229,7 @@ var relearn_searchindex = [
     "description": "Week 4 Objectives\rBegin coding the backend authentication service and frontend Discuss and list the APIs required for the taskflow service. Learn and practice S3 Explore API Gateway Translate technical blogs. Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the architecture, backend and front end configuration 29/09/2025 29/09/2025 - Translate blog Translated Blog 1 - Research and make a list of APIs needed for the TaskFlow Service. 2 - Learn and practice S3 service 30/09/2025 30/09/2025 S3 lesson - Code backend Authentication Service 3 - Code backend Authentication Service 01/10/2025 01/10/2025 - Initialize the project (React, environment configuration, basic routing setup, folder structure, Git integration). 4 - Learn and practice API Gateway service 02/10/2025 02/10/2025 AWS API Gateway Introduction, Tạo API sử dụng Amazon API Gateway AWS Serverless Development Journey - Code backend Authentication Service - Set up UI/CSS libraries (e.g., Tailwind, Material UI), define global CSS variables, build basic Components (Button, Input, Card). - Translate blog Translated Blog 2, Translated Blog 3 5 - Code backend Authentication Service 03/10/2025 03/10/2025 - Set up UI/CSS libraries (e.g., Tailwind, Material UI), define global CSS variables, build basic Components (Button, Input, Card). - Code frontend: Build Header, Footer, Sidebar, and the Landing Page. Ensure basic responsive design. - Translate blog Translated Blog 4, Translated Blog 5",
     "tags": [],
     "title": "Week 4 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.4-week_4/index.html"
+    "uri": "/en/1-worklog/1.4-week_4/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -237,7 +237,7 @@ var relearn_searchindex = [
     "description": "Ra Mắt Strands Agents 1.0: Việc điều phối Multi-Agent cho môi trường production đã được đơn giản hóa\rRyan Coleman và Belle Guttman | 15/07/2025 | Amazon Machine Learning, Announcements, Artificial Intelligence, Open Source| Permalink | Comments\nHôm nay, chúng tôi vui mừng thông báo về phiên bản 1.0 của Strands Agents SDK, đánh dấu một cột mốc quan trọng trong hành trình giúp việc xây dựng các agent AI trở nên đơn giản, đáng tin cậy và sẵn sàng cho môi trường production. Strands Agents là một SDK mã nguồn mở, áp dụng phương pháp model-driven, giúp bạn xây dựng và vận hành các agent AI chỉ trong vài dòng code. Strands có khả năng mở rộng từ các trường hợp sử dụng agent đơn giản đến phức tạp, cũng như từ phát triển cục bộ đến triển khai trong môi trường production.",
     "tags": [],
     "title": "Blog 5",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_5/index.html"
+    "uri": "/en/3-translated_blogs/blog_5/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop",
@@ -245,7 +245,7 @@ var relearn_searchindex = [
     "description": "1. Hugo Commands\r1.1\nhugo build\r1.2\nhugo server -D\r2. Git Commands\r2.1 Check repository status\ngit status\r2.2 List local branches\ngit branch\r2.3 List all branches (local + remote)",
     "tags": [],
     "title": "Mystic Skills",
-    "uri": "/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"
+    "uri": "/en/5-workshop/5.5-mystic-skills/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -253,7 +253,7 @@ var relearn_searchindex = [
     "description": "STAGE 4: S3 PERMITS (POLICY)\rCloudFront needs a “permission” to pull files from your 2 closed buckets.\nIn CloudFront \u003e Origins tab.\nSelect Origin Singapore \u003e Edit \u003e Copy policy.\nOpen a new tab \u003e S3 Console \u003e Bucket sgutodolist-frontend-sg.\nPermissions tab \u003e Bucket Policy \u003e Edit \u003e Paste \u003e Save.\nRepeat with Bucket Virginia:",
     "tags": [],
     "title": "S3 Policy",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -261,7 +261,7 @@ var relearn_searchindex = [
     "description": "This phase deploys containerized applications to ECS Fargate following a specific order to ensure proper dependency resolution.\nCritical Network Configuration\rFor ALL service deployments, the following network settings are mandatory:\n1. VPC: SGU-Microservices-VPC\n2. Subnets: Select both Public Subnets (required for image pulling)\n3. Security Group: ecs-app-sg (remove default)\n4. Public IP: Turned on (critical for ECR access)",
     "tags": [],
     "title": "Services Deployment ",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -269,7 +269,7 @@ var relearn_searchindex = [
     "description": "Week 5 Objectives\rContinue frontend and backend development Learn EC2 Auto Scaling Group Practice AWS CloudShell setups Translate blogs. Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 06/10/2025 06/10/2025 - Translate blogs Translated Blog 6, Translated Blog 7 - Code backend Authentication Service, User Service - Install state management library (Redux), define the initial State Model, integrate API services for Login/Register pages. 2 - Learn and practice EC2 Auto Scaling Group 07/10/2025 07/10/2025 Module-03-02 - EC2 Autoscaling - EFS/FSx - Lightsail - MGN, AWS EC2 Auto Scaling : Step By Step Tutorial - Code backend Authentication Service, User Service, Taskflow Service - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Translate blog Translated Blog 8, Translated Blog 9 3 - Code backend Authentication Service, User Service 08/10/2025 08/10/2025 - Learn and pratice Kafka for messaging - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Update worklog 4 - Code backend Authentication Service, User Service 09/10/2025 09/10/2025 - Code frontend: Build UI for displaying main data lists (table, grid). Integrate Get List API and Pagination. - Learn about Caching to apply cache for database - Translate blog Translated Blog 10, Translated Blog 11 5 - Learn and practice using CloudShell 10/10/2025 10/10/2025 AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Translate blog Translated Blog 12",
     "tags": [],
     "title": "Week 5 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.5-week_5/index.html"
+    "uri": "/en/1-worklog/1.5-week_5/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -277,7 +277,7 @@ var relearn_searchindex = [
     "description": "Cost-Optimized SaaS Task Management Platform\rOverview\rSGU TodoList is a robust and resilient task management application built using a Microservices architecture designed for high scalability and decoupling. The primary goal of this workshop is to guide you through deploying and managing a complex application stack on the AWS Cloud platform, with a strong focus on cost optimization and serverless operations.",
     "tags": [],
     "title": "Workshop",
-    "uri": "/AWS-Workshop/en/5-workshop/index.html"
+    "uri": "/en/5-workshop/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -285,7 +285,7 @@ var relearn_searchindex = [
     "description": "Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2\rEric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions\nBài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)",
     "tags": [],
     "title": "Blog 6",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_6/index.html"
+    "uri": "/en/3-translated_blogs/blog_6/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Backend Deploy",
@@ -293,7 +293,7 @@ var relearn_searchindex = [
     "description": "This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.\nDNS Configuration\rStep 1: Create Route 53 A Record\nNavigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.",
     "tags": [],
     "title": "Completion \u0026 Verification (Route 53, Google Console, Final Test)",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -301,7 +301,7 @@ var relearn_searchindex = [
     "description": "PHASE 5: POINT OFFICIAL DOMAIN (DNS RECORD)\rGo to Route 53 \u003e Hosted zones \u003e sgutodolist.com.\nCreate Record for Root domain:\nClick Create record.\nRecord name: (leave blank).\nType: A.\nAlias: Yes (Swipe the button to the right).\nRoute traffic to: Alias ​​to CloudFront distribution.\nChoose distribution: Select the CloudFront domain (e.g. d123...cloudfront.net).\nClick Create records.",
     "tags": [],
     "title": "DNS Record",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -309,7 +309,7 @@ var relearn_searchindex = [
     "description": "During my internship at AMAZON WEB SERVICES VIETNAM COMPANY LIMITED from 08/09/2025 to 09/12/2025, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.\nI participated in developing a Multi-region SaaS Task Management Web Application, through which I enhanced my skills in Backend Development, AWS Services, and Cloud Architecture. In the backend domain, I strengthened my ability to:\nDevelop RESTful APIs Work with Microservices Architecture Effectively utilize various AWS services I also gained practical experience in designing AWS architectures that are scalable, secure, and cost-optimized for real-world projects.",
     "tags": [],
     "title": "Self Assesment",
-    "uri": "/AWS-Workshop/en/6-self-assesment/index.html"
+    "uri": "/en/6-self-assesment/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -317,7 +317,7 @@ var relearn_searchindex = [
     "description": "Week 6 Objectives\rContinue frontend and backend development Explore Elasticache for Redis and Amazon RDS services Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 13/10/2025 13/10/2025 - Code backend Authentication Service, User Service - Code frontend: Build complex forms for Creating/Editing data. Apply form validation. 2 - Learn about Elasticache for Redis 14/10/2025 14/10/2025 Amazon AWS ElastiCache Deployment, AWS Elasticache Redis Creation and redis-cli Configuration step by step process - Code backend Authentication Service, User Service - Code frontend: Build complex forms for Creating/Editing data. Apply form validation. - Integrate message sending via Kafka into the Taskflow Service so it can notify the Notification Service to send alerts to users. 3 - Update worklog 15/10/2025 15/10/2025 - Code backend Authentication Service, User Service - Code frontend: Build complex forms for Creating/Editing data. Apply form validation. Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. - Learn and integrate WebSocket into the Notification Service to deliver real-time notifications to users. 4 - Learn and practice Amazon RDS 16/10/2025 16/10/2025 Module 06-02 - Amazon RDS \u0026 Amazon Aurora, Module 06-Lab05-2.3 - Create RDS Security group, Module 06-Lab05-4 - Create RDS database instance - Code backend Authentication Service, User Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 5 - Code backend Authentication Service, User Service 17/10/2025 17/10/2025 - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. - Develop the Upcoming Task UI for the project and integrate the API calls from the Taskflow Service. - Update worklog",
     "tags": [],
     "title": "Week 6 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.6-week_6/index.html"
+    "uri": "/en/1-worklog/1.6-week_6/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -325,7 +325,7 @@ var relearn_searchindex = [
     "description": "Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect\rTác giả: Vikas Prasad \u0026 Ayush Mehta Ngày: 22/07/2025\nGiới thiệu\rCác nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. Khi được hỗ trợ tốt, các nhân viên không chỉ có trải nghiệm làm việc tốt hơn, mà còn giúp nâng cao trải nghiệm của khách hàng cuối cùng.",
     "tags": [],
     "title": "Blog 7",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_7/index.html"
+    "uri": "/en/3-translated_blogs/blog_7/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Workshop \u003e Deploy Flow \u003e Frontend Deploy",
@@ -333,7 +333,7 @@ var relearn_searchindex = [
     "description": "PHASE 6: DEPLOY \u0026 TESTING\rStep 6.1: Build \u0026 Deploy\rOn your local computer (in the React project folder):\n# 1. Build to the production folder npm run build # 2. Upload to the MAIN bucket (Singapore) # Note: Just upload to Sing, AWS will automatically copy to US aws s3 sync build/ s3://sgutodolist-frontend-sg --delete # 3. Clear the CloudFront cache so users can see the new code immediately aws cloudfront create-invalidation --distribution-id \u003cID_CUA_BAN\u003e --paths \"/*\"\rStep 6.2: Test\rGo to https://sgutodolist.com.",
     "tags": [],
     "title": "Deploy and Test",
-    "uri": "/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"
+    "uri": "/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -341,7 +341,7 @@ var relearn_searchindex = [
     "description": "Overall Evaluation\r1. Working Environment\nThe working environment is incredibly friendly, open, and supportive. FCAJ members are always willing to help each other whenever an issue arises, and everyone is very open to discussing not only work-related topics but also studies, hobbies, and personal interests. The workspace itself is comfortable and well-organized, creating a productive atmosphere that makes it easier to stay focused and engaged.",
     "tags": [],
     "title": "Sharing and Feedback",
-    "uri": "/AWS-Workshop/en/7-sharing_and_feedback/index.html"
+    "uri": "/en/7-sharing_and_feedback/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -349,7 +349,7 @@ var relearn_searchindex = [
     "description": "Week 7 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 20/10/2025 20/10/2025 - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 2 - Learn about Application Load Balancer 21/10/2025 21/10/2025 AWS ALB (Application Load Balancer) - Step By Step Tutorial, Create an Application Load Balancer (ALB) in AWS - AWS Elastic Load Balancing Tutorial for Beginners - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 3 - Learn how to deploy the system on cloud resources 22/10/2025 22/10/2025 - Code backend User Service, Notification Service - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. 4 - Code backend User Service, Notification Service 23/10/2025 23/10/2025 - Code frontend: Develop Detail Page and integrate Get By ID API. Build advanced Search/Filter functionality. Build modals, popups, drag-and-drop features. Complete 80% of the main business flow. 5 - Code backend User Service, Notification Service 24/10/2025 24/10/2025 - Code frontend: Build modals, popups, drag-and-drop features. Complete 80% of the main business flow. - Test deploying the Frontend on S3",
     "tags": [],
     "title": "Week 7 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.7-week_7/index.html"
+    "uri": "/en/1-worklog/1.7-week_7/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -357,7 +357,7 @@ var relearn_searchindex = [
     "description": "Xây dựng hệ thống đa tenant resilient với hàng đợi công bằng Amazon SQS\rTác giả: Maximilian Schellhorn \u0026 Dirk Fröhner\nNgày: 21/07/2025\nChuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to\nGiới thiệu\rHôm nay, AWS giới thiệu Amazon Simple Queue Service (Amazon SQS) fair queues — một tính năng mới giúp giảm thiểu ảnh hưởng “noisy neighbor” trong các hệ thống đa tenant. Với fair queues, ứng dụng của bạn trở nên resilient hơn và dễ vận hành hơn, giảm chi phí vận hành trong khi cải thiện chất lượng dịch vụ cho khách hàng.",
     "tags": [],
     "title": "Blog 8",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_8/index.html"
+    "uri": "/en/3-translated_blogs/blog_8/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -365,7 +365,7 @@ var relearn_searchindex = [
     "description": "Week 8 Objectives\rCode Backend User Service and Notification Service Code Frontend Explore the Application Load Balancer service Learn how to deploy the system on cloud resources Test deploying the Frontend on S3 Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 27/10/2025 27/10/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 28/10/2025 28/10/2025 - Code backend User Service, Notification Service - Learn and practice ALB 3 - Code front end: Write Unit Tests for key components and functions. Perform Integration Tests for main business flows. 29/10/2025 29/10/2025 - Code backend User Service, Notification Service - Experiment deploy static resource on S3 4 - Code front end: Optimize loading performance (Code Splitting, Lazy Loading). 30/10/2025 30/10/2025 - Code backend User Service, Notification Service 5 - Code front end: Improve Accessibility (A11Y) and error handling (Error Boundaries). 31/10/2025 31/10/2025",
     "tags": [],
     "title": "Week 8 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.8-week_8/index.html"
+    "uri": "/en/1-worklog/1.8-week_8/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -373,7 +373,7 @@ var relearn_searchindex = [
     "description": "Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald\rTác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer\nNgày: 21/07/2025\nChuyên mục: Amazon Braket – Quantum Technologies\nGiới thiệu\rAmazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, chúng tôi mở rộng phần cứng có sẵn trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM. Thiết bị, có tên Emerald, là một QPU siêu dẫn 54 qubit, đem đến cho khách hàng các cổng (gates) có độ trung thực cao hơn và kết nối lưới vuông (full square lattice connectivity).",
     "tags": [],
     "title": "Blog 9",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_9/index.html"
+    "uri": "/en/3-translated_blogs/blog_9/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -381,7 +381,7 @@ var relearn_searchindex = [
     "description": "Week 9 Objectives\rReview and check backend service code Develop and integrate frontend features for Notification \u0026 Auth Adjust and refine system architecture through team discussions Implement and update WebSocket for real-time notifications Integrate Google OAuth2 login for Authentication Service Fix bugs related to WebSocket reconnection and authentication state Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 03/11/2025 03/11/2025 - Build the Notification interface for the project, integrate the APIs, and establish a WebSocket connection to the backend. - Check the services code 2 - Update WebSocket for Notification Service 04/11/2025 04/11/2025 - Refactor NotificationService flow to support real-time push notifications - Code front end: Review services UI for flaws 3 - Implement OAuth2 Login Google for Auth Service 05/11/2025 05/11/2025 - Test login flow and integrate Google OAuth callback - Update worklog 4 - Continue integrating Notification \u0026 Auth features on frontend 06/11/2025 06/11/2025 - Fix bugs related to WebSocket reconnection \u0026 auth state 5 - Testing for the week’s features 07/11/2025 07/11/2025 - Prepare weekly report \u0026 deployment checklist",
     "tags": [],
     "title": "Week 9 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.9-week_9/index.html"
+    "uri": "/en/1-worklog/1.9-week_9/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -389,7 +389,7 @@ var relearn_searchindex = [
     "description": "Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock\rTác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)\nNgày: 04 tháng 8 năm 2025\nThể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI Tạo sinh ",
     "tags": [],
     "title": "Blog 10",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_10/index.html"
+    "uri": "/en/3-translated_blogs/blog_10/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -397,7 +397,7 @@ var relearn_searchindex = [
     "description": "Week 10 Objectives\rConduct internal UAT for frontend, collect feedback, fix UI issues, and refine user interface throughout the week Fix backend bugs mainly in Task Service, with additional fixes in User Service Participate in team meetings to discuss development workflow, architecture adjustments, and backend issues Update worklogs and maintain progress tracking Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 10/11/2025 10/11/2025 - Update worklog 2 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. 11/11/2025 11/11/2025 - Code back end: Fix bugs in Task Service 3 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. 12/11/2025 12/11/2025 - Code back end: Fix bugs in Task Service 4 - Teem meeting to discuss about the architecture, backend bugs 13/11/2025 13/11/2025 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback. - Code back end: Fix bugs in Task Service, User Service 5 - Update worklog 14/11/2025 14/11/2025 - Code front end: Conduct internal UAT (User Acceptance Testing). Collect feedback and fix detected issues. Refine UI based on feedback.",
     "tags": [],
     "title": "Week 10 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.10-week_10/index.html"
+    "uri": "/en/1-worklog/1.10-week_10/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -405,7 +405,7 @@ var relearn_searchindex = [
     "description": "Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật\rTác giả: Kartik Bheemisetty, và David MacDonald\nNgày: 01 tháng 8 năm 2025\nThể loại: AWS WAF, Thông lệ tốt nhất, Bảo mật, Danh tính, \u0026 Tuân thủ, Hướng dẫn kỹ thuật, Lãnh đạo tư tưởng\nGiới thiệu\rTrình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 để đo lường kích thước của web, và giờ đây chúng đã phát triển thành các bot hiện đại được hỗ trợ bởi AI tự hành. Internet ngày nay ngày càng có nhiều và bị thống trị bởi các bot AI tự động tương tác với các ứng dụng để hỗ trợ các tác vụ liên quan đến AI.",
     "tags": [],
     "title": "Blog 11",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_11/index.html"
+    "uri": "/en/3-translated_blogs/blog_11/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -413,7 +413,7 @@ var relearn_searchindex = [
     "description": "Week 11 Objectives\rFind bugs and deploy Complete the solution architecture Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to discuss about the development process 17/11/2025 17/11/2025 - Adjust the solution architecture - Code back end: Fix bugs in User Service 2 - Code back end: Fix bugs in User Service 3 - Adjust solution architecture 19/11/2025 19/11/2025 - Team meeting to review existing flaws in Frontend and Backend 4 - Adjust solution architecture 20/11/2025 20/11/2025 5 - Team meeting 21/11/2025 21/11/2025 - Experimental deploy VPC, Subnets",
     "tags": [],
     "title": "Week 11 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.11-week_11/index.html"
+    "uri": "/en/1-worklog/1.11-week_11/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Translated Blogs",
@@ -421,7 +421,7 @@ var relearn_searchindex = [
     "description": "Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)\rBởi: Bhaskar Rao, Saqib M, Dipkumar Mehta, và Murtuza Kainan\nNgày: 01 tháng 8 năm 2025\nThể loại: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Tương tác khách hàng, Giải pháp khách hàng, Hướng dẫn kỹ thuật",
     "tags": [],
     "title": "Blog 12",
-    "uri": "/AWS-Workshop/en/3-translated_blogs/blog_12/index.html"
+    "uri": "/en/3-translated_blogs/blog_12/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -429,7 +429,7 @@ var relearn_searchindex = [
     "description": "Week 12 Objectives\rSummarize and resolve remaining issues in the system Conduct experimental deployment of S3 in a Single Region Practice and get familiar with Amazon RDS MySQL and ElastiCache for Redis Configure Google OAuth for the Authentication Service Adjust the solution architecture to be suitable for a Single Region (considering cost limitations for Free accounts) Successfully deploy frontend resources to S3 Complete the worklog and update the workshop Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 24/11/2025 24/11/2025 - Experimental S3 single region deployment 2 - Complete part 4. Events participated of Workshop 25/11/2025 25/11/2025 - Experimental S3 single region deployment 3 - Experimental VPC deployment 26/11/2025 26/11/2025 - Practice using RDS MySQL, ElastiCacheForRedis 4 - Config Google OAuth 27/11/2025 27/11/2025 - Practice using RDS MySQL, ElastiCacheForRedis 5 - Adjust solution architecture to single-region (as for Free account and cost limitations) 28/11/2025 28/11/2025 - Deploy frontend resources to S3 successfully - Update worklog, workshop",
     "tags": [],
     "title": "Week 12 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.12-week_12/index.html"
+    "uri": "/en/1-worklog/1.12-week_12/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -437,7 +437,7 @@ var relearn_searchindex = [
     "description": "Week 13 Objectives\rReview and resolve remaining setup issues from previous deployments Set up VPC, Subnets, Internet Gateway, and Security Groups Configure Application Load Balancer (ALB) Deploy backend and frontend images to ECR and ECS Fargate Set up Amazon RDS MySQL Configure Google OAuth redirect for Authentication Service Organize and update worklog categories based on team members Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Team meeting to to review issues needed to be solve 01/11/2025 01/11/2025 - Setup VPC, Subnets, Internet Gateway, Security groups - Update worklog: create worklog categories base on team members 2 - Setup VPC, Subnets, Internet Gateway 02/11/2025 02/11/2025 - Setup ALB, Security groups, RDS MySQL 3 - Setup VPC, Subnets, Internet Gateway, Security groups 03/11/2025 03/11/2025 - Deploy images to ECR, ECS Fargate - Setup ALB, Security groups, RDS MySQL 4 - Deploy images to ECR, ECS Fargate, ALB, RDS 04/11/2025 04/11/2025 - Setup ALB, Security groups, RDS MySQL 5 - Deploy images to ECR, ECS Fargate, ALB, RDS 05/11/2025 05/11/2025 - Setup ALB, Security groups, RDS MySQL - Config Google OAuth Redirect",
     "tags": [],
     "title": "Week 13 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.13-week_13/index.html"
+    "uri": "/en/1-worklog/1.13-week_13/index.html"
   },
   {
     "breadcrumb": "Internship Report \u003e Worklog",
@@ -445,7 +445,7 @@ var relearn_searchindex = [
     "description": "Week 14 Objectives\rComplete deployment Complete workshop Run test Tasks to be carried out this week\rDay Task Start Date Completion Date Reference Material 1 - Complete deploying ECS Fargate, run test 08/11/2025 08/11/2025 - Complete worklog \u0026 Workshop 2 09/11/2025 09/11/2025 3 10/11/2025 10/11/2025 4 11/11/2025 11/11/2025 5 12/11/2025 12/11/2025",
     "tags": [],
     "title": "Week 14 Worklog",
-    "uri": "/AWS-Workshop/en/1-worklog/1.14-week_14/index.html"
+    "uri": "/en/1-worklog/1.14-week_14/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -453,7 +453,7 @@ var relearn_searchindex = [
     "description": "",
     "tags": [],
     "title": "Categories",
-    "uri": "/AWS-Workshop/en/categories/index.html"
+    "uri": "/en/categories/index.html"
   },
   {
     "breadcrumb": "Internship Report",
@@ -461,6 +461,6 @@ var relearn_searchindex = [
     "description": "",
     "tags": [],
     "title": "Tags",
-    "uri": "/AWS-Workshop/en/tags/index.html"
+    "uri": "/en/tags/index.html"
   }
 ]
