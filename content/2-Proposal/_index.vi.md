@@ -162,6 +162,11 @@ Dự án này áp dụng kiến trúc **Khả năng Sẵn sàng Cao Đơn Vùng 
 
 ### **3\. Kiến Trúc Giải Pháp**
 
+<figure>
+  <img src="/images/todolist-architecture-6.jpg" alt="" style="max-width:100%;height:auto;">
+  <figcaption>Figure 1. Single-Region ECS Fargate Architecture</figcaption>
+</figure>
+
 #### **3.1. Tổng Quan Kiến Trúc**
 
 **Khu Vực Triển Khai Chính: ap-southeast-1 (Singapore)**

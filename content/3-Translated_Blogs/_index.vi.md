@@ -23,8 +23,8 @@ pre = "<b>3. </b>"
 
 **Blog 9:** [Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald]({{% relref "3-Translated_Blogs/Blog_9/_index.md" %}})
 
-**Week 10:** [Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock]({{% relref "3-Translated_Blogs/Blog_10/_index.md" %}})
+**Blog 10:** [Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock]({{% relref "3-Translated_Blogs/Blog_10/_index.md" %}})
 
-**Week 11:** [Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật]({{% relref "3-Translated_Blogs/Blog_11/_index.md" %}})
+**Blog 11:** [Làm thế nào để quản lý Bot AI bằng AWS WAF và tăng cường bảo mật]({{% relref "3-Translated_Blogs/Blog_11/_index.md" %}})
 
-**Week 12:** [Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)]({{% relref "3-Translated_Blogs/Blog_12/_index.md" %}})
+**Blog 12:** [Hỗ trợ tùy chỉnh trên quy mô lớn: Biến một KB (Cơ sở kiến thức) Salesforce hợp nhất thành các tác tử AI tập trung vào LOB (Ngành kinh doanh)]({{% relref "3-Translated_Blogs/Blog_12/_index.md" %}})

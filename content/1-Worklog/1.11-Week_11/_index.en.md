@@ -2,11 +2,11 @@
 title = "Week 11 Worklog"
 weight = 11
 chapter = false
-pre = "<b> 1.1.11. </b>"
+pre = "<b> 1.11. </b>"
 +++
 
 ## Week 11 Objectives
-- Find bugs and fix bugs
+- Find bugs and deploy
 - Complete the solution architecture
 
 ## Tasks to be carried out this week

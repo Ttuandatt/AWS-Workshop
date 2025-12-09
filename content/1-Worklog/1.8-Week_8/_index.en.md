@@ -2,7 +2,7 @@
 title = "Week 8 Worklog"
 weight = 8
 chapter = false
-pre = "<b> 1.1.8. </b>"
+pre = "<b> 1.8. </b>"
 +++
 
 ## Week 8 Objectives

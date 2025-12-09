@@ -52,4 +52,3 @@ pre = " <b> 4.1.  </b> "
 
 > Việc tham gia sự kiện **Kick-off AWS First Cloud Journey Workforce – OJT FALL 2025** đã mang lại cái nhìn tổng quan về chương trình, các cơ hội nghề nghiệp thực tế và giúp kết nối với các chuyên gia AWS cũng như cộng đồng sinh viên cùng định hướng, tạo nền tảng vững chắc cho hành trình phát triển trong lĩnh vực điện toán đám mây.
 
-{{< figurecaption src="/images/event1.jpg" caption="">}}

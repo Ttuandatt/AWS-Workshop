@@ -40,3 +40,8 @@ The company culture is very open and positive, where everyone communicates freel
 **6\. Internship Policies / Benefits**
 
 The greatest benefit of the internship program is the strong foundational knowledge it provides---particularly in understanding how cloud environments operate in real-world settings. This experience offered me practical insights into the rapidly growing cloud industry, as well as the essential skills needed to build a solid professional path in technology. The supportive environment, exposure to real projects, and structured learning resources made this internship truly valuable.
+
+> A special thank you to Master Hung and the seniors who founded the FCAJ program, giving students like us the opportunity and environment to get familiar with and practice using Cloud tools and services, as well as to connect with many peers who share the same passion.  
+> I would also like to express my gratitude to the Support Team for their dedicated assistance throughout our internship.  
+> And thank you to Mr. Kevin Tran, the Captain of AWS CLOUD CLUB SGU, for inspiring and motivating us throughout this journey.  
+> Thank you to everyone.

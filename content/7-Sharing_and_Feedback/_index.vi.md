@@ -40,3 +40,8 @@ Văn hóa công ty rất cởi mở và tích cực, nơi mọi người giao ti
 **6. Chính sách và quyền lợi của chương trình thực tập**
 
 Lợi ích lớn nhất mà chương trình thực tập mang lại chính là nền tảng kiến thức vững chắc, đặc biệt là sự hiểu biết về cách một môi trường cloud vận hành trong thực tế. Trải nghiệm này giúp tôi có cái nhìn thực tế hơn về ngành điện toán đám mây đang phát triển mạnh mẽ, đồng thời trang bị những kỹ năng quan trọng cho con đường sự nghiệp trong tương lai. Môi trường hỗ trợ tích cực, cơ hội được tham gia các dự án thực tế cùng với hệ thống tài liệu học tập bài bản đã khiến chương trình thực tập này trở nên vô cùng ý nghĩa và đáng giá.
+
+> Lời cảm ơn đặc biệt đến Sư Phụ Hưng và các tiền bối đã khởi tạo nên chương trình FCAJ, để các sinh viên như chúng em có cơ hội và môi trường làm quen, thực hành với các công cụ, dịch vụ Cloud, và kết nối với nhiều đồng bạn cùng đam mê.  
+> Bên cạnh đó, em xin gửi lời cảm ơn đến Support Team đã hỗ trợ tận tình trong suốt quá trình thực tập của chúng em.  
+> Và xin cảm ơn anh Kevin Trần, Captain của AWS CLOUD CLUB SGU, đã truyền lửa cho chúng em trong suốt quá trình vừa qua.  
+> Xin cảm ơn cả nhà.

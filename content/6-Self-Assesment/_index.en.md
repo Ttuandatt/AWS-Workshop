@@ -28,7 +28,7 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 | --- | --- | --- | --- | --- | --- |
 | 1 | Technical Competence | Applying backend knowledge, building REST APIs, and writing maintainable code | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 2 | Cloud Skills (AWS) | Ability to work with AWS services such as EC2, ECS, Lambda, S3, IAM, CloudFront, etc. | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
-| 3 | System Design Ability | Understanding of microservices, multi-region architecture, scalability, and best practices | <input type="checkbox"> | <input type="checkbox" checked> | <input type="checkbox"> |
+| 3 | System Design Ability | Understanding of microservices, multi-region architecture, scalability, and best practices | <input type="checkbox"> | <input type="checkbox"> | <input type="checkbox" checked> |
 | 4 | Learning Agility | Quick adaptation to new tools, frameworks, and cloud concepts | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 5 | Initiative & Ownership | Ability to self-start tasks, research solutions, and handle responsibilities independently | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 6 | Delivery Quality | Accuracy, stability, and completeness of delivered tasks or features | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |

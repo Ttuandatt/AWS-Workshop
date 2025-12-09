@@ -2,10 +2,17 @@
 title = "Week 12 Worklog"
 weight = 12
 chapter = false
-pre = "<b> 1.1.12. </b>"
+pre = "<b> 1.12. </b>"
 +++
 
 ## Week 12 Objectives
+- Summarize and resolve remaining issues in the system
+- Conduct experimental deployment of S3 in a Single Region
+- Practice and get familiar with Amazon RDS MySQL and ElastiCache for Redis
+- Configure Google OAuth for the Authentication Service
+- Adjust the solution architecture to be suitable for a Single Region (considering cost limitations for Free accounts)
+- Successfully deploy frontend resources to S3
+- Complete the worklog and update the workshop
 
 
 ## Tasks to be carried out this week

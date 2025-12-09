@@ -2,7 +2,7 @@
 title = "Week 3 Worklog"
 weight = 3
 chapter = false
-pre = "<b>1.1.3. </b>"
+pre = "<b>1.3. </b>"
 +++
 
 ## Week 3 Objectives

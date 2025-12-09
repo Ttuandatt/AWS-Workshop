@@ -2,10 +2,17 @@
 title = "Week 13 Worklog"
 weight = 13
 chapter = false
-pre = "<b> 1.1.13. </b>"
+pre = "<b> 1.13. </b>"
 +++
 
 ## Week 13 Objectives
+- Review and resolve remaining setup issues from previous deployments  
+- Set up VPC, Subnets, Internet Gateway, and Security Groups  
+- Configure Application Load Balancer (ALB)  
+- Deploy backend and frontend images to ECR and ECS Fargate  
+- Set up Amazon RDS MySQL  
+- Configure Google OAuth redirect for Authentication Service  
+- Organize and update worklog categories based on team members
 
 
 ## Tasks to be carried out this week

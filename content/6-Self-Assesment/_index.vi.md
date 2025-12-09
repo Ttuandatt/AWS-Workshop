@@ -29,7 +29,7 @@ Trong suốt quá trình này, tôi cũng:
 | --- | --- | --- | --- | --- | --- |
 | 1 | Năng lực chuyên môn | Áp dụng kiến thức backend, xây dựng REST API và viết mã dễ bảo trì | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 2 | Kỹ năng Cloud (AWS) | Khả năng làm việc với các dịch vụ AWS như EC2, ECS, Lambda, S3, IAM, CloudFront, v.v | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
-| 3 | Khả năng thiết kế hệ thống | Hiểu biết về microservices, kiến trúc đa vùng, khả năng mở rộng và best practices | <input type="checkbox"> | <input type="checkbox" checked> | <input type="checkbox"> |
+| 3 | Khả năng thiết kế hệ thống | Hiểu biết về microservices, kiến trúc đa vùng, khả năng mở rộng và best practices | <input type="checkbox"> | <input type="checkbox"> | <input type="checkbox" checked> |
 | 4 | Khả năng học hỏi | Thích nghi nhanh với công cụ, framework và các khái niệm cloud mới | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 5 | Tinh thần chủ động và trách nhiệm | Chủ động bắt đầu công việc, tự nghiên cứu giải pháp và chịu trách nhiệm với nhiệm vụ được giao | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |
 | 6 | Chất lượng bàn giao công việc | Độ chính xác, tính ổn định và mức độ hoàn thiện của các nhiệm vụ hoặc tính năng | <input type="checkbox" checked> | <input type="checkbox"> | <input type="checkbox"> |

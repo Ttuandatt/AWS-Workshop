@@ -1,5 +1,5 @@
 +++
-title = "Mystic Skills"
+title = "Bí Thuật"
 weight = 5
 chapter = false
 pre = "<b>5.5. </b>"
@@ -7,9 +7,15 @@ pre = "<b>5.5. </b>"
 
 
 ### **1. Hugo Commands**
+1.1
+```bash
+hugo build
+```
 
-
-
+1.2
+```bash
+hugo server -D
+```
 
 
 ### **2. Git Commands**

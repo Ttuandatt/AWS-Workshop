@@ -2,10 +2,13 @@
 title = "Week 14 Worklog"
 weight = 14
 chapter = false
-pre = "<b> 1.1.14. </b>"
+pre = "<b> 1.14. </b>"
 +++
 
 ## Week 14 Objectives
+- Complete deployment
+- Complete workshop
+- Run test
 
 
 ## Tasks to be carried out this week
