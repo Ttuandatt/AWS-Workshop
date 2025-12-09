@@ -43,11 +43,11 @@
       <description>Giai đoạn này triển khai các ứng dụng container lên ECS Fargate theo thứ tự cụ thể để đảm bảo các phụ thuộc được giải quyết đúng cách.&#xA;Cấu hình mạng quan trọng&#xD;Với tất cả các service triển khai, các thiết lập mạng sau là bắt buộc:&#xA;1. VPC: SGU-Microservices-VPC&#xA;2. Subnets: Chọn cả hai Public Subnets (bắt buộc để kéo image)</description>
     </item>
     <item>
-      <title>Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test)</title>
+      <title>Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối)</title>
       <link>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html</guid>
-      <description>This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.&#xA;DNS Configuration&#xD;Step 1: Create Route 53 A Record&#xA;Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.</description>
+      <description>Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).&#xA;Cấu hình DNS&#xD;Bước 1: Tạo bản ghi A (A Record) trên Route 53&#xA;Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).</description>
     </item>
   </channel>
 </rss>

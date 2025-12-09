@@ -5,53 +5,53 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
-DNS ConfigurationStep 1: Create Route 53 A Record
-Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta name="description" content="Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).
+Cấu hình DNSBước 1: Tạo bản ghi A (A Record) trên Route 53
+Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
-DNS ConfigurationStep 1: Create Route 53 A Record
-Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta name="twitter:title" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).
+Cấu hình DNSBước 1: Tạo bản ghi A (A Record) trên Route 53
+Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
-    <meta property="og:title" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
-DNS ConfigurationStep 1: Create Route 53 A Record
-Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
+    <meta property="og:title" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).
+Cấu hình DNSBước 1: Tạo bản ghi A (A Record) trên Route 53
+Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
-DNS ConfigurationStep 1: Create Route 53 A Record
-Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click Create record Configure record: Record name: api Record type: A Alias: Enable Route traffic to: Alias to Application Load Balancer Region: Asia Pacific (Singapore) Load balancer: Select sgu-alb Click Create records DNS Propagation: Wait 2-5 minutes for DNS changes to propagate.">
-    <meta itemprop="wordCount" content="752">
-    <title>Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập</title>
+    <meta itemprop="name" content="Hoàn thiện & Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).
+Cấu hình DNSBước 1: Tạo bản ghi A (A Record) trên Route 53
+Điều hướng đến Route 53 → Hosted zones (Vùng lưu trữ).">
+    <meta itemprop="wordCount" content="1221">
+    <title>Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" rel="alternate" hreflang="vi">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.xml" rel="alternate" type="application/rss+xml" title="Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test) :: Báo Cáo Thực Tập">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765240302" rel="stylesheet">
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765240302" defer></script>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.xml" rel="alternate" type="application/rss+xml" title="Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối) :: Báo Cáo Thực Tập">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765256693" rel="stylesheet">
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765256693" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765240302";
+      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765256693";
     </script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765256693" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet"></noscript>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765240302" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765240302" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765240302" rel="stylesheet" id="R-format-style">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765256693" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765256693" rel="stylesheet"></noscript>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765256693" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765256693" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765256693" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -103,7 +103,7 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765240302" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765256693" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html">
     <div id="R-body" class="default-animation">
@@ -137,29 +137,29 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
   <ul>
     <li>
       <ul>
-        <li><a href="#dns-configuration">DNS Configuration</a></li>
-        <li><a href="#google-oauth-configuration-update">Google OAuth Configuration Update</a></li>
-        <li><a href="#system-health-verification">System Health Verification</a></li>
-        <li><a href="#performance-baseline">Performance Baseline</a></li>
-        <li><a href="#post-deployment-security-checklist">Post-Deployment Security Checklist</a></li>
-        <li><a href="#final-deployment-checklist">Final Deployment Checklist</a></li>
-        <li><a href="#known-limitations-and-future-improvements">Known Limitations and Future Improvements</a></li>
+        <li><a href="#cấu-hình-dns">Cấu hình DNS</a></li>
+        <li><a href="#cập-nhật-cấu-hình-google-oauth">Cập nhật Cấu hình Google OAuth</a></li>
+        <li><a href="#xác-minh-tình-trạng-hệ-thống-system-health">Xác minh Tình trạng Hệ thống (System Health)</a></li>
+        <li><a href="#thiết-lập-mức-hiệu-năng-cơ-sở-performance-baseline">Thiết lập Mức hiệu năng cơ sở (Performance Baseline)</a></li>
+        <li><a href="#danh-sách-kiểm-tra-bảo-mật-sau-triển-khai">Danh sách kiểm tra bảo mật sau triển khai</a></li>
+        <li><a href="#danh-sách-kiểm-tra-triển-khai-cuối-cùng">Danh sách kiểm tra triển khai cuối cùng</a></li>
+        <li><a href="#các-hạn-chế-đã-biết-và-cải-tiến-trong-tương-lai">Các hạn chế đã biết và Cải tiến trong tương lai</a></li>
       </ul>
     </li>
-    <li><a href="#troubleshooting-guide">Troubleshooting Guide</a>
+    <li><a href="#hướng-dẫn-khắc-phục-sự-cố-troubleshooting">Hướng dẫn Khắc phục sự cố (Troubleshooting)</a>
       <ul>
-        <li><a href="#quick-diagnosis-commands">Quick Diagnosis Commands</a></li>
-        <li><a href="#emergency-rollback-procedure">Emergency Rollback Procedure</a></li>
+        <li><a href="#các-lệnh-chẩn-đoán-nhanh">Các lệnh chẩn đoán nhanh</a></li>
+        <li><a href="#quy-trình-rollback-khẩn-cấp">Quy trình Rollback khẩn cấp</a></li>
       </ul>
     </li>
-    <li><a href="#success-criteria">Success Criteria</a></li>
+    <li><a href="#tiêu-chí-thành-công">Tiêu chí thành công</a></li>
   </ul>
 </nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Quy trình triển khai</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Triển khai Backend</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test)</span><meta itemprop="position" content="5"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Quy trình triển khai</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><span itemprop="name">Triển khai Backend</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối)</span><meta itemprop="position" content="5"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -208,11 +208,11 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
   <header class="headline">
   </header>
 
-<h1 id="hoàn-thiện--xác-nhận-route-53-google-console-final-test">Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test)</h1>
+<h1 id="hoàn-thiện--xác-nhận-route-53-google-console-kiểm-thử-cuối">Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối)</h1>
 
-<p>This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.</p>
-<h3 id="dns-configuration">
-  DNS Configuration
+<p>Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).</p>
+<h3 id="cấu-hình-dns">
+  Cấu hình DNS
 
 
 
@@ -221,31 +221,52 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Step 1: Create Route 53 A Record</strong></p>
+</h3><p><strong>Bước 1: Tạo bản ghi A (A Record) trên Route 53</strong></p>
 <ol>
-<li>Navigate to <strong>Route 53</strong> → <strong>Hosted zones</strong></li>
-<li>Select <code>sgutodolist.com</code> hosted zone</li>
-<li>Click <strong>Create record</strong></li>
-<li>Configure record:
+<li>
+<p>Điều hướng đến <strong>Route 53</strong> → <strong>Hosted zones</strong> (Vùng lưu trữ).</p>
+</li>
+<li>
+<p>Chọn hosted zone <code>sgutodolist.com</code>.</p>
+</li>
+<li>
+<p>Nhấn vào <strong>Create record</strong> (Tạo bản ghi).</p>
+</li>
+<li>
+<p>Cấu hình bản ghi:</p>
 <ul>
-<li><strong>Record name</strong>: <code>api</code></li>
-<li><strong>Record type</strong>: A</li>
-<li><strong>Alias</strong>: Enable</li>
-<li><strong>Route traffic to</strong>: Alias to Application Load Balancer</li>
-<li><strong>Region</strong>: Asia Pacific (Singapore)</li>
-<li><strong>Load balancer</strong>: Select <code>sgu-alb</code></li>
+<li>
+<p><strong>Record name</strong>: <code>api</code></p>
+</li>
+<li>
+<p><strong>Record type</strong>: A</p>
+</li>
+<li>
+<p><strong>Alias</strong>: Bật (Enable)</p>
+</li>
+<li>
+<p><strong>Route traffic to</strong>: Alias to Application Load Balancer</p>
+</li>
+<li>
+<p><strong>Region</strong>: Asia Pacific (Singapore)</p>
+</li>
+<li>
+<p><strong>Load balancer</strong>: Chọn <code>sgu-alb</code></p>
+</li>
 </ul>
 </li>
-<li>Click <strong>Create records</strong></li>
+<li>
+<p>Nhấn <strong>Create records</strong>.</p>
+</li>
 </ol>
-<p><strong>DNS Propagation:</strong> Wait 2-5 minutes for DNS changes to propagate.</p>
-<p><strong>Verification:</strong></p>
+<p><strong>Lan truyền DNS:</strong> Chờ khoảng 2-5 phút để các thay đổi DNS được cập nhật trên toàn hệ thống.</p>
+<p><strong>Xác minh:</strong></p>
 <p>bash</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>nslookup sgutodolist.com
-# Should return ALB&#39;s IP addresses</code></pre></div>
+# Kết quả trả về danh sách địa chỉ IP của ALB</code></pre></div>
 <hr>
-<h3 id="google-oauth-configuration-update">
-  Google OAuth Configuration Update
+<h3 id="cập-nhật-cấu-hình-google-oauth">
+  Cập nhật Cấu hình Google OAuth
 
 
 
@@ -254,21 +275,29 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Step 1: Update Authorized Redirect URIs</strong></p>
+</h3><p><strong>Bước 1: Cập nhật các URI chuyển hướng được ủy quyền (Authorized Redirect URIs)</strong></p>
 <ol>
-<li>Access <strong>Google Cloud Console</strong> (console.cloud.google.com)</li>
-<li>Navigate to <strong>APIs &amp; Services</strong> → <strong>Credentials</strong></li>
-<li>Select your OAuth 2.0 Client ID</li>
-<li>Under <strong>Authorized redirect URIs</strong>, add:</li>
+<li>
+<p>Truy cập <strong>Google Cloud Console</strong> (console.cloud.google.com).</p>
+</li>
+<li>
+<p>Điều hướng đến <strong>APIs &amp; Services</strong> → <strong>Credentials</strong> (Thông tin xác thực).</p>
+</li>
+<li>
+<p>Chọn <strong>OAuth 2.0 Client ID</strong> của dự án.</p>
+</li>
+<li>
+<p>Trong phần <strong>Authorized redirect URIs</strong>, thêm đường dẫn sau:</p>
+</li>
 </ol>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   https://sgutodolist.com/api/auth/login/oauth2/code/google</code></pre></div>
 <ol>
-<li>Click <strong>Save</strong></li>
+<li>Nhấn <strong>Save</strong> (Lưu).</li>
 </ol>
-<p><strong>Note:</strong> Keep existing localhost URIs for local development.</p>
+<p><strong>Lưu ý:</strong> Giữ nguyên các URI localhost hiện có để phục vụ cho việc phát triển cục bộ (local).</p>
 <hr>
-<h3 id="system-health-verification">
-  System Health Verification
+<h3 id="xác-minh-tình-trạng-hệ-thống-system-health">
+  Xác minh Tình trạng Hệ thống (System Health)
 
 
 
@@ -277,9 +306,9 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Perform the following tests to verify deployment success:</p>
-<h4 id="test-1-api-gateway-health-check">
-  Test 1: API Gateway Health Check
+</h3><p>Thực hiện các bài kiểm tra sau để xác nhận việc triển khai thành công:</p>
+<h4 id="test-1-kiểm-tra-health-check-của-api-gateway">
+  Test 1: Kiểm tra Health Check của API Gateway
 
 
 
@@ -290,13 +319,13 @@ Navigate to Route 53 → Hosted zones Select sgutodolist.com hosted zone Click C
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><p>bash</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>curl https://sgutodolist.com/actuator/health</code></pre></div>
-<p><strong>Expected Response:</strong></p>
+<p><strong>Phản hồi mong đợi:</strong></p>
 <p>json</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>{
   &#34;status&#34;: &#34;UP&#34;
 }</code></pre></div>
-<h4 id="test-2-individual-service-health-checks">
-  Test 2: Individual Service Health Checks
+<h4 id="test-2-kiểm-tra-health-check-của-từng-service">
+  Test 2: Kiểm tra Health Check của từng Service
 
 
 
@@ -317,9 +346,9 @@ curl https://sgutodolist.com/api/taskflow/actuator/health
 
 # Notification Service
 curl https://sgutodolist.com/api/notification/actuator/health</code></pre></div>
-<p>All should return <code>{&quot;status&quot;:&quot;UP&quot;}</code>.</p>
-<h4 id="test-3-service-discovery-verification">
-  Test 3: Service Discovery Verification
+<p>Tất cả đều phải trả về <code>{&quot;status&quot;:&quot;UP&quot;}</code>.</p>
+<h4 id="test-3-xác-minh-service-discovery">
+  Test 3: Xác minh Service Discovery
 
 
 
@@ -328,21 +357,21 @@ curl https://sgutodolist.com/api/notification/actuator/health</code></pre></div>
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><p>From the Bastion Host, verify internal DNS resolution:</p>
+</h4><p>Từ Bastion Host, kiểm tra khả năng phân giải DNS nội bộ:</p>
 <p>bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># SSH to Bastion
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># SSH vào Bastion
 ssh -i sgutodolist-key.pem ec2-user@[BASTION-IP]
 
-# Test DNS resolution
+# Test phân giải DNS
 nslookup auth.sgu.local
 nslookup user.sgu.local
 nslookup taskflow.sgu.local
 nslookup notification.sgu.local
 nslookup ai-model.sgu.local
 nslookup kafka.sgu.local</code></pre></div>
-<p>All should resolve to internal ECS task IP addresses.</p>
-<h4 id="test-4-database-connectivity">
-  Test 4: Database Connectivity
+<p>Tất cả phải phân giải ra địa chỉ IP của các ECS task nội bộ.</p>
+<h4 id="test-4-kết-nối-cơ-sở-dữ-liệu">
+  Test 4: Kết nối Cơ sở dữ liệu
 
 
 
@@ -351,14 +380,20 @@ nslookup kafka.sgu.local</code></pre></div>
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h4><p>Verify services can connect to RDS:</p>
+</h4><p>Xác minh các service có thể kết nối tới RDS:</p>
 <ol>
-<li>Check CloudWatch Logs for any service</li>
-<li>Look for successful database connection messages</li>
-<li>Verify no connection errors in startup logs</li>
+<li>
+<p>Kiểm tra <strong>CloudWatch Logs</strong> cho bất kỳ service nào.</p>
+</li>
+<li>
+<p>Tìm các thông báo kết nối cơ sở dữ liệu thành công.</p>
+</li>
+<li>
+<p>Đảm bảo không có lỗi kết nối (connection errors) trong log khởi động.</p>
+</li>
 </ol>
-<h4 id="test-5-redis-connectivity">
-  Test 5: Redis Connectivity
+<h4 id="test-5-kết-nối-redis">
+  Test 5: Kết nối Redis
 
 
 
@@ -368,11 +403,11 @@ nslookup kafka.sgu.local</code></pre></div>
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><p>bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># From Bastion Host
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Từ Bastion Host
 redis-cli -h [REDIS-ENDPOINT] ping
-# Expected response: PONG</code></pre></div>
-<h4 id="test-6-end-to-end-authentication-flow">
-  Test 6: End-to-End Authentication Flow
+# Phản hồi mong đợi: PONG</code></pre></div>
+<h4 id="test-6-luồng-xác-thực-end-to-end">
+  Test 6: Luồng xác thực End-to-End
 
 
 
@@ -382,15 +417,25 @@ redis-cli -h [REDIS-ENDPOINT] ping
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h4><ol>
-<li>Access frontend at <code>https://sgutodolist.com</code></li>
-<li>Click &ldquo;Sign in with Google&rdquo;</li>
-<li>Complete OAuth flow</li>
-<li>Verify successful login and token issuance</li>
-<li>Verify user profile loads correctly</li>
+<li>
+<p>Truy cập frontend tại <code>https://sgutodolist.com</code>.</p>
+</li>
+<li>
+<p>Nhấn nút &ldquo;Sign in with Google&rdquo;.</p>
+</li>
+<li>
+<p>Hoàn tất quy trình đăng nhập OAuth.</p>
+</li>
+<li>
+<p>Xác minh đăng nhập thành công và token được cấp phát.</p>
+</li>
+<li>
+<p>Xác minh thông tin hồ sơ người dùng (profile) được tải chính xác.</p>
+</li>
 </ol>
 <hr>
-<h3 id="performance-baseline">
-  Performance Baseline
+<h3 id="thiết-lập-mức-hiệu-năng-cơ-sở-performance-baseline">
+  Thiết lập Mức hiệu năng cơ sở (Performance Baseline)
 
 
 
@@ -399,26 +444,38 @@ redis-cli -h [REDIS-ENDPOINT] ping
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>Record initial performance metrics:</p>
-<p><strong>Response Time Benchmarks:</strong></p>
+</h3><p>Ghi lại các chỉ số hiệu năng ban đầu để làm chuẩn so sánh sau này:</p>
+<p><strong>Đo lường thời gian phản hồi (Response Time):</strong></p>
 <p>bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># API Gateway response time
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Thời gian phản hồi API Gateway
 time curl -o /dev/null -s https://sgutodolist.com/actuator/health
 
-# Auth service response time
+# Thời gian phản hồi Auth service
 time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code></pre></div>
-<p><strong>CloudWatch Metrics to Monitor:</strong></p>
+<p><strong>Các chỉ số CloudWatch cần giám sát:</strong></p>
 <ul>
-<li>ECS Task CPU Utilization</li>
-<li>ECS Task Memory Utilization</li>
-<li>ALB Target Response Time</li>
-<li>ALB Request Count</li>
-<li>RDS CPU Utilization</li>
-<li>Redis CPU Utilization</li>
+<li>
+<p>ECS Task CPU Utilization (Mức sử dụng CPU của Task)</p>
+</li>
+<li>
+<p>ECS Task Memory Utilization (Mức sử dụng RAM của Task)</p>
+</li>
+<li>
+<p>ALB Target Response Time (Thời gian phản hồi mục tiêu ALB)</p>
+</li>
+<li>
+<p>ALB Request Count (Số lượng yêu cầu tới ALB)</p>
+</li>
+<li>
+<p>RDS CPU Utilization</p>
+</li>
+<li>
+<p>Redis CPU Utilization</p>
+</li>
 </ul>
 <hr>
-<h3 id="post-deployment-security-checklist">
-  Post-Deployment Security Checklist
+<h3 id="danh-sách-kiểm-tra-bảo-mật-sau-triển-khai">
+  Danh sách kiểm tra bảo mật sau triển khai
 
 
 
@@ -428,17 +485,31 @@ time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><ul>
-<li><input disabled="" type="checkbox"> All sensitive environment variables secured (not in version control)</li>
-<li><input disabled="" type="checkbox"> Database password meets complexity requirements</li>
-<li><input disabled="" type="checkbox"> Security groups follow least privilege principle</li>
-<li><input disabled="" type="checkbox"> SSL/TLS certificates valid and auto-renewal enabled</li>
-<li><input disabled="" type="checkbox"> Bastion Host accessible only from authorized IPs</li>
-<li><input disabled="" type="checkbox"> CloudWatch Logs retention configured</li>
-<li><input disabled="" type="checkbox"> AWS Budget alerts active</li>
+<li>
+<p><input disabled="" type="checkbox"> Tất cả các biến môi trường nhạy cảm đã được bảo mật (không lưu trong version control).</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Mật khẩu cơ sở dữ liệu đáp ứng yêu cầu về độ phức tạp.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Security Group tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege).</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Chứng chỉ SSL/TLS hợp lệ và đã bật tự động gia hạn.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Bastion Host chỉ có thể truy cập từ các địa chỉ IP được ủy quyền.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Cấu hình thời gian lưu trữ (retention) cho CloudWatch Logs.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Các cảnh báo ngân sách (AWS Budget alerts) đang hoạt động.</p>
+</li>
 </ul>
 <hr>
-<h3 id="final-deployment-checklist">
-  Final Deployment Checklist
+<h3 id="danh-sách-kiểm-tra-triển-khai-cuối-cùng">
+  Danh sách kiểm tra triển khai cuối cùng
 
 
 
@@ -447,40 +518,78 @@ time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Infrastructure:</strong></p>
+</h3><p><strong>Cơ sở hạ tầng:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> VPC and subnets operational</li>
-<li><input disabled="" type="checkbox"> All 4 security groups correctly configured</li>
-<li><input disabled="" type="checkbox"> RDS database accessible and initialized</li>
-<li><input disabled="" type="checkbox"> Redis cache operational</li>
-<li><input disabled="" type="checkbox"> Kafka service running</li>
-<li><input disabled="" type="checkbox"> ALB active with healthy targets</li>
+<li>
+<p><input disabled="" type="checkbox"> VPC và các subnet hoạt động bình thường.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Cả 4 Security Group được cấu hình chính xác.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> RDS database có thể truy cập và đã khởi tạo dữ liệu.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Redis cache hoạt động tốt.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Dịch vụ Kafka đang chạy.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> ALB đang hoạt động với các target ở trạng thái healthy.</p>
+</li>
 </ul>
-<p><strong>Application:</strong></p>
+<p><strong>Ứng dụng:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> All 6 services deployed and running</li>
-<li><input disabled="" type="checkbox"> Service Discovery functional</li>
-<li><input disabled="" type="checkbox"> ALB routing rules working correctly</li>
-<li><input disabled="" type="checkbox"> Health checks passing</li>
-<li><input disabled="" type="checkbox"> CloudWatch Logs collecting data</li>
+<li>
+<p><input disabled="" type="checkbox"> Cả 6 service đã được deploy và đang chạy.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Service Discovery hoạt động tốt.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Các quy tắc định tuyến (routing rules) của ALB hoạt động chính xác.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Health check đều vượt qua (passing).</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> CloudWatch Logs đang thu thập dữ liệu.</p>
+</li>
 </ul>
-<p><strong>Integration:</strong></p>
+<p><strong>Tích hợp:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> DNS record pointing to ALB</li>
-<li><input disabled="" type="checkbox"> SSL certificate valid</li>
-<li><input disabled="" type="checkbox"> Google OAuth configured</li>
-<li><input disabled="" type="checkbox"> Frontend can communicate with backend</li>
-<li><input disabled="" type="checkbox"> Authentication flow working</li>
+<li>
+<p><input disabled="" type="checkbox"> Bản ghi DNS trỏ về ALB chính xác.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Chứng chỉ SSL hợp lệ.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Google OAuth đã được cấu hình.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Frontend có thể giao tiếp với Backend.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Luồng xác thực (Authentication flow) hoạt động.</p>
+</li>
 </ul>
-<p><strong>Monitoring:</strong></p>
+<p><strong>Giám sát:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> CloudWatch dashboards created</li>
-<li><input disabled="" type="checkbox"> Budget alerts configured</li>
-<li><input disabled="" type="checkbox"> Performance baseline recorded</li>
+<li>
+<p><input disabled="" type="checkbox"> CloudWatch Dashboard đã được tạo.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Cảnh báo ngân sách đã cấu hình.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> Đã ghi lại hiệu năng cơ sở (baseline).</p>
+</li>
 </ul>
 <hr>
-<h3 id="known-limitations-and-future-improvements">
-  Known Limitations and Future Improvements
+<h3 id="các-hạn-chế-đã-biết-và-cải-tiến-trong-tương-lai">
+  Các hạn chế đã biết và Cải tiến trong tương lai
 
 
 
@@ -489,26 +598,48 @@ time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p><strong>Current Architecture Constraints:</strong></p>
+</h3><p><strong>Các ràng buộc kiến trúc hiện tại:</strong></p>
 <ol>
-<li><strong>Single-AZ Database</strong>: RDS is deployed in a single availability zone for cost optimization</li>
-<li><strong>Single-Node Redis</strong>: No automatic failover for cache layer</li>
-<li><strong>Single-Node Kafka</strong>: Not production-grade for high-throughput scenarios</li>
-<li><strong>Public Subnet ECS Tasks</strong>: Security trade-off for cost savings</li>
+<li>
+<p><strong>Single-AZ Database</strong>: RDS được triển khai trên một Availability Zone duy nhất để tối ưu chi phí.</p>
+</li>
+<li>
+<p><strong>Single-Node Redis</strong>: Không có cơ chế tự động chuyển đổi dự phòng (failover) cho lớp cache.</p>
+</li>
+<li>
+<p><strong>Single-Node Kafka</strong>: Chưa đạt chuẩn production cho các kịch bản lưu lượng cao.</p>
+</li>
+<li>
+<p><strong>Public Subnet ECS Tasks</strong>: Đánh đổi về bảo mật để tiết kiệm chi phí (không dùng NAT Gateway).</p>
+</li>
 </ol>
-<p><strong>Recommended Production Enhancements:</strong></p>
+<p><strong>Các cải tiến đề xuất cho Production:</strong></p>
 <ol>
-<li>Enable RDS Multi-AZ deployment</li>
-<li>Implement Redis Cluster Mode with multiple replicas</li>
-<li>Deploy Kafka with multiple brokers across AZs</li>
-<li>Add NAT Gateway and move ECS tasks to private subnets</li>
-<li>Implement AWS WAF on ALB for DDoS protection</li>
-<li>Enable ECS Service Auto Scaling</li>
-<li>Implement CI/CD pipeline for automated deployments</li>
+<li>
+<p>Bật triển khai RDS Multi-AZ.</p>
+</li>
+<li>
+<p>Triển khai Redis Cluster Mode với nhiều bản sao (replicas).</p>
+</li>
+<li>
+<p>Triển khai Kafka với nhiều broker trên các AZ khác nhau.</p>
+</li>
+<li>
+<p>Thêm NAT Gateway và di chuyển các ECS task vào private subnet.</p>
+</li>
+<li>
+<p>Triển khai AWS WAF trên ALB để chống tấn công DDoS.</p>
+</li>
+<li>
+<p>Bật tính năng Auto Scaling cho ECS Service.</p>
+</li>
+<li>
+<p>Xây dựng quy trình CI/CD để triển khai tự động.</p>
+</li>
 </ol>
 <hr>
-<h2 id="troubleshooting-guide">
-  Troubleshooting Guide
+<h2 id="hướng-dẫn-khắc-phục-sự-cố-troubleshooting">
+  Hướng dẫn Khắc phục sự cố (Troubleshooting)
 
 
 
@@ -517,8 +648,8 @@ time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><h3 id="quick-diagnosis-commands">
-  Quick Diagnosis Commands
+</h2><h3 id="các-lệnh-chẩn-đoán-nhanh">
+  Các lệnh chẩn đoán nhanh
 
 
 
@@ -528,19 +659,19 @@ time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health</code
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><p>bash</p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Check ECS service status
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code># Kiểm tra trạng thái ECS service
 aws ecs describe-services --cluster [CLUSTER-NAME] --services [SERVICE-NAME] --region ap-southeast-1
 
-# Check task status
+# Kiểm tra trạng thái task
 aws ecs describe-tasks --cluster [CLUSTER-NAME] --tasks [TASK-ARN] --region ap-southeast-1
 
-# View recent logs
+# Xem log gần nhất
 aws logs tail /ecs/[SERVICE-NAME] --follow --region ap-southeast-1
 
-# Check target health
+# Kiểm tra sức khỏe target group
 aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southeast-1</code></pre></div>
-<h3 id="emergency-rollback-procedure">
-  Emergency Rollback Procedure
+<h3 id="quy-trình-rollback-khẩn-cấp">
+  Quy trình Rollback khẩn cấp
 
 
 
@@ -549,14 +680,14 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h3><p>If deployment fails:</p>
+</h3><p>Nếu việc triển khai thất bại:</p>
 <ol>
-<li><strong>Identify failing service</strong>:</li>
+<li><strong>Xác định service bị lỗi</strong>:</li>
 </ol>
 <p>bash</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs list-services --cluster [CLUSTER-NAME] --region ap-southeast-1</code></pre></div>
 <ol>
-<li><strong>Update service to previous task definition revision</strong>:</li>
+<li><strong>Cập nhật service về phiên bản task definition trước đó</strong>:</li>
 </ol>
 <p>bash</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs update-service\
@@ -565,7 +696,7 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
      --task-definition [TASK-DEF-FAMILY]:[PREVIOUS-REVISION]\
      --region ap-southeast-1</code></pre></div>
 <ol>
-<li><strong>Force new deployment</strong>:</li>
+<li><strong>Buộc triển khai lại (Force new deployment)</strong>:</li>
 </ol>
 <p>bash</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>   aws ecs update-service\
@@ -574,8 +705,8 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
      --force-new-deployment\
      --region ap-southeast-1</code></pre></div>
 <hr>
-<h2 id="success-criteria">
-  Success Criteria
+<h2 id="tiêu-chí-thành-công">
+  Tiêu chí thành công
 
 
 
@@ -584,23 +715,29 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
 
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
-</h2><p>Deployment is considered successful when:</p>
+</h2><p>Việc triển khai được coi là thành công khi:</p>
 <ol>
-<li>✅ All 6 ECS services show status: RUNNING</li>
-<li>✅ All 5 target groups show: Healthy</li>
-<li>✅ <code>https://sgutodolist.com/actuator/health</code> returns HTTP 200</li>
-<li>✅ Frontend at <code>https://sgutodolist.com</code> can authenticate via Google OAuth</li>
-<li>✅ CloudWatch Logs show no critical errors</li>
-<li>✅ All services accessible via internal DNS (*.sgu.local)</li>
+<li>
+<p>✅ Tất cả 6 ECS services hiển thị trạng thái: RUNNING</p>
+</li>
+<li>
+<p>✅ Tất cả 5 Target Group hiển thị trạng thái: Healthy</p>
+</li>
+<li>
+<p>✅ <code>https://sgutodolist.com/actuator/health</code> trả về HTTP 200</p>
+</li>
+<li>
+<p>✅ Frontend tại <code>https://sgutodolist.com</code> có thể xác thực qua Google OAuth</p>
+</li>
+<li>
+<p>✅ CloudWatch Logs không hiển thị lỗi nghiêm trọng nào</p>
+</li>
+<li>
+<p>✅ Tất cả services có thể truy cập được qua DNS nội bộ (*.sgu.local)</p>
+</li>
 </ol>
 <hr>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 5: Code Update & Image Build
-</a>
-<a href="" style="text-decoration: none; font-weight: bold;">
-</a>
-</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;"> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/" style="text-decoration: none; font-weight: bold;"> ⬅ BƯỚC 5: Code Update & Image Build </a> <a href="" style="text-decoration: none; font-weight: bold;"></a> </div>
   <footer class="footline">
   </footer>
 </article>
@@ -662,7 +799,7 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.3-code-update--image-build-create-new-docker-image/index.html"> <b> 5.3.2.3. </b> Cập Nhật Code &amp; Xây Dựng Image (Tạo Docker Image Mới)</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.4-task-definitions-creation-configure-settings-fix-environment-variables/index.html"> <b> 5.3.2.4. </b> Tạo Task Definitions</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html"> <b> 5.3.2.5. </b> Triển khai Services</a></li>
-            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Final Test)</a></li></ul></li></ul></li>
+            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html"> <b> 5.3.2.6. </b> Hoàn thiện &amp; Xác nhận (Route 53, Google Console, Kiểm thử cuối)</a></li></ul></li></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Dọn Dẹp</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Bí Thuật</a></li></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
@@ -713,8 +850,8 @@ aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southea
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765240302" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765256693" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765256693" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
