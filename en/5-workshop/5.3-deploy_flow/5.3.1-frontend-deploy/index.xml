@@ -29,10 +29,10 @@
       <description>PHASE 2: DOMAIN &amp; SECURITY PREPARATION (ROUTE 53 &amp; ACM)&#xD;Before creating the CloudFront distribution, the domain name system (DNS) and SSL certificates must be properly prepared.&#xA;Step 2.1: Create a Hosted Zone (If Not Exists)&#xD;Navigate to Amazon Route 53 → Hosted zones.</description>
     </item>
     <item>
-      <title>ClouFront and Failover</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</link>
+      <title>CloudFront and Failover</title>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html</guid>
       <description>STAGE 3: CONFIGURATION CLOUDFRONT (CDN &amp; FAILOVER)&#xD;STEP 3.1: Create Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront&#xA;Distribution type: Keep Single website or app.</description>
     </item>
     <item>

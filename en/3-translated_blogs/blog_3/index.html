@@ -26,32 +26,32 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
     <meta itemprop="description" content="Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLITác giả: Adarsh Suresh, Chandu Utlapalli – 29/7/2025
 Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to
 Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS Elastic Beanstalk là một dịch vụ vô giá giúp việc triển khai và chạy các ứng dụng web trở nên đơn giản mà không cần phải lo lắng về cơ sở hạ tầng nền tảng (underlying infrastructure). Bạn chỉ cần tải mã ứng dụng của mình lên, và Elastic Beanstalk sẽ tự động xử lý các chi tiết về cấp phát dung lượng (capacity provisioning), cân bằng tải (load balancing), điều chỉnh quy mô (scaling), và giám sát (monitoring), cho phép bạn tập trung vào việc viết code.">
-    <meta itemprop="wordCount" content="1174">
+    <meta itemprop="wordCount" content="1151">
     <title>Blog 3 :: Internship Report</title>
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html" rel="alternate" hreflang="x-default">
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_3/index.html" rel="alternate" hreflang="en">
     <link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_3/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/en/3-translated_blogs/blog_3/index.xml" rel="alternate" type="application/rss+xml" title="Blog 3 :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765298777" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765298777" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765299458" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765299458" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765298777";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765299458";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765298777" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765299458" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298777" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298777" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765298777" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765298777" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765298777" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299458" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299458" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765299458" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765299458" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765299458" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -103,7 +103,7 @@ Giới thiệuCác nhà phát triển làm việc với AWS nhận thấy AWS E
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765298777" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765299458" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/3-translated_blogs/blog_3/index.html">
     <div id="R-body" class="default-animation">
@@ -254,16 +254,8 @@ Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elas
 <p><strong>Khắc phục sự cố tình trạng môi trường</strong></p>
 <p>Hãy xem xét một môi trường Elastic Beanstalk đang chạy Node.js 22 trên Amazon Linux 2023, nơi chúng ta sẽ triển khai một phiên bản ứng dụng mới. Sau khi triển khai một phiên bản ứng dụng mới vào môi trường Elastic Beanstalk dựa trên Node.js của chúng ta, chúng tôi nhận thấy rằng tình trạng sức khỏe (health status) của nó đã chuyển sang trạng thái “Warning” (Cảnh báo) với thông báo sau hiển thị trong các sự kiện môi trường (environment events):</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>100% of requests failing with HTTP 5xx errors</code></pre></div>
-<div style="text-align:center; margin: 2em 0;">
-  <figure style="margin: 0;"><img src="/images/img1-blog3.png" 
-         alt="Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe" 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-         loading="lazy">
-    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
-      Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe
-    </figcaption>
-  </figure>
-</div>
+<p><a href="#R-image-06495efda28f96fc655b085d7acc70f8" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/img1-blog3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-06495efda28f96fc655b085d7acc70f8"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/img1-blog3.png"></a></p>
 <p>Thông báo sự kiện này có thể là kết quả của một số vấn đề, bao gồm nhưng không giới hạn ở lỗi ứng dụng Node.js, sự cố cấu hình reverse proxy, vấn đề sử dụng tài nguyên (resource utilization issues) v.v..</p>
 <p>Hãy sử dụng Q CLI để giúp chúng ta điều tra thêm. Chúng ta sẽ bắt đầu một cuộc trò chuyện mới với agent bằng cách chạy <code>q chat</code>, và hỏi câu hỏi sau:</p>
 <p><code>Why is my beanstalk environment nodejs-app in us-east-1 unhealthy? Check the logs if required, and recommend steps to resolve the issue</code> (Tại sao môi trường beanstalk nodejs-app của tôi ở us-east-1 không khỏe mạnh? Kiểm tra các logs nếu cần, và đề xuất các bước để giải quyết vấn đề)</p>
@@ -380,8 +372,8 @@ Bây giờ chúng ta hãy đi sâu vào việc khắc phục các sự cố Elas
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765298777" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765299458" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -26,32 +26,32 @@ Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp
     <meta itemprop="description" content="Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.Tác giả: Gaurav Acharya, Jay Horne – 30/7/2025
 Chủ đề: Advanced (300),Amazon FSx for NetApp ONTAP, Technical How-to
 Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp trong trung tâm dữ liệu của riêng họ thường áp dụng các quy tắc kiểm soát truy cập mạng và tường lửa nghiêm ngặt để bảo vệ dữ liệu của mình, tuy nhiên, kiểu bảo mật này thường đưa Network Address Translation (NAT) vào đường truyền giữa các mảng lưu trữ. ONTAP, dù được triển khai tại chỗ hay trên đám mây, đều yêu cầu các cụm lưu trữ được cấu hình với địa chỉ IP tĩnh, và giao thức SnapMirror™ được dùng để sao chép dữ liệu giữa chúng không hỗ trợ NAT. Điều này khiến việc kết nối giữa FSx for NetApp ONTAP và các phiên bản NetApp tại chỗ nằm sau tường lửa có NAT trở nên không thể. Người dùng trong những môi trường như vậy không thể dễ dàng di chuyển dữ liệu giữa hệ thống tại chỗ và Amazon FSx for NetApp ONTAP. Lý tưởng nhất, họ sẽ chọn kết nối thông qua SnapMirror qua internet công cộng, nhưng điều này là không thể trong cấu hình mặc định.">
-    <meta itemprop="wordCount" content="2575">
+    <meta itemprop="wordCount" content="2522">
     <title>Blog 1 :: Internship Report</title>
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="x-default">
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="en">
     <link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_1/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/en/3-translated_blogs/blog_1/index.xml" rel="alternate" type="application/rss+xml" title="Blog 1 :: Internship Report">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765298777" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765298777" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765299458" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765299458" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765298777";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765299458";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765298777" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765299458" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298777" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298777" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765298777" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765298777" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765298777" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299458" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299458" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765299458" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765299458" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765299458" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -103,7 +103,7 @@ Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765298777" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765299458" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/en/3-translated_blogs/blog_1/index.html">
     <div id="R-body" class="default-animation">
@@ -253,9 +253,8 @@ Những khách hàng on-premises đang sử dụng các mảng lưu trữ NetApp
 <li>Một thiết bị NAT mà SnapMirror có thể đi qua tại mỗi hệ thống tệp (filer).</li>
 <li>Một subnet riêng biệt cho từng hệ thống tệp.</li>
 </ul>
-<figure>
-  <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
-</figure>
+<p><a href="#R-image-f5462c90502090706246ecc283e8b5fe" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/Img1-Blog1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f5462c90502090706246ecc283e8b5fe"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/Img1-Blog1.png"></a></p>
 <h3 id="ví-dụ">
   Ví dụ
 
@@ -305,16 +304,8 @@ VPC: 10.2.0.0/16FSx ONTAP inter-cluster endpoint 1: 10.2.0.155FSx ONTAP inter-cl
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><p>Để xử lý các NAT, hãy triển khai một phiên bản EC2 chạy RedHat 9, kèm theo nhóm bảo mật mà chúng ta đã tạo trước đó. RedHat không phải là bắt buộc, và bất kỳ bản phân phối Linux nào hỗ trợ <a href="https://www.redhat.com/en/blog/using-nftables-red-hat-enterprise-linux-8" rel="external">nftables</a> đều có thể hoạt động cho bài thực hành này. Đối với mỗi phiên bản EC2, chúng ta cần gắn kết hai địa chỉ EIP trong số các địa chỉ đã tạo. Mỗi địa chỉ EIP này phải được liên kết với một địa chỉ IP riêng (private IP) khác nhau. Cuối cùng, chúng ta phải tắt kiểm tra nguồn/đích (source/destination check) trên giao diện mạng. Điều này cho phép Amazon EC2 gửi các gói tin có địa chỉ IP nguồn không thuộc quyền sở hữu của nó.</p>
-<div style="text-align:center; margin: 2em 0;">
-  <figure style="margin: 0;"><img src="/images/Img2-Blog1.png" 
-         alt="Hình 2. Ảnh chụp màn hình của trang tổng quan mạng (network summary page) của một phiên bản EC2, trong đó địa chỉ IP riêng (private IP) và địa chỉ IP công cộng (public IP) được tô sáng (highlighted)." 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-         loading="lazy">
-    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
-      Hình 2. Ảnh chụp màn hình của trang tổng quan mạng (network summary page) của một phiên bản EC2, trong đó địa chỉ IP riêng (private IP) và địa chỉ IP công cộng (public IP) được tô sáng (highlighted).
-    </figcaption>
-  </figure>
-</div>
+<p><a href="#R-image-30091ecdbee952402156fb940e7c65ab" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/Img2-Blog1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-30091ecdbee952402156fb940e7c65ab"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/Img2-Blog1.png"></a></p>
 <h3 id="nftables">
   nftables
 
@@ -443,16 +434,8 @@ nft list ruleset &gt; /etc/sysconfig/nftables.conf</code></pre></div>
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><p>Khi cả hai bộ định tuyến đã được cấu hình, chúng ta cần đảm bảo rằng lưu lượng SnapMirror sẽ đi qua chúng. Để thực hiện điều này, chúng ta cập nhật bảng định tuyến (route table) được liên kết với FSx for ONTAP để gửi lưu lượng từ VPC ở xa đến giao diện mạng (network interface) của các phiên bản EC2. Ví dụ, ở Side B, chúng ta thêm một tuyến (route) trỏ 10.1.0.0/16 đến Elastic Network Interface của phiên bản EC2. Ở Side A, chúng ta sẽ làm ngược lại: trỏ 10.2.0.0/16 đến EC2 instance tương ứng.</p>
-<div style="text-align:center; margin: 2em 0;">
-  <figure style="margin: 0;"><img src="/images/Img3-Blog1.png" 
-         alt="Hình 3. Bảng định tuyến (Route table) được liên kết với FSx for ONTAP." 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-         loading="lazy">
-    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
-      Hình 3. Bảng định tuyến (Route table) được liên kết với FSx for ONTAP.
-    </figcaption>
-  </figure>
-</div>
+<p><a href="#R-image-67295acaab378974fdb300b630f252cb" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/Img3-Blog1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-67295acaab378974fdb300b630f252cb"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/Img3-Blog1.png"></a></p>
 <h3 id="fsx-cho-ontap-security-group">
   FSx cho ONTAP security group
 
@@ -475,27 +458,11 @@ nft list ruleset &gt; /etc/sysconfig/nftables.conf</code></pre></div>
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h3><p>Khi các kết nối mạng đã được thiết lập, việc còn lại là <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#cluster-peering" rel="external">kết nối ngang hàng (peer) giữa các hệ thống tệp FSx for ONTAP</a>. Trước tiên, chúng ta đăng nhập vào Side A và bắt đầu yêu cầu peering.</p>
-<div style="text-align:center; margin: 2em 0;">
-  <figure style="margin: 0;"><img src="/images/Img4-Blog1.png" 
-         alt="" 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-         loading="lazy">
-    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
-      
-    </figcaption>
-  </figure>
-</div>
+<p><a href="#R-image-a9ba055f4f7db9b6ea04d8cd8d8cea15" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/Img4-Blog1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a9ba055f4f7db9b6ea04d8cd8d8cea15"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/Img4-Blog1.png"></a></p>
 <p>Sau đó, chúng ta đăng nhập vào Side B và thực thi cùng một lệnh, nhưng không sử dụng tùy chọn generate passphrase và dùng các địa chỉ IP từ Side A. Thao tác này được thực hiện từ phía Side B của hệ thống tệp FSx for ONTAP.</p>
-<div style="text-align:center; margin: 2em 0;">
-  <figure style="margin: 0;"><img src="/images/Img5-Blog1.png" 
-         alt="" 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-         loading="lazy">
-    <figcaption style="margin-top: 1em; font-style: italic; color: #666; font-size: 0.95em;">
-      
-    </figcaption>
-  </figure>
-</div>
+<p><a href="#R-image-e8d3b9cd04cdd17a6c8f66f52c54562d" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/Img5-Blog1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e8d3b9cd04cdd17a6c8f66f52c54562d"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/Img5-Blog1.png"></a></p>
 <p>Từ đây, các <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#svm-peering" rel="external">SVM (Storage Virtual Machine) có thể được kết nối ngang hàng (peered)</a> và <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#snapmirror-relationship" rel="external">một mối quan hệ SnapMirror có thể được tạo ra</a>.</p>
 <h3 id="dọn-dẹp">
   Dọn dẹp
@@ -612,8 +579,8 @@ nft list ruleset &gt; /etc/sysconfig/nftables.conf</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765298777" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765298777" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765299458" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765299458" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -139,10 +139,10 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html" />
   </url>
   <url>
-    <loc>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html" />
+    <loc>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html" />
   </url>
   <url>
     <loc>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html</loc>

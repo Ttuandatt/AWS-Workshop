@@ -29,10 +29,10 @@
       <description>GIAI ĐOẠN 2: CHUẨN BỊ TÊN MIỀN &amp; BẢO MẬT (ROUTE 53 &amp; ACM)&#xD;Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (SSL) và DNS.&#xA;Bước 2.1: Tạo Hosted Zone (Nếu chưa có)&#xD;Vào Route 53 &gt; Hosted zones.</description>
     </item>
     <item>
-      <title>ClouFront &amp; Failover</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</link>
+      <title>CloudFront &amp; Failover</title>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloufront-and-failover/index.html</guid>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.4-cloudfront-and-failover/index.html</guid>
       <description>GIAI ĐOẠN 3: CẤU HÌNH CLOUDFRONT (CDN &amp; FAILOVER)&#xD;BƯỚC 3.1: Tạo Distribution&#xD;Step 1: Get started&#xD;Distribution name: sgutodolist-frontend-cloudfront</description>
     </item>
     <item>
