@@ -1,74 +1,90 @@
 +++
-title = "Hoàn thiện & Xác nhận (Route 53, Google Console, Final Test)"
+title = "Hoàn thiện & Xác nhận (Route 53, Google Console, Kiểm thử cuối)"
 weight = 6
 chapter = false
 pre = " <b> 5.3.2.6. </b> "
 alwaysopen = true
 +++
 
-This final phase connects the deployed backend to the public domain and verifies end-to-end functionality.
+Giai đoạn cuối cùng này sẽ kết nối backend đã triển khai với tên miền công cộng (public domain) và xác minh toàn bộ chức năng từ đầu đến cuối (end-to-end).
 
-### DNS Configuration
+### Cấu hình DNS
 
-**Step 1: Create Route 53 A Record**
+**Bước 1: Tạo bản ghi A (A Record) trên Route 53**
 
-1.  Navigate to **Route 53** → **Hosted zones**
-2.  Select `sgutodolist.com` hosted zone
-3.  Click **Create record**
-4.  Configure record:
+1.  Điều hướng đến **Route 53** → **Hosted zones** (Vùng lưu trữ).
+
+2.  Chọn hosted zone `sgutodolist.com`.
+
+3.  Nhấn vào **Create record** (Tạo bản ghi).
+
+4.  Cấu hình bản ghi:
+
     -   **Record name**: `api`
+
     -   **Record type**: A
-    -   **Alias**: Enable
+
+    -   **Alias**: Bật (Enable)
+
     -   **Route traffic to**: Alias to Application Load Balancer
+
     -   **Region**: Asia Pacific (Singapore)
-    -   **Load balancer**: Select `sgu-alb`
-5.  Click **Create records**
 
-**DNS Propagation:** Wait 2-5 minutes for DNS changes to propagate.
+    -   **Load balancer**: Chọn `sgu-alb`
 
-**Verification:**
+5.  Nhấn **Create records**.
+
+**Lan truyền DNS:** Chờ khoảng 2-5 phút để các thay đổi DNS được cập nhật trên toàn hệ thống.
+
+**Xác minh:**
 
 bash
 
 ```
 nslookup sgutodolist.com
-# Should return ALB's IP addresses
+# Kết quả trả về danh sách địa chỉ IP của ALB
+
 ```
 
 * * * * *
 
-### Google OAuth Configuration Update
+### Cập nhật Cấu hình Google OAuth
 
-**Step 1: Update Authorized Redirect URIs**
+**Bước 1: Cập nhật các URI chuyển hướng được ủy quyền (Authorized Redirect URIs)**
 
-1.  Access **Google Cloud Console** (console.cloud.google.com)
-2.  Navigate to **APIs & Services** → **Credentials**
-3.  Select your OAuth 2.0 Client ID
-4.  Under **Authorized redirect URIs**, add:
+1.  Truy cập **Google Cloud Console** (console.cloud.google.com).
+
+2.  Điều hướng đến **APIs & Services** → **Credentials** (Thông tin xác thực).
+
+3.  Chọn **OAuth 2.0 Client ID** của dự án.
+
+4.  Trong phần **Authorized redirect URIs**, thêm đường dẫn sau:
 
 ```
    https://sgutodolist.com/api/auth/login/oauth2/code/google
+
 ```
 
-1.  Click **Save**
+1.  Nhấn **Save** (Lưu).
 
-**Note:** Keep existing localhost URIs for local development.
+**Lưu ý:** Giữ nguyên các URI localhost hiện có để phục vụ cho việc phát triển cục bộ (local).
 
 * * * * *
 
-### System Health Verification
+### Xác minh Tình trạng Hệ thống (System Health)
 
-Perform the following tests to verify deployment success:
+Thực hiện các bài kiểm tra sau để xác nhận việc triển khai thành công:
 
-#### Test 1: API Gateway Health Check
+#### Test 1: Kiểm tra Health Check của API Gateway
 
 bash
 
 ```
 curl https://sgutodolist.com/actuator/health
+
 ```
 
-**Expected Response:**
+**Phản hồi mong đợi:**
 
 json
 
@@ -76,9 +92,10 @@ json
 {
   "status": "UP"
 }
+
 ```
 
-#### Test 2: Individual Service Health Checks
+#### Test 2: Kiểm tra Health Check của từng Service
 
 bash
 
@@ -94,188 +111,235 @@ curl https://sgutodolist.com/api/taskflow/actuator/health
 
 # Notification Service
 curl https://sgutodolist.com/api/notification/actuator/health
+
 ```
 
-All should return `{"status":"UP"}`.
+Tất cả đều phải trả về `{"status":"UP"}`.
 
-#### Test 3: Service Discovery Verification
+#### Test 3: Xác minh Service Discovery
 
-From the Bastion Host, verify internal DNS resolution:
+Từ Bastion Host, kiểm tra khả năng phân giải DNS nội bộ:
 
 bash
 
 ```
-# SSH to Bastion
+# SSH vào Bastion
 ssh -i sgutodolist-key.pem ec2-user@[BASTION-IP]
 
-# Test DNS resolution
+# Test phân giải DNS
 nslookup auth.sgu.local
 nslookup user.sgu.local
 nslookup taskflow.sgu.local
 nslookup notification.sgu.local
 nslookup ai-model.sgu.local
 nslookup kafka.sgu.local
+
 ```
 
-All should resolve to internal ECS task IP addresses.
+Tất cả phải phân giải ra địa chỉ IP của các ECS task nội bộ.
 
-#### Test 4: Database Connectivity
+#### Test 4: Kết nối Cơ sở dữ liệu
 
-Verify services can connect to RDS:
+Xác minh các service có thể kết nối tới RDS:
 
-1.  Check CloudWatch Logs for any service
-2.  Look for successful database connection messages
-3.  Verify no connection errors in startup logs
+1.  Kiểm tra **CloudWatch Logs** cho bất kỳ service nào.
 
-#### Test 5: Redis Connectivity
+2.  Tìm các thông báo kết nối cơ sở dữ liệu thành công.
+
+3.  Đảm bảo không có lỗi kết nối (connection errors) trong log khởi động.
+
+#### Test 5: Kết nối Redis
 
 bash
 
 ```
-# From Bastion Host
+# Từ Bastion Host
 redis-cli -h [REDIS-ENDPOINT] ping
-# Expected response: PONG
+# Phản hồi mong đợi: PONG
+
 ```
 
-#### Test 6: End-to-End Authentication Flow
+#### Test 6: Luồng xác thực End-to-End
 
-1.  Access frontend at `https://sgutodolist.com`
-2.  Click "Sign in with Google"
-3.  Complete OAuth flow
-4.  Verify successful login and token issuance
-5.  Verify user profile loads correctly
+1.  Truy cập frontend tại `https://sgutodolist.com`.
+
+2.  Nhấn nút "Sign in with Google".
+
+3.  Hoàn tất quy trình đăng nhập OAuth.
+
+4.  Xác minh đăng nhập thành công và token được cấp phát.
+
+5.  Xác minh thông tin hồ sơ người dùng (profile) được tải chính xác.
 
 * * * * *
 
-### Performance Baseline
+### Thiết lập Mức hiệu năng cơ sở (Performance Baseline)
 
-Record initial performance metrics:
+Ghi lại các chỉ số hiệu năng ban đầu để làm chuẩn so sánh sau này:
 
-**Response Time Benchmarks:**
+**Đo lường thời gian phản hồi (Response Time):**
 
 bash
 
 ```
-# API Gateway response time
+# Thời gian phản hồi API Gateway
 time curl -o /dev/null -s https://sgutodolist.com/actuator/health
 
-# Auth service response time
+# Thời gian phản hồi Auth service
 time curl -o /dev/null -s https://sgutodolist.com/api/auth/actuator/health
+
 ```
 
-**CloudWatch Metrics to Monitor:**
+**Các chỉ số CloudWatch cần giám sát:**
 
--   ECS Task CPU Utilization
--   ECS Task Memory Utilization
--   ALB Target Response Time
--   ALB Request Count
+-   ECS Task CPU Utilization (Mức sử dụng CPU của Task)
+
+-   ECS Task Memory Utilization (Mức sử dụng RAM của Task)
+
+-   ALB Target Response Time (Thời gian phản hồi mục tiêu ALB)
+
+-   ALB Request Count (Số lượng yêu cầu tới ALB)
+
 -   RDS CPU Utilization
+
 -   Redis CPU Utilization
 
 * * * * *
 
-### Post-Deployment Security Checklist
+### Danh sách kiểm tra bảo mật sau triển khai
 
--   [ ]  All sensitive environment variables secured (not in version control)
--   [ ]  Database password meets complexity requirements
--   [ ]  Security groups follow least privilege principle
--   [ ]  SSL/TLS certificates valid and auto-renewal enabled
--   [ ]  Bastion Host accessible only from authorized IPs
--   [ ]  CloudWatch Logs retention configured
--   [ ]  AWS Budget alerts active
+-   [ ] Tất cả các biến môi trường nhạy cảm đã được bảo mật (không lưu trong version control).
 
-* * * * *
+-   [ ] Mật khẩu cơ sở dữ liệu đáp ứng yêu cầu về độ phức tạp.
 
-### Final Deployment Checklist
+-   [ ] Security Group tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege).
 
-**Infrastructure:**
+-   [ ] Chứng chỉ SSL/TLS hợp lệ và đã bật tự động gia hạn.
 
--   [ ]  VPC and subnets operational
--   [ ]  All 4 security groups correctly configured
--   [ ]  RDS database accessible and initialized
--   [ ]  Redis cache operational
--   [ ]  Kafka service running
--   [ ]  ALB active with healthy targets
+-   [ ] Bastion Host chỉ có thể truy cập từ các địa chỉ IP được ủy quyền.
 
-**Application:**
+-   [ ] Cấu hình thời gian lưu trữ (retention) cho CloudWatch Logs.
 
--   [ ]  All 6 services deployed and running
--   [ ]  Service Discovery functional
--   [ ]  ALB routing rules working correctly
--   [ ]  Health checks passing
--   [ ]  CloudWatch Logs collecting data
-
-**Integration:**
-
--   [ ]  DNS record pointing to ALB
--   [ ]  SSL certificate valid
--   [ ]  Google OAuth configured
--   [ ]  Frontend can communicate with backend
--   [ ]  Authentication flow working
-
-**Monitoring:**
-
--   [ ]  CloudWatch dashboards created
--   [ ]  Budget alerts configured
--   [ ]  Performance baseline recorded
+-   [ ] Các cảnh báo ngân sách (AWS Budget alerts) đang hoạt động.
 
 * * * * *
 
-### Known Limitations and Future Improvements
+### Danh sách kiểm tra triển khai cuối cùng
 
-**Current Architecture Constraints:**
+**Cơ sở hạ tầng:**
 
-1.  **Single-AZ Database**: RDS is deployed in a single availability zone for cost optimization
-2.  **Single-Node Redis**: No automatic failover for cache layer
-3.  **Single-Node Kafka**: Not production-grade for high-throughput scenarios
-4.  **Public Subnet ECS Tasks**: Security trade-off for cost savings
+-   [ ] VPC và các subnet hoạt động bình thường.
 
-**Recommended Production Enhancements:**
+-   [ ] Cả 4 Security Group được cấu hình chính xác.
 
-1.  Enable RDS Multi-AZ deployment
-2.  Implement Redis Cluster Mode with multiple replicas
-3.  Deploy Kafka with multiple brokers across AZs
-4.  Add NAT Gateway and move ECS tasks to private subnets
-5.  Implement AWS WAF on ALB for DDoS protection
-6.  Enable ECS Service Auto Scaling
-7.  Implement CI/CD pipeline for automated deployments
+-   [ ] RDS database có thể truy cập và đã khởi tạo dữ liệu.
+
+-   [ ] Redis cache hoạt động tốt.
+
+-   [ ] Dịch vụ Kafka đang chạy.
+
+-   [ ] ALB đang hoạt động với các target ở trạng thái healthy.
+
+**Ứng dụng:**
+
+-   [ ] Cả 6 service đã được deploy và đang chạy.
+
+-   [ ] Service Discovery hoạt động tốt.
+
+-   [ ] Các quy tắc định tuyến (routing rules) của ALB hoạt động chính xác.
+
+-   [ ] Health check đều vượt qua (passing).
+
+-   [ ] CloudWatch Logs đang thu thập dữ liệu.
+
+**Tích hợp:**
+
+-   [ ] Bản ghi DNS trỏ về ALB chính xác.
+
+-   [ ] Chứng chỉ SSL hợp lệ.
+
+-   [ ] Google OAuth đã được cấu hình.
+
+-   [ ] Frontend có thể giao tiếp với Backend.
+
+-   [ ] Luồng xác thực (Authentication flow) hoạt động.
+
+**Giám sát:**
+
+-   [ ] CloudWatch Dashboard đã được tạo.
+
+-   [ ] Cảnh báo ngân sách đã cấu hình.
+
+-   [ ] Đã ghi lại hiệu năng cơ sở (baseline).
 
 * * * * *
 
-Troubleshooting Guide
----------------------
+### Các hạn chế đã biết và Cải tiến trong tương lai
 
-### Quick Diagnosis Commands
+**Các ràng buộc kiến trúc hiện tại:**
+
+1.  **Single-AZ Database**: RDS được triển khai trên một Availability Zone duy nhất để tối ưu chi phí.
+
+2.  **Single-Node Redis**: Không có cơ chế tự động chuyển đổi dự phòng (failover) cho lớp cache.
+
+3.  **Single-Node Kafka**: Chưa đạt chuẩn production cho các kịch bản lưu lượng cao.
+
+4.  **Public Subnet ECS Tasks**: Đánh đổi về bảo mật để tiết kiệm chi phí (không dùng NAT Gateway).
+
+**Các cải tiến đề xuất cho Production:**
+
+1.  Bật triển khai RDS Multi-AZ.
+
+2.  Triển khai Redis Cluster Mode với nhiều bản sao (replicas).
+
+3.  Triển khai Kafka với nhiều broker trên các AZ khác nhau.
+
+4.  Thêm NAT Gateway và di chuyển các ECS task vào private subnet.
+
+5.  Triển khai AWS WAF trên ALB để chống tấn công DDoS.
+
+6.  Bật tính năng Auto Scaling cho ECS Service.
+
+7.  Xây dựng quy trình CI/CD để triển khai tự động.
+
+* * * * *
+
+Hướng dẫn Khắc phục sự cố (Troubleshooting)
+-------------------------------------------
+
+### Các lệnh chẩn đoán nhanh
 
 bash
 
 ```
-# Check ECS service status
+# Kiểm tra trạng thái ECS service
 aws ecs describe-services --cluster [CLUSTER-NAME] --services [SERVICE-NAME] --region ap-southeast-1
 
-# Check task status
+# Kiểm tra trạng thái task
 aws ecs describe-tasks --cluster [CLUSTER-NAME] --tasks [TASK-ARN] --region ap-southeast-1
 
-# View recent logs
+# Xem log gần nhất
 aws logs tail /ecs/[SERVICE-NAME] --follow --region ap-southeast-1
 
-# Check target health
+# Kiểm tra sức khỏe target group
 aws elbv2 describe-target-health --target-group-arn [TG-ARN] --region ap-southeast-1
+
 ```
 
-### Emergency Rollback Procedure
+### Quy trình Rollback khẩn cấp
 
-If deployment fails:
+Nếu việc triển khai thất bại:
 
-1.  **Identify failing service**:
+1.  **Xác định service bị lỗi**:
 
 bash
 
 ```
    aws ecs list-services --cluster [CLUSTER-NAME] --region ap-southeast-1
+
 ```
 
-1.  **Update service to previous task definition revision**:
+1.  **Cập nhật service về phiên bản task definition trước đó**:
 
 bash
 
@@ -285,9 +349,10 @@ bash
      --service [SERVICE-NAME]\
      --task-definition [TASK-DEF-FAMILY]:[PREVIOUS-REVISION]\
      --region ap-southeast-1
+
 ```
 
-1.  **Force new deployment**:
+1.  **Buộc triển khai lại (Force new deployment)**:
 
 bash
 
@@ -297,28 +362,27 @@ bash
      --service [SERVICE-NAME]\
      --force-new-deployment\
      --region ap-southeast-1
+
 ```
 
 * * * * *
 
-Success Criteria
-----------------
+Tiêu chí thành công
+-------------------
 
-Deployment is considered successful when:
+Việc triển khai được coi là thành công khi:
 
-1.  ✅ All 6 ECS services show status: RUNNING
-2.  ✅ All 5 target groups show: Healthy
-3.  ✅ `https://sgutodolist.com/actuator/health` returns HTTP 200
-4.  ✅ Frontend at `https://sgutodolist.com` can authenticate via Google OAuth
-5.  ✅ CloudWatch Logs show no critical errors
-6.  ✅ All services accessible via internal DNS (*.sgu.local)
+1.  ✅ Tất cả 6 ECS services hiển thị trạng thái: RUNNING
 
+2.  ✅ Tất cả 5 Target Group hiển thị trạng thái: Healthy
+
+3.  ✅ `https://sgutodolist.com/actuator/health` trả về HTTP 200
+
+4.  ✅ Frontend tại `https://sgutodolist.com` có thể xác thực qua Google OAuth
+
+5.  ✅ CloudWatch Logs không hiển thị lỗi nghiêm trọng nào
+
+6.  ✅ Tất cả services có thể truy cập được qua DNS nội bộ (*.sgu.local)
 * * * * *
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment" %}}" style="text-decoration: none; font-weight: bold;">
-⬅ BƯỚC 5: Code Update & Image Build
-</a>
-<a href="" style="text-decoration: none; font-weight: bold;">
-</a>
-</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;"> <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.2-Backend Deploy/5.3.2.5-Services Deployment" %}}" style="text-decoration: none; font-weight: bold;"> ⬅ BƯỚC 5: Code Update & Image Build </a> <a href="" style="text-decoration: none; font-weight: bold;"></a> </div>
