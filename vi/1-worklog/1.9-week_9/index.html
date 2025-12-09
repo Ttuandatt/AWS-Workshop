@@ -5,45 +5,45 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Mục tiêu Tuần 9Xem xét và kiểm tra mã dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Các nhiệm vụ cần thực hiện trong tuần nàyNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quy trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. - Kiểm tra mã dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth - Cập nhật nhật ký công việc 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực 5 - Kiểm tra các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai">
+    <meta name="description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="Mục tiêu Tuần 9Xem xét và kiểm tra mã dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Các nhiệm vụ cần thực hiện trong tuần nàyNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quy trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. - Kiểm tra mã dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth - Cập nhật nhật ký công việc 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực 5 - Kiểm tra các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai">
+    <meta name="twitter:description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
     <meta property="og:title" content="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="Mục tiêu Tuần 9Xem xét và kiểm tra mã dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Các nhiệm vụ cần thực hiện trong tuần nàyNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quy trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. - Kiểm tra mã dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth - Cập nhật nhật ký công việc 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực 5 - Kiểm tra các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai">
+    <meta property="og:description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="Mục tiêu Tuần 9Xem xét và kiểm tra mã dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Các nhiệm vụ cần thực hiện trong tuần nàyNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quy trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend. - Kiểm tra mã dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực - Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth - Cập nhật nhật ký công việc 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực 5 - Kiểm tra các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai">
-    <meta itemprop="wordCount" content="266">
+    <meta itemprop="description" content="Mục Tiêu Tuần 9Kiểm tra và rà soát mã nguồn các dịch vụ backend Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm Triển khai và cập nhật WebSocket cho thông báo thời gian thực Tích hợp Google OAuth2 cho Authentication Service Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực Nhiệm Vụ Thực Hiện Trong TuầnNgày Nhiệm Vụ Ngày Bắt Đầu Ngày Hoàn Thành Tài Liệu Tham Khảo 1 - Họp nhóm để thảo luận về tiến trình phát triển 03/11/2025 03/11/2025 - Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend - Kiểm tra mã nguồn các dịch vụ 2 - Cập nhật WebSocket cho Notification Service 04/11/2025 04/11/2025 - Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực - Lập trình frontend: Kiểm tra UI của các dịch vụ 3 - Triển khai OAuth2 Login Google cho Auth Service 05/11/2025 05/11/2025 - Test luồng đăng nhập và tích hợp callback Google OAuth - Cập nhật worklog 4 - Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend 06/11/2025 06/11/2025 - Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực 5 - Thực hiện kiểm thử các tính năng trong tuần 07/11/2025 07/11/2025 - Chuẩn bị báo cáo tuần &amp; checklist triển khai">
+    <meta itemprop="wordCount" content="251">
     <title>Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html" rel="alternate" hreflang="vi">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.xml" rel="alternate" type="application/rss+xml" title="Nhật ký công việc Tuần 9 :: Báo Cáo Thực Tập">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765214330" rel="stylesheet">
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765214330" defer></script>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765240302" rel="stylesheet">
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765240302" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765214330";
+      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765240302";
     </script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765240302" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet"></noscript>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765214330" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765214330" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765214330" rel="stylesheet" id="R-format-style">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet"></noscript>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765240302" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765240302" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765240302" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -95,7 +95,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765214330" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765240302" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html">
     <div id="R-body" class="default-animation">
@@ -127,15 +127,15 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#mục-tiêu-tuần-9">Mục tiêu Tuần 9</a></li>
-    <li><a href="#các-nhiệm-vụ-cần-thực-hiện-trong-tuần-này">Các nhiệm vụ cần thực hiện trong tuần này</a></li>
+    <li><a href="#mục-tiêu-tuần-9">Mục Tiêu Tuần 9</a></li>
+    <li><a href="#nhiệm-vụ-thực-hiện-trong-tuần">Nhiệm Vụ Thực Hiện Trong Tuần</a></li>
   </ul>
 </nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><span itemprop="name">Nhật ký công việc</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Nhật ký công việc Tuần 9</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><span itemprop="name">Nhật Ký Công Việc</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Nhật ký công việc Tuần 9</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -187,7 +187,7 @@
 <h1 id="nhật-ký-công-việc-tuần-9">Nhật ký công việc Tuần 9</h1>
 
 <h2 id="mục-tiêu-tuần-9">
-  Mục tiêu Tuần 9
+  Mục Tiêu Tuần 9
 
 
 
@@ -197,15 +197,15 @@
 
 <span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
 </h2><ul>
-<li>Xem xét và kiểm tra mã dịch vụ backend</li>
+<li>Kiểm tra và rà soát mã nguồn các dịch vụ backend</li>
 <li>Phát triển và tích hợp các tính năng frontend cho Notification &amp; Auth</li>
-<li>Điều chỉnh và tinh chỉnh kiến ​​trúc hệ thống thông qua thảo luận nhóm</li>
+<li>Điều chỉnh và tinh chỉnh kiến trúc hệ thống thông qua thảo luận nhóm</li>
 <li>Triển khai và cập nhật WebSocket cho thông báo thời gian thực</li>
-<li>Tích hợp đăng nhập Google OAuth2 cho Dịch vụ Xác thực</li>
+<li>Tích hợp Google OAuth2 cho Authentication Service</li>
 <li>Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực</li>
 </ul>
-<h2 id="các-nhiệm-vụ-cần-thực-hiện-trong-tuần-này">
-  Các nhiệm vụ cần thực hiện trong tuần này
+<h2 id="nhiệm-vụ-thực-hiện-trong-tuần">
+  Nhiệm Vụ Thực Hiện Trong Tuần
 
 
 
@@ -218,30 +218,30 @@
   <thead>
       <tr>
           <th>Ngày</th>
-          <th>Nhiệm vụ</th>
-          <th>Ngày bắt đầu</th>
-          <th>Ngày hoàn thành</th>
-          <th>Tài liệu tham khảo</th>
+          <th>Nhiệm Vụ</th>
+          <th>Ngày Bắt Đầu</th>
+          <th>Ngày Hoàn Thành</th>
+          <th>Tài Liệu Tham Khảo</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>1</td>
-          <td>- Họp nhóm để thảo luận về quy trình phát triển</td>
+          <td>- Họp nhóm để thảo luận về tiến trình phát triển</td>
           <td>03/11/2025</td>
           <td>03/11/2025</td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket với backend.</td>
+          <td>- Xây dựng giao diện Notification cho dự án, tích hợp các API và thiết lập kết nối WebSocket tới backend</td>
           <td></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Kiểm tra mã dịch vụ</td>
+          <td>- Kiểm tra mã nguồn các dịch vụ</td>
           <td></td>
           <td></td>
           <td></td>
@@ -255,14 +255,14 @@
       </tr>
       <tr>
           <td></td>
-          <td>- Tái cấu trúc luồng NotificationService để hỗ trợ thông báo đẩy thời gian thực</td>
+          <td>- Refactor luồng NotificationService để hỗ trợ push notifications thời gian thực</td>
           <td></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Mã front-end: Kiểm tra lỗi giao diện người dùng dịch vụ</td>
+          <td>- Lập trình frontend: Kiểm tra UI của các dịch vụ</td>
           <td></td>
           <td></td>
           <td></td>
@@ -276,42 +276,42 @@
       </tr>
       <tr>
           <td></td>
-          <td>- Kiểm tra luồng đăng nhập và tích hợp lệnh gọi lại Google OAuth</td>
+          <td>- Test luồng đăng nhập và tích hợp callback Google OAuth</td>
           <td></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Cập nhật nhật ký công việc</td>
+          <td>- Cập nhật worklog</td>
           <td></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Tiếp tục tích hợp các tính năng Notification &amp; Auth trên front-end</td>
+          <td>- Tiếp tục tích hợp các tính năng Notification &amp; Auth trên frontend</td>
           <td>06/11/2025</td>
           <td>06/11/2025</td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Sửa lỗi liên quan đến kết nối lại WebSocket và trạng thái xác thực</td>
+          <td>- Sửa lỗi liên quan đến kết nối lại WebSocket &amp; trạng thái xác thực</td>
           <td></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Kiểm tra các tính năng trong tuần</td>
+          <td>- Thực hiện kiểm thử các tính năng trong tuần</td>
           <td>07/11/2025</td>
           <td>07/11/2025</td>
           <td></td>
       </tr>
       <tr>
           <td></td>
-          <td>- Chuẩn bị báo cáo hàng tuần và danh sách kiểm tra triển khai</td>
+          <td>- Chuẩn bị báo cáo tuần &amp; checklist triển khai</td>
           <td></td>
           <td></td>
           <td></td>
@@ -365,21 +365,21 @@
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="parent " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu">
+            <li class="parent " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật Ký Công Việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu">
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html"> <b> 1.1.  </b> Nhật ký công việc Tuần 1</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><b>1.1.2.</b>Nhật ký công việc Tuần 2</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><b>1.1.3. </b>Nhật ký công việc Tuần 3</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><b> 1.1.4. </b>Nhật ký công việc Tuần 4</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><b> 1.1.5. </b>Week 5 Worklog</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><b> 1.1.6. </b>Nhật ký công việc Tuần 6</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><b> 1.1.7. </b>Nhật ký công việc Tuần 7</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><b> 1.1.8. </b>Nhật ký công việc Tuần 8</a></li>
-            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><b> 1.1.9. </b>Nhật ký công việc Tuần 9</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><b> 1.1.10. </b>Nhật ký công việc Tuần 10</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><b> 1.1.11. </b>Nhật ký công việc Tuần 11</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><b> 1.1.12. </b>Nhật ký công việc Tuần 12</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><b> 1.1.13. </b>Nhật ký công việc Tuần 13</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><b> 1.1.14. </b>Nhật ký công việc Tuần 14</a></li></ul></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><b>1.2. </b>Nhật ký công việc Tuần 2</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><b>1.3. </b>Nhật ký công việc Tuần 3</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><b> 1.4. </b>Nhật ký công việc Tuần 4</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><b> 1.5. </b>Nhật ký công việc Tuần 5</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><b> 1.6. </b>Nhật ký công việc Tuần 6</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><b> 1.7. </b>Nhật ký công việc Tuần 7</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><b> 1.8. </b>Nhật ký công việc Tuần 8</a></li>
+            <li class="active " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><b> 1.9. </b>Nhật ký công việc Tuần 9</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><b> 1.10. </b>Nhật ký công việc Tuần 10</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><b> 1.11. </b>Nhật ký công việc Tuần 11</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><b> 1.12. </b>Nhật ký công việc Tuần 12</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><b> 1.13. </b>Nhật ký công việc Tuần 13</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><b> 1.14. </b>Nhật ký công việcTuần 14</a></li></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
@@ -432,8 +432,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765240302" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

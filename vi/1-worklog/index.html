@@ -5,89 +5,53 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.149.1">
     <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
-    <meta name="description" content="Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản
-Week 2: Doing task A…
-Week 3: Doing task B…
-Week 4: Doing task C…
-Week 5: Doing task D…
-Week 6: Doing task E…
-Week 7: Doing task F…
-Week 8: Doing task G…
-Week 9: Doing task H…
-Week 10: Doing task I…
-Week 11: Doing task J…
-Week 12: Doing task K…">
+    <meta name="description" content="Tuần 1: Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình
+Tuần 2: Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.
+Tuần 3: Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nhật ký công việc :: Báo Cáo Thực Tập">
-    <meta name="twitter:description" content="Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản
-Week 2: Doing task A…
-Week 3: Doing task B…
-Week 4: Doing task C…
-Week 5: Doing task D…
-Week 6: Doing task E…
-Week 7: Doing task F…
-Week 8: Doing task G…
-Week 9: Doing task H…
-Week 10: Doing task I…
-Week 11: Doing task J…
-Week 12: Doing task K…">
+    <meta name="twitter:title" content="Nhật Ký Công Việc :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="Tuần 1: Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình
+Tuần 2: Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.
+Tuần 3: Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.">
     <meta property="og:url" content="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">
     <meta property="og:site_name" content="Báo Cáo Thực Tập">
-    <meta property="og:title" content="Nhật ký công việc :: Báo Cáo Thực Tập">
-    <meta property="og:description" content="Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản
-Week 2: Doing task A…
-Week 3: Doing task B…
-Week 4: Doing task C…
-Week 5: Doing task D…
-Week 6: Doing task E…
-Week 7: Doing task F…
-Week 8: Doing task G…
-Week 9: Doing task H…
-Week 10: Doing task I…
-Week 11: Doing task J…
-Week 12: Doing task K…">
+    <meta property="og:title" content="Nhật Ký Công Việc :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="Tuần 1: Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình
+Tuần 2: Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.
+Tuần 3: Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.">
     <meta property="og:locale" content="vi">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Nhật ký công việc :: Báo Cáo Thực Tập">
-    <meta itemprop="description" content="Week 1: Làm quen với Hugo và các dịch vụ cơ AWS cơ bản
-Week 2: Doing task A…
-Week 3: Doing task B…
-Week 4: Doing task C…
-Week 5: Doing task D…
-Week 6: Doing task E…
-Week 7: Doing task F…
-Week 8: Doing task G…
-Week 9: Doing task H…
-Week 10: Doing task I…
-Week 11: Doing task J…
-Week 12: Doing task K…">
-    <meta itemprop="wordCount" content="69">
-    <title>Nhật ký công việc :: Báo Cáo Thực Tập</title>
+    <meta itemprop="name" content="Nhật Ký Công Việc :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="Tuần 1: Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình
+Tuần 2: Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.
+Tuần 3: Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.">
+    <meta itemprop="wordCount" content="414">
+    <title>Nhật Ký Công Việc :: Báo Cáo Thực Tập</title>
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html" rel="alternate" hreflang="x-default">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/en/1-worklog/index.html" rel="alternate" hreflang="en">
     <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html" rel="alternate" hreflang="vi">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.xml" rel="alternate" type="application/rss+xml" title="Nhật ký công việc :: Báo Cáo Thực Tập">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765214330" rel="stylesheet">
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765214330" defer></script>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.xml" rel="alternate" type="application/rss+xml" title="Nhật Ký Công Việc :: Báo Cáo Thực Tập">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765240302" rel="stylesheet">
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search-lunr.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/search.min.js?1765240302" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765214330";
+      window.relearn.index_js_url="https://Ttuandatt.github.io/AWS-Workshop/searchindex.vi.js?1765240302";
     </script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.multi.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/lunr/lunr.vi.min.js?1765240302" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765214330" rel="stylesheet"></noscript>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765214330" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765214330" rel="stylesheet">
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765214330" rel="stylesheet" id="R-format-style">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="https://Ttuandatt.github.io/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765240302" rel="stylesheet"></noscript>
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765240302" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/theme.min.css?1765240302" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/format-html.min.css?1765240302" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -139,7 +103,7 @@ Week 12: Doing task K…">
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765214330" rel="stylesheet">
+    <link href="https://Ttuandatt.github.io/AWS-Workshop/css/custom.css?1765240302" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">
     <div id="R-body" class="default-animation">
@@ -173,7 +137,7 @@ Week 12: Doing task K…">
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Nhật ký công việc</span><meta itemprop="position" content="2"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="https://Ttuandatt.github.io/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Nhật Ký Công Việc</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -222,20 +186,22 @@ Week 12: Doing task K…">
   <header class="headline">
   </header>
 
-<h1 id="nhật-ký-công-việc">Nhật ký công việc</h1>
+<h1 id="nhật-ký-công-việc">Nhật Ký Công Việc</h1>
 
-<p><strong>Week 1:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html">Làm quen với Hugo và các dịch vụ cơ AWS cơ bản</a></p>
-<p><strong>Week 2:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task A…</a></p>
-<p><strong>Week 3:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task B…</a></p>
-<p><strong>Week 4:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task C…</a></p>
-<p><strong>Week 5:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task D…</a></p>
-<p><strong>Week 6:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task E…</a></p>
-<p><strong>Week 7:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task F…</a></p>
-<p><strong>Week 8:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task G…</a></p>
-<p><strong>Week 9:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task H…</a></p>
-<p><strong>Week 10:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task I…</a></p>
-<p><strong>Week 11:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task J…</a></p>
-<p><strong>Week 12:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html">Doing task K…</a></p>
+<p><strong>Tuần 1:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/">Định hướng, thành lập nhóm và xây dựng hiểu biết cơ bản về các dịch vụ và công cụ AWS cần thiết cho chương trình</a></p>
+<p><strong>Tuần 2:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/">Khám phá và thực hành các khái niệm cốt lõi về VPC và EC2 thông qua cấu hình thực hành, thiết lập mạng cơ bản và các hoạt động lập kế hoạch dự án ban đầu.</a></p>
+<p><strong>Tuần 3:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/">Nghiên cứu và áp dụng các khái niệm Route 53 và CloudFormation đồng thời tiến hành thiết kế kiến trúc giải pháp và thiết lập các thành phần backend, frontend và cơ sở dữ liệu cơ bản.</a></p>
+<p><strong>Tuần 4:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/">Phát triển xác thực backend và nền tảng frontend, khám phá dịch vụ S3 và API Gateway, định nghĩa API cần thiết, dịch các blog kỹ thuật và thiết lập kiến trúc dự án cùng cấu trúc UI cơ bản.</a></p>
+<p><strong>Tuần 5:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/">Tiếp tục phát triển full-stack, khám phá Auto Scaling, CloudShell và cải thiện tích hợp frontend–backend cùng với việc dịch blog kỹ thuật.</a></p>
+<p><strong>Tuần 6:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/">Mở rộng phát triển ứng dụng bằng cách tích hợp caching, cơ sở dữ liệu, messaging và tính năng giao tiếp thời gian thực.</a></p>
+<p><strong>Tuần 7:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/">Triển khai và mở rộng các thành phần hệ thống trên AWS, tích hợp cân bằng tải và phát triển các luồng nghiệp vụ chính.</a></p>
+<p><strong>Tuần 8:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/">Nâng cao chất lượng hệ thống thông qua kiểm thử, tối ưu hiệu năng, cải thiện khả năng truy cập và thử nghiệm triển khai.</a></p>
+<p><strong>Tuần 9:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/">Tinh chỉnh luồng xác thực và thông báo bằng cách tích hợp OAuth, ổn định giao tiếp WebSocket và sửa các vấn đề về kiến trúc và logic.</a></p>
+<p><strong>Tuần 10:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/">Thực hiện kiểm thử chấp nhận nội bộ, giải quyết các vấn đề UI và backend, đồng thời nâng cao độ ổn định hệ thống dựa trên phản hồi.</a></p>
+<p><strong>Tuần 11:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/">Xác định và xử lý các lỗi còn lại, đồng thời hoàn thiện và xác thực kiến trúc giải pháp tổng thể.</a></p>
+<p><strong>Tuần 12:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/">Điều chỉnh kiến trúc triển khai theo thiết kế tối ưu chi phí vùng đơn và hoàn thành các thử nghiệm triển khai hạ tầng.</a></p>
+<p><strong>Tuần 13:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/">Triển khai đầy đủ hạ tầng cloud và triển khai container hóa bằng mạng AWS, ALB, ECS Fargate và cơ sở dữ liệu quản lý.</a></p>
+<p><strong>Tuần 14:</strong> <a href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/">Hoàn tất triển khai hệ thống, thực hiện kiểm thử xác thực và hoàn thành tài liệu cùng các sản phẩm workshop.</a></p>
 
   <footer class="footline">
   </footer>
@@ -283,21 +249,21 @@ Week 12: Doing task K…">
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="active parent " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu">
+            <li class="active parent " data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật Ký Công Việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu">
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.1-week_1/index.html"> <b> 1.1.  </b> Nhật ký công việc Tuần 1</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><b>1.1.2.</b>Nhật ký công việc Tuần 2</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><b>1.1.3. </b>Nhật ký công việc Tuần 3</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><b> 1.1.4. </b>Nhật ký công việc Tuần 4</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><b> 1.1.5. </b>Week 5 Worklog</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><b> 1.1.6. </b>Nhật ký công việc Tuần 6</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><b> 1.1.7. </b>Nhật ký công việc Tuần 7</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><b> 1.1.8. </b>Nhật ký công việc Tuần 8</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><b> 1.1.9. </b>Nhật ký công việc Tuần 9</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><b> 1.1.10. </b>Nhật ký công việc Tuần 10</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><b> 1.1.11. </b>Nhật ký công việc Tuần 11</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><b> 1.1.12. </b>Nhật ký công việc Tuần 12</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><b> 1.1.13. </b>Nhật ký công việc Tuần 13</a></li>
-            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><b> 1.1.14. </b>Nhật ký công việc Tuần 14</a></li></ul></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.2-week_2/index.html"><b>1.2. </b>Nhật ký công việc Tuần 2</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.3-week_3/index.html"><b>1.3. </b>Nhật ký công việc Tuần 3</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.4-week_4/index.html"><b> 1.4. </b>Nhật ký công việc Tuần 4</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.5-week_5/index.html"><b> 1.5. </b>Nhật ký công việc Tuần 5</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.6-week_6/index.html"><b> 1.6. </b>Nhật ký công việc Tuần 6</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.7-week_7/index.html"><b> 1.7. </b>Nhật ký công việc Tuần 7</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.8-week_8/index.html"><b> 1.8. </b>Nhật ký công việc Tuần 8</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.9-week_9/index.html"><b> 1.9. </b>Nhật ký công việc Tuần 9</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.10-week_10/index.html"><b> 1.10. </b>Nhật ký công việc Tuần 10</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html"><b> 1.11. </b>Nhật ký công việc Tuần 11</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.12-week_12/index.html"><b> 1.12. </b>Nhật ký công việc Tuần 12</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.13-week_13/index.html"><b> 1.13. </b>Nhật ký công việc Tuần 13</a></li>
+            <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.14-week_14/index.html"><b> 1.14. </b>Nhật ký công việcTuần 14</a></li></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
             <li class="" data-nav-url="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="https://Ttuandatt.github.io/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
@@ -350,8 +316,8 @@ Week 12: Doing task K…">
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765214330" defer></script>
-    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765214330" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765240302" defer></script>
+    <script src="https://Ttuandatt.github.io/AWS-Workshop/js/theme.min.js?1765240302" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

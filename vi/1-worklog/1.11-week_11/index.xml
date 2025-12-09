@@ -3,7 +3,7 @@
   <channel>
     <title>Nhật ký công việc Tuần 11 :: Báo Cáo Thực Tập</title>
     <link>https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.html</link>
-    <description>Mục tiêu Tuần 11&#xD;Tìm lỗi và sửa lỗi Hoàn thiện kiến ​​trúc giải pháp Nhiệm vụ cần thực hiện trong tuần này&#xD;| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo | |—–|——————————————————————————————|————————-|———————————————–|</description>
+    <description>Mục tiêu Tuần 11&#xD;Tìm và sửa lỗi, triển khai hệ thống Hoàn thiện kiến trúc giải pháp Nhiệm vụ thực hiện trong tuần&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày kết thúc Tài liệu tham khảo 1 - Họp nhóm để thảo luận về quá trình phát triển 17/11/2025 17/11/2025 - Điều chỉnh kiến trúc giải pháp - Lập trình backend: Sửa lỗi trong User Service 2 - Lập trình backend: Sửa lỗi trong User Service 18/11/2025 18/11/2025 3 - Điều chỉnh kiến trúc giải pháp 19/11/2025 19/11/2025 - Họp nhóm để đánh giá các lỗi tồn tại ở Frontend và Backend 4 - Điều chỉnh kiến trúc giải pháp 20/11/2025 20/11/2025 5 - Họp nhóm 21/11/2025 21/11/2025 - Triển khai thử nghiệm VPC, Subnets</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://Ttuandatt.github.io/AWS-Workshop/vi/1-worklog/1.11-week_11/index.xml" rel="self" type="application/rss+xml" />
