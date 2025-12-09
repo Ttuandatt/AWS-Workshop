@@ -28,26 +28,26 @@ Bước 1.1: Tạo Bucket Chính (Singapore)Truy cập Amazon S3 Console và ch
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html" rel="alternate" hreflang="en">
     <link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.xml" rel="alternate" type="application/rss+xml" title="S3 và Replication :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765298407" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765298407" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765298778" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765298778" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765298407";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765298778";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765298407" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765298778" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298407" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298407" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765298407" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765298407" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765298407" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298778" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765298778" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765298778" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765298778" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765298778" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -99,7 +99,7 @@ Bước 1.1: Tạo Bucket Chính (Singapore)Truy cập Amazon S3 Console và ch
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765298407" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765298778" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/index.html">
     <div id="R-body" class="default-animation">
@@ -237,12 +237,12 @@ Bước 1.1: Tạo Bucket Chính (Singapore)Truy cập Amazon S3 Console và ch
 <p>Click <strong>Create bucket</strong>.</p>
 </li>
 </ol>
-<p><a href="#R-image-441d42bed11e7bfc4c7907abfab75d76" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-441d42bed11e7bfc4c7907abfab75d76"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.jpg"></a></p>
-<p><a href="#R-image-16f754e47bfbab37cf03140082c048c5" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_2.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-16f754e47bfbab37cf03140082c048c5"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_2.jpg"></a></p>
-<p><a href="#R-image-7f0ad703ca98c5b04c3bb7a61d86f48a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_3.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7f0ad703ca98c5b04c3bb7a61d86f48a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_3.jpg"></a></p>
+<p><a href="#R-image-e4c216b0d3a58dbd7e554fbce65e2d16" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e4c216b0d3a58dbd7e554fbce65e2d16"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.jpg"></a></p>
+<p><a href="#R-image-044244f5fd5d8fd329a991addf957b1a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-044244f5fd5d8fd329a991addf957b1a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_2.jpg"></a></p>
+<p><a href="#R-image-574f2d56ed57d82eeb000a2752a8c32b" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-574f2d56ed57d82eeb000a2752a8c32b"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_3.jpg"></a></p>
 <hr>
 <h3 id="bước-12-tạo-bucket-phụ-n-virginia">
   Bước 1.2: Tạo Bucket Phụ (N. Virginia)
@@ -275,8 +275,8 @@ Bước 1.1: Tạo Bucket Chính (Singapore)Truy cập Amazon S3 Console và ch
 <li>Bucket chính: Singapore (<code>ap-southeast-1</code>)</li>
 <li>Bucket dự phòng: N. Virginia (<code>us-east-1</code>)</li>
 </ul>
-<p><a href="#R-image-030d622cd170b7961339853f27ec7feb" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.2.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-030d622cd170b7961339853f27ec7feb"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.2.jpg"></a></p>
+<p><a href="#R-image-0ab94274781e430af9161fa11940148f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0ab94274781e430af9161fa11940148f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.1_1.2.jpg"></a></p>
 <hr>
 <h3 id="bước-13-cấu-hình-replication-tự-động-đồng-bộ">
   Bước 1.3: Cấu Hình Replication (Tự Động Đồng Bộ)
@@ -311,14 +311,14 @@ Khi được hỏi <strong>“Replicate existing objects?”</strong>, chọn <s
 (Do bucket hiện tại đang trống.)</p>
 </li>
 </ol>
-<p><a href="#R-image-fe9865a7bb2fe7cea740fe644cad058f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_1.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fe9865a7bb2fe7cea740fe644cad058f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_1.jpg"></a></p>
-<p><a href="#R-image-51f99c7bad0e22199119eabe1650245f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_2.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-51f99c7bad0e22199119eabe1650245f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_2.jpg"></a></p>
-<p><a href="#R-image-37b47ff0714a4305bf858d48aaeb483a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_3.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-37b47ff0714a4305bf858d48aaeb483a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_3.jpg"></a></p>
-<p><a href="#R-image-ed499ee22f563aa6005f5e8ac074a988" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_4.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-ed499ee22f563aa6005f5e8ac074a988"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_4.jpg"></a></p>
+<p><a href="#R-image-d6b7614bc0af5765cb0c25cf33f3d1f5" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d6b7614bc0af5765cb0c25cf33f3d1f5"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_1.jpg"></a></p>
+<p><a href="#R-image-29e72c2e580472f6694d29d081f244f1" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-29e72c2e580472f6694d29d081f244f1"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_2.jpg"></a></p>
+<p><a href="#R-image-99cf886466da836ee938b14e6c3d290f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-99cf886466da836ee938b14e6c3d290f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_3.jpg"></a></p>
+<p><a href="#R-image-6c2eacd15ca804712c81947105f3346a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_4.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6c2eacd15ca804712c81947105f3346a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe1.3_4.jpg"></a></p>
 <hr>
 <hr>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
@@ -443,8 +443,8 @@ BƯỚC 3: Route 53 & ACM ➡
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765298407" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765298407" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765298778" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765298778" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

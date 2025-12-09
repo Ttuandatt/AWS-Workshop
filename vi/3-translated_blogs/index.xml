@@ -3,7 +3,7 @@
   <channel>
     <title>Blogs đã dịch :: Báo Cáo Thực Tập</title>
     <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.html</link>
-    <description>Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.&#xA;Blog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)&#xA;Blog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xA;Blog 4: Triển khai liên tục dựa trên phương pháp GitOps với ArgoCD và EKS bằng cách sử dụng ngôn ngữ tự nhiên</description>
+    <description>Blog 1: Một giải pháp có khả năng mở rộng cao cho việc sao chép dữ liệu, sử dụng Amazon FSx for NetApp ONTAP và NetApp SnapMirror.&#xA;Blog 2: Tăng tốc Đổi mới Hàng không Vũ trụ: High Performance Computing (HPC) trên Amazon Web Services (AWS)&#xA;Blog 3: Khắc phục sự cố Môi trường Elastic Beanstalk bằng Amazon Q Developer CLI</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/index.xml" rel="self" type="application/rss+xml" />
@@ -27,69 +27,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_3/index.html</guid>
       <description>Khắc phục sự cố môi trường Elastic Beanstalk bằng Amazon Q Developer CLI&#xD;Tác giả: Adarsh Suresh, Chandu Utlapalli Ngày: 29/07/2025&#xA;Chủ đề: Amazon Q Developer, AWS Elastic Beanstalk, Technical How-to&#xA;Giới thiệu&#xD;Các nhà phát triển làm việc với AWS thường đánh giá cao AWS Elastic Beanstalk nhờ khả năng đơn giản hóa việc triển khai và vận hành các ứng dụng web mà không cần phải quản lý trực tiếp cơ sở hạ tầng nền tảng. Chỉ cần tải mã nguồn ứng dụng lên, Elastic Beanstalk sẽ tự động xử lý các tác vụ như cấp phát tài nguyên, cân bằng tải, tự động mở rộng và giám sát hệ thống, cho phép các nhóm tập trung hoàn toàn vào việc phát triển ứng dụng.</description>
-    </item>
-    <item>
-      <title>Blog 4</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_4/index.html</guid>
-      <description>Triển khai liên tục theo GitOps với ArgoCD và EKS bằng ngôn ngữ tự nhiên&#xD;Tác giả: Jagdish Komakula, Aditya Ambati, Anand Krishna Varanasi Ngày: 17/07/2025&#xA;Danh mục: Amazon Elastic Kubernetes Service (EKS), Amazon Q, Amazon Q Developer, Developer Tools, Technical How-to&#xA;Giới thiệu&#xD;ArgoCD là một công cụ GitOps hàng đầu giúp các nhóm quản lý việc triển khai Kubernetes theo mô hình khai báo, trong đó Git đóng vai trò là nguồn chân lý duy nhất (single source of truth). ArgoCD cung cấp nhiều tính năng mạnh mẽ như:</description>
-    </item>
-    <item>
-      <title>Blog 5</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_5/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_5/index.html</guid>
-      <description>Ra mắt Strands Agents 1.0: Đơn giản hóa điều phối Multi-Agent cho môi trường production&#xD;Ryan Coleman, Belle Guttman Ngày: 15/07/2025 Chủ đề: Amazon Machine Learning, Announcements, Artificial Intelligence, Open Source&#xA;Hôm nay, chúng tôi vui mừng giới thiệu Strands Agents SDK phiên bản 1.0, đánh dấu một cột mốc quan trọng trong hành trình giúp việc xây dựng các agent AI trở nên đơn giản, đáng tin cậy và sẵn sàng cho môi trường production.</description>
-    </item>
-    <item>
-      <title>Blog 6</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_6/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_6/index.html</guid>
-      <description>Kích hoạt phân tích dữ liệu Genomic và Multiomic nhanh chóng với Illumina DRAGEN™ v4.4 trên các instance Amazon EC2 F2&#xD;Eric Allen, Mark Azadpour, Deepthi Shankar, Olivia Choudhury, và Shyamal Mehtalia | 15/07/2025 | High Performance Computing, Life Sciences, Partner solutions&#xA;Bài viết này được đóng góp bởi Eric Allen (AWS), Olivia Choudhury (AWS), Mark Azadpour (AWS), Deepthi Shankar (Illumina), và Shyamal Mehtalia (Illumina)</description>
-    </item>
-    <item>
-      <title>Blog 7</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_7/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_7/index.html</guid>
-      <description>Những hiểu biết sâu sắc và bài học kinh nghiệm từ Amazon Q trong tích hợp trình thu thập thông tin web Connect&#xD;Tác giả: Vikas Prasad &amp; Ayush Mehta Ngày: 22/07/2025&#xA;Giới thiệu&#xD;Các nhân viên tổng đài (Human agents) là yếu tố then chốt trong mọi trung tâm chăm sóc khách hàng, và việc cung cấp cho họ các công cụ phù hợp để thành công là điều thiết yếu đối với mọi tổ chức. </description>
-    </item>
-    <item>
-      <title>Blog 8</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_8/index.html</guid>
-      <description>Xây dựng hệ thống đa-tenant resilient với Amazon SQS Fair Queues&#xD;Tác giả: Maximilian Schellhorn &amp; Dirk Fröhner&#xA;Ngày: 21/07/2025&#xA;Chuyên mục: Amazon Simple Queue Service (SQS), Announcements, Intermediate (200), Serverless, Technical How-to&#xA;Giới thiệu&#xD;AWS chính thức giới thiệu Amazon SQS Fair Queues — một tính năng mới giúp giảm thiểu hiện tượng noisy neighbor trong các hệ thống multi-tenant. Với fair queues, ứng dụng trở nên resilient hơn, dễ vận hành hơn, đồng thời giảm chi phí vận hành và cải thiện chất lượng dịch vụ cho khách hàng.</description>
-    </item>
-    <item>
-      <title>Blog 9</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_9/index.html</guid>
-      <description>Amazon Braket ra mắt bộ xử lý lượng tử siêu dẫn 54-qubit IQM Emerald&#xD;Tác giả: Zia Mohammad, Charunethran Panchalam Govindarajan, Peter Komar, Stefan Seegerer Ngày: 21/07/2025 Chuyên mục: Amazon Braket – Quantum Technologies&#xA;Giới thiệu&#xD;Amazon Braket cho phép khách hàng thiết kế và chạy thuật toán lượng tử trên nhiều loại phần cứng lượng tử thông qua một giao diện thống nhất. Hôm nay, AWS mở rộng danh mục phần cứng trên Braket bằng việc chính thức cung cấp bộ xử lý lượng tử (QPU) mới nhất của IQM – IQM Emerald. Đây là một QPU siêu dẫn 54 qubit, cung cấp độ trung thực cổng cao hơn và kết nối lưới vuông đầy đủ (full square lattice connectivity).</description>
-    </item>
-    <item>
-      <title>Blog 10</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_10/index.html</guid>
-      <description>Empower đã mở rộng quy mô đảm bảo chất lượng trung tâm liên hệ như thế nào với Amazon Connect và Amazon Bedrock&#xD;Tác giả: Marcos Ortiz, Illan Geller (Accenture), Ozlem Celik-Tinmaz (Accenture), Prabhu Akula (Accenture), và Ryan Baham (Empower)&#xA;Ngày: 04/08/2025&#xA;Thể loại: Amazon Bedrock, Amazon Connect, Amazon Transcribe, Trung tâm liên hệ, AI tạo sinh</description>
-    </item>
-    <item>
-      <title>Blog 11</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_11/index.html</guid>
-      <description>Làm thế nào để quản lý bot AI bằng AWS WAF và tăng cường bảo mật&#xD;Tác giả: Kartik Bheemisetty, David MacDonald&#xA;Ngày: 01/08/2025&#xA;Danh mục: AWS WAF, Best Practices, Security, Identity &amp; Compliance, Technical Guide, Thought Leadership&#xA;Giới thiệu&#xD;Trình thu thập dữ liệu web (web crawler) đầu tiên được tạo ra vào năm 1993 nhằm đo lường quy mô của World Wide Web. Kể từ đó, crawler đã phát triển thành những bot hiện đại được hỗ trợ bởi AI, có khả năng tự động hóa và tự hành.</description>
-    </item>
-    <item>
-      <title>Blog 12</title>
-      <link>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/3-translated_blogs/blog_12/index.html</guid>
-      <description>Hỗ trợ tùy chỉnh trên quy mô lớn: Chuyển đổi một cơ sở kiến thức Salesforce hợp nhất thành các tác tử AI theo từng LOB&#xD;Tác giả: Bhaskar Rao, Saqib M, Dipkumar Mehta, Murtuza Kainan&#xA;Ngày: 01/08/2025&#xA;Danh mục: Nâng cao (300), Amazon AppFlow, Amazon Connect, Amazon Q, Customer Engagement, Customer Solutions, Technical Guide</description>
     </item>
   </channel>
 </rss>
