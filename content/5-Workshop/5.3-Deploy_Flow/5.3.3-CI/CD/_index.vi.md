@@ -1,10 +1,11 @@
-Chào bạn, đây là **Tài liệu hướng dẫn triển khai CI/CD toàn diện (A-Z)** dành riêng cho dự án SGU TodoList của bạn.
++++
+title = "CI/CD"
+weight = 3
+chapter = false
+pre = " <b> 5.3.3.  </b> "
++++
 
-Tài liệu này tổng hợp lại tất cả những gì chúng ta đã tối ưu: **Tự động hóa hoàn toàn, Giao diện đẹp, Báo lỗi thông minh, và Chiến lược nhánh chuẩn.**
-
-* * * * *
-
-### 🏁 QUY TRÌNH TỔNG QUAN
+### QUY TRÌNH TỔNG QUAN
 
 1.  **Cấu hình bảo mật:** Gửi chìa khóa AWS cho GitHub.
 
@@ -67,7 +68,7 @@ MY-PROJECT/
 # ========================================================
 # 1. ĐỊNH DANH WORKFLOW
 # ========================================================
-name: Deploy API Gateway 🌐  # Tên hiển thị của quy trình này trong tab "Actions" trên GitHub.
+name: Deploy API Gateway  # Tên hiển thị của quy trình này trong tab "Actions" trên GitHub.
 
 # ========================================================
 # 2. TRIGGER (CÒ KÍCH HOẠT)
@@ -188,7 +189,7 @@ jobs:
 
 
 ```YAML
-name: Deploy Auth Service 🛡️
+name: Deploy Auth Service
 
 on:
   push:
@@ -270,7 +271,7 @@ jobs:
 
 
 ```YAML
-name: Deploy User Service 👤
+name: Deploy User Service 
 
 on:
   push:
@@ -352,7 +353,7 @@ jobs:
 
 
 ```YAML
-name: Deploy Taskflow Service ✅
+name: Deploy Taskflow Service 
 
 on:
   push:
@@ -434,7 +435,7 @@ jobs:
 
 
 ```YAML
-name: Deploy Notification Service 🔔
+name: Deploy Notification Service 
 
 on:
   push:
@@ -516,7 +517,7 @@ jobs:
 
 
 ```YAML
-name: Deploy AI Model 🧠
+name: Deploy AI Model 
 
 on:
   push:
