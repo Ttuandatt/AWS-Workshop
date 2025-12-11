@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="OVERVIEW WORKFLOWSecurity Configuration: Provide AWS credentials to GitHub.
+Project Structure: Create .yml workflow files.
+Workflow Content: Copy standard code for 6 services.
+Activation: Push code to GitHub to trigger the system.
+STEP 1: SECURITY CONFIGURATION (SECRETS)GitHub needs AWS access rights to deploy on your behalf.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CI/CD :: Internship Report">
+    <meta name="twitter:description" content="OVERVIEW WORKFLOWSecurity Configuration: Provide AWS credentials to GitHub.
+Project Structure: Create .yml workflow files.
+Workflow Content: Copy standard code for 6 services.
+Activation: Push code to GitHub to trigger the system.
+STEP 1: SECURITY CONFIGURATION (SECRETS)GitHub needs AWS access rights to deploy on your behalf.">
+    <meta property="og:url" content="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html">
+    <meta property="og:site_name" content="Internship Report">
+    <meta property="og:title" content="CI/CD :: Internship Report">
+    <meta property="og:description" content="OVERVIEW WORKFLOWSecurity Configuration: Provide AWS credentials to GitHub.
+Project Structure: Create .yml workflow files.
+Workflow Content: Copy standard code for 6 services.
+Activation: Push code to GitHub to trigger the system.
+STEP 1: SECURITY CONFIGURATION (SECRETS)GitHub needs AWS access rights to deploy on your behalf.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="CI/CD :: Internship Report">
+    <meta itemprop="description" content="OVERVIEW WORKFLOWSecurity Configuration: Provide AWS credentials to GitHub.
+Project Structure: Create .yml workflow files.
+Workflow Content: Copy standard code for 6 services.
+Activation: Push code to GitHub to trigger the system.
+STEP 1: SECURITY CONFIGURATION (SECRETS)GitHub needs AWS access rights to deploy on your behalf.">
+    <meta itemprop="wordCount" content="2547">
+    <title>CI/CD :: Internship Report</title>
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="en">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="vi">
+    <link href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.xml" rel="alternate" type="application/rss+xml" title="CI/CD :: Internship Report">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765473401" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765473401" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.en.js?1765473401";
+    </script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.en.min.js?1765473401" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765473401" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.3-ci\/cd\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/AWS-Workshop/css/custom.css?1765473401" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview-workflow">OVERVIEW WORKFLOW</a></li>
+        <li><a href="#step-1-security-configuration-secrets">STEP 1: SECURITY CONFIGURATION (SECRETS)</a></li>
+        <li><a href="#step-2-prepare-configuration-files">STEP 2: PREPARE CONFIGURATION FILES</a></li>
+        <li><a href="#step-3-workflow-content-copy--paste">STEP 3: WORKFLOW CONTENT (Copy &amp; Paste)</a></li>
+        <li><a href="#step-4-trigger">STEP 4: TRIGGER</a></li>
+        <li><a href="#overview-workflow-cicd-workflow">OVERVIEW WORKFLOW (CI/CD WORKFLOW)</a></li>
+        <li><a href="#user-guide-for-developers">USER GUIDE (FOR DEVELOPERS)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/index.html"><span itemprop="name">Internship Report</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Deploy Flow</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">CI/CD</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" title="Completion & Verification (Route 53, Google Console, Final Test) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html" title="Clean Up (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="cicd">CI/CD</h1>
+
+<h3 id="overview-workflow">
+  OVERVIEW WORKFLOW
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>Security Configuration:</strong> Provide AWS credentials to GitHub.</p>
+</li>
+<li>
+<p><strong>Project Structure:</strong> Create <code>.yml</code> workflow files.</p>
+</li>
+<li>
+<p><strong>Workflow Content:</strong> Copy standard code for 6 services.</p>
+</li>
+<li>
+<p><strong>Activation:</strong> Push code to GitHub to trigger the system.</p>
+</li>
+</ol>
+<hr>
+<h3 id="step-1-security-configuration-secrets">
+  STEP 1: SECURITY CONFIGURATION (SECRETS)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>GitHub needs AWS access rights to deploy on your behalf.</p>
+<ol>
+<li>
+<p>Go to your Repository on GitHub.</p>
+</li>
+<li>
+<p>Select <strong>Settings</strong> &gt; <strong>Secrets and variables</strong> &gt; <strong>Actions</strong>.</p>
+</li>
+<li>
+<p>Click <strong>New repository secret</strong> and add the following 3 variables (Get these from your <code>.aws/credentials</code> file):</p>
+</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Secret Name</strong></th>
+          <th><strong>Value</strong></th>
+          <th><strong>Note</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>AWS_ACCESS_KEY_ID</code></strong></td>
+          <td><code>AKIA...</code> (or <code>ASIA...</code>)</td>
+          <td>Required</td>
+      </tr>
+      <tr>
+          <td><strong><code>AWS_SECRET_ACCESS_KEY</code></strong></td>
+          <td><code>...</code> (Long secret string)</td>
+          <td>Required</td>
+      </tr>
+      <tr>
+          <td><strong><code>AWS_SESSION_TOKEN</code></strong></td>
+          <td><code>...</code> (Very long string)</td>
+          <td><strong>Required</strong> if using AWS Academy (Learner Lab). Update every 4 hours.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="step-2-prepare-configuration-files">
+  STEP 2: PREPARE CONFIGURATION FILES
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>In your project&rsquo;s root directory on your local machine, create (or verify) the folder structure as follows:</p>
+<p>Plaintext</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>MY-PROJECT/
+├── .gitignore               &lt;-- File to ignore junk (create new if not exists)
+├── .github/
+│   └── workflows/           &lt;-- Folder containing CI/CD files
+│       ├── deploy-auth.yml
+│       ├── deploy-gateway.yml
+│       ├── deploy-user.yml
+│       ├── deploy-task.yml
+│       ├── deploy-noti.yml
+│       └── deploy-model.yml</code></pre></div>
+<p><strong>Tip:</strong> Create a <code>.gitignore</code> file and add the line <code>*.zip</code> to avoid pushing large junk files to GitHub.</p>
+<hr>
+<h3 id="step-3-workflow-content-copy--paste">
+  STEP 3: WORKFLOW CONTENT (Copy &amp; Paste)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="1-file-githubworkflowsdeploy-apigatewayyml">
+  1. File: <code>.github/workflows/deploy-apigateway.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. WORKFLOW IDENTITY</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy API Gateway </span> <span style="color:#75715e"># Display name in the &#34;Actions&#34; tab on GitHub.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. TRIGGER</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push:  # Trigger event</span>: <span style="color:#ae81ff">When &#34;Push code&#34; action occurs...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]  <span style="color:#75715e"># ...to one of these 2 branches (pushes to other branches won&#39;t run).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:  <span style="color:#75715e"># SMART FILTER (Important):</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;api-gateway/**&#39;</span>                    <span style="color:#75715e"># Only run when files in &#39;api-gateway&#39; folder change.</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-gateway.yml&#39;</span>  <span style="color:#75715e"># Or when this config file itself is modified.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># (Saves resources: Modifying auth-service won&#39;t trigger api-gateway deploy).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. ENVIRONMENT VARIABLES (GLOBAL)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1         </span> <span style="color:#75715e"># AWS Server Region (Singapore).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">api-gateway        </span> <span style="color:#75715e"># Repository Name on AWS ECR.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">api-gateway           </span> <span style="color:#75715e"># Service Name running on AWS ECS Fargate.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster   </span> <span style="color:#75715e"># Cluster Name containing services.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./api-gateway   </span> <span style="color:#75715e"># Path to source code folder of this service.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. JOBS (TASKS TO PERFORM)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:              <span style="color:#75715e"># Job ID.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy </span> <span style="color:#75715e"># Job Display Name.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on: ubuntu-latest  # Environment</span>: <span style="color:#ae81ff">GitHub provides a fresh Ubuntu VM.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span> <span style="color:#75715e"># Environment tag (for better Secrets management on GitHub).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 5. STEPS (SEQUENTIAL ACTIONS)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 1: FETCH CODE</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout            </span> <span style="color:#75715e"># Set ID for error handling step to check status.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span> <span style="color:#75715e"># Use existing GitHub action to download repo code to Ubuntu VM.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 2: INSTALL JAVA</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk           </span> <span style="color:#75715e"># Set ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span> <span style="color:#75715e"># Action to install Java.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>     <span style="color:#75715e"># Select Java version 17.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span> <span style="color:#75715e"># Select JDK provider (Eclipse Temurin).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Purpose: Prepare environment if running tests or Maven build outside Docker is needed.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 3: LOGIN TO AWS</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds           </span> <span style="color:#75715e"># Set ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span> <span style="color:#75715e"># Action to login AWS CLI.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Get sensitive info from &#34;Vault&#34; (Settings &gt; Secrets) of GitHub Repo.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span> <span style="color:#75715e"># Temporary Token (Required for AWS Academy/Learner Lab).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span> <span style="color:#75715e"># Get region from env variable defined above.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 4: LOGIN TO ECR (Docker Registry)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id: login-ecr            # Set ID (Important</span>: <span style="color:#ae81ff">Next step needs output from this step).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span> <span style="color:#75715e"># Action helps VM Docker login to AWS ECR.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 5: BUILD &amp; PUSH DOCKER IMAGE (Core)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image         </span> <span style="color:#75715e"># Set ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Get Registry URL from login-ecr step output (e.g., 0311...dkr.ecr...).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Use current Commit Hash as Tag (e.g., a1b2c3d). Helps version code.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">| </span> <span style="color:#75715e"># Start running Linux commands (Bash shell)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">cd ${{ env.WORKING_DIRECTORY }} </span> <span style="color:#75715e"># Move to code directory (./api-gateway).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Command 1: Build Image. Assign 2 tags simultaneously:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># - Tag by commit hash (for history tracking).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># - Tag &#39;latest&#39; (for ECS to always pull this newest version).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Command 2: Push Image with commit tag to ECR.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Command 3: Push Image with latest tag to ECR.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 6: UPDATE ECS (Deploy)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update          </span> <span style="color:#75715e"># Set ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # AWS CLI command to update Service.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # --force-new-deployment: Force ECS to stop old containers and start new ones (pulling the latest image).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 7: SUCCESS NOTIFICATION</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if: success()            # Condition</span>: <span style="color:#ae81ff">Only run this line if ALL steps above are OK (Green).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY API GATEWAY SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># STEP 8: ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if: failure()            # Condition</span>: <span style="color:#ae81ff">Only run this line if ANY step above fails (Red).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY GATEWAY FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # Check each step to see which one died to print easy-to-understand notification.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.checkout.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Checkout Code&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials (Wrong Key/Expired)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push (Code error or wrong Dockerfile)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.ecs-update.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: ECS Service Not Found (Wrong Cluster or Service Name)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1 # Report failure to GitHub (show red X on dashboard).</span></span></span></code></pre></div>
+<h4 id="2-file-githubworkflowsdeploy-authyml">
+  2. File: <code>.github/workflows/deploy-auth.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Auth Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;auth-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-auth.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">auth-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">auth-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./auth-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY AUTH SERVICE SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY AUTH FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="3-file-githubworkflowsdeploy-useryml">
+  3. File: <code>.github/workflows/deploy-user.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy User Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;user-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-user.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">user-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">user-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./user-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY USER SERVICE SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY USER FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="4-file-githubworkflowsdeploy-taskyml">
+  4. File: <code>.github/workflows/deploy-task.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Taskflow Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;taskflow-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-task.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">taskflow-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">taskflow-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./taskflow-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY TASKFLOW SERVICE SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY TASKFLOW FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="5-file-githubworkflowsdeploy-notiyml">
+  5. File: <code>.github/workflows/deploy-noti.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Notification Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;notification-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-noti.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">notification-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">notification-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./notification-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY NOTIFICATION SERVICE SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY NOTIFICATION FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="6-file-githubworkflowsdeploy-modelyml">
+  6. File: <code>.github/workflows/deploy-model.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy AI Model </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;model/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-model.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">ai-model-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">ai-model-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY: ./model    # Note</span>: <span style="color:#ae81ff">Folder name is &#39;model&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Python does not need JDK setup</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY AI MODEL SUCCESSFUL!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 DEPLOY AI MODEL FAILED!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Error: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<hr>
+<h3 id="step-4-trigger">
+  STEP 4: TRIGGER
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Open Terminal at project folder and run:</p>
+<p>Bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>git add .
+git commit -m &#34;Official CI/CD Setup: 6 Services&#34;
+git push origin pre-production</code></pre></div>
+<p><strong>Immediately after:</strong></p>
+<ol>
+<li>
+<p>Go to GitHub &gt; <strong>Actions</strong> Tab.</p>
+</li>
+<li>
+<p>You will see 6 workflows starting to run.</p>
+</li>
+<li>
+<p>Wait for them to turn Green ✅.</p>
+</li>
+</ol>
+<hr>
+<h3 id="overview-workflow-cicd-workflow">
+  OVERVIEW WORKFLOW (CI/CD WORKFLOW)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>This is the journey of a line of code from Developer&rsquo;s machine to Server (AWS ECS), fully automated:</p>
+<ol>
+<li>
+<p><strong>Code Change:</strong> Developer modifies code (e.g., changes button color, fixes logic error) on local machine.</p>
+</li>
+<li>
+<p><strong>Git Push:</strong> Developer pushes code to GitHub.</p>
+<ul>
+<li>
+<p><em>If pushing to personal branch (<code>minh</code>, <code>dat</code>&hellip;):</em> System does <strong>NOTHING</strong> (Saves resources).</p>
+</li>
+<li>
+<p><em>If merging into <code>main</code> or <code>pre-production</code>:</em> System <strong>AUTOMATICALLY ACTIVATES</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>GitHub Actions (The Robot):</strong></p>
+<ul>
+<li>
+<p>Automatically spins up a fresh Ubuntu VM.</p>
+</li>
+<li>
+<p>Downloads latest code.</p>
+</li>
+<li>
+<p>Logs into AWS using &ldquo;Secret Keys&rdquo;.</p>
+</li>
+<li>
+<p>Packages code into <strong>Docker Image</strong>.</p>
+</li>
+<li>
+<p>Pushes Image to <strong>AWS ECR</strong> repository.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Deploy (AWS ECS):</strong></p>
+<ul>
+<li>
+<p>GitHub Actions commands <strong>AWS ECS</strong>: <em>&ldquo;Hey, there&rsquo;s a new update, replace the old containers!&rdquo;</em>.</p>
+</li>
+<li>
+<p>AWS ECS automatically stops old container, pulls new image, and starts new container.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Result:</strong> Users accessing the website see the new feature immediately without anyone SSHing into server to type commands.</p>
+</li>
+</ol>
+<hr>
+<h3 id="user-guide-for-developers">
+  USER GUIDE (FOR DEVELOPERS)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>To ensure CI/CD system runs smoothly and avoid conflicts, each team member needs to follow this process every time they want to update code:</p>
+<h4 id="1-branching-strategy">
+  1. Branching Strategy
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>
+<p><strong><code>main</code></strong>: OFFICIAL Branch. Code here is live version (Production). <strong>DIRECT PUSH FORBIDDEN</strong>, only Merge from other branches allowed.</p>
+</li>
+<li>
+<p><strong><code>pre-production</code></strong>: TRIAL RUN Branch. This is for integration testing. Merging here automatically triggers test server deploy.</p>
+</li>
+<li>
+<p><strong><code>developer</code>, <code>minh</code>, <code>dat</code>&hellip;</strong>: PERSONAL Branch. Freely code, commit, push without fear of breaking the server.</p>
+</li>
+</ul>
+<h4 id="2-code-update-steps-standard-process">
+  2. Code Update Steps (Standard Process)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Step 1: Code and Test Locally</strong></p>
+<ul>
+<li>
+<p>Code new feature on personal branch (e.g., <code>dat</code>).</p>
+</li>
+<li>
+<p>Run locally to ensure no errors.</p>
+</li>
+</ul>
+<p><strong>Step 2: Push code to GitHub</strong></p>
+<p>Bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>git add .
+git commit -m &#34;Add Login with Google feature&#34;
+git push origin dat  # Push to your own branch</code></pre></div>
+<p><em>(At this point CI/CD hasn&rsquo;t run, server remains peaceful).</em></p>
+<p><strong>Step 3: Create Pull Request (PR) or Merge</strong></p>
+<ul>
+<li>
+<p>When you want to push feature to server for team testing, create <strong>Pull Request</strong> from <code>dat</code> branch to <code>pre-production</code> branch.</p>
+</li>
+<li>
+<p>Or if team is small, direct merge is possible:</p>
+<p>Bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>git checkout pre-production
+git pull origin pre-production  # Update latest code from server first
+git merge dat                   # Merge your code in
+git push origin pre-production  # Push up -&gt; 🚀 BOOM! CI/CD ACTIVATED</code></pre></div>
+</li>
+</ul>
+<p><strong>Step 4: Monitor and Enjoy</strong></p>
+<ul>
+<li>
+<p>Go to <strong>Actions</strong> tab on GitHub Repo.</p>
+</li>
+<li>
+<p>You will see <strong>&ldquo;Deploy &hellip; Service&rdquo;</strong> workflow running (yellow spinning circle).</p>
+</li>
+<li>
+<p>Wait about 3-5 minutes until green check ✅ appears.</p>
+</li>
+<li>
+<p>Go to web to check new feature.</p>
+</li>
+</ul>
+<h4 id="3-handling-errors-red--mark">
+  3. Handling Errors (Red ❌ Mark)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>If Actions reports Red (Failed):</p>
+<ol>
+<li>
+<p>Click on the failed workflow.</p>
+</li>
+<li>
+<p>Click on <strong>Build &amp; Deploy</strong> block.</p>
+</li>
+<li>
+<p>Scroll to bottom, find <strong>⛔ ERROR HANDLER</strong> section.</p>
+</li>
+<li>
+<p>Read the notification line (e.g., <em>&quot;❌ Error at step [Docker Build]: Code error&hellip;&quot;</em>) to know cause and fix code.</p>
+</li>
+</ol>
+<hr>
+<p><strong>Summary:</strong></p>
+<blockquote>
+<p><strong>&ldquo;Code on sub-branch -&gt; Merge to <code>pre-production</code> -&gt; Auto to Test Server -&gt; Test Good -&gt; Merge to <code>main</code> -&gt; Auto to Real Server.&rdquo;</strong></p></blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/AWS-Workshop/en/index.html">
+            <div class="logo-title">Internship Report</div>
+          </a>
+        </div>
+        <search><form action="/AWS-Workshop/en/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/en/index.html"><a class="padding" href="/AWS-Workshop/en/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/en/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/en/1-worklog/index.html"><b>1. </b>Worklog</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/en/2-proposal/index.html"><b>2. </b>Proposal</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/en/3-translated_blogs/index.html"><b>3. </b>Translated Blogs</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/en/4-events_participated/index.html"><b>4. </b>Events Participated</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="/AWS-Workshop/en/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Workshop Overview</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Prerequisite</a></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Deploy Flow</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Frontend Deploy</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Backend Deploy</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li>
+            <li class="active " data-nav-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"> <b> 5.3.3.  </b> CI/CD</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Clean Up</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/en/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Mystic Skills</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/en/6-self-assesment/index.html"><b>6. </b>Self Assesment</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/en/7-sharing_and_feedback/index.html"><a class="padding" href="/AWS-Workshop/en/7-sharing_and_feedback/index.html"><b>7. </b>Sharing and Feedback</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Language</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" lang="en" selected data-selected>English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" lang="vi">Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765473401" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

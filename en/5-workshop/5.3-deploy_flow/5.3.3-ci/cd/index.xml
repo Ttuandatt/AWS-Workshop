@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CI/CD :: Internship Report</title>
+    <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</link>
+    <description>OVERVIEW WORKFLOW&#xD;Security Configuration: Provide AWS credentials to GitHub.&#xA;Project Structure: Create .yml workflow files.&#xA;Workflow Content: Copy standard code for 6 services.&#xA;Activation: Push code to GitHub to trigger the system.&#xA;STEP 1: SECURITY CONFIGURATION (SECRETS)&#xD;GitHub needs AWS access rights to deploy on your behalf.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

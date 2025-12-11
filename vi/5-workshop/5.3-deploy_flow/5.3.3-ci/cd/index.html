@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.1">
+    <meta name="generator" content="Relearn 8.2.0+fe198b0077bd441c984854c0a0610da02b2162f8">
+    <meta name="description" content="QUY TRÌNH TỔNG QUANCấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.
+Cấu trúc dự án: Tạo file workflow .yml.
+Nội dung Workflow: Copy code chuẩn cho 6 services.
+Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.
+BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)GitHub cần quyền truy cập AWS để thay bạn deploy.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CI/CD :: Báo Cáo Thực Tập">
+    <meta name="twitter:description" content="QUY TRÌNH TỔNG QUANCấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.
+Cấu trúc dự án: Tạo file workflow .yml.
+Nội dung Workflow: Copy code chuẩn cho 6 services.
+Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.
+BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)GitHub cần quyền truy cập AWS để thay bạn deploy.">
+    <meta property="og:url" content="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html">
+    <meta property="og:site_name" content="Báo Cáo Thực Tập">
+    <meta property="og:title" content="CI/CD :: Báo Cáo Thực Tập">
+    <meta property="og:description" content="QUY TRÌNH TỔNG QUANCấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.
+Cấu trúc dự án: Tạo file workflow .yml.
+Nội dung Workflow: Copy code chuẩn cho 6 services.
+Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.
+BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)GitHub cần quyền truy cập AWS để thay bạn deploy.">
+    <meta property="og:locale" content="vi">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="CI/CD :: Báo Cáo Thực Tập">
+    <meta itemprop="description" content="QUY TRÌNH TỔNG QUANCấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.
+Cấu trúc dự án: Tạo file workflow .yml.
+Nội dung Workflow: Copy code chuẩn cho 6 services.
+Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.
+BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)GitHub cần quyền truy cập AWS để thay bạn deploy.">
+    <meta itemprop="wordCount" content="2814">
+    <title>CI/CD :: Báo Cáo Thực Tập</title>
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="x-default">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="en">
+    <link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" rel="alternate" hreflang="vi">
+    <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.xml" rel="alternate" type="application/rss+xml" title="CI/CD :: Báo Cáo Thực Tập">
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765473401" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765473401" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765473401";
+    </script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765473401" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765473401" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/5-workshop\/5.3-deploy_flow\/5.3.3-ci\/cd\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/ttuandatt.github.io\/AWS-Workshop';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/AWS-Workshop/css/custom.css?1765473401" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#quy-trình-tổng-quan">QUY TRÌNH TỔNG QUAN</a></li>
+        <li><a href="#bước-1-cấu-hình-bảo-mật-secrets">BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)</a></li>
+        <li><a href="#bước-2-chuẩn-bị-file-cấu-hình">BƯỚC 2: CHUẨN BỊ FILE CẤU HÌNH</a></li>
+        <li><a href="#bước-3-nội-dung-workflow-copy--paste">BƯỚC 3: NỘI DUNG WORKFLOW (Copy &amp; Paste)</a></li>
+        <li><a href="#bước-4-kích-hoạt-trigger">BƯỚC 4: KÍCH HOẠT (TRIGGER)</a></li>
+        <li><a href="#luồng-tổng-quan-cicd-workflow">LUỒNG TỔNG QUAN (CI/CD WORKFLOW)</a></li>
+        <li><a href="#hướng-dẫn-sử-dụng-dành-cho-developer">HƯỚNG DẪN SỬ DỤNG (DÀNH CHO DEVELOPER)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/index.html"><span itemprop="name">Báo Cáo Thực Tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><span itemprop="name">Quy trình triển khai</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">CI/CD</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.6-completion--verification-route-53-google-console-final-test/index.html" title="Hoàn thiện & Xác nhận (Route 53, Google Console, Kiểm thử cuối) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><a href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html" title="Dọn Dẹp (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+
+
+
+
+
+
+
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="cicd">CI/CD</h1>
+
+<h3 id="quy-trình-tổng-quan">
+  QUY TRÌNH TỔNG QUAN
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><ol>
+<li>
+<p><strong>Cấu hình bảo mật:</strong> Gửi chìa khóa AWS cho GitHub.</p>
+</li>
+<li>
+<p><strong>Cấu trúc dự án:</strong> Tạo file workflow <code>.yml</code>.</p>
+</li>
+<li>
+<p><strong>Nội dung Workflow:</strong> Copy code chuẩn cho 6 services.</p>
+</li>
+<li>
+<p><strong>Kích hoạt:</strong> Đẩy code lên GitHub để hệ thống tự chạy.</p>
+</li>
+</ol>
+<hr>
+<h3 id="bước-1-cấu-hình-bảo-mật-secrets">
+  BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>GitHub cần quyền truy cập AWS để thay bạn deploy.</p>
+<ol>
+<li>
+<p>Vào Repository trên GitHub.</p>
+</li>
+<li>
+<p>Chọn <strong>Settings</strong> &gt; <strong>Secrets and variables</strong> &gt; <strong>Actions</strong>.</p>
+</li>
+<li>
+<p>Bấm <strong>New repository secret</strong> và thêm 3 biến sau (Lấy từ file <code>.aws/credentials</code>):</p>
+</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Tên Secret</strong></th>
+          <th><strong>Giá trị (Value)</strong></th>
+          <th><strong>Lưu ý</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>AWS_ACCESS_KEY_ID</code></strong></td>
+          <td><code>AKIA...</code> (hoặc <code>ASIA...</code>)</td>
+          <td>Bắt buộc</td>
+      </tr>
+      <tr>
+          <td><strong><code>AWS_SECRET_ACCESS_KEY</code></strong></td>
+          <td><code>...</code> (Chuỗi ký tự dài)</td>
+          <td>Bắt buộc</td>
+      </tr>
+      <tr>
+          <td><strong><code>AWS_SESSION_TOKEN</code></strong></td>
+          <td><code>...</code> (Chuỗi rất dài)</td>
+          <td><strong>Bắt buộc</strong> nếu dùng AWS Academy (Learner Lab). Update 4 tiếng/lần.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="bước-2-chuẩn-bị-file-cấu-hình">
+  BƯỚC 2: CHUẨN BỊ FILE CẤU HÌNH
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Tại thư mục gốc dự án trên máy tính, bạn hãy tạo (hoặc kiểm tra) cấu trúc thư mục như sau:</p>
+<p>Plaintext</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>MY-PROJECT/
+├── .gitignore               &lt;-- File loại bỏ rác (tạo mới nếu chưa có)
+├── .github/
+│   └── workflows/           &lt;-- Nơi chứa các file CI/CD
+│       ├── deploy-auth.yml
+│       ├── deploy-gateway.yml
+│       ├── deploy-user.yml
+│       ├── deploy-task.yml
+│       ├── deploy-noti.yml
+│       └── deploy-model.yml</code></pre></div>
+<p><strong>Mẹo nhỏ:</strong> Tạo file <code>.gitignore</code> và thêm dòng <code>*.zip</code> vào để tránh đẩy file rác lên GitHub.</p>
+<hr>
+<h3 id="bước-3-nội-dung-workflow-copy--paste">
+  BƯỚC 3: NỘI DUNG WORKFLOW (Copy &amp; Paste)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><h4 id="1-file-githubworkflowsdeploy-apigatewayyml">
+  1. File: <code>.github/workflows/deploy-apigateway.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. ĐỊNH DANH WORKFLOW</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy API Gateway </span> <span style="color:#75715e"># Tên hiển thị của quy trình này trong tab &#34;Actions&#34; trên GitHub.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. TRIGGER (CÒ KÍCH HOẠT)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push:  # Sự kiện kích hoạt</span>: <span style="color:#ae81ff">Khi có hành động &#34;Push code&#34; lên...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]  <span style="color:#75715e"># ...một trong 2 nhánh này (các nhánh khác push lên sẽ không chạy).</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:  <span style="color:#75715e"># BỘ LỌC THÔNG MINH (Quan trọng):</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;api-gateway/**&#39;</span>                    <span style="color:#75715e"># Chỉ chạy khi có file thay đổi trong thư mục &#39;api-gateway&#39;.</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-gateway.yml&#39;</span>  <span style="color:#75715e"># Hoặc khi chính file cấu hình này bị sửa đổi.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># (Giúp tiết kiệm tài nguyên: Sửa auth-service sẽ không kích hoạt deploy api-gateway).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. BIẾN MÔI TRƯỜNG (GLOBAL VARIABLES)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1         </span> <span style="color:#75715e"># Khu vực máy chủ AWS (Singapore).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">api-gateway        </span> <span style="color:#75715e"># Tên kho chứa Image trên AWS ECR.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">api-gateway           </span> <span style="color:#75715e"># Tên Service đang chạy trên AWS ECS Fargate.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster   </span> <span style="color:#75715e"># Tên Cluster chứa các service.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./api-gateway   </span> <span style="color:#75715e"># Đường dẫn đến thư mục chứa mã nguồn của service này.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. JOBS (CÁC CÔNG VIỆC CẦN LÀM)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ========================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:              <span style="color:#75715e"># ID của công việc (job).</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy </span> <span style="color:#75715e"># Tên hiển thị của job.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on: ubuntu-latest  # Môi trường chạy</span>: <span style="color:#ae81ff">GitHub sẽ cấp cho bạn 1 máy ảo Ubuntu mới tinh.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span> <span style="color:#75715e"># Gắn nhãn môi trường (để quản lý Secrets tốt hơn trên GitHub).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 5. STEPS (CÁC BƯỚC THỰC HIỆN TUẦN TỰ)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 1: LẤY CODE VỀ</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout            </span> <span style="color:#75715e"># Đặt ID để bước xử lý lỗi cuối cùng có thể kiểm tra trạng thái.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span> <span style="color:#75715e"># Dùng action có sẵn của GitHub để tải code từ repo về máy ảo Ubuntu.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 2: CÀI ĐẶT JAVA</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk           </span> <span style="color:#75715e"># Đặt ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span> <span style="color:#75715e"># Action cài đặt Java.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>     <span style="color:#75715e"># Chọn phiên bản Java 17.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span> <span style="color:#75715e"># Chọn nhà cung cấp JDK (Eclipse Temurin).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Mục đích: Chuẩn bị môi trường nếu cần chạy test hoặc build Maven bên ngoài Docker.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 3: ĐĂNG NHẬP AWS</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds           </span> <span style="color:#75715e"># Đặt ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span> <span style="color:#75715e"># Action đăng nhập AWS CLI.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lấy thông tin nhạy cảm từ &#34;Két sắt&#34; (Settings &gt; Secrets) của GitHub Repo.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span> <span style="color:#75715e"># Token tạm thời (Bắt buộc với AWS Academy/Learner Lab).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span> <span style="color:#75715e"># Lấy region từ biến env khai báo ở trên.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 4: ĐĂNG NHẬP ECR (Docker Registry)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id: login-ecr            # Đặt ID (Quan trọng</span>: <span style="color:#ae81ff">Bước sau sẽ cần output của bước này).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span> <span style="color:#75715e"># Action giúp Docker máy ảo đăng nhập vào AWS ECR.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 5: BUILD &amp; PUSH DOCKER IMAGE (Trọng tâm)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image         </span> <span style="color:#75715e"># Đặt ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lấy địa chỉ Registry từ output của bước login-ecr (ví dụ: 0311...dkr.ecr...).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lấy mã Hash của Commit hiện tại làm Tag (Ví dụ: a1b2c3d). Giúp định danh phiên bản code.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">| </span> <span style="color:#75715e"># Bắt đầu chạy các lệnh Linux (Bash shell)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">cd ${{ env.WORKING_DIRECTORY }} </span> <span style="color:#75715e"># Di chuyển vào thư mục code (./api-gateway).</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lệnh 1: Build Image. Gán 2 tag cùng lúc:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># - Tag theo mã commit (để lưu trữ lịch sử).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># - Tag &#39;latest&#39; (để ECS luôn pull bản mới nhất này).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lệnh 2: Đẩy Image có tag commit lên ECR.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Lệnh 3: Đẩy Image tag latest lên ECR.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 6: CẬP NHẬT ECS (Triển khai)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update          </span> <span style="color:#75715e"># Đặt ID.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # Lệnh AWS CLI để cập nhật Service.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # --force-new-deployment: Ép ECS tắt các container cũ và bật container mới (pull image mới nhất về).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 7: THÔNG BÁO THÀNH CÔNG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if: success()            # Điều kiện</span>: <span style="color:#ae81ff">Chỉ chạy dòng này nếu TẤT CẢ các bước trên đều OK (Xanh lá).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY API GATEWAY THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># BƯỚC 8: XỬ LÝ LỖI (ERROR HANDLER)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if: failure()            # Điều kiện</span>: <span style="color:#ae81ff">Chỉ chạy dòng này nếu CÓ BẤT KỲ bước nào phía trên bị lỗi (Đỏ).</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY GATEWAY!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        # Kiểm tra từng bước xem bước nào chết để in ra thông báo tiếng Việt dễ hiểu.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.checkout.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Checkout Code&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials (Key sai/hết hạn)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push (Code lỗi hoặc Dockerfile sai)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.ecs-update.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Không tìm thấy ECS Service (Sai tên Cluster hoặc Service)&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1 # Báo cho GitHub biết là quy trình này đã thất bại (hiện dấu X đỏ ngoài dashboard).</span></span></span></code></pre></div>
+<h4 id="2-file-githubworkflowsdeploy-authyml">
+  2. File: <code>.github/workflows/deploy-auth.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Auth Service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;auth-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-auth.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">auth-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">auth-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./auth-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY AUTH SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY AUTH!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="3-file-githubworkflowsdeploy-useryml">
+  3. File: <code>.github/workflows/deploy-user.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy User Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;user-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-user.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">user-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">user-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./user-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY USER SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY USER!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="4-file-githubworkflowsdeploy-taskyml">
+  4. File: <code>.github/workflows/deploy-task.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Taskflow Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;taskflow-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-task.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">taskflow-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">taskflow-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./taskflow-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY TASKFLOW SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY TASKFLOW!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="5-file-githubworkflowsdeploy-notiyml">
+  5. File: <code>.github/workflows/deploy-noti.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Notification Service </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;notification-service/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-noti.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">notification-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">notification-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./notification-service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up JDK 17</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">setup-jdk</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-java@v3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">java-version</span>: <span style="color:#e6db74">&#39;17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">distribution</span>: <span style="color:#e6db74">&#39;temurin&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY NOTIFICATION SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY NOTIFICATION!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<h4 id="6-file-githubworkflowsdeploy-modelyml">
+  6. File: <code>.github/workflows/deploy-model.yml</code>
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy AI Model </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;pre-production&#34;</span> ]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;model/**&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;.github/workflows/deploy-model.yml&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">ap-southeast-1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECR_REPOSITORY</span>: <span style="color:#ae81ff">ai-model-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_SERVICE</span>: <span style="color:#ae81ff">ai-model-service</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ECS_CLUSTER</span>: <span style="color:#ae81ff">SGUTodolist-Cluster</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WORKING_DIRECTORY</span>: <span style="color:#ae81ff">./model   </span> <span style="color:#75715e"># Chú ý thư mục là &#39;model&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build &amp; Deploy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout Code</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Python không cần cài JDK</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Configure AWS Credentials</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">aws-creds</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-access-key-id</span>: <span style="color:#ae81ff">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-secret-access-key</span>: <span style="color:#ae81ff">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-session-token</span>: <span style="color:#ae81ff">${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">aws-region</span>: <span style="color:#ae81ff">${{ env.AWS_REGION }}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Login to Amazon ECR</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">login-ecr</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build, Tag, and Push Image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">build-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ECR_REGISTRY</span>: <span style="color:#ae81ff">${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">${{ github.sha }}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Force ECS Update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">id</span>: <span style="color:#ae81ff">ecs-update</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Success Notification</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">echo &#34;🎉 DEPLOY AI MODEL THÀNH CÔNG!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">⛔ ERROR HANDLER</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">failure()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;🚨 LỖI DEPLOY AI MODEL!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exit 1</span></span></span></code></pre></div>
+<hr>
+<h3 id="bước-4-kích-hoạt-trigger">
+  BƯỚC 4: KÍCH HOẠT (TRIGGER)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Mở Terminal tại thư mục dự án và chạy:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Official CI/CD Setup: 6 Services&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin pre-production</span></span></code></pre></div>
+<p><strong>Ngay sau đó:</strong></p>
+<ol>
+<li>
+<p>Vào GitHub &gt; Tab <strong>Actions</strong>.</p>
+</li>
+<li>
+<p>Ta sẽ thấy 6 workflows bắt đầu chạy.</p>
+</li>
+<li>
+<p>Đợi chúng chuyển xanh ✅.</p>
+</li>
+</ol>
+<hr>
+<h3 id="luồng-tổng-quan-cicd-workflow">
+  LUỒNG TỔNG QUAN (CI/CD WORKFLOW)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Đây là hành trình của một dòng code từ máy của Developer lên tới Server (AWS ECS) một cách tự động hoàn toàn:</p>
+<ol>
+<li>
+<p><strong>Code Change:</strong> Developer sửa code (ví dụ: sửa màu nút bấm, fix lỗi logic) trên máy cá nhân.</p>
+</li>
+<li>
+<p><strong>Git Push:</strong> Developer đẩy code lên GitHub.</p>
+<ul>
+<li>
+<p><em>Nếu đẩy vào nhánh cá nhân (<code>minh</code>, <code>dat</code>&hellip;):</em> Hệ thống <strong>KHÔNG</strong> làm gì cả (Tiết kiệm tài nguyên).</p>
+</li>
+<li>
+<p><em>Nếu merge vào nhánh <code>main</code> hoặc <code>pre-production</code>:</em> Hệ thống <strong>TỰ ĐỘNG KÍCH HOẠT</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>GitHub Actions (The Robot):</strong></p>
+<ul>
+<li>
+<p>Tự động bật một máy ảo Ubuntu sạch sẽ.</p>
+</li>
+<li>
+<p>Tải code mới nhất về.</p>
+</li>
+<li>
+<p>Đăng nhập vào AWS bằng &ldquo;Chìa khóa bí mật&rdquo; (Secrets).</p>
+</li>
+<li>
+<p>Đóng gói code thành <strong>Docker Image</strong>.</p>
+</li>
+<li>
+<p>Đẩy Image lên kho chứa <strong>AWS ECR</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Deploy (AWS ECS):</strong></p>
+<ul>
+<li>
+<p>GitHub Actions ra lệnh cho <strong>AWS ECS</strong>: <em>&ldquo;Này, có bản cập nhật mới, hãy thay thế các container cũ đi!&rdquo;</em>.</p>
+</li>
+<li>
+<p>AWS ECS tự động tắt container cũ, tải image mới về và khởi động container mới.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kết quả:</strong> Người dùng truy cập website sẽ thấy ngay tính năng mới mà không cần ai phải SSH vào server gõ lệnh.</p>
+</li>
+</ol>
+<hr>
+<h3 id="hướng-dẫn-sử-dụng-dành-cho-developer">
+  HƯỚNG DẪN SỬ DỤNG (DÀNH CHO DEVELOPER)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h3><p>Để đảm bảo hệ thống CI/CD hoạt động trơn tru và tránh xung đột, mỗi thành viên trong nhóm cần tuân thủ quy trình sau mỗi khi muốn cập nhật code:</p>
+<h4 id="1-quy-tắc-nhánh-branching-strategy">
+  1. Quy tắc Nhánh (Branching Strategy)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><ul>
+<li>
+<p><strong><code>main</code></strong>: Nhánh CHÍNH THỨC. Code ở đây là bản chạy thật (Production). <strong>CẤM push trực tiếp</strong>, chỉ được Merge từ nhánh khác sang.</p>
+</li>
+<li>
+<p><strong><code>pre-production</code></strong>: Nhánh CHẠY THỬ. Đây là nơi test tích hợp. Khi merge vào đây, server test sẽ tự động deploy.</p>
+</li>
+<li>
+<p><strong><code>developer</code>, <code>minh</code>, <code>dat</code>&hellip;</strong>: Nhánh CÁ NHÂN. Thoải mái code, commit, push mà không sợ làm hỏng server.</p>
+</li>
+</ul>
+<h4 id="2-các-bước-update-code-quy-trình-chuẩn">
+  2. Các bước Update Code (Quy trình chuẩn)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p><strong>Bước 1: Code và Test trên máy (Local)</strong></p>
+<ul>
+<li>
+<p>Code tính năng mới trên nhánh cá nhân (ví dụ <code>dat</code>).</p>
+</li>
+<li>
+<p>Chạy thử ở local đảm bảo không lỗi.</p>
+</li>
+</ul>
+<p><strong>Bước 2: Đẩy code lên GitHub</strong></p>
+<p>Bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>git add .
+git commit -m &#34;Thêm tính năng đăng nhập bằng Google&#34;
+git push origin dat  # Push lên nhánh của mình</code></pre></div>
+<p><em>(Lúc này CI/CD chưa chạy, server vẫn yên bình).</em></p>
+<p><strong>Bước 3: Tạo Pull Request (PR) hoặc Merge</strong></p>
+<ul>
+<li>
+<p>Khi muốn đưa tính năng lên server cho cả nhóm test, hãy tạo <strong>Pull Request</strong> từ nhánh <code>dat</code> sang nhánh <code>pre-production</code>.</p>
+</li>
+<li>
+<p>Hoặc nếu team nhỏ, có thể merge trực tiếp:</p>
+<p>Bash</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>git checkout pre-production
+git pull origin pre-production  # Cập nhật code mới nhất từ server về trước
+git merge dat                   # Gộp code của mình vào
+git push origin pre-production  # Đẩy lên -&gt; 🚀 BÙM! CI/CD KÍCH HOẠT</code></pre></div>
+</li>
+</ul>
+<p><strong>Bước 4: Theo dõi và Tận hưởng</strong></p>
+<ul>
+<li>
+<p>Vào tab <strong>Actions</strong> trên GitHub Repo.</p>
+</li>
+<li>
+<p>Bạn sẽ thấy workflow <strong>&ldquo;Deploy &hellip; Service&rdquo;</strong> đang chạy (xoay vòng tròn vàng).</p>
+</li>
+<li>
+<p>Chờ khoảng 3-5 phút đến khi hiện tích xanh ✅.</p>
+</li>
+<li>
+<p>Vào web kiểm tra tính năng mới.</p>
+</li>
+</ul>
+<h4 id="3-xử-lý-khi-gặp-lỗi-dấu--đỏ">
+  3. Xử lý khi gặp lỗi (Dấu ❌ Đỏ)
+
+
+
+
+
+
+
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span>
+</h4><p>Nếu Actions báo đỏ (Failed):</p>
+<ol>
+<li>
+<p>Bấm vào workflow bị lỗi.</p>
+</li>
+<li>
+<p>Bấm vào mục <strong>Build &amp; Deploy</strong>.</p>
+</li>
+<li>
+<p>Kéo xuống dưới cùng, tìm phần <strong>⛔ ERROR HANDLER</strong>.</p>
+</li>
+<li>
+<p>Đọc dòng thông báo tiếng Việt (ví dụ: <em>&quot;❌ Lỗi tại bước [Docker Build]: Code lỗi&hellip;&quot;</em>) để biết nguyên nhân và sửa lại code.</p>
+</li>
+</ol>
+<hr>
+<p><strong>Tóm lại:</strong></p>
+<blockquote>
+<p><strong>&ldquo;Code ở nhánh con -&gt; Merge vào <code>pre-production</code> -&gt; Tự động lên Server Test -&gt; Test ngon -&gt; Merge vào <code>main</code> -&gt; Tự động lên Server Thật.&rdquo;</strong></p></blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/AWS-Workshop/vi/index.html">
+            <div class="logo-title">Báo Cáo Thực Tập</div>
+          </a>
+        </div>
+        <search><form action="/AWS-Workshop/vi/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/index.html"><a class="padding" href="/AWS-Workshop/vi/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/1-worklog/index.html"><a class="padding" href="/AWS-Workshop/vi/1-worklog/index.html"><b>1. </b>Nhật Ký Công Việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/2-proposal/index.html"><a class="padding" href="/AWS-Workshop/vi/2-proposal/index.html"><b>2. </b>Đề xuất</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/3-translated_blogs/index.html"><a class="padding" href="/AWS-Workshop/vi/3-translated_blogs/index.html"><b>3. </b>Blogs đã dịch</a><ul id="R-subsections-0acade1cd81cfef73c977718aa56c877" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/4-events_participated/index.html"><a class="padding" href="/AWS-Workshop/vi/4-events_participated/index.html"><b>4. </b>Sự kiện đã tham gia</a><ul id="R-subsections-2ffb5c6e09dd8464b993d0a4a8003912" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="/AWS-Workshop/vi/5-workshop/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/index.html"><b>5. </b>Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.1-workshop_overview/index.html"> <b> 5.1.  </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.2-prerequisite/index.html"> <b> 5.2.  </b> Điều kiện tiên quyết</a></li>
+            <li class="parent alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/index.html"> <b> 5.3.  </b> Quy trình triển khai</a><ul id="R-subsections-bb7fe7553348ca03cc6bc8ebf581479a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html"> <b> 5.3.1. </b> Triển khai Frontend</a><ul id="R-subsections-d09eca34c02fd87267f3fac7e509af1c" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li>
+            <li class="active " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"> <b> 5.3.3.  </b> CI/CD</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Dọn Dẹp</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Bí Thuật</a></li></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><a class="padding" href="/AWS-Workshop/vi/7-sharing_and_feedback/index.html"><b>7. </b>Chia sẻ và Phản hồi</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-en" value="en" data-url="/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" lang="en">English</option>
+                    <option id="R-select-language-vi" value="vi" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html" lang="vi" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765473401" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

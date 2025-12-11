@@ -21,5 +21,12 @@
       <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
       <description>Architecture Model&#xD;This model illustrates the core services used for high-availability, low-latency content delivery and security:&#xA;Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.&#xA;CDN: CloudFront acts as the Global Edge Network for content delivery.&#xA;Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.</description>
     </item>
+    <item>
+      <title>CI/CD</title>
+      <link>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</guid>
+      <description>OVERVIEW WORKFLOW&#xD;Security Configuration: Provide AWS credentials to GitHub.&#xA;Project Structure: Create .yml workflow files.&#xA;Workflow Content: Copy standard code for 6 services.&#xA;Activation: Push code to GitHub to trigger the system.&#xA;STEP 1: SECURITY CONFIGURATION (SECRETS)&#xD;GitHub needs AWS access rights to deploy on your behalf.</description>
+    </item>
   </channel>
 </rss>

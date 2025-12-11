@@ -28,26 +28,26 @@ Bước 2.1: Tạo Hosted Zone (Nếu chưa có)Vào Route 53 &gt; Hosted zones
     <link href="https://ttuandatt.github.io/AWS-Workshop/en/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html" rel="alternate" hreflang="en">
     <link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html" rel="alternate" hreflang="vi">
     <link href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.xml" rel="alternate" type="application/rss+xml" title="Route 53 và ACM :: Báo Cáo Thực Tập">
-    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765299459" rel="stylesheet">
-    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/search-lunr.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/search.min.js?1765299459" defer></script>
+    <link href="/AWS-Workshop/css/auto-complete/auto-complete.min.css?1765473401" rel="stylesheet">
+    <script src="/AWS-Workshop/js/auto-complete/auto-complete.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search-lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/search.min.js?1765473401" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765299459";
+      window.relearn.index_js_url="/AWS-Workshop/searchindex.vi.js?1765473401";
     </script>
-    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765299459" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.stemmer.support.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.multi.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/lunr/lunr.vi.min.js?1765473401" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299459" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765299459" rel="stylesheet"></noscript>
-    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765299459" rel="stylesheet">
-    <link href="/AWS-Workshop/css/theme.min.css?1765299459" rel="stylesheet">
-    <link href="/AWS-Workshop/css/format-html.min.css?1765299459" rel="stylesheet" id="R-format-style">
+    <link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/AWS-Workshop/fonts/fontawesome/css/fontawesome-all.min.css?1765473401" rel="stylesheet"></noscript>
+    <link href="/AWS-Workshop/css/perfect-scrollbar/perfect-scrollbar.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/theme.min.css?1765473401" rel="stylesheet">
+    <link href="/AWS-Workshop/css/format-html.min.css?1765473401" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -99,7 +99,7 @@ Bước 2.1: Tạo Hosted Zone (Nếu chưa có)Vào Route 53 &gt; Hosted zones
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/AWS-Workshop/css/custom.css?1765299459" rel="stylesheet">
+    <link href="/AWS-Workshop/css/custom.css?1765473401" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.3-route-53-and-acm/index.html">
     <div id="R-body" class="default-animation">
@@ -246,8 +246,8 @@ Bước 2.1: Tạo Hosted Zone (Nếu chưa có)Vào Route 53 &gt; Hosted zones
     </figcaption>
   </figure>
 </div> -->
-<p><a href="#R-image-f4b1573b4aa7a217eeea9e5f83e4f36b" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_1.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f4b1573b4aa7a217eeea9e5f83e4f36b"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_1.jpg"></a></p>
+<p><a href="#R-image-e33997b8ed4d551e4e042f8f0ed3d00f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e33997b8ed4d551e4e042f8f0ed3d00f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_1.jpg"></a></p>
 <ol start="3">
 <li>Cập nhật Nameservers bên nhà cung cấp tên miền vì project sử dụng tên miền mua ở nhà cung cấp khác
 <ul>
@@ -272,8 +272,8 @@ ns-547.awsdns-04.net.</code></pre></div>
     </figcaption>
   </figure>
 </div> -->
-<p><a href="#R-image-1a973e8a26dbf3a05b8eca5ee924f69a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_2.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-1a973e8a26dbf3a05b8eca5ee924f69a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_2.jpg"></a></p>
+<p><a href="#R-image-24a4ffb14aa172e07c34f112c853d25a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-24a4ffb14aa172e07c34f112c853d25a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.1_2.jpg"></a></p>
 <h4 id="bước-22-xin-cấp-chứng-chỉ-ssl-acm---quan-trọng">
   Bước 2.2: Xin cấp chứng chỉ SSL (ACM) - Quan trọng!
 
@@ -335,8 +335,8 @@ ns-547.awsdns-04.net.</code></pre></div>
     </figcaption>
   </figure>
 </div> -->
-<p><a href="#R-image-6b9491c0c204783b2fbe7d713dd06ff6" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_1.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6b9491c0c204783b2fbe7d713dd06ff6"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_1.jpg"></a></p>
+<p><a href="#R-image-454b24dddca0684fd3fab20148bb6e2a" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_1.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-454b24dddca0684fd3fab20148bb6e2a"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_1.jpg"></a></p>
 <!-- <div style="text-align:center; margin: 2em 0;">
   <figure style="margin: 0;"><img src="/images/fe2.2_2.jpg" 
          alt="" 
@@ -347,8 +347,8 @@ ns-547.awsdns-04.net.</code></pre></div>
     </figcaption>
   </figure>
 </div> -->
-<p><a href="#R-image-178cf5f822b325e141c2f025aad96493" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_2.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-178cf5f822b325e141c2f025aad96493"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_2.jpg"></a></p>
+<p><a href="#R-image-80db1b0b4ae95977d9346148879207f3" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_2.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-80db1b0b4ae95977d9346148879207f3"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_2.jpg"></a></p>
 <!-- <div style="text-align:center; margin: 2em 0;">
   <figure style="margin: 0;"><img src="/images/fe2.2_3.jpg" 
          alt="" 
@@ -359,8 +359,8 @@ ns-547.awsdns-04.net.</code></pre></div>
     </figcaption>
   </figure>
 </div> -->
-<p><a href="#R-image-d4cf40b1412c9c45cd9edd805254fe3f" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_3.jpg" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d4cf40b1412c9c45cd9edd805254fe3f"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_3.jpg"></a></p>
+<p><a href="#R-image-53fa73e5e4200cfc9e84e7752aaae465" class="lightbox-link"><img class="lazy lightbox figure-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_3.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-53fa73e5e4200cfc9e84e7752aaae465"><img class="lazy lightbox lightbox-image" loading="lazy" src="/AWS-Workshop/images/fe2.2_3.jpg"></a></p>
 <hr>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 <a href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.2-s3-and-replication/" style="text-decoration: none; font-weight: bold;">
@@ -433,7 +433,8 @@ BƯỚC 4: CloudFront & Failover ➡
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.5-s3-policy/index.html"> <b> 5.3.1.5.  </b>S3 Policy</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.6-dns-record/index.html"> <b> 5.3.1.6. </b>DNS Record</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/5.3.1.7-deploy-and-test/index.html"> <b> 5.3.1.7.  </b> Deploy and Test</a></li></ul></li>
-            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li></ul></li>
+            <li class="alwaysopen " data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html"> <b> 5.3.2. </b> Triển khai Backend</a><ul id="R-subsections-1103043f6f9192a37607180161bbde6d" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html"> <b> 5.3.3.  </b> CI/CD</a></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.4-clean_up/index.html"> <b> 5.4.  </b> Dọn Dẹp</a></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><a class="padding" href="/AWS-Workshop/vi/5-workshop/5.5-mystic-skills/index.html"><b>5.5. </b>Bí Thuật</a></li></ul></li>
             <li class="" data-nav-url="/AWS-Workshop/vi/6-self-assesment/index.html"><a class="padding" href="/AWS-Workshop/vi/6-self-assesment/index.html"><b>6. </b>Tự đánh giá</a></li>
@@ -484,8 +485,8 @@ BƯỚC 4: CloudFront & Failover ➡
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765299459" defer></script>
-    <script src="/AWS-Workshop/js/theme.min.js?1765299459" defer></script>
+    <script src="/AWS-Workshop/js/perfect-scrollbar/perfect-scrollbar.min.js?1765473401" defer></script>
+    <script src="/AWS-Workshop/js/theme.min.js?1765473401" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-ci/cd/index.html</link>
+    <description>Chào bạn, đây là Tài liệu hướng dẫn triển khai CI/CD toàn diện (A-Z) dành riêng cho dự án SGU TodoList của bạn.&#xA;Tài liệu này tổng hợp lại tất cả những gì chúng ta đã tối ưu: Tự động hóa hoàn toàn, Giao diện đẹp, Báo lỗi thông minh, và Chiến lược nhánh chuẩn.&#xA;🏁 QUY TRÌNH TỔNG QUAN&#xD;Cấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="http://localhost:1313/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.1-ci/cd/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

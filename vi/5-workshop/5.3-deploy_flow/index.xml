@@ -21,5 +21,12 @@
       <guid>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid>
       <description>Mô hình kiến trúc&#xD;Mô hình này minh họa các dịch vụ cốt lõi được sử dụng nhằm đảm bảo tính sẵn sàng cao, độ trễ thấp và bảo mật cho hệ thống:&#xA;Tên miền &amp; SSL: Route 53 (DNS) được dùng để quản lý tên miền, trong khi ACM (SSL Certificate) đảm bảo mã hóa và bảo mật lưu lượng truy cập.</description>
     </item>
+    <item>
+      <title>CI/CD</title>
+      <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</guid>
+      <description>QUY TRÌNH TỔNG QUAN&#xD;Cấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.&#xA;Cấu trúc dự án: Tạo file workflow .yml.&#xA;Nội dung Workflow: Copy code chuẩn cho 6 services.&#xA;Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.&#xA;BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)&#xD;GitHub cần quyền truy cập AWS để thay bạn deploy.</description>
+    </item>
   </channel>
 </rss>

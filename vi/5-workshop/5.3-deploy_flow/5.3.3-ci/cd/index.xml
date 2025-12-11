@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CI/CD :: Báo Cáo Thực Tập</title>
+    <link>https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</link>
+    <description>QUY TRÌNH TỔNG QUAN&#xD;Cấu hình bảo mật: Gửi chìa khóa AWS cho GitHub.&#xA;Cấu trúc dự án: Tạo file workflow .yml.&#xA;Nội dung Workflow: Copy code chuẩn cho 6 services.&#xA;Kích hoạt: Đẩy code lên GitHub để hệ thống tự chạy.&#xA;BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)&#xD;GitHub cần quyền truy cập AWS để thay bạn deploy.</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://ttuandatt.github.io/AWS-Workshop/vi/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
