@@ -4,21 +4,28 @@ weight = 1
 chapter = false
 +++
 
+## Thông tin sinh viên
 
-### Thông Tin Nhóm
+**Họ và tên:** Phan Cảnh Tuấn Đạt
+**Số điện thoại:** 0867829257
+**Email:** pcanhtuandat@gmail.com@gmail.com
+**Trường đại học:** Đại học Sài Gòn
+**Ngành:** Công nghệ Thông tin
+**Lớp:** DCT1226
+**Công ty thực tập:** Công ty TNHH Amazon Web Services Việt Nam
+**Vị trí thực tập:** Thực tập sinh FCJ Cloud
+**Thời gian thực tập:** Từ 12/08/2025 đến 12/11/2025
 
-| Họ và Tên           | Số Điện Thoại | Email                            | Lớp    | Trường Đại Học       |
-|---------------------|---------------|---------------------------------|--------|--------------------|
-| Phan Cảnh Tuấn Đạt  | 0867829257    | pcanhtuandat@gmail.com           | DCT1226 | Đại học Sài Gòn     |
-| Ngô Tuấn Hưng       | 0776136425    | hungnt.020404@gmail.com          | DKP1221 | Đại học Sài Gòn     |
-| Lê Trung Kiên       | 0931261009    | trungkien1862@gmail.com          | DCT1213 | Đại học Sài Gòn     |
-| Dương Bình Minh     | 0355578938    | duongbinhminh10032004@gmail.com | DCT1226 | Đại học Sài Gòn     |
+---
 
-**Công Ty Thực Tập:** Amazon Web Services Vietnam Co., Ltd.  
-**Vị Trí Thực Tập:** Thực Tập Sinh FCJ Cloud  
-**Thời Gian Thực Tập:** Từ 29/09/2025 đến 22/11/2025
+**Công ty thực tập:** Công ty TNHH Amazon Web Services Việt Nam
+**Vị trí thực tập:** Thực tập sinh FCJ Cloud
+**Thời gian thực tập:** Từ 29/09/2025 đến 22/11/2025
 
-![MyAvatar](/images/forest.jpg)
+---
+
+
+![MyAvatar](/AWS-Workshop/images/avatar.jpg)
 
 
 ### Nội dung báo cáo

@@ -24,7 +24,9 @@ Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (
 
     -   Click **Create**.
 
-{{< figurecaption src="/images/fe2.1_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.1_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.1_1.jpg)
+
 
 3. Cập nhật Nameservers bên nhà cung cấp tên miền vì project sử dụng tên miền mua ở nhà cung cấp khác
     - Khi nhấp vào Hosted zone vừa tạo, ta sẽ thấy được 4 name servers có dạng
@@ -36,7 +38,8 @@ Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (
     ```
     - Dùng 4 name servers đó để cập nhật từ trang quản lý domain mà ta thuê của nhà cung cấp khác
 
-{{< figurecaption src="/images/fe2.1_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.1_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.1_2.jpg)
 
 
 
@@ -68,11 +71,14 @@ Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (
 
 10. Đợi vài phút đến khi Status chuyển sang **Issued** (Màu xanh).
 
-{{< figurecaption src="/images/fe2.2_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_1.jpg)
 
-{{< figurecaption src="/images/fe2.2_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_2.jpg)
 
-{{< figurecaption src="/images/fe2.2_3.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_3.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_3.jpg)
 
 
 * * * * *
@@ -81,7 +87,7 @@ Trước khi tạo CloudFront, ta cần chuẩn bị Chứng chỉ bảo mật (
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.2-S3 and Replication" %}}" style="text-decoration: none; font-weight: bold;">
 ⬅ BƯỚC 2: S3 & Replication
 </a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-ClouFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-CloudFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
 BƯỚC 4: CloudFront & Failover ➡
 </a>
 </div>

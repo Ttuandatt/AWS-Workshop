@@ -22,7 +22,9 @@ Before creating the CloudFront distribution, the domain name system (DNS) and SS
    - **Type:** Public hosted zone
    - Click **Create**.
 
-{{< figurecaption src="/images/fe2.1_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.1_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.1_1.jpg)
+
 
 3. Update Name Servers at the domain provider  
    (This project uses a domain purchased from a third-party registrar.)
@@ -39,7 +41,9 @@ Copy code
 
 - Copy all four Name Servers and update them in the domain management panel of your domain registrar.
 
-{{< figurecaption src="/images/fe2.1_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.1_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.1_2.jpg)
+
 
 ---
 
@@ -73,11 +77,14 @@ SSL certificates used with **Amazon CloudFront** **MUST** be created in the **US
 
 10. Wait a few minutes until the certificate status changes to **Issued** (Green).
 
-{{< figurecaption src="/images/fe2.2_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_1.jpg)
 
-{{< figurecaption src="/images/fe2.2_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_2.jpg)
 
-{{< figurecaption src="/images/fe2.2_3.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe2.2_3.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe2.2_3.jpg)
 
 ---
 
@@ -85,7 +92,7 @@ SSL certificates used with **Amazon CloudFront** **MUST** be created in the **US
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.2-S3 and Replication" %}}" style="text-decoration: none; font-weight: bold;">
 ⬅ STEP 2: S3 and Replication
 </a>
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-ClouFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-CloudFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
 STEP 4: CloudFront and Failover ➡
 </a>
 </div>

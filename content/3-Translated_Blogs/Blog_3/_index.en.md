@@ -55,7 +55,7 @@ Hãy xem xét một môi trường Elastic Beanstalk đang chạy Node.js 22 tr�
 100% of requests failing with HTTP 5xx errors
 ```
 
-{{< figurecaption src="/images/img1-blog3.png" caption="Hình 1. Bảng điều khiển EB hiển thị trạng thái sức khỏe Cảnh báo, cùng với lý do cho trạng thái sức khỏe" >}}
+![](/AWS-Workshop/images/img1-blog3.png)
 
 
 

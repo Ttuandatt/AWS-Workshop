@@ -88,7 +88,8 @@ Xét một môi trường Elastic Beanstalk chạy **Node.js 22** trên **Amazon
 
 100% of requests failing with HTTP 5xx errors
 
-{{< figurecaption src="/images/img1-blog3.png" caption="Hình 1. Bảng điều khiển Elastic Beanstalk hiển thị trạng thái sức khỏe ở mức Cảnh báo" >}}
+![](/AWS-Workshop/images/img1-blog3.png)
+
 
 Thông báo này có thể xuất phát từ nhiều nguyên nhân khác nhau, bao gồm:
 

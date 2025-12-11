@@ -29,7 +29,6 @@ pre = "<b> 1.4. </b>"
 | 5   | - Code backend Authentication Service |03/10/2025|03/10/2025||
 |     | - Set up UI/CSS libraries (e.g., Tailwind, Material UI), define global CSS variables, build basic Components (Button, Input, Card).||||
 |     | - Code frontend: Build Header, Footer, Sidebar, and the Landing Page. Ensure basic responsive design.||||
-|     | - Translate blog|||[Translated Blog 4]({{< relref "3-Translated_Blogs/Blog_4/_index.md" >}}), [Translated Blog 5]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}})|
 
 
 

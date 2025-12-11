@@ -29,4 +29,4 @@ pre = "<b> 1.4. </b>"
 | 5    | - Lập trình backend Authentication Service                                                 | 03/10/2025   | 03/10/2025      |                                                                                                     |
 |      | - Thiết lập UI/CSS libraries (Tailwind, Material UI), định nghĩa biến CSS toàn cục, xây dựng các Components cơ bản (Button, Input, Card) |              |                 |                                                                                                     |
 |      | - Lập trình frontend: Xây dựng Header, Footer, Sidebar, và Landing Page. Đảm bảo thiết kế responsive cơ bản |              |                 |                                                                                                     |
-|      | - Dịch blog                                                                                |              |                 | [Blog dịch 4]({{< relref "3-Translated_Blogs/Blog_4/_index.md" >}}), [Blog dịch 5]({{< relref "3-Translated_Blogs/Blog_5/_index.md" >}}) |
+

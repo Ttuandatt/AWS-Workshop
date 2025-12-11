@@ -27,11 +27,12 @@ Giai đoạn này tập trung vào việc xây dựng lớp lưu trữ bền v�
 
 3. Click **Create bucket**.
 
-{{< figurecaption src="/images/fe1.1_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_1.jpg)
 
-{{< figurecaption src="/images/fe1.1_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_2.jpg)
 
-{{< figurecaption src="/images/fe1.1_3.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_3.jpg)
+
 
 ---
 
@@ -52,7 +53,7 @@ Sau khi hoàn thành **Bước 1.1** và **Bước 1.2**, hệ thống sẽ có 
 - Bucket chính: Singapore (`ap-southeast-1`)
 - Bucket dự phòng: N. Virginia (`us-east-1`)
 
-{{< figurecaption src="/images/fe1.1_1.2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.1_1.2.jpg)
 
 ---
 
@@ -75,13 +76,13 @@ Sau khi hoàn thành **Bước 1.1** và **Bước 1.2**, hệ thống sẽ có 
    Khi được hỏi **“Replicate existing objects?”**, chọn **No**  
    (Do bucket hiện tại đang trống.)
 
-{{< figurecaption src="/images/fe1.3_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_1.jpg)
 
-{{< figurecaption src="/images/fe1.3_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_2.jpg)
 
-{{< figurecaption src="/images/fe1.3_3.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_3.jpg)
 
-{{< figurecaption src="/images/fe1.3_4.jpg" caption="">}}
+![](/AWS-Workshop/images/fe1.3_4.jpg)
 
 ---
 

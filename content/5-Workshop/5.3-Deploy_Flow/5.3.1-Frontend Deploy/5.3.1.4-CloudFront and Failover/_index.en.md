@@ -1,5 +1,5 @@
 +++
-title = "ClouFront and Failover"
+title = "CloudFront and Failover"
 weight = 4
 chapter = false
 pre = " <b> 5.3.1.4. </b> "
@@ -23,7 +23,9 @@ pre = " <b> 5.3.1.4. </b> "
 
 - Click **Next**.
 
-{{< figurecaption src="/images/fe3.1_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_1.jpg)
+
 
 
 #### Step 2: Specify origin
@@ -43,7 +45,9 @@ pre = " <b> 5.3.1.4. </b> "
 
 - Click **Next**.
 
-{{< figurecaption src="/images/fe3.1_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_2.jpg)
+
 
 #### Step 3: Enable security
 
@@ -53,7 +57,9 @@ pre = " <b> 5.3.1.4. </b> "
 
 - Click **Next**.
 
-{{< figurecaption src="/images/fe3.1_3.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_3.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_3.jpg)
+
 
 #### Step 4: Get TLS certificate
 
@@ -63,13 +69,17 @@ pre = " <b> 5.3.1.4. </b> "
 
 - Click **Next**.
 
-{{< figurecaption src="/images/fe3.1_4.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_4.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_4.jpg)
+
 
 #### Step 5: Review and create
 
 - Scroll down to the bottom and click the orange button **Create distribution**.
 
-{{< figurecaption src="/images/fe3.1_5.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_5.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_5.jpg)
+
 
 * * * * *
 
@@ -85,7 +95,9 @@ pre = " <b> 5.3.1.4. </b> "
 
 - Click **Create**.
 
-{{< figurecaption src="/images/fe3.1_6.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_6.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_6.jpg)
+
 
 Next:
 
@@ -97,15 +109,21 @@ Next:
 
 - Click on the origin in the Origins list and click the Edit button
 
-{{< figurecaption src="/images/fe3.1_7.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_7.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_7.jpg)
+
 
 - Click the **Copy policy** button in the Origin access control.
 
-{{< figurecaption src="/images/fe3.1_8.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_8.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_8.jpg)
+
 
 - Go to the S3 Console tab > Bucket Singapore > Permissions > Bucket Policy > Paste > Save.
 
-{{< figurecaption src="/images/fe3.1_9.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_9.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_9.jpg)
+
 
 **2\. Add Default Root Object (Fix white screen error):**
 
@@ -121,7 +139,8 @@ Next:
 
 - Scroll down and click **Save changes**.
 
-{{< figurecaption src="/images/fe3.1_10.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.1_10.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.1_10.jpg)
 
 #### Step 3.2: Add Secondary Origin (Virginia)
 
@@ -137,9 +156,12 @@ Next:
 
 3. Click **Create origin**.
 
-{{< figurecaption src="/images/fe3.2_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.2_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.2_1.jp)
 
-{{< figurecaption src="/images/fe3.2_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.2_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.2_2.jp)
+
 
 #### Step 3.3: Create Origin Group (Enable High Availability)
 
@@ -157,10 +179,14 @@ Next:
 
 5. Click **Create origin group**.
 
-{{< figurecaption src="/images/fe3.3_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.3_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.3_1.jpg)
+
 
 We will have 2 origins and 1 origin group:
-{{< figurecaption src="/images/fe3.3_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.3_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.3_2.jpg)
+
 
 
 #### Step 3.4: Update Behavior
@@ -171,7 +197,9 @@ We will have 2 origins and 1 origin group:
 
 3. Click **Save changes**.
 
-{{< figurecaption src="/images/fe3.4_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.4_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.4_1.jpg)
+
 
 #### Step 3.5: Configure SPA Routing (Handle 404 React errors)
 
@@ -187,13 +215,17 @@ We will have 2 origins and 1 origin group:
 
 - HTTP response code: **200**.
 
-{{< figurecaption src="/images/fe3.5_1.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.5_1.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.5_1.jpg)
+
 
 3. **Rule 2 (For React Router):**
 
 - Create another similar one for the code **404**. (Path is still `/index.html`, code 200).
 
-{{< figurecaption src="/images/fe3.5_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe3.5_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe3.5_2.jpg)
+
 
 
 * * * * *

@@ -23,7 +23,9 @@ Cơ sở hạ tầng HPC on-premises truyền thống thường đòi hỏi đ�
 
 Ngược lại, AWS cung cấp cho các tổ chức quyền truy cập tức thì vào các tài nguyên tính toán gần như không giới hạn, cho phép họ tăng tốc đổi mới trong khi kiểm soát chi phí. Việc triển khai diễn ra chỉ trong vài phút và khách hàng chỉ trả tiền cho những gì họ sử dụng. Tận dụng các khả năng của cloud, các HPC cluster trong AWS mở rộng quy mô (scale out) để đáp ứng nhu cầu, xử lý job thành công và thu hẹp quy mô (scale back in) khi hàng đợi trống. Tính đàn hồi (elasticity) này làm giảm đáng kể thời gian chờ đợi cho các kỹ sư và nhà khoa học, trong khi chỉ phải trả tiền cho các tài nguyên khi chúng đang chạy. Ngoài ra, AWS cải thiện cơ sở hạ tầng HPC của chúng tôi với tốc độ của phần mềm. Điều này có nghĩa là thay vì chờ đợi nhiều năm để làm mới phần cứng nhằm hiện đại hóa cơ sở hạ tầng HPC, khách hàng của AWS liên tục có quyền truy cập vào cơ sở hạ tầng HPC mới nhất, hiệu suất/giá cả tốt nhất từ Amazon và các đối tác của chúng tôi (NVIDIA, Intel, AMD, v.v.).
 
-{{< figurecaption src="/images/img1-blog2.png" caption="Hình 1: Đối lập giữa việc chạy các HPC workload on-premises (trái) so với trong AWS (phải). Bên trái bị giới hạn bởi dung lượng trung tâm dữ liệu cố định, nơi thời gian chờ đợi trong hàng đợi dài và cơ sở hạ tầng nhanh chóng trở nên lỗi thời. Bên phải có dung lượng đàn hồi (elastic capacity) có thể mở rộng theo nhu cầu, rút ngắn thời gian chờ đợi trong hàng đợi trong khi chạy trên cơ sở hạ tầng hiện đại hơn." >}}
+
+![](/AWS-Workshop/images/img1-blog2.png)
+
 
 ### Các HPC Workload Chủ chốt trong Hàng không Vũ trụ
 
@@ -40,7 +42,8 @@ Nhu cầu của thiết kế hàng không vũ trụ hiện đại đòi hỏi ph
 
 Khi ngành hàng không vũ trụ phát triển và đổi mới, các tổ chức đang sử dụng các dịch vụ HPC của AWS để mô phỏng cơ học quỹ đạo phức tạp (orbital mechanics), tối ưu hóa việc triển khai các chùm vệ tinh (satellite constellation deployments) và quản lý các cửa sổ phóng (launch windows) một cách hiệu quả. Các mô phỏng này đòi hỏi số lượng lớn các compute cluster, cơ sở hạ tầng mạng và lưu trữ thế hệ tiếp theo, có thể dễ dàng triển khai và tự động mở rộng quy mô dựa trên nhu cầu.
 
-{{< figurecaption src="/images/img2-blog2.png" caption="Hình 2: Ví dụ về các hình ảnh trực quan (visualizations) của các HPC workload dành cho khách hàng hàng không vũ trụ." >}}
+![](/AWS-Workshop/images/img2-blog2.png)
+
 
 Mỗi loại workload mô phỏng đều có các yêu cầu riêng về loại cơ sở hạ tầng mà nó chạy trên. AWS cho phép khách hàng tối ưu hóa cấu hình cơ sở hạ tầng, cluster và hàng đợi của họ để chạy hiệu quả workload mô hình hóa hoặc mô phỏng đang thực hiện.
 
@@ -49,7 +52,9 @@ High performance computing đòi hỏi cơ sở hạ tầng hiệu quả ở m�
 
 **Amazon Elastic Compute Cloud (Amazon EC2)** cung cấp nền tảng tính toán rộng nhất và sâu nhất, với hơn 850 instance. Amazon EC2 có nhiều loại instance type hiệu suất cao được tối ưu hóa cho Accelerated Computing và HPC. **AWS Nitro System** được giới thiệu vào năm 2017 và được xây dựng dựa trên sự kết hợp giữa phần cứng, phần mềm và firmware được xây dựng có mục đích. Nó cung cấp cơ sở hạ tầng ảo hóa cơ bản cho các EC2 instance. Theo truyền thống, các hypervisor bảo vệ phần cứng vật lý và BIOS, ảo hóa CPU, lưu trữ, mạng và cung cấp một bộ khả năng quản lý phong phú. Với Nitro System, chúng tôi tách rời các chức năng đó, chuyển chúng sang phần cứng và phần mềm chuyên dụng, đồng thời giảm chi phí bằng cách cung cấp thực tế tất cả các tài nguyên của một server cho các instance của bạn. Điều này làm giảm thiểu chi phí ảo hóa (virtualization overhead).
 
-{{< figurecaption src="/images/img3-blog2.png" caption="Hình 3: Nitro System làm giảm thiểu chi phí hypervisor overhead để các instance của khách hàng có thể chạy ở mức ~100% dung lượng bare metal. Vùng màu nhạt hơn cho thấy các hoạt động kỹ thuật mà Nitro đảm nhiệm, trong khi vùng màu đậm hơn cho thấy các instance của khách hàng chạy trên Nitro.">}}
+
+![](/AWS-Workshop/images/img3-blog2.png)
+
 
 Dịch vụ được quản lý (managed service) mới nhất của AWS giúp đơn giản hóa HPC trên AWS là AWS Parallel Computing Service (AWS PCS). AWS PCS giúp khách hàng dễ dàng chạy và mở rộng quy mô các HPC workload cũng như xây dựng các mô hình khoa học và kỹ thuật trên AWS bằng cách sử dụng Slurm làm trình quản lý workload. Dịch vụ được quản lý này cho phép bạn xây dựng các HPC cluster hoàn chỉnh tích hợp các tài nguyên tính toán (compute), lưu trữ (storage), mạng (networking) và hình ảnh trực quan (visualization), và mở rộng quy mô liền mạch từ 0 đến hàng nghìn instance. Thay vào đó, khách hàng có thể sử dụng AWS ParallelCluster, đây là một công cụ quản lý cluster mã nguồn mở (open-source), giàu tính năng, giúp dễ dàng cấu hình, triển khai và quản lý các HPC cluster trên AWS. Công cụ này được sử dụng thông qua các mẫu cơ sở hạ tầng dưới dạng mã (infrastructure as code templates), và có giao diện đồ họa dựa trên web tùy chọn. AWS ParallelCluster không phải là một dịch vụ được quản lý (managed service) và do đó yêu cầu khách hàng phải tự triển khai.
 
@@ -59,7 +64,7 @@ Cho đến nay, chúng ta đã thảo luận về các tài nguyên tính toán 
 
 Elastic Fabric Adapter (EFA) là một giao diện mạng cho các Amazon EC2 instance cho phép khách hàng chạy các ứng dụng đòi hỏi mức độ giao tiếp giữa các node (inter-node communications) cao trên quy mô lớn trên AWS. Giao diện phần cứng bỏ qua hệ điều hành (OS bypass hardware interface) được xây dựng tùy chỉnh của nó giúp tăng cường hiệu suất giao tiếp giữa các instance (inter-instance communications), điều này rất quan trọng để mở rộng quy mô các HPC workload có độ trễ thấp (low latency).
 
-{{< figurecaption src="/images/img4-blog2.png" caption="Hình 4: Cho thấy network infrastructure stack của EFA, trực quan hóa cách kernel được bỏ qua để tăng tốc hiệu suất.">}}
+![](/AWS-Workshop/images/img4-blog2.png)
 
 
 AWS cung cấp nhiều dịch vụ lưu trữ, chẳng hạn như Amazon Simple Storage Service (Amazon S3), Amazon Elastic Block Storage (Amazon EBS), cùng nhiều dịch vụ khác. Tất cả các dịch vụ lưu trữ này có thể được sử dụng khi xây dựng các HPC cluster trong AWS. Tuy nhiên, nhiều HPC workload được hưởng lợi rất nhiều từ bộ lưu trữ chuyên biệt, chẳng hạn như Lustre – một hệ thống tệp phân tán, song song, mã nguồn mở được thiết kế cho HPC và lưu trữ dữ liệu quy mô lớn. Amazon đã giải quyết nhu cầu này cho các HPC và AI/ML workload bằng cách cung cấp Amazon FSx for Lustre.
@@ -70,7 +75,7 @@ Amazon FSx for Lustre là dịch vụ lưu trữ chia sẻ được quản lý h
 
 Giờ đây chúng ta đã hiểu rõ hơn về các trường hợp sử dụng HPC và các dịch vụ mà khách hàng hàng không vũ trụ đang tận dụng trên AWS, hãy tổng hợp tất cả lại thành một quy trình làm việc (workflow) chức năng. Sơ đồ dưới đây minh họa một khách hàng đang chạy các HPC workload trong môi trường hybrid cloud của họ, giữa trung tâm dữ liệu on-premises và AWS. Người dùng cuối từ bên trong ranh giới mạng của khách hàng kết nối với Login Nodes thông qua SSH. Từ Login Nodes, các HPC job được gửi đi và thêm vào hàng đợi job. Điều này kích hoạt việc phân bổ các compute node, nơi các EC2 instance được mở rộng quy mô để đáp ứng nhu cầu hàng đợi và chạy các job. Các EC2 này có khả năng kết nối với các AWS services, chạy cho đến khi HPC job hoàn thành, và sau đó tự động thu hẹp quy mô trở lại (scale back down).
 
-{{< figurecaption src="/images/img5-blog2.png" caption="Hình 5: Ví dụ về quy trình làm việc triển khai các HPC job tận dụng AWS Parallel Computing Service.">}}
+![](/AWS-Workshop/images/img5-blog2.png)
 
 
 Chúng ta đã đề cập đến một số trường hợp sử dụng, dịch vụ và quy trình làm việc mà khách hàng hàng không vũ trụ tận dụng trên AWS. Bước hợp lý tiếp theo là nghe từ chính khách hàng

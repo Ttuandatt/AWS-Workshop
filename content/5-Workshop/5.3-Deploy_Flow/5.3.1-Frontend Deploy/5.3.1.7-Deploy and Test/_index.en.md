@@ -31,7 +31,9 @@ aws cloudfront create-invalidation --distribution-id <ID_CUA_BAN> --paths "/*"
 
 3. Test Replication: Go to S3 Console bucket Virginia to see if the file has appeared automatically (usually takes 15s - 1 minute).
 
-{{< figurecaption src="/images/fe6.2_2.jpg" caption="">}}
+<!-- {{< figurecaption src="/images/fe6.2_2.jpg" caption="">}} -->
+![](/AWS-Workshop/images/fe6.2_2.jpg)
+
 
 * * * * *
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">

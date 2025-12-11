@@ -4,31 +4,28 @@ weight = 1
 chapter = false
 +++
 
-### Team Information
+## Student Information
 
-| Full Name           | Phone Number | Email                            | Class   |    Unversity         |
-|---------------------|--------------|----------------------------------|---------|----------------------|
-| Phan Canh Tuan Dat  | 0867829257   | pcanhtuandat@gmail.com           | DCT1226 |  Sai Gon University  |
-| Ngo Tuan Hung       | 0776136425   | hungnt.020404@gmail.com          | DKP1221 |  Sai Gon University  |
-| Le Trung Kien       | 0931261009   | trungkien1862@gmail.com          | DCT1213 |  Sai Gon University  |
-| Duong Binh Minh     | 0355578938   | duongbinhminh10032004@gmail.com  | DCT1226 |  Sai Gon University  |
+**Full Name:** Phan Canh Tuan Dat  
+**Phone Number:** 0867829257  
+**Email:** pcanhtuandat@gmail.com@gmail.com  
+**University:** Sai Gon University  
+**Major:** Information Technology  
+**Class:** DCT1226  
+**Internship Company:** Amazon Web Services Vietnam Co., Ltd.  
+**Internship Position:** FCJ Cloud Intern  
+**Internship Duration:** From 12/08/2025 to 12/11/2025  
 
-
+---
 
 **Internship Company:** Amazon Web Services Vietnam Co., Ltd.  
 **Internship Position:** FCJ Cloud Intern  
-**Internship Duration:** From 29/09/2025 to 22/11/2025
+**Internship Duration:** From 29/09/2025 to 22/11/2025  
+
+---
 
 
-<!-- ![MyAvatar](/images/forest.jpg) -->
-
-<!-- <figure>
-  <img src="/images/forest.jpg" alt="" style="max-width:100%;height:auto;">
-</figure> -->
-
-<!-- ![MyAvatar](images/forest.jpg) -->
-
-![MyAvatar](/AWS-Workshop/images/forest.jpg)
+![MyAvatar](/AWS-Workshop/images/avatar.jpg)
 
 ### Report Content
 **1. [Worklog](1-Worklog)**  

@@ -25,8 +25,8 @@ CloudFront needs a "permission" to pull files from your 2 closed buckets.
 
 * * * * *
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-ClouFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
-⬅ STEP 4: ClouFront and Failover
+<a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.4-CloudFront and Failover" %}}" style="text-decoration: none; font-weight: bold;">
+⬅ STEP 4: CloudFront and Failover
 </a>
 <a href="{{% relref "5-Workshop/5.3-Deploy_Flow/5.3.1-Frontend Deploy/5.3.1.6-DNS Record" %}}" style="text-decoration: none; font-weight: bold;">
 STEP 6: DNS Record ➡

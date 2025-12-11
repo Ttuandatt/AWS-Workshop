@@ -33,7 +33,7 @@ aws cloudfront create-invalidation --distribution-id <ID_CUA_BAN> --paths "/*"
 
 3.  Kiểm tra Replication: Vào S3 Console bucket Virginia xem file đã tự động xuất hiện chưa (thường mất 15s - 1 phút).
 
-{{< figurecaption src="/images/fe6.2_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe6.2_2.jpg)
 
 * * * * *
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">

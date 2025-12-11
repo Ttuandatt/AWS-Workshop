@@ -1,5 +1,5 @@
 +++
-title = "ClouFront & Failover"
+title = "CloudFront & Failover"
 weight =  4
 chapter = false
 pre = " <b> 5.3.1.4.  </b>"
@@ -23,7 +23,7 @@ pre = " <b> 5.3.1.4.  </b>"
 
 -   Bấm **Next**.
 
-{{< figurecaption src="/images/fe3.1_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_1.jpg)
 
 
 #### Step 2: Specify origin
@@ -43,7 +43,7 @@ pre = " <b> 5.3.1.4.  </b>"
 
 -   Bấm **Next**.
 
-{{< figurecaption src="/images/fe3.1_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_2.jpg)
 
 
 #### Step 3: Enable security
@@ -54,7 +54,7 @@ pre = " <b> 5.3.1.4.  </b>"
 
 -   Bấm **Next**.
 
-{{< figurecaption src="/images/fe3.1_3.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_3.jpg)
 
 
 #### Step 4: Get TLS certificate
@@ -65,14 +65,14 @@ pre = " <b> 5.3.1.4.  </b>"
 
 -   Bấm **Next**.
 
-{{< figurecaption src="/images/fe3.1_4.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_4.jpg)
 
 
 #### Step 5: Review and create
 
 -   Kéo xuống dưới cùng và bấm nút màu cam **Create distribution**.
 
-{{< figurecaption src="/images/fe3.1_5.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_5.jpg)
 
 
 * * * * *
@@ -89,7 +89,7 @@ pre = " <b> 5.3.1.4.  </b>"
 
     -   Click **Create**.
 
-{{< figurecaption src="/images/fe3.1_6.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_6.jpg)
 
 
 Tiếp đó:
@@ -102,17 +102,17 @@ Tiếp đó:
 
 - Click vào origin trong danh sách Origins và nhấn nút Edit
 
-{{< figurecaption src="/images/fe3.1_7.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_7.jpg)
 
 
 -   Bấm nút **Copy policy** ở Origin access control.
 
-{{< figurecaption src="/images/fe3.1_8.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_8.jpg)
 
 
 -   Sang tab S3 Console > Bucket Singapore > Permissions > Bucket Policy > Paste vào > Save.
 
-{{< figurecaption src="/images/fe3.1_9.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_9.jpg)
 
 
 **2\. Thêm Default Root Object (Sửa lỗi màn hình trắng):**
@@ -129,7 +129,7 @@ Tiếp đó:
 
 -   Kéo xuống bấm **Save changes**.
 
-{{< figurecaption src="/images/fe3.1_10.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.1_10.jpg)
 
 
 
@@ -148,9 +148,9 @@ Tiếp đó:
 
 3.  Click **Create origin**.
 
-{{< figurecaption src="/images/fe3.2_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.2_1.jp)
 
-{{< figurecaption src="/images/fe3.2_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.2_2.jp)
 
 
 #### Bước 3.3: Tạo Origin Group (Kích hoạt High Availability)
@@ -169,10 +169,10 @@ Tiếp đó:
 
 5.  Click **Create origin group**.
 
-{{< figurecaption src="/images/fe3.3_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.3_1.jpg)
 
 Ta sẽ có 2 origins và 1 origin group:
-{{< figurecaption src="/images/fe3.3_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.3_2.jpg)
 
 
 #### Bước 3.4: Cập nhật Behavior
@@ -183,7 +183,7 @@ Ta sẽ có 2 origins và 1 origin group:
 
 3.  Click **Save changes**.
 
-{{< figurecaption src="/images/fe3.4_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.4_1.jpg)
 
 
 #### Bước 3.5: Cấu hình SPA Routing (Xử lý lỗi 404 React)
@@ -200,14 +200,14 @@ Ta sẽ có 2 origins và 1 origin group:
 
     -   HTTP response code: **200**.
 
-{{< figurecaption src="/images/fe3.5_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.5_1.jpg)
 
 
 3.  **Rule 2 (Cho React Router):**
 
     -   Tạo thêm 1 cái tương tự cho mã **404**. (Path vẫn là `/index.html`, code 200).
 
-{{< figurecaption src="/images/fe3.5_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe3.5_2.jpg)
 
 
 * * * * *

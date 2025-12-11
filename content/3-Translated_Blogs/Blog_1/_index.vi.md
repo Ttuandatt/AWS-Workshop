@@ -35,7 +35,7 @@ Các điều kiện sau là cần thiết để hoàn thành giải pháp này:
 - Một thiết bị NAT mà SnapMirror có thể đi qua tại mỗi hệ thống tệp (filer).
 - Một subnet riêng biệt cho từng hệ thống tệp.
 
-{{< figurecaption src="/images/Img1-Blog1.png" caption="Hình 1. Sơ đồ kiến trúc AWS minh họa hai VPC được kết nối thông qua một cổng NAT tự quản lý dựa trên Linux." >}}
+![](/AWS-Workshop/images/Img1-Blog1.png)
 
 
 ### Ví dụ
@@ -59,7 +59,8 @@ VPC: 10.2.0.0/16FSx ONTAP inter-cluster endpoint 1: 10.2.0.155FSx ONTAP inter-cl
 
 Để xử lý các NAT, hãy triển khai một phiên bản EC2 chạy RedHat 9, kèm theo nhóm bảo mật mà chúng ta đã tạo trước đó. RedHat không phải là bắt buộc, và bất kỳ bản phân phối Linux nào hỗ trợ [nftables](https://www.redhat.com/en/blog/using-nftables-red-hat-enterprise-linux-8) đều có thể hoạt động cho bài thực hành này. Đối với mỗi phiên bản EC2, chúng ta cần gắn kết hai địa chỉ EIP trong số các địa chỉ đã tạo. Mỗi địa chỉ EIP này phải được liên kết với một địa chỉ IP riêng (private IP) khác nhau. Cuối cùng, chúng ta phải tắt kiểm tra nguồn/đích (source/destination check) trên giao diện mạng. Điều này cho phép Amazon EC2 gửi các gói tin có địa chỉ IP nguồn không thuộc quyền sở hữu của nó.
 
-{{< figurecaption src="/images/Img2-Blog1.png" caption="Hình 2. Ảnh chụp màn hình của trang tổng quan mạng (network summary page) của một phiên bản EC2, trong đó địa chỉ IP riêng (private IP) và địa chỉ IP công cộng (public IP) được tô sáng (highlighted)." >}}
+![](/AWS-Workshop/images/Img2-Blog1.png)
+
 
 ### nftables
 
@@ -165,7 +166,7 @@ nft list ruleset > /etc/sysconfig/nftables.conf
 
 Khi cả hai bộ định tuyến đã được cấu hình, chúng ta cần đảm bảo rằng lưu lượng SnapMirror sẽ đi qua chúng. Để thực hiện điều này, chúng ta cập nhật bảng định tuyến (route table) được liên kết với FSx for ONTAP để gửi lưu lượng từ VPC ở xa đến giao diện mạng (network interface) của các phiên bản EC2. Ví dụ, ở Side B, chúng ta thêm một tuyến (route) trỏ 10.1.0.0/16 đến Elastic Network Interface của phiên bản EC2. Ở Side A, chúng ta sẽ làm ngược lại: trỏ 10.2.0.0/16 đến EC2 instance tương ứng.
 
-{{< figurecaption src="/images/Img3-Blog1.png" caption="Hình 3. Bảng định tuyến (Route table) được liên kết với FSx for ONTAP." >}}
+![](/AWS-Workshop/images/Img3-Blog1.png)
 
 ### FSx cho ONTAP security group
 
@@ -175,11 +176,11 @@ Là bước thiết lập cuối cùng, chúng ta cần cho phép mạng VPC t�
 
 Khi các kết nối mạng đã được thiết lập, việc còn lại là [kết nối ngang hàng (peer) giữa các hệ thống tệp FSx for ONTAP](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#cluster-peering). Trước tiên, chúng ta đăng nhập vào Side A và bắt đầu yêu cầu peering.
 
-{{< figurecaption src="/images/Img4-Blog1.png" caption="" >}}
+![](/AWS-Workshop/images/Img4-Blog1.png)
 
 Sau đó, chúng ta đăng nhập vào Side B và thực thi cùng một lệnh, nhưng không sử dụng tùy chọn generate passphrase và dùng các địa chỉ IP từ Side A. Thao tác này được thực hiện từ phía Side B của hệ thống tệp FSx for ONTAP.
 
-{{< figurecaption src="/images/Img5-Blog1.png" caption="" >}}
+![](/AWS-Workshop/images/Img5-Blog1.png)
 
 
 Từ đây, các [SVM (Storage Virtual Machine) có thể được kết nối ngang hàng (peered)](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#svm-peering) và [một mối quan hệ SnapMirror có thể được tạo ra](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/migrating-fsx-ontap-snapmirror.html#snapmirror-relationship).

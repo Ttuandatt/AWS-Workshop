@@ -25,14 +25,14 @@ pre = " <b> 5.3.1.6. </b>"
 
     -   Click **Create records**.
 
-{{< figurecaption src="/images/fe5_1.jpg" caption="">}}
+![](/AWS-Workshop/images/fe5_1.jpg)
 
 
 3.  **Tạo Record cho WWW:**
 
     -   Làm tương tự, nhưng Record name điền `www`.
 
-{{< figurecaption src="/images/fe5_2.jpg" caption="">}}
+![](/AWS-Workshop/images/fe5_2.jpg)
 
 * * * * *
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">

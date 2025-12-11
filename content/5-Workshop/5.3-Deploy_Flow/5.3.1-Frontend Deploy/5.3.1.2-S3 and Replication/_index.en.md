@@ -79,16 +79,12 @@ After completing **Step 1.1** and **Step 1.2**, two S3 buckets should be availab
    When prompted with **“Replicate existing objects?”**, select **No**  
    (The bucket is currently empty.)
 
-{{< figurecaption src="/images/fe1.3_1.jpg" caption="">}}
 ![](/AWS-Workshop/images/fe1.3_1.jpg)
 
-{{< figurecaption src="/images/fe1.3_2.jpg" caption="">}}
 ![](/AWS-Workshop/images/fe1.3_2.jpg)
 
-{{< figurecaption src="/images/fe1.3_3.jpg" caption="">}}
 ![](/AWS-Workshop/images/fe1.3_3.jpg)
 
-{{< figurecaption src="/images/fe1.3_4.jpg" caption="">}}
 ![](/AWS-Workshop/images/fe1.3_4.jpg)
 
 ---

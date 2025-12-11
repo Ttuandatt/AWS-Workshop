@@ -29,7 +29,7 @@ alwaysopen = true
     
 3.  [Route 53 và ACM]({{% relref "5.3.1.3-Route 53 and ACM" %}})
     
-4.  [ClouFront và Failover]({{% relref "5.3.1.4-ClouFront and Failover" %}})
+4.  [CloudFront và Failover]({{% relref "5.3.1.4-CloudFront and Failover" %}})
     
 5.  [S3 Policy]({{% relref "5.3.1.5-S3 Policy" %}})
     
