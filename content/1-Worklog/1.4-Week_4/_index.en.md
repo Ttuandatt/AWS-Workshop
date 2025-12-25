@@ -15,7 +15,7 @@ pre = "<b> 1.4. </b>"
 ## Tasks to be carried out this week
 | Day |                                Task                                                   | Start Date | Completion Date |                   Reference Material                     |
 |-----|---------------------------------------------------------------------------------------|------------|-----------------|--------------------------------------------------------- |
-| 1   | - Team meeting to discuss about the architecture, backend and front end configuration | 29/09/2025 |  29/09/2025 ||
+| 1   | - Team meeting to discuss about the architecture, backend and front end configuration | 02/06/2025 |  02/06/2025 ||
 |     | - Translate blog|||[Translated Blog 1]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}})|
 |     | - Research and make a list of APIs needed for the TaskFlow Service.||||
 | 2   | - Learn and practice S3 service| 30/09/2025 | 30/09/2025 | [S3 lesson](https://www.youtube.com/watch?v=3vSrTeWroSs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=86)|

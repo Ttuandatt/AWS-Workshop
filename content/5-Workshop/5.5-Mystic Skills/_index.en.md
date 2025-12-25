@@ -380,15 +380,17 @@ foreach ($f in $folders) {
 3.4 Create a single folder
 
 ```bash
-$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop"
+$basePath = "D:\IT\AWS-FCJ\AWS-Workshop\content\5-Workshop\5.3-Deploy_Flow"
 
-$folderName = "5.1-Workshop_Overview"
+$folderName = "5.3.3-CI/CD"
 
 $fullPath = Join-Path $basePath $folderName
 
 New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
 
-New-Item -ItemType File -Path (Join-Path $fullPath "_index.md") -Force | Out-Null
+New-Item -ItemType File -Path (Join-Path $fullPath "_index.en.md") -Force | Out-Null
+New-Item -ItemType File -Path (Join-Path $fullPath "_index.vi.md") -Force | Out-Null
+
 ```
 
 

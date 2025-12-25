@@ -15,7 +15,7 @@ pre = "<b> 1.4. </b>"
 ## Nhiệm Vụ Thực Hiện Trong Tuần
 | Ngày | Nhiệm Vụ                                                                                  | Ngày Bắt Đầu | Ngày Hoàn Thành | Tài Liệu Tham Khảo                                                                                   |
 |------|--------------------------------------------------------------------------------------------|--------------|-----------------|-----------------------------------------------------------------------------------------------------|
-| 1    | - Họp nhóm thảo luận về kiến trúc, cấu hình backend và frontend                             | 29/09/2025   | 29/09/2025      |                                                                                                     |
+| 1    | - Họp nhóm thảo luận về kiến trúc, cấu hình backend và frontend                             | 02/06/2025   | 02/06/2025      |                                                                                                     |
 |      | - Dịch blog                                                                                |              |                 | [Blog dịch 1]({{< relref "3-Translated_Blogs/Blog_1/_index.md" >}})                                |
 |      | - Nghiên cứu và lập danh sách các API cần thiết cho TaskFlow Service                        |              |                 |                                                                                                     |
 | 2    | - Học và thực hành dịch vụ S3                                                              | 30/09/2025   | 30/09/2025      | [S3 lesson](https://www.youtube.com/watch?v=3vSrTeWroSs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=86) |

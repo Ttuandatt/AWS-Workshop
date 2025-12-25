@@ -20,7 +20,7 @@ chapter = false
 
 **Công ty thực tập:** Công ty TNHH Amazon Web Services Việt Nam
 **Vị trí thực tập:** Thực tập sinh FCJ Cloud
-**Thời gian thực tập:** Từ 29/09/2025 đến 22/11/2025
+**Thời gian thực tập:** Từ 02/06/2025 đến 07/12/2025
 
 ---
 
