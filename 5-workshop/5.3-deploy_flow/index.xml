@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deploy Flow :: Tuan Dat | Cloud &amp; Backend Developer</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/index.html</link><description>Table of ContentsThis section provides step-by-step guidance for deploying both Frontend and Backend components onto the cloud infrastructure.
+It covers the complete deployment workflow, from build artifacts preparation to production-ready release on AWS services.
+5.3.1. Frontend Deploy
+Guidelines for building, configuring, and deploying the frontend to Amazon S3 + CloudFront with cross-region failover.
+5.3.2. Backend Deploy
+Instructions for deploying backend microservices to AWS ECS/Fargate, including network configuration, load balancing, and service integration.</description><generator>Hugo</generator><language>en</language><atom:link href="https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/index.xml" rel="self" type="application/rss+xml"/><item><title>Frontend Deploy</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.1-frontend-deploy/index.html</guid><description>Architectural modelDomain: Route 53 (DNS) + ACM (SSL Certificate).
+CDN: CloudFront (Global Edge Network).
+Storage (Primary): S3 Singapore (ap-southeast-1).
+Storage (Failover): S3 N. Virginia (us-east-1).
+Replication: Automatically copy code from Singapore -&gt; Virginia.
+Security: OAC (Origin Access Control) - Private Bucket.
+Table of ContentsPrerequisites</description></item><item><title>Backend Deploy</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/index.html</guid><description>Architecture ModelThis model illustrates the core services used for high-availability, low-latency content delivery and security:
+Domain &amp; SSL: Route 53 (DNS) is used for domain management, and ACM (SSL Certificate) secures the traffic.
+CDN: CloudFront acts as the Global Edge Network for content delivery.
+Storage (Primary): S3 in Singapore (ap-southeast-1) holds the main static assets.</description></item><item><title>CI/CD</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.3-ci/cd/index.html</guid><description>OVERVIEW WORKFLOWSecurity Configuration: Provide AWS credentials to GitHub.
+Project Structure: Create .yml workflow files.
+Workflow Content: Copy standard code for 6 services.
+Activation: Push code to GitHub to trigger the system.
+STEP 1: SECURITY CONFIGURATION (SECRETS)GitHub needs AWS access rights to deploy on your behalf.</description></item><item><title>Quy trình triển khai</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/_index.vi/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/_index.vi/index.html</guid><description>Mục lụcPhần này cung cấp hướng dẫn từng bước để triển khai cả Frontend và Backend lên hạ tầng điện toán đám mây.
+Nội dung bao quát toàn bộ quy trình triển khai, từ khâu chuẩn bị build artifacts cho đến khi ứng dụng được phát hành ở môi trường production trên các dịch vụ AWS.</description></item></channel></rss>

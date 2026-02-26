@@ -1,0 +1,1 @@
+Câu lệnh tạo 1 blog mới: New-Item -ItemType File -Path "D:\IT\AWS-FCJ\AWS-Workshop\content\3-Translated_Blogs\Blog_7\_index.md" -Force

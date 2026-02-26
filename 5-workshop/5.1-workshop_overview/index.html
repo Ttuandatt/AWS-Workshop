@@ -1,0 +1,108 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Building scalable backend systems with Java Spring Boot & AWS Cloud"><title>Tuan Dat | Cloud & Backend Developer</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel=stylesheet><link rel=stylesheet href=/AWS-Workshop/css/portfolio.css></head><body><div class=scroll-progress></div><nav class=portfolio-nav id=navbar><div class=nav-inner><a href=#hero class=nav-logo>Tuan Dat.</a><ul class=nav-links><li><a href=#hero>Home</a></li><li><a href=#about>About</a></li><li><a href=#skills>Skills</a></li><li><a href=#experience>Experience</a></li><li><a href=#projects>Projects</a></li><li><a href=#contact>Contact</a></li></ul><button class=nav-toggle aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span></button></div></nav><h2 id=project-introduction>Project Introduction
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>SGU TodoList</strong> is a task management application built using a Microservices architecture on the AWS Cloud platform. The project was initially designed to be deployed as a Multi-Region SaaS model to ensure high availability and disaster recovery. However, due to budget constraints and AWS Free Tier limitations, the team optimized the architecture for a Single-Region Deployment with a Cross-Region Failover mechanism for the frontend.</p><h2 id=overall-architecture>Overall architecture
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=backend-architecture-single-region-singapore>Backend Architecture (Single-Region: Singapore)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>            ┌──────────────────────────────────────────────────────┐
+            │                 Internet Users                       │
+            └───────────────────────┬──────────────────────────────┘
+                                    │
+                                    ▼
+                            ┌────────────────┐
+                            │   Route 53     │ ◄── DNS Management
+                            │ (Global DNS)   │
+                            └───────┬────────┘
+                                    │
+                                    ▼
+                        ┌──────────────────────┐
+                        │  Application Load    │
+                        │  Balancer (ALB)      │ ◄── SSL/TLS Termination
+                        │  + ACM Certificate   │     (sgutodolist.com)
+                        └──────────┬───────────┘
+                                   │
+                    ┌──────────────┼──────────────┐
+                    │              │              │
+                    ▼              ▼              ▼
+                ┌─────────┐  ┌─────────┐   ┌──────────┐
+                │  Auth   │  │  User   │   │Taskflow  │  ◄── ECS Fargate
+                │ Service │  │ Service │   │ Service  │      Microservices
+                └────┬────┘  └────┬────┘   └────┬─────┘      (Public Subnets)
+                     │            │             │
+                     └────────────┼─────────────┘
+                                  │
+                         ┌────────┴────────┐
+                         │   API Gateway   │ ◄── Central Entry Point
+                         │   (Port 8080)   │     + CORS + Rate Limiting
+                         └────────┬────────┘
+                                  │
+                      ┌───────────┼─────────────┐
+                      │           │             │
+                      ▼           ▼             ▼
+              ┌────────────┐ ┌─────────┐  ┌──────────┐
+              │Notification│ │  Kafka  │  │ AI Model │
+              │  Service   │ │ Cluster │  │ Service  │
+              └──────┬─────┘ └────┬────┘  └────┬─────┘
+                     │            │            │
+                     └────────────┼────────────┘
+                                  │
+                       ┌──────────┴──────────┐
+                       │                     │
+                       ▼                     ▼
+                  ┌─────────┐          ┌───────────┐
+                  │   RDS   │          │  Redis    │  ◄── Data Layer
+                  │  MySQL  │          │ElastiCache│     (Private Subnets)
+                  └─────────┘          └───────────┘</code></pre></div><h3 id=frontend-architecture-multi-region-failover>Frontend Architecture (Multi-Region Failover)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>            ┌─────────────────────────────────────────────────────────┐
+            │                      Internet Users                     │
+            └──────────────────────────┬──────────────────────────────┘
+                                       │
+                                       ▼
+                               ┌──────────────┐
+                               │   Route 53   │ ◄── DNS: sgutodolist.com
+                               └────────┬─────┘
+                                        │
+                                        ▼
+                               ┌────────────────┐
+                               │  CloudFront    │ ◄── Global CDN
+                               │  Distribution  │     SSL Certificate
+                               └────────┬───────┘     Custom Domain
+                                        │
+                          ┌─────────────┴─────────────┐
+                          │    Origin Group (HA)      │
+                          │   ┌─────────────────┐     │
+                          │   │ Primary Origin  │     │
+                          │   │  S3 Singapore   │ ◄───┼── Main Region
+                          │   └─────────────────┘     │
+                          │           │               │
+                          │   ┌───────▼───────────┐   │
+                          │   │ Failover Origin   │   │
+                          │   │  S3 N.Virginia    │ ◄─┼── Backup Region
+                          │   └───────────────────┘   │
+                          └───────────────────────────┘
+                                       │
+                            ┌──────────┴──────────┐
+                            │ S3 Cross-Region     │
+                            │ Replication (CRR)   │ ◄── Auto Sync
+                            └─────────────────────┘</code></pre></div><h3 id=main-components>Main components
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><h3 id=1-backend-services-ecs-fargate><strong>1. Backend Services (ECS Fargate)</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>Service</th><th>Port</th><th>Chức năng</th><th>Dependencies</th></tr></thead><tbody><tr><td>API Gateway</td><td>8080</td><td>- Điều phối routing<br>- CORS handling<br>- Rate limiting</td><td>Redis, All Services</td></tr><tr><td>Auth Service</td><td>9999</td><td>- Xác thực JWT<br>- OAuth2 (Google)<br>- Token management</td><td>RDS, Redis, Kafka</td></tr><tr><td>User Service</td><td>8081</td><td>- Quản lý user profile<br>- User CRUD</td><td>RDS, Redis, Kafka</td></tr><tr><td>Taskflow Service</td><td>8082</td><td>- Quản lý tasks<br>- Workflows</td><td>RDS, Redis, Kafka</td></tr><tr><td>Notification Service</td><td>9998</td><td>- WebSocket real-time<br>- Push notifications</td><td>RDS, Redis, Kafka</td></tr><tr><td>AI Model Service</td><td>9997</td><td>- Task prioritization<br>- Smart suggestions</td><td>Python Flask</td></tr></tbody></table><h3 id=2-infrastructure-components><strong>2. Infrastructure Components</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><h4 id=networking><strong>Networking</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>VPC</strong>: <code>10.0.0.0/16</code> at Singapore (ap-southeast-1)</li><li><strong>Public Subnets (2 AZs)</strong>: ECS Tasks, ALB, Bastion</li><li><strong>Private Subnets (2 AZs)</strong>: RDS, Redis (data)</li><li><strong>Security Strategy</strong>: Eliminated NAT to save cost (~$30/month)</li></ul><h4 id=data-storage><strong>Data Storage</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>RDS MySQL</strong>: Primary database, Free Tier (<code>db.t3.micro</code>)</li><li><strong>ElastiCache Redis</strong>: Caching + Rate limiting (<code>cache.t3.micro</code>)</li><li><strong>Kafka (ECS)</strong>: Event streaming, Service Discovery (<code>kafka.sgu.local</code>)</li></ul><h4 id=load-balancing--ssl><strong>Load Balancing & SSL</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>Application Load Balancer</strong>: HTTPS termination, path-based routing</li><li><strong>ACM Certificate</strong>: <code>sgutodolist.com</code></li><li><strong>Target Groups</strong>: Each service has their onw target group with health checks</li></ul><h4 id=service-discovery><strong>Service Discovery</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>AWS Cloud Map</strong>: Namespace <code>sgu.local</code></li><li><strong>Internal DNS</strong>:<ul><li><code>auth.sgu.local:9999</code></li><li><code>user.sgu.local:8081</code></li><li><code>taskflow.sgu.local:8082</code></li><li><code>notification.sgu.local:9998</code></li><li><code>ai-model.sgu.local:9997</code></li><li><code>kafka.sgu.local:9092</code></li></ul></li></ul><h2 id=cost--optimization>Cost & Optimization
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=important-architectural-decisions><strong>Important Architectural Decisions</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>Factors</th><th>Initial Choice</th><th>Final Choice</th><th>Savings</th></tr></thead><tbody><tr><td><strong>NAT Gateway</strong></td><td>2 NAT (HA)</td><td>❌ Not used</td><td>~$60/month</td></tr><tr><td><strong>ECS Compute</strong></td><td>EC2 Instances</td><td>✅ Fargate Spot (0.5 vCPU)</td><td>~$40/month</td></tr><tr><td><strong>RDS</strong></td><td>Multi-AZ</td><td>✅ Single-AZ Free Tier</td><td>~$30/month</td></tr><tr><td><strong>Redis</strong></td><td>Cluster Mode</td><td>✅ Single Node</td><td>~$20/month</td></tr><tr><td><strong>Backend Multi-Region</strong></td><td>Active-Active</td><td>✅ Single Region</td><td>~$200/month</td></tr><tr><td><strong>Frontend HA</strong></td><td>Multi-Region Active</td><td>✅ Failover Only</td><td>~$50/month</td></tr></tbody></table><h3 id=public-subnet-strategy-for-ecs><strong>Public Subnet Strategy for ECS</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Instead of using expensive NAT Gateways, all ECS Tasks are deployed on <strong>Public Subnets</strong> with <strong>Public IP</strong> enabled. This allows:</p><ul><li>✅ Load Docker images from ECR over the Internet</li><li>✅ Outbound connectivity to AWS services</li><li>✅ Save 100% on NAT Gateway costs</li><li>⚠️ Trade-off: Need to manage Security Groups carefully</li></ul><h2 id=domain--ssl-strategy>Domain & SSL Strategy
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=production-domains><strong>Production Domains</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Frontend</strong>: <code>https://sgutodolist.com</code> (CloudFront + ACM us-east-1)</li><li><strong>Backend API</strong>: <code>https://sgutodolist.com</code> (ALB + ACM ap-southeast-1)</li></ul><h3 id=ssl-certificates><strong>SSL Certificates</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Certificate 1</strong> (us-east-1): For CloudFront (Must be in Virginia)<ul><li>Domain: <code>sgutodolist.com</code>, <code>*.sgutodolist.com</code></li></ul></li><li><strong>Certificate 2</strong> (ap-southeast-1): For ALB Singapore<ul><li>Domain: <code>sgutodolist.com</code></li></ul></li></ul><h2 id=security-architecture>Security Architecture
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=security-groups-matrix><strong>Security Groups Matrix</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>SG Name</th><th>Purpose</th><th>Inbound Rules</th></tr></thead><tbody><tr><td><code>public-alb-sg</code></td><td>ALB public facing</td><td>0.0.0.0/0:443, 0.0.0.0/0:80</td></tr><tr><td><code>ecs-app-sg</code></td><td>ECS Tasks</td><td>ALB:8080-8082, 9998-9999; Self: all ports (inter-service)</td></tr><tr><td><code>private-db-sg</code></td><td>RDS + Redis + Kafka</td><td>ecs-app-sg:3306, 6379, 9092</td></tr><tr><td><code>bastion-sg</code></td><td>SSH Jump Host</td><td>My IP:22</td></tr></tbody></table><h3 id=authentication-flow><strong>Authentication Flow</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>User → CloudFront → API Gateway → Auth Service
+                                      ↓
+                              JWT + Redis Session
+                                      ↓
+                              Google OAuth2 (Optional)</code></pre></div><h2 id=team-information>Team Information
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><ul><li><strong>Project</strong>: SGU TodoList - Task Management System</li><li><strong>Architecture</strong>: Single-Region Microservices (Cost-Optimized)</li><li><strong>Primary Region</strong>: Asia Pacific (Singapore) - ap-southeast-1</li><li><strong>Failover Region</strong>: US East (N. Virginia) - us-east-1 (Frontend only)</li><li><strong>Deployment Model</strong>: AWS Free Tier Optimized</li></ul><footer class=portfolio-footer><div class=container><p class=footer-text>© 2026 <a href=#hero>Phan Canh Tuan Dat</a> — Built with Hugo & ☕</p></div></footer><script src=/AWS-Workshop/js/portfolio.js></script></body></html>

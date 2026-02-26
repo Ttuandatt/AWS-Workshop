@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mystic Skills :: Tuan Dat | Cloud &amp; Backend Developer</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.5-mystic-skills/index.html</link><description>1. Hugo Commands1.1
+hugo build1.2
+hugo server -D2. Git Commands2.1 Check repository status
+git status2.2 List local branches
+git branch2.3 List all branches (local + remote)</description><generator>Hugo</generator><language>en</language><atom:link href="https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.5-mystic-skills/index.xml" rel="self" type="application/rss+xml"/><item><title>Bí Thuật</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.5-mystic-skills/_index.vi/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.5-mystic-skills/_index.vi/index.html</guid><description>1. Hugo Commands1.1
+hugo build1.2
+hugo server -D2. Git Commands2.1 Check repository status
+git status2.2 List branches (local)
+git branch2.3 List all branches (local + remote)</description></item></channel></rss>

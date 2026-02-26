@@ -1,0 +1,110 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Building scalable backend systems with Java Spring Boot & AWS Cloud"><title>Tuan Dat | Cloud & Backend Developer</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel=stylesheet><link rel=stylesheet href=/AWS-Workshop/css/portfolio.css></head><body><div class=scroll-progress></div><nav class=portfolio-nav id=navbar><div class=nav-inner><a href=#hero class=nav-logo>Tuan Dat.</a><ul class=nav-links><li><a href=#hero>Home</a></li><li><a href=#about>About</a></li><li><a href=#skills>Skills</a></li><li><a href=#experience>Experience</a></li><li><a href=#projects>Projects</a></li><li><a href=#contact>Contact</a></li></ul><button class=nav-toggle aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span></button></div></nav><h2 id=giới-thiệu-dự-án>Giới thiệu dự án
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>SGU TodoList</strong> là một ứng dụng quản lý công việc (Task Management) được xây dựng theo kiến trúc <strong>Microservices</strong> trên nền tảng <strong>AWS Cloud</strong>.<br>Dự án ban đầu được thiết kế theo mô hình <strong>Multi-Region SaaS</strong> nhằm đảm bảo <strong>High Availability</strong> và <strong>Disaster Recovery</strong>. Tuy nhiên, do hạn chế về ngân sách và giới hạn của <strong>AWS Free Tier</strong>, nhóm đã tối ưu kiến trúc sang mô hình <strong>Single-Region Deployment</strong>, kết hợp với cơ chế <strong>Cross-Region Failover</strong> cho tầng frontend.</p><h2 id=tổng-quan-kiến-trúc>Tổng quan kiến trúc
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=kiến-trúc-backend-single-region-singapore>Kiến trúc Backend (Single-Region: Singapore)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><pre><code>    ┌─────────────────────────────────────────────────┐
+    │                 Người dùng Internet             │
+    └───────────────────────┬─────────────────────────┘
+                            │
+                            ▼
+                   ┌────────────────┐
+                   │   Route 53     │ ◄── Quản lý DNS
+                   │ (Global DNS)   │
+                   └────────┬───────┘
+                            │
+                            ▼
+                ┌──────────────────────┐
+                │  Application Load    │
+                │  Balancer (ALB)      │ ◄── Kết thúc SSL/TLS
+                │  + ACM Certificate   │     (sgutodolist.com)
+                └───────────┬──────────┘
+                            │
+            ┌───────────────┼──────────────┐
+            │               │              │
+            ▼               ▼              ▼
+         ┌─────────┐   ┌─────────┐   ┌──────────┐
+         │  Auth   │   │  User   │   │ Taskflow │ ◄── ECS Fargate
+         │ Service │   │ Service │   │ Service  │     Microservices
+         └────┬────┘   └────┬────┘   └────┬─────┘     (Public Subnets)
+              │             │             │
+              └─────────────┼─────────────┘
+                            │
+                 ┌──────────┴──────────┐
+                 │     API Gateway     │ ◄── Điểm truy cập trung tâm
+                 │     (Port 8080)     │     + CORS + Rate Limiting
+                 └──────────┬──────────┘
+                            │
+            ┌───────────────┼──────────────┐
+            │               │              │
+            ▼               ▼              ▼
+        ┌─────────────┐ ┌─────────┐  ┌──────────┐
+        │ Notification│ │  Kafka  │  │ AI Model │
+        │   Service   │ │ Cluster │  │ Service  │
+        └──────┬──────┘ └────┬────┘  └─────┬────┘
+               │             │             │
+               └─────────────┼─────────────┘
+                             │
+                  ┌──────────┴──────────┐
+                  │                     │
+                  ▼                     ▼
+             ┌─────────┐          ┌───────────┐
+             │   RDS   │          │  Redis    │ ◄── Tầng dữ liệu
+             │  MySQL  │          │ElastiCache│     (Private Subnets)
+             └─────────┘          └───────────┘
+</code></pre><h3 id=kiến-trúc-frontend-multi-region-failover>Kiến trúc Frontend (Multi-Region Failover)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><pre><code>    ┌─────────────────────────────────────────────────────────┐
+    │                    Người dùng Internet                  │
+    └──────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+                       ┌──────────────┐
+                       │   Route 53   │ ◄── DNS: sgutodolist.com
+                       └────────┬─────┘
+                                │
+                                ▼
+                       ┌────────────────┐
+                       │  CloudFront    │ ◄── CDN toàn cầu
+                       │  Distribution  │     SSL Certificate
+                       └────────┬───────┘     Custom Domain
+                                │
+                  ┌─────────────┴─────────────┐
+                  │     Origin Group (HA)     │
+                  │   ┌─────────────────┐     │
+                  │   │ Primary Origin  │     │
+                  │   │  S3 Singapore   │ ◄───┼── Vùng chính
+                  │   └─────────────────┘     │
+                  │            │              │
+                  │   ┌────────▼──────────┐   │
+                  │   │ Failover Origin   │   │
+                  │   │  S3 N. Virginia   │ ◄─┼── Vùng dự phòng
+                  │   └───────────────────┘   │
+                  └───────────────────────────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │ S3 Cross-Region       │
+                    │ Replication (CRR)     │ ◄── Đồng bộ tự động
+                    └───────────────────────┘
+</code></pre><h2 id=thành-phần-chính>Thành phần chính
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=1-backend-services-ecs-fargate><strong>1. Backend Services (ECS Fargate)</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>Dịch vụ</th><th>Port</th><th>Chức năng</th><th>Phụ thuộc</th></tr></thead><tbody><tr><td>API Gateway</td><td>8080</td><td>- Điều phối routing<br>- Xử lý CORS<br>- Giới hạn tần suất (Rate limiting)</td><td>Redis, Tất cả service</td></tr><tr><td>Auth Service</td><td>9999</td><td>- Xác thực JWT<br>- OAuth2 (Google)<br>- Quản lý token</td><td>RDS, Redis, Kafka</td></tr><tr><td>User Service</td><td>8081</td><td>- Quản lý thông tin người dùng<br>- CRUD User</td><td>RDS, Redis, Kafka</td></tr><tr><td>Taskflow Service</td><td>8082</td><td>- Quản lý công việc<br>- Workflow</td><td>RDS, Redis, Kafka</td></tr><tr><td>Notification Service</td><td>9998</td><td>- WebSocket realtime<br>- Push notification</td><td>RDS, Redis, Kafka</td></tr><tr><td>AI Model Service</td><td>9997</td><td>- Ưu tiên task<br>- Gợi ý thông minh</td><td>Python Flask</td></tr></tbody></table><h3 id=2-thành-phần-hạ-tầng><strong>2. Thành phần hạ tầng</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><h4 id=networking><strong>Networking</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>VPC</strong>: <code>10.0.0.0/16</code> tại Singapore (<code>ap-southeast-1</code>)</li><li><strong>Public Subnets (2 AZs)</strong>: ECS Tasks, ALB, Bastion</li><li><strong>Private Subnets (2 AZs)</strong>: RDS, Redis (tầng dữ liệu)</li><li><strong>Chiến lược bảo mật</strong>: Loại bỏ NAT Gateway để tiết kiệm chi phí (~30 USD/tháng)</li></ul><h4 id=lưu-trữ-dữ-liệu><strong>Lưu trữ dữ liệu</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>RDS MySQL</strong>: CSDL chính, Free Tier (<code>db.t3.micro</code>)</li><li><strong>ElastiCache Redis</strong>: Cache + Rate limiting (<code>cache.t3.micro</code>)</li><li><strong>Kafka (ECS)</strong>: Event streaming, Service Discovery (<code>kafka.sgu.local</code>)</li></ul><h4 id=cân-bằng-tải--ssl><strong>Cân bằng tải & SSL</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>Application Load Balancer</strong>: Kết thúc HTTPS, routing theo path</li><li><strong>ACM Certificate</strong>: <code>sgutodolist.com</code></li><li><strong>Target Groups</strong>: Mỗi service có target group riêng với health check</li></ul><h4 id=service-discovery><strong>Service Discovery</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><strong>AWS Cloud Map</strong>: Namespace <code>sgu.local</code></li><li><strong>DNS nội bộ</strong>:<ul><li><code>auth.sgu.local:9999</code></li><li><code>user.sgu.local:8081</code></li><li><code>taskflow.sgu.local:8082</code></li><li><code>notification.sgu.local:9998</code></li><li><code>ai-model.sgu.local:9997</code></li><li><code>kafka.sgu.local:9092</code></li></ul></li></ul><h2 id=chi-phí--tối-ưu>Chi phí & Tối ưu
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=các-quyết-định-kiến-trúc-quan-trọng><strong>Các quyết định kiến trúc quan trọng</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>Yếu tố</th><th>Lựa chọn ban đầu</th><th>Lựa chọn cuối cùng</th><th>Tiết kiệm</th></tr></thead><tbody><tr><td><strong>NAT Gateway</strong></td><td>2 NAT (HA)</td><td>❌ Không dùng</td><td>~60 USD/tháng</td></tr><tr><td><strong>ECS Compute</strong></td><td>EC2 Instances</td><td>✅ Fargate Spot (0.5 vCPU)</td><td>~40 USD/tháng</td></tr><tr><td><strong>RDS</strong></td><td>Multi-AZ</td><td>✅ Single-AZ Free Tier</td><td>~30 USD/tháng</td></tr><tr><td><strong>Redis</strong></td><td>Cluster Mode</td><td>✅ Single Node</td><td>~20 USD/tháng</td></tr><tr><td><strong>Backend Multi-Region</strong></td><td>Active-Active</td><td>✅ Single Region</td><td>~200 USD/tháng</td></tr><tr><td><strong>Frontend HA</strong></td><td>Multi-Region Active</td><td>✅ Failover Only</td><td>~50 USD/tháng</td></tr></tbody></table><h3 id=chiến-lược-public-subnet-cho-ecs><strong>Chiến lược Public Subnet cho ECS</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Thay vì sử dụng NAT Gateway tốn kém, toàn bộ ECS Tasks được triển khai trên <strong>Public Subnets</strong> với <strong>Public IP</strong> bật sẵn. Điều này cho phép:</p><ul><li>✅ Pull Docker image từ ECR qua Internet</li><li>✅ Kết nối outbound tới các dịch vụ AWS</li><li>✅ Tiết kiệm 100% chi phí NAT Gateway</li><li>⚠️ Đánh đổi: cần cấu hình Security Group chặt chẽ</li></ul><h2 id=chiến-lược-domain--ssl>Chiến lược Domain & SSL
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=domain-production><strong>Domain Production</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Frontend</strong>: <code>https://sgutodolist.com</code> (CloudFront + ACM us-east-1)</li><li><strong>Backend API</strong>: <code>https://sgutodolist.com</code> (ALB + ACM ap-southeast-1)</li></ul><h3 id=chứng-chỉ-ssl><strong>Chứng chỉ SSL</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Chứng chỉ 1</strong> (us-east-1): Dành cho CloudFront (bắt buộc ở Virginia)<ul><li>Domain: <code>sgutodolist.com</code>, <code>*.sgutodolist.com</code></li></ul></li><li><strong>Chứng chỉ 2</strong> (ap-southeast-1): Dành cho ALB Singapore<ul><li>Domain: <code>sgutodolist.com</code></li></ul></li></ul><h2 id=kiến-trúc-bảo-mật>Kiến trúc bảo mật
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=ma-trận-security-group><strong>Ma trận Security Group</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><table><thead><tr><th>SG Name</th><th>Mục đích</th><th>Inbound Rules</th></tr></thead><tbody><tr><td><code>public-alb-sg</code></td><td>ALB public facing</td><td>0.0.0.0/0:443, 0.0.0.0/0:80</td></tr><tr><td><code>ecs-app-sg</code></td><td>ECS Tasks</td><td>ALB:8080-8082, 9998-9999; Self: all ports (inter-service)</td></tr><tr><td><code>private-db-sg</code></td><td>RDS + Redis + Kafka</td><td>ecs-app-sg:3306, 6379, 9092</td></tr><tr><td><code>bastion-sg</code></td><td>Bastion SSH Jump Host</td><td>My IP:22</td></tr></tbody></table><h3 id=luồng-xác-thực><strong>Luồng xác thực</strong>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>User → CloudFront → API Gateway → Auth Service
+                                      ↓
+                              JWT + Redis Session
+                                      ↓
+                              Google OAuth2 (Optional)</code></pre></div><h2 id=thông-tin-nhóm>Thông tin nhóm
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><ul><li><strong>Dự án</strong>: SGU TodoList – Hệ thống quản lý công việc</li><li><strong>Kiến trúc</strong>: Microservices Single-Region (Tối ưu chi phí)</li><li><strong>Region chính</strong>: Asia Pacific (Singapore) – ap-southeast-1</li><li><strong>Region dự phòng</strong>: US East (N. Virginia) – us-east-1 (chỉ frontend)</li><li><strong>Mô hình triển khai</strong>: Tối ưu AWS Free Tier</li></ul><footer class=portfolio-footer><div class=container><p class=footer-text>© 2026 <a href=#hero>Phan Canh Tuan Dat</a> — Built with Hugo & ☕</p></div></footer><script src=/AWS-Workshop/js/portfolio.js></script></body></html>

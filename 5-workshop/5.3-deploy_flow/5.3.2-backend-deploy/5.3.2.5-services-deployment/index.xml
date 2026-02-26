@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Services Deployment :: Tuan Dat | Cloud &amp; Backend Developer</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.html</link><description>This phase deploys containerized applications to ECS Fargate following a specific order to ensure proper dependency resolution.
+Critical Network ConfigurationFor ALL service deployments, the following network settings are mandatory:
+1. VPC: SGU-Microservices-VPC
+2. Subnets: Select both Public Subnets (required for image pulling)
+3. Security Group: ecs-app-sg (remove default)
+4. Public IP: Turned on (critical for ECR access)</description><generator>Hugo</generator><language>en</language><atom:link href="https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/index.xml" rel="self" type="application/rss+xml"/><item><title>Triển khai Services</title><link>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/_index.vi/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ttuandatt.github.io/AWS-Workshop/5-workshop/5.3-deploy_flow/5.3.2-backend-deploy/5.3.2.5-services-deployment/_index.vi/index.html</guid><description>Giai đoạn này triển khai các ứng dụng container lên ECS Fargate theo thứ tự cụ thể để đảm bảo các phụ thuộc được giải quyết đúng cách.
+Cấu hình mạng quan trọngVới tất cả các service triển khai, các thiết lập mạng sau là bắt buộc:
+1. VPC: SGU-Microservices-VPC
+2. Subnets: Chọn cả hai Public Subnets (bắt buộc để kéo image)</description></item></channel></rss>

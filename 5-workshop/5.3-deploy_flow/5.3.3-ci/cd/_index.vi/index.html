@@ -1,0 +1,512 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Building scalable backend systems with Java Spring Boot & AWS Cloud"><title>Tuan Dat | Cloud & Backend Developer</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel=stylesheet><link rel=stylesheet href=/AWS-Workshop/css/portfolio.css></head><body><div class=scroll-progress></div><nav class=portfolio-nav id=navbar><div class=nav-inner><a href=#hero class=nav-logo>Tuan Dat.</a><ul class=nav-links><li><a href=#hero>Home</a></li><li><a href=#about>About</a></li><li><a href=#skills>Skills</a></li><li><a href=#experience>Experience</a></li><li><a href=#projects>Projects</a></li><li><a href=#contact>Contact</a></li></ul><button class=nav-toggle aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span></button></div></nav><h3 id=quy-trình-tổng-quan>QUY TRÌNH TỔNG QUAN
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ol><li><p><strong>Cấu hình bảo mật:</strong> Gửi chìa khóa AWS cho GitHub.</p></li><li><p><strong>Cấu trúc dự án:</strong> Tạo file workflow <code>.yml</code>.</p></li><li><p><strong>Nội dung Workflow:</strong> Copy code chuẩn cho 6 services.</p></li><li><p><strong>Kích hoạt:</strong> Đẩy code lên GitHub để hệ thống tự chạy.</p></li></ol><hr><h3 id=bước-1-cấu-hình-bảo-mật-secrets>BƯỚC 1: CẤU HÌNH BẢO MẬT (SECRETS)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>GitHub cần quyền truy cập AWS để thay bạn deploy.</p><ol><li><p>Vào Repository trên GitHub.</p></li><li><p>Chọn <strong>Settings</strong> > <strong>Secrets and variables</strong> > <strong>Actions</strong>.</p></li><li><p>Bấm <strong>New repository secret</strong> và thêm 3 biến sau (Lấy từ file <code>.aws/credentials</code>):</p></li></ol><table><thead><tr><th><strong>Tên Secret</strong></th><th><strong>Giá trị (Value)</strong></th><th><strong>Lưu ý</strong></th></tr></thead><tbody><tr><td><strong><code>AWS_ACCESS_KEY_ID</code></strong></td><td><code>AKIA...</code> (hoặc <code>ASIA...</code>)</td><td>Bắt buộc</td></tr><tr><td><strong><code>AWS_SECRET_ACCESS_KEY</code></strong></td><td><code>...</code> (Chuỗi ký tự dài)</td><td>Bắt buộc</td></tr><tr><td><strong><code>AWS_SESSION_TOKEN</code></strong></td><td><code>...</code> (Chuỗi rất dài)</td><td><strong>Bắt buộc</strong> nếu dùng AWS Academy (Learner Lab). Update 4 tiếng/lần.</td></tr></tbody></table><hr><h3 id=bước-2-chuẩn-bị-file-cấu-hình>BƯỚC 2: CHUẨN BỊ FILE CẤU HÌNH
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Tại thư mục gốc dự án trên máy tính, bạn hãy tạo (hoặc kiểm tra) cấu trúc thư mục như sau:</p><p>Plaintext</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>MY-PROJECT/
+├── .gitignore               &lt;-- File loại bỏ rác (tạo mới nếu chưa có)
+├── .github/
+│   └── workflows/           &lt;-- Nơi chứa các file CI/CD
+│       ├── deploy-auth.yml
+│       ├── deploy-gateway.yml
+│       ├── deploy-user.yml
+│       ├── deploy-task.yml
+│       ├── deploy-noti.yml
+│       └── deploy-model.yml</code></pre></div><p><strong>Mẹo nhỏ:</strong> Tạo file <code>.gitignore</code> và thêm dòng <code>*.zip</code> vào để tránh đẩy file rác lên GitHub.</p><hr><h3 id=bước-3-nội-dung-workflow-copy--paste>BƯỚC 3: NỘI DUNG WORKFLOW (Copy & Paste)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><h4 id=1-file-githubworkflowsdeploy-apigatewayyml>1. File: <code>.github/workflows/deploy-apigateway.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 1. ĐỊNH DANH WORKFLOW</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy API Gateway </span> <span style=color:#75715e># Tên hiển thị của quy trình này trong tab &#34;Actions&#34; trên GitHub.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. TRIGGER (CÒ KÍCH HOẠT)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push:  # Sự kiện kích hoạt</span>: <span style=color:#ae81ff>Khi có hành động &#34;Push code&#34; lên...</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]  <span style=color:#75715e># ...một trong 2 nhánh này (các nhánh khác push lên sẽ không chạy).</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:  <span style=color:#75715e># BỘ LỌC THÔNG MINH (Quan trọng):</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;api-gateway/**&#39;</span>                    <span style=color:#75715e># Chỉ chạy khi có file thay đổi trong thư mục &#39;api-gateway&#39;.</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-gateway.yml&#39;</span>  <span style=color:#75715e># Hoặc khi chính file cấu hình này bị sửa đổi.</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># (Giúp tiết kiệm tài nguyên: Sửa auth-service sẽ không kích hoạt deploy api-gateway).</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. BIẾN MÔI TRƯỜNG (GLOBAL VARIABLES)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1         </span> <span style=color:#75715e># Khu vực máy chủ AWS (Singapore).</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>api-gateway        </span> <span style=color:#75715e># Tên kho chứa Image trên AWS ECR.</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>api-gateway           </span> <span style=color:#75715e># Tên Service đang chạy trên AWS ECS Fargate.</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster   </span> <span style=color:#75715e># Tên Cluster chứa các service.</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./api-gateway   </span> <span style=color:#75715e># Đường dẫn đến thư mục chứa mã nguồn của service này.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 4. JOBS (CÁC CÔNG VIỆC CẦN LÀM)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ========================================================</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:              <span style=color:#75715e># ID của công việc (job).</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy </span> <span style=color:#75715e># Tên hiển thị của job.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on: ubuntu-latest  # Môi trường chạy</span>: <span style=color:#ae81ff>GitHub sẽ cấp cho bạn 1 máy ảo Ubuntu mới tinh.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span> <span style=color:#75715e># Gắn nhãn môi trường (để quản lý Secrets tốt hơn trên GitHub).</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ====================================================</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 5. STEPS (CÁC BƯỚC THỰC HIỆN TUẦN TỰ)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ====================================================</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 1: LẤY CODE VỀ</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout            </span> <span style=color:#75715e># Đặt ID để bước xử lý lỗi cuối cùng có thể kiểm tra trạng thái.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span> <span style=color:#75715e># Dùng action có sẵn của GitHub để tải code từ repo về máy ảo Ubuntu.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 2: CÀI ĐẶT JAVA</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set up JDK 17</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>setup-jdk           </span> <span style=color:#75715e># Đặt ID.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-java@v3</span> <span style=color:#75715e># Action cài đặt Java.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>java-version</span>: <span style=color:#e6db74>&#39;17&#39;</span>     <span style=color:#75715e># Chọn phiên bản Java 17.</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>distribution</span>: <span style=color:#e6db74>&#39;temurin&#39;</span> <span style=color:#75715e># Chọn nhà cung cấp JDK (Eclipse Temurin).</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Mục đích: Chuẩn bị môi trường nếu cần chạy test hoặc build Maven bên ngoài Docker.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 3: ĐĂNG NHẬP AWS</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds           </span> <span style=color:#75715e># Đặt ID.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span> <span style=color:#75715e># Action đăng nhập AWS CLI.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lấy thông tin nhạy cảm từ &#34;Két sắt&#34; (Settings &gt; Secrets) của GitHub Repo.</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span> <span style=color:#75715e># Token tạm thời (Bắt buộc với AWS Academy/Learner Lab).</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span> <span style=color:#75715e># Lấy region từ biến env khai báo ở trên.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 4: ĐĂNG NHẬP ECR (Docker Registry)</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id: login-ecr            # Đặt ID (Quan trọng</span>: <span style=color:#ae81ff>Bước sau sẽ cần output của bước này).</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span> <span style=color:#75715e># Action giúp Docker máy ảo đăng nhập vào AWS ECR.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 5: BUILD &amp; PUSH DOCKER IMAGE (Trọng tâm)</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image         </span> <span style=color:#75715e># Đặt ID.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lấy địa chỉ Registry từ output của bước login-ecr (ví dụ: 0311...dkr.ecr...).</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lấy mã Hash của Commit hiện tại làm Tag (Ví dụ: a1b2c3d). Giúp định danh phiên bản code.</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>| </span> <span style=color:#75715e># Bắt đầu chạy các lệnh Linux (Bash shell)</span>
+</span></span><span style=display:flex><span>        <span style=color:#ae81ff>cd ${{ env.WORKING_DIRECTORY }} </span> <span style=color:#75715e># Di chuyển vào thư mục code (./api-gateway).</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lệnh 1: Build Image. Gán 2 tag cùng lúc:</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># - Tag theo mã commit (để lưu trữ lịch sử).</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># - Tag &#39;latest&#39; (để ECS luôn pull bản mới nhất này).</span>
+</span></span><span style=display:flex><span>        <span style=color:#ae81ff>docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lệnh 2: Đẩy Image có tag commit lên ECR.</span>
+</span></span><span style=display:flex><span>        <span style=color:#ae81ff>docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Lệnh 3: Đẩy Image tag latest lên ECR.</span>
+</span></span><span style=display:flex><span>        <span style=color:#ae81ff>docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 6: CẬP NHẬT ECS (Triển khai)</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update          </span> <span style=color:#75715e># Đặt ID.</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # Lệnh AWS CLI để cập nhật Service.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # --force-new-deployment: Ép ECS tắt các container cũ và bật container mới (pull image mới nhất về).
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 7: THÔNG BÁO THÀNH CÔNG</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if: success()            # Điều kiện</span>: <span style=color:#ae81ff>Chỉ chạy dòng này nếu TẤT CẢ các bước trên đều OK (Xanh lá).</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY API GATEWAY THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BƯỚC 8: XỬ LÝ LỖI (ERROR HANDLER)</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if: failure()            # Điều kiện</span>: <span style=color:#ae81ff>Chỉ chạy dòng này nếu CÓ BẤT KỲ bước nào phía trên bị lỗi (Đỏ).</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY GATEWAY!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # Kiểm tra từng bước xem bước nào chết để in ra thông báo tiếng Việt dễ hiểu.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.checkout.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Checkout Code&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials (Key sai/hết hạn)&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push (Code lỗi hoặc Dockerfile sai)&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.ecs-update.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Không tìm thấy ECS Service (Sai tên Cluster hoặc Service)&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1 # Báo cho GitHub biết là quy trình này đã thất bại (hiện dấu X đỏ ngoài dashboard).</span></span></span></code></pre></div><h4 id=2-file-githubworkflowsdeploy-authyml>2. File: <code>.github/workflows/deploy-auth.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy Auth Service</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;auth-service/**&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-auth.yml&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>auth-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>auth-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./auth-service</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set up JDK 17</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>setup-jdk</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-java@v3</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>java-version</span>: <span style=color:#e6db74>&#39;17&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>distribution</span>: <span style=color:#e6db74>&#39;temurin&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>login-ecr</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>success()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY AUTH SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>failure()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY AUTH!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1</span></span></span></code></pre></div><h4 id=3-file-githubworkflowsdeploy-useryml>3. File: <code>.github/workflows/deploy-user.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy User Service </span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;user-service/**&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-user.yml&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>user-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>user-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./user-service</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set up JDK 17</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>setup-jdk</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-java@v3</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>java-version</span>: <span style=color:#e6db74>&#39;17&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>distribution</span>: <span style=color:#e6db74>&#39;temurin&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>login-ecr</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>success()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY USER SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>failure()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY USER!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1</span></span></span></code></pre></div><h4 id=4-file-githubworkflowsdeploy-taskyml>4. File: <code>.github/workflows/deploy-task.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy Taskflow Service </span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;taskflow-service/**&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-task.yml&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>taskflow-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>taskflow-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./taskflow-service</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set up JDK 17</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>setup-jdk</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-java@v3</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>java-version</span>: <span style=color:#e6db74>&#39;17&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>distribution</span>: <span style=color:#e6db74>&#39;temurin&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>login-ecr</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>success()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY TASKFLOW SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>failure()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY TASKFLOW!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1</span></span></span></code></pre></div><h4 id=5-file-githubworkflowsdeploy-notiyml>5. File: <code>.github/workflows/deploy-noti.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy Notification Service </span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;notification-service/**&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-noti.yml&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>notification-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>notification-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./notification-service</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set up JDK 17</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>setup-jdk</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-java@v3</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>java-version</span>: <span style=color:#e6db74>&#39;17&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>distribution</span>: <span style=color:#e6db74>&#39;temurin&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>login-ecr</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>success()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY NOTIFICATION SERVICE THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>failure()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY NOTIFICATION!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1</span></span></span></code></pre></div><h4 id=6-file-githubworkflowsdeploy-modelyml>6. File: <code>.github/workflows/deploy-model.yml</code>
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-YAML data-lang=YAML><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy AI Model </span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>: [ <span style=color:#e6db74>&#34;main&#34;</span>, <span style=color:#e6db74>&#34;pre-production&#34;</span> ]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>paths</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;model/**&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;.github/workflows/deploy-model.yml&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>AWS_REGION</span>: <span style=color:#ae81ff>ap-southeast-1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECR_REPOSITORY</span>: <span style=color:#ae81ff>ai-model-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_SERVICE</span>: <span style=color:#ae81ff>ai-model-service</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ECS_CLUSTER</span>: <span style=color:#ae81ff>SGUTodolist-Cluster</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>WORKING_DIRECTORY</span>: <span style=color:#ae81ff>./model   </span> <span style=color:#75715e># Chú ý thư mục là &#39;model&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build &amp; Deploy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>: <span style=color:#ae81ff>production</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout Code</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>checkout</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Python không cần cài JDK</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Configure AWS Credentials</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>aws-creds</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/configure-aws-credentials@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-access-key-id</span>: <span style=color:#ae81ff>${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-secret-access-key</span>: <span style=color:#ae81ff>${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-session-token</span>: <span style=color:#ae81ff>${{ secrets.AWS_SESSION_TOKEN }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>aws-region</span>: <span style=color:#ae81ff>${{ env.AWS_REGION }}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Login to Amazon ECR</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>login-ecr</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>aws-actions/amazon-ecr-login@v1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build, Tag, and Push Image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>build-image</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ECR_REGISTRY</span>: <span style=color:#ae81ff>${{ steps.login-ecr.outputs.registry }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>IMAGE_TAG</span>: <span style=color:#ae81ff>${{ github.sha }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        cd ${{ env.WORKING_DIRECTORY }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Force ECS Update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>id</span>: <span style=color:#ae81ff>ecs-update</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --force-new-deployment</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Success Notification</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>success()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;🎉 DEPLOY AI MODEL THÀNH CÔNG!&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>⛔ ERROR HANDLER</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>if</span>: <span style=color:#ae81ff>failure()</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        echo &#34;🚨 LỖI DEPLOY AI MODEL!&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.aws-creds.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: AWS Credentials&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ steps.build-image.outcome }}&#34; == &#39;failure&#39; ]]; then echo &#34;❌ Lỗi: Docker Build/Push&#34;; fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        exit 1</span></span></span></code></pre></div><hr><h3 id=bước-4-kích-hoạt-trigger>BƯỚC 4: KÍCH HOẠT (TRIGGER)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Mở Terminal tại thư mục dự án và chạy:</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Bash data-lang=Bash><span style=display:flex><span>git add .
+</span></span><span style=display:flex><span>git commit -m <span style=color:#e6db74>&#34;Official CI/CD Setup: 6 Services&#34;</span>
+</span></span><span style=display:flex><span>git push origin pre-production</span></span></code></pre></div><p><strong>Ngay sau đó:</strong></p><ol><li><p>Vào GitHub > Tab <strong>Actions</strong>.</p></li><li><p>Ta sẽ thấy 6 workflows bắt đầu chạy.</p></li><li><p>Đợi chúng chuyển xanh ✅.</p></li></ol><hr><h3 id=luồng-tổng-quan-cicd-workflow>LUỒNG TỔNG QUAN (CI/CD WORKFLOW)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Đây là hành trình của một dòng code từ máy của Developer lên tới Server (AWS ECS) một cách tự động hoàn toàn:</p><ol><li><p><strong>Code Change:</strong> Developer sửa code (ví dụ: sửa màu nút bấm, fix lỗi logic) trên máy cá nhân.</p></li><li><p><strong>Git Push:</strong> Developer đẩy code lên GitHub.</p><ul><li><p><em>Nếu đẩy vào nhánh cá nhân (<code>minh</code>, <code>dat</code>&mldr;):</em> Hệ thống <strong>KHÔNG</strong> làm gì cả (Tiết kiệm tài nguyên).</p></li><li><p><em>Nếu merge vào nhánh <code>main</code> hoặc <code>pre-production</code>:</em> Hệ thống <strong>TỰ ĐỘNG KÍCH HOẠT</strong>.</p></li></ul></li><li><p><strong>GitHub Actions (The Robot):</strong></p><ul><li><p>Tự động bật một máy ảo Ubuntu sạch sẽ.</p></li><li><p>Tải code mới nhất về.</p></li><li><p>Đăng nhập vào AWS bằng &ldquo;Chìa khóa bí mật&rdquo; (Secrets).</p></li><li><p>Đóng gói code thành <strong>Docker Image</strong>.</p></li><li><p>Đẩy Image lên kho chứa <strong>AWS ECR</strong>.</p></li></ul></li><li><p><strong>Deploy (AWS ECS):</strong></p><ul><li><p>GitHub Actions ra lệnh cho <strong>AWS ECS</strong>: <em>&ldquo;Này, có bản cập nhật mới, hãy thay thế các container cũ đi!&rdquo;</em>.</p></li><li><p>AWS ECS tự động tắt container cũ, tải image mới về và khởi động container mới.</p></li></ul></li><li><p><strong>Kết quả:</strong> Người dùng truy cập website sẽ thấy ngay tính năng mới mà không cần ai phải SSH vào server gõ lệnh.</p></li></ol><hr><h3 id=hướng-dẫn-sử-dụng-dành-cho-developer>HƯỚNG DẪN SỬ DỤNG (DÀNH CHO DEVELOPER)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Để đảm bảo hệ thống CI/CD hoạt động trơn tru và tránh xung đột, mỗi thành viên trong nhóm cần tuân thủ quy trình sau mỗi khi muốn cập nhật code:</p><h4 id=1-quy-tắc-nhánh-branching-strategy>1. Quy tắc Nhánh (Branching Strategy)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><ul><li><p><strong><code>main</code></strong>: Nhánh CHÍNH THỨC. Code ở đây là bản chạy thật (Production). <strong>CẤM push trực tiếp</strong>, chỉ được Merge từ nhánh khác sang.</p></li><li><p><strong><code>pre-production</code></strong>: Nhánh CHẠY THỬ. Đây là nơi test tích hợp. Khi merge vào đây, server test sẽ tự động deploy.</p></li><li><p><strong><code>developer</code>, <code>minh</code>, <code>dat</code>&mldr;</strong>: Nhánh CÁ NHÂN. Thoải mái code, commit, push mà không sợ làm hỏng server.</p></li></ul><h4 id=2-các-bước-update-code-quy-trình-chuẩn>2. Các bước Update Code (Quy trình chuẩn)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><p><strong>Bước 1: Code và Test trên máy (Local)</strong></p><ul><li><p>Code tính năng mới trên nhánh cá nhân (ví dụ <code>dat</code>).</p></li><li><p>Chạy thử ở local đảm bảo không lỗi.</p></li></ul><p><strong>Bước 2: Đẩy code lên GitHub</strong></p><p>Bash</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>git add .
+git commit -m &#34;Thêm tính năng đăng nhập bằng Google&#34;
+git push origin dat  # Push lên nhánh của mình</code></pre></div><p><em>(Lúc này CI/CD chưa chạy, server vẫn yên bình).</em></p><p><strong>Bước 3: Tạo Pull Request (PR) hoặc Merge</strong></p><ul><li><p>Khi muốn đưa tính năng lên server cho cả nhóm test, hãy tạo <strong>Pull Request</strong> từ nhánh <code>dat</code> sang nhánh <code>pre-production</code>.</p></li><li><p>Hoặc nếu team nhỏ, có thể merge trực tiếp:</p><p>Bash</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>git checkout pre-production
+git pull origin pre-production  # Cập nhật code mới nhất từ server về trước
+git merge dat                   # Gộp code của mình vào
+git push origin pre-production  # Đẩy lên -&gt; 🚀 BÙM! CI/CD KÍCH HOẠT</code></pre></div></li></ul><p><strong>Bước 4: Theo dõi và Tận hưởng</strong></p><ul><li><p>Vào tab <strong>Actions</strong> trên GitHub Repo.</p></li><li><p>Bạn sẽ thấy workflow <strong>&ldquo;Deploy &mldr; Service&rdquo;</strong> đang chạy (xoay vòng tròn vàng).</p></li><li><p>Chờ khoảng 3-5 phút đến khi hiện tích xanh ✅.</p></li><li><p>Vào web kiểm tra tính năng mới.</p></li></ul><h4 id=3-xử-lý-khi-gặp-lỗi-dấu--đỏ>3. Xử lý khi gặp lỗi (Dấu ❌ Đỏ)
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4><p>Nếu Actions báo đỏ (Failed):</p><ol><li><p>Bấm vào workflow bị lỗi.</p></li><li><p>Bấm vào mục <strong>Build & Deploy</strong>.</p></li><li><p>Kéo xuống dưới cùng, tìm phần <strong>⛔ ERROR HANDLER</strong>.</p></li><li><p>Đọc dòng thông báo tiếng Việt (ví dụ: <em>"❌ Lỗi tại bước [Docker Build]: Code lỗi&mldr;"</em>) để biết nguyên nhân và sửa lại code.</p></li></ol><hr><p><strong>Tóm lại:</strong></p><blockquote><p><strong>&ldquo;Code ở nhánh con -> Merge vào <code>pre-production</code> -> Tự động lên Server Test -> Test ngon -> Merge vào <code>main</code> -> Tự động lên Server Thật.&rdquo;</strong></p></blockquote><footer class=portfolio-footer><div class=container><p class=footer-text>© 2026 <a href=#hero>Phan Canh Tuan Dat</a> — Built with Hugo & ☕</p></div></footer><script src=/AWS-Workshop/js/portfolio.js></script></body></html>
