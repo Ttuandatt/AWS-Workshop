@@ -1,0 +1,27 @@
+<!-- Blogs Section (Homepage Preview) -->
+<section class="portfolio-section blog-section" id="blogs">
+    <div class="container">
+        <h2 class="section-title reveal">Translated Blogs</h2>
+        <p class="section-subtitle reveal">AWS technical blogs translated from English to Vietnamese</p>
+
+        <div class="blog-grid stagger-children">
+            {{ range (where .Site.RegularPages "Section" "blogs") }}
+            <div class="blog-card">
+                <h3 class="blog-card-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                <p class="blog-card-excerpt">{{ .Summary }}</p>
+                <div class="blog-card-meta">
+                    <span>📝 Translated Blog</span>
+                    <a href="{{ .Permalink }}"
+                        style="color: var(--primary-light); text-decoration: none; font-weight: 500;">Read More →</a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;" class="reveal">
+            <a href="/blogs/" class="btn btn-outline">View All Blogs →</a>
+        </div>
+    </div>
+</section>

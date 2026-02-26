@@ -1,0 +1,35 @@
+<!-- Hero Section -->
+{{ with .Site.Data.personal }}
+<section class="hero-section portfolio-section" id="hero">
+    <div class="hero-particles"></div>
+
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-greeting">👋 Hello, I'm</span>
+            <h1 class="hero-name">
+                <span class="gradient-text">{{ .name }}</span>
+            </h1>
+            <h2 class="hero-title">
+                <span class="typing-text"
+                    data-texts="Java Developer|Backend Engineer|Spring Boot Developer|AWS Cloud Intern">Java
+                    Developer</span><span class="typing-cursor">|</span>
+            </h2>
+            <p class="hero-tagline">{{ .tagline }}</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <span>🚀</span> View Projects
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>💬</span> Contact Me
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+            <div class="hero-avatar">
+                <img src="{{ .avatar | relURL }}" alt="{{ .name }}" loading="eager">
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

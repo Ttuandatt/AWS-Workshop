@@ -1,0 +1,52 @@
+<!-- Experience Section -->
+<section class="portfolio-section experience-section" id="experience">
+    <div class="container">
+        <h2 class="section-title reveal">Experience & Education</h2>
+        <p class="section-subtitle reveal">My professional journey and academic background</p>
+
+        <div class="timeline">
+            {{ range .Site.Data.experience.timeline }}
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-period">{{ .period }}</span>
+                    <h3 class="timeline-title">{{ .title }}</h3>
+                    <p class="timeline-company">{{ .company }} · {{ .location }}</p>
+                    <p class="timeline-description">{{ .description }}</p>
+
+                    {{ if .highlights }}
+                    <ul class="timeline-highlights">
+                        {{ range .highlights }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                    {{ end }}
+
+                    {{ if .technologies }}
+                    <div class="timeline-technologies">
+                        {{ range .technologies }}
+                        <span class="tech-tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="timeline-spacer"></div>
+            </div>
+            {{ end }}
+
+            <!-- Education -->
+            {{ range .Site.Data.experience.education }}
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-period">{{ .period }}</span>
+                    <h3 class="timeline-title">🎓 {{ .degree }}</h3>
+                    <p class="timeline-company">{{ .school }} · {{ .location }}</p>
+                    <p class="timeline-description">{{ .description }}</p>
+                </div>
+                <div class="timeline-spacer"></div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

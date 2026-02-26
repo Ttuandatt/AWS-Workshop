@@ -1,0 +1,87 @@
+{{ define "main" }}
+<div style="padding-top: 100px;">
+    <section class="portfolio-section">
+        <div class="container" style="max-width: 900px;">
+
+            <div style="margin-bottom: 24px;">
+                <a href="/blogs/"
+                    style="color: var(--primary-light); text-decoration: none; font-size: 0.9rem; font-weight: 500;">
+                    ← Back to All Blogs
+                </a>
+            </div>
+
+            <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+                {{ .Title }}
+            </h1>
+
+            <div class="project-detail-content">
+                {{ .Content }}
+            </div>
+
+            <div
+                style="margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--bg-glass-border); display: flex; gap: 16px;">
+                <a href="/blogs/" class="btn btn-outline">← All Blogs</a>
+                <a href="/#blogs" class="btn btn-outline">🏠 Home</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .project-detail-content h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 48px;
+        margin-bottom: 16px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .project-detail-content h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .project-detail-content p {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 16px;
+    }
+
+    .project-detail-content strong {
+        color: var(--text-primary);
+    }
+
+    .project-detail-content ul {
+        color: var(--text-secondary);
+        padding-left: 24px;
+        margin-bottom: 16px;
+    }
+
+    .project-detail-content li {
+        margin-bottom: 6px;
+        line-height: 1.7;
+    }
+
+    .project-detail-content hr {
+        border: none;
+        border-top: 1px solid var(--bg-glass-border);
+        margin: 40px 0;
+    }
+
+    .project-detail-content a {
+        color: var(--primary-light);
+        text-decoration: none;
+    }
+
+    .project-detail-content a:hover {
+        text-decoration: underline;
+    }
+</style>
+{{ end }}

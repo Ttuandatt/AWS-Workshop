@@ -1,0 +1,10 @@
+links:
+  - name: "GitHub"
+    url: "https://github.com/Ttuandatt"
+    icon: "github"
+  - name: "LinkedIn"
+    url: "https://www.linkedin.com/in/tuan-dat-phan-canh-a83917283/"
+    icon: "linkedin"
+  - name: "Email"
+    url: "mailto:pcanhtuandat@gmail.com"
+    icon: "email"

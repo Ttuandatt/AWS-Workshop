@@ -1,0 +1,48 @@
+<!-- Projects Section (Homepage Preview) -->
+<section class="portfolio-section" id="projects">
+    <div class="container">
+        <h2 class="section-title reveal">Featured Projects</h2>
+        <p class="section-subtitle reveal">Hands-on projects built during my internship at AWS</p>
+
+        <div class="projects-grid stagger-children">
+            {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
+            <div class="project-card">
+                <div class="project-image">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    {{ else }}
+                    <div
+                        style="background: linear-gradient(135deg, rgba(108,99,255,0.3), rgba(0,217,255,0.2)); height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 3.5rem;">📝</span>
+                    </div>
+                    {{ end }}
+                    <div class="project-image-overlay"></div>
+                </div>
+                <div class="project-info">
+                    {{ if eq .Weight 1 }}
+                    <span class="project-featured-badge">⭐ Featured</span>
+                    {{ end }}
+                    <h3 class="project-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p class="project-description">{{ .Description }}</p>
+                    {{ with .Params.tags }}
+                    <div class="project-tags">
+                        {{ range . }}
+                        <span class="tech-tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    <div class="project-links">
+                        <a href="{{ .Permalink }}" class="project-link">📖 Read More →</a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;" class="reveal">
+            <a href="/projects/" class="btn btn-outline">View All Projects →</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+name: "Phan Canh Tuan Dat"
+title: "Java Developer"
+tagline: "Building scalable backend systems with Java Spring Boot & AWS Cloud"
+bio: >
+  Aspiring Backend Software Engineer with a solid foundation in Java Spring Boot,
+  highlighted by a 6-month internship at Amazon Web Services (AWS). Hands-on experience
+  building scalable Microservices, specializing in System Security (JWT/OAuth2) and
+  Database Design with MySQL and SQL Server. Proficient in OOP, SQL, and Cloud Infrastructure.
+  Committed to continuous learning with a goal of becoming a Senior Backend Developer
+  and future Project Manager.
+
+avatar: "images/avatar.jpg"
+email: "pcanhtuandat@gmail.com"
+phone: "(+84)867829257"
+location: "Tan Son Nhi, Ho Chi Minh City, Vietnam"
+university: "Sai Gon University"
+major: "Information Technology"
+linkedin: "https://www.linkedin.com/in/tuan-dat-phan-canh-a83917283/"
+github: "https://github.com/Ttuandatt"
+
+stats:
+  - value: "6"
+    label: "Months Interned at AWS"
+  - value: "5"
+    label: "Microservices Built"
+  - value: "7.0"
+    label: "IELTS Score"
+  - value: "2"
+    label: "Projects Delivered"

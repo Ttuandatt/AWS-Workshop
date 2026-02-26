@@ -1,0 +1,18 @@
+<!-- Navbar -->
+<nav class="portfolio-nav" id="navbar">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">Tuan Dat.</a>
+
+        <ul class="nav-links">
+            {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>

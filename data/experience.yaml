@@ -1,0 +1,38 @@
+timeline:
+  - title: "FCJ Cloud Intern"
+    company: "Amazon Web Services Vietnam Co., Ltd."
+    location: "Ho Chi Minh City, Vietnam"
+    period: "Jun 2025 - Dec 2025"
+    description: >
+      Built a SaaS Task Management Web Application (Todoist-like) with Spring Boot
+      microservices, Aurora MySQL, Redis, and Kafka. Worked in a 4-member team
+      to decompose a monolith into 5 independent microservices.
+    highlights:
+      - "Developed Auth Service with JWT authentication, OAuth2 login (Google/Facebook), password recovery and management"
+      - "Implemented secure registration, login, and token-based authorization for other microservices"
+      - "Designed multi-region AWS architecture for scalable and highly available deployment"
+      - "Integrated Auth Service with API Gateway and User Service for seamless request routing"
+      - "Containerized services using Docker for local and cloud deployment"
+      - "Implemented automated CI/CD pipelines using GitHub Actions, reducing manual release time by 50%"
+      - "Collaborated with a 4-member team to decompose architecture into 5 independent microservices with Kafka messaging"
+    technologies:
+      - "Spring Boot"
+      - "Spring Security"
+      - "JWT / OAuth2"
+      - "AWS ECS Fargate"
+      - "Aurora MySQL"
+      - "Redis"
+      - "Kafka"
+      - "Docker"
+      - "GitHub Actions"
+
+education:
+  - degree: "Bachelor of Science in Information Technology"
+    school: "Sai Gon University"
+    location: "Ho Chi Minh City, Vietnam"
+    period: "Sep 2022 - Jun 2026"
+    description: "Focused on software engineering, database design, OOP, and backend development."
+
+certifications:
+  - name: "IELTS 7.0"
+    type: "Language Proficiency"

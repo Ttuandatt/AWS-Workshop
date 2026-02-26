@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div style="padding-top: 100px;">
+    <section class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">All Projects</h2>
+            <p class="section-subtitle">Detailed overview of projects I've built</p>
+
+            <div class="projects-grid stagger-children">
+                {{ range .Pages }}
+                <div class="project-card">
+                    <div class="project-image">
+                        {{ if .Params.image }}
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                        {{ else }}
+                        <div
+                            style="background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,217,255,0.15)); height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 3.5rem;">📝</span>
+                        </div>
+                        {{ end }}
+                        <div class="project-image-overlay"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h3>
+                        <p class="project-description">{{ .Description }}</p>
+                        {{ with .Params.tags }}
+                        <div class="project-tags">
+                            {{ range . }}
+                            <span class="tech-tag">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                        <div class="project-links">
+                            <a href="{{ .Permalink }}" class="project-link">📖 Read More →</a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="/" class="btn btn-outline">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+</div>
+{{ end }}

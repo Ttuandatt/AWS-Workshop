@@ -1,0 +1,30 @@
+<!-- Skills Section -->
+<section class="portfolio-section" id="skills">
+    <div class="container">
+        <h2 class="section-title reveal">Skills & Expertise</h2>
+        <p class="section-subtitle reveal">Technologies I've worked with during my internship and projects</p>
+
+        <div class="skills-grid stagger-children">
+            {{ range .Site.Data.skills.categories }}
+            <div class="skill-category">
+                <div class="skill-category-header">
+                    <span class="skill-category-icon">{{ .icon }}</span>
+                    <h3 class="skill-category-name">{{ .name }}</h3>
+                </div>
+
+                {{ range .skills }}
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">{{ .name }}</span>
+                        <span class="skill-percent">{{ .level }}%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="{{ .level }}"></div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

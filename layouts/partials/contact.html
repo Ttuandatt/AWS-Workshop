@@ -1,0 +1,74 @@
+<!-- Contact Section -->
+{{ with .Site.Data.personal }}
+<section class="portfolio-section contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title reveal">Get In Touch</h2>
+        <p class="section-subtitle reveal">I'm always open to new opportunities and collaborations</p>
+
+        <div class="contact-grid">
+            <div class="contact-info reveal-left">
+                <h3>Let's Connect!</h3>
+                <p>
+                    Whether you have a project idea, a job opportunity, or just want to chat
+                    about cloud architecture and backend development — feel free to reach out.
+                </p>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div class="contact-item-text">
+                        <span class="contact-item-label">Email</span>
+                        <a href="mailto:{{ .email }}">{{ .email }}</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">📱</div>
+                    <div class="contact-item-text">
+                        <span class="contact-item-label">Phone</span>
+                        <a href="tel:{{ .phone }}">{{ .phone }}</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div class="contact-item-text">
+                        <span class="contact-item-label">Location</span>
+                        <span>{{ .location }}</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    {{ range $.Site.Data.social.links }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener" class="social-link" title="{{ .name }}">
+                        {{ if eq .icon "github" }}🐙{{ end }}
+                        {{ if eq .icon "linkedin" }}💼{{ end }}
+                        {{ if eq .icon "email" }}📧{{ end }}
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+
+            <div class="contact-form reveal-right">
+                <form action="https://formspree.io/f/placeholder" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        ✉️ Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

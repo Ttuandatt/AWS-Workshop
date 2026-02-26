@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div style="padding-top: 100px;">
+    <section class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Translated Blogs</h2>
+            <p class="section-subtitle">AWS technical blogs translated from English to Vietnamese</p>
+
+            <div class="blog-grid stagger-children">
+                {{ range .Pages }}
+                <div class="blog-card">
+                    <h3 class="blog-card-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p class="blog-card-excerpt">{{ .Summary }}</p>
+                    <div class="blog-card-meta">
+                        <span>📝 Translated Blog</span>
+                        <a href="{{ .Permalink }}" style="color: var(--primary-light); text-decoration: none;">Read More
+                            →</a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="/" class="btn btn-outline">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+</div>
+{{ end }}

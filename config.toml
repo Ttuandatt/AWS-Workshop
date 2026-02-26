@@ -1,47 +1,61 @@
 baseURL = "https://ttuandatt.github.io/AWS-Workshop/"
 publishDir = "public"
-
-# ❗ TẮT cho multilingual + Relearn
 canonifyURLs = false
 relativeURLs = false
 
-title = "AWS Internship"
+title = "Tuan Dat | Cloud & Backend Developer"
 theme = "relearn"
 
 defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 
 # ------------------------------------------------
-# Outputs (search cho Relearn)
+# Outputs
 # ------------------------------------------------
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 
 # ------------------------------------------------
-# Params (Relearn theme)
+# Params
 # ------------------------------------------------
 [params]
-  showLanguageSelector = true
-  themeVariant = ["relearn-light", "relearn-dark"]
-  alwaysShowThemeSwitcher = true
-  collapseLevel = 4
-  customCSS = ["css/custom.css"]
+  showLanguageSelector = false
+  disableLandingPageButton = true
+  [params.search]
+    disable = true
+  disableSeoHiddenPages = true
+  # Use our custom portfolio layout instead of relearn
+  customCSS = ["css/portfolio.css"]
+  customJS = ["js/portfolio.js"]
 
 # ------------------------------------------------
-# Languages
+# Menu
 # ------------------------------------------------
-[languages]
-  [languages.en]
-    title = "Internship Report"
-    languageName = "English"
-    languageCode = "en"
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "#hero"
     weight = 1
-
-  [languages.vi]
-    title = "Báo Cáo Thực Tập"
-    languageName = "Tiếng Việt"
-    languageCode = "vi"
+  [[menu.main]]
+    name = "About"
+    url = "#about"
     weight = 2
+  [[menu.main]]
+    name = "Skills"
+    url = "#skills"
+    weight = 3
+  [[menu.main]]
+    name = "Experience"
+    url = "#experience"
+    weight = 4
+  [[menu.main]]
+    name = "Projects"
+    url = "#projects"
+    weight = 5
+  [[menu.main]]
+    name = "Contact"
+    url = "#contact"
+    weight = 6
 
 # ------------------------------------------------
 # Markup

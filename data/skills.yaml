@@ -1,0 +1,62 @@
+categories:
+  - name: "Backend Development"
+    icon: "⚙️"
+    skills:
+      - name: "Java / Spring Boot"
+        level: 85
+      - name: "Hibernate / JPA"
+        level: 80
+      - name: "Spring Security (JWT/OAuth2)"
+        level: 80
+      - name: "RESTful API Design"
+        level: 85
+      - name: "Microservices Architecture"
+        level: 80
+      - name: "Apache Kafka"
+        level: 70
+      - name: "Spring Data Redis"
+        level: 70
+
+  - name: "Database & Data"
+    icon: "🗄️"
+    skills:
+      - name: "MySQL"
+        level: 85
+      - name: "SQL Server"
+        level: 75
+      - name: "Database Design"
+        level: 80
+      - name: "Redis (Cache & Pub/Sub)"
+        level: 70
+
+  - name: "AWS Cloud & DevOps"
+    icon: "☁️"
+    skills:
+      - name: "ECS Fargate"
+        level: 80
+      - name: "EC2 / VPC / IAM"
+        level: 80
+      - name: "RDS Aurora / S3"
+        level: 75
+      - name: "Route 53 / Cloud Map"
+        level: 75
+      - name: "Docker"
+        level: 80
+      - name: "GitHub Actions CI/CD"
+        level: 70
+      - name: "Git / GitHub"
+        level: 85
+
+  - name: "Other Skills"
+    icon: "🎯"
+    skills:
+      - name: "Object-Oriented Programming"
+        level: 85
+      - name: "Java SE / Java Swing / JavaFX"
+        level: 75
+      - name: "Python"
+        level: 60
+      - name: "English (IELTS 7.0)"
+        level: 85
+      - name: "Technical Writing"
+        level: 80

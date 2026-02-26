@@ -1,0 +1,34 @@
+<!-- About Section -->
+{{ with .Site.Data.personal }}
+<section class="portfolio-section about-section" id="about">
+    <div class="container">
+        <h2 class="section-title reveal">About Me</h2>
+        <p class="section-subtitle reveal">Get to know me and my journey</p>
+
+        <div class="about-grid">
+            <div class="about-image reveal-left">
+                <img src="{{ .avatar | relURL }}" alt="{{ .name }}">
+            </div>
+
+            <div class="about-text reveal-right">
+                <p>{{ .bio }}</p>
+                <p>
+                    I'm currently a <strong>{{ .major }}</strong> student at <strong>{{ .university }}</strong>.
+                    I specialize in System Security (JWT/OAuth2) and Database Design, working with
+                    MySQL and SQL Server. Proficient in OOP, SQL, and Cloud Infrastructure, with strong
+                    communication skills (IELTS 7.0). My goal is to become a Senior Backend Developer.
+                </p>
+
+                <div class="about-stats stagger-children">
+                    {{ range .stats }}
+                    <div class="stat-card">
+                        <span class="stat-value">{{ .value }}</span>
+                        <span class="stat-label">{{ .label }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
