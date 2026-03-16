@@ -1007,6 +1007,39 @@ body {
 }
 .scroll-top-btn:hover { background: var(--ielts-accent-light); }
 
+/* ---- In Development Banner ---- */
+.dev-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-accent-light);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease 0.3s both;
+}
+.dev-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  animation: dev-pulse 1.5s ease-in-out infinite;
+}
+@keyframes dev-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--ielts-accent-glow); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 10px transparent; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
   .cards-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
@@ -1079,16 +1112,17 @@ body {
     </div>
     <ul class="sidebar-nav" id="sidebarNav">
       <li><a href="#hero"   data-section="hero"><span class="nav-num">&mdash;</span>Home</a></li>
-      <li><a href="#overview" data-section="overview"><span class="nav-num">01</span>Overview</a></li>
-      <li><a href="#architecture" data-section="architecture"><span class="nav-num">02</span>Architecture</a></li>
-      <li><a href="#tech"    data-section="tech"><span class="nav-num">03</span>Tech Stack</a></li>
-      <li><a href="#modules" data-section="modules"><span class="nav-num">04</span>Modules</a></li>
-      <li><a href="#scoring" data-section="scoring"><span class="nav-num">05</span>Scoring</a></li>
-      <li><a href="#reading" data-section="reading"><span class="nav-num">06</span>Reading</a></li>
-      <li><a href="#auth"    data-section="auth"><span class="nav-num">07</span>Auth &amp; RBAC</a></li>
-      <li><a href="#database" data-section="database"><span class="nav-num">08</span>Database</a></li>
-      <li><a href="#endpoints" data-section="endpoints"><span class="nav-num">09</span>Endpoints</a></li>
-      <li><a href="#roadmap" data-section="roadmap"><span class="nav-num">10</span>Roadmap</a></li>
+      <li><a href="#problem" data-section="problem"><span class="nav-num">01</span>Problem &amp; Solution</a></li>
+      <li><a href="#overview" data-section="overview"><span class="nav-num">02</span>Overview</a></li>
+      <li><a href="#architecture" data-section="architecture"><span class="nav-num">03</span>Architecture</a></li>
+      <li><a href="#tech"    data-section="tech"><span class="nav-num">04</span>Tech Stack</a></li>
+      <li><a href="#modules" data-section="modules"><span class="nav-num">05</span>Modules</a></li>
+      <li><a href="#scoring" data-section="scoring"><span class="nav-num">06</span>Scoring</a></li>
+      <li><a href="#reading" data-section="reading"><span class="nav-num">07</span>Reading</a></li>
+      <li><a href="#auth"    data-section="auth"><span class="nav-num">08</span>Auth &amp; RBAC</a></li>
+      <li><a href="#database" data-section="database"><span class="nav-num">09</span>Database</a></li>
+      <li><a href="#endpoints" data-section="endpoints"><span class="nav-num">10</span>Endpoints</a></li>
+      <li><a href="#roadmap" data-section="roadmap"><span class="nav-num">11</span>Roadmap</a></li>
     </ul>
   </aside>
 
@@ -1098,6 +1132,10 @@ body {
     <!-- ==================== 1. HERO ==================== -->
     <section class="ielts-hero" id="hero">
       <div class="hero-badge">Personal Project 2026</div>
+      <div class="dev-banner">
+        <span class="dev-dot"></span>
+        Actively In Development &mdash; Sprint 3 in progress
+      </div>
       <h1 class="hero-title">IELTS Helper</h1>
       <p class="hero-subtitle">AI-Powered IELTS Preparation Platform</p>
       <p class="hero-desc">
@@ -1116,9 +1154,86 @@ body {
       </div>
     </section>
 
-    <!-- ==================== 2. OVERVIEW ==================== -->
+    <!-- ==================== 2. PROBLEM & SOLUTION ==================== -->
+    <section class="ielts-section" id="problem">
+      <div class="section-label">01 &mdash; Problem &amp; Solution</div>
+      <h2 class="section-title">Why this project exists</h2>
+      <p class="section-subtitle">IELTS preparation has real pain points that technology can solve&mdash;but most existing tools only scratch the surface.</p>
+
+      <!-- Problems -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ielts-danger);">&#x26A0;</span> The Problems
+      </h3>
+      <div class="cards-grid cols-2" style="margin-bottom:48px;">
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x23F3;</span>
+            <h3 style="margin:0;">Writing feedback latency</h3>
+          </div>
+          <p>Learners submit essays but wait <strong style="color:var(--ielts-danger);">1&ndash;3 days</strong> for teacher feedback. This delay kills motivation and slows the feedback loop critical for improvement.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x2696;</span>
+            <h3 style="margin:0;">Inconsistent scoring</h3>
+          </div>
+          <p>Different teachers score the <strong>same essay differently</strong>. Without a standardized rubric engine, learners can't trust or compare their scores across sessions.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F4E6;</span>
+            <h3 style="margin:0;">Fragmented content</h3>
+          </div>
+          <p>IELTS materials are scattered across <strong>dozens of websites</strong> with varying quality. No single platform offers structured, level-appropriate content with provenance tracking.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x2753;</span>
+            <h3 style="margin:0;">No instant explanations</h3>
+          </div>
+          <p>After a Reading test, learners see a score but <strong>don't understand why</strong> they got questions wrong. There's no per-question explanation to close the knowledge gap.</p>
+        </div>
+      </div>
+
+      <!-- Solutions -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ielts-success);">&#x2705;</span> The Solutions
+      </h3>
+      <div class="cards-grid cols-2">
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F916;</span>
+            <h3 style="margin:0;">AI-powered scoring in &lt;5 min</h3>
+          </div>
+          <p>Essays are scored by <strong style="color:var(--ielts-accent);">GPT-4o / Gemini</strong> against the official IELTS 4-criteria rubric (TR, CC, LR, GRA). Async pipeline via BullMQ delivers results through real-time SSE&mdash;no more waiting days.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F4CF;</span>
+            <h3 style="margin:0;">Standardized rubric engine</h3>
+          </div>
+          <p>Every essay is scored with the <strong>same rubric-based system prompt</strong> + strict JSON schema validation. Consistent, comparable, reproducible scores every time.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F4DA;</span>
+            <h3 style="margin:0;">Centralized content platform</h3>
+          </div>
+          <p>Admin-managed content with <strong>CEFR-leveled passages &amp; prompts</strong>, publish/unpublish workflow, version tracking, and topic collections&mdash;all in one place.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F4A1;</span>
+            <h3 style="margin:0;">Instant explanations per question</h3>
+          </div>
+          <p>Reading submissions are <strong>auto-graded instantly</strong> with per-question explanations authored by admins. Learners understand their mistakes immediately after submitting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. OVERVIEW ==================== -->
     <section class="ielts-section" id="overview">
-      <div class="section-label">01 &mdash; Overview</div>
+      <div class="section-label">02 &mdash; Overview</div>
       <h2 class="section-title">Three roles, one ecosystem</h2>
       <p class="section-subtitle">Each role unlocks a tailored experience&mdash;from practice to management to full platform control.</p>
 
@@ -1170,7 +1285,7 @@ body {
 
     <!-- ==================== 3. ARCHITECTURE ==================== -->
     <section class="ielts-section" id="architecture">
-      <div class="section-label">02 &mdash; System Architecture</div>
+      <div class="section-label">03 &mdash; System Architecture</div>
       <h2 class="section-title">Full-Stack Modern Architecture</h2>
       <p class="section-subtitle">Three clean layers&mdash;client, server, data&mdash;connected through typed contracts and async pipelines.</p>
 
@@ -1249,7 +1364,7 @@ body {
 
     <!-- ==================== 4. TECH STACK ==================== -->
     <section class="ielts-section" id="tech">
-      <div class="section-label">03 &mdash; Tech Stack</div>
+      <div class="section-label">04 &mdash; Tech Stack</div>
       <h2 class="section-title">Built with modern tools</h2>
       <p class="section-subtitle">Every layer chosen for type-safety, developer experience, and production readiness.</p>
 
@@ -1271,7 +1386,7 @@ body {
 
     <!-- ==================== 5. CORE MODULES ==================== -->
     <section class="ielts-section" id="modules">
-      <div class="section-label">04 &mdash; Backend Modules</div>
+      <div class="section-label">05 &mdash; Backend Modules</div>
       <h2 class="section-title">8 Modules, 15+ Endpoints</h2>
       <p class="section-subtitle">Each module is self-contained with its own controller, service, and DTOs&mdash;following NestJS best practices.</p>
 
@@ -1321,7 +1436,7 @@ body {
 
     <!-- ==================== 6. SCORING PIPELINE ==================== -->
     <section class="ielts-section" id="scoring">
-      <div class="section-label">05 &mdash; AI Writing Scoring Pipeline</div>
+      <div class="section-label">06 &mdash; AI Writing Scoring Pipeline</div>
       <h2 class="section-title">From essay to feedback in &lt;5 minutes</h2>
       <p class="section-subtitle">Async job queue with dual LLM providers, priority scoring, and real-time updates via SSE.</p>
 
@@ -1371,7 +1486,7 @@ body {
 
     <!-- ==================== 7. READING AUTO-GRADING ==================== -->
     <section class="ielts-section" id="reading">
-      <div class="section-label">06 &mdash; Reading Auto-Grading</div>
+      <div class="section-label">07 &mdash; Reading Auto-Grading</div>
       <h2 class="section-title">Instant scoring, instant learning</h2>
       <p class="section-subtitle">Answers are compared against pre-defined answer keys for immediate feedback&mdash;no AI latency.</p>
 
@@ -1401,7 +1516,7 @@ body {
 
     <!-- ==================== 8. AUTH & RBAC ==================== -->
     <section class="ielts-section" id="auth">
-      <div class="section-label">07 &mdash; Authentication &amp; RBAC</div>
+      <div class="section-label">08 &mdash; Authentication &amp; RBAC</div>
       <h2 class="section-title">JWT + Role-Based Access Control</h2>
       <p class="section-subtitle">Stateless auth with short-lived access tokens and long-lived refresh tokens, guarded by role decorators.</p>
 
@@ -1438,7 +1553,7 @@ body {
 
     <!-- ==================== 9. DATABASE ==================== -->
     <section class="ielts-section" id="database">
-      <div class="section-label">08 &mdash; Database Schema</div>
+      <div class="section-label">09 &mdash; Database Schema</div>
       <h2 class="section-title">14 tables, designed with Prisma 6</h2>
       <p class="section-subtitle">Normalized schema with clear ownership chains, soft-delete support, and audit timestamps.</p>
 
@@ -1491,7 +1606,7 @@ body {
 
     <!-- ==================== 10. API ENDPOINTS ==================== -->
     <section class="ielts-section" id="endpoints">
-      <div class="section-label">09 &mdash; API Endpoints</div>
+      <div class="section-label">10 &mdash; API Endpoints</div>
       <h2 class="section-title">RESTful API surface</h2>
       <p class="section-subtitle">Clean, predictable routes grouped by domain. Every mutation is validated and guarded.</p>
 
@@ -1549,7 +1664,7 @@ body {
 
     <!-- ==================== 11. ROADMAP ==================== -->
     <section class="ielts-section" id="roadmap">
-      <div class="section-label">10 &mdash; Roadmap</div>
+      <div class="section-label">11 &mdash; Roadmap</div>
       <h2 class="section-title">Where we are and where we're headed</h2>
       <p class="section-subtitle">Iterative development with a clear path from core features to a full four-skill platform.</p>
 
