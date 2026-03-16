@@ -4,7 +4,7 @@
         <div class="container" style="max-width: 900px;">
 
             <div style="margin-bottom: 24px;">
-                <a href="/blogs/"
+                <a href="{{ "blogs/" | relURL }}"
                     style="color: var(--primary-light); text-decoration: none; font-size: 0.9rem; font-weight: 500;">
                     ← Back to All Blogs
                 </a>
@@ -20,8 +20,8 @@
 
             <div
                 style="margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--bg-glass-border); display: flex; gap: 16px;">
-                <a href="/blogs/" class="btn btn-outline">← All Blogs</a>
-                <a href="/#blogs" class="btn btn-outline">🏠 Home</a>
+                <a href="{{ "blogs/" | relURL }}" class="btn btn-outline">← All Blogs</a>
+                <a href="{{ "/#blogs" | relURL }}" class="btn btn-outline">🏠 Home</a>
             </div>
         </div>
     </section>

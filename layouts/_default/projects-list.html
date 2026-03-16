@@ -10,7 +10,7 @@
                 <div class="project-card">
                     <div class="project-image">
                         {{ if .Params.image }}
-                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy">
                         {{ else }}
                         <div
                             style="background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,217,255,0.15)); height: 100%; display: flex; align-items: center; justify-content: center;">
@@ -40,7 +40,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 48px;">
-                <a href="/" class="btn btn-outline">← Back to Home</a>
+                <a href="{{ "/" | relURL }}" class="btn btn-outline">← Back to Home</a>
             </div>
         </div>
     </section>
