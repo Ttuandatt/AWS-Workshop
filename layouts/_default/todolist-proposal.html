@@ -1,0 +1,1946 @@
+{{ define "main" }}
+
+{{/* ================================================================
+     AWS TodoList — Project Proposal Presentation Page
+     Layout: todolist-proposal.html
+     Dark-themed, left-sidebar navigation, self-contained styles & JS
+     ================================================================ */}}
+
+<!-- ======================== EMBEDDED STYLES ======================== -->
+<style>
+/* ---- Override portfolio base ---- */
+.portfolio-nav,
+.portfolio-footer,
+.scroll-progress { display: none !important; }
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: var(--ielts-bg) !important;
+  color: var(--ielts-text) !important;
+  overflow-x: hidden;
+}
+
+/* ---- CSS Variables ---- */
+:root {
+  --ielts-bg: #060d18;
+  --ielts-bg-card: #0a1628;
+  --ielts-bg-card-hover: #0f1f3a;
+  --ielts-surface: #111d35;
+  --ielts-surface-light: #162544;
+  --ielts-border: #1e3a5f;
+  --ielts-border-light: #2a4a6f;
+  --ielts-text: #e8edf5;
+  --ielts-text-muted: #8899b4;
+  --ielts-text-dim: #5a6f8e;
+  --ielts-primary: #0c4a6e;
+  --ielts-primary-light: #0e6498;
+  --ielts-primary-bright: #1e90c8;
+  --ielts-accent: #f97316;
+  --ielts-accent-glow: #f9731640;
+  --ielts-accent-light: #fb923c;
+  --ielts-success: #22c55e;
+  --ielts-danger: #ef4444;
+  --ielts-purple: #a78bfa;
+  --ielts-cyan: #22d3ee;
+  --sidebar-w: 240px;
+  --sidebar-w-collapsed: 60px;
+}
+
+/* ---- Typography ---- */
+.ielts-page * { box-sizing: border-box; }
+.ielts-page {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--ielts-text);
+}
+
+/* ---- LEFT SIDEBAR ---- */
+.ielts-sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--ielts-bg-card);
+  border-right: 1px solid var(--ielts-border);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.ielts-sidebar::-webkit-scrollbar { width: 3px; }
+.ielts-sidebar::-webkit-scrollbar-thumb { background: var(--ielts-border); border-radius: 3px; }
+
+.sidebar-brand {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--ielts-border);
+}
+.sidebar-brand h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--ielts-accent), var(--ielts-accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sidebar-brand span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ielts-text-dim);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: var(--ielts-text-dim);
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0;
+  flex: 1;
+}
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  text-decoration: none;
+  color: var(--ielts-text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+.sidebar-nav li a:hover {
+  color: var(--ielts-text);
+  background: var(--ielts-surface);
+  border-left-color: var(--ielts-border-light);
+}
+.sidebar-nav li a.active {
+  color: var(--ielts-accent);
+  background: rgba(249, 115, 22, 0.06);
+  border-left-color: var(--ielts-accent);
+}
+.sidebar-nav li a .nav-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ielts-text-dim);
+  min-width: 22px;
+}
+.sidebar-nav li a.active .nav-num { color: var(--ielts-accent); }
+
+/* Mobile sidebar toggle */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 1100;
+  width: 44px; height: 44px;
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 10px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+.sidebar-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--ielts-text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.sidebar-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.sidebar-toggle.open span:nth-child(2) { opacity: 0; }
+.sidebar-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+/* ---- MAIN CONTENT ---- */
+.ielts-main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--ielts-bg);
+}
+
+/* ---- SECTION BASE ---- */
+.ielts-section {
+  padding: 100px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.ielts-section.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ielts-accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+.section-subtitle {
+  color: var(--ielts-text-muted);
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+/* ---- HERO ---- */
+.ielts-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.ielts-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: -20%;
+  width: 140%; height: 140%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(14,100,152,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(249,115,22,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ielts-accent);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--ielts-accent-glow); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 8px transparent; }
+}
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--ielts-primary-bright), var(--ielts-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: var(--ielts-accent-light);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--ielts-text-muted);
+  max-width: 680px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat {
+  padding: 14px 28px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.hero-stat:hover {
+  border-color: var(--ielts-primary-bright);
+  transform: translateY(-2px);
+}
+.hero-stat strong {
+  color: var(--ielts-accent);
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 2px;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--ielts-text-dim);
+  font-size: 0.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid var(--ielts-text-dim);
+  border-bottom: 2px solid var(--ielts-text-dim);
+  transform: rotate(45deg);
+}
+
+/* ---- CARDS GRID ---- */
+.cards-grid {
+  display: grid;
+  gap: 24px;
+}
+.cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ielts-primary-bright), var(--ielts-accent));
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.card:hover {
+  border-color: var(--ielts-border-light);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-4px);
+}
+.card:hover::before { opacity: 1; }
+
+.card-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border: 1px solid var(--ielts-border);
+}
+.card-icon.blue { background: rgba(14,100,152,0.15); color: var(--ielts-primary-bright); }
+.card-icon.orange { background: rgba(249,115,22,0.15); color: var(--ielts-accent); }
+.card-icon.green { background: rgba(34,197,94,0.15); color: var(--ielts-success); }
+.card-icon.purple { background: rgba(167,139,250,0.15); color: var(--ielts-purple); }
+.card-icon.cyan { background: rgba(34,211,238,0.15); color: var(--ielts-cyan); }
+.card-icon.red { background: rgba(239,68,68,0.15); color: var(--ielts-danger); }
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.card p {
+  color: var(--ielts-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.7;
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card ul li {
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.card ul li::before {
+  content: '\25B8';
+  color: var(--ielts-accent);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ---- ARCHITECTURE ---- */
+.arch-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.arch-layer {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  position: relative;
+}
+.arch-layer + .arch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: var(--ielts-text-dim);
+  font-size: 1.4rem;
+}
+.arch-layer.accent-border {
+  border-color: var(--ielts-accent);
+  box-shadow: 0 0 30px var(--ielts-accent-glow);
+}
+.arch-layer-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ielts-text-dim);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arch-layer-label .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.arch-layer-label .dot.blue { background: var(--ielts-primary-bright); }
+.arch-layer-label .dot.orange { background: var(--ielts-accent); }
+.arch-layer-label .dot.green { background: var(--ielts-success); }
+.arch-layer-label .dot.purple { background: var(--ielts-purple); }
+.arch-layer-label .dot.cyan { background: var(--ielts-cyan); }
+
+.arch-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.arch-pill {
+  padding: 8px 16px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ielts-text);
+  transition: border-color 0.2s;
+}
+.arch-pill:hover { border-color: var(--ielts-primary-bright); }
+.arch-pill.highlight {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+  color: var(--ielts-accent-light);
+}
+
+.arch-sub-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ielts-text-dim);
+  margin: 14px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Folder structure */
+.folder-box {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--ielts-text-muted);
+}
+.folder-box .folder { color: var(--ielts-accent); font-weight: 600; }
+.folder-box .file { color: var(--ielts-text-dim); }
+.folder-box .comment { color: var(--ielts-text-dim); opacity: 0.5; }
+
+/* ---- TECH GRID ---- */
+.tech-card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.tech-card:hover {
+  border-color: var(--ielts-primary-bright);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-3px);
+}
+.tech-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tech-card-desc {
+  font-size: 0.78rem;
+  color: var(--ielts-text-dim);
+}
+
+/* ---- MODULE CARDS ---- */
+.module-card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+.module-card:hover {
+  border-color: var(--ielts-border-light);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-3px);
+}
+.module-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-primary-bright);
+  margin-bottom: 4px;
+}
+.module-count {
+  font-size: 0.75rem;
+  color: var(--ielts-text-dim);
+  margin-bottom: 14px;
+}
+.module-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.module-card ul li {
+  padding: 5px 0;
+  font-size: 0.85rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.module-card ul li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---- PIPELINE ---- */
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin-bottom: 48px;
+}
+.pipeline-node {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  text-align: center;
+  min-width: 120px;
+}
+.pipeline-node:hover {
+  border-color: var(--ielts-primary-bright);
+  transform: translateY(-2px);
+}
+.pipeline-node.accent {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+  box-shadow: 0 0 20px var(--ielts-accent-glow);
+}
+.pipeline-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  padding: 0 6px;
+}
+
+/* ---- CRITERIA TABLE ---- */
+.criteria-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.criteria-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ielts-text-dim);
+  border-bottom: 1px solid var(--ielts-border);
+}
+.criteria-table td {
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  border-bottom: 1px solid rgba(30,58,95,0.4);
+}
+.criteria-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--ielts-accent);
+  width: 50px;
+}
+.criteria-table td:nth-child(2) {
+  font-weight: 600;
+  color: var(--ielts-text);
+}
+
+/* ---- QUESTION TYPE CHIPS ---- */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.chip {
+  padding: 12px 24px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  transition: all 0.3s;
+}
+.chip:hover {
+  border-color: var(--ielts-primary-bright);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ---- RBAC TABLE ---- */
+.rbac-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background: var(--ielts-bg-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--ielts-border);
+}
+.rbac-table th {
+  padding: 14px 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ielts-text-dim);
+  background: var(--ielts-surface);
+  text-align: center;
+  border-bottom: 1px solid var(--ielts-border);
+}
+.rbac-table th:first-child { text-align: left; }
+.rbac-table td {
+  padding: 13px 18px;
+  font-size: 0.88rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(30,58,95,0.3);
+  color: var(--ielts-text-muted);
+}
+.rbac-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ielts-text);
+}
+.rbac-y { color: var(--ielts-success); font-weight: 700; }
+.rbac-n { color: var(--ielts-text-dim); }
+
+/* ---- DATABASE GROUPS ---- */
+.db-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.db-group {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+.db-group:hover {
+  border-color: var(--ielts-border-light);
+  transform: translateY(-2px);
+}
+.db-group-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.db-group-title .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.db-table-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.db-table-pill {
+  padding: 6px 14px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ielts-text-muted);
+  transition: border-color 0.2s;
+}
+.db-table-pill:hover { border-color: var(--ielts-primary-bright); }
+
+/* ---- ENDPOINT LIST ---- */
+.endpoint-group {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+.endpoint-group:hover { border-color: var(--ielts-border-light); }
+.endpoint-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.endpoint-group-title .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.tag-auth { background: rgba(167,139,250,0.15); color: var(--ielts-purple); }
+.tag-read { background: rgba(14,100,152,0.15); color: var(--ielts-primary-bright); }
+.tag-write { background: rgba(249,115,22,0.15); color: var(--ielts-accent); }
+.tag-admin { background: rgba(239,68,68,0.15); color: var(--ielts-danger); }
+.tag-class { background: rgba(34,197,94,0.15); color: var(--ielts-success); }
+
+.endpoint-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(30,58,95,0.2);
+}
+.endpoint-row:last-child { border-bottom: none; }
+.method-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  min-width: 52px;
+  text-align: center;
+}
+.method-get { background: rgba(34,197,94,0.12); color: var(--ielts-success); }
+.method-post { background: rgba(249,115,22,0.12); color: var(--ielts-accent); }
+.method-put { background: rgba(14,100,152,0.12); color: var(--ielts-primary-bright); }
+.method-patch { background: rgba(34,211,238,0.12); color: var(--ielts-cyan); }
+.method-delete { background: rgba(239,68,68,0.12); color: var(--ielts-danger); }
+
+.endpoint-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--ielts-text);
+}
+.endpoint-desc {
+  font-size: 0.8rem;
+  color: var(--ielts-text-dim);
+  margin-left: auto;
+}
+
+/* ---- ROADMAP ---- */
+.roadmap-track {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.roadmap-phase {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+.roadmap-phase:hover {
+  border-color: var(--ielts-border-light);
+  transform: translateX(4px);
+}
+.roadmap-status {
+  flex-shrink: 0;
+  width: 110px;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+.status-done {
+  background: rgba(34,197,94,0.12);
+  color: var(--ielts-success);
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.status-progress {
+  background: rgba(249,115,22,0.12);
+  color: var(--ielts-accent);
+  border: 1px solid rgba(249,115,22,0.3);
+}
+.status-planned {
+  background: rgba(167,139,250,0.12);
+  color: var(--ielts-purple);
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.roadmap-items {
+  flex: 1;
+}
+.roadmap-items h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.roadmap-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.roadmap-items ul li {
+  padding: 6px 16px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--ielts-text-muted);
+}
+
+/* ---- FOOTER ---- */
+.ielts-footer {
+  text-align: center;
+  padding: 48px 40px;
+  border-top: 1px solid var(--ielts-border);
+  color: var(--ielts-text-dim);
+  font-size: 0.85rem;
+}
+.ielts-footer strong { color: var(--ielts-text-muted); }
+
+/* ---- FLOW STEPS ---- */
+.flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin-bottom: 32px;
+}
+.flow-step {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+  transition: all 0.3s;
+}
+.flow-step:hover { border-color: var(--ielts-primary-bright); transform: translateY(-2px); }
+.flow-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+
+/* ---- AUTH FLOW ---- */
+.auth-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 32px;
+  padding: 20px 0;
+}
+.auth-node {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.auth-node:hover { border-color: var(--ielts-primary-bright); }
+.auth-node.accent {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+}
+.auth-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.2rem;
+  padding: 0 8px;
+}
+
+/* ---- SCROLL TO TOP ---- */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 46px; height: 46px;
+  background: var(--ielts-accent);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px var(--ielts-accent-glow);
+}
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-top-btn:hover { background: var(--ielts-accent-light); }
+
+/* ---- In Development Banner ---- */
+.dev-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-accent-light);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease 0.3s both;
+}
+.dev-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  animation: dev-pulse 1.5s ease-in-out infinite;
+}
+@keyframes dev-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--ielts-accent-glow); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 10px transparent; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Completed status banner (green instead of orange) ---- */
+.dev-banner.completed {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--ielts-success);
+}
+.dev-banner.completed .dev-dot {
+  background: var(--ielts-success);
+  animation: none;
+}
+
+/* ---- Hero links ---- */
+.hero-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.hero-link.primary {
+  background: var(--ielts-accent);
+  color: #fff;
+}
+.hero-link.primary:hover {
+  background: var(--ielts-accent-light);
+  transform: translateY(-2px);
+}
+.hero-link.outline {
+  background: transparent;
+  border: 1px solid var(--ielts-border);
+  color: var(--ielts-text);
+}
+.hero-link.outline:hover {
+  border-color: var(--ielts-primary-bright);
+  transform: translateY(-2px);
+}
+
+/* ---- RESILIENCE LIST ---- */
+.resilience-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.resilience-list li {
+  padding: 10px 0;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid rgba(30,58,95,0.25);
+}
+.resilience-list li:last-child { border-bottom: none; }
+.resilience-list li .icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .cards-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
+  .ielts-section { padding: 80px 40px; }
+}
+@media (max-width: 860px) {
+  .ielts-sidebar { transform: translateX(-100%); }
+  .ielts-sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+  .sidebar-overlay.open { display: block; }
+  .ielts-main { margin-left: 0; }
+  .cards-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .ielts-section { padding: 60px 24px; }
+  .pipeline, .flow-steps, .auth-flow { flex-wrap: wrap; justify-content: center; }
+  .roadmap-phase { flex-direction: column; }
+  .endpoint-desc { display: none; }
+  .hero-links { flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+  .cards-grid.cols-3,
+  .cards-grid.cols-4,
+  .cards-grid.cols-2 { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; align-items: center; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-links { flex-direction: column; align-items: center; }
+}
+</style>
+
+<!-- ======================== PAGE MARKUP ======================== -->
+<div class="ielts-page">
+
+  <!-- SIDEBAR TOGGLE (mobile) -->
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="ielts-sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <h2>AWS TodoList</h2>
+      <span>Project Proposal</span>
+    </div>
+    <ul class="sidebar-nav" id="sidebarNav">
+      <li><a href="#hero"       data-section="hero"><span class="nav-num">&mdash;</span>Home</a></li>
+      <li><a href="#problem"    data-section="problem"><span class="nav-num">01</span>Problem &amp; Solution</a></li>
+      <li><a href="#overview"   data-section="overview"><span class="nav-num">02</span>Overview</a></li>
+      <li><a href="#architecture" data-section="architecture"><span class="nav-num">03</span>Architecture</a></li>
+      <li><a href="#tech"       data-section="tech"><span class="nav-num">04</span>Tech Stack</a></li>
+      <li><a href="#services"   data-section="services"><span class="nav-num">05</span>Microservices</a></li>
+      <li><a href="#features"   data-section="features"><span class="nav-num">06</span>Key Features</a></li>
+      <li><a href="#auth"       data-section="auth"><span class="nav-num">07</span>Auth &amp; Security</a></li>
+      <li><a href="#database"   data-section="database"><span class="nav-num">08</span>Database</a></li>
+      <li><a href="#devops"     data-section="devops"><span class="nav-num">09</span>DevOps &amp; CI/CD</a></li>
+      <li><a href="#endpoints"  data-section="endpoints"><span class="nav-num">10</span>API</a></li>
+      <li><a href="#roadmap"    data-section="roadmap"><span class="nav-num">11</span>Roadmap</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ielts-main">
+
+    <!-- ==================== 1. HERO ==================== -->
+    <section class="ielts-hero" id="hero">
+      <div class="hero-badge">AWS Internship Project 2025</div>
+      <div class="dev-banner completed">
+        <span class="dev-dot"></span>
+        Completed &mdash; Version 1.0 Released
+      </div>
+      <h1 class="hero-title">AWS TodoList</h1>
+      <p class="hero-subtitle">SaaS Task Management Platform</p>
+      <p class="hero-desc">
+        A production-grade Todoist-like task management platform built with Microservices architecture on AWS Cloud.
+        Real-time collaboration, AI-powered task labeling, and role-based project management.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/gnuh24/aws-todo-list-project" target="_blank" class="hero-link primary">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://youtu.be/gOVHkb54aeM" target="_blank" class="hero-link outline">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Demo
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>6</strong>Microservices</div>
+        <div class="hero-stat"><strong>162+</strong>Features</div>
+        <div class="hero-stat"><strong>50%</strong>Deploy Saved</div>
+        <div class="hero-stat"><strong>~$30</strong>/month</div>
+      </div>
+      <div class="hero-scroll-hint">
+        Scroll to explore
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. PROBLEM & SOLUTION ==================== -->
+    <section class="ielts-section" id="problem">
+      <div class="section-label">01 &mdash; Problem &amp; Solution</div>
+      <h2 class="section-title">Why this project exists</h2>
+      <p class="section-subtitle">Traditional task management tools have real limitations that modern cloud architecture can solve.</p>
+
+      <!-- Problems -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ielts-danger);">&#x26A0;</span> The Problems
+      </h3>
+      <div class="cards-grid cols-2" style="margin-bottom:48px;">
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x2699;</span>
+            <h3 style="margin:0;">Manual deployment complexity</h3>
+          </div>
+          <p>Deploying <strong style="color:var(--ielts-danger);">6 microservices</strong> manually is error-prone and time-consuming, leading to inconsistent environments and deployment failures.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F504;</span>
+            <h3 style="margin:0;">No real-time collaboration</h3>
+          </div>
+          <p>Traditional task managers require <strong style="color:var(--ielts-danger);">page refresh</strong> to see changes. Team members work with stale data, causing conflicts and missed updates.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F9E0;</span>
+            <h3 style="margin:0;">No intelligent task management</h3>
+          </div>
+          <p>Users manually categorize and prioritize <strong>every single task</strong>. No automation to reduce cognitive overhead or suggest classifications.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-danger);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F4E6;</span>
+            <h3 style="margin:0;">Monolithic limitations</h3>
+          </div>
+          <p>A single codebase <strong style="color:var(--ielts-danger);">blocks the entire team</strong>. Can't scale services independently, and one bug can take down everything.</p>
+        </div>
+      </div>
+
+      <!-- Solutions -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ielts-success);">&#x2705;</span> The Solutions
+      </h3>
+      <div class="cards-grid cols-2">
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F680;</span>
+            <h3 style="margin:0;">CI/CD with GitHub Actions</h3>
+          </div>
+          <p>Automated: push &#8594; Docker build &#8594; ECR &#8594; ECS Fargate. <strong style="color:var(--ielts-accent);">50% less deploy time</strong> with zero manual intervention.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x26A1;</span>
+            <h3 style="margin:0;">WebSocket real-time updates</h3>
+          </div>
+          <p><strong style="color:var(--ielts-accent);">STOMP + Redis Pub/Sub</strong> broadcasts task changes instantly to all connected clients. No more stale data.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F916;</span>
+            <h3 style="margin:0;">AI-powered task labeling</h3>
+          </div>
+          <p>Flask ML service with <strong style="color:var(--ielts-accent);">scikit-learn</strong> auto-classifies labels and suggests priority levels with confidence scoring.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--ielts-success);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:1.5rem;">&#x1F3D7;</span>
+            <h3 style="margin:0;">Microservices architecture</h3>
+          </div>
+          <p><strong style="color:var(--ielts-accent);">6 independent services</strong> communicating via Kafka. Each developer works on their own service, scale what you need.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. OVERVIEW ==================== -->
+    <section class="ielts-section" id="overview">
+      <div class="section-label">02 &mdash; Overview</div>
+      <h2 class="section-title">Four permission levels, one platform</h2>
+      <p class="section-subtitle">Role-based access control ensures the right people have the right permissions for effective project management.</p>
+
+      <div class="cards-grid cols-4">
+        <!-- Owner -->
+        <div class="card">
+          <div class="card-icon orange">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8l2 4 4 .5-3 2.5 1 4-4-2-4 2 1-4-3-2.5 4-.5z"/></svg>
+          </div>
+          <h3>Owner</h3>
+          <ul>
+            <li>Full control over project</li>
+            <li>Cannot be removed</li>
+            <li>Manage all members &amp; settings</li>
+          </ul>
+        </div>
+        <!-- Admin -->
+        <div class="card">
+          <div class="card-icon green">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Admin</h3>
+          <ul>
+            <li>Manage members (except Owner)</li>
+            <li>CRUD tasks &amp; sections</li>
+            <li>Assign tasks to members</li>
+          </ul>
+        </div>
+        <!-- Member -->
+        <div class="card">
+          <div class="card-icon blue">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Member</h3>
+          <ul>
+            <li>Create &amp; manage own tasks</li>
+            <li>Comment with attachments</li>
+            <li>Personal inbox</li>
+          </ul>
+        </div>
+        <!-- Viewer -->
+        <div class="card">
+          <div class="card-icon purple">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Viewer</h3>
+          <ul>
+            <li>Read-only access</li>
+            <li>View tasks &amp; sections</li>
+            <li>View comments</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. ARCHITECTURE ==================== -->
+    <section class="ielts-section" id="architecture">
+      <div class="section-label">03 &mdash; System Architecture</div>
+      <h2 class="section-title">Microservices on AWS Cloud</h2>
+      <p class="section-subtitle">Layered architecture with API Gateway, independent services, and managed AWS infrastructure.</p>
+
+      <div class="arch-stack">
+        <!-- Client -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot blue"></span>CLIENT</div>
+          <div class="arch-pills">
+            <span class="arch-pill">React 19 + Vite</span>
+            <span class="arch-pill">Redux Toolkit</span>
+            <span class="arch-pill">TailwindCSS</span>
+            <span class="arch-pill">WebSocket (STOMP)</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Gateway -->
+        <div class="arch-layer accent-border">
+          <div class="arch-layer-label"><span class="dot orange"></span>GATEWAY &mdash; Spring Cloud Gateway (8080)</div>
+          <div class="arch-pills">
+            <span class="arch-pill highlight">JWT Filter</span>
+            <span class="arch-pill highlight">Route Forward</span>
+            <span class="arch-pill highlight">Rate Limit</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Services -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot green"></span>SERVICES</div>
+          <div class="arch-pills">
+            <span class="arch-pill">Auth (9999)</span>
+            <span class="arch-pill">User (8081)</span>
+            <span class="arch-pill">TaskFlow (8082)</span>
+            <span class="arch-pill">Notification (9998)</span>
+            <span class="arch-pill">Media (9996)</span>
+            <span class="arch-pill">WebSocket (8085)</span>
+            <span class="arch-pill">AI Model (9997)</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Data -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot purple"></span>DATA</div>
+          <div class="arch-pills">
+            <span class="arch-pill">MySQL 8.0</span>
+            <span class="arch-pill">Redis 7.2</span>
+            <span class="arch-pill">Kafka 3.5</span>
+            <span class="arch-pill">S3</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Cloud -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot cyan"></span>CLOUD</div>
+          <div class="arch-pills">
+            <span class="arch-pill">ECS Fargate</span>
+            <span class="arch-pill">ECR</span>
+            <span class="arch-pill">RDS</span>
+            <span class="arch-pill">ElastiCache</span>
+            <span class="arch-pill">ALB</span>
+            <span class="arch-pill">Route 53</span>
+            <span class="arch-pill">CloudWatch</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Folder structure -->
+      <div class="folder-box">
+        <span class="folder">todolist-backend/</span><br>
+        &nbsp;&nbsp;<span class="folder">api-gateway/</span> <span class="comment"># Spring Cloud Gateway</span><br>
+        &nbsp;&nbsp;<span class="folder">auth-service/</span> <span class="comment"># JWT, OAuth2, 2FA</span><br>
+        &nbsp;&nbsp;<span class="folder">taskflow-service/</span> <span class="comment"># Core task management</span><br>
+        &nbsp;&nbsp;<span class="folder">user-service/</span> <span class="comment"># Profile management</span><br>
+        &nbsp;&nbsp;<span class="folder">notification-service/</span> <span class="comment"># Email &amp; push</span><br>
+        &nbsp;&nbsp;<span class="folder">websocket-service/</span> <span class="comment"># Real-time updates</span><br>
+        &nbsp;&nbsp;<span class="folder">media-service/</span> <span class="comment"># File uploads</span><br>
+        <span class="folder">todolist-frontend/</span> <span class="comment"># React 19 + Vite</span><br>
+        <span class="folder">model/</span> <span class="comment"># Flask AI service</span><br>
+        <span class="file">docker-compose.yml</span> <span class="comment"># Full stack (9 services)</span>
+      </div>
+    </section>
+
+    <!-- ==================== 5. TECH STACK ==================== -->
+    <section class="ielts-section" id="tech">
+      <div class="section-label">04 &mdash; Tech Stack</div>
+      <h2 class="section-title">Built with modern tools</h2>
+      <p class="section-subtitle">Enterprise-grade technologies chosen for scalability, reliability, and developer productivity.</p>
+
+      <div class="cards-grid cols-4">
+        <div class="tech-card"><div class="tech-card-name">Java 21</div><div class="tech-card-desc">Language</div></div>
+        <div class="tech-card"><div class="tech-card-name">Spring Boot 3.4</div><div class="tech-card-desc">Backend Framework</div></div>
+        <div class="tech-card"><div class="tech-card-name">Spring Security 6</div><div class="tech-card-desc">Auth &amp; Security</div></div>
+        <div class="tech-card"><div class="tech-card-name">Spring Cloud Gateway</div><div class="tech-card-desc">API Gateway</div></div>
+        <div class="tech-card"><div class="tech-card-name">React 19</div><div class="tech-card-desc">Frontend Framework</div></div>
+        <div class="tech-card"><div class="tech-card-name">Redux Toolkit</div><div class="tech-card-desc">State Management</div></div>
+        <div class="tech-card"><div class="tech-card-name">TailwindCSS</div><div class="tech-card-desc">Styling</div></div>
+        <div class="tech-card"><div class="tech-card-name">Vite</div><div class="tech-card-desc">Build Tool</div></div>
+        <div class="tech-card"><div class="tech-card-name">MySQL 8.0</div><div class="tech-card-desc">Database</div></div>
+        <div class="tech-card"><div class="tech-card-name">Redis 7.2</div><div class="tech-card-desc">Cache &amp; Pub/Sub</div></div>
+        <div class="tech-card"><div class="tech-card-name">Kafka 3.5</div><div class="tech-card-desc">Message Broker</div></div>
+        <div class="tech-card"><div class="tech-card-name">Docker</div><div class="tech-card-desc">Containerization</div></div>
+        <div class="tech-card"><div class="tech-card-name">ECS Fargate</div><div class="tech-card-desc">Serverless Compute</div></div>
+        <div class="tech-card"><div class="tech-card-name">GitHub Actions</div><div class="tech-card-desc">CI/CD</div></div>
+        <div class="tech-card"><div class="tech-card-name">Python Flask</div><div class="tech-card-desc">AI Service</div></div>
+        <div class="tech-card"><div class="tech-card-name">MapStruct</div><div class="tech-card-desc">Object Mapping</div></div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. MICROSERVICES ==================== -->
+    <section class="ielts-section" id="services">
+      <div class="section-label">05 &mdash; Microservices</div>
+      <h2 class="section-title">7 Services + 1 AI Engine</h2>
+      <p class="section-subtitle">Each service is independently deployable with its own database context, communicating via Kafka and REST.</p>
+
+      <div class="cards-grid cols-4">
+        <div class="module-card">
+          <div class="module-path">/gateway</div>
+          <div class="module-count">Port 8080 &mdash; 0 own endpoints</div>
+          <ul><li>JWT validation</li><li>Route forwarding</li><li>Rate limiting</li><li>CORS config</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/auth</div>
+          <div class="module-count">Port 9999 &mdash; 11 endpoints</div>
+          <ul><li>Register</li><li>Login</li><li>OAuth2 Google</li><li>2FA TOTP</li><li>OTP email</li><li>Password reset</li><li>Token refresh</li><li>Redis blacklist</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/taskflow</div>
+          <div class="module-count">Port 8082 &mdash; 15+ endpoints</div>
+          <ul><li>Projects CRUD</li><li>Sections</li><li>Tasks (status/priority/assignee)</li><li>Subtasks</li><li>Comments &amp; Attachments</li><li>Personal inbox</li><li>Pinning</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/user</div>
+          <div class="module-count">Port 8081 &mdash; 3 endpoints</div>
+          <ul><li>Profile CRUD</li><li>Avatar upload</li><li>Redis caching</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/notification</div>
+          <div class="module-count">Port 9998 &mdash; 4 endpoints</div>
+          <ul><li>Kafka consumer</li><li>Email SMTP</li><li>In-app notifications</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/websocket</div>
+          <div class="module-count">Port 8085 &mdash; 0 REST</div>
+          <ul><li>STOMP protocol</li><li>Redis Pub/Sub</li><li>Live updates</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/media</div>
+          <div class="module-count">Port 9996 &mdash; 2 endpoints</div>
+          <ul><li>File upload/download</li><li>S3 integration</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/model</div>
+          <div class="module-count">Port 9997 &mdash; 1 endpoint</div>
+          <ul><li>Label classification</li><li>Priority prediction</li><li>Confidence scoring</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. KEY FEATURES ==================== -->
+    <section class="ielts-section" id="features">
+      <div class="section-label">06 &mdash; Key Features</div>
+      <h2 class="section-title">Core business flows</h2>
+      <p class="section-subtitle">Three critical workflows that power the platform's real-time collaboration and intelligent task management.</p>
+
+      <!-- Flow 1: Authentication -->
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:4px;">Authentication Flow</h3>
+      <div class="flow-steps">
+        <div class="flow-step">Register</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Email OTP</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Activate Account</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Login</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">JWT Tokens</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Gateway Filter</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Target Service</div>
+      </div>
+
+      <!-- Flow 2: Real-time Task Updates -->
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:4px;">Real-time Task Updates</h3>
+      <div class="flow-steps">
+        <div class="flow-step">User Updates Task</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">TaskFlow Service</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Kafka Event</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Notification Consumer</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">WebSocket Push</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">All Clients</div>
+      </div>
+
+      <!-- Flow 3: AI Task Labeling -->
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:4px;">AI Task Labeling</h3>
+      <div class="flow-steps">
+        <div class="flow-step">Create Task</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">POST /model/predict</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">scikit-learn Model</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Label + Priority + Confidence</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Auto-apply</div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. AUTH & SECURITY ==================== -->
+    <section class="ielts-section" id="auth">
+      <div class="section-label">07 &mdash; Auth &amp; Security</div>
+      <h2 class="section-title">JWT + OAuth2 + 2FA</h2>
+      <p class="section-subtitle">Multi-layered security with dual-token architecture, social login, and two-factor authentication.</p>
+
+      <div class="auth-flow">
+        <div class="auth-node">Register</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node">OTP Verify</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node">Login</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node accent">JWT Dual-Token</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node accent">Gateway Filter</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node">Service</div>
+      </div>
+
+      <div class="cards-grid cols-2">
+        <div class="card">
+          <h3>Token Architecture</h3>
+          <ul>
+            <li>Access Token (15 min) &mdash; carries userId, email, role</li>
+            <li>Refresh Token (7 days) &mdash; stored in httpOnly Cookie</li>
+            <li>HMAC-SHA256 signing with Base64 secret</li>
+            <li>Redis blacklist for secure logout</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Security Features</h3>
+          <ul>
+            <li>OAuth2 Google login with auto account creation</li>
+            <li>2FA with TOTP (Time-based One-Time Password)</li>
+            <li>OTP email verification (3 min TTL)</li>
+            <li>BCrypt password hashing</li>
+            <li>10+ custom exception types</li>
+            <li>Cookie-based refresh (XSS protection)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. DATABASE ==================== -->
+    <section class="ielts-section" id="database">
+      <div class="section-label">08 &mdash; Database</div>
+      <h2 class="section-title">MySQL 8.0 &mdash; UUID primary keys</h2>
+      <p class="section-subtitle">Normalized schema with UUID identifiers, soft-delete support, and comprehensive audit fields.</p>
+
+      <div class="db-groups">
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-purple)"></span>Auth</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">account (with 2FA fields, OAuth provider)</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-primary-bright)"></span>Projects</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">project (archive support)</span>
+            <span class="db-table-pill">section</span>
+            <span class="db-table-pill">member (4 roles)</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-accent)"></span>Tasks</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">task (nested subtasks, status, priority, deadline)</span>
+            <span class="db-table-pill">task_comment</span>
+            <span class="db-table-pill">task_attachment</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-success)"></span>Labels</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">personal_label</span>
+            <span class="db-table-pill">project_label</span>
+            <span class="db-table-pill">task_label (AI-generated flag)</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-cyan)"></span>Design Patterns</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">UUID PKs (CHAR 36)</span>
+            <span class="db-table-pill">soft delete (is_deleted + deleted_at)</span>
+            <span class="db-table-pill">audit fields (created_at, updated_at, created_by)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 10. DEVOPS & CI/CD ==================== -->
+    <section class="ielts-section" id="devops">
+      <div class="section-label">09 &mdash; DevOps &amp; CI/CD</div>
+      <h2 class="section-title">From push to production</h2>
+      <p class="section-subtitle">Fully automated deployment pipeline from code commit to live containers on AWS.</p>
+
+      <div class="pipeline">
+        <div class="pipeline-node">Git Push</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">GitHub Actions</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node accent">Docker Build</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node accent">Push ECR</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Deploy ECS</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Health Check</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Live</div>
+      </div>
+
+      <div class="cards-grid cols-2">
+        <div class="card">
+          <h3>Docker Compose Stack (Local)</h3>
+          <ul>
+            <li>MySQL 8.0 (:3306)</li>
+            <li>Redis 7.2 (:6379)</li>
+            <li>Kafka 3.5 (:9092)</li>
+            <li>Zookeeper (:2181)</li>
+            <li>AKHQ (:8083)</li>
+            <li>7 Spring Boot services</li>
+            <li>Flask AI service</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>AWS Infrastructure</h3>
+          <ul>
+            <li>ECS Fargate (serverless containers)</li>
+            <li>ECR (Docker registry)</li>
+            <li>RDS MySQL (managed DB)</li>
+            <li>ElastiCache Redis</li>
+            <li>S3 (file storage)</li>
+            <li>ALB (load balancer)</li>
+            <li>Route 53 + ACM (DNS + SSL)</li>
+            <li>CloudWatch (monitoring)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 11. API ENDPOINTS ==================== -->
+    <section class="ielts-section" id="endpoints">
+      <div class="section-label">10 &mdash; API Endpoints</div>
+      <h2 class="section-title">RESTful API surface</h2>
+      <p class="section-subtitle">Clean, predictable routes grouped by service domain. Every mutation is validated and guarded.</p>
+
+      <!-- Auth -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-auth">AUTH</span>/api/auth</div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/login</span><span class="endpoint-desc">Obtain JWT pair</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/register</span><span class="endpoint-desc">Create account</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/active-account</span><span class="endpoint-desc">Activate via OTP</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/refresh-token</span><span class="endpoint-desc">Rotate tokens</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/send-reset-password-otp/:email</span><span class="endpoint-desc">Send password reset OTP</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/reset-password/:username</span><span class="endpoint-desc">Reset password</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/update-password</span><span class="endpoint-desc">Update password</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/update-email</span><span class="endpoint-desc">Update email</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/check-email</span><span class="endpoint-desc">Check email availability</span></div>
+      </div>
+
+      <!-- TaskFlow -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-write">TASKFLOW</span>/api/taskflow</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/projects</span><span class="endpoint-desc">List projects</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/projects</span><span class="endpoint-desc">Create project</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/projects/:id</span><span class="endpoint-desc">Update project</span></div>
+        <div class="endpoint-row"><span class="method-badge method-delete">DELETE</span><span class="endpoint-path">/projects/:id</span><span class="endpoint-desc">Delete project</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/sections</span><span class="endpoint-desc">List sections</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/sections</span><span class="endpoint-desc">Create section</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/sections/:id</span><span class="endpoint-desc">Update section</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/tasks</span><span class="endpoint-desc">List tasks</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/tasks</span><span class="endpoint-desc">Create task</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/tasks/:id</span><span class="endpoint-desc">Update task</span></div>
+        <div class="endpoint-row"><span class="method-badge method-delete">DELETE</span><span class="endpoint-path">/tasks/:id</span><span class="endpoint-desc">Delete task</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/tasks/:id/comments</span><span class="endpoint-desc">Add comment</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/tasks/:id/subtasks</span><span class="endpoint-desc">Add subtask</span></div>
+      </div>
+
+      <!-- User -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-read">USER</span>/api/user</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/profile</span><span class="endpoint-desc">Get user profile</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/profile</span><span class="endpoint-desc">Update profile</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/avatar</span><span class="endpoint-desc">Upload avatar</span></div>
+      </div>
+
+      <!-- Notification -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-class">NOTIFICATION</span>/api/notification</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/notifications</span><span class="endpoint-desc">List notifications</span></div>
+        <div class="endpoint-row"><span class="method-badge method-patch">PATCH</span><span class="endpoint-path">/notifications/:id/read</span><span class="endpoint-desc">Mark as read</span></div>
+      </div>
+    </section>
+
+    <!-- ==================== 12. ROADMAP ==================== -->
+    <section class="ielts-section" id="roadmap">
+      <div class="section-label">11 &mdash; Roadmap</div>
+      <h2 class="section-title">Where we are and where we're headed</h2>
+      <p class="section-subtitle">From initial development to production deployment and future enhancements.</p>
+
+      <div class="roadmap-track">
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-done">Done</div>
+          <div class="roadmap-items">
+            <h4>Core Platform</h4>
+            <ul>
+              <li>Auth Service (JWT + OAuth2 + 2FA)</li>
+              <li>TaskFlow Service (full CRUD)</li>
+              <li>User Service</li>
+              <li>Notification Service (Kafka + Email)</li>
+              <li>WebSocket Service</li>
+              <li>AI Model Service</li>
+              <li>API Gateway</li>
+              <li>Frontend (React + Redux)</li>
+              <li>Docker containerization</li>
+              <li>AWS deployment (ECS + RDS + S3)</li>
+              <li>CI/CD pipeline (GitHub Actions)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-progress">V1.0 Released</div>
+          <div class="roadmap-items">
+            <h4>Production Milestone</h4>
+            <ul>
+              <li>Full platform deployed and serving</li>
+              <li>162+ features across 7 modules</li>
+              <li>50% deployment time reduction</li>
+              <li>~$30/month operating cost</li>
+              <li>Workshop documentation (35+ steps)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-planned">Future</div>
+          <div class="roadmap-items">
+            <h4>Future Enhancements</h4>
+            <ul>
+              <li>Chat service (team messaging)</li>
+              <li>Mobile app (React Native)</li>
+              <li>Payment integration</li>
+              <li>Multi-region deployment</li>
+              <li>Advanced analytics dashboard</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ielts-footer">
+      <strong>AWS TodoList</strong> &mdash; Built with Spring Boot Microservices &amp; AWS Cloud
+    </footer>
+
+  </main><!-- .ielts-main -->
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#9650;</button>
+
+</div><!-- .ielts-page -->
+
+<!-- ======================== JAVASCRIPT ======================== -->
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Sidebar toggle (mobile) ---- */
+  var sidebar  = document.getElementById('sidebar');
+  var toggle   = document.getElementById('sidebarToggle');
+  var overlay  = document.getElementById('sidebarOverlay');
+
+  function openSidebar()  { sidebar.classList.add('open'); overlay.classList.add('open'); toggle.classList.add('open'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); toggle.classList.remove('open'); }
+
+  if (toggle)  toggle.addEventListener('click', function() { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+
+  /* Close sidebar when clicking a nav link on mobile */
+  document.querySelectorAll('.sidebar-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 860) closeSidebar();
+    });
+  });
+
+  /* ---- Scroll spy ---- */
+  var navLinks = document.querySelectorAll('#sidebarNav a');
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('data-section');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  function updateActive() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop - 200 <= scrollY) {
+        current = sections[i];
+      }
+    }
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  /* ---- Reveal on scroll ---- */
+  var revealSections = document.querySelectorAll('.ielts-section');
+  var observer = null;
+
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealSections.forEach(function(s) { observer.observe(s); });
+  } else {
+    /* Fallback: show all */
+    revealSections.forEach(function(s) { s.classList.add('revealed'); });
+  }
+
+  /* ---- Scroll-to-top button ---- */
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  function toggleScrollBtn() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > 600) { scrollBtn.classList.add('visible'); }
+    else          { scrollBtn.classList.remove('visible'); }
+  }
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---- Throttled scroll handler ---- */
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateActive();
+        toggleScrollBtn();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* Initial calls */
+  updateActive();
+  toggleScrollBtn();
+
+  /* ---- Smooth scroll for sidebar links ---- */
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.getAttribute('data-section'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+</script>
+
+{{ end }}

@@ -3,7 +3,7 @@ title = "SaaS Task Management Web Application"
 description = "A Todoist-like SaaS platform built with Spring Boot microservices, Aurora MySQL, Redis, and Kafka on AWS. Features JWT/OAuth2 authentication, real-time notifications, AI-powered task labeling, and CI/CD with GitHub Actions."
 weight = 1
 chapter = false
-layout = "project-detail"
+layout = "todolist-proposal"
 tags = ["Spring Boot", "AWS", "Microservices", "Kafka", "JWT/OAuth2", "Docker", "CI/CD"]
 image = "/images/todolist-architecture-6.jpg"
 +++
