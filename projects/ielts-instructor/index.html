@@ -1,0 +1,167 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Building scalable backend systems with Java Spring Boot & AWS Cloud"><title>Tuan Dat | Cloud & Backend Developer</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel=stylesheet><link rel=stylesheet href=/AWS-Workshop/css/portfolio.css></head><body><div class=scroll-progress></div><nav class=portfolio-nav id=navbar><div class=nav-inner><a href=#hero class=nav-logo>Tuan Dat.</a><ul class=nav-links><li><a href=#hero>Home</a></li><li><a href=#about>About</a></li><li><a href=#skills>Skills</a></li><li><a href=#experience>Experience</a></li><li><a href=#projects>Projects</a></li><li><a href=#contact>Contact</a></li></ul><button class=nav-toggle aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span></button></div></nav><div style=padding-top:100px><section class=portfolio-section><div class=container style=max-width:900px><div style=margin-bottom:24px><a href=/projects/ style=color:var(--primary-light);text-decoration:none;font-size:.9rem;font-weight:500>← Back to All Projects</a></div><h1 style=font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:24px;line-height:1.2>IELTS Helper — AI-Powered IELTS Preparation Platform</h1><div class=project-detail-content><h2 id=overview>Overview
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>IELTS Helper</strong> is a comprehensive web platform designed to solve real pain points in IELTS preparation:</p><ul><li><strong>Writing feedback latency</strong>: Learners typically wait 1–3 days for teacher feedback — causing demotivation and slow improvement</li><li><strong>Inconsistent scoring</strong>: Different teachers score the same essay differently</li><li><strong>Fragmented content</strong>: IELTS materials are scattered across dozens of websites</li><li><strong>No instant explanations</strong>: Learners get a score but don&rsquo;t understand <em>why</em></li></ul><p>The platform delivers <strong>auto-graded Reading with instant explanations</strong> and <strong>AI-powered Writing scoring</strong> (4-criteria IELTS rubric, &lt; 5 minutes turnaround), backed by a centralized content management system with role-based access for Learners, Instructors, and Admins.</p><p><strong>Status</strong>: Actively developed (personal project)
+<strong>GitHub</strong>: Private repository (available upon request)</p><hr><h2 id=system-architecture>System Architecture
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>┌───────────────────────────────────────────────────────┐
+│                    Client (Browser)                    │
+│               Next.js 16 (App Router)                 │
+│         TailwindCSS 4 · TanStack Query v5             │
+│           i18n (vi/en) · Dark/Light Theme             │
+└─────────────────────┬─────────────────────────────────┘
+                      │ HTTPS (REST + SSE)
+                      ▼
+┌───────────────────────────────────────────────────────┐
+│                  NestJS 10 Backend                     │
+│               TypeScript · Prisma 6 ORM               │
+│                                                       │
+│  ┌──────────┐ ┌──────────┐ ┌────────────┐            │
+│  │   Auth   │ │ Reading  │ │  Writing   │            │
+│  │  Module  │ │  Module  │ │  Module    │            │
+│  │ JWT+RBAC │ │ Auto-    │ │ BullMQ     │            │
+│  │          │ │ Grading  │ │ Queue      │            │
+│  └──────────┘ └──────────┘ └─────┬──────┘            │
+│                                  │                    │
+│  ┌──────────┐ ┌──────────┐ ┌────▼──────┐            │
+│  │Classroom │ │  Admin   │ │ Scoring   │            │
+│  │  Module  │ │  Module  │ │ Consumer  │            │
+│  │ Topics &amp; │ │ CRUD +   │ │ LLM Call  │            │
+│  │ Lessons  │ │ Versions │ │ + Parse   │            │
+│  └──────────┘ └──────────┘ └─────┬──────┘            │
+│                                  │                    │
+└──────────┬───────────────────────┼────────────────────┘
+           │                       │
+     ┌─────▼─────┐          ┌─────▼──────────────┐
+     │PostgreSQL │          │  OpenAI GPT-4o     │
+     │   15      │          │  Google Gemini     │
+     │ (Prisma)  │          │  (fallback)        │
+     └───────────┘          └────────────────────┘
+           │
+     ┌─────▼─────┐
+     │  Redis 7  │
+     │ Job Queue │
+     │ + Cache   │
+     └───────────┘</code></pre></div><hr><h2 id=core-modules--business-logic>Core Modules & Business Logic
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=reading-module--instant-auto-grading>Reading Module — Instant Auto-Grading
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>The Reading module provides a complete IELTS Reading practice experience with <strong>instant feedback</strong>.</p><p><strong>Supported Question Types:</strong></p><ul><li>Multiple Choice (MCQ)</li><li>Short Answer</li><li>Matching Headings</li><li>True / False / Not Given</li><li>Diagram Labeling</li><li>Sentence Completion</li></ul><p><strong>Workflow:</strong></p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>Learner selects passage (filtered by CEFR level: A2 → C1)
+    ↓
+Timer starts → Learner answers all questions
+    ↓
+POST /api/reading/passages/:id/submit
+    ↓
+Server compares answers to answer_key (JSONB)
+  - MCQ: exact match
+  - Short answer: keyword matching
+    ↓
+Instant response: {
+  score_pct: 75%,
+  correct_count: 9,
+  total_questions: 12,
+  per_question: [
+    { question_id, is_correct, user_answer, correct_answer, explanation }
+  ]
+}</code></pre></div><p><strong>Key Features:</strong></p><ul><li>CEFR level filtering (A2, B1, B2, C1)</li><li>Timer with <code>timed_out</code> tracking</li><li>Per-question explanations (authored by admin)</li><li>Reading history with accuracy trends</li></ul><hr><h3 id=writing-module--ai-powered-scoring-pipeline>Writing Module — AI-Powered Scoring Pipeline
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>The most technically complex module. Uses an <strong>async job queue</strong> to offload AI scoring, keeping the API responsive.</p><p><strong>IELTS 4-Criteria Scoring:</strong></p><table><thead><tr><th>Criterion</th><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>Task Response</td><td>TR</td><td>How well the essay addresses the prompt</td></tr><tr><td>Coherence & Cohesion</td><td>CC</td><td>Logical flow, paragraphing, linking</td></tr><tr><td>Lexical Resource</td><td>LR</td><td>Vocabulary range, accuracy, sophistication</td></tr><tr><td>Grammatical Range & Accuracy</td><td>GRA</td><td>Sentence structure variety, error frequency</td></tr></tbody></table><p><strong>Scoring Pipeline (Async):</strong></p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>Client POST /api/writing/prompts/:id/submit
+  ↓
+WritingService.submitEssay()
+  ├── Validate word count &gt;= min_words
+  ├── Check daily rate limit (10/day per user)
+  └── Create submission (status: PENDING)
+  ↓
+ScoringProducerService.enqueue()
+  ├── Add job to BullMQ &#39;writing-scoring&#39; queue
+  ├── Priority: 1 (premium GPT-4o) | 5 (cheap GPT-4o-mini)
+  └── Return 202 { submission_id }
+  ↓
+Client polls GET /submissions/:id — OR — listens via SSE /events
+  ↓
+ScoringConsumer (BullMQ worker, concurrency: 3)
+  ├── Fetch submission + prompt from DB
+  ├── Build system prompt (IELTS rubric instructions)
+  ├── Call LLM:
+  │   ├── Primary: OpenAI (GPT-4o-mini or GPT-4o)
+  │   └── Fallback: Google Gemini (if OpenAI fails)
+  ├── Parse JSON response:
+  │   {
+  │     TR: 6.5, CC: 7.0, LR: 6.0, GRA: 6.5,
+  │     overall: 6.5,
+  │     summary: &#34;...&#34;,
+  │     strengths: [&#34;...&#34;, &#34;...&#34;],
+  │     improvements: [&#34;...&#34;, &#34;...&#34;]
+  │   }
+  ├── Validate against strict JSON schema
+  └── Update submission: scores, feedback, status → DONE
+  ↓
+Redis publishes event → SSE pushes to client
+  ↓
+Client displays detailed feedback panel</code></pre></div><p><strong>Resilience Features:</strong></p><ul><li>3 retry attempts with exponential backoff (5s base)</li><li>Dual LLM provider (OpenAI primary, Gemini fallback)</li><li>Schema validation ensures consistent scoring format</li><li>Rate limiting prevents cost overruns (10 submissions/day)</li><li>Priority queue: premium users get scored faster</li></ul><hr><h3 id=classroom-module--instructor-led-learning>Classroom Module — Instructor-Led Learning
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Instructors can create virtual classrooms and organize structured learning paths.</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>Classroom
+  ├── Invite Code (8-char, shareable / QR code)
+  ├── Members (teacher + students)
+  ├── Topics (chapters/units)
+  │   ├── Lesson 1 (text content)
+  │   ├── Lesson 2 (linked Reading passage)
+  │   ├── Lesson 3 (linked Writing prompt)
+  │   └── Lesson 4 (video URL)
+  └── Announcements (class-wide notifications)</code></pre></div><p><strong>Key Features:</strong></p><ul><li>Join via invite code</li><li>Hierarchical content: Topic > Lesson</li><li>Lessons can link to existing Reading passages or Writing prompts</li><li><code>allow_submit</code> flag: enables learner submission per lesson</li><li>Teacher can view all learner submissions and progress</li><li>Class-wide announcements</li></ul><hr><h3 id=admin-module--content-management--analytics>Admin Module — Content Management & Analytics
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><p>Full content lifecycle management with version tracking.</p><p><strong>Content CRUD:</strong></p><ul><li>Passages (title, body, CEFR level, topic tags, publish status)</li><li>Questions (per passage — type, options, answer_key, explanation)</li><li>Writing Prompts (task type, title, level, min_words)</li></ul><p><strong>Content Versioning:</strong></p><ul><li>Every create/update/publish/unpublish/delete action is logged</li><li>Tracks: editor ID, timestamp, diff (changes JSON)</li><li>Full audit trail for compliance</li></ul><p><strong>Admin Dashboard:</strong></p><ul><li>Total submissions (reading + writing)</li><li>Popular passages/prompts (by submission count)</li><li>Failure rates and error patterns</li><li>User management (search, role changes)</li></ul><hr><h2 id=authentication--authorization>Authentication & Authorization
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>Registration → Email + Password (bcrypt hash)
+    ↓
+Login → POST /api/auth/login
+    ↓
+JWT Generation:
+  - Access Token (15 min TTL): { sub, email, role }
+  - Refresh Token (7 day TTL): httpOnly cookie
+    ↓
+Protected Routes → @UseGuards(JwtAuthGuard)
+    ↓
+RBAC → @Roles(&#39;admin&#39;) decorator checks JWT role
+    ↓
+Token Refresh → Axios interceptor catches 401 → silent refresh</code></pre></div><p><strong>Role-Based Access Control (RBAC):</strong></p><table><thead><tr><th>Feature</th><th style=text-align:center>Learner</th><th style=text-align:center>Instructor</th><th style=text-align:center>Admin</th></tr></thead><tbody><tr><td>Browse published passages/prompts</td><td style=text-align:center>Y</td><td style=text-align:center>Y</td><td style=text-align:center>Y</td></tr><tr><td>Submit reading answers</td><td style=text-align:center>Y</td><td style=text-align:center>-</td><td style=text-align:center>-</td></tr><tr><td>Submit writing essays</td><td style=text-align:center>Y</td><td style=text-align:center>-</td><td style=text-align:center>-</td></tr><tr><td>View own submission history</td><td style=text-align:center>Y</td><td style=text-align:center>-</td><td style=text-align:center>-</td></tr><tr><td>Create/manage classrooms</td><td style=text-align:center>-</td><td style=text-align:center>Y</td><td style=text-align:center>Y</td></tr><tr><td>View learner submissions</td><td style=text-align:center>-</td><td style=text-align:center>Y</td><td style=text-align:center>Y</td></tr><tr><td>CRUD content (passages, prompts)</td><td style=text-align:center>-</td><td style=text-align:center>-</td><td style=text-align:center>Y</td></tr><tr><td>Publish/unpublish content</td><td style=text-align:center>-</td><td style=text-align:center>-</td><td style=text-align:center>Y</td></tr><tr><td>Manage users & roles</td><td style=text-align:center>-</td><td style=text-align:center>-</td><td style=text-align:center>Y</td></tr></tbody></table><hr><h2 id=database-schema>Database Schema
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>14 tables</strong> designed with Prisma 6 ORM on PostgreSQL 15:</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>Users &amp; Auth
+  └── users (email, password_hash, role, language, theme)
+  └── content_versions (audit trail for all edits)
+
+Content
+  └── passages (title, body, CEFR level, status)
+  └── questions (type, options, answer_key, explanation)
+  └── prompts (task_type, title, level, min_words)
+  └── topic_tags, collections
+
+Submissions
+  └── submissions_reading (answers JSONB, score_pct, duration_sec, timed_out)
+  └── submissions_writing (content, scores JSONB, feedback JSONB, processing_status)
+
+Classrooms
+  └── classrooms (invite_code, owner_id, max_members)
+  └── classroom_members (role: teacher/student)
+  └── topics (hierarchical content structure)
+  └── lessons (content_type, linked_entity_id, allow_submit)
+  └── lesson_submissions, announcements
+
+System
+  └── notifications (type, title, message, link, is_read)
+  └── source_documents, import_jobs (async content import)</code></pre></div><hr><h2 id=technology-stack>Technology Stack
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><h3 id=frontend>Frontend
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Framework</strong>: Next.js 16 (App Router, SSR/SSG, Turbopack)</li><li><strong>Language</strong>: TypeScript 5.x (strict mode)</li><li><strong>Styling</strong>: Tailwind CSS 4 with CSS variables (dark/light theme)</li><li><strong>Server State</strong>: TanStack React Query v5 (caching, auto-refetch)</li><li><strong>HTTP</strong>: Axios with JWT interceptor + silent token refresh</li><li><strong>i18n</strong>: Custom provider (Vietnamese/English, real-time switching)</li><li><strong>Components</strong>: Lucide React icons, react-hot-toast notifications</li></ul><h3 id=backend>Backend
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Framework</strong>: NestJS 10 (modular architecture, DI)</li><li><strong>Language</strong>: TypeScript 5.x (strict mode)</li><li><strong>ORM</strong>: Prisma 6 (type-safe queries, migrations, seed scripts)</li><li><strong>Auth</strong>: JWT (access 15min + refresh 7d) with RBAC guards</li><li><strong>Queue</strong>: BullMQ v5 + Redis 7 (async scoring jobs)</li><li><strong>LLM</strong>: OpenAI API (GPT-4o-mini / GPT-4o) + Google Gemini (fallback)</li><li><strong>Validation</strong>: class-validator + DTOs for all inputs</li><li><strong>File Upload</strong>: Multer with custom upload service</li></ul><h3 id=infrastructure>Infrastructure
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3><ul><li><strong>Database</strong>: PostgreSQL 15 (Docker)</li><li><strong>Cache/Queue</strong>: Redis 7 Alpine (Docker)</li><li><strong>Containerization</strong>: Docker Compose</li><li><strong>Testing</strong>: Jest + Supertest</li></ul><hr><h2 id=api-design>API Design
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>15+ REST endpoints</strong> organized by domain module:</p><table><thead><tr><th>Module</th><th>Endpoints</th><th>Key Operations</th></tr></thead><tbody><tr><td>Auth</td><td><code>/api/auth/*</code></td><td>Register, Login, Refresh, Profile</td></tr><tr><td>Reading</td><td><code>/api/reading/*</code></td><td>List passages, Get passage + questions, Submit answers, History</td></tr><tr><td>Writing</td><td><code>/api/writing/*</code></td><td>List prompts, Submit essay (async), Get submission + feedback, SSE events</td></tr><tr><td>Dashboard</td><td><code>/api/dashboard/*</code></td><td>Role-specific stats and progress</td></tr><tr><td>Admin</td><td><code>/api/admin/*</code></td><td>CRUD passages/questions/prompts, Publish/unpublish, User management, Analytics</td></tr><tr><td>Instructor</td><td><code>/api/instructor/*</code></td><td>Learner list, View all submissions</td></tr><tr><td>Classroom</td><td><code>/api/classrooms/*</code></td><td>Create, Join (invite code), Topics/Lessons CRUD, Announcements</td></tr><tr><td>Notifications</td><td><code>/api/notifications/*</code></td><td>List, Mark as read</td></tr></tbody></table><hr><h2 id=key-technical-decisions>Key Technical Decisions
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><table><thead><tr><th>Decision</th><th>Why</th></tr></thead><tbody><tr><td><strong>NestJS</strong> over Express</td><td>Modular architecture, built-in DI, guards, decorators — scales better for multi-module apps</td></tr><tr><td><strong>Prisma</strong> over TypeORM</td><td>Type-safe queries, excellent migration system, better DX with auto-generated types</td></tr><tr><td><strong>BullMQ</strong> for scoring queue</td><td>Reliable job queue with priority, retry, and backoff — critical for async LLM calls</td></tr><tr><td><strong>Dual LLM providers</strong></td><td>OpenAI primary + Gemini fallback ensures scoring availability even during outages</td></tr><tr><td><strong>SSE</strong> over WebSocket for scoring</td><td>Simpler protocol for unidirectional server-to-client updates (score status)</td></tr><tr><td><strong>JSONB</strong> for scores/feedback</td><td>Flexible schema for structured AI responses without extra tables</td></tr><tr><td><strong>Next.js App Router</strong></td><td>Server-side rendering for SEO, file-based routing, React Server Components</td></tr><tr><td><strong>TanStack Query</strong> over Redux</td><td>Server state management with built-in caching — no boilerplate reducers needed</td></tr></tbody></table><hr><h2 id=development-workflow>Development Workflow
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p>The project follows a <strong>PRD-first development process</strong>:</p><div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>1. Business Idea &amp; Requirements Analysis
+   ↓
+2. Wireframes &amp; Data Flow Design
+   ↓
+3. Product Requirements Document (PRD) — 18 detailed documents
+   covering executive summary, personas, functional requirements,
+   data models, API specs, and more
+   ↓
+4. Implementation Plan (Sprint-based)
+   ↓
+5. Code Implementation with AI-assisted development
+   ↓
+6. Review &amp; Iteration</code></pre></div><p><strong>Comprehensive Documentation:</strong></p><ul><li>18-document PRD suite covering every aspect of the system</li><li>Design specs for complex features (e.g., Writing Scoring Pipeline)</li><li>Implementation plans per sprint</li><li>Getting Started guide for developer onboarding</li></ul><hr><h2 id=challenges--solutions>Challenges & Solutions
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><table><thead><tr><th>Challenge</th><th>Solution</th></tr></thead><tbody><tr><td>AI scoring consistency</td><td>Rubric-based system prompts + strict JSON schema validation + response parsing</td></tr><tr><td>LLM response latency (10–30s)</td><td>Async BullMQ queue + SSE real-time updates — API returns 202 immediately</td></tr><tr><td>Cost control for AI calls</td><td>Rate limiting (10/day), cheap model as default (GPT-4o-mini), premium as opt-in</td></tr><tr><td>Multi-question type grading</td><td>JSONB answer storage + per-type comparison logic (exact match, keyword match)</td></tr><tr><td>Content quality assurance</td><td>Draft/Published workflow + version tracking + admin-only publish rights</td></tr><tr><td>Dual language support</td><td>Custom i18n provider with JSON translation files, real-time language switching</td></tr></tbody></table><hr><h2 id=roadmap>Roadmap
+<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2><p><strong>Completed:</strong></p><ul><li>Project scaffolding (monorepo, Docker, Prisma)</li><li>Authentication (JWT, RBAC, token refresh)</li><li>Reading module (passages, questions, auto-grading, history)</li><li>Writing module (prompts, submission, async scoring pipeline)</li><li>Admin CRUD (passages, questions, prompts, users)</li><li>Classroom management (create, topics, lessons, members)</li><li>Instructor dashboard</li></ul><p><strong>In Progress:</strong></p><ul><li>AI Writing Scoring Pipeline optimization (priority queue, SSE)</li><li>Dashboard analytics (trends, cohort stats)</li></ul><p><strong>Planned:</strong></p><ul><li>Listening & Speaking modules</li><li>OAuth2 (Google login)</li><li>Content import via document upload (AI-powered extraction)</li><li>Mobile-responsive optimization</li><li>Instructor score override & comments</li><li>Advanced analytics (cohort comparison, ML recommendations)</li></ul></div><div style="margin-top:60px;padding-top:32px;border-top:1px solid var(--bg-glass-border);display:flex;gap:16px"><a href=/projects/ class="btn btn-outline">← All Projects</a>
+<a href=/#projects class="btn btn-outline">🏠 Home</a></div></div></section></div><style>.project-detail-content h2{font-size:1.6rem;font-weight:700;margin-top:48px;margin-bottom:16px;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.project-detail-content h3{font-size:1.2rem;font-weight:600;margin-top:32px;margin-bottom:12px;color:var(--text-primary)}.project-detail-content p{color:var(--text-secondary);font-size:1.05rem;line-height:1.8;margin-bottom:16px}.project-detail-content strong{color:var(--text-primary)}.project-detail-content ul,.project-detail-content ol{color:var(--text-secondary);padding-left:24px;margin-bottom:16px}.project-detail-content li{margin-bottom:6px;line-height:1.7}.project-detail-content img{width:100%;border-radius:var(--radius-lg);margin:24px 0;box-shadow:var(--shadow-lg);border:1px solid var(--bg-glass-border)}.project-detail-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.9rem}.project-detail-content th{background:rgba(108,99,255,.15);color:var(--primary-light);padding:12px 16px;text-align:left;font-weight:600;border-bottom:2px solid rgba(108,99,255,.3)}.project-detail-content td{padding:10px 16px;border-bottom:1px solid var(--bg-glass-border);color:var(--text-secondary)}.project-detail-content tr:hover td{background:rgba(255,255,255,2%)}.project-detail-content code{background:rgba(108,99,255,.1);color:var(--primary-light);padding:2px 8px;border-radius:4px;font-family:jetbrains mono,monospace;font-size:.85em}.project-detail-content pre{background:rgba(0,0,0,.4);border:1px solid var(--bg-glass-border);border-radius:var(--radius-md);padding:20px;overflow-x:auto;margin:24px 0}.project-detail-content pre code{background:0 0;padding:0;color:var(--text-secondary);font-size:.85rem;line-height:1.6}.project-detail-content hr{border:none;border-top:1px solid var(--bg-glass-border);margin:40px 0}.project-detail-content blockquote{border-left:3px solid var(--primary);padding-left:20px;margin:24px 0;color:var(--text-muted);font-style:italic}</style><footer class=portfolio-footer><div class=container><p class=footer-text>© 2026 <a href=#hero>Phan Canh Tuan Dat</a> — Built with Hugo & ☕</p></div></footer><script src=/AWS-Workshop/js/portfolio.js></script></body></html>
