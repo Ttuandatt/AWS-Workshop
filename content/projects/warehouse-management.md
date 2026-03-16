@@ -1,7 +1,7 @@
 +++
 title = "Warehouse Management Desktop Application"
 description = "A desktop application for streamlining inventory tracking, product management, and stock movements. Built with Java SE following 3-Tier Architecture with DAO and DTO patterns."
-weight = 2
+weight = 4
 chapter = false
 layout = "project-detail"
 tags = ["Java SE", "Java Swing", "MySQL", "JDBC", "3-Tier Architecture", "Team Leader"]

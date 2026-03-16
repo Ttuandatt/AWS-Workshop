@@ -16,7 +16,7 @@ Developed during a **6-month internship at Amazon Web Services Vietnam** in a **
 
 🔗 **GitHub**: [aws-todo-list-project](https://github.com/gnuh24/aws-todo-list-project)
 🎥 **Video Demo**: [YouTube](https://youtu.be/gOVHkb54aeM)
-📂 **Workshop Documentation**: [AWS Workshop](https://ttuandatt.github.io/AWS-Workshop/en/index.html)
+📂 **Workshop Documentation**: [AWS Workshop](https://ttuandatt.github.io/AWS-Workshop/5-workshop/)
 
 ---
 
@@ -174,26 +174,26 @@ Machine learning service for intelligent task management, written in **Python Fl
 
 ```
 ┌─────────────────────────────────────────────────┐
-│              Docker Compose Network              │
-│                                                  │
+│              Docker Compose Network             │
+│                                                 │
 │  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │
 │  │  MySQL   │  │  Redis   │  │  Kafka 3.5   │   │
 │  │   8.0    │  │   7.2    │  │ + Zookeeper  │   │
 │  │ :3306    │  │ :6379    │  │ :29092/:9092 │   │
 │  └──────────┘  └──────────┘  └──────────────┘   │
-│                                                  │
-│  ┌──────────────────────────────────────────┐    │
-│  │        API Gateway (:8080)               │    │
-│  │   → Auth (:9999) → User (:8081)          │    │
-│  │   → Taskflow (:8082) → Notif (:9998)     │    │
-│  │   → AI Model (:9997)                     │    │
-│  └──────────────────────────────────────────┘    │
-│                                                  │
-│  ┌──────────┐                                    │
-│  │ AKHQ UI  │  Kafka monitoring dashboard        │
-│  │ :8083    │                                    │
-│  └──────────┘                                    │
-└──────────────────────────────────────────────────┘
+│                                                 │
+│  ┌──────────────────────────────────────────┐   │
+│  │        API Gateway (:8080)               │   │
+│  │   → Auth (:9999) → User (:8081)          │   │
+│  │   → Taskflow (:8082) → Notif (:9998)     │   │
+│  │   → AI Model (:9997)                     │   │
+│  └──────────────────────────────────────────┘   │
+│                                                 │
+│  ┌──────────┐                                   │
+│  │ AKHQ UI  │  Kafka monitoring dashboard       │
+│  │ :8083    │                                   │
+│  └──────────┘                                   │
+└─────────────────────────────────────────────────┘
 ```
 
 ### AWS Cloud Deployment

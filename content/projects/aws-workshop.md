@@ -1,7 +1,7 @@
 +++
 title = "AWS Workshop - Deployment Documentation"
 description = "Comprehensive step-by-step workshop documenting 35+ deployment steps for the SaaS platform on AWS. Covers VPC, ECS Fargate, ALB, RDS, CloudFront, and more."
-weight = 2
+weight = 3
 chapter = false
 layout = "project-detail"
 tags = ["AWS", "ECS", "ALB", "VPC", "CloudFront", "Documentation"]

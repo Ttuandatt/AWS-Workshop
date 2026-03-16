@@ -1,7 +1,7 @@
 +++
 title = "AWS Technical Blog Translation"
 description = "Translated 3 AWS technical blogs from English to Vietnamese, covering FSx for NetApp ONTAP, HPC in Aerospace, and Elastic Beanstalk troubleshooting with Amazon Q."
-weight = 3
+weight = 5
 chapter = false
 layout = "project-detail"
 tags = ["Technical Writing", "AWS", "Translation"]
