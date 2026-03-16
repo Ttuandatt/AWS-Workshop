@@ -1,0 +1,1715 @@
+{{ define "main" }}
+
+{{/* ================================================================
+     IELTS Helper — Project Proposal Presentation Page
+     Layout: ielts-proposal.html
+     Dark-themed, left-sidebar navigation, self-contained styles & JS
+     ================================================================ */}}
+
+<!-- ======================== EMBEDDED STYLES ======================== -->
+<style>
+/* ---- Override portfolio base ---- */
+.portfolio-nav,
+.portfolio-footer,
+.scroll-progress { display: none !important; }
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: var(--ielts-bg) !important;
+  color: var(--ielts-text) !important;
+  overflow-x: hidden;
+}
+
+/* ---- CSS Variables ---- */
+:root {
+  --ielts-bg: #060d18;
+  --ielts-bg-card: #0a1628;
+  --ielts-bg-card-hover: #0f1f3a;
+  --ielts-surface: #111d35;
+  --ielts-surface-light: #162544;
+  --ielts-border: #1e3a5f;
+  --ielts-border-light: #2a4a6f;
+  --ielts-text: #e8edf5;
+  --ielts-text-muted: #8899b4;
+  --ielts-text-dim: #5a6f8e;
+  --ielts-primary: #0c4a6e;
+  --ielts-primary-light: #0e6498;
+  --ielts-primary-bright: #1e90c8;
+  --ielts-accent: #f97316;
+  --ielts-accent-glow: #f9731640;
+  --ielts-accent-light: #fb923c;
+  --ielts-success: #22c55e;
+  --ielts-danger: #ef4444;
+  --ielts-purple: #a78bfa;
+  --ielts-cyan: #22d3ee;
+  --sidebar-w: 240px;
+  --sidebar-w-collapsed: 60px;
+}
+
+/* ---- Typography ---- */
+.ielts-page * { box-sizing: border-box; }
+.ielts-page {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--ielts-text);
+}
+
+/* ---- LEFT SIDEBAR ---- */
+.ielts-sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--ielts-bg-card);
+  border-right: 1px solid var(--ielts-border);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.ielts-sidebar::-webkit-scrollbar { width: 3px; }
+.ielts-sidebar::-webkit-scrollbar-thumb { background: var(--ielts-border); border-radius: 3px; }
+
+.sidebar-brand {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--ielts-border);
+}
+.sidebar-brand h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--ielts-accent), var(--ielts-accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sidebar-brand span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ielts-text-dim);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: var(--ielts-text-dim);
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0;
+  flex: 1;
+}
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  text-decoration: none;
+  color: var(--ielts-text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+.sidebar-nav li a:hover {
+  color: var(--ielts-text);
+  background: var(--ielts-surface);
+  border-left-color: var(--ielts-border-light);
+}
+.sidebar-nav li a.active {
+  color: var(--ielts-accent);
+  background: rgba(249, 115, 22, 0.06);
+  border-left-color: var(--ielts-accent);
+}
+.sidebar-nav li a .nav-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ielts-text-dim);
+  min-width: 22px;
+}
+.sidebar-nav li a.active .nav-num { color: var(--ielts-accent); }
+
+/* Mobile sidebar toggle */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 1100;
+  width: 44px; height: 44px;
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 10px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+.sidebar-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--ielts-text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.sidebar-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.sidebar-toggle.open span:nth-child(2) { opacity: 0; }
+.sidebar-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+/* ---- MAIN CONTENT ---- */
+.ielts-main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--ielts-bg);
+}
+
+/* ---- SECTION BASE ---- */
+.ielts-section {
+  padding: 100px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.ielts-section.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ielts-accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+.section-subtitle {
+  color: var(--ielts-text-muted);
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+/* ---- HERO ---- */
+.ielts-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.ielts-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: -20%;
+  width: 140%; height: 140%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(14,100,152,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(249,115,22,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ielts-accent);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--ielts-accent-glow); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 8px transparent; }
+}
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--ielts-primary-bright), var(--ielts-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: var(--ielts-accent-light);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--ielts-text-muted);
+  max-width: 680px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat {
+  padding: 14px 28px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.hero-stat:hover {
+  border-color: var(--ielts-primary-bright);
+  transform: translateY(-2px);
+}
+.hero-stat strong {
+  color: var(--ielts-accent);
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 2px;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--ielts-text-dim);
+  font-size: 0.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid var(--ielts-text-dim);
+  border-bottom: 2px solid var(--ielts-text-dim);
+  transform: rotate(45deg);
+}
+
+/* ---- CARDS GRID ---- */
+.cards-grid {
+  display: grid;
+  gap: 24px;
+}
+.cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ielts-primary-bright), var(--ielts-accent));
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.card:hover {
+  border-color: var(--ielts-border-light);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-4px);
+}
+.card:hover::before { opacity: 1; }
+
+.card-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border: 1px solid var(--ielts-border);
+}
+.card-icon.blue { background: rgba(14,100,152,0.15); color: var(--ielts-primary-bright); }
+.card-icon.orange { background: rgba(249,115,22,0.15); color: var(--ielts-accent); }
+.card-icon.green { background: rgba(34,197,94,0.15); color: var(--ielts-success); }
+.card-icon.purple { background: rgba(167,139,250,0.15); color: var(--ielts-purple); }
+.card-icon.cyan { background: rgba(34,211,238,0.15); color: var(--ielts-cyan); }
+.card-icon.red { background: rgba(239,68,68,0.15); color: var(--ielts-danger); }
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.card p {
+  color: var(--ielts-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.7;
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card ul li {
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.card ul li::before {
+  content: '\25B8';
+  color: var(--ielts-accent);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ---- ARCHITECTURE ---- */
+.arch-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.arch-layer {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  position: relative;
+}
+.arch-layer + .arch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: var(--ielts-text-dim);
+  font-size: 1.4rem;
+}
+.arch-layer.accent-border {
+  border-color: var(--ielts-accent);
+  box-shadow: 0 0 30px var(--ielts-accent-glow);
+}
+.arch-layer-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ielts-text-dim);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arch-layer-label .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.arch-layer-label .dot.blue { background: var(--ielts-primary-bright); }
+.arch-layer-label .dot.orange { background: var(--ielts-accent); }
+.arch-layer-label .dot.green { background: var(--ielts-success); }
+
+.arch-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.arch-pill {
+  padding: 8px 16px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ielts-text);
+  transition: border-color 0.2s;
+}
+.arch-pill:hover { border-color: var(--ielts-primary-bright); }
+.arch-pill.highlight {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+  color: var(--ielts-accent-light);
+}
+
+.arch-sub-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ielts-text-dim);
+  margin: 14px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Folder structure */
+.folder-box {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--ielts-text-muted);
+}
+.folder-box .folder { color: var(--ielts-accent); font-weight: 600; }
+.folder-box .file { color: var(--ielts-text-dim); }
+.folder-box .comment { color: var(--ielts-text-dim); opacity: 0.5; }
+
+/* ---- TECH GRID ---- */
+.tech-card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.tech-card:hover {
+  border-color: var(--ielts-primary-bright);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-3px);
+}
+.tech-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tech-card-desc {
+  font-size: 0.78rem;
+  color: var(--ielts-text-dim);
+}
+
+/* ---- MODULE CARDS ---- */
+.module-card {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+.module-card:hover {
+  border-color: var(--ielts-border-light);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-3px);
+}
+.module-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-primary-bright);
+  margin-bottom: 4px;
+}
+.module-count {
+  font-size: 0.75rem;
+  color: var(--ielts-text-dim);
+  margin-bottom: 14px;
+}
+.module-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.module-card ul li {
+  padding: 5px 0;
+  font-size: 0.85rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.module-card ul li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--ielts-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---- PIPELINE ---- */
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin-bottom: 48px;
+}
+.pipeline-node {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  text-align: center;
+  min-width: 120px;
+}
+.pipeline-node:hover {
+  border-color: var(--ielts-primary-bright);
+  transform: translateY(-2px);
+}
+.pipeline-node.accent {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+  box-shadow: 0 0 20px var(--ielts-accent-glow);
+}
+.pipeline-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  padding: 0 6px;
+}
+
+/* ---- CRITERIA TABLE ---- */
+.criteria-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.criteria-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ielts-text-dim);
+  border-bottom: 1px solid var(--ielts-border);
+}
+.criteria-table td {
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  border-bottom: 1px solid rgba(30,58,95,0.4);
+}
+.criteria-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--ielts-accent);
+  width: 50px;
+}
+.criteria-table td:nth-child(2) {
+  font-weight: 600;
+  color: var(--ielts-text);
+}
+
+/* ---- QUESTION TYPE CHIPS ---- */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.chip {
+  padding: 12px 24px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  transition: all 0.3s;
+}
+.chip:hover {
+  border-color: var(--ielts-primary-bright);
+  background: var(--ielts-bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ---- RBAC TABLE ---- */
+.rbac-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background: var(--ielts-bg-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--ielts-border);
+}
+.rbac-table th {
+  padding: 14px 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ielts-text-dim);
+  background: var(--ielts-surface);
+  text-align: center;
+  border-bottom: 1px solid var(--ielts-border);
+}
+.rbac-table th:first-child { text-align: left; }
+.rbac-table td {
+  padding: 13px 18px;
+  font-size: 0.88rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(30,58,95,0.3);
+  color: var(--ielts-text-muted);
+}
+.rbac-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ielts-text);
+}
+.rbac-y { color: var(--ielts-success); font-weight: 700; }
+.rbac-n { color: var(--ielts-text-dim); }
+
+/* ---- DATABASE GROUPS ---- */
+.db-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.db-group {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+.db-group:hover {
+  border-color: var(--ielts-border-light);
+  transform: translateY(-2px);
+}
+.db-group-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.db-group-title .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.db-table-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.db-table-pill {
+  padding: 6px 14px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ielts-text-muted);
+  transition: border-color 0.2s;
+}
+.db-table-pill:hover { border-color: var(--ielts-primary-bright); }
+
+/* ---- ENDPOINT LIST ---- */
+.endpoint-group {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+.endpoint-group:hover { border-color: var(--ielts-border-light); }
+.endpoint-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.endpoint-group-title .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.tag-auth { background: rgba(167,139,250,0.15); color: var(--ielts-purple); }
+.tag-read { background: rgba(14,100,152,0.15); color: var(--ielts-primary-bright); }
+.tag-write { background: rgba(249,115,22,0.15); color: var(--ielts-accent); }
+.tag-admin { background: rgba(239,68,68,0.15); color: var(--ielts-danger); }
+.tag-class { background: rgba(34,197,94,0.15); color: var(--ielts-success); }
+
+.endpoint-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(30,58,95,0.2);
+}
+.endpoint-row:last-child { border-bottom: none; }
+.method-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  min-width: 52px;
+  text-align: center;
+}
+.method-get { background: rgba(34,197,94,0.12); color: var(--ielts-success); }
+.method-post { background: rgba(249,115,22,0.12); color: var(--ielts-accent); }
+.method-put { background: rgba(14,100,152,0.12); color: var(--ielts-primary-bright); }
+.method-delete { background: rgba(239,68,68,0.12); color: var(--ielts-danger); }
+
+.endpoint-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--ielts-text);
+}
+.endpoint-desc {
+  font-size: 0.8rem;
+  color: var(--ielts-text-dim);
+  margin-left: auto;
+}
+
+/* ---- ROADMAP ---- */
+.roadmap-track {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.roadmap-phase {
+  background: var(--ielts-bg-card);
+  border: 1px solid var(--ielts-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+.roadmap-phase:hover {
+  border-color: var(--ielts-border-light);
+  transform: translateX(4px);
+}
+.roadmap-status {
+  flex-shrink: 0;
+  width: 110px;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+.status-done {
+  background: rgba(34,197,94,0.12);
+  color: var(--ielts-success);
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.status-progress {
+  background: rgba(249,115,22,0.12);
+  color: var(--ielts-accent);
+  border: 1px solid rgba(249,115,22,0.3);
+}
+.status-planned {
+  background: rgba(167,139,250,0.12);
+  color: var(--ielts-purple);
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.roadmap-items {
+  flex: 1;
+}
+.roadmap-items h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.roadmap-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.roadmap-items ul li {
+  padding: 6px 16px;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--ielts-text-muted);
+}
+
+/* ---- FOOTER ---- */
+.ielts-footer {
+  text-align: center;
+  padding: 48px 40px;
+  border-top: 1px solid var(--ielts-border);
+  color: var(--ielts-text-dim);
+  font-size: 0.85rem;
+}
+.ielts-footer strong { color: var(--ielts-text-muted); }
+
+/* ---- FLOW STEPS ---- */
+.flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin-bottom: 32px;
+}
+.flow-step {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+  transition: all 0.3s;
+}
+.flow-step:hover { border-color: var(--ielts-primary-bright); transform: translateY(-2px); }
+.flow-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+
+/* ---- AUTH FLOW ---- */
+.auth-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 32px;
+  padding: 20px 0;
+}
+.auth-node {
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ielts-text);
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.auth-node:hover { border-color: var(--ielts-primary-bright); }
+.auth-node.accent {
+  border-color: var(--ielts-accent);
+  background: rgba(249,115,22,0.08);
+}
+.auth-arrow {
+  color: var(--ielts-text-dim);
+  font-size: 1.2rem;
+  padding: 0 8px;
+}
+
+/* ---- SCROLL TO TOP ---- */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 46px; height: 46px;
+  background: var(--ielts-accent);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px var(--ielts-accent-glow);
+}
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-top-btn:hover { background: var(--ielts-accent-light); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .cards-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
+  .ielts-section { padding: 80px 40px; }
+}
+@media (max-width: 860px) {
+  .ielts-sidebar { transform: translateX(-100%); }
+  .ielts-sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+  .sidebar-overlay.open { display: block; }
+  .ielts-main { margin-left: 0; }
+  .cards-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .ielts-section { padding: 60px 24px; }
+  .pipeline, .flow-steps, .auth-flow { flex-wrap: wrap; justify-content: center; }
+  .roadmap-phase { flex-direction: column; }
+  .endpoint-desc { display: none; }
+}
+@media (max-width: 560px) {
+  .cards-grid.cols-3,
+  .cards-grid.cols-4,
+  .cards-grid.cols-2 { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; align-items: center; }
+  .hero-title { font-size: 2.2rem; }
+}
+
+/* ---- RESILIENCE LIST ---- */
+.resilience-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.resilience-list li {
+  padding: 10px 0;
+  font-size: 0.88rem;
+  color: var(--ielts-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid rgba(30,58,95,0.25);
+}
+.resilience-list li:last-child { border-bottom: none; }
+.resilience-list li .icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  background: var(--ielts-surface);
+  border: 1px solid var(--ielts-border);
+}
+</style>
+
+<!-- ======================== PAGE MARKUP ======================== -->
+<div class="ielts-page">
+
+  <!-- SIDEBAR TOGGLE (mobile) -->
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="ielts-sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <h2>IELTS Helper</h2>
+      <span>Project Proposal</span>
+    </div>
+    <ul class="sidebar-nav" id="sidebarNav">
+      <li><a href="#hero"   data-section="hero"><span class="nav-num">&mdash;</span>Home</a></li>
+      <li><a href="#overview" data-section="overview"><span class="nav-num">01</span>Overview</a></li>
+      <li><a href="#architecture" data-section="architecture"><span class="nav-num">02</span>Architecture</a></li>
+      <li><a href="#tech"    data-section="tech"><span class="nav-num">03</span>Tech Stack</a></li>
+      <li><a href="#modules" data-section="modules"><span class="nav-num">04</span>Modules</a></li>
+      <li><a href="#scoring" data-section="scoring"><span class="nav-num">05</span>Scoring</a></li>
+      <li><a href="#reading" data-section="reading"><span class="nav-num">06</span>Reading</a></li>
+      <li><a href="#auth"    data-section="auth"><span class="nav-num">07</span>Auth &amp; RBAC</a></li>
+      <li><a href="#database" data-section="database"><span class="nav-num">08</span>Database</a></li>
+      <li><a href="#endpoints" data-section="endpoints"><span class="nav-num">09</span>Endpoints</a></li>
+      <li><a href="#roadmap" data-section="roadmap"><span class="nav-num">10</span>Roadmap</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ielts-main">
+
+    <!-- ==================== 1. HERO ==================== -->
+    <section class="ielts-hero" id="hero">
+      <div class="hero-badge">Personal Project 2026</div>
+      <h1 class="hero-title">IELTS Helper</h1>
+      <p class="hero-subtitle">AI-Powered IELTS Preparation Platform</p>
+      <p class="hero-desc">
+        A comprehensive web platform for IELTS Reading &amp; Writing practice with AI-powered essay scoring,
+        real-time feedback, classroom management, and role-based dashboards.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>15+</strong>API Endpoints</div>
+        <div class="hero-stat"><strong>8</strong>Backend Modules</div>
+        <div class="hero-stat"><strong>14</strong>DB Tables</div>
+        <div class="hero-stat"><strong>3</strong>User Roles</div>
+      </div>
+      <div class="hero-scroll-hint">
+        Scroll to explore
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. OVERVIEW ==================== -->
+    <section class="ielts-section" id="overview">
+      <div class="section-label">01 &mdash; Overview</div>
+      <h2 class="section-title">Three roles, one ecosystem</h2>
+      <p class="section-subtitle">Each role unlocks a tailored experience&mdash;from practice to management to full platform control.</p>
+
+      <div class="cards-grid cols-3">
+        <!-- Learner -->
+        <div class="card">
+          <div class="card-icon blue">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+          </div>
+          <h3>Learner</h3>
+          <ul>
+            <li>Browse Reading passages by CEFR level (A2&#8594;C1)</li>
+            <li>6 question types with instant auto-grading</li>
+            <li>Submit Writing essays &#8594; AI scores in &lt;5 min</li>
+            <li>Dashboard with progress trends</li>
+            <li>Join classrooms via invite code</li>
+          </ul>
+        </div>
+        <!-- Instructor -->
+        <div class="card">
+          <div class="card-icon orange">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 11h2"/></svg>
+          </div>
+          <h3>Instructor</h3>
+          <ul>
+            <li>Create classrooms with invite codes</li>
+            <li>Organize Topics &#8594; Lessons hierarchy</li>
+            <li>Link Reading passages or Writing prompts to lessons</li>
+            <li>View all learner submissions and progress</li>
+            <li>Send class-wide announcements</li>
+          </ul>
+        </div>
+        <!-- Admin -->
+        <div class="card">
+          <div class="card-icon green">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Admin</h3>
+          <ul>
+            <li>Full CRUD for passages, questions, prompts</li>
+            <li>Publish / unpublish content workflow</li>
+            <li>Content versioning with audit trail</li>
+            <li>User management and role changes</li>
+            <li>System analytics dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ARCHITECTURE ==================== -->
+    <section class="ielts-section" id="architecture">
+      <div class="section-label">02 &mdash; System Architecture</div>
+      <h2 class="section-title">Full-Stack Modern Architecture</h2>
+      <p class="section-subtitle">Three clean layers&mdash;client, server, data&mdash;connected through typed contracts and async pipelines.</p>
+
+      <div class="arch-stack">
+        <!-- Client -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot blue"></span>CLIENT</div>
+          <div class="arch-pills">
+            <span class="arch-pill">Next.js 16 (App Router)</span>
+            <span class="arch-pill">TailwindCSS 4</span>
+            <span class="arch-pill">TanStack Query v5</span>
+            <span class="arch-pill">i18n (vi / en)</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Backend -->
+        <div class="arch-layer accent-border">
+          <div class="arch-layer-label"><span class="dot orange"></span>BACKEND &mdash; NestJS 10 (TypeScript)</div>
+          <div class="arch-sub-label">API Layer</div>
+          <div class="arch-pills">
+            <span class="arch-pill highlight">JWT Auth</span>
+            <span class="arch-pill highlight">RBAC Guards</span>
+            <span class="arch-pill highlight">Validation Pipes</span>
+            <span class="arch-pill highlight">Exception Filters</span>
+          </div>
+          <div class="arch-sub-label">Service Layer</div>
+          <div class="arch-pills">
+            <span class="arch-pill">Auth</span>
+            <span class="arch-pill">Reading</span>
+            <span class="arch-pill">Writing</span>
+            <span class="arch-pill">Scoring</span>
+            <span class="arch-pill">Classroom</span>
+            <span class="arch-pill">Admin</span>
+            <span class="arch-pill">Instructor</span>
+            <span class="arch-pill">Dashboard</span>
+            <span class="arch-pill">Notification</span>
+            <span class="arch-pill">Upload</span>
+          </div>
+        </div>
+        <div class="arch-arrow">&#9663;</div>
+
+        <!-- Data -->
+        <div class="arch-layer">
+          <div class="arch-layer-label"><span class="dot green"></span>DATA</div>
+          <div class="arch-pills">
+            <span class="arch-pill">PostgreSQL 15 (Prisma 6)</span>
+            <span class="arch-pill">Redis 7 (BullMQ)</span>
+            <span class="arch-pill">OpenAI GPT-4o / Gemini (fallback)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Folder structure -->
+      <div class="folder-box">
+        <span class="folder">ielts-instructor/</span><br>
+        &nbsp;&nbsp;<span class="folder">apps/</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">frontend/</span> <span class="comment"># Next.js 16 &mdash; App Router, TailwindCSS 4</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/app/</span> <span class="comment"># Pages &amp; layouts (vi/en)</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/components/</span> <span class="comment"># Shared UI components</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/hooks/</span> <span class="comment"># TanStack Query hooks</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">backend/</span> <span class="comment"># NestJS 10 &mdash; Modular monolith</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/auth/</span> <span class="comment"># JWT, guards, strategies</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/reading/</span> <span class="comment"># Passages, questions, grading</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/writing/</span> <span class="comment"># Prompts, submissions, SSE</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/scoring/</span> <span class="comment"># BullMQ jobs, LLM integration</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/classroom/</span> <span class="comment"># Topics, lessons, members</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/admin/</span> <span class="comment"># Full CRUD, analytics</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/instructor/</span> <span class="comment"># Instructor-specific endpoints</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">src/dashboard/</span> <span class="comment"># Role-based stats</span><br>
+        &nbsp;&nbsp;<span class="folder">prisma/</span> <span class="comment"># Schema &amp; migrations</span><br>
+        &nbsp;&nbsp;<span class="file">docker-compose.yml</span> <span class="comment"># Postgres + Redis</span><br>
+        &nbsp;&nbsp;<span class="file">turbo.json</span> <span class="comment"># Turborepo config</span>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TECH STACK ==================== -->
+    <section class="ielts-section" id="tech">
+      <div class="section-label">03 &mdash; Tech Stack</div>
+      <h2 class="section-title">Built with modern tools</h2>
+      <p class="section-subtitle">Every layer chosen for type-safety, developer experience, and production readiness.</p>
+
+      <div class="cards-grid cols-4">
+        <div class="tech-card"><div class="tech-card-name">Next.js 16</div><div class="tech-card-desc">Frontend Framework</div></div>
+        <div class="tech-card"><div class="tech-card-name">NestJS 10</div><div class="tech-card-desc">Backend Framework</div></div>
+        <div class="tech-card"><div class="tech-card-name">PostgreSQL 15</div><div class="tech-card-desc">Database</div></div>
+        <div class="tech-card"><div class="tech-card-name">Redis 7</div><div class="tech-card-desc">Cache &amp; Queue</div></div>
+        <div class="tech-card"><div class="tech-card-name">Prisma 6</div><div class="tech-card-desc">Type-safe ORM</div></div>
+        <div class="tech-card"><div class="tech-card-name">BullMQ v5</div><div class="tech-card-desc">Job Queue</div></div>
+        <div class="tech-card"><div class="tech-card-name">OpenAI API</div><div class="tech-card-desc">LLM Scoring</div></div>
+        <div class="tech-card"><div class="tech-card-name">TailwindCSS 4</div><div class="tech-card-desc">Styling</div></div>
+        <div class="tech-card"><div class="tech-card-name">TanStack Query v5</div><div class="tech-card-desc">Server State</div></div>
+        <div class="tech-card"><div class="tech-card-name">TypeScript 5</div><div class="tech-card-desc">Language</div></div>
+        <div class="tech-card"><div class="tech-card-name">Docker Compose</div><div class="tech-card-desc">Infrastructure</div></div>
+        <div class="tech-card"><div class="tech-card-name">JWT + RBAC</div><div class="tech-card-desc">Authentication</div></div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CORE MODULES ==================== -->
+    <section class="ielts-section" id="modules">
+      <div class="section-label">04 &mdash; Backend Modules</div>
+      <h2 class="section-title">8 Modules, 15+ Endpoints</h2>
+      <p class="section-subtitle">Each module is self-contained with its own controller, service, and DTOs&mdash;following NestJS best practices.</p>
+
+      <div class="cards-grid cols-4">
+        <div class="module-card">
+          <div class="module-path">/auth</div>
+          <div class="module-count">4 endpoints</div>
+          <ul><li>Register</li><li>Login</li><li>Refresh</li><li>Profile</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/reading</div>
+          <div class="module-count">4 endpoints</div>
+          <ul><li>Passages</li><li>Questions</li><li>Submit</li><li>History</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/writing</div>
+          <div class="module-count">4 endpoints</div>
+          <ul><li>Prompts</li><li>Submit</li><li>Submissions</li><li>SSE Events</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/admin</div>
+          <div class="module-count">8+ endpoints</div>
+          <ul><li>CRUD passages</li><li>CRUD questions</li><li>CRUD prompts</li><li>Users &amp; Stats</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/instructor</div>
+          <div class="module-count">3 endpoints</div>
+          <ul><li>Learners</li><li>Writing submissions</li><li>Reading submissions</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/classroom</div>
+          <div class="module-count">6 endpoints</div>
+          <ul><li>Create</li><li>Join</li><li>Topics</li><li>Lessons</li><li>Announcements</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/dashboard</div>
+          <div class="module-count">2 endpoints</div>
+          <ul><li>Role-specific stats</li><li>Progress data</li></ul>
+        </div>
+        <div class="module-card">
+          <div class="module-path">/notifications</div>
+          <div class="module-count">2 endpoints</div>
+          <ul><li>List</li><li>Mark read</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. SCORING PIPELINE ==================== -->
+    <section class="ielts-section" id="scoring">
+      <div class="section-label">05 &mdash; AI Writing Scoring Pipeline</div>
+      <h2 class="section-title">From essay to feedback in &lt;5 minutes</h2>
+      <p class="section-subtitle">Async job queue with dual LLM providers, priority scoring, and real-time updates via SSE.</p>
+
+      <div class="pipeline">
+        <div class="pipeline-node">Submit Essay</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Validate &amp; Rate-limit</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node accent">BullMQ Queue</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node accent">LLM Scoring<br><small style="font-weight:400;color:var(--ielts-text-dim);font-size:0.72rem">OpenAI / Gemini</small></div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Parse &amp; Validate</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">SSE Push</div>
+        <span class="pipeline-arrow">&#10132;</span>
+        <div class="pipeline-node">Feedback Panel</div>
+      </div>
+
+      <div class="cards-grid cols-2">
+        <!-- IELTS Criteria -->
+        <div class="card">
+          <h3>4 IELTS Criteria</h3>
+          <table class="criteria-table">
+            <thead><tr><th>Code</th><th>Criterion</th><th>Measures</th></tr></thead>
+            <tbody>
+              <tr><td>TR</td><td>Task Response</td><td>How well essay addresses prompt</td></tr>
+              <tr><td>CC</td><td>Coherence &amp; Cohesion</td><td>Logical flow, paragraphing</td></tr>
+              <tr><td>LR</td><td>Lexical Resource</td><td>Vocabulary range &amp; accuracy</td></tr>
+              <tr><td>GRA</td><td>Grammatical Range</td><td>Sentence structure variety</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Resilience -->
+        <div class="card">
+          <h3>Resilience Features</h3>
+          <ul class="resilience-list">
+            <li><span class="icon">&#8635;</span>3 retry attempts with exponential backoff</li>
+            <li><span class="icon">&#9878;</span>Dual LLM: OpenAI primary, Gemini fallback</li>
+            <li><span class="icon">&#10003;</span>Strict JSON schema validation</li>
+            <li><span class="icon">&#9201;</span>Rate limiting: 10 submissions / day</li>
+            <li><span class="icon">&#9889;</span>Priority queue: premium users scored faster</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. READING AUTO-GRADING ==================== -->
+    <section class="ielts-section" id="reading">
+      <div class="section-label">06 &mdash; Reading Auto-Grading</div>
+      <h2 class="section-title">Instant scoring, instant learning</h2>
+      <p class="section-subtitle">Answers are compared against pre-defined answer keys for immediate feedback&mdash;no AI latency.</p>
+
+      <div class="flow-steps">
+        <div class="flow-step">Select Passage</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Answer Questions</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Submit</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Compare to answer_key</div>
+        <span class="flow-arrow">&#10132;</span>
+        <div class="flow-step">Instant Score + Explanations</div>
+      </div>
+
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:4px;">Supported Question Types</h3>
+      <p style="font-size:0.88rem;color:var(--ielts-text-dim);margin-bottom:16px;">6 types covering every section of the IELTS Reading test</p>
+      <div class="chip-grid">
+        <div class="chip">MCQ</div>
+        <div class="chip">Short Answer</div>
+        <div class="chip">Matching Headings</div>
+        <div class="chip">True / False / Not Given</div>
+        <div class="chip">Diagram Labeling</div>
+        <div class="chip">Sentence Completion</div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. AUTH & RBAC ==================== -->
+    <section class="ielts-section" id="auth">
+      <div class="section-label">07 &mdash; Authentication &amp; RBAC</div>
+      <h2 class="section-title">JWT + Role-Based Access Control</h2>
+      <p class="section-subtitle">Stateless auth with short-lived access tokens and long-lived refresh tokens, guarded by role decorators.</p>
+
+      <div class="auth-flow">
+        <div class="auth-node">Register</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node">Login</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node accent">JWT<br><small style="font-weight:400;color:var(--ielts-text-dim);font-size:0.72rem">Access 15 min + Refresh 7 d</small></div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node">Protected Routes</div>
+        <span class="auth-arrow">&#10132;</span>
+        <div class="auth-node accent">@Roles Guard</div>
+      </div>
+
+      <table class="rbac-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Learner</th>
+            <th>Instructor</th>
+            <th>Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Browse content</td><td class="rbac-y">&#10004;</td><td class="rbac-y">&#10004;</td><td class="rbac-y">&#10004;</td></tr>
+          <tr><td>Submit answers / essays</td><td class="rbac-y">&#10004;</td><td class="rbac-n">&mdash;</td><td class="rbac-n">&mdash;</td></tr>
+          <tr><td>Manage classrooms</td><td class="rbac-n">&mdash;</td><td class="rbac-y">&#10004;</td><td class="rbac-y">&#10004;</td></tr>
+          <tr><td>CRUD content</td><td class="rbac-n">&mdash;</td><td class="rbac-n">&mdash;</td><td class="rbac-y">&#10004;</td></tr>
+          <tr><td>Manage users</td><td class="rbac-n">&mdash;</td><td class="rbac-n">&mdash;</td><td class="rbac-y">&#10004;</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== 9. DATABASE ==================== -->
+    <section class="ielts-section" id="database">
+      <div class="section-label">08 &mdash; Database Schema</div>
+      <h2 class="section-title">14 tables, designed with Prisma 6</h2>
+      <p class="section-subtitle">Normalized schema with clear ownership chains, soft-delete support, and audit timestamps.</p>
+
+      <div class="db-groups">
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-purple)"></span>Users &amp; Auth</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">users</span>
+            <span class="db-table-pill">content_versions</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-primary-bright)"></span>Content</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">passages</span>
+            <span class="db-table-pill">questions</span>
+            <span class="db-table-pill">prompts</span>
+            <span class="db-table-pill">topic_tags</span>
+            <span class="db-table-pill">collections</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-accent)"></span>Submissions</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">submissions_reading</span>
+            <span class="db-table-pill">submissions_writing</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-success)"></span>Classrooms</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">classrooms</span>
+            <span class="db-table-pill">classroom_members</span>
+            <span class="db-table-pill">topics</span>
+            <span class="db-table-pill">lessons</span>
+            <span class="db-table-pill">lesson_submissions</span>
+            <span class="db-table-pill">announcements</span>
+          </div>
+        </div>
+        <div class="db-group">
+          <div class="db-group-title"><span class="dot" style="background:var(--ielts-cyan)"></span>System</div>
+          <div class="db-table-list">
+            <span class="db-table-pill">notifications</span>
+            <span class="db-table-pill">source_documents</span>
+            <span class="db-table-pill">import_jobs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 10. API ENDPOINTS ==================== -->
+    <section class="ielts-section" id="endpoints">
+      <div class="section-label">09 &mdash; API Endpoints</div>
+      <h2 class="section-title">RESTful API surface</h2>
+      <p class="section-subtitle">Clean, predictable routes grouped by domain. Every mutation is validated and guarded.</p>
+
+      <!-- Auth -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-auth">AUTH</span>Authentication</div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/auth/register</span><span class="endpoint-desc">Create account</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/auth/login</span><span class="endpoint-desc">Obtain JWT pair</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/auth/refresh</span><span class="endpoint-desc">Rotate tokens</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/auth/profile</span><span class="endpoint-desc">Current user info</span></div>
+      </div>
+
+      <!-- Reading -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-read">READING</span>Passages &amp; Questions</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/reading/passages</span><span class="endpoint-desc">List passages (filter by CEFR)</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/reading/passages/:id</span><span class="endpoint-desc">Passage detail + questions</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/reading/passages/:id/submit</span><span class="endpoint-desc">Submit answers</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/reading/history</span><span class="endpoint-desc">Submission history</span></div>
+      </div>
+
+      <!-- Writing -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-write">WRITING</span>Prompts &amp; Submissions</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/writing/prompts</span><span class="endpoint-desc">List prompts</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/writing/prompts/:id/submit</span><span class="endpoint-desc">Submit essay</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/writing/submissions/:id</span><span class="endpoint-desc">Submission detail</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/writing/submissions/:id/events</span><span class="endpoint-desc">SSE score updates</span></div>
+      </div>
+
+      <!-- Admin -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-admin">ADMIN</span>Content Management</div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/admin/passages</span><span class="endpoint-desc">List all passages</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/admin/passages</span><span class="endpoint-desc">Create passage</span></div>
+        <div class="endpoint-row"><span class="method-badge method-put">PUT</span><span class="endpoint-path">/admin/passages/:id</span><span class="endpoint-desc">Update passage</span></div>
+        <div class="endpoint-row"><span class="method-badge method-delete">DELETE</span><span class="endpoint-path">/admin/passages/:id</span><span class="endpoint-desc">Delete passage</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/admin/questions</span><span class="endpoint-desc">Create question</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/admin/prompts</span><span class="endpoint-desc">Create prompt</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/admin/users</span><span class="endpoint-desc">List users</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/admin/stats</span><span class="endpoint-desc">Platform analytics</span></div>
+      </div>
+
+      <!-- Classroom -->
+      <div class="endpoint-group">
+        <div class="endpoint-group-title"><span class="tag tag-class">CLASSROOM</span>Class Management</div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/classrooms</span><span class="endpoint-desc">Create classroom</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/classrooms/:id/join</span><span class="endpoint-desc">Join via invite code</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/classrooms/:id/topics</span><span class="endpoint-desc">Create topic</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/classrooms/:id/topics/:tid/lessons</span><span class="endpoint-desc">Create lesson</span></div>
+        <div class="endpoint-row"><span class="method-badge method-get">GET</span><span class="endpoint-path">/classrooms/:id/announcements</span><span class="endpoint-desc">List announcements</span></div>
+        <div class="endpoint-row"><span class="method-badge method-post">POST</span><span class="endpoint-path">/classrooms/:id/announcements</span><span class="endpoint-desc">Post announcement</span></div>
+      </div>
+    </section>
+
+    <!-- ==================== 11. ROADMAP ==================== -->
+    <section class="ielts-section" id="roadmap">
+      <div class="section-label">10 &mdash; Roadmap</div>
+      <h2 class="section-title">Where we are and where we're headed</h2>
+      <p class="section-subtitle">Iterative development with a clear path from core features to a full four-skill platform.</p>
+
+      <div class="roadmap-track">
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-done">Done</div>
+          <div class="roadmap-items">
+            <h4>Core Platform</h4>
+            <ul>
+              <li>Auth module</li>
+              <li>Reading module</li>
+              <li>Writing module</li>
+              <li>Admin CRUD</li>
+              <li>Classroom</li>
+              <li>Database schema</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-progress">In Progress</div>
+          <div class="roadmap-items">
+            <h4>Optimization</h4>
+            <ul>
+              <li>AI Scoring Pipeline optimization</li>
+              <li>Dashboard analytics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="roadmap-status status-planned">Planned</div>
+          <div class="roadmap-items">
+            <h4>Future</h4>
+            <ul>
+              <li>Listening &amp; Speaking</li>
+              <li>OAuth2</li>
+              <li>Content import</li>
+              <li>Mobile optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ielts-footer">
+      <strong>IELTS Helper</strong> &mdash; Built with Next.js, NestJS &amp; AI
+    </footer>
+
+  </main><!-- .ielts-main -->
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#9650;</button>
+
+</div><!-- .ielts-page -->
+
+<!-- ======================== JAVASCRIPT ======================== -->
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Sidebar toggle (mobile) ---- */
+  var sidebar  = document.getElementById('sidebar');
+  var toggle   = document.getElementById('sidebarToggle');
+  var overlay  = document.getElementById('sidebarOverlay');
+
+  function openSidebar()  { sidebar.classList.add('open'); overlay.classList.add('open'); toggle.classList.add('open'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); toggle.classList.remove('open'); }
+
+  if (toggle)  toggle.addEventListener('click', function() { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+
+  /* Close sidebar when clicking a nav link on mobile */
+  document.querySelectorAll('.sidebar-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 860) closeSidebar();
+    });
+  });
+
+  /* ---- Scroll spy ---- */
+  var navLinks = document.querySelectorAll('#sidebarNav a');
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('data-section');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  function updateActive() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop - 200 <= scrollY) {
+        current = sections[i];
+      }
+    }
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  /* ---- Reveal on scroll ---- */
+  var revealSections = document.querySelectorAll('.ielts-section');
+  var observer = null;
+
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealSections.forEach(function(s) { observer.observe(s); });
+  } else {
+    /* Fallback: show all */
+    revealSections.forEach(function(s) { s.classList.add('revealed'); });
+  }
+
+  /* ---- Scroll-to-top button ---- */
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  function toggleScrollBtn() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > 600) { scrollBtn.classList.add('visible'); }
+    else          { scrollBtn.classList.remove('visible'); }
+  }
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---- Throttled scroll handler ---- */
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateActive();
+        toggleScrollBtn();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* Initial calls */
+  updateActive();
+  toggleScrollBtn();
+
+  /* ---- Smooth scroll for sidebar links ---- */
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.getAttribute('data-section'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+</script>
+
+{{ end }}

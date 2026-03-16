@@ -3,7 +3,7 @@ title = "IELTS Helper — AI-Powered IELTS Preparation Platform"
 description = "A full-stack web application for IELTS Reading & Writing practice with AI-powered essay scoring, real-time feedback, classroom management, and role-based dashboards. Built with Next.js 16, NestJS 10, PostgreSQL, BullMQ, and OpenAI/Gemini."
 weight = 2
 chapter = false
-layout = "project-detail"
+layout = "ielts-proposal"
 tags = ["Next.js", "NestJS", "PostgreSQL", "AI/LLM", "BullMQ", "Redis", "Prisma", "TypeScript"]
 +++
 
